@@ -1,0 +1,45 @@
+script: |
+  super -f text -I q770.spq | sort > q770.out
+
+inputs:
+  - name: q770.spq
+    data: |
+      SELECT CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      c-d
+      FROM t1 (FORMAT parquet);
+  - name: t1
+
+outputs:
+  - name: q770.out
+    data: |
+      111	1
+      111	1
+      222	-
+      222	-1
+      222	2
+      333	-2
+      333	-2
+      333	-3
+      333	-3
+      333	1
+      333	1
+      333	3
+      444	-1
+      444	1
+      444	2
+      444	2
+      444	3
+      555	-
+      555	-
+      555	-
+      555	-
+      555	-
+      555	-
+      555	-1
+      555	-1
+      555	-1
+      555	-2
+      555	1
+      555	1
+      555	1

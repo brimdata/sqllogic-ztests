@@ -1,0 +1,28 @@
+script: |
+  super -f text -I q1243.spq | sort > q1243.out
+
+inputs:
+  - name: q1243.spq
+    data: |
+      SELECT a+b*2+c*3+d*4+e*5,
+      d,
+      a-b,
+      (a+b+c+d+e)/5
+      FROM t1 (FORMAT parquet)
+      WHERE (e>c OR e<d)
+      AND b>c
+      ORDER BY 2,4,3;
+  - name: t1
+
+outputs:
+  - name: q1243.out
+    data: |
+      -	-	1	-
+      1902	128	-2	127
+      2046	136	-1	137
+      2131	140	-1	142
+      2949	196	1	197
+      3260	217	-2	217
+      3399	226	1	227
+      3473	233	2	232
+      3706	248	-4	247

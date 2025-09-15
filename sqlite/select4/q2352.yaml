@@ -1,0 +1,26 @@
+script: |
+  super -f text -I q2352.spq | sort > q2352.out
+
+inputs:
+  - name: q2352.spq
+    data: |
+      SELECT e9, d4+d4, e7
+      FROM t9 (FORMAT parquet), t7 (FORMAT parquet), t4 (FORMAT parquet)
+      WHERE b9=214
+      AND 847=b4
+      AND (e7=89 OR e7=638 OR 280=e7 OR 234=e7);
+  - name: t4
+  - name: t7
+  - name: t9
+
+outputs:
+  - name: q2352.out
+    data: |
+      146	1594	234
+      146	1594	280
+      146	1594	638
+      146	1594	89
+      944	1594	234
+      944	1594	280
+      944	1594	638
+      944	1594	89

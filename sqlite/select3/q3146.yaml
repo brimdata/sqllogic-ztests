@@ -1,0 +1,28 @@
+script: |
+  super -f text -I q3146.spq | sort > q3146.out
+
+inputs:
+  - name: q3146.spq
+    data: |
+      SELECT CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END
+      FROM t1 (FORMAT parquet)
+      WHERE c>d;
+  - name: t1
+
+outputs:
+  - name: q3146.out
+    data: |
+      222
+      222
+      222
+      222
+      222
+      333
+      333
+      333
+      333
+      444
+      444
+      444
+      444

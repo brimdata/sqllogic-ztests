@@ -1,0 +1,45 @@
+script: |
+  super -f text -I q551.spq | sort > q551.out
+
+inputs:
+  - name: q551.spq
+    data: |
+      SELECT c,
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END
+      FROM t1 (FORMAT parquet);
+  - name: t1
+
+outputs:
+  - name: q551.out
+    data: |
+      -	555
+      102	555
+      106	333
+      113	555
+      119	333
+      123	333
+      125	333
+      134	444
+      137	111
+      141	111
+      147	555
+      150	555
+      155	555
+      161	333
+      166	555
+      172	555
+      176	555
+      184	333
+      187	444
+      193	444
+      195	555
+      202	222
+      208	555
+      214	222
+      215	333
+      224	444
+      225	555
+      231	555
+      244	222
+      247	444

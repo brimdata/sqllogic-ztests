@@ -1,0 +1,17 @@
+script: |
+  super -f text -I q2068.spq | sort > q2068.out
+
+inputs:
+  - name: q2068.spq
+    data: |
+      SELECT e1+794, e4+e1
+      FROM t4 (FORMAT parquet), t1 (FORMAT parquet)
+      WHERE a1=c4
+      AND b4 in (323,700,849,23,888,86,551);
+  - name: t1
+  - name: t4
+
+outputs:
+  - name: q2068.out
+    data: |
+      1477	1314

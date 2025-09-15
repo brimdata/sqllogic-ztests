@@ -1,0 +1,29 @@
+script: |
+  super -f text -I q836.spq > q836.out
+
+inputs:
+  - name: q836.spq
+    data: |
+      SELECT (a+b+c+d+e)/5
+      FROM t1 (FORMAT parquet)
+      WHERE b>c
+      ORDER BY 1;
+  - name: t1
+
+outputs:
+  - name: q836.out
+    data: |
+      122
+      127
+      137
+      142
+      152
+      157
+      167
+      192
+      197
+      217
+      227
+      232
+      237
+      247

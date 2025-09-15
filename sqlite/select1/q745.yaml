@@ -1,0 +1,20 @@
+script: |
+  super -f text -I q745.spq > q745.out
+
+inputs:
+  - name: q745.spq
+    data: |
+      SELECT c,
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END
+      FROM t1 (FORMAT parquet)
+      WHERE (e>a AND e<b)
+      AND b>c
+      AND (c<=d-2 OR c>=d+2)
+      ORDER BY 1,2;
+  - name: t1
+
+outputs:
+  - name: q745.out
+    data: |
+      193	222

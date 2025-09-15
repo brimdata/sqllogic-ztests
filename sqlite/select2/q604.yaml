@@ -1,0 +1,23 @@
+script: |
+  super -f text -I q604.spq | sort > q604.out
+
+inputs:
+  - name: q604.spq
+    data: |
+      SELECT d-e
+      FROM t1 (FORMAT parquet)
+      WHERE c>d
+      AND d NOT BETWEEN 110 AND 150;
+  - name: t1
+
+outputs:
+  - name: q604.out
+    data: |
+      -
+      -
+      -2
+      -2
+      -4
+      1
+      2
+      3

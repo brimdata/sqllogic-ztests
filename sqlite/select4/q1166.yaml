@@ -1,0 +1,17 @@
+script: |
+  super -f text -I q1166.spq | sort > q1166.out
+
+inputs:
+  - name: q1166.spq
+    data: |
+      SELECT x1, d9
+      FROM t9 (FORMAT parquet), t1 (FORMAT parquet)
+      WHERE c9=232
+      AND 281=a1;
+  - name: t1
+  - name: t9
+
+outputs:
+  - name: q1166.out
+    data: |
+      table tn1 row 86	283

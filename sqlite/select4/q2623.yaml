@@ -1,0 +1,23 @@
+script: |
+  super -f text -I q2623.spq | sort > q2623.out
+
+inputs:
+  - name: q2623.spq
+    data: |
+      SELECT d6+103+e6, a4
+      FROM t4 (FORMAT parquet), t6 (FORMAT parquet)
+      WHERE b4 in (884,94,829,810,476,627,589)
+      AND d6=223;
+  - name: t4
+  - name: t6
+
+outputs:
+  - name: q2623.out
+    data: |
+      650	159
+      650	271
+      650	378
+      650	412
+      650	469
+      650	662
+      650	982

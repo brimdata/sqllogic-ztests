@@ -1,0 +1,20 @@
+script: |
+  super -f text -I q3019.spq | sort > q3019.out
+
+inputs:
+  - name: q3019.spq
+    data: |
+      SELECT a+b*2,
+      abs(b-c)
+      FROM t1 (FORMAT parquet)
+      WHERE c>d
+      AND (e>a AND e<b)
+      AND (c<=d-2 OR c>=d+2)
+      ORDER BY 2,1;
+  - name: t1
+
+outputs:
+  - name: q3019.out
+    data: |
+      579	1
+      666	1

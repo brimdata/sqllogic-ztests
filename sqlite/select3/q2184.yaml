@@ -1,0 +1,23 @@
+script: |
+  super -f text -I q2184.spq | sort > q2184.out
+
+inputs:
+  - name: q2184.spq
+    data: |
+      SELECT d-e,
+      e
+      FROM t1 (FORMAT parquet)
+      WHERE (a>b-2 AND a<b+2);
+  - name: t1
+
+outputs:
+  - name: q2184.out
+    data: |
+      -	157
+      -	165
+      -1	197
+      -1	227
+      -4	144
+      1	132
+      1	135
+      3	180

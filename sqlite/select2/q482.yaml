@@ -1,0 +1,35 @@
+script: |
+  super -f text -I q482.spq | sort > q482.out
+
+inputs:
+  - name: q482.spq
+    data: |
+      SELECT e,
+      d,
+      CASE WHEN c>(SELECT avg(c) FROM t1 (FORMAT parquet)) THEN a*2 ELSE b*10 END,
+      a+b*2+c*3+d*4
+      FROM t1 (FORMAT parquet)
+      WHERE d>e
+      OR c BETWEEN b-2 AND d+2;
+  - name: t1
+
+outputs:
+  - name: q482.out
+    data: |
+      -	122	1240	1226
+      -	207	-	-
+      109	108	1050	1067
+      110	114	1120	-
+      126	128	1290	1272
+      132	133	1300	1325
+      135	136	1390	1371
+      144	140	1430	1411
+      162	164	1600	1622
+      173	171	1700	1714
+      180	183	364	1828
+      189	185	376	1861
+      210	212	426	2125
+      221	222	440	2226
+      230	233	468	2323
+      237	238	2360	-
+      246	248	490	2476

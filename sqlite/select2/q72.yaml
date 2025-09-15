@@ -1,0 +1,23 @@
+script: |
+  super -f text -I q72.spq | sort > q72.out
+
+inputs:
+  - name: q72.spq
+    data: |
+      SELECT d-e,
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      b-c,
+      e,
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END,
+      abs(b-c)
+      FROM t1 (FORMAT parquet)
+      WHERE a IS NULL;
+  - name: t1
+
+outputs:
+  - name: q72.out
+    data: |
+      -	555	-2	-	444	2
+      4	555	-1	110	444	1

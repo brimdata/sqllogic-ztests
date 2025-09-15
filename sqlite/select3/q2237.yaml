@@ -1,0 +1,24 @@
+script: |
+  super -f text -I q2237.spq | sort > q2237.out
+
+inputs:
+  - name: q2237.spq
+    data: |
+      SELECT d,
+      b-c,
+      (a+b+c+d+e)/5
+      FROM t1 (FORMAT parquet)
+      WHERE (c<=d-2 OR c>=d+2)
+      AND (e>c OR e<d)
+      AND d>e
+      ORDER BY 1,2;
+  - name: t1
+
+outputs:
+  - name: q2237.out
+    data: |
+      128	4	127
+      164	-1	162
+      212	-3	212
+      222	-1	222
+      233	1	232

@@ -1,0 +1,37 @@
+script: |
+  super -f text -I q2283.spq | sort > q2283.out
+
+inputs:
+  - name: q2283.spq
+    data: |
+      SELECT a,
+      (a+b+c+d+e)/5,
+      b-c,
+      a+b*2,
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END
+      FROM t1 (FORMAT parquet)
+      WHERE a>b
+      ORDER BY 1,2;
+  - name: t1
+
+outputs:
+  - name: q2283.out
+    data: |
+      107	107	-1	317	333
+      131	132	-4	391	333
+      149	-	-2	439	444
+      153	-	1	455	333
+      159	-	3	475	333
+      163	162	-1	483	444
+      168	-	1	502	333
+      174	172	-2	514	444
+      179	-	-1	529	444
+      182	182	-3	544	333
+      188	187	-1	560	333
+      199	197	3	595	333
+      213	212	-3	635	333
+      229	227	3	685	333
+      234	232	1	698	333
+      239	-	-	711	444
+      243	-	-4	723	444

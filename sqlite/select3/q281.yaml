@@ -1,0 +1,46 @@
+script: |
+  super -f text -I q281.spq | sort > q281.out
+
+inputs:
+  - name: q281.spq
+    data: |
+      SELECT c-d,
+      b-c
+      FROM t1 (FORMAT parquet)
+      WHERE d>e
+      OR c>d
+      OR a>b
+      ORDER BY 2,1;
+  - name: t1
+
+outputs:
+  - name: q281.out
+    data: |
+      -	-
+      -	-1
+      -	-2
+      -	-4
+      -	1
+      -	1
+      -	3
+      -1	-1
+      -1	2
+      -1	3
+      -1	3
+      -2	-1
+      -2	1
+      -3	-1
+      -3	4
+      1	-
+      1	-2
+      1	-2
+      1	-3
+      1	-4
+      1	1
+      1	2
+      1	2
+      2	-1
+      2	-1
+      2	-3
+      3	-
+      3	1

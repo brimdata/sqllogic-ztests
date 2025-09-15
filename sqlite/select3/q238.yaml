@@ -1,0 +1,19 @@
+script: |
+  super -f text -I q238.spq | sort > q238.out
+
+inputs:
+  - name: q238.spq
+    data: |
+      SELECT e
+      FROM t1 (FORMAT parquet)
+      WHERE b>c
+      AND d>e;
+  - name: t1
+
+outputs:
+  - name: q238.out
+    data: |
+      126
+      135
+      230
+      246

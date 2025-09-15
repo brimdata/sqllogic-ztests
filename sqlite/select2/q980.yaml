@@ -1,0 +1,21 @@
+script: |
+  super -f text -I q980.spq | sort > q980.out
+
+inputs:
+  - name: q980.spq
+    data: |
+      SELECT d,
+      abs(b-c),
+      b-c,
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      b
+      FROM t1 (FORMAT parquet)
+      WHERE (c<=d-2 OR c>=d+2)
+      AND a IS NULL
+      AND c>d;
+  - name: t1
+
+outputs:
+  - name: q980.out
+    data: |

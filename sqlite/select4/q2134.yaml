@@ -1,0 +1,20 @@
+script: |
+  super -f text -I q2134.spq | sort > q2134.out
+
+inputs:
+  - name: q2134.spq
+    data: |
+      SELECT x5, x8, b4
+      FROM t8 (FORMAT parquet), t5 (FORMAT parquet), t4 (FORMAT parquet)
+      WHERE 802=b4
+      AND c5=d8
+      AND e8 in (7,933,811,105,635,776,497);
+  - name: t4
+  - name: t5
+  - name: t8
+
+outputs:
+  - name: q2134.out
+    data: |
+      table tn5 row 29	table tn8 row 52	802
+      table tn5 row 69	table tn8 row 52	802

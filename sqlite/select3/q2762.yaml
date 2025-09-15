@@ -1,0 +1,32 @@
+script: |
+  super -f text -I q2762.spq | sort > q2762.out
+
+inputs:
+  - name: q2762.spq
+    data: |
+      SELECT b-c,
+      b,
+      a-b,
+      c-d,
+      d-e,
+      e
+      FROM t1 (FORMAT parquet)
+      WHERE b>c;
+  - name: t1
+
+outputs:
+  - name: q2762.out
+    data: |
+      1	124	-3	1	-	-
+      1	151	2	-	-	-
+      1	167	1	-	-	165
+      1	194	-3	3	-2	192
+      1	232	2	-2	3	230
+      2	139	-1	1	1	135
+      2	143	-1	1	-4	144
+      2	249	-4	-1	2	246
+      3	158	1	-	-	157
+      3	198	1	-1	-1	197
+      3	218	-2	-2	-2	219
+      3	228	1	-1	-1	227
+      4	129	-2	-3	2	126

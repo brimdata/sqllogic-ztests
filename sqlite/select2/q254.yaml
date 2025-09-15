@@ -1,0 +1,20 @@
+script: |
+  super -f text -I q254.spq | sort > q254.out
+
+inputs:
+  - name: q254.spq
+    data: |
+      SELECT b,
+      d-e,
+      (a+b+c+d+e)/5,
+      d,
+      a
+      FROM t1 (FORMAT parquet)
+      WHERE e+d BETWEEN a+b-10 AND c+130;
+  - name: t1
+
+outputs:
+  - name: q254.out
+    data: |
+      105	-1	107	108	107
+      129	2	127	128	127

@@ -1,0 +1,28 @@
+script: |
+  super -f text -I q817.spq | sort > q817.out
+
+inputs:
+  - name: q817.spq
+    data: |
+      SELECT abs(a),
+      a+b*2+c*3,
+      a+b*2,
+      e,
+      b
+      FROM t1 (FORMAT parquet)
+      WHERE (c<=d-2 OR c>=d+2)
+      AND d NOT BETWEEN 110 AND 150
+      ORDER BY 5,4,1,2,3;
+  - name: t1
+
+outputs:
+  - name: q817.out
+    data: |
+      107	635	317	109	105
+      163	966	483	162	160
+      188	1121	560	189	186
+      191	1158	579	192	194
+      213	1277	635	210	211
+      216	1297	652	219	218
+      220	1338	666	221	223
+      234	1391	698	230	232

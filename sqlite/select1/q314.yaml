@@ -1,0 +1,30 @@
+script: |
+  super -f text -I q314.spq > q314.out
+
+inputs:
+  - name: q314.spq
+    data: |
+      SELECT a+b*2+c*3+d*4+e*5
+      FROM t1 (FORMAT parquet)
+      WHERE (c<=d-2 OR c>=d+2)
+      ORDER BY 1;
+  - name: t1
+
+outputs:
+  - name: q314.out
+    data: |
+      1612
+      1757
+      1902
+      2281
+      2432
+      2501
+      2654
+      2806
+      2878
+      3175
+      3260
+      3331
+      3473
+      3553
+      3629

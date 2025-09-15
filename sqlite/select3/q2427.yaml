@@ -1,0 +1,31 @@
+script: |
+  super -f text -I q2427.spq | sort > q2427.out
+
+inputs:
+  - name: q2427.spq
+    data: |
+      SELECT c-d,
+      b
+      FROM t1 (FORMAT parquet)
+      WHERE c BETWEEN b-2 AND d+2
+      ORDER BY 1,2;
+  - name: t1
+
+outputs:
+  - name: q2427.out
+    data: |
+      -1	112
+      -1	249
+      -2	105
+      -2	232
+      -3	160
+      1	124
+      1	130
+      1	139
+      1	143
+      1	170
+      1	181
+      1	206
+      2	186
+      2	211
+      2	223

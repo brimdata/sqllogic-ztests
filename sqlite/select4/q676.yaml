@@ -1,0 +1,33 @@
+script: |
+  super -f text -I q676.spq | tr '\t' '\n' | sort > q676.out
+
+inputs:
+  - name: q676.spq
+    data: |
+      SELECT b2 FROM t2 (FORMAT parquet)
+      WHERE (e2=923)
+      UNION ALL
+      SELECT b5 FROM t5 (FORMAT parquet)
+      WHERE (d5=964 OR a5=163)
+      OR b5 in (234,861,951,26,820,393,759,717,789);
+  - name: t2
+  - name: t5
+
+outputs:
+  - name: q676.out
+    data: |
+      234
+      234
+      26
+      26
+      26
+      292
+      393
+      717
+      729
+      759
+      789
+      820
+      861
+      90
+      951

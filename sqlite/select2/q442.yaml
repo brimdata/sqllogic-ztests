@@ -1,0 +1,45 @@
+script: |
+  super -f text -I q442.spq | sort > q442.out
+
+inputs:
+  - name: q442.spq
+    data: |
+      SELECT abs(b-c),
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END
+      FROM t1 (FORMAT parquet);
+  - name: t1
+
+outputs:
+  - name: q442.out
+    data: |
+      -	222
+      -	333
+      -	555
+      -	555
+      1	333
+      1	333
+      1	333
+      1	444
+      1	444
+      1	444
+      1	555
+      1	555
+      1	555
+      1	555
+      1	555
+      2	111
+      2	111
+      2	444
+      2	555
+      2	555
+      2	555
+      3	222
+      3	333
+      3	333
+      3	555
+      3	555
+      3	555
+      4	222
+      4	333
+      4	444

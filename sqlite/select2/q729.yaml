@@ -1,0 +1,28 @@
+script: |
+  super -f text -I q729.spq | sort > q729.out
+
+inputs:
+  - name: q729.spq
+    data: |
+      SELECT c-d,
+      b-c,
+      e,
+      a+b*2+c*3+d*4+e*5
+      FROM t1 (FORMAT parquet)
+      WHERE d>e;
+  - name: t1
+
+outputs:
+  - name: q729.out
+    data: |
+      -	-	237	-
+      -1	-1	110	-
+      -1	2	246	3706
+      -2	1	230	3473
+      -3	-1	162	2432
+      -3	4	126	1902
+      1	-3	180	2728
+      1	-4	132	1985
+      1	2	135	2046
+      2	-1	221	3331
+      2	-3	210	3175

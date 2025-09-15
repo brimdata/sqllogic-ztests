@@ -1,0 +1,30 @@
+script: |
+  super -f text -I q301.spq | sort > q301.out
+
+inputs:
+  - name: q301.spq
+    data: |
+      SELECT b-c,
+      (a+b+c+d+e)/5
+      FROM t1 (FORMAT parquet)
+      WHERE c BETWEEN b-2 AND d+2;
+  - name: t1
+
+outputs:
+  - name: q301.out
+    data: |
+      -1	-
+      -1	107
+      -1	162
+      -1	187
+      -1	222
+      -2	-
+      -2	172
+      -3	182
+      -3	212
+      -4	132
+      1	-
+      1	232
+      2	137
+      2	142
+      2	247

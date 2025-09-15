@@ -1,0 +1,17 @@
+script: |
+  super -f text -I q676.spq | sort > q676.out
+
+inputs:
+  - name: q676.spq
+    data: |
+      SELECT d
+      FROM t1 (FORMAT parquet)
+      WHERE (e>a AND e<b);
+  - name: t1
+
+outputs:
+  - name: q676.out
+    data: |
+      190
+      222
+      248

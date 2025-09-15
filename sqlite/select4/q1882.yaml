@@ -1,0 +1,24 @@
+script: |
+  super -f text -I q1882.spq | sort > q1882.out
+
+inputs:
+  - name: q1882.spq
+    data: |
+      SELECT x4, x6, b3
+      FROM t3 (FORMAT parquet), t6 (FORMAT parquet), t4 (FORMAT parquet)
+      WHERE b4=407
+      AND 5=a3
+      AND d6 in (405,271,846,885,647,66);
+  - name: t3
+  - name: t4
+  - name: t6
+
+outputs:
+  - name: q1882.out
+    data: |
+      table tn4 row 108	table tn6 row 33	224
+      table tn4 row 108	table tn6 row 38	224
+      table tn4 row 108	table tn6 row 5	224
+      table tn4 row 108	table tn6 row 50	224
+      table tn4 row 108	table tn6 row 62	224
+      table tn4 row 108	table tn6 row 88	224

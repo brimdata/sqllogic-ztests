@@ -1,0 +1,19 @@
+script: |
+  super -f text -I q1665.spq | sort > q1665.out
+
+inputs:
+  - name: q1665.spq
+    data: |
+      SELECT c4, d9*288+d4
+      FROM t9 (FORMAT parquet), t4 (FORMAT parquet)
+      WHERE 818=b9
+      AND b4 in (921,603,68);
+  - name: t4
+  - name: t9
+
+outputs:
+  - name: q1665.out
+    data: |
+      47	267565
+      660	267465
+      783	266997

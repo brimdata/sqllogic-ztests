@@ -1,0 +1,17 @@
+script: |
+  super -f text -I q926.spq | sort > q926.out
+
+inputs:
+  - name: q926.spq
+    data: |
+      SELECT c
+      FROM t1 (FORMAT parquet)
+      WHERE (e>a AND e<b);
+  - name: t1
+
+outputs:
+  - name: q926.out
+    data: |
+      193
+      224
+      247

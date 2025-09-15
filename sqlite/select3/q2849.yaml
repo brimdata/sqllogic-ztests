@@ -1,0 +1,36 @@
+script: |
+  super -f text -I q2849.spq | sort > q2849.out
+
+inputs:
+  - name: q2849.spq
+    data: |
+      SELECT CASE WHEN c>(SELECT avg(c) FROM t1 (FORMAT parquet)) THEN a*2 ELSE b*10 END,
+      e
+      FROM t1 (FORMAT parquet)
+      WHERE c>d
+      OR d>e
+      ORDER BY 1,2;
+  - name: t1
+
+outputs:
+  - name: q2849.out
+    data: |
+      -	-
+      -	-
+      -	117
+      1120	110
+      1240	-
+      1290	126
+      1300	132
+      1390	135
+      1430	144
+      1600	162
+      1700	173
+      2360	237
+      364	180
+      376	189
+      382	192
+      426	210
+      440	221
+      468	230
+      490	246

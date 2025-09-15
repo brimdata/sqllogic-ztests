@@ -1,0 +1,19 @@
+script: |
+  super -f text -I q1136.spq | sort > q1136.out
+
+inputs:
+  - name: q1136.spq
+    data: |
+      SELECT abs(a),
+      c,
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      d-e
+      FROM t1 (FORMAT parquet)
+      WHERE (a>b-2 AND a<b+2)
+      AND e+d BETWEEN a+b-10 AND c+130;
+  - name: t1
+
+outputs:
+  - name: q1136.out
+    data: |

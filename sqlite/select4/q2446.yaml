@@ -1,0 +1,28 @@
+script: |
+  super -f text -I q2446.spq | sort > q2446.out
+
+inputs:
+  - name: q2446.spq
+    data: |
+      SELECT x5, a8, b4*473
+      FROM t5 (FORMAT parquet), t8 (FORMAT parquet), t4 (FORMAT parquet)
+      WHERE b4 in (387,271,33,608,40)
+      AND e8=41
+      AND 147=c5;
+  - name: t4
+  - name: t5
+  - name: t8
+
+outputs:
+  - name: q2446.out
+    data: |
+      table tn5 row 51	578	128183
+      table tn5 row 51	578	15609
+      table tn5 row 51	578	183051
+      table tn5 row 51	578	18920
+      table tn5 row 51	578	287584
+      table tn5 row 85	578	128183
+      table tn5 row 85	578	15609
+      table tn5 row 85	578	183051
+      table tn5 row 85	578	18920
+      table tn5 row 85	578	287584

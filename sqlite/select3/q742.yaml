@@ -1,0 +1,30 @@
+script: |
+  super -f text -I q742.spq | sort > q742.out
+
+inputs:
+  - name: q742.spq
+    data: |
+      SELECT d,
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      d-e
+      FROM t1 (FORMAT parquet)
+      WHERE b>c;
+  - name: t1
+
+outputs:
+  - name: q742.out
+    data: |
+      -	555	-
+      -	555	-
+      -	555	-
+      122	333	-
+      128	333	2
+      136	111	1
+      140	111	-4
+      190	444	-2
+      196	555	-1
+      217	333	-2
+      226	555	-1
+      233	555	3
+      248	444	2

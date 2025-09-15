@@ -1,0 +1,19 @@
+script: |
+  super -f text -I q1128.spq | sort > q1128.out
+
+inputs:
+  - name: q1128.spq
+    data: |
+      SELECT b1, e4+c4, d5
+      FROM t1 (FORMAT parquet), t5 (FORMAT parquet), t4 (FORMAT parquet)
+      WHERE 152=c5
+      AND b4=c1
+      AND a1 in (538,629,637,776);
+  - name: t1
+  - name: t4
+  - name: t5
+
+outputs:
+  - name: q1128.out
+    data: |
+      213	1064	437

@@ -1,0 +1,43 @@
+script: |
+  super -f text -I q1323.spq | sort > q1323.out
+
+inputs:
+  - name: q1323.spq
+    data: |
+      SELECT d,
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END
+      FROM t1 (FORMAT parquet)
+      WHERE (c<=d-2 OR c>=d+2)
+      OR c BETWEEN b-2 AND d+2
+      OR b>c
+      ORDER BY 2,1;
+  - name: t1
+
+outputs:
+  - name: q1323.out
+    data: |
+      -	333
+      -	333
+      -	333
+      108	333
+      114	444
+      116	444
+      122	222
+      128	222
+      133	333
+      136	222
+      140	222
+      164	444
+      171	444
+      183	333
+      185	333
+      190	222
+      196	333
+      207	444
+      212	333
+      217	222
+      222	222
+      226	333
+      233	333
+      248	111

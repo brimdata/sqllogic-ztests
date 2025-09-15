@@ -1,0 +1,19 @@
+script: |
+  super -f text -I q1049.spq | sort > q1049.out
+
+inputs:
+  - name: q1049.spq
+    data: |
+      SELECT d4, e3+b4, e6
+      FROM t6 (FORMAT parquet), t4 (FORMAT parquet), t3 (FORMAT parquet)
+      WHERE d6=424
+      AND a3=190
+      AND 476=b4;
+  - name: t3
+  - name: t4
+  - name: t6
+
+outputs:
+  - name: q1049.out
+    data: |
+      303	851	225

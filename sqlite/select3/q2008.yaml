@@ -1,0 +1,30 @@
+script: |
+  super -f text -I q2008.spq | sort > q2008.out
+
+inputs:
+  - name: q2008.spq
+    data: |
+      SELECT e,
+      b,
+      a+b*2+c*3,
+      a+b*2,
+      CASE WHEN c>(SELECT avg(c) FROM t1 (FORMAT parquet)) THEN a*2 ELSE b*10 END,
+      (a+b+c+d+e)/5
+      FROM t1 (FORMAT parquet)
+      WHERE c>d
+      AND c BETWEEN b-2 AND d+2;
+  - name: t1
+
+outputs:
+  - name: q2008.out
+    data: |
+      -	124	738	369	1240	-
+      -	206	-	-	-	-
+      132	130	793	391	1300	132
+      135	139	827	416	1390	137
+      144	143	851	428	1430	142
+      173	170	1030	514	1700	172
+      180	181	1096	544	364	182
+      189	186	1121	560	376	187
+      210	211	1277	635	426	212
+      221	223	1338	666	440	222

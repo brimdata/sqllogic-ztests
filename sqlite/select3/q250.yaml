@@ -1,0 +1,37 @@
+script: |
+  super -f text -I q250.spq | sort > q250.out
+
+inputs:
+  - name: q250.spq
+    data: |
+      SELECT e,
+      CASE WHEN c>(SELECT avg(c) FROM t1 (FORMAT parquet)) THEN a*2 ELSE b*10 END
+      FROM t1 (FORMAT parquet)
+      WHERE e+d BETWEEN a+b-10 AND c+130
+      OR (e>c OR e<d);
+  - name: t1
+
+outputs:
+  - name: q250.out
+    data: |
+      109	1050
+      110	1120
+      126	1290
+      132	1300
+      135	1390
+      144	1430
+      157	1580
+      162	1600
+      173	1700
+      177	358
+      180	364
+      189	376
+      197	398
+      204	402
+      210	426
+      219	432
+      221	440
+      227	458
+      230	468
+      237	2360
+      246	490

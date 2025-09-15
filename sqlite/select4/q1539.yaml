@@ -1,0 +1,26 @@
+script: |
+  super -f text -I q1539.spq | sort > q1539.out
+
+inputs:
+  - name: q1539.spq
+    data: |
+      SELECT b6+903, c8+598
+      FROM t6 (FORMAT parquet), t8 (FORMAT parquet)
+      WHERE d6 in (197,734,493,846,613,974,500)
+      AND e8=488;
+  - name: t6
+  - name: t8
+
+outputs:
+  - name: q1539.out
+    data: |
+      1105	847
+      1352	847
+      1366	847
+      1478	847
+      1509	847
+      1684	847
+      1783	847
+      1808	847
+      1809	847
+      1896	847

@@ -1,0 +1,32 @@
+script: |
+  super -f text -I q562.spq | sort > q562.out
+
+inputs:
+  - name: q562.spq
+    data: |
+      SELECT CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END
+      FROM t1 (FORMAT parquet)
+      WHERE d NOT BETWEEN 110 AND 150;
+  - name: t1
+
+outputs:
+  - name: q562.out
+    data: |
+      222
+      222
+      333
+      333
+      333
+      333
+      444
+      444
+      444
+      444
+      555
+      555
+      555
+      555
+      555
+      555
+      555

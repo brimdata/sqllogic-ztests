@@ -1,0 +1,23 @@
+script: |
+  super -f text -I q2067.spq | sort > q2067.out
+
+inputs:
+  - name: q2067.spq
+    data: |
+      SELECT a+b*2+c*3
+      FROM t1 (FORMAT parquet)
+      WHERE (a>b-2 AND a<b+2)
+      ORDER BY 1;
+  - name: t1
+
+outputs:
+  - name: q2067.out
+    data: |
+      1000
+      1096
+      1180
+      1360
+      793
+      827
+      851
+      940

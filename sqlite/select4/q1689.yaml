@@ -1,0 +1,23 @@
+script: |
+  super -f text -I q1689.spq | sort > q1689.out
+
+inputs:
+  - name: q1689.spq
+    data: |
+      SELECT c5, a4+175, c6+d4
+      FROM t6 (FORMAT parquet), t4 (FORMAT parquet), t5 (FORMAT parquet)
+      WHERE (c5=44 OR c5=855 OR 443=c5)
+      AND d6=797
+      AND b4=713;
+  - name: t4
+  - name: t5
+  - name: t6
+
+outputs:
+  - name: q1689.out
+    data: |
+      44	403	1137
+      443	403	1137
+      443	403	1137
+      855	403	1137
+      855	403	1137

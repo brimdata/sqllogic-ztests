@@ -1,0 +1,26 @@
+script: |
+  super -f text -I q641.spq > q641.out
+
+inputs:
+  - name: q641.spq
+    data: |
+      SELECT CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      abs(b-c),
+      c-d,
+      a
+      FROM t1 (FORMAT parquet)
+      WHERE (a>b-2 AND a<b+2)
+      AND (e>c OR e<d)
+      AND c>d
+      ORDER BY 3,4,2,1;
+  - name: t1
+
+outputs:
+  - name: q641.out
+    data: |
+      444	4	1	131
+      111	2	1	138
+      111	2	1	142
+      333	3	1	182
+      111	2	1	205

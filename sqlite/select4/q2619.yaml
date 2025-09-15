@@ -1,0 +1,32 @@
+script: |
+  super -f text -I q2619.spq | sort > q2619.out
+
+inputs:
+  - name: q2619.spq
+    data: |
+      SELECT c9+a9, e6
+      FROM t6 (FORMAT parquet), t9 (FORMAT parquet)
+      WHERE (548=a9 OR a9=251 OR a9=712 OR a9=776)
+      AND (931=d6 OR 72=d6 OR d6=911 OR 613=d6);
+  - name: t6
+  - name: t9
+
+outputs:
+  - name: q2619.out
+    data: |
+      1087	24
+      1087	847
+      1087	850
+      1087	90
+      1114	24
+      1114	847
+      1114	850
+      1114	90
+      1259	24
+      1259	847
+      1259	850
+      1259	90
+      1610	24
+      1610	847
+      1610	850
+      1610	90

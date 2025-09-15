@@ -1,0 +1,23 @@
+script: |
+  super -f text -I q2973.spq | sort > q2973.out
+
+inputs:
+  - name: q2973.spq
+    data: |
+      SELECT abs(b-c),
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      a+b*2+c*3,
+      a-b
+      FROM t1 (FORMAT parquet)
+      WHERE b>c
+      AND c BETWEEN b-2 AND d+2
+      AND (a>b-2 AND a<b+2)
+      ORDER BY 3,2;
+  - name: t1
+
+outputs:
+  - name: q2973.out
+    data: |
+      2	111	827	-1
+      2	111	851	-1

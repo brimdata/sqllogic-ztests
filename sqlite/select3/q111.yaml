@@ -1,0 +1,19 @@
+script: |
+  super -f text -I q111.spq | sort > q111.out
+
+inputs:
+  - name: q111.spq
+    data: |
+      SELECT b-c,
+      b,
+      a+b*2+c*3+d*4
+      FROM t1 (FORMAT parquet)
+      WHERE (a>b-2 AND a<b+2)
+      AND (c<=d-2 OR c>=d+2)
+      AND a>b
+      ORDER BY 3,1;
+  - name: t1
+
+outputs:
+  - name: q111.out
+    data: |

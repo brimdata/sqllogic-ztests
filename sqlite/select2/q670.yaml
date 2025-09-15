@@ -1,0 +1,18 @@
+script: |
+  super -f text -I q670.spq | sort > q670.out
+
+inputs:
+  - name: q670.spq
+    data: |
+      SELECT a+b*2,
+      abs(b-c),
+      a
+      FROM t1 (FORMAT parquet)
+      WHERE a IS NULL
+      AND (e>c OR e<d)
+      AND c>d;
+  - name: t1
+
+outputs:
+  - name: q670.out
+    data: |

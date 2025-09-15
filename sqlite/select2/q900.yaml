@@ -1,0 +1,18 @@
+script: |
+  super -f text -I q900.spq | sort > q900.out
+
+inputs:
+  - name: q900.spq
+    data: |
+      SELECT d-e,
+      a,
+      d
+      FROM t1 (FORMAT parquet)
+      WHERE (e>c OR e<d)
+      AND a IS NULL;
+  - name: t1
+
+outputs:
+  - name: q900.out
+    data: |
+      4	-	114

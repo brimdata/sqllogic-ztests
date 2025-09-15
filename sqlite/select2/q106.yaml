@@ -1,0 +1,35 @@
+script: |
+  super -f text -I q106.spq | sort > q106.out
+
+inputs:
+  - name: q106.spq
+    data: |
+      SELECT CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END,
+      e,
+      a+b*2,
+      abs(a),
+      c-d
+      FROM t1 (FORMAT parquet)
+      WHERE coalesce(a,b,c,d,e)<>0
+      AND c BETWEEN b-2 AND d+2;
+  - name: t1
+
+outputs:
+  - name: q106.out
+    data: |
+      111	246	743	245	-1
+      222	-	369	121	1
+      222	135	416	138	1
+      222	144	428	142	1
+      222	221	666	220	2
+      333	109	317	107	-2
+      333	132	391	131	1
+      333	180	544	182	1
+      333	189	560	188	2
+      333	210	635	213	2
+      333	230	698	234	-2
+      444	-	-	-	1
+      444	110	-	-	-1
+      444	162	483	163	-3
+      444	173	514	174	1

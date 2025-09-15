@@ -1,0 +1,23 @@
+script: |
+  super -f text -I q243.spq | sort > q243.out
+
+inputs:
+  - name: q243.spq
+    data: |
+      SELECT b,
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      CASE WHEN c>(SELECT avg(c) FROM t1 (FORMAT parquet)) THEN a*2 ELSE b*10 END,
+      (a+b+c+d+e)/5,
+      a+b*2+c*3
+      FROM t1 (FORMAT parquet)
+      WHERE coalesce(a,b,c,d,e)<>0
+      AND (e>a AND e<b);
+  - name: t1
+
+outputs:
+  - name: q243.out
+    data: |
+      194	444	382	192	1158
+      223	444	440	222	1338
+      249	444	490	247	1484

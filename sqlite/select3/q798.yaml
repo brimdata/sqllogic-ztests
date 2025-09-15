@@ -1,0 +1,24 @@
+script: |
+  super -f text -I q798.spq | sort > q798.out
+
+inputs:
+  - name: q798.spq
+    data: |
+      SELECT CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END,
+      e,
+      abs(b-c)
+      FROM t1 (FORMAT parquet)
+      WHERE (e>c OR e<d)
+      AND d NOT BETWEEN 110 AND 150
+      AND b>c;
+  - name: t1
+
+outputs:
+  - name: q798.out
+    data: |
+      111	246	2
+      222	219	3
+      333	197	3
+      333	227	3
+      333	230	1

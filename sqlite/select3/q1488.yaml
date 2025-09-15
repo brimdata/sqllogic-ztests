@@ -1,0 +1,26 @@
+script: |
+  super -f text -I q1488.spq | sort > q1488.out
+
+inputs:
+  - name: q1488.spq
+    data: |
+      SELECT a-b,
+      a+b*2+c*3
+      FROM t1 (FORMAT parquet)
+      WHERE (c<=d-2 OR c>=d+2)
+      OR e+d BETWEEN a+b-10 AND c+130;
+  - name: t1
+
+outputs:
+  - name: q1488.out
+    data: |
+      -	-
+      -2	1297
+      -2	760
+      -3	1158
+      -3	1338
+      2	1121
+      2	1277
+      2	1391
+      2	635
+      3	966

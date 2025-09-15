@@ -1,0 +1,34 @@
+script: |
+  super -f text -I q131.spq | sort > q131.out
+
+inputs:
+  - name: q131.spq
+    data: |
+      SELECT a+b*2
+      FROM t1 (FORMAT parquet)
+      WHERE e+d BETWEEN a+b-10 AND c+130
+      OR a>b
+      ORDER BY 1;
+  - name: t1
+
+outputs:
+  - name: q131.out
+    data: |
+      317
+      385
+      391
+      439
+      455
+      475
+      483
+      502
+      514
+      529
+      544
+      560
+      595
+      635
+      685
+      698
+      711
+      723

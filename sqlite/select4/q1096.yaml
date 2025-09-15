@@ -1,0 +1,20 @@
+script: |
+  super -f text -I q1096.spq | sort > q1096.out
+
+inputs:
+  - name: q1096.spq
+    data: |
+      SELECT e9, a5+37
+      FROM t9 (FORMAT parquet), t5 (FORMAT parquet)
+      WHERE (e9=19 OR 845=e9 OR 278=e9)
+      AND c5=585;
+  - name: t5
+  - name: t9
+
+outputs:
+  - name: q1096.out
+    data: |
+      19	376
+      19	376
+      278	376
+      845	376

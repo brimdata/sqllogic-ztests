@@ -1,0 +1,17 @@
+script: |
+  super -f text -I q1152.spq | sort > q1152.out
+
+inputs:
+  - name: q1152.spq
+    data: |
+      SELECT b4, b2+433+c4
+      FROM t4 (FORMAT parquet), t2 (FORMAT parquet)
+      WHERE a2=b4
+      AND b4=735;
+  - name: t2
+  - name: t4
+
+outputs:
+  - name: q1152.out
+    data: |
+      735	1426

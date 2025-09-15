@@ -1,0 +1,19 @@
+script: |
+  super -f text -I q2347.spq | sort > q2347.out
+
+inputs:
+  - name: q2347.spq
+    data: |
+      SELECT c6+756, x3, e5
+      FROM t5 (FORMAT parquet), t6 (FORMAT parquet), t3 (FORMAT parquet)
+      WHERE a3=341
+      AND 3=c5
+      AND d6=561;
+  - name: t3
+  - name: t5
+  - name: t6
+
+outputs:
+  - name: q2347.out
+    data: |
+      1433	table tn3 row 31	702

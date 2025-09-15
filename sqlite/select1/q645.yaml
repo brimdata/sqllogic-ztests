@@ -1,0 +1,34 @@
+script: |
+  super -f text -I q645.spq > q645.out
+
+inputs:
+  - name: q645.spq
+    data: |
+      SELECT d-e,
+      b,
+      a+b*2+c*3+d*4,
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      b-c
+      FROM t1 (FORMAT parquet)
+      WHERE (e>c OR e<d)
+      AND b>c
+      ORDER BY 2,3,1,4,5;
+  - name: t1
+
+outputs:
+  - name: q645.out
+    data: |
+      2	124	1226	333	1
+      2	129	1272	333	4
+      1	139	1371	111	2
+      -4	143	1411	111	2
+      2	151	1521	333	1
+      -1	158	1564	555	3
+      4	167	1676	333	1
+      -1	198	1964	555	3
+      -2	218	2165	333	3
+      -1	228	2264	555	3
+      3	232	2323	555	1
+      1	236	2368	555	1
+      2	249	2476	444	2

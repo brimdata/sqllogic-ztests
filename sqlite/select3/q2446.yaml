@@ -1,0 +1,33 @@
+script: |
+  super -f text -I q2446.spq | sort > q2446.out
+
+inputs:
+  - name: q2446.spq
+    data: |
+      SELECT a+b*2+c*3+d*4,
+      a,
+      e,
+      a+b*2+c*3+d*4+e*5,
+      d,
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END
+      FROM t1 (FORMAT parquet)
+      WHERE c>d;
+  - name: t1
+
+outputs:
+  - name: q2446.out
+    data: |
+      -	-	-	-	207	555
+      -	104	-	-	101	555
+      -	115	117	-	116	333
+      1226	121	-	-	122	333
+      1325	131	132	1985	133	444
+      1371	138	135	2046	136	111
+      1411	142	144	2131	140	111
+      1714	174	173	2579	171	555
+      1828	182	180	2728	183	333
+      1861	188	189	2806	185	444
+      1918	191	192	2878	190	444
+      2125	213	210	3175	212	222
+      2226	220	221	3331	222	444

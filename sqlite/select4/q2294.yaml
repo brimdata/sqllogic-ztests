@@ -1,0 +1,23 @@
+script: |
+  super -f text -I q2294.spq | sort > q2294.out
+
+inputs:
+  - name: q2294.spq
+    data: |
+      SELECT x2, e7, d4*932+c2
+      FROM t7 (FORMAT parquet), t4 (FORMAT parquet), t2 (FORMAT parquet)
+      WHERE b4 in (58,721,220,707)
+      AND d2=749
+      AND e7=605;
+  - name: t2
+  - name: t4
+  - name: t7
+
+outputs:
+  - name: q2294.out
+    data: |
+      table tn2 row 9	605	229523
+      table tn2 row 9	605	347887
+      table tn2 row 9	605	418719
+      table tn2 row 9	605	585547
+      table tn2 row 9	605	608847

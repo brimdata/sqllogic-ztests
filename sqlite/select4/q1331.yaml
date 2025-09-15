@@ -1,0 +1,24 @@
+script: |
+  super -f text -I q1331.spq | sort > q1331.out
+
+inputs:
+  - name: q1331.spq
+    data: |
+      SELECT d5+541+b5, a1+a5
+      FROM t1 (FORMAT parquet), t5 (FORMAT parquet)
+      WHERE a1=936
+      AND c5 in (628,471,422,602,585,130,3,545);
+  - name: t1
+  - name: t5
+
+outputs:
+  - name: q1331.out
+    data: |
+      1136	1275
+      1203	1365
+      1277	1562
+      1625	1203
+      1765	1017
+      1777	1449
+      1830	1255
+      1866	1237

@@ -1,0 +1,22 @@
+script: |
+  super -f text -I q1610.spq | sort > q1610.out
+
+inputs:
+  - name: q1610.spq
+    data: |
+      SELECT x6, a9, d2+a6
+      FROM t9 (FORMAT parquet), t6 (FORMAT parquet), t2 (FORMAT parquet)
+      WHERE 223=d6
+      AND a2=651
+      AND (c9=975 OR c9=807 OR c9=39 OR c9=688);
+  - name: t2
+  - name: t6
+  - name: t9
+
+outputs:
+  - name: q1610.out
+    data: |
+      table tn6 row 92	148	635
+      table tn6 row 92	269	635
+      table tn6 row 92	41	635
+      table tn6 row 92	662	635

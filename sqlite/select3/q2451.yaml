@@ -1,0 +1,38 @@
+script: |
+  super -f text -I q2451.spq | sort > q2451.out
+
+inputs:
+  - name: q2451.spq
+    data: |
+      SELECT d,
+      abs(b-c),
+      a+b*2
+      FROM t1 (FORMAT parquet)
+      WHERE (e>c OR e<d)
+      ORDER BY 3,1;
+  - name: t1
+
+outputs:
+  - name: q2451.out
+    data: |
+      -	1	529
+      -	3	475
+      108	1	317
+      114	1	-
+      128	4	385
+      133	4	391
+      136	2	416
+      140	2	428
+      164	1	483
+      171	2	514
+      183	3	544
+      185	1	560
+      196	3	595
+      203	-	-
+      212	3	635
+      217	3	652
+      222	1	666
+      226	3	685
+      233	1	698
+      238	-	711
+      248	2	743

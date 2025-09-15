@@ -1,0 +1,18 @@
+script: |
+  super -f text -I q2272.spq | sort > q2272.out
+
+inputs:
+  - name: q2272.spq
+    data: |
+      SELECT a+b*2+c*3+d*4+e*5,
+      a-b,
+      d
+      FROM t1 (FORMAT parquet)
+      WHERE e+d BETWEEN a+b-10 AND c+130;
+  - name: t1
+
+outputs:
+  - name: q2272.out
+    data: |
+      1612	2	108
+      1902	-2	128

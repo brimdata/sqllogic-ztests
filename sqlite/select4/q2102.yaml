@@ -1,0 +1,25 @@
+script: |
+  super -f text -I q2102.spq | sort > q2102.out
+
+inputs:
+  - name: q2102.spq
+    data: |
+      SELECT e6, d4, x8
+      FROM t8 (FORMAT parquet), t4 (FORMAT parquet), t6 (FORMAT parquet)
+      WHERE d6 in (689,129,767,60,931,463,561)
+      AND e8=956
+      AND b4=535;
+  - name: t4
+  - name: t6
+  - name: t8
+
+outputs:
+  - name: q2102.out
+    data: |
+      241	979	table tn8 row 27
+      360	979	table tn8 row 27
+      595	979	table tn8 row 27
+      893	979	table tn8 row 27
+      90	979	table tn8 row 27
+      915	979	table tn8 row 27
+      969	979	table tn8 row 27

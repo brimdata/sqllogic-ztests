@@ -1,0 +1,36 @@
+script: |
+  super -f text -I q557.spq | sort > q557.out
+
+inputs:
+  - name: q557.spq
+    data: |
+      SELECT a+b*2+c*3+d*4,
+      d,
+      a-b,
+      abs(a),
+      c,
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END
+      FROM t1 (FORMAT parquet)
+      WHERE c BETWEEN b-2 AND d+2
+      ORDER BY 3,2,4;
+  - name: t1
+
+outputs:
+  - name: q557.out
+    data: |
+      -	114	-	-	113	444
+      -	207	-	-	208	444
+      1067	108	2	107	106	333
+      1226	122	-3	121	123	222
+      1325	133	1	131	134	333
+      1371	136	-1	138	137	222
+      1411	140	-1	142	141	222
+      1622	164	3	163	161	444
+      1714	171	4	174	172	444
+      1828	183	1	182	184	333
+      1861	185	2	188	187	333
+      2125	212	2	213	214	333
+      2226	222	-3	220	224	222
+      2323	233	2	234	231	333
+      2476	248	-4	245	247	111

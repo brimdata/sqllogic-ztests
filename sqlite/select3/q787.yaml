@@ -1,0 +1,33 @@
+script: |
+  super -f text -I q787.spq | sort > q787.out
+
+inputs:
+  - name: q787.spq
+    data: |
+      SELECT abs(a),
+      c,
+      a+b*2+c*3,
+      d,
+      a+b*2+c*3+d*4+e*5,
+      a+b*2+c*3+d*4,
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END
+      FROM t1 (FORMAT parquet)
+      WHERE d>e
+      ORDER BY 6,2,7,3,5,1;
+  - name: t1
+
+outputs:
+  - name: q787.out
+    data: |
+      -	113	-	114	-	-	555
+      127	125	760	128	1902	1272	333
+      131	134	793	133	1985	1325	444
+      138	137	827	136	2046	1371	111
+      163	161	966	164	2432	1622	333
+      182	184	1096	183	2728	1828	333
+      213	214	1277	212	3175	2125	222
+      220	224	1338	222	3331	2226	444
+      234	231	1391	233	3473	2323	555
+      239	-	-	238	-	-	555
+      245	247	1484	248	3706	2476	444

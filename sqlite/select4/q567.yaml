@@ -1,0 +1,26 @@
+script: |
+  super -f text -I q567.spq | tr '\t' '\n' | sort > q567.out
+
+inputs:
+  - name: q567.spq
+    data: |
+      SELECT c2 FROM t2 (FORMAT parquet)
+      WHERE (688=c2 AND 983=e2 AND 113=b2)
+      UNION ALL
+      SELECT a7 FROM t7 (FORMAT parquet)
+      WHERE (e7=428)
+      OR (d7=131)
+      OR a7 in (165,267,433,699);
+  - name: t2
+  - name: t7
+
+outputs:
+  - name: q567.out
+    data: |
+      165
+      267
+      433
+      452
+      490
+      688
+      699

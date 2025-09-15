@@ -1,0 +1,19 @@
+script: |
+  super -f text -I q2505.spq | sort > q2505.out
+
+inputs:
+  - name: q2505.spq
+    data: |
+      SELECT x2, d8+d2, d3
+      FROM t8 (FORMAT parquet), t2 (FORMAT parquet), t3 (FORMAT parquet)
+      WHERE 632=b2
+      AND e8=46
+      AND 457=a3;
+  - name: t2
+  - name: t3
+  - name: t8
+
+outputs:
+  - name: q2505.out
+    data: |
+      table tn2 row 85	758	355

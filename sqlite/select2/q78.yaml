@@ -1,0 +1,42 @@
+script: |
+  super -f text -I q78.spq | sort > q78.out
+
+inputs:
+  - name: q78.spq
+    data: |
+      SELECT d-e,
+      abs(b-c)
+      FROM t1 (FORMAT parquet)
+      WHERE b IS NOT NULL;
+  - name: t1
+
+outputs:
+  - name: q78.out
+    data: |
+      -	1
+      -	1
+      -	1
+      -	1
+      -	2
+      -	2
+      -	3
+      -	4
+      -1	1
+      -1	3
+      -1	3
+      -2	1
+      -2	2
+      -2	3
+      -4	1
+      -4	2
+      1	-
+      1	1
+      1	2
+      1	4
+      2	1
+      2	2
+      2	3
+      2	4
+      3	1
+      3	3
+      4	1

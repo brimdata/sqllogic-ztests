@@ -1,0 +1,45 @@
+script: |
+  super -f text -I q152.spq | sort > q152.out
+
+inputs:
+  - name: q152.spq
+    data: |
+      SELECT a-b,
+      b-c,
+      abs(b-c)
+      FROM t1 (FORMAT parquet);
+  - name: t1
+
+outputs:
+  - name: q152.out
+    data: |
+      -	-	-
+      -	-	-
+      -	-	-
+      -	-1	1
+      -	-2	2
+      -1	2	2
+      -1	2	2
+      -2	3	3
+      -2	4	4
+      -3	-1	1
+      -3	1	1
+      -3	1	1
+      -4	2	2
+      1	-3	3
+      1	-4	4
+      1	1	1
+      1	3	3
+      1	3	3
+      1	3	3
+      2	-1	1
+      2	-1	1
+      2	-3	3
+      2	1	1
+      2	1	1
+      3	-	-
+      3	-1	1
+      3	-4	4
+      4	-1	1
+      4	-2	2
+      4	-2	2

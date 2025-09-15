@@ -1,0 +1,27 @@
+script: |
+  super -f text -I q1296.spq | sort > q1296.out
+
+inputs:
+  - name: q1296.spq
+    data: |
+      SELECT a-b,
+      a+b*2+c*3,
+      abs(a)
+      FROM t1 (FORMAT parquet)
+      WHERE (a>b-2 AND a<b+2)
+      OR e+d BETWEEN a+b-10 AND c+130;
+  - name: t1
+
+outputs:
+  - name: q1296.out
+    data: |
+      -1	827	138
+      -1	851	142
+      -2	760	127
+      1	1000	168
+      1	1096	182
+      1	1180	199
+      1	1360	229
+      1	793	131
+      1	940	159
+      2	635	107

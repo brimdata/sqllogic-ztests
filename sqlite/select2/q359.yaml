@@ -1,0 +1,29 @@
+script: |
+  super -f text -I q359.spq | sort > q359.out
+
+inputs:
+  - name: q359.spq
+    data: |
+      SELECT d,
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END
+      FROM t1 (FORMAT parquet)
+      WHERE d>e
+      OR e+d BETWEEN a+b-10 AND c+130;
+  - name: t1
+
+outputs:
+  - name: q359.out
+    data: |
+      108	333
+      114	555
+      128	333
+      133	444
+      136	111
+      164	333
+      183	333
+      212	222
+      222	444
+      233	555
+      238	555
+      248	444

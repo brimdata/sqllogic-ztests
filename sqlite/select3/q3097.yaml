@@ -1,0 +1,22 @@
+script: |
+  super -f text -I q3097.spq | sort > q3097.out
+
+inputs:
+  - name: q3097.spq
+    data: |
+      SELECT c,
+      a+b*2+c*3+d*4
+      FROM t1 (FORMAT parquet)
+      WHERE a>b
+      AND c>d
+      ORDER BY 1,2;
+  - name: t1
+
+outputs:
+  - name: q3097.out
+    data: |
+      134	1325
+      172	1714
+      184	1828
+      187	1861
+      214	2125

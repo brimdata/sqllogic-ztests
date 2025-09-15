@@ -1,0 +1,18 @@
+script: |
+  super -f text -I q2033.spq | sort > q2033.out
+
+inputs:
+  - name: q2033.spq
+    data: |
+      SELECT d,
+      a+b*2
+      FROM t1 (FORMAT parquet)
+      WHERE e+d BETWEEN a+b-10 AND c+130
+      AND c BETWEEN b-2 AND d+2
+      AND d>e
+      ORDER BY 2,1;
+  - name: t1
+
+outputs:
+  - name: q2033.out
+    data: |

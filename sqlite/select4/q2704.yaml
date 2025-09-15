@@ -1,0 +1,17 @@
+script: |
+  super -f text -I q2704.spq | sort > q2704.out
+
+inputs:
+  - name: q2704.spq
+    data: |
+      SELECT d2+d2, a6
+      FROM t6 (FORMAT parquet), t2 (FORMAT parquet)
+      WHERE d2=241
+      AND 590=d6;
+  - name: t2
+  - name: t6
+
+outputs:
+  - name: q2704.out
+    data: |
+      482	877

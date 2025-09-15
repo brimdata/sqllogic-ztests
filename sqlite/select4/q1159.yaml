@@ -1,0 +1,24 @@
+script: |
+  super -f text -I q1159.spq | sort > q1159.out
+
+inputs:
+  - name: q1159.spq
+    data: |
+      SELECT c4, d5+e4
+      FROM t4 (FORMAT parquet), t5 (FORMAT parquet)
+      WHERE c5 in (293,649,37,149,734,147)
+      AND b4=295;
+  - name: t4
+  - name: t5
+
+outputs:
+  - name: q1159.out
+    data: |
+      860	149
+      860	39
+      860	395
+      860	404
+      860	651
+      860	773
+      860	841
+      860	846

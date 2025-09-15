@@ -1,0 +1,19 @@
+script: |
+  super -f text -I q2534.spq | sort > q2534.out
+
+inputs:
+  - name: q2534.spq
+    data: |
+      SELECT c6*425+a6, a8
+      FROM t8 (FORMAT parquet), t6 (FORMAT parquet)
+      WHERE d6=974
+      AND 533=e8;
+  - name: t6
+  - name: t8
+
+outputs:
+  - name: q2534.out
+    data: |
+      264329	341
+      5970	341
+      79579	341

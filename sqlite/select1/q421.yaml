@@ -1,0 +1,21 @@
+script: |
+  super -f text -I q421.spq > q421.out
+
+inputs:
+  - name: q421.spq
+    data: |
+      SELECT abs(a),
+      c,
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      d-e
+      FROM t1 (FORMAT parquet)
+      WHERE e+d BETWEEN a+b-10 AND c+130
+      AND (a>b-2 AND a<b+2)
+      ORDER BY 1,3,2,4;
+  - name: t1
+
+outputs:
+  - name: q421.out
+    data: |
+      111	113	111	4

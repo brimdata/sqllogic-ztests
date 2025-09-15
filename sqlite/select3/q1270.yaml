@@ -1,0 +1,31 @@
+script: |
+  super -f text -I q1270.spq | sort > q1270.out
+
+inputs:
+  - name: q1270.spq
+    data: |
+      SELECT c
+      FROM t1 (FORMAT parquet)
+      WHERE d>e
+      OR (a>b-2 AND a<b+2);
+  - name: t1
+
+outputs:
+  - name: q1270.out
+    data: |
+      -
+      113
+      125
+      134
+      137
+      141
+      155
+      161
+      166
+      184
+      195
+      214
+      224
+      225
+      231
+      247

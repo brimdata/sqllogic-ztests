@@ -1,0 +1,17 @@
+script: |
+  super -f text -I q2716.spq | sort > q2716.out
+
+inputs:
+  - name: q2716.spq
+    data: |
+      SELECT x4, a8*690+c4
+      FROM t4 (FORMAT parquet), t8 (FORMAT parquet)
+      WHERE b4 in (387,267,276)
+      AND e8=a4;
+  - name: t4
+  - name: t8
+
+outputs:
+  - name: q2716.out
+    data: |
+      table tn4 row 5	400141

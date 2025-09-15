@@ -1,0 +1,18 @@
+script: |
+  super -f text -I q97.spq | sort > q97.out
+
+inputs:
+  - name: q97.spq
+    data: |
+      SELECT a+b*2+c*3,
+      (a+b+c+d+e)/5
+      FROM t1 (FORMAT parquet)
+      WHERE b>c
+      AND a>b
+      AND (e>a AND e<b)
+      ORDER BY 1,2;
+  - name: t1
+
+outputs:
+  - name: q97.out
+    data: |

@@ -1,0 +1,46 @@
+script: |
+  super -f text -I q74.spq | sort > q74.out
+
+inputs:
+  - name: q74.spq
+    data: |
+      SELECT a+b*2+c*3+d*4,
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      b-c
+      FROM t1 (FORMAT parquet);
+  - name: t1
+
+outputs:
+  - name: q74.out
+    data: |
+      -	222	-
+      -	222	-4
+      -	333	-
+      -	555	-
+      -	555	-
+      -	555	-1
+      -	555	-1
+      -	555	-2
+      -	555	-2
+      -	555	1
+      -	555	1
+      -	555	3
+      1067	333	-1
+      1226	333	1
+      1272	333	4
+      1325	444	-4
+      1371	111	2
+      1411	111	2
+      1622	333	-1
+      1714	555	-2
+      1828	333	-3
+      1861	444	-1
+      1918	444	1
+      1964	555	3
+      2125	222	-3
+      2165	333	3
+      2226	444	-1
+      2264	555	3
+      2323	555	1
+      2476	444	2

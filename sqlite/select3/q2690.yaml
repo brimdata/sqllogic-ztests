@@ -1,0 +1,21 @@
+script: |
+  super -f text -I q2690.spq | sort > q2690.out
+
+inputs:
+  - name: q2690.spq
+    data: |
+      SELECT abs(a),
+      a+b*2
+      FROM t1 (FORMAT parquet)
+      WHERE a>b
+      AND b>c
+      AND (a>b-2 AND a<b+2);
+  - name: t1
+
+outputs:
+  - name: q2690.out
+    data: |
+      159	475
+      168	502
+      199	595
+      229	685

@@ -1,0 +1,41 @@
+script: |
+  super -f text -I q2142.spq | sort > q2142.out
+
+inputs:
+  - name: q2142.spq
+    data: |
+      SELECT CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END,
+      abs(b-c),
+      a+b*2+c*3
+      FROM t1 (FORMAT parquet)
+      WHERE e+d BETWEEN a+b-10 AND c+130
+      OR a>b
+      OR (c<=d-2 OR c>=d+2);
+  - name: t1
+
+outputs:
+  - name: q2142.out
+    data: |
+      222	1	1158
+      222	1	1338
+      222	3	1297
+      222	4	760
+      333	1	1000
+      333	1	1121
+      333	1	1391
+      333	1	635
+      333	1	905
+      333	3	1096
+      333	3	1180
+      333	3	1277
+      333	3	1360
+      333	3	940
+      333	4	793
+      444	-	-
+      444	-	-
+      444	1	1057
+      444	1	966
+      444	2	1030
+      444	2	880
+      444	4	1455

@@ -1,0 +1,24 @@
+script: |
+  super -f text -I q27.spq | sort > q27.out
+
+inputs:
+  - name: q27.spq
+    data: |
+      SELECT a-b,
+      b-c,
+      abs(a),
+      abs(b-c),
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      b,
+      d-e
+      FROM t1 (FORMAT parquet)
+      WHERE b IS NOT NULL
+      AND e+d BETWEEN a+b-10 AND c+130
+      AND c BETWEEN b-2 AND d+2;
+  - name: t1
+
+outputs:
+  - name: q27.out
+    data: |
+      2	-1	107	1	333	105	-1

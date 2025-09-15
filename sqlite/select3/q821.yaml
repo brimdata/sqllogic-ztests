@@ -1,0 +1,30 @@
+script: |
+  super -f text -I q821.spq | sort > q821.out
+
+inputs:
+  - name: q821.spq
+    data: |
+      SELECT a-b
+      FROM t1 (FORMAT parquet)
+      WHERE c BETWEEN b-2 AND d+2
+      ORDER BY 1;
+  - name: t1
+
+outputs:
+  - name: q821.out
+    data: |
+      -
+      -
+      -1
+      -1
+      -3
+      -3
+      -4
+      1
+      1
+      2
+      2
+      2
+      2
+      3
+      4

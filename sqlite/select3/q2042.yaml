@@ -1,0 +1,31 @@
+script: |
+  super -f text -I q2042.spq | sort > q2042.out
+
+inputs:
+  - name: q2042.spq
+    data: |
+      SELECT a+b*2+c*3+d*4,
+      e,
+      abs(b-c),
+      CASE WHEN c>(SELECT avg(c) FROM t1 (FORMAT parquet)) THEN a*2 ELSE b*10 END,
+      c-d
+      FROM t1 (FORMAT parquet)
+      WHERE c>d;
+  - name: t1
+
+outputs:
+  - name: q2042.out
+    data: |
+      -	-	-	-	1
+      -	-	2	-	1
+      -	117	-	-	3
+      1226	-	1	1240	1
+      1325	132	4	1300	1
+      1371	135	2	1390	1
+      1411	144	2	1430	1
+      1714	173	2	1700	1
+      1828	180	3	364	1
+      1861	189	1	376	2
+      1918	192	1	382	3
+      2125	210	3	426	2
+      2226	221	1	440	2

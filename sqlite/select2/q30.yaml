@@ -1,0 +1,23 @@
+script: |
+  super -f text -I q30.spq | sort > q30.out
+
+inputs:
+  - name: q30.spq
+    data: |
+      SELECT CASE WHEN c>(SELECT avg(c) FROM t1 (FORMAT parquet)) THEN a*2 ELSE b*10 END,
+      abs(a),
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      a+b*2,
+      a,
+      d-e,
+      d
+      FROM t1 (FORMAT parquet)
+      WHERE a IS NULL
+      AND d>e;
+  - name: t1
+
+outputs:
+  - name: q30.out
+    data: |
+      1120	-	555	-	-	4	114

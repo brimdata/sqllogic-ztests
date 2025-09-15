@@ -1,0 +1,17 @@
+script: |
+  super -f text -I q2199.spq | sort > q2199.out
+
+inputs:
+  - name: q2199.spq
+    data: |
+      SELECT e2+a2, b8*208
+      FROM t8 (FORMAT parquet), t2 (FORMAT parquet)
+      WHERE e8=180
+      AND a2=d8;
+  - name: t2
+  - name: t8
+
+outputs:
+  - name: q2199.out
+    data: |
+      842	165568

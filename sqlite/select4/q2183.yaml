@@ -1,0 +1,23 @@
+script: |
+  super -f text -I q2183.spq | sort > q2183.out
+
+inputs:
+  - name: q2183.spq
+    data: |
+      SELECT b2*686+b2, e7+841, x1
+      FROM t7 (FORMAT parquet), t1 (FORMAT parquet), t2 (FORMAT parquet)
+      WHERE a1=a7
+      AND e7=955
+      AND d2 in (598,19,854,838);
+  - name: t1
+  - name: t2
+  - name: t7
+
+outputs:
+  - name: q2183.out
+    data: |
+      284418	1796	table tn1 row 116
+      373041	1796	table tn1 row 116
+      406704	1796	table tn1 row 116
+      588759	1796	table tn1 row 116
+      676695	1796	table tn1 row 116
