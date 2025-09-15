@@ -1,0 +1,23 @@
+script: |
+  super -f text -I q1025.spq | sort > q1025.out
+
+inputs:
+  - name: q1025.spq
+    data: |
+      SELECT b7, d5+18+d5, c2
+      FROM t2 (FORMAT parquet), t5 (FORMAT parquet), t7 (FORMAT parquet)
+      WHERE 460=e7
+      AND a2 in (336,268,304,574,980)
+      AND c5=733;
+  - name: t2
+  - name: t5
+  - name: t7
+
+outputs:
+  - name: q1025.out
+    data: |
+      859	1316	148
+      859	1316	202
+      859	1316	275
+      859	1316	290
+      859	1316	773

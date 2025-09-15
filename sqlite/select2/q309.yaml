@@ -1,0 +1,45 @@
+script: |
+  super -f text -I q309.spq | sort > q309.out
+
+inputs:
+  - name: q309.spq
+    data: |
+      SELECT CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      a+b*2+c*3+d*4,
+      a+b*2+c*3,
+      e,
+      CASE WHEN c>(SELECT avg(c) FROM t1 (FORMAT parquet)) THEN a*2 ELSE b*10 END
+      FROM t1 (FORMAT parquet)
+      WHERE a IS NULL
+      OR c BETWEEN b-2 AND d+2
+      OR a>b;
+  - name: t1
+
+outputs:
+  - name: q309.out
+    data: |
+      111	1371	827	135	1390
+      111	1411	851	144	1430
+      222	-	1455	-	486
+      222	2125	1277	210	426
+      333	1067	635	109	1050
+      333	1226	738	-	1240
+      333	1622	966	162	1600
+      333	1828	1096	180	364
+      444	1325	793	132	1300
+      444	1861	1121	189	376
+      444	2226	1338	221	440
+      444	2476	1484	246	490
+      555	-	-	-	-
+      555	-	-	110	1120
+      555	-	-	237	2360
+      555	-	1000	165	1670
+      555	-	1057	177	358
+      555	-	880	146	1450
+      555	-	905	-	1510
+      555	-	940	157	1580
+      555	1714	1030	173	1700
+      555	1964	1180	197	398
+      555	2264	1360	227	458
+      555	2323	1391	230	468

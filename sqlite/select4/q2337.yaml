@@ -1,0 +1,21 @@
+script: |
+  super -f text -I q2337.spq | sort > q2337.out
+
+inputs:
+  - name: q2337.spq
+    data: |
+      SELECT x5, e9+217, c8
+      FROM t8 (FORMAT parquet), t5 (FORMAT parquet), t9 (FORMAT parquet)
+      WHERE e8=c9
+      AND e9 in (107,995,549)
+      AND 601=c5;
+  - name: t5
+  - name: t8
+  - name: t9
+
+outputs:
+  - name: q2337.out
+    data: |
+      table tn5 row 86	1212	154
+      table tn5 row 86	1212	32
+      table tn5 row 86	1212	5

@@ -1,0 +1,23 @@
+script: |
+  super -f text -I q837.spq > q837.out
+
+inputs:
+  - name: q837.spq
+    data: |
+      SELECT b-c,
+      a,
+      a+b*2+c*3+d*4,
+      d
+      FROM t1 (FORMAT parquet)
+      WHERE (a>b-2 AND a<b+2)
+      AND c>d
+      AND d>e
+      ORDER BY 4,2,3,1;
+  - name: t1
+
+outputs:
+  - name: q837.out
+    data: |
+      -4	131	1325	133
+      2	138	1371	136
+      -3	182	1828	183

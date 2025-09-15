@@ -1,0 +1,37 @@
+script: |
+  super -f text -I q2002.spq | sort > q2002.out
+
+inputs:
+  - name: q2002.spq
+    data: |
+      SELECT a-b,
+      a+b*2,
+      a
+      FROM t1 (FORMAT parquet)
+      WHERE d>e
+      OR b>c;
+  - name: t1
+
+outputs:
+  - name: q2002.out
+    data: |
+      -	-	-
+      -1	416	138
+      -1	428	142
+      -2	385	127
+      -2	652	216
+      -3	369	121
+      -3	579	191
+      -3	666	220
+      -4	743	245
+      1	391	131
+      1	475	159
+      1	502	168
+      1	544	182
+      1	595	199
+      1	685	229
+      2	455	153
+      2	635	213
+      2	698	234
+      3	483	163
+      3	711	239

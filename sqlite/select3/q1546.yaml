@@ -1,0 +1,29 @@
+script: |
+  super -f text -I q1546.spq | sort > q1546.out
+
+inputs:
+  - name: q1546.spq
+    data: |
+      SELECT a,
+      a+b*2+c*3+d*4,
+      (a+b+c+d+e)/5,
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END,
+      d-e,
+      a-b
+      FROM t1 (FORMAT parquet)
+      WHERE (e>c OR e<d)
+      AND c>d;
+  - name: t1
+
+outputs:
+  - name: q1546.out
+    data: |
+      131	1325	132	333	1	1
+      138	1371	137	222	1	-1
+      142	1411	142	222	-4	-1
+      174	1714	172	444	-2	4
+      182	1828	182	333	3	1
+      188	1861	187	333	-4	2
+      213	2125	212	333	2	2
+      220	2226	222	222	1	-3

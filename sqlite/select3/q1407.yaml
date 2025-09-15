@@ -1,0 +1,32 @@
+script: |
+  super -f text -I q1407.spq | sort > q1407.out
+
+inputs:
+  - name: q1407.spq
+    data: |
+      SELECT e,
+      abs(b-c)
+      FROM t1 (FORMAT parquet)
+      WHERE (a>b-2 AND a<b+2)
+      OR b>c
+      ORDER BY 1,2;
+  - name: t1
+
+outputs:
+  - name: q1407.out
+    data: |
+      -	1
+      -	1
+      126	4
+      132	4
+      135	2
+      144	2
+      157	3
+      165	1
+      180	3
+      192	1
+      197	3
+      219	3
+      227	3
+      230	1
+      246	2

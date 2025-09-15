@@ -1,0 +1,21 @@
+script: |
+  super -f text -I q888.spq | sort > q888.out
+
+inputs:
+  - name: q888.spq
+    data: |
+      SELECT a,
+      c-d,
+      abs(b-c),
+      a+b*2+c*3,
+      a+b*2+c*3+d*4+e*5
+      FROM t1 (FORMAT parquet)
+      WHERE (c<=d-2 OR c>=d+2)
+      AND c BETWEEN b-2 AND d+2
+      AND (e>a AND e<b);
+  - name: t1
+
+outputs:
+  - name: q888.out
+    data: |
+      220	2	1	1338	3331

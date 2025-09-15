@@ -1,0 +1,39 @@
+script: |
+  super -f text -I q1862.spq | sort > q1862.out
+
+inputs:
+  - name: q1862.spq
+    data: |
+      SELECT a
+      FROM t1 (FORMAT parquet)
+      WHERE d NOT BETWEEN 110 AND 150
+      OR (a>b-2 AND a<b+2)
+      OR e+d BETWEEN a+b-10 AND c+130;
+  - name: t1
+
+outputs:
+  - name: q1862.out
+    data: |
+      -
+      104
+      107
+      127
+      131
+      138
+      142
+      159
+      163
+      168
+      174
+      182
+      188
+      191
+      199
+      201
+      213
+      216
+      220
+      229
+      234
+      239
+      245

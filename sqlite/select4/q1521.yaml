@@ -1,0 +1,18 @@
+script: |
+  super -f text -I q1521.spq | sort > q1521.out
+
+inputs:
+  - name: q1521.spq
+    data: |
+      SELECT a6, a5
+      FROM t6 (FORMAT parquet), t5 (FORMAT parquet)
+      WHERE 163=c5
+      AND (d6=271 OR 590=d6);
+  - name: t5
+  - name: t6
+
+outputs:
+  - name: q1521.out
+    data: |
+      740	514
+      877	514

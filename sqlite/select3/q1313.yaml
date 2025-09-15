@@ -1,0 +1,29 @@
+script: |
+  super -f text -I q1313.spq | sort > q1313.out
+
+inputs:
+  - name: q1313.spq
+    data: |
+      SELECT abs(a),
+      b
+      FROM t1 (FORMAT parquet)
+      WHERE b>c
+      ORDER BY 2,1;
+  - name: t1
+
+outputs:
+  - name: q1313.out
+    data: |
+      121	124
+      127	129
+      138	139
+      142	143
+      153	151
+      159	158
+      168	167
+      191	194
+      199	198
+      216	218
+      229	228
+      234	232
+      245	249

@@ -1,0 +1,20 @@
+script: |
+  super -f text -I q2395.spq | sort > q2395.out
+
+inputs:
+  - name: q2395.spq
+    data: |
+      SELECT d7, c5
+      FROM t7 (FORMAT parquet), t5 (FORMAT parquet)
+      WHERE (e7=455 OR 561=e7 OR e7=89)
+      AND 348=c5;
+  - name: t5
+  - name: t7
+
+outputs:
+  - name: q2395.out
+    data: |
+      526	348
+      547	348
+      599	348
+      781	348

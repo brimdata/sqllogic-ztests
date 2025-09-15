@@ -1,0 +1,21 @@
+script: |
+  super -f text -I q347.spq > q347.out
+
+inputs:
+  - name: q347.spq
+    data: |
+      SELECT a,
+      a+b*2+c*3+d*4+e*5,
+      c-d
+      FROM t1 (FORMAT parquet)
+      WHERE c BETWEEN b-2 AND d+2
+      AND (e>a AND e<b)
+      AND d NOT BETWEEN 110 AND 150
+      ORDER BY 3,2,1;
+  - name: t1
+
+outputs:
+  - name: q347.out
+    data: |
+      245	3706	-1
+      220	3331	2

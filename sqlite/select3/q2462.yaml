@@ -1,0 +1,34 @@
+script: |
+  super -f text -I q2462.spq | sort > q2462.out
+
+inputs:
+  - name: q2462.spq
+    data: |
+      SELECT b-c,
+      abs(b-c),
+      a+b*2+c*3,
+      a+b*2+c*3+d*4+e*5
+      FROM t1 (FORMAT parquet)
+      WHERE a>b;
+  - name: t1
+
+outputs:
+  - name: q2462.out
+    data: |
+      -	-	-	-
+      -1	1	1057	-
+      -1	1	1121	2806
+      -1	1	635	1612
+      -1	1	966	2432
+      -2	2	1030	2579
+      -2	2	880	-
+      -3	3	1096	2728
+      -3	3	1277	3175
+      -4	4	1455	-
+      -4	4	793	1985
+      1	1	1000	-
+      1	1	1391	3473
+      1	1	905	-
+      3	3	1180	2949
+      3	3	1360	3399
+      3	3	940	-

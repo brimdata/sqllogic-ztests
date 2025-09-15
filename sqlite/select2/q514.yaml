@@ -1,0 +1,18 @@
+script: |
+  super -f text -I q514.spq | sort > q514.out
+
+inputs:
+  - name: q514.spq
+    data: |
+      SELECT abs(a),
+      abs(b-c),
+      a
+      FROM t1 (FORMAT parquet)
+      WHERE e+d BETWEEN a+b-10 AND c+130;
+  - name: t1
+
+outputs:
+  - name: q514.out
+    data: |
+      107	1	107
+      127	4	127

@@ -1,0 +1,26 @@
+script: |
+  super -f text -I q2204.spq | sort > q2204.out
+
+inputs:
+  - name: q2204.spq
+    data: |
+      SELECT d-e,
+      a,
+      e
+      FROM t1 (FORMAT parquet)
+      WHERE (c<=d-2 OR c>=d+2);
+  - name: t1
+
+outputs:
+  - name: q2204.out
+    data: |
+      -1	107	109
+      -1	115	117
+      -2	191	192
+      -2	216	219
+      -4	188	189
+      1	220	221
+      2	127	126
+      2	163	162
+      2	213	210
+      3	234	230

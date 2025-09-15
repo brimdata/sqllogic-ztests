@@ -1,0 +1,24 @@
+script: |
+  super -f text -I q223.spq | sort > q223.out
+
+inputs:
+  - name: q223.spq
+    data: |
+      SELECT CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      a
+      FROM t1 (FORMAT parquet)
+      WHERE b>c
+      AND a>b
+      AND coalesce(a,b,c,d,e)<>0;
+  - name: t1
+
+outputs:
+  - name: q223.out
+    data: |
+      555	153
+      555	159
+      555	168
+      555	199
+      555	229
+      555	234

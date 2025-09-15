@@ -1,0 +1,24 @@
+script: |
+  super -f text -I q1750.spq | sort > q1750.out
+
+inputs:
+  - name: q1750.spq
+    data: |
+      SELECT x9, d4+287
+      FROM t9 (FORMAT parquet), t4 (FORMAT parquet)
+      WHERE b4 in (924,627,243,707,925,784,139,810)
+      AND 679=d9;
+  - name: t4
+  - name: t9
+
+outputs:
+  - name: q1750.out
+    data: |
+      table tn9 row 63	1131
+      table tn9 row 63	1275
+      table tn9 row 63	433
+      table tn9 row 63	499
+      table tn9 row 63	534
+      table tn9 row 63	768
+      table tn9 row 63	778
+      table tn9 row 63	940

@@ -1,0 +1,25 @@
+script: |
+  super -f text -I q1672.spq | sort > q1672.out
+
+inputs:
+  - name: q1672.spq
+    data: |
+      SELECT e9+c9, e3+d9
+      FROM t3 (FORMAT parquet), t9 (FORMAT parquet)
+      WHERE e9=15
+      AND a3 in (892,865,979,341,935,499,836);
+  - name: t3
+  - name: t9
+
+outputs:
+  - name: q1672.out
+    data: |
+      816	1170
+      816	1271
+      816	1490
+      816	1589
+      816	1640
+      816	1669
+      816	1775
+      816	1830
+      816	1913

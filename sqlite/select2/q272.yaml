@@ -1,0 +1,31 @@
+script: |
+  super -f text -I q272.spq | sort > q272.out
+
+inputs:
+  - name: q272.spq
+    data: |
+      SELECT e,
+      b,
+      (a+b+c+d+e)/5
+      FROM t1 (FORMAT parquet)
+      WHERE (e>a AND e<b)
+      OR b>c;
+  - name: t1
+
+outputs:
+  - name: q272.out
+    data: |
+      -	124	-
+      -	151	-
+      126	129	127
+      135	139	137
+      144	143	142
+      157	158	-
+      165	167	-
+      192	194	192
+      197	198	197
+      219	218	217
+      221	223	222
+      227	228	227
+      230	232	232
+      246	249	247

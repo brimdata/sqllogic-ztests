@@ -1,0 +1,23 @@
+script: |
+  super -f text -I q2767.spq | sort > q2767.out
+
+inputs:
+  - name: q2767.spq
+    data: |
+      SELECT abs(a),
+      d-e
+      FROM t1 (FORMAT parquet)
+      WHERE b>c
+      AND (a>b-2 AND a<b+2)
+      ORDER BY 1,2;
+  - name: t1
+
+outputs:
+  - name: q2767.out
+    data: |
+      138	1
+      142	-4
+      159	-
+      168	-
+      199	-1
+      229	-1

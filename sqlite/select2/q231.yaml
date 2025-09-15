@@ -1,0 +1,26 @@
+script: |
+  super -f text -I q231.spq | sort > q231.out
+
+inputs:
+  - name: q231.spq
+    data: |
+      SELECT abs(a)
+      FROM t1 (FORMAT parquet)
+      WHERE (e>c OR e<d)
+      AND d>e;
+  - name: t1
+
+outputs:
+  - name: q231.out
+    data: |
+      -
+      127
+      131
+      138
+      163
+      182
+      213
+      220
+      234
+      239
+      245

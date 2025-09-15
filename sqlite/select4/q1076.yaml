@@ -1,0 +1,20 @@
+script: |
+  super -f text -I q1076.spq | sort > q1076.out
+
+inputs:
+  - name: q1076.spq
+    data: |
+      SELECT c3*366, x4
+      FROM t3 (FORMAT parquet), t4 (FORMAT parquet)
+      WHERE (947=a3 OR a3=145 OR a3=637 OR a3=892)
+      AND b4=986;
+  - name: t3
+  - name: t4
+
+outputs:
+  - name: q1076.out
+    data: |
+      109434	table tn4 row 83
+      174216	table tn4 row 83
+      180804	table tn4 row 83
+      219966	table tn4 row 83

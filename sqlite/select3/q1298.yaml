@@ -1,0 +1,25 @@
+script: |
+  super -f text -I q1298.spq | sort > q1298.out
+
+inputs:
+  - name: q1298.spq
+    data: |
+      SELECT c,
+      a,
+      a+b*2+c*3
+      FROM t1 (FORMAT parquet)
+      WHERE (c<=d-2 OR c>=d+2)
+      AND d NOT BETWEEN 110 AND 150;
+  - name: t1
+
+outputs:
+  - name: q1298.out
+    data: |
+      106	107	635
+      161	163	966
+      187	188	1121
+      193	191	1158
+      214	213	1277
+      215	216	1297
+      224	220	1338
+      231	234	1391

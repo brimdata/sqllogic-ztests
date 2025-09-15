@@ -1,0 +1,17 @@
+script: |
+  super -f text -I q2755.spq | sort > q2755.out
+
+inputs:
+  - name: q2755.spq
+    data: |
+      SELECT c1, b3+e1
+      FROM t1 (FORMAT parquet), t3 (FORMAT parquet)
+      WHERE a3 in (979,347,244,135,255,145)
+      AND a1=d3;
+  - name: t1
+  - name: t3
+
+outputs:
+  - name: q2755.out
+    data: |
+      12	498

@@ -1,0 +1,20 @@
+script: |
+  super -f text -I q450.spq > q450.out
+
+inputs:
+  - name: q450.spq
+    data: |
+      SELECT d-e,
+      c-d,
+      a
+      FROM t1 (FORMAT parquet)
+      WHERE b>c
+      AND (e>a AND e<b)
+      AND c>d
+      ORDER BY 1,2,3;
+  - name: t1
+
+outputs:
+  - name: q450.out
+    data: |
+      -2	3	191

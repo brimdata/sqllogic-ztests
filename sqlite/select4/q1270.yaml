@@ -1,0 +1,17 @@
+script: |
+  super -f text -I q1270.spq | sort > q1270.out
+
+inputs:
+  - name: q1270.spq
+    data: |
+      SELECT e4, a5
+      FROM t4 (FORMAT parquet), t5 (FORMAT parquet)
+      WHERE 627=b4
+      AND 602=c5;
+  - name: t4
+  - name: t5
+
+outputs:
+  - name: q1270.out
+    data: |
+      381	513

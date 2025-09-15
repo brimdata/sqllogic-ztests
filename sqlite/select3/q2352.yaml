@@ -1,0 +1,43 @@
+script: |
+  super -f text -I q2352.spq | sort > q2352.out
+
+inputs:
+  - name: q2352.spq
+    data: |
+      SELECT a+b*2+c*3+d*4
+      FROM t1 (FORMAT parquet)
+      WHERE (e>c OR e<d)
+      OR b>c
+      OR d NOT BETWEEN 110 AND 150;
+  - name: t1
+
+outputs:
+  - name: q2352.out
+    data: |
+      -
+      -
+      -
+      -
+      -
+      -
+      -
+      -
+      -
+      1067
+      1226
+      1272
+      1325
+      1371
+      1411
+      1622
+      1714
+      1828
+      1861
+      1918
+      1964
+      2125
+      2165
+      2226
+      2264
+      2323
+      2476

@@ -1,0 +1,17 @@
+script: |
+  super -f text -I q1199.spq | sort > q1199.out
+
+inputs:
+  - name: q1199.spq
+    data: |
+      SELECT a-b
+      FROM t1 (FORMAT parquet)
+      WHERE e+d BETWEEN a+b-10 AND c+130
+      ORDER BY 1;
+  - name: t1
+
+outputs:
+  - name: q1199.out
+    data: |
+      -2
+      2

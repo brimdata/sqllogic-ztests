@@ -1,0 +1,25 @@
+script: |
+  super -f text -I q1036.spq | sort > q1036.out
+
+inputs:
+  - name: q1036.spq
+    data: |
+      SELECT d3+805+a3, d1+426, d2
+      FROM t1 (FORMAT parquet), t2 (FORMAT parquet), t3 (FORMAT parquet)
+      WHERE 913=a3
+      AND c2 in (283,810,823,582,233,878,411)
+      AND 395=a1;
+  - name: t1
+  - name: t2
+  - name: t3
+
+outputs:
+  - name: q1036.out
+    data: |
+      1857	703	216
+      1857	703	23
+      1857	703	334
+      1857	703	404
+      1857	703	448
+      1857	703	525
+      1857	703	743

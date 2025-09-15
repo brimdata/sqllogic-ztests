@@ -1,0 +1,17 @@
+script: |
+  super -f text -I q1849.spq | sort > q1849.out
+
+inputs:
+  - name: q1849.spq
+    data: |
+      SELECT b9+350, b5*550+e9
+      FROM t9 (FORMAT parquet), t5 (FORMAT parquet)
+      WHERE b9=688
+      AND c5=545;
+  - name: t5
+  - name: t9
+
+outputs:
+  - name: q1849.out
+    data: |
+      1038	101068

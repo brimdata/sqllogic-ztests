@@ -1,0 +1,31 @@
+script: |
+  super -f text -I q942.spq > q942.out
+
+inputs:
+  - name: q942.spq
+    data: |
+      SELECT CASE WHEN c>(SELECT avg(c) FROM t1 (FORMAT parquet)) THEN a*2 ELSE b*10 END,
+      abs(b-c),
+      abs(a),
+      b,
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END
+      FROM t1 (FORMAT parquet)
+      WHERE d NOT BETWEEN 110 AND 150
+      AND d>e
+      ORDER BY 1,5,3,2,4;
+  - name: t1
+
+outputs:
+  - name: q942.out
+    data: |
+      358	1	179	175	444
+      364	3	182	181	333
+      426	3	213	211	333
+      440	1	220	223	222
+      468	1	234	232	333
+      478	1	239	236	444
+      490	2	245	249	111
+      1510	1	153	151	333
+      1600	1	163	160	444
+      1670	1	168	167	333

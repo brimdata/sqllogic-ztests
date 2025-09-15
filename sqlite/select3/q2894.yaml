@@ -1,0 +1,25 @@
+script: |
+  super -f text -I q2894.spq | sort > q2894.out
+
+inputs:
+  - name: q2894.spq
+    data: |
+      SELECT (a+b+c+d+e)/5,
+      c-d,
+      a+b*2,
+      d,
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END,
+      c,
+      a-b
+      FROM t1 (FORMAT parquet)
+      WHERE (c<=d-2 OR c>=d+2)
+      AND c>d
+      AND (e>a AND e<b);
+  - name: t1
+
+outputs:
+  - name: q2894.out
+    data: |
+      192	3	579	190	222	193	-3
+      222	2	666	222	222	224	-3

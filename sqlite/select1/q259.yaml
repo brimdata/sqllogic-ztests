@@ -1,0 +1,25 @@
+script: |
+  super -f text -I q259.spq > q259.out
+
+inputs:
+  - name: q259.spq
+    data: |
+      SELECT a-b,
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END,
+      b-c,
+      a+b*2+c*3+d*4,
+      b,
+      abs(b-c)
+      FROM t1 (FORMAT parquet)
+      WHERE c BETWEEN b-2 AND d+2
+      AND d NOT BETWEEN 110 AND 150
+      AND (e>a AND e<b)
+      ORDER BY 4,1,5,6,2,3;
+  - name: t1
+
+outputs:
+  - name: q259.out
+    data: |
+      -3	222	-1	2226	223	1
+      -4	111	2	2476	249	2

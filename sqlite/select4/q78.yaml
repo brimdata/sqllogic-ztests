@@ -1,0 +1,25 @@
+script: |
+  super -f text -I q78.spq | tr '\t' '\n' | sort > q78.out
+
+inputs:
+  - name: q78.spq
+    data: |
+      SELECT a1 FROM t1 (FORMAT parquet)
+      WHERE c1 in (871,393,346,136,966,230)
+      UNION ALL
+      SELECT d2 FROM t2 (FORMAT parquet)
+      WHERE (b2=968 AND d2=10 AND 61=c2 AND e2=696);
+  - name: t1
+  - name: t2
+
+outputs:
+  - name: q78.out
+    data: |
+      10
+      109
+      145
+      371
+      433
+      498
+      702
+      992

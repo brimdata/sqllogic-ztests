@@ -1,0 +1,25 @@
+script: |
+  super -f text -I q337.spq > q337.out
+
+inputs:
+  - name: q337.spq
+    data: |
+      SELECT a-b,
+      a,
+      d,
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      abs(b-c),
+      a+b*2+c*3+d*4+e*5
+      FROM t1 (FORMAT parquet)
+      WHERE (e>a AND e<b)
+      ORDER BY 4,5,1,6,3,2;
+  - name: t1
+
+outputs:
+  - name: q337.out
+    data: |
+      -3	115	116	333	1	1757
+      -3	191	190	444	1	2878
+      -3	220	222	444	1	3331
+      -4	245	248	444	2	3706

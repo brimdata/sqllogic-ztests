@@ -1,0 +1,17 @@
+script: |
+  super -f text -I q1662.spq | sort > q1662.out
+
+inputs:
+  - name: q1662.spq
+    data: |
+      SELECT b1, e2*438
+      FROM t1 (FORMAT parquet), t2 (FORMAT parquet)
+      WHERE c2=22
+      AND 643=a1;
+  - name: t1
+  - name: t2
+
+outputs:
+  - name: q1662.out
+    data: |
+      435	187464

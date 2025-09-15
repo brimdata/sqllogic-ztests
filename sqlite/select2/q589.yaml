@@ -1,0 +1,30 @@
+script: |
+  super -f text -I q589.spq | sort > q589.out
+
+inputs:
+  - name: q589.spq
+    data: |
+      SELECT c-d,
+      abs(a),
+      a+b*2,
+      a+b*2+c*3+d*4,
+      d-e,
+      CASE WHEN c>(SELECT avg(c) FROM t1 (FORMAT parquet)) THEN a*2 ELSE b*10 END,
+      a
+      FROM t1 (FORMAT parquet)
+      WHERE (c<=d-2 OR c>=d+2);
+  - name: t1
+
+outputs:
+  - name: q589.out
+    data: |
+      -2	107	317	1067	-1	1050	107
+      -2	216	652	2165	-2	432	216
+      -2	234	698	2323	3	468	234
+      -3	127	385	1272	2	1290	127
+      -3	163	483	1622	2	1600	163
+      2	188	560	1861	-4	376	188
+      2	213	635	2125	2	426	213
+      2	220	666	2226	1	440	220
+      3	115	-	-	-1	-	115
+      3	191	579	1918	-2	382	191

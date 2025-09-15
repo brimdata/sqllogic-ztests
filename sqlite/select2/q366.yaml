@@ -1,0 +1,31 @@
+script: |
+  super -f text -I q366.spq | sort > q366.out
+
+inputs:
+  - name: q366.spq
+    data: |
+      SELECT a+b*2+c*3,
+      abs(b-c),
+      a+b*2
+      FROM t1 (FORMAT parquet)
+      WHERE c BETWEEN b-2 AND d+2;
+  - name: t1
+
+outputs:
+  - name: q366.out
+    data: |
+      -	1	-
+      -	2	-
+      1030	2	514
+      1096	3	544
+      1121	1	560
+      1277	3	635
+      1338	1	666
+      1391	1	698
+      1484	2	743
+      635	1	317
+      738	1	369
+      793	4	391
+      827	2	416
+      851	2	428
+      966	1	483

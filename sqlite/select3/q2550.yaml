@@ -1,0 +1,34 @@
+script: |
+  super -f text -I q2550.spq | sort > q2550.out
+
+inputs:
+  - name: q2550.spq
+    data: |
+      SELECT CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END,
+      CASE WHEN c>(SELECT avg(c) FROM t1 (FORMAT parquet)) THEN a*2 ELSE b*10 END,
+      abs(b-c)
+      FROM t1 (FORMAT parquet)
+      WHERE d NOT BETWEEN 110 AND 150;
+  - name: t1
+
+outputs:
+  - name: q2550.out
+    data: |
+      111	490	2
+      222	382	1
+      222	432	3
+      222	440	1
+      333	1050	1
+      333	364	3
+      333	376	1
+      333	398	3
+      333	426	3
+      333	458	3
+      333	468	1
+      444	-	-
+      444	-	2
+      444	1600	1
+      444	1700	2
+      444	2360	-
+      444	402	-

@@ -1,0 +1,46 @@
+script: |
+  super -f text -I q282.spq > q282.out
+
+inputs:
+  - name: q282.spq
+    data: |
+      SELECT CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      b
+      FROM t1 (FORMAT parquet)
+      ORDER BY 1,2;
+  - name: t1
+
+outputs:
+  - name: q282.out
+    data: |
+      111	112
+      111	139
+      111	143
+      111	206
+      222	200
+      222	211
+      222	240
+      333	105
+      333	118
+      333	124
+      333	129
+      333	151
+      333	160
+      333	167
+      333	181
+      333	218
+      444	130
+      444	186
+      444	194
+      444	223
+      444	249
+      555	100
+      555	145
+      555	158
+      555	170
+      555	175
+      555	198
+      555	228
+      555	232
+      555	236

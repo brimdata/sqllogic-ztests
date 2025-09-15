@@ -1,0 +1,29 @@
+script: |
+  super -f text -I q197.spq | sort > q197.out
+
+inputs:
+  - name: q197.spq
+    data: |
+      SELECT a-b
+      FROM t1 (FORMAT parquet)
+      WHERE c BETWEEN b-2 AND d+2;
+  - name: t1
+
+outputs:
+  - name: q197.out
+    data: |
+      -
+      -
+      -1
+      -1
+      -3
+      -3
+      -4
+      1
+      1
+      2
+      2
+      2
+      2
+      3
+      4

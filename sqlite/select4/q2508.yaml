@@ -1,0 +1,20 @@
+script: |
+  super -f text -I q2508.spq | sort > q2508.out
+
+inputs:
+  - name: q2508.spq
+    data: |
+      SELECT a5, d8+463+d5, x4
+      FROM t4 (FORMAT parquet), t5 (FORMAT parquet), t8 (FORMAT parquet)
+      WHERE c5=818
+      AND (e8=881 OR e8=476)
+      AND 2=b4;
+  - name: t4
+  - name: t5
+  - name: t8
+
+outputs:
+  - name: q2508.out
+    data: |
+      675	1109	table tn4 row 73
+      675	1225	table tn4 row 73

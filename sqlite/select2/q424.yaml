@@ -1,0 +1,21 @@
+script: |
+  super -f text -I q424.spq | sort > q424.out
+
+inputs:
+  - name: q424.spq
+    data: |
+      SELECT a+b*2+c*3,
+      (a+b+c+d+e)/5
+      FROM t1 (FORMAT parquet)
+      WHERE (e>a AND e<b)
+      OR e+d BETWEEN a+b-10 AND c+130;
+  - name: t1
+
+outputs:
+  - name: q424.out
+    data: |
+      1158	192
+      1338	222
+      1484	247
+      635	107
+      760	127

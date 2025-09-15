@@ -1,0 +1,29 @@
+script: |
+  super -f text -I q1688.spq | sort > q1688.out
+
+inputs:
+  - name: q1688.spq
+    data: |
+      SELECT a,
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END,
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      d-e,
+      b
+      FROM t1 (FORMAT parquet)
+      WHERE (e>c OR e<d)
+      AND (c<=d-2 OR c>=d+2);
+  - name: t1
+
+outputs:
+  - name: q1688.out
+    data: |
+      107	333	333	-1	105
+      127	222	333	2	129
+      163	444	333	2	160
+      188	333	444	-4	186
+      213	333	222	2	211
+      216	222	333	-2	218
+      220	222	444	1	223
+      234	333	555	3	232

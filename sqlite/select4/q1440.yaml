@@ -1,0 +1,20 @@
+script: |
+  super -f text -I q1440.spq | sort > q1440.out
+
+inputs:
+  - name: q1440.spq
+    data: |
+      SELECT d8, b9+232
+      FROM t9 (FORMAT parquet), t8 (FORMAT parquet)
+      WHERE e8 in (956,105,811,918)
+      AND 936=c9;
+  - name: t8
+  - name: t9
+
+outputs:
+  - name: q1440.out
+    data: |
+      190	533
+      512	533
+      667	533
+      894	533

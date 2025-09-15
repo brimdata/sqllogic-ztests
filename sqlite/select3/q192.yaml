@@ -1,0 +1,24 @@
+script: |
+  super -f text -I q192.spq | sort > q192.out
+
+inputs:
+  - name: q192.spq
+    data: |
+      SELECT CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END,
+      a-b,
+      (a+b+c+d+e)/5,
+      c-d,
+      abs(a),
+      a+b*2+c*3
+      FROM t1 (FORMAT parquet)
+      WHERE e+d BETWEEN a+b-10 AND c+130;
+  - name: t1
+
+outputs:
+  - name: q192.out
+    data: |
+      333	222	-2	127	-3	127	760
+      333	333	2	107	-2	107	635

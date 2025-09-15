@@ -1,0 +1,25 @@
+script: |
+  super -f text -I q2260.spq | sort > q2260.out
+
+inputs:
+  - name: q2260.spq
+    data: |
+      SELECT d1+b7, c7+772+c1, b6+e1
+      FROM t7 (FORMAT parquet), t1 (FORMAT parquet), t6 (FORMAT parquet)
+      WHERE d6 in (613,600,277,36,822,446,192)
+      AND a1=e6
+      AND e7 in (120,503,290,976,156);
+  - name: t1
+  - name: t6
+  - name: t7
+
+outputs:
+  - name: q2260.out
+    data: |
+      1067	1409	95
+      1105	1756	95
+      1293	1477	95
+      478	2141	95
+      604	1537	95
+      838	1557	95
+      867	1725	95

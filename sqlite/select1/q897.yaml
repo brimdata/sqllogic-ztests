@@ -1,0 +1,26 @@
+script: |
+  super -f text -I q897.spq > q897.out
+
+inputs:
+  - name: q897.spq
+    data: |
+      SELECT a,
+      b,
+      abs(b-c),
+      e,
+      a+b*2,
+      d-e,
+      (a+b+c+d+e)/5
+      FROM t1 (FORMAT parquet)
+      WHERE b>c
+      AND c>d
+      ORDER BY 6,1,7,2,5,4,3;
+  - name: t1
+
+outputs:
+  - name: q897.out
+    data: |
+      142	143	2	144	428	-4	142
+      191	194	1	192	579	-2	192
+      138	139	2	135	416	1	137
+      121	124	1	120	369	2	122

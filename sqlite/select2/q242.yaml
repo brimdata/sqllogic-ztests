@@ -1,0 +1,25 @@
+script: |
+  super -f text -I q242.spq | sort > q242.out
+
+inputs:
+  - name: q242.spq
+    data: |
+      SELECT d-e,
+      abs(b-c),
+      CASE WHEN c>(SELECT avg(c) FROM t1 (FORMAT parquet)) THEN a*2 ELSE b*10 END,
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      abs(a)
+      FROM t1 (FORMAT parquet)
+      WHERE (c<=d-2 OR c>=d+2)
+      AND d NOT BETWEEN 110 AND 150
+      AND d>e;
+  - name: t1
+
+outputs:
+  - name: q242.out
+    data: |
+      1	1	440	444	220
+      2	1	1600	333	163
+      2	3	426	222	213
+      3	1	468	555	234

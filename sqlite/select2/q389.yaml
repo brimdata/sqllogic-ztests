@@ -1,0 +1,46 @@
+script: |
+  super -f text -I q389.spq | sort > q389.out
+
+inputs:
+  - name: q389.spq
+    data: |
+      SELECT b-c,
+      abs(b-c),
+      a-b
+      FROM t1 (FORMAT parquet)
+      WHERE coalesce(a,b,c,d,e)<>0;
+  - name: t1
+
+outputs:
+  - name: q389.out
+    data: |
+      -	-	-
+      -	-	-
+      -	-	-
+      -	-	3
+      -1	1	-
+      -1	1	-3
+      -1	1	2
+      -1	1	2
+      -1	1	3
+      -1	1	4
+      -2	2	-
+      -2	2	4
+      -2	2	4
+      -3	3	1
+      -3	3	2
+      -4	4	1
+      -4	4	3
+      1	1	-3
+      1	1	-3
+      1	1	1
+      1	1	2
+      1	1	2
+      2	2	-1
+      2	2	-1
+      2	2	-4
+      3	3	-2
+      3	3	1
+      3	3	1
+      3	3	1
+      4	4	-2

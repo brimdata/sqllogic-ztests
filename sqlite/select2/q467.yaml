@@ -1,0 +1,42 @@
+script: |
+  super -f text -I q467.spq | sort > q467.out
+
+inputs:
+  - name: q467.spq
+    data: |
+      SELECT c,
+      b-c,
+      a+b*2+c*3
+      FROM t1 (FORMAT parquet)
+      WHERE (c<=d-2 OR c>=d+2)
+      OR d NOT BETWEEN 110 AND 150
+      OR c BETWEEN b-2 AND d+2;
+  - name: t1
+
+outputs:
+  - name: q467.out
+    data: |
+      -	-	-
+      102	-	-
+      106	-1	635
+      113	-1	-
+      119	-	-
+      123	1	738
+      125	4	760
+      134	-4	793
+      137	2	827
+      141	2	851
+      161	-1	966
+      172	-2	1030
+      184	-3	1096
+      187	-1	1121
+      193	1	1158
+      195	3	1180
+      202	-	-
+      208	-2	-
+      214	-3	1277
+      215	3	1297
+      224	-1	1338
+      225	3	1360
+      231	1	1391
+      247	2	1484

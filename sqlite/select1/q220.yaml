@@ -1,0 +1,21 @@
+script: |
+  super -f text -I q220.spq > q220.out
+
+inputs:
+  - name: q220.spq
+    data: |
+      SELECT a+b*2+c*3
+      FROM t1 (FORMAT parquet)
+      WHERE (c<=d-2 OR c>=d+2)
+      AND c BETWEEN b-2 AND d+2
+      AND b>c
+      ORDER BY 1;
+  - name: t1
+
+outputs:
+  - name: q220.out
+    data: |
+      905
+      1000
+      1391
+      1416

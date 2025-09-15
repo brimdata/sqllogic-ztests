@@ -1,0 +1,19 @@
+script: |
+  super -f text -I q1089.spq | sort > q1089.out
+
+inputs:
+  - name: q1089.spq
+    data: |
+      SELECT e8+d8, d2*558+b2, c4*409
+      FROM t4 (FORMAT parquet), t8 (FORMAT parquet), t2 (FORMAT parquet)
+      WHERE 498=b4
+      AND e8=792
+      AND d2=488;
+  - name: t2
+  - name: t4
+  - name: t8
+
+outputs:
+  - name: q1089.out
+    data: |
+      1119	272397	272803

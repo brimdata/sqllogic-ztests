@@ -1,0 +1,19 @@
+script: |
+  super -f text -I q99.spq | sort > q99.out
+
+inputs:
+  - name: q99.spq
+    data: |
+      SELECT c-d,
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END
+      FROM t1 (FORMAT parquet)
+      WHERE c BETWEEN b-2 AND d+2
+      AND e+d BETWEEN a+b-10 AND c+130
+      AND (c<=d-2 OR c>=d+2);
+  - name: t1
+
+outputs:
+  - name: q99.out
+    data: |
+      -2	333

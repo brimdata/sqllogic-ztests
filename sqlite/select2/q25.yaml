@@ -1,0 +1,22 @@
+script: |
+  super -f text -I q25.spq | sort > q25.out
+
+inputs:
+  - name: q25.spq
+    data: |
+      SELECT a-b,
+      a+b*2+c*3+d*4+e*5,
+      b,
+      abs(a),
+      a
+      FROM t1 (FORMAT parquet)
+      WHERE b>c
+      AND coalesce(a,b,c,d,e)<>0
+      AND (e>a AND e<b);
+  - name: t1
+
+outputs:
+  - name: q25.out
+    data: |
+      -3	2878	194	191	191
+      -4	3706	249	245	245

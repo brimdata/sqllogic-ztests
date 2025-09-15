@@ -1,0 +1,40 @@
+script: |
+  super -f text -I q427.spq | sort > q427.out
+
+inputs:
+  - name: q427.spq
+    data: |
+      SELECT a+b*2+c*3+d*4,
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END
+      FROM t1 (FORMAT parquet)
+      WHERE (e>c OR e<d)
+      OR (e>a AND e<b)
+      ORDER BY 1,2;
+  - name: t1
+
+outputs:
+  - name: q427.out
+    data: |
+      -	222
+      -	555
+      -	555
+      -	555
+      -	555
+      1067	333
+      1272	333
+      1325	444
+      1371	111
+      1411	111
+      1622	333
+      1714	555
+      1828	333
+      1861	444
+      1918	444
+      1964	555
+      2125	222
+      2165	333
+      2226	444
+      2264	555
+      2323	555
+      2476	444

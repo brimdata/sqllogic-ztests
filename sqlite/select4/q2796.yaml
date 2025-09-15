@@ -1,0 +1,30 @@
+script: |
+  super -f text -I q2796.spq | sort > q2796.out
+
+inputs:
+  - name: q2796.spq
+    data: |
+      SELECT a3+263, b2, d4*885
+      FROM t2 (FORMAT parquet), t3 (FORMAT parquet), t4 (FORMAT parquet)
+      WHERE d2 in (621,476,10)
+      AND a3=380
+      AND b4 in (707,40,635,713);
+  - name: t2
+  - name: t3
+  - name: t4
+
+outputs:
+  - name: q2796.out
+    data: |
+      643	297	176115
+      643	297	361965
+      643	297	577905
+      643	297	840750
+      643	35	176115
+      643	35	361965
+      643	35	577905
+      643	35	840750
+      643	968	176115
+      643	968	361965
+      643	968	577905
+      643	968	840750

@@ -1,0 +1,17 @@
+script: |
+  super -f text -I q2543.spq | sort > q2543.out
+
+inputs:
+  - name: q2543.spq
+    data: |
+      SELECT a+b*2+c*3
+      FROM t1 (FORMAT parquet)
+      WHERE e+d BETWEEN a+b-10 AND c+130
+      ORDER BY 1;
+  - name: t1
+
+outputs:
+  - name: q2543.out
+    data: |
+      635
+      760

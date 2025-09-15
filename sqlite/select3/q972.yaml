@@ -1,0 +1,31 @@
+script: |
+  super -f text -I q972.spq | sort > q972.out
+
+inputs:
+  - name: q972.spq
+    data: |
+      SELECT CASE WHEN c>(SELECT avg(c) FROM t1 (FORMAT parquet)) THEN a*2 ELSE b*10 END
+      FROM t1 (FORMAT parquet)
+      WHERE a>b;
+  - name: t1
+
+outputs:
+  - name: q972.out
+    data: |
+      1050
+      1300
+      1450
+      1510
+      1580
+      1600
+      1670
+      1700
+      2360
+      358
+      364
+      376
+      398
+      426
+      458
+      468
+      486

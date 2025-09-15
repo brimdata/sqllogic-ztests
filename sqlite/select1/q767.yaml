@@ -1,0 +1,32 @@
+script: |
+  super -f text -I q767.spq > q767.out
+
+inputs:
+  - name: q767.spq
+    data: |
+      SELECT a+b*2+c*3+d*4+e*5,
+      a,
+      a+b*2
+      FROM t1 (FORMAT parquet)
+      WHERE (c<=d-2 OR c>=d+2)
+      ORDER BY 2,1,3;
+  - name: t1
+
+outputs:
+  - name: q767.out
+    data: |
+      1612	107	317
+      1757	115	351
+      1902	127	385
+      2281	153	455
+      2432	163	483
+      2501	168	502
+      2654	179	529
+      2806	188	560
+      2878	191	579
+      3175	213	635
+      3260	216	652
+      3331	220	666
+      3473	234	698
+      3553	239	711
+      3629	243	723

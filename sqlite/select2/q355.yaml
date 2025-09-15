@@ -1,0 +1,49 @@
+script: |
+  super -f text -I q355.spq | sort > q355.out
+
+inputs:
+  - name: q355.spq
+    data: |
+      SELECT CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END,
+      e,
+      a+b*2+c*3+d*4+e*5
+      FROM t1 (FORMAT parquet)
+      WHERE d>e
+      OR e+d BETWEEN a+b-10 AND c+130
+      OR coalesce(a,b,c,d,e)<>0;
+  - name: t1
+
+outputs:
+  - name: q355.out
+    data: |
+      111	246	3706
+      222	-	-
+      222	126	1902
+      222	135	2046
+      222	144	2131
+      222	192	2878
+      222	219	3260
+      222	221	3331
+      333	-	-
+      333	109	1612
+      333	132	1985
+      333	157	-
+      333	165	-
+      333	180	2728
+      333	189	2806
+      333	197	2949
+      333	210	3175
+      333	227	3399
+      333	230	3473
+      444	-	-
+      444	-	-
+      444	-	-
+      444	110	-
+      444	117	-
+      444	146	-
+      444	162	2432
+      444	173	2579
+      444	177	-
+      444	204	-
+      444	237	-

@@ -1,0 +1,44 @@
+script: |
+  super -f text -I q948.spq > q948.out
+
+inputs:
+  - name: q948.spq
+    data: |
+      SELECT abs(a)
+      FROM t1 (FORMAT parquet)
+      WHERE (a>b-2 AND a<b+2)
+      OR d>e
+      OR (e>c OR e<d)
+      ORDER BY 1;
+  - name: t1
+
+outputs:
+  - name: q948.out
+    data: |
+      104
+      107
+      111
+      121
+      127
+      131
+      138
+      142
+      149
+      153
+      159
+      163
+      168
+      174
+      179
+      182
+      188
+      199
+      201
+      205
+      213
+      216
+      220
+      229
+      234
+      239
+      245

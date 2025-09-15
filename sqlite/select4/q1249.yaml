@@ -1,0 +1,23 @@
+script: |
+  super -f text -I q1249.spq | sort > q1249.out
+
+inputs:
+  - name: q1249.spq
+    data: |
+      SELECT d9*555+e5, a5+46+d5, d3+c5
+      FROM t9 (FORMAT parquet), t3 (FORMAT parquet), t5 (FORMAT parquet)
+      WHERE (164=a3 OR 754=a3 OR 727=a3 OR 892=a3)
+      AND c9 in (332,252,662)
+      AND c5=e9;
+  - name: t3
+  - name: t5
+  - name: t9
+
+outputs:
+  - name: q1249.out
+    data: |
+      442154	1604	1281
+      442154	1604	1398
+      442154	1604	1486
+      442154	1604	1555
+      442154	1604	1730

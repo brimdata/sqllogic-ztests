@@ -1,0 +1,19 @@
+script: |
+  super -f text -I q2401.spq | sort > q2401.out
+
+inputs:
+  - name: q2401.spq
+    data: |
+      SELECT e1, d6+d1
+      FROM t6 (FORMAT parquet), t1 (FORMAT parquet)
+      WHERE (145=a1 OR a1=895 OR a1=460)
+      AND d6=321;
+  - name: t1
+  - name: t6
+
+outputs:
+  - name: q2401.out
+    data: |
+      328	1139
+      523	1000
+      838	964

@@ -1,0 +1,42 @@
+script: |
+  super -f text -I q1512.spq | sort > q1512.out
+
+inputs:
+  - name: q1512.spq
+    data: |
+      SELECT a+b*2,
+      a+b*2+c*3+d*4
+      FROM t1 (FORMAT parquet)
+      WHERE (e>c OR e<d)
+      OR (c<=d-2 OR c>=d+2)
+      OR c BETWEEN b-2 AND d+2;
+  - name: t1
+
+outputs:
+  - name: q1512.out
+    data: |
+      -	-
+      -	-
+      -	-
+      -	-
+      317	1067
+      369	1226
+      385	1272
+      391	1325
+      416	1371
+      428	1411
+      475	-
+      483	1622
+      514	1714
+      529	-
+      544	1828
+      560	1861
+      579	1918
+      595	1964
+      635	2125
+      652	2165
+      666	2226
+      685	2264
+      698	2323
+      711	-
+      743	2476

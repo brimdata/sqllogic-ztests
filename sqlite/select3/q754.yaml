@@ -1,0 +1,32 @@
+script: |
+  super -f text -I q754.spq | sort > q754.out
+
+inputs:
+  - name: q754.spq
+    data: |
+      SELECT a+b*2+c*3,
+      a+b*2+c*3+d*4+e*5,
+      a+b*2+c*3+d*4,
+      CASE WHEN c>(SELECT avg(c) FROM t1 (FORMAT parquet)) THEN a*2 ELSE b*10 END
+      FROM t1 (FORMAT parquet)
+      WHERE c BETWEEN b-2 AND d+2;
+  - name: t1
+
+outputs:
+  - name: q754.out
+    data: |
+      -	-	-	-
+      -	-	-	1120
+      1030	2579	1714	1700
+      1096	2728	1828	364
+      1121	2806	1861	376
+      1277	3175	2125	426
+      1338	3331	2226	440
+      1391	3473	2323	468
+      1484	3706	2476	490
+      635	1612	1067	1050
+      738	-	1226	1240
+      793	1985	1325	1300
+      827	2046	1371	1390
+      851	2131	1411	1430
+      966	2432	1622	1600

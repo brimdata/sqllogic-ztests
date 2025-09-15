@@ -1,0 +1,22 @@
+script: |
+  super -f text -I q1347.spq | sort > q1347.out
+
+inputs:
+  - name: q1347.spq
+    data: |
+      SELECT d5+339, x2, e9
+      FROM t5 (FORMAT parquet), t2 (FORMAT parquet), t9 (FORMAT parquet)
+      WHERE (c2=793 OR c2=964 OR 511=c2)
+      AND 819=c5
+      AND 149=b9;
+  - name: t2
+  - name: t5
+  - name: t9
+
+outputs:
+  - name: q1347.out
+    data: |
+      1145	table tn2 row 33	713
+      1145	table tn2 row 79	713
+      1145	table tn2 row 92	713
+      1145	table tn2 row 97	713

@@ -1,0 +1,24 @@
+script: |
+  super -f text -I q853.spq | sort > q853.out
+
+inputs:
+  - name: q853.spq
+    data: |
+      SELECT a-b
+      FROM t1 (FORMAT parquet)
+      WHERE a>b
+      AND c BETWEEN b-2 AND d+2
+      AND (e>c OR e<d);
+  - name: t1
+
+outputs:
+  - name: q853.out
+    data: |
+      1
+      1
+      2
+      2
+      2
+      2
+      3
+      4

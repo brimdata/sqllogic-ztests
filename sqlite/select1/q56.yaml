@@ -1,0 +1,31 @@
+script: |
+  super -f text -I q56.spq > q56.out
+
+inputs:
+  - name: q56.spq
+    data: |
+      SELECT b,
+      e
+      FROM t1 (FORMAT parquet)
+      WHERE (c<=d-2 OR c>=d+2)
+      ORDER BY 2,1;
+  - name: t1
+
+outputs:
+  - name: q56.out
+    data: |
+      105	109
+      118	117
+      129	126
+      151	152
+      160	162
+      167	165
+      175	177
+      186	189
+      194	192
+      211	210
+      218	219
+      223	221
+      232	230
+      236	237
+      240	242

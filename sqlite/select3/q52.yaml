@@ -1,0 +1,24 @@
+script: |
+  super -f text -I q52.spq | sort > q52.out
+
+inputs:
+  - name: q52.spq
+    data: |
+      SELECT a+b*2+c*3+d*4,
+      (a+b+c+d+e)/5
+      FROM t1 (FORMAT parquet)
+      WHERE (e>c OR e<d)
+      AND d NOT BETWEEN 110 AND 150
+      AND d>e;
+  - name: t1
+
+outputs:
+  - name: q52.out
+    data: |
+      -	-
+      1622	162
+      1828	182
+      2125	212
+      2226	222
+      2323	232
+      2476	247

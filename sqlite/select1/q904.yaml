@@ -1,0 +1,27 @@
+script: |
+  super -f text -I q904.spq > q904.out
+
+inputs:
+  - name: q904.spq
+    data: |
+      SELECT d-e,
+      b,
+      abs(b-c),
+      c,
+      a+b*2+c*3,
+      a+b*2+c*3+d*4,
+      a+b*2+c*3+d*4+e*5
+      FROM t1 (FORMAT parquet)
+      WHERE e+d BETWEEN a+b-10 AND c+130
+      ORDER BY 4,6,7,2,5,3,1;
+  - name: t1
+
+outputs:
+  - name: q904.out
+    data: |
+      -2	100	2	102	610	1014	1529
+      -1	105	1	106	635	1067	1612
+      4	112	1	113	674	1130	1680
+      -1	118	1	119	708	1172	1757
+      2	124	1	123	738	1226	1826
+      2	129	4	125	760	1272	1902

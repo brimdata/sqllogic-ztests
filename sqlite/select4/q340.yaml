@@ -1,0 +1,45 @@
+script: |
+  super -f text -I q340.spq | tr '\t' '\n' | sort > q340.out
+
+inputs:
+  - name: q340.spq
+    data: |
+      SELECT c9 FROM t9 (FORMAT parquet)
+      WHERE (b9=361 OR 435=a9 OR 227=b9)
+      OR (c9=639 OR d9=224)
+      UNION ALL
+      SELECT e3 FROM t3 (FORMAT parquet)
+      WHERE c3 in (244,887,898)
+      OR d3 in (889,599,645,662,624,139)
+      OR a3 in (282,929,913,255,997,947,197,754,30,865,720);
+  - name: t3
+  - name: t9
+
+outputs:
+  - name: q340.out
+    data: |
+      119
+      120
+      135
+      239
+      25
+      266
+      272
+      273
+      303
+      333
+      351
+      401
+      449
+      457
+      526
+      536
+      605
+      639
+      665
+      823
+      844
+      848
+      896
+      914
+      951

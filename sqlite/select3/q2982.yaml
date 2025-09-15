@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q2982.spq | sort > q2982.out
+
+inputs:
+  - name: q2982.spq
+    data: |
+      SELECT d-e
+      FROM t1 (FORMAT parquet)
+      WHERE (e>a AND e<b)
+      AND e+d BETWEEN a+b-10 AND c+130;
+  - name: t1
+
+outputs:
+  - name: q2982.out
+    data: |

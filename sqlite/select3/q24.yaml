@@ -1,0 +1,35 @@
+script: |
+  super -f text -I q24.spq | sort > q24.out
+
+inputs:
+  - name: q24.spq
+    data: |
+      SELECT e,
+      a,
+      CASE WHEN c>(SELECT avg(c) FROM t1 (FORMAT parquet)) THEN a*2 ELSE b*10 END,
+      (a+b+c+d+e)/5,
+      d-e
+      FROM t1 (FORMAT parquet)
+      WHERE d>e
+      OR (c<=d-2 OR c>=d+2);
+  - name: t1
+
+outputs:
+  - name: q24.out
+    data: |
+      109	107	1050	107	-1
+      110	-	1120	-	4
+      117	115	-	-	-1
+      126	127	1290	127	2
+      132	131	1300	132	1
+      135	138	1390	137	1
+      162	163	1600	162	2
+      180	182	364	182	3
+      189	188	376	187	-4
+      192	191	382	192	-2
+      210	213	426	212	2
+      219	216	432	217	-2
+      221	220	440	222	1
+      230	234	468	232	3
+      237	239	2360	-	1
+      246	245	490	247	2

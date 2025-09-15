@@ -1,0 +1,19 @@
+script: |
+  super -f text -I q2158.spq | sort > q2158.out
+
+inputs:
+  - name: q2158.spq
+    data: |
+      SELECT x7, e2+d7, e1*593
+      FROM t1 (FORMAT parquet), t2 (FORMAT parquet), t7 (FORMAT parquet)
+      WHERE d2=b1
+      AND e7=6
+      AND a1 in (299,499,732);
+  - name: t1
+  - name: t2
+  - name: t7
+
+outputs:
+  - name: q2158.out
+    data: |
+      table tn7 row 78	936	46254

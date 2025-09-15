@@ -1,0 +1,27 @@
+script: |
+  super -f text -I q1477.spq | sort > q1477.out
+
+inputs:
+  - name: q1477.spq
+    data: |
+      SELECT a4*399, a7, c9*469
+      FROM t7 (FORMAT parquet), t9 (FORMAT parquet), t4 (FORMAT parquet)
+      WHERE e7=862
+      AND c9 in (662,349,688,98,547,402,526)
+      AND 372=b4;
+  - name: t4
+  - name: t7
+  - name: t9
+
+outputs:
+  - name: q1477.out
+    data: |
+      395010	921	163681
+      395010	921	188538
+      395010	921	246694
+      395010	921	246694
+      395010	921	256543
+      395010	921	256543
+      395010	921	310478
+      395010	921	322672
+      395010	921	45962

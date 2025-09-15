@@ -1,0 +1,19 @@
+script: |
+  super -f text -I q2665.spq | sort > q2665.out
+
+inputs:
+  - name: q2665.spq
+    data: |
+      SELECT d1, x7, a3
+      FROM t7 (FORMAT parquet), t1 (FORMAT parquet), t3 (FORMAT parquet)
+      WHERE a3=525
+      AND a1 in (898,52,170,382,866,552)
+      AND e7=a1;
+  - name: t1
+  - name: t3
+  - name: t7
+
+outputs:
+  - name: q2665.out
+    data: |
+      254	table tn7 row 41	525

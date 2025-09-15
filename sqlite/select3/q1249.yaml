@@ -1,0 +1,36 @@
+script: |
+  super -f text -I q1249.spq | sort > q1249.out
+
+inputs:
+  - name: q1249.spq
+    data: |
+      SELECT e,
+      d-e,
+      abs(b-c),
+      c,
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      CASE WHEN c>(SELECT avg(c) FROM t1 (FORMAT parquet)) THEN a*2 ELSE b*10 END
+      FROM t1 (FORMAT parquet)
+      WHERE c BETWEEN b-2 AND d+2
+      ORDER BY 1,4;
+  - name: t1
+
+outputs:
+  - name: q1249.out
+    data: |
+      -	-	1	123	333	1240
+      -	-	2	208	555	-
+      109	-1	1	106	333	1050
+      110	4	1	113	555	1120
+      132	1	4	134	444	1300
+      135	1	2	137	111	1390
+      144	-4	2	141	111	1430
+      162	2	1	161	333	1600
+      173	-2	2	172	555	1700
+      180	3	3	184	333	364
+      189	-4	1	187	444	376
+      210	2	3	214	222	426
+      221	1	1	224	444	440
+      230	3	1	231	555	468
+      246	2	2	247	444	490

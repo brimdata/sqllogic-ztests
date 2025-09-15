@@ -1,0 +1,26 @@
+script: |
+  super -f text -I q449.spq | sort > q449.out
+
+inputs:
+  - name: q449.spq
+    data: |
+      SELECT a+b*2+c*3,
+      a+b*2
+      FROM t1 (FORMAT parquet)
+      WHERE (c<=d-2 OR c>=d+2)
+      ORDER BY 2,1;
+  - name: t1
+
+outputs:
+  - name: q449.out
+    data: |
+      -	-
+      1121	560
+      1158	579
+      1277	635
+      1297	652
+      1338	666
+      1391	698
+      635	317
+      760	385
+      966	483

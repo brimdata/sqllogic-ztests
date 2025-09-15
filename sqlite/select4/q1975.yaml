@@ -1,0 +1,23 @@
+script: |
+  super -f text -I q1975.spq | sort > q1975.out
+
+inputs:
+  - name: q1975.spq
+    data: |
+      SELECT a8, c2, a4*696
+      FROM t4 (FORMAT parquet), t8 (FORMAT parquet), t2 (FORMAT parquet)
+      WHERE 586=e8
+      AND e2 in (938,505,706,131,940)
+      AND b4=551;
+  - name: t2
+  - name: t4
+  - name: t8
+
+outputs:
+  - name: q1975.out
+    data: |
+      54	244	622224
+      54	374	622224
+      54	560	622224
+      54	756	622224
+      54	83	622224

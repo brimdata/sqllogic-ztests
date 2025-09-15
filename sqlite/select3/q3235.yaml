@@ -1,0 +1,21 @@
+script: |
+  super -f text -I q3235.spq | sort > q3235.out
+
+inputs:
+  - name: q3235.spq
+    data: |
+      SELECT abs(a),
+      b-c,
+      a+b*2+c*3,
+      a+b*2
+      FROM t1 (FORMAT parquet)
+      WHERE (e>a AND e<b)
+      ORDER BY 2,3;
+  - name: t1
+
+outputs:
+  - name: q3235.out
+    data: |
+      191	1	1158	579
+      220	-1	1338	666
+      245	2	1484	743

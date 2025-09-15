@@ -1,0 +1,32 @@
+script: |
+  super -f text -I q94.spq | sort > q94.out
+
+inputs:
+  - name: q94.spq
+    data: |
+      SELECT d,
+      b-c,
+      abs(b-c),
+      b
+      FROM t1 (FORMAT parquet)
+      WHERE c BETWEEN b-2 AND d+2;
+  - name: t1
+
+outputs:
+  - name: q94.out
+    data: |
+      108	-1	1	105
+      114	-1	1	112
+      122	1	1	124
+      133	-4	4	130
+      136	2	2	139
+      140	2	2	143
+      164	-1	1	160
+      171	-2	2	170
+      183	-3	3	181
+      185	-1	1	186
+      207	-2	2	206
+      212	-3	3	211
+      222	-1	1	223
+      233	1	1	232
+      248	2	2	249

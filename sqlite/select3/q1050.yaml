@@ -1,0 +1,25 @@
+script: |
+  super -f text -I q1050.spq | sort > q1050.out
+
+inputs:
+  - name: q1050.spq
+    data: |
+      SELECT a+b*2
+      FROM t1 (FORMAT parquet)
+      WHERE d>e;
+  - name: t1
+
+outputs:
+  - name: q1050.out
+    data: |
+      -
+      385
+      391
+      416
+      483
+      544
+      635
+      666
+      698
+      711
+      743

@@ -1,0 +1,36 @@
+script: |
+  super -f text -I q340.spq | sort > q340.out
+
+inputs:
+  - name: q340.spq
+    data: |
+      SELECT a+b*2+c*3,
+      (a+b+c+d+e)/5
+      FROM t1 (FORMAT parquet)
+      WHERE (e>c OR e<d);
+  - name: t1
+
+outputs:
+  - name: q340.out
+    data: |
+      -	-
+      -	-
+      -	-
+      1030	172
+      1057	-
+      1096	182
+      1121	187
+      1180	197
+      1277	212
+      1297	217
+      1338	222
+      1360	227
+      1391	232
+      1484	247
+      635	107
+      760	127
+      793	132
+      827	137
+      851	142
+      940	-
+      966	162
