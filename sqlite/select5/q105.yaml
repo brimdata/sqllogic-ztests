@@ -1,0 +1,48 @@
+script: |
+  super -f text -I q105.spq | tr '\t' '\n' | sort > q105.out
+
+inputs:
+  - name: q105.spq
+    data: |
+      SELECT x16,x19,x3,x50,x59,x53,x32,x46,x13,x28,x25,x43
+      FROM t25 (FORMAT parquet), t3 (FORMAT parquet), t16 (FORMAT parquet), t46 (FORMAT parquet), t50 (FORMAT parquet), t28 (FORMAT parquet), t53 (FORMAT parquet), t43 (FORMAT parquet), t32 (FORMAT parquet), t13 (FORMAT parquet), t59 (FORMAT parquet), t19 (FORMAT parquet)
+      WHERE a3=b16
+      AND a59=b3
+      AND a25=9
+      AND a46=b32
+      AND b43=a19
+      AND b19=a25
+      AND b50=a53
+      AND b53=a13
+      AND b46=a43
+      AND a32=b13
+      AND b59=a50
+      AND b28=a16;
+  - name: t3
+  - name: t13
+  - name: t16
+  - name: t19
+  - name: t25
+  - name: t28
+  - name: t32
+  - name: t43
+  - name: t46
+  - name: t50
+  - name: t53
+  - name: t59
+
+outputs:
+  - name: q105.out
+    data: |
+      table t13 row 9
+      table t16 row 7
+      table t19 row 5
+      table t25 row 9
+      table t28 row 9
+      table t3 row 2
+      table t32 row 3
+      table t43 row 4
+      table t46 row 6
+      table t50 row 5
+      table t53 row 2
+      table t59 row 8

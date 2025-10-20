@@ -1,0 +1,21 @@
+script: |
+  super -f text -I q2575.spq | sort > q2575.out
+
+inputs:
+  - name: q2575.spq
+    data: |
+      SELECT x9, b1+e9, e5
+      FROM t1 (FORMAT parquet), t9 (FORMAT parquet), t5 (FORMAT parquet)
+      WHERE (c5=599 OR 544=c5 OR c5=147 OR 293=c5)
+      AND b9=912
+      AND a1=c5;
+  - name: t1
+  - name: t5
+  - name: t9
+
+outputs:
+  - name: q2575.out
+    data: |
+      table tn9 row 52	970	737
+      table tn9 row 52	990	18
+      table tn9 row 52	990	188

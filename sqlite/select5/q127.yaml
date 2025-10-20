@@ -1,0 +1,54 @@
+script: |
+  super -f text -I q127.spq | tr '\t' '\n' | sort > q127.out
+
+inputs:
+  - name: q127.spq
+    data: |
+      SELECT x23,x52,x34,x15,x16,x57,x39,x5,x42,x21,x9,x61,x47,x19
+      FROM t5 (FORMAT parquet), t19 (FORMAT parquet), t52 (FORMAT parquet), t34 (FORMAT parquet), t39 (FORMAT parquet), t21 (FORMAT parquet), t9 (FORMAT parquet), t47 (FORMAT parquet), t42 (FORMAT parquet), t61 (FORMAT parquet), t57 (FORMAT parquet), t16 (FORMAT parquet), t15 (FORMAT parquet), t23 (FORMAT parquet)
+      WHERE a16=b42
+      AND b5=a15
+      AND b16=a21
+      AND a23=b57
+      AND a23=7
+      AND b39=a34
+      AND b47=a9
+      AND b21=a57
+      AND b9=a19
+      AND b15=a39
+      AND a52=b34
+      AND b19=a61
+      AND b52=a47
+      AND a42=b61;
+  - name: t5
+  - name: t9
+  - name: t15
+  - name: t16
+  - name: t19
+  - name: t21
+  - name: t23
+  - name: t34
+  - name: t39
+  - name: t42
+  - name: t47
+  - name: t52
+  - name: t57
+  - name: t61
+
+outputs:
+  - name: q127.out
+    data: |
+      table t15 row 7
+      table t16 row 6
+      table t19 row 1
+      table t21 row 9
+      table t23 row 7
+      table t34 row 3
+      table t39 row 3
+      table t42 row 4
+      table t47 row 10
+      table t5 row 4
+      table t52 row 6
+      table t57 row 8
+      table t61 row 4
+      table t9 row 8

@@ -1,0 +1,24 @@
+script: |
+  super -f text -I q11.spq | tr '\t' '\n' | sort > q11.out
+
+inputs:
+  - name: q11.spq
+    data: |
+      SELECT x31,x60,x61,x64
+      FROM t60 (FORMAT parquet), t64 (FORMAT parquet), t61 (FORMAT parquet), t31 (FORMAT parquet)
+      WHERE b31=a61
+      AND a64=9
+      AND b60=a64
+      AND b61=a60;
+  - name: t31
+  - name: t60
+  - name: t61
+  - name: t64
+
+outputs:
+  - name: q11.out
+    data: |
+      table t31 row 10
+      table t60 row 6
+      table t61 row 10
+      table t64 row 9

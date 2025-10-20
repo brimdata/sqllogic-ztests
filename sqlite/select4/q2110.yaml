@@ -1,0 +1,44 @@
+script: |
+  super -f text -I q2110.spq | sort > q2110.out
+
+inputs:
+  - name: q2110.spq
+    data: |
+      SELECT c1, c8+64+c1, x5, e4+e8
+      FROM t1 (FORMAT parquet), t5 (FORMAT parquet), t4 (FORMAT parquet), t8 (FORMAT parquet)
+      WHERE (b4=260 OR 982=b4 OR 700=b4)
+      AND c5=d1
+      AND a1 in (88,579,330,276)
+      AND (442=e8 OR 149=e8 OR 56=e8);
+  - name: t1
+  - name: t4
+  - name: t5
+  - name: t8
+
+outputs:
+  - name: q2110.out
+    data: |
+      207	501	table tn5 row 84	1059
+      207	501	table tn5 row 84	1073
+      207	501	table tn5 row 84	715
+      207	501	table tn5 row 84	832
+      207	592	table tn5 row 84	329
+      207	592	table tn5 row 84	446
+      207	592	table tn5 row 84	673
+      207	592	table tn5 row 84	687
+      207	963	table tn5 row 84	422
+      207	963	table tn5 row 84	539
+      207	963	table tn5 row 84	766
+      207	963	table tn5 row 84	780
+      4	298	table tn5 row 87	1059
+      4	298	table tn5 row 87	1073
+      4	298	table tn5 row 87	715
+      4	298	table tn5 row 87	832
+      4	389	table tn5 row 87	329
+      4	389	table tn5 row 87	446
+      4	389	table tn5 row 87	673
+      4	389	table tn5 row 87	687
+      4	760	table tn5 row 87	422
+      4	760	table tn5 row 87	539
+      4	760	table tn5 row 87	766
+      4	760	table tn5 row 87	780

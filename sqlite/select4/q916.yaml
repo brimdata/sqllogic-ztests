@@ -1,0 +1,46 @@
+script: |
+  super -f text -I q916.spq | tr '\t' '\n' | sort > q916.out
+
+inputs:
+  - name: q916.spq
+    data: |
+      SELECT c9 FROM t9 (FORMAT parquet)
+      WHERE b9 in (326,759,122,16,251)
+      OR (23=d9 OR 451=c9 OR 332=c9)
+      OR a9 in (149,215,429,959,559,553,297,349,815,240,488,78,535,821)
+      UNION ALL
+      SELECT e6 FROM t6 (FORMAT parquet)
+      WHERE (751=c6 OR 876=b6)
+      OR (a6=359 AND 942=c6 AND e6=798);
+  - name: t6
+  - name: t9
+
+outputs:
+  - name: q916.out
+    data: |
+      101
+      146
+      151
+      187
+      232
+      237
+      257
+      332
+      451
+      476
+      487
+      526
+      60
+      601
+      739
+      793
+      798
+      807
+      811
+      843
+      857
+      863
+      894
+      935
+      936
+      955

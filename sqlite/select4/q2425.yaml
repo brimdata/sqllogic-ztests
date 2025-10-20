@@ -1,0 +1,24 @@
+script: |
+  super -f text -I q2425.spq | sort > q2425.out
+
+inputs:
+  - name: q2425.spq
+    data: |
+      SELECT b9, c2, c1+43, a4+b1
+      FROM t4 (FORMAT parquet), t2 (FORMAT parquet), t9 (FORMAT parquet), t1 (FORMAT parquet)
+      WHERE 332=d2
+      AND d9 in (226,388,665,420)
+      AND 591=a1
+      AND 23=b4;
+  - name: t1
+  - name: t2
+  - name: t4
+  - name: t9
+
+outputs:
+  - name: q2425.out
+    data: |
+      410	819	302	544
+      524	819	302	544
+      789	819	302	544
+      832	819	302	544

@@ -1,0 +1,65 @@
+script: |
+  super -f text -I q105.spq | tr '\t' '\n' | sort > q105.out
+
+inputs:
+  - name: q105.spq
+    data: |
+      SELECT b4 FROM t4 (FORMAT parquet)
+      WHERE (319=b4 AND 482=d4 AND 984=c4 AND a4=105 AND e4=792)
+      OR (b4=849 OR 936=c4)
+      OR a4 in (919,260,845,596,367,235,185,558)
+      UNION
+      SELECT c8 FROM t8 (FORMAT parquet)
+      WHERE (a8=54 OR 186=b8)
+      OR d8 in (50,391,20,463,124,876,862,484,523,141)
+      OR e8 in (792,106,38,46)
+      UNION ALL
+      SELECT b2 FROM t2 (FORMAT parquet)
+      WHERE d2 in (749,351,80,833,555,643,813,772,351,10,577);
+  - name: t2
+  - name: t4
+  - name: t8
+
+outputs:
+  - name: q105.out
+    data: |
+      100
+      113
+      170
+      175
+      2
+      231
+      279
+      319
+      381
+      418
+      442
+      498
+      509
+      534
+      544
+      554
+      599
+      628
+      634
+      640
+      643
+      668
+      700
+      707
+      714
+      790
+      811
+      846
+      849
+      877
+      907
+      908
+      93
+      943
+      964
+      968
+      979
+      982
+      986
+      998

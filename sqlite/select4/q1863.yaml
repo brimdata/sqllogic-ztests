@@ -1,0 +1,26 @@
+script: |
+  super -f text -I q1863.spq | sort > q1863.out
+
+inputs:
+  - name: q1863.spq
+    data: |
+      SELECT a1*461, b8*628, d6, c2
+      FROM t8 (FORMAT parquet), t1 (FORMAT parquet), t2 (FORMAT parquet), t6 (FORMAT parquet)
+      WHERE c2 in (925,878,179,282,746,692)
+      AND 590=d6
+      AND e8=46
+      AND a1=189;
+  - name: t1
+  - name: t2
+  - name: t6
+  - name: t8
+
+outputs:
+  - name: q1863.out
+    data: |
+      87129	114296	590	179
+      87129	114296	590	282
+      87129	114296	590	692
+      87129	114296	590	746
+      87129	114296	590	878
+      87129	114296	590	925

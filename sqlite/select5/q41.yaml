@@ -1,0 +1,33 @@
+script: |
+  super -f text -I q41.spq | tr '\t' '\n' | sort > q41.out
+
+inputs:
+  - name: q41.spq
+    data: |
+      SELECT x54,x17,x21,x6,x34,x49,x2
+      FROM t21 (FORMAT parquet), t2 (FORMAT parquet), t49 (FORMAT parquet), t34 (FORMAT parquet), t54 (FORMAT parquet), t6 (FORMAT parquet), t17 (FORMAT parquet)
+      WHERE a54=b34
+      AND b54=a49
+      AND a21=b2
+      AND a34=b6
+      AND a17=b49
+      AND a21=4
+      AND a2=b17;
+  - name: t2
+  - name: t6
+  - name: t17
+  - name: t21
+  - name: t34
+  - name: t49
+  - name: t54
+
+outputs:
+  - name: q41.out
+    data: |
+      table t17 row 8
+      table t2 row 9
+      table t21 row 4
+      table t34 row 8
+      table t49 row 9
+      table t54 row 4
+      table t6 row 6

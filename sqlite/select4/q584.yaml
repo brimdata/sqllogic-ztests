@@ -1,0 +1,51 @@
+script: |
+  super -f text -I q584.spq | tr '\t' '\n' | sort > q584.out
+
+inputs:
+  - name: q584.spq
+    data: |
+      SELECT c7 FROM t7 (FORMAT parquet)
+      WHERE (c7=887 AND d7=673 AND e7=827 AND 720=a7 AND b7=781)
+      OR e7 in (552,988,372,156,432,282,127,39,595,319,827,562,689,356)
+      UNION ALL
+      SELECT c3 FROM t3 (FORMAT parquet)
+      WHERE b3 in (339,456,73)
+      OR b3 in (761,224,376,17,146,876,701)
+      OR (c3=220 OR 947=a3);
+  - name: t3
+  - name: t7
+
+outputs:
+  - name: q584.out
+    data: |
+      127
+      133
+      149
+      180
+      220
+      272
+      317
+      376
+      377
+      435
+      435
+      467
+      467
+      494
+      518
+      529
+      553
+      557
+      635
+      648
+      691
+      7
+      729
+      733
+      777
+      806
+      807
+      885
+      887
+      98
+      986

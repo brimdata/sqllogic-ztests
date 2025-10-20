@@ -1,0 +1,42 @@
+script: |
+  super -f text -I q74.spq | tr '\t' '\n' | sort > q74.out
+
+inputs:
+  - name: q74.spq
+    data: |
+      SELECT x17,x41,x55,x7,x64,x42,x43,x58,x21,x27
+      FROM t41 (FORMAT parquet), t64 (FORMAT parquet), t7 (FORMAT parquet), t43 (FORMAT parquet), t21 (FORMAT parquet), t58 (FORMAT parquet), t42 (FORMAT parquet), t27 (FORMAT parquet), t17 (FORMAT parquet), t55 (FORMAT parquet)
+      WHERE b21=a64
+      AND b55=a43
+      AND b27=a55
+      AND b43=a42
+      AND a7=b41
+      AND a21=b42
+      AND b58=a41
+      AND a7=9
+      AND a58=b64
+      AND b17=a27;
+  - name: t7
+  - name: t17
+  - name: t21
+  - name: t27
+  - name: t41
+  - name: t42
+  - name: t43
+  - name: t55
+  - name: t58
+  - name: t64
+
+outputs:
+  - name: q74.out
+    data: |
+      table t17 row 9
+      table t21 row 9
+      table t27 row 6
+      table t41 row 5
+      table t42 row 8
+      table t43 row 3
+      table t55 row 2
+      table t58 row 7
+      table t64 row 8
+      table t7 row 9

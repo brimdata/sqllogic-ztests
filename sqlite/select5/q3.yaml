@@ -1,0 +1,24 @@
+script: |
+  super -f text -I q3.spq | tr '\t' '\n' | sort > q3.out
+
+inputs:
+  - name: q3.spq
+    data: |
+      SELECT x27,x41,x54,x32
+      FROM t41 (FORMAT parquet), t54 (FORMAT parquet), t27 (FORMAT parquet), t32 (FORMAT parquet)
+      WHERE a54=b41
+      AND b27=a32
+      AND b32=a41
+      AND a54=2;
+  - name: t27
+  - name: t32
+  - name: t41
+  - name: t54
+
+outputs:
+  - name: q3.out
+    data: |
+      table t27 row 9
+      table t32 row 5
+      table t41 row 4
+      table t54 row 2

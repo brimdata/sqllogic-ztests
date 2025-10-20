@@ -1,0 +1,31 @@
+script: |
+  super -f text -I q315.spq | tr '\t' '\n' | sort > q315.out
+
+inputs:
+  - name: q315.spq
+    data: |
+      SELECT a7 FROM t7 (FORMAT parquet)
+      WHERE (c7=98 AND 395=d7 AND a7=130 AND b7=120)
+      OR e7 in (499,782,215,827,319,98,970,816)
+      UNION
+      SELECT e8 FROM t8 (FORMAT parquet)
+      WHERE (312=a8 AND e8=579 AND 397=b8 AND 5=c8);
+  - name: t7
+  - name: t8
+
+outputs:
+  - name: q315.out
+    data: |
+      130
+      136
+      158
+      22
+      579
+      642
+      715
+      720
+      795
+      89
+      90
+      912
+      952

@@ -1,0 +1,28 @@
+script: |
+  super -f text -I q927.spq | tr '\t' '\n' | sort > q927.out
+
+inputs:
+  - name: q927.spq
+    data: |
+      SELECT d1 FROM t1 (FORMAT parquet)
+      WHERE (c1=393 OR e1=254 OR 254=d1)
+      UNION ALL
+      SELECT a3 FROM t3 (FORMAT parquet)
+      WHERE (a3=181 OR c3=467 OR b3=156)
+      OR (542=b3)
+      OR (a3=929 AND 986=c3);
+  - name: t1
+  - name: t3
+
+outputs:
+  - name: q927.out
+    data: |
+      17
+      181
+      254
+      349
+      457
+      519
+      818
+      863
+      929

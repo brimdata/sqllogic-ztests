@@ -1,0 +1,43 @@
+script: |
+  super -f text -I q670.spq | tr '\t' '\n' | sort > q670.out
+
+inputs:
+  - name: q670.spq
+    data: |
+      SELECT a5 FROM t5 (FORMAT parquet)
+      WHERE (d5=782 OR 514=c5)
+      OR a5 in (319,174,710,153,445,929,362,296,235,544,24)
+      OR (c5=579 AND 26=b5 AND 536=a5)
+      UNION ALL
+      SELECT c9 FROM t9 (FORMAT parquet)
+      WHERE (868=b9 AND 268=d9 AND 474=a9)
+      OR a9 in (757,584,18,694)
+      OR (c9=973);
+  - name: t5
+  - name: t9
+
+outputs:
+  - name: q670.out
+    data: |
+      110
+      153
+      153
+      174
+      235
+      24
+      296
+      297
+      319
+      319
+      351
+      362
+      445
+      536
+      544
+      710
+      767
+      785
+      809
+      905
+      929
+      973

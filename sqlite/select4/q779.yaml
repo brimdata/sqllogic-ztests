@@ -1,0 +1,50 @@
+script: |
+  super -f text -I q779.spq | tr '\t' '\n' | sort > q779.out
+
+inputs:
+  - name: q779.spq
+    data: |
+      SELECT a9 FROM t9 (FORMAT parquet)
+      WHERE (410=b9 AND e9=723 AND 149=a9)
+      OR (b9=170 AND 335=a9 AND 82=e9)
+      UNION ALL
+      SELECT d6 FROM t6 (FORMAT parquet)
+      WHERE (c6=65 AND 601=b6 AND d6=590 AND 877=a6)
+      UNION ALL
+      SELECT b1 FROM t1 (FORMAT parquet)
+      WHERE d1 in (661,818,618,294,232,955,481,701)
+      OR (c1=252 AND b1=269 AND d1=716 AND a1=215 AND 615=e1)
+      UNION ALL
+      SELECT c2 FROM t2 (FORMAT parquet)
+      WHERE e2 in (647,242,428,939,720,427,556)
+      OR (e2=535);
+  - name: t1
+  - name: t2
+  - name: t6
+  - name: t9
+
+outputs:
+  - name: q779.out
+    data: |
+      107
+      123
+      149
+      177
+      179
+      22
+      228
+      259
+      266
+      269
+      335
+      350
+      43
+      447
+      449
+      579
+      590
+      676
+      711
+      738
+      779
+      810

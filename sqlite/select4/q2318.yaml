@@ -1,0 +1,32 @@
+script: |
+  super -f text -I q2318.spq | sort > q2318.out
+
+inputs:
+  - name: q2318.spq
+    data: |
+      SELECT x7, d3, d2+64+e7, c1
+      FROM t7 (FORMAT parquet), t2 (FORMAT parquet), t1 (FORMAT parquet), t3 (FORMAT parquet)
+      WHERE 181=a3
+      AND (314=a1 OR a1=584 OR 553=a1)
+      AND (936=a2 OR 691=a2 OR 853=a2)
+      AND 793=e7;
+  - name: t1
+  - name: t2
+  - name: t3
+  - name: t7
+
+outputs:
+  - name: q2318.out
+    data: |
+      table tn7 row 53	708	1208	12
+      table tn7 row 53	708	1208	498
+      table tn7 row 53	708	1208	788
+      table tn7 row 53	708	1511	12
+      table tn7 row 53	708	1511	498
+      table tn7 row 53	708	1511	788
+      table tn7 row 53	708	1695	12
+      table tn7 row 53	708	1695	498
+      table tn7 row 53	708	1695	788
+      table tn7 row 53	708	1711	12
+      table tn7 row 53	708	1711	498
+      table tn7 row 53	708	1711	788

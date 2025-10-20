@@ -1,0 +1,28 @@
+script: |
+  super -f text -I q119.spq | tr '\t' '\n' | sort > q119.out
+
+inputs:
+  - name: q119.spq
+    data: |
+      SELECT c2 FROM t2 (FORMAT parquet)
+      WHERE (a2=185)
+      OR (a2=279 OR 629=e2)
+      OR a2 in (279,594,131,775)
+      UNION ALL
+      SELECT b7 FROM t7 (FORMAT parquet)
+      WHERE (d7=507)
+      OR (e7=89);
+  - name: t2
+  - name: t7
+
+outputs:
+  - name: q119.out
+    data: |
+      141
+      228
+      24
+      421
+      46
+      512
+      726
+      779

@@ -1,0 +1,47 @@
+script: |
+  super -f text -I q405.spq | tr '\t' '\n' | sort > q405.out
+
+inputs:
+  - name: q405.spq
+    data: |
+      SELECT b9 FROM t9 (FORMAT parquet)
+      WHERE (e9=858 OR 389=d9 OR 450=a9)
+      UNION ALL
+      SELECT b1 FROM t1 (FORMAT parquet)
+      WHERE e1 in (522,880,363,931,956,51,904,523,962,693,122)
+      OR (936=d1 OR c1=296)
+      OR b1 in (486,652,593,836,91,556,345)
+      UNION ALL
+      SELECT e4 FROM t4 (FORMAT parquet)
+      WHERE (31=a4)
+      OR (e4=350 OR b4=607);
+  - name: t1
+  - name: t4
+  - name: t9
+
+outputs:
+  - name: q405.out
+    data: |
+      122
+      303
+      310
+      345
+      350
+      482
+      486
+      525
+      55
+      556
+      556
+      572
+      593
+      633
+      639
+      652
+      738
+      763
+      766
+      836
+      862
+      91
+      95

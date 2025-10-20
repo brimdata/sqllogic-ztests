@@ -1,0 +1,28 @@
+script: |
+  super -f text -I q2039.spq | sort > q2039.out
+
+inputs:
+  - name: q2039.spq
+    data: |
+      SELECT x3, b6+739, d7+c3
+      FROM t7 (FORMAT parquet), t3 (FORMAT parquet), t6 (FORMAT parquet)
+      WHERE d6 in (974,129,458)
+      AND e7=184
+      AND (a3=429 OR 368=a3);
+  - name: t3
+  - name: t6
+  - name: t7
+
+outputs:
+  - name: q2039.out
+    data: |
+      table tn3 row 108	1001	293
+      table tn3 row 108	1029	293
+      table tn3 row 108	1314	293
+      table tn3 row 108	1345	293
+      table tn3 row 108	1644	293
+      table tn3 row 7	1001	201
+      table tn3 row 7	1029	201
+      table tn3 row 7	1314	201
+      table tn3 row 7	1345	201
+      table tn3 row 7	1644	201

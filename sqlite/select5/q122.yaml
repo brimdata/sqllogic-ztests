@@ -1,0 +1,54 @@
+script: |
+  super -f text -I q122.spq | tr '\t' '\n' | sort > q122.out
+
+inputs:
+  - name: q122.spq
+    data: |
+      SELECT x39,x18,x49,x23,x7,x19,x52,x37,x15,x8,x16,x32,x56,x27
+      FROM t18 (FORMAT parquet), t27 (FORMAT parquet), t39 (FORMAT parquet), t8 (FORMAT parquet), t16 (FORMAT parquet), t56 (FORMAT parquet), t7 (FORMAT parquet), t32 (FORMAT parquet), t49 (FORMAT parquet), t15 (FORMAT parquet), t19 (FORMAT parquet), t52 (FORMAT parquet), t37 (FORMAT parquet), t23 (FORMAT parquet)
+      WHERE b8=a52
+      AND b19=a37
+      AND b32=a49
+      AND a8=b7
+      AND b16=a56
+      AND a15=b39
+      AND a32=b18
+      AND b15=a27
+      AND a39=b52
+      AND b27=a18
+      AND b56=a7
+      AND b49=a23
+      AND b23=a19
+      AND a37=1;
+  - name: t7
+  - name: t8
+  - name: t15
+  - name: t16
+  - name: t18
+  - name: t19
+  - name: t23
+  - name: t27
+  - name: t32
+  - name: t37
+  - name: t39
+  - name: t49
+  - name: t52
+  - name: t56
+
+outputs:
+  - name: q122.out
+    data: |
+      table t15 row 8
+      table t16 row 2
+      table t18 row 1
+      table t19 row 7
+      table t23 row 7
+      table t27 row 10
+      table t32 row 1
+      table t37 row 1
+      table t39 row 10
+      table t49 row 10
+      table t52 row 6
+      table t56 row 3
+      table t7 row 6
+      table t8 row 4

@@ -1,0 +1,30 @@
+script: |
+  super -f text -I q1218.spq | sort > q1218.out
+
+inputs:
+  - name: q1218.spq
+    data: |
+      SELECT a5+276+d3, a3+728, x7
+      FROM t7 (FORMAT parquet), t3 (FORMAT parquet), t5 (FORMAT parquet)
+      WHERE e7 in (826,782,595,561,372)
+      AND a3=d7
+      AND c5 in (734,924,733,579,384);
+  - name: t3
+  - name: t5
+  - name: t7
+
+outputs:
+  - name: q1218.out
+    data: |
+      1258	993	table tn7 row 46
+      1321	993	table tn7 row 46
+      1353	762	table tn7 row 75
+      1649	762	table tn7 row 75
+      1668	762	table tn7 row 75
+      1725	993	table tn7 row 46
+      1805	762	table tn7 row 75
+      2021	993	table tn7 row 46
+      2040	993	table tn7 row 46
+      2177	993	table tn7 row 46
+      886	762	table tn7 row 75
+      949	762	table tn7 row 75

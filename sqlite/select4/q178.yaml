@@ -1,0 +1,115 @@
+script: |
+  super -f text -I q178.spq | tr '\t' '\n' | sort > q178.out
+
+inputs:
+  - name: q178.spq
+    data: |
+      SELECT b6 FROM t6 (FORMAT parquet)
+      WHERE (e6=139 AND b6=662 AND 750=d6 AND 491=c6)
+      OR a6 in (45,653,604,129,366,392,66)
+      UNION
+      SELECT c5 FROM t5 (FORMAT parquet)
+      WHERE d5 in (280,682,841,780,835,806,855,557,789,4,806,731,883,33)
+      OR a5 in (721,818,270,50)
+      OR (361=d5 OR d5=957)
+      UNION ALL
+      SELECT a3 FROM t3 (FORMAT parquet)
+      WHERE (b3=549 AND 476=c3 AND 401=e3)
+      OR (124=b3 OR e3=578)
+      OR c3 in (516,490,600,81,244,890,647,986,134,986)
+      UNION
+      SELECT a8 FROM t8 (FORMAT parquet)
+      WHERE (a8=728)
+      OR (d8=512)
+      UNION
+      SELECT c1 FROM t1 (FORMAT parquet)
+      WHERE (d1=951)
+      UNION ALL
+      SELECT d7 FROM t7 (FORMAT parquet)
+      WHERE e7 in (301,92,168,422,903,827,462,288,976,183,841,89,970)
+      OR (c7=14 AND a7=736)
+      UNION ALL
+      SELECT c9 FROM t9 (FORMAT parquet)
+      WHERE d9 in (554,965,922,660);
+  - name: t1
+  - name: t3
+  - name: t5
+  - name: t6
+  - name: t7
+  - name: t8
+  - name: t9
+
+outputs:
+  - name: q178.out
+    data: |
+      12
+      134
+      147
+      155
+      171
+      198
+      217
+      224
+      249
+      250
+      27
+      290
+      296
+      296
+      303
+      315
+      324
+      34
+      350
+      380
+      39
+      390
+      436
+      449
+      485
+      500
+      507
+      514
+      525
+      544
+      549
+      551
+      560
+      569
+      583
+      585
+      590
+      594
+      594
+      599
+      637
+      643
+      651
+      662
+      673
+      681
+      689
+      696
+      697
+      710
+      72
+      728
+      734
+      765
+      772
+      774
+      801
+      819
+      825
+      885
+      894
+      913
+      929
+      934
+      94
+      954
+      956
+      962
+      978
+      989
+      995
