@@ -1,0 +1,26 @@
+script: |
+  super -f text -I q1300.spq | sort > q1300.out
+
+inputs:
+  - name: q1300.spq
+    data: |
+      SELECT d8+762, a5*605, e9, c4
+      FROM t8 (FORMAT parquet), t5 (FORMAT parquet), t4 (FORMAT parquet), t9 (FORMAT parquet)
+      WHERE c5 in (734,774,819,855)
+      AND c9=60
+      AND e8=333
+      AND b4=286;
+  - name: t4
+  - name: t5
+  - name: t8
+  - name: t9
+
+outputs:
+  - name: q1300.out
+    data: |
+      1413	142175	245	403
+      1413	202070	245	403
+      1413	354530	245	403
+      1413	41745	245	403
+      1413	494890	245	403
+      1413	503360	245	403

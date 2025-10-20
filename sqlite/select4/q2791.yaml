@@ -1,0 +1,27 @@
+script: |
+  super -f text -I q2791.spq | sort > q2791.out
+
+inputs:
+  - name: q2791.spq
+    data: |
+      SELECT d6, x5, d2+d3, d3, c8+483
+      FROM t2 (FORMAT parquet), t6 (FORMAT parquet), t3 (FORMAT parquet), t8 (FORMAT parquet), t5 (FORMAT parquet)
+      WHERE 184=a3
+      AND c5=924
+      AND e8=533
+      AND d6=797
+      AND d2 in (682,2,749,555,209);
+  - name: t2
+  - name: t3
+  - name: t5
+  - name: t6
+  - name: t8
+
+outputs:
+  - name: q2791.out
+    data: |
+      797	table tn5 row 98	1099	890	733
+      797	table tn5 row 98	1445	890	733
+      797	table tn5 row 98	1572	890	733
+      797	table tn5 row 98	1639	890	733
+      797	table tn5 row 98	892	890	733

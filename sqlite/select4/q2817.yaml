@@ -1,0 +1,25 @@
+script: |
+  super -f text -I q2817.spq | sort > q2817.out
+
+inputs:
+  - name: q2817.spq
+    data: |
+      SELECT x2, b8, d5*699, d3+b5
+      FROM t3 (FORMAT parquet), t5 (FORMAT parquet), t2 (FORMAT parquet), t8 (FORMAT parquet)
+      WHERE e2 in (841,564,140,433)
+      AND c5=b8
+      AND 431=e8
+      AND a3=863;
+  - name: t2
+  - name: t3
+  - name: t5
+  - name: t8
+
+outputs:
+  - name: q2817.out
+    data: |
+      table tn2 row 109	934	476718	1135
+      table tn2 row 28	934	476718	1135
+      table tn2 row 31	934	476718	1135
+      table tn2 row 7	934	476718	1135
+      table tn2 row 83	934	476718	1135

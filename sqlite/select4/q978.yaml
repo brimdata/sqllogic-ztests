@@ -1,0 +1,41 @@
+script: |
+  super -f text -I q978.spq | tr '\t' '\n' | sort > q978.out
+
+inputs:
+  - name: q978.spq
+    data: |
+      SELECT a2 FROM t2 (FORMAT parquet)
+      WHERE (901=a2 AND 264=b2 AND 312=c2)
+      UNION
+      SELECT a3 FROM t3 (FORMAT parquet)
+      WHERE (582=d3 AND 146=b3)
+      OR d3 in (173,825,437,363,184,683)
+      UNION ALL
+      SELECT c6 FROM t6 (FORMAT parquet)
+      WHERE (c6=500 OR 801=a6 OR c6=287)
+      OR (d6=560 OR e6=574 OR c6=161)
+      OR (518=a6 OR a6=680 OR e6=673);
+  - name: t2
+  - name: t3
+  - name: t6
+
+outputs:
+  - name: q978.out
+    data: |
+      11
+      161
+      258
+      287
+      341
+      364
+      396
+      454
+      500
+      566
+      637
+      677
+      754
+      820
+      879
+      899
+      901

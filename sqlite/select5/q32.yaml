@@ -1,0 +1,30 @@
+script: |
+  super -f text -I q32.spq | tr '\t' '\n' | sort > q32.out
+
+inputs:
+  - name: q32.spq
+    data: |
+      SELECT x37,x45,x6,x17,x41,x57
+      FROM t37 (FORMAT parquet), t17 (FORMAT parquet), t41 (FORMAT parquet), t45 (FORMAT parquet), t57 (FORMAT parquet), t6 (FORMAT parquet)
+      WHERE a37=2
+      AND a57=b17
+      AND a37=b6
+      AND b57=a41
+      AND a45=b41
+      AND a6=b45;
+  - name: t6
+  - name: t17
+  - name: t37
+  - name: t41
+  - name: t45
+  - name: t57
+
+outputs:
+  - name: q32.out
+    data: |
+      table t17 row 2
+      table t37 row 2
+      table t41 row 5
+      table t45 row 9
+      table t57 row 2
+      table t6 row 1

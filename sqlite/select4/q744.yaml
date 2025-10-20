@@ -1,0 +1,45 @@
+script: |
+  super -f text -I q744.spq | tr '\t' '\n' | sort > q744.out
+
+inputs:
+  - name: q744.spq
+    data: |
+      SELECT a9 FROM t9 (FORMAT parquet)
+      WHERE c9 in (836,327,739,95,126)
+      UNION ALL
+      SELECT a5 FROM t5 (FORMAT parquet)
+      WHERE a5 in (69,514,445,319,740,536,50,270,513,319)
+      OR (e5=725 OR 602=d5 OR 674=b5)
+      UNION ALL
+      SELECT a3 FROM t3 (FORMAT parquet)
+      WHERE (b3=178)
+      OR (972=e3 AND 792=c3 AND 38=d3);
+  - name: t3
+  - name: t5
+  - name: t9
+
+outputs:
+  - name: q744.out
+    data: |
+      115
+      174
+      251
+      270
+      270
+      295
+      311
+      319
+      319
+      383
+      445
+      5
+      50
+      513
+      514
+      536
+      69
+      740
+      743
+      875
+      905
+      959

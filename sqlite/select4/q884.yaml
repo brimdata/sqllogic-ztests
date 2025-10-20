@@ -1,0 +1,65 @@
+script: |
+  super -f text -I q884.spq | tr '\t' '\n' | sort > q884.out
+
+inputs:
+  - name: q884.spq
+    data: |
+      SELECT d1 FROM t1 (FORMAT parquet)
+      WHERE e1 in (931,402,298,222,811,313)
+      UNION ALL
+      SELECT c3 FROM t3 (FORMAT parquet)
+      WHERE (a3=344)
+      OR (727=a3 AND c3=102 AND 642=d3 AND e3=169 AND b3=595)
+      UNION ALL
+      SELECT b7 FROM t7 (FORMAT parquet)
+      WHERE (85=a7 AND e7=562 AND 518=c7 AND 205=d7 AND b7=67)
+      OR a7 in (649,165,233,285,715,706,651,691,356)
+      UNION ALL
+      SELECT d9 FROM t9 (FORMAT parquet)
+      WHERE (e9=744)
+      OR (a9=776 AND b9=680 AND 960=d9 AND 704=e9 AND c9=834)
+      OR c9 in (252,843,801,75,253,601,688,419,884,739,252,973,975,272);
+  - name: t1
+  - name: t3
+  - name: t7
+  - name: t9
+
+outputs:
+  - name: q884.out
+    data: |
+      102
+      129
+      226
+      25
+      250
+      254
+      317
+      349
+      38
+      388
+      389
+      392
+      409
+      426
+      464
+      525
+      553
+      574
+      606
+      612
+      634
+      646
+      660
+      662
+      67
+      686
+      726
+      795
+      808
+      813
+      900
+      938
+      95
+      960
+      967
+      972

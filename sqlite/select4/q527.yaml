@@ -1,0 +1,31 @@
+script: |
+  super -f text -I q527.spq | tr '\t' '\n' | sort > q527.out
+
+inputs:
+  - name: q527.spq
+    data: |
+      SELECT a1 FROM t1 (FORMAT parquet)
+      WHERE (805=c1 AND 158=e1 AND a1=637)
+      OR e1 in (254,484,298)
+      UNION
+      SELECT c6 FROM t6 (FORMAT parquet)
+      WHERE (424=c6 OR b6=825)
+      UNION ALL
+      SELECT d5 FROM t5 (FORMAT parquet)
+      WHERE (d5=274 OR 661=e5 OR d5=280);
+  - name: t1
+  - name: t5
+  - name: t6
+
+outputs:
+  - name: q527.out
+    data: |
+      274
+      280
+      320
+      424
+      524
+      637
+      649
+      746
+      879

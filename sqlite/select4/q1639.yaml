@@ -1,0 +1,18 @@
+script: |
+  super -f text -I q1639.spq | sort > q1639.out
+
+inputs:
+  - name: q1639.spq
+    data: |
+      SELECT x3, b4+326
+      FROM t4 (FORMAT parquet), t3 (FORMAT parquet)
+      WHERE b4=c3
+      AND a3 in (143,729,929,581,386,865,490,935);
+  - name: t3
+  - name: t4
+
+outputs:
+  - name: q1639.out
+    data: |
+      table tn3 row 125	1312
+      table tn3 row 93	412

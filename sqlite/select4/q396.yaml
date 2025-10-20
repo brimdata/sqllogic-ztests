@@ -1,0 +1,58 @@
+script: |
+  super -f text -I q396.spq | tr '\t' '\n' | sort > q396.out
+
+inputs:
+  - name: q396.spq
+    data: |
+      SELECT e8 FROM t8 (FORMAT parquet)
+      WHERE (d8=197 AND 6=b8 AND a8=400 AND 381=e8)
+      OR a8 in (514,579,66,248,314,15,838,701,957,946)
+      OR (44=e8 OR 241=a8 OR a8=597)
+      UNION ALL
+      SELECT e4 FROM t4 (FORMAT parquet)
+      WHERE (469=b4 OR 925=b4)
+      OR (674=c4 AND e4=237 AND 721=b4 AND 628=d4 AND a4=16)
+      OR (d4=988 AND 581=c4 AND 381=e4 AND b4=627 AND 982=a4)
+      UNION ALL
+      SELECT b5 FROM t5 (FORMAT parquet)
+      WHERE (d5=779 AND e5=885)
+      OR b5 in (930,403,640,499,665,231)
+      UNION ALL
+      SELECT d9 FROM t9 (FORMAT parquet)
+      WHERE (b9=446 AND e9=542 AND a9=685 AND d9=790 AND c9=992);
+  - name: t4
+  - name: t5
+  - name: t8
+  - name: t9
+
+outputs:
+  - name: q396.out
+    data: |
+      175
+      231
+      236
+      237
+      381
+      381
+      403
+      423
+      44
+      455
+      499
+      510
+      512
+      579
+      592
+      64
+      640
+      665
+      678
+      790
+      809
+      811
+      816
+      833
+      866
+      878
+      930
+      933

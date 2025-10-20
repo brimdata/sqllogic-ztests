@@ -1,0 +1,47 @@
+script: |
+  super -f text -I q1015.spq | tr '\t' '\n' | sort > q1015.out
+
+inputs:
+  - name: q1015.spq
+    data: |
+      SELECT a1 FROM t1 (FORMAT parquet)
+      WHERE c1 in (379,200,846,416,683,289,152,758,88,526,976,639)
+      UNION
+      SELECT c6 FROM t6 (FORMAT parquet)
+      WHERE (821=a6)
+      OR e6 in (946,737,840)
+      OR d6 in (469,424,674,807,405,711,974,974,192,869,970,991);
+  - name: t1
+  - name: t6
+
+outputs:
+  - name: q1015.out
+    data: |
+      12
+      159
+      170
+      187
+      189
+      20
+      231
+      265
+      281
+      308
+      4
+      441
+      528
+      538
+      543
+      551
+      609
+      620
+      648
+      718
+      751
+      918
+      928
+      936
+      950
+      975
+      981
+      988

@@ -1,0 +1,58 @@
+script: |
+  super -f text -I q635.spq | tr '\t' '\n' | sort > q635.out
+
+inputs:
+  - name: q635.spq
+    data: |
+      SELECT d5 FROM t5 (FORMAT parquet)
+      WHERE (186=b5 OR 352=e5 OR 958=a5)
+      OR c5 in (12,140,86)
+      OR (b5=716 OR c5=915 OR 56=b5)
+      UNION
+      SELECT c1 FROM t1 (FORMAT parquet)
+      WHERE (e1=949 OR 992=d1 OR e1=904)
+      OR (b1=572 OR 519=d1)
+      UNION
+      SELECT c9 FROM t9 (FORMAT parquet)
+      WHERE (c9=955 OR 327=c9)
+      UNION ALL
+      SELECT b4 FROM t4 (FORMAT parquet)
+      WHERE d4 in (260,987,231,349,820,943,681,910,901,617)
+      OR (229=d4 AND e4=951)
+      OR (a4=629);
+  - name: t1
+  - name: t4
+  - name: t5
+  - name: t9
+
+outputs:
+  - name: q635.out
+    data: |
+      114
+      12
+      152
+      2
+      261
+      274
+      327
+      331
+      357
+      379
+      514
+      520
+      551
+      553
+      623
+      636
+      637
+      644
+      660
+      67
+      708
+      802
+      841
+      901
+      919
+      938
+      955
+      977

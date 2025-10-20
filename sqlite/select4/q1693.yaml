@@ -1,0 +1,22 @@
+script: |
+  super -f text -I q1693.spq | sort > q1693.out
+
+inputs:
+  - name: q1693.spq
+    data: |
+      SELECT e9, a8, c6*671, a2+e9
+      FROM t8 (FORMAT parquet), t9 (FORMAT parquet), t2 (FORMAT parquet), t6 (FORMAT parquet)
+      WHERE 790=d6
+      AND 310=e8
+      AND (c9=254 OR 60=c9)
+      AND e2=940;
+  - name: t2
+  - name: t6
+  - name: t8
+  - name: t9
+
+outputs:
+  - name: q1693.out
+    data: |
+      195	171	515999	1046
+      245	171	515999	1096

@@ -1,0 +1,40 @@
+script: |
+  super -f text -I q2485.spq | sort > q2485.out
+
+inputs:
+  - name: q2485.spq
+    data: |
+      SELECT a4, e7
+      FROM t7 (FORMAT parquet), t4 (FORMAT parquet)
+      WHERE b4 in (357,295,261,442)
+      AND e7 in (587,462,422,356);
+  - name: t4
+  - name: t7
+
+outputs:
+  - name: q2485.out
+    data: |
+      448	356
+      448	422
+      448	462
+      448	462
+      448	462
+      448	587
+      558	356
+      558	422
+      558	462
+      558	462
+      558	462
+      558	587
+      804	356
+      804	422
+      804	462
+      804	462
+      804	462
+      804	587
+      933	356
+      933	422
+      933	462
+      933	462
+      933	462
+      933	587

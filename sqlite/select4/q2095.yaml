@@ -1,0 +1,30 @@
+script: |
+  super -f text -I q2095.spq | sort > q2095.out
+
+inputs:
+  - name: q2095.spq
+    data: |
+      SELECT e9+c9, e6+c8, x3, c8+132, b2+c6
+      FROM t3 (FORMAT parquet), t2 (FORMAT parquet), t8 (FORMAT parquet), t9 (FORMAT parquet), t6 (FORMAT parquet)
+      WHERE a2=10
+      AND a3=181
+      AND e9=788
+      AND 778=d6
+      AND e8 in (485,105,761,495);
+  - name: t2
+  - name: t3
+  - name: t6
+  - name: t8
+  - name: t9
+
+outputs:
+  - name: q2095.out
+    data: |
+      1335	1092	table tn3 row 63	430	768
+      1335	1215	table tn3 row 63	553	768
+      1335	1357	table tn3 row 63	695	768
+      1335	981	table tn3 row 63	319	768
+      850	1092	table tn3 row 63	430	768
+      850	1215	table tn3 row 63	553	768
+      850	1357	table tn3 row 63	695	768
+      850	981	table tn3 row 63	319	768

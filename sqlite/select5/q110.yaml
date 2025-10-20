@@ -1,0 +1,51 @@
+script: |
+  super -f text -I q110.spq | tr '\t' '\n' | sort > q110.out
+
+inputs:
+  - name: q110.spq
+    data: |
+      SELECT x61,x21,x29,x48,x7,x51,x58,x39,x19,x22,x42,x18,x11
+      FROM t29 (FORMAT parquet), t61 (FORMAT parquet), t42 (FORMAT parquet), t18 (FORMAT parquet), t48 (FORMAT parquet), t51 (FORMAT parquet), t58 (FORMAT parquet), t7 (FORMAT parquet), t39 (FORMAT parquet), t22 (FORMAT parquet), t19 (FORMAT parquet), t21 (FORMAT parquet), t11 (FORMAT parquet)
+      WHERE a29=b42
+      AND a51=b21
+      AND a22=b19
+      AND a7=4
+      AND b48=a61
+      AND b58=a21
+      AND b22=a48
+      AND b29=a39
+      AND b51=a7
+      AND a19=b39
+      AND a18=b61
+      AND b11=a42
+      AND a58=b18;
+  - name: t7
+  - name: t11
+  - name: t18
+  - name: t19
+  - name: t21
+  - name: t22
+  - name: t29
+  - name: t39
+  - name: t42
+  - name: t48
+  - name: t51
+  - name: t58
+  - name: t61
+
+outputs:
+  - name: q110.out
+    data: |
+      table t11 row 9
+      table t18 row 5
+      table t19 row 1
+      table t21 row 9
+      table t22 row 4
+      table t29 row 3
+      table t39 row 9
+      table t42 row 2
+      table t48 row 4
+      table t51 row 8
+      table t58 row 10
+      table t61 row 6
+      table t7 row 4

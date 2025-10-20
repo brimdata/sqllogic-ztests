@@ -1,0 +1,29 @@
+script: |
+  super -f text -I q2173.spq | sort > q2173.out
+
+inputs:
+  - name: q2173.spq
+    data: |
+      SELECT e1+650+a8, e3, c9, c8, d7+c3
+      FROM t8 (FORMAT parquet), t7 (FORMAT parquet), t1 (FORMAT parquet), t3 (FORMAT parquet), t9 (FORMAT parquet)
+      WHERE 898=a1
+      AND a3=379
+      AND a9=115
+      AND e8 in (38,233,295,333,944,422,864)
+      AND 689=e7;
+  - name: t1
+  - name: t3
+  - name: t7
+  - name: t8
+  - name: t9
+
+outputs:
+  - name: q2173.out
+    data: |
+      1616	536	95	299	1092
+      1822	536	95	961	1092
+      2083	536	95	973	1092
+      2114	536	95	279	1092
+      2134	536	95	74	1092
+      2332	536	95	534	1092
+      2345	536	95	866	1092

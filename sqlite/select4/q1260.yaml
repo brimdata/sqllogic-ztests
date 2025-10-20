@@ -1,0 +1,23 @@
+script: |
+  super -f text -I q1260.spq | sort > q1260.out
+
+inputs:
+  - name: q1260.spq
+    data: |
+      SELECT c9+a4, e4*349, b5, b7*667
+      FROM t4 (FORMAT parquet), t5 (FORMAT parquet), t7 (FORMAT parquet), t9 (FORMAT parquet)
+      WHERE 653=b4
+      AND e7=553
+      AND b9 in (858,667,77,170,122,426,262)
+      AND c5=c9;
+  - name: t4
+  - name: t5
+  - name: t7
+  - name: t9
+
+outputs:
+  - name: q1260.out
+    data: |
+      1026	52699	26	342838
+      1048	52699	56	342838
+      634	52699	84	342838

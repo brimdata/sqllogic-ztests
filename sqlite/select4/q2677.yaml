@@ -1,0 +1,38 @@
+script: |
+  super -f text -I q2677.spq | sort > q2677.out
+
+inputs:
+  - name: q2677.spq
+    data: |
+      SELECT x3, a1*900, d2, e5, b8*149
+      FROM t1 (FORMAT parquet), t8 (FORMAT parquet), t5 (FORMAT parquet), t3 (FORMAT parquet), t2 (FORMAT parquet)
+      WHERE e2=e3
+      AND a3 in (549,41,964,306,162,591,5)
+      AND a1=c8
+      AND c5 in (544,809,443)
+      AND e8 in (199,295,377,383);
+  - name: t1
+  - name: t2
+  - name: t3
+  - name: t5
+  - name: t8
+
+outputs:
+  - name: q2677.out
+    data: |
+      table tn3 row 48	269100	310	386	103704
+      table tn3 row 48	269100	310	587	103704
+      table tn3 row 48	269100	310	737	103704
+      table tn3 row 48	269100	310	98	103704
+      table tn3 row 48	489600	310	386	117710
+      table tn3 row 48	489600	310	587	117710
+      table tn3 row 48	489600	310	737	117710
+      table tn3 row 48	489600	310	98	117710
+      table tn3 row 78	269100	476	386	103704
+      table tn3 row 78	269100	476	587	103704
+      table tn3 row 78	269100	476	737	103704
+      table tn3 row 78	269100	476	98	103704
+      table tn3 row 78	489600	476	386	117710
+      table tn3 row 78	489600	476	587	117710
+      table tn3 row 78	489600	476	737	117710
+      table tn3 row 78	489600	476	98	117710

@@ -1,0 +1,27 @@
+script: |
+  super -f text -I q23.spq | tr '\t' '\n' | sort > q23.out
+
+inputs:
+  - name: q23.spq
+    data: |
+      SELECT x49,x11,x27,x47,x17
+      FROM t49 (FORMAT parquet), t27 (FORMAT parquet), t11 (FORMAT parquet), t47 (FORMAT parquet), t17 (FORMAT parquet)
+      WHERE a47=b27
+      AND b49=a27
+      AND b11=a49
+      AND a11=b17
+      AND a47=9;
+  - name: t11
+  - name: t17
+  - name: t27
+  - name: t47
+  - name: t49
+
+outputs:
+  - name: q23.out
+    data: |
+      table t11 row 8
+      table t17 row 7
+      table t27 row 8
+      table t47 row 9
+      table t49 row 9

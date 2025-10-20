@@ -1,0 +1,39 @@
+script: |
+  super -f text -I q836.spq | tr '\t' '\n' | sort > q836.out
+
+inputs:
+  - name: q836.spq
+    data: |
+      SELECT b7 FROM t7 (FORMAT parquet)
+      WHERE (e7=522 AND c7=744)
+      OR (d7=341 AND 709=a7)
+      OR a7 in (158,267,758,452,165,936,982,290)
+      UNION
+      SELECT b1 FROM t1 (FORMAT parquet)
+      WHERE (a1=521 AND 281=b1 AND d1=221 AND e1=628)
+      OR (853=a1 OR d1=407)
+      OR (825=a1 AND b1=247 AND d1=565 AND 486=c1);
+  - name: t1
+  - name: t7
+
+outputs:
+  - name: q836.out
+    data: |
+      175
+      24
+      247
+      257
+      281
+      396
+      42
+      426
+      462
+      506
+      510
+      519
+      808
+      827
+      837
+      861
+      949
+      993

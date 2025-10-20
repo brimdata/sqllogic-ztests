@@ -1,0 +1,48 @@
+script: |
+  super -f text -I q97.spq | tr '\t' '\n' | sort > q97.out
+
+inputs:
+  - name: q97.spq
+    data: |
+      SELECT x2,x49,x18,x47,x29,x56,x60,x9,x31,x34,x53,x11
+      FROM t9 (FORMAT parquet), t49 (FORMAT parquet), t31 (FORMAT parquet), t56 (FORMAT parquet), t34 (FORMAT parquet), t60 (FORMAT parquet), t18 (FORMAT parquet), t53 (FORMAT parquet), t29 (FORMAT parquet), t2 (FORMAT parquet), t11 (FORMAT parquet), t47 (FORMAT parquet)
+      WHERE b47=a34
+      AND a47=b2
+      AND a31=b29
+      AND b56=a60
+      AND a11=b53
+      AND b34=a56
+      AND a29=b49
+      AND b60=a53
+      AND a9=b11
+      AND a31=3
+      AND b18=a2
+      AND a49=b9;
+  - name: t2
+  - name: t9
+  - name: t11
+  - name: t18
+  - name: t29
+  - name: t31
+  - name: t34
+  - name: t47
+  - name: t49
+  - name: t53
+  - name: t56
+  - name: t60
+
+outputs:
+  - name: q97.out
+    data: |
+      table t11 row 9
+      table t18 row 8
+      table t2 row 7
+      table t29 row 6
+      table t31 row 3
+      table t34 row 3
+      table t47 row 8
+      table t49 row 4
+      table t53 row 2
+      table t56 row 6
+      table t60 row 8
+      table t9 row 2

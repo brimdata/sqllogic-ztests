@@ -1,0 +1,33 @@
+script: |
+  super -f text -I q44.spq | tr '\t' '\n' | sort > q44.out
+
+inputs:
+  - name: q44.spq
+    data: |
+      SELECT x30,x41,x60,x39,x16,x45,x58
+      FROM t45 (FORMAT parquet), t30 (FORMAT parquet), t41 (FORMAT parquet), t58 (FORMAT parquet), t16 (FORMAT parquet), t39 (FORMAT parquet), t60 (FORMAT parquet)
+      WHERE a16=b58
+      AND b16=a30
+      AND a39=b30
+      AND a41=b45
+      AND b41=a58
+      AND a60=b39
+      AND a60=8;
+  - name: t16
+  - name: t30
+  - name: t39
+  - name: t41
+  - name: t45
+  - name: t58
+  - name: t60
+
+outputs:
+  - name: q44.out
+    data: |
+      table t16 row 2
+      table t30 row 3
+      table t39 row 10
+      table t41 row 3
+      table t45 row 7
+      table t58 row 3
+      table t60 row 8

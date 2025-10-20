@@ -1,0 +1,57 @@
+script: |
+  super -f text -I q137.spq | tr '\t' '\n' | sort > q137.out
+
+inputs:
+  - name: q137.spq
+    data: |
+      SELECT x13,x62,x20,x41,x11,x1,x37,x61,x54,x6,x27,x34,x45,x4,x60
+      FROM t13 (FORMAT parquet), t11 (FORMAT parquet), t27 (FORMAT parquet), t54 (FORMAT parquet), t4 (FORMAT parquet), t41 (FORMAT parquet), t62 (FORMAT parquet), t20 (FORMAT parquet), t1 (FORMAT parquet), t37 (FORMAT parquet), t45 (FORMAT parquet), t6 (FORMAT parquet), t60 (FORMAT parquet), t61 (FORMAT parquet), t34 (FORMAT parquet)
+      WHERE a45=b37
+      AND a27=b61
+      AND b41=a62
+      AND b20=a61
+      AND a11=b4
+      AND b45=a60
+      AND a6=b60
+      AND b1=a13
+      AND b13=a54
+      AND a4=b27
+      AND a54=4
+      AND b6=a41
+      AND b34=a1
+      AND a37=b11
+      AND a34=b62;
+  - name: t1
+  - name: t4
+  - name: t6
+  - name: t11
+  - name: t13
+  - name: t20
+  - name: t27
+  - name: t34
+  - name: t37
+  - name: t41
+  - name: t45
+  - name: t54
+  - name: t60
+  - name: t61
+  - name: t62
+
+outputs:
+  - name: q137.out
+    data: |
+      table t1 row 7
+      table t11 row 3
+      table t13 row 6
+      table t20 row 4
+      table t27 row 8
+      table t34 row 10
+      table t37 row 3
+      table t4 row 9
+      table t41 row 2
+      table t45 row 7
+      table t54 row 4
+      table t6 row 1
+      table t60 row 3
+      table t61 row 7
+      table t62 row 1

@@ -1,0 +1,26 @@
+script: |
+  super -f text -I q2721.spq | sort > q2721.out
+
+inputs:
+  - name: q2721.spq
+    data: |
+      SELECT c3, a4+936+d4, c2+a2, e6
+      FROM t2 (FORMAT parquet), t6 (FORMAT parquet), t4 (FORMAT parquet), t3 (FORMAT parquet)
+      WHERE b2 in (313,674,605,329,353,38)
+      AND b4=538
+      AND a3=379
+      AND 581=d6;
+  - name: t2
+  - name: t3
+  - name: t4
+  - name: t6
+
+outputs:
+  - name: q2721.out
+    data: |
+      697	2218	1063	883
+      697	2218	1251	883
+      697	2218	1388	883
+      697	2218	1587	883
+      697	2218	492	883
+      697	2218	807	883

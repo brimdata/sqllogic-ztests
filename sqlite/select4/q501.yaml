@@ -1,0 +1,49 @@
+script: |
+  super -f text -I q501.spq | tr '\t' '\n' | sort > q501.out
+
+inputs:
+  - name: q501.spq
+    data: |
+      SELECT e6 FROM t6 (FORMAT parquet)
+      WHERE b6 in (834,390,300,290,378,6,507,923,662)
+      OR (367=d6 OR 811=a6 OR 601=b6)
+      UNION ALL
+      SELECT e9 FROM t9 (FORMAT parquet)
+      WHERE c9 in (253,526,146,349,843,278,95,739,764,323,39,87,224);
+  - name: t6
+  - name: t9
+
+outputs:
+  - name: q501.out
+    data: |
+      139
+      237
+      239
+      257
+      263
+      329
+      345
+      35
+      353
+      360
+      431
+      439
+      477
+      486
+      503
+      575
+      595
+      621
+      647
+      657
+      707
+      723
+      737
+      801
+      868
+      893
+      915
+      934
+      942
+      946
+      965

@@ -1,0 +1,41 @@
+script: |
+  super -f text -I q69.spq | tr '\t' '\n' | sort > q69.out
+
+inputs:
+  - name: q69.spq
+    data: |
+      SELECT a2 FROM t2 (FORMAT parquet)
+      WHERE (c2=161 OR e2=302 OR 223=e2)
+      OR b2 in (292,357,170,966,279,21,509,433)
+      OR (925=c2 OR d2=86)
+      UNION
+      SELECT c7 FROM t7 (FORMAT parquet)
+      WHERE (144=e7 OR c7=548 OR c7=38)
+      OR (e7=122 AND c7=498 AND a7=691 AND 409=b7 AND d7=114)
+      OR (e7=561 AND 660=b7 AND c7=709 AND 781=d7 AND 62=a7);
+  - name: t2
+  - name: t7
+
+outputs:
+  - name: q69.out
+    data: |
+      131
+      135
+      268
+      279
+      336
+      38
+      445
+      471
+      498
+      508
+      548
+      564
+      709
+      718
+      760
+      80
+      869
+      916
+      922
+      980

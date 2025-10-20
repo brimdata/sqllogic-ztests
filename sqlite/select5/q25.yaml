@@ -1,0 +1,30 @@
+script: |
+  super -f text -I q25.spq | tr '\t' '\n' | sort > q25.out
+
+inputs:
+  - name: q25.spq
+    data: |
+      SELECT x60,x27,x36,x5,x32,x28
+      FROM t28 (FORMAT parquet), t36 (FORMAT parquet), t60 (FORMAT parquet), t32 (FORMAT parquet), t5 (FORMAT parquet), t27 (FORMAT parquet)
+      WHERE a60=b28
+      AND b27=a36
+      AND a60=6
+      AND a27=b5
+      AND b36=a32
+      AND a28=b32;
+  - name: t5
+  - name: t27
+  - name: t28
+  - name: t32
+  - name: t36
+  - name: t60
+
+outputs:
+  - name: q25.out
+    data: |
+      table t27 row 2
+      table t28 row 1
+      table t32 row 6
+      table t36 row 3
+      table t5 row 6
+      table t60 row 6

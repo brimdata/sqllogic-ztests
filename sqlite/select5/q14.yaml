@@ -1,0 +1,27 @@
+script: |
+  super -f text -I q14.spq | tr '\t' '\n' | sort > q14.out
+
+inputs:
+  - name: q14.spq
+    data: |
+      SELECT x51,x30,x21,x20,x11
+      FROM t30 (FORMAT parquet), t20 (FORMAT parquet), t51 (FORMAT parquet), t11 (FORMAT parquet), t21 (FORMAT parquet)
+      WHERE a51=3
+      AND a51=b30
+      AND a21=b20
+      AND b21=a11
+      AND b11=a30;
+  - name: t11
+  - name: t20
+  - name: t21
+  - name: t30
+  - name: t51
+
+outputs:
+  - name: q14.out
+    data: |
+      table t11 row 5
+      table t20 row 9
+      table t21 row 5
+      table t30 row 4
+      table t51 row 3

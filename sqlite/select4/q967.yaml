@@ -1,0 +1,31 @@
+script: |
+  super -f text -I q967.spq | tr '\t' '\n' | sort > q967.out
+
+inputs:
+  - name: q967.spq
+    data: |
+      SELECT e8 FROM t8 (FORMAT parquet)
+      WHERE (e8=56 AND b8=862 AND 321=c8 AND 312=a8 AND 945=d8)
+      UNION
+      SELECT e2 FROM t2 (FORMAT parquet)
+      WHERE d2 in (790,790,332,19)
+      OR e2 in (463,781,307,554,953,936,721,151);
+  - name: t2
+  - name: t8
+
+outputs:
+  - name: q967.out
+    data: |
+      118
+      148
+      151
+      307
+      445
+      463
+      554
+      56
+      707
+      721
+      781
+      936
+      953

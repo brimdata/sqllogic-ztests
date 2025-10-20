@@ -1,0 +1,21 @@
+script: |
+  super -f text -I q2448.spq | sort > q2448.out
+
+inputs:
+  - name: q2448.spq
+    data: |
+      SELECT x2, e7+896, b4, a1+359
+      FROM t4 (FORMAT parquet), t1 (FORMAT parquet), t2 (FORMAT parquet), t7 (FORMAT parquet)
+      WHERE c2=251
+      AND 395=a1
+      AND b4=e1
+      AND e7=971;
+  - name: t1
+  - name: t2
+  - name: t4
+  - name: t7
+
+outputs:
+  - name: q2448.out
+    data: |
+      table tn2 row 9	1867	442	754

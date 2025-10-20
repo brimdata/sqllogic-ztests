@@ -1,0 +1,46 @@
+script: |
+  super -f text -I q91.spq | tr '\t' '\n' | sort > q91.out
+
+inputs:
+  - name: q91.spq
+    data: |
+      SELECT d4 FROM t4 (FORMAT parquet)
+      WHERE (e4=480)
+      OR e4 in (296,554,381,835,719,273,38)
+      UNION
+      SELECT a1 FROM t1 (FORMAT parquet)
+      WHERE e1 in (56,855,468,96,72,683,158,763,298)
+      OR b1 in (570,879,781,584,447,914,726);
+  - name: t1
+  - name: t4
+
+outputs:
+  - name: q91.out
+    data: |
+      146
+      170
+      237
+      324
+      337
+      409
+      433
+      438
+      442
+      449
+      492
+      574
+      579
+      583
+      584
+      60
+      629
+      637
+      746
+      767
+      781
+      868
+      931
+      953
+      963
+      988
+      992
