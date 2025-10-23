@@ -9,17 +9,32 @@ scripts. They're intended primarily for use as
 
 ## Usage
 
-To run all available tests, inside the top-level directory of your SuperDB
-checkout:
+Checkout this repo as a sibling directory alongside your checkout of the
+[super repo](https://github.com/brimdata/super), e.g.:
 
 ```
-git clone --depth=1 https://github.com/brimdata/sqllogic-ztests
-make TEST=TestSPQ/sqllogic-ztests
+$HOME/sqllogic-ztests
+$HOME/super
+```
+
+Then within the checkout for this repo, do:
+
+```
+make test-sqllogic
+```
+
+That will run all sqllogictests below `ztests/` using the last built binary at
+`dist/super` in your super repo checkout.
+
+You can also run just a single sqllogic ztest, e.g.:
+
+```
+make TEST=TestSPQ/ztests/sqlite/select1/q0
 ```
 
 ## Details
 
-READMEs inside each subdirectory describe the origin of each set of
+READMEs inside each `ztests/` subdirectory describe the origin of each set of
 tests, with subdirectories below those holding the ztest YAML definitions.
 
 As SuperDB does not yet support SQL [DDL](https://en.wikipedia.org/wiki/Data_definition_language),
