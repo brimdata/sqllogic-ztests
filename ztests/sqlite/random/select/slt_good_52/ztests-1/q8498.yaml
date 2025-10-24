@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8498.spq | sort > q8498.out
+
+inputs:
+  - name: q8498.spq
+    data: |
+      SELECT ALL * FROM tab0 (FORMAT parquet) cor0 WHERE - col2 IN ( cor0.col0 * + col1 );
+  - name: tab0
+
+outputs:
+  - name: q8498.out
+    data: |

@@ -32,6 +32,18 @@ You can also run just a single sqllogic ztest, e.g.:
 make TEST=TestSPQ/ztests/sqlite/select1/q0
 ```
 
+or groups of ztests by directory, e.g.:
+
+```
+make TEST=TestSPQ/ztests/sqlite/select[1-5]
+```
+
+In fact, that last one may prove handy if you want a quick "smoke test" on a
+super branch, since those ~5000 tests run in just a few minutes and provide a
+decent regression suite. Meanwhile, if you run 100% of the available tests
+you'll also get the 1+ million fuzz-style ztests below `sqlite/random/select/`,
+which do provide wider coverage but also take hours to complete.
+
 ## Details
 
 READMEs inside each `ztests/` subdirectory describe the origin of each set of

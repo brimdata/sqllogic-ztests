@@ -1,0 +1,22 @@
+script: |
+  super -f text -I q368.spq | sort > q368.out
+
+inputs:
+  - name: q368.spq
+    data: |
+      SELECT ALL + 10 * - tab1.col2 AS col0 FROM tab1 (FORMAT parquet), tab2 (FORMAT parquet) AS cor0;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q368.out
+    data: |
+      -540
+      -540
+      -540
+      -570
+      -570
+      -570
+      -960
+      -960
+      -960

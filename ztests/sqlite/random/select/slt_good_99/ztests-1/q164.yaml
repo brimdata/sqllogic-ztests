@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q164.spq | sort > q164.out
+
+inputs:
+  - name: q164.spq
+    data: |
+      SELECT + col1 + tab1.col0 / col0 AS col0 FROM tab1 (FORMAT parquet) WHERE col1 * col1 NOT BETWEEN NULL AND + col2;
+  - name: tab1
+
+outputs:
+  - name: q164.out
+    data: |
+      11
+      14
+      27

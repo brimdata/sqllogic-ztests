@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q6720.spq | sort > q6720.out
+
+inputs:
+  - name: q6720.spq
+    data: |
+      SELECT DISTINCT col1 / - tab1.col1 AS col2 FROM tab1 (FORMAT parquet) WHERE NOT ( col2 - - col1 ) NOT BETWEEN NULL AND - col2;
+  - name: tab1
+
+outputs:
+  - name: q6720.out
+    data: |

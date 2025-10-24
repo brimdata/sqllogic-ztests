@@ -1,0 +1,17 @@
+script: |
+  super -f text -I q147.spq | sort > q147.out
+
+inputs:
+  - name: q147.spq
+    data: |
+      SELECT DISTINCT + cor1.col1 * - 97 AS col0 FROM tab2 (FORMAT parquet) AS cor0 CROSS JOIN tab1 (FORMAT parquet), tab1 (FORMAT parquet) AS cor1, tab0 (FORMAT parquet), tab1 (FORMAT parquet) AS cor2;
+  - name: tab0
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q147.out
+    data: |
+      -1261
+      -2522
+      -970

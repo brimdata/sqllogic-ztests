@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q3347.spq | sort > q3347.out
+
+inputs:
+  - name: q3347.spq
+    data: |
+      SELECT ALL + col0 FROM tab0 (FORMAT parquet) WHERE ( tab0.col1 ) <> col2;
+  - name: tab0
+
+outputs:
+  - name: q3347.out
+    data: |
+      24
+      35
+      89

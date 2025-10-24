@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q372.spq | sort > q372.out
+
+inputs:
+  - name: q372.spq
+    data: |
+      SELECT - col1 - + col1 / - tab0.col0 AS col0 FROM tab0 (FORMAT parquet) WHERE NULL BETWEEN ( col0 * col0 ) AND ( NULL ) AND NOT NULL NOT BETWEEN NULL AND NULL;
+  - name: tab0
+
+outputs:
+  - name: q372.out
+    data: |

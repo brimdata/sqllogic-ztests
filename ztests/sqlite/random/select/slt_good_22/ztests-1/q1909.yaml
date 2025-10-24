@@ -1,0 +1,16 @@
+script: |
+  super -f text -I q1909.spq | sort > q1909.out
+
+inputs:
+  - name: q1909.spq
+    data: |
+      SELECT DISTINCT - tab1.col0 AS col0 FROM tab1 (FORMAT parquet), tab0 (FORMAT parquet), tab0 (FORMAT parquet) AS cor0;
+  - name: tab0
+  - name: tab1
+
+outputs:
+  - name: q1909.out
+    data: |
+      -3
+      -64
+      -80

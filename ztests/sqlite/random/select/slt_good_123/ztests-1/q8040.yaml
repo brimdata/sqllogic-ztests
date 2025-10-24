@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8040.spq | sort > q8040.out
+
+inputs:
+  - name: q8040.spq
+    data: |
+      SELECT ALL col0 AS col1 FROM tab0 (FORMAT parquet) WHERE NOT ( - col1 ) > col0 AND NOT - col0 + col0 - col1 NOT BETWEEN NULL AND + col1;
+  - name: tab0
+
+outputs:
+  - name: q8040.out
+    data: |

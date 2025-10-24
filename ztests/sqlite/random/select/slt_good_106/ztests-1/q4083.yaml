@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q4083.spq | sort > q4083.out
+
+inputs:
+  - name: q4083.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE col0 * tab0.col0 >= + col0 + - col1 / col1;
+  - name: tab0
+
+outputs:
+  - name: q4083.out
+    data: |
+      24	86	33
+      35	97	1
+      89	91	82

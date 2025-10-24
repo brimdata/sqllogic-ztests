@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q4971.spq | sort > q4971.out
+
+inputs:
+  - name: q4971.spq
+    data: |
+      SELECT ALL ( + 40 + col0 ) * 7 AS col1 FROM tab1 (FORMAT parquet);
+  - name: tab1
+
+outputs:
+  - name: q4971.out
+    data: |
+      301
+      728
+      840

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q324.spq | sort > q324.out
+
+inputs:
+  - name: q324.spq
+    data: |
+      SELECT DISTINCT + col2 / ( ( - col0 ) * 4 ) + col0 AS col0 FROM tab1 (FORMAT parquet) AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q324.out
+    data: |
+      -1
+      64
+      80

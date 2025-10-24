@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q4092.spq | sort > q4092.out
+
+inputs:
+  - name: q4092.spq
+    data: |
+      SELECT DISTINCT + col2 + + col1 / tab1.col2 + 8 * col2 AS col1 FROM tab1 (FORMAT parquet);
+  - name: tab1
+
+outputs:
+  - name: q4092.out
+    data: |
+      486
+      513
+      864

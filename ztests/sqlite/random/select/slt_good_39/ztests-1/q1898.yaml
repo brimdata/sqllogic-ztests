@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q1898.spq | sort > q1898.out
+
+inputs:
+  - name: q1898.spq
+    data: |
+      SELECT DISTINCT * FROM tab1 (FORMAT parquet) WHERE ( col2 ) >= ( col0 * - col1 - col2 * col2 );
+  - name: tab1
+
+outputs:
+  - name: q1898.out
+    data: |
+      3	26	54
+      64	10	57
+      80	13	96

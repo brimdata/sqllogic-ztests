@@ -1,0 +1,22 @@
+script: |
+  super -f text -I q8871.spq | sort > q8871.out
+
+inputs:
+  - name: q8871.spq
+    data: |
+      SELECT - cor0.col0 * - 10 AS col0 FROM tab0 (FORMAT parquet), tab2 (FORMAT parquet) AS cor0;
+  - name: tab0
+  - name: tab2
+
+outputs:
+  - name: q8871.out
+    data: |
+      70
+      70
+      70
+      780
+      780
+      780
+      790
+      790
+      790

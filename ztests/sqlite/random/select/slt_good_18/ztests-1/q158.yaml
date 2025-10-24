@@ -1,0 +1,22 @@
+script: |
+  super -f text -I q158.spq | sort > q158.out
+
+inputs:
+  - name: q158.spq
+    data: |
+      SELECT - cor0.col1 + - tab1.col1 AS col2 FROM tab1 (FORMAT parquet), tab2 (FORMAT parquet) AS cor0;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q158.out
+    data: |
+      -27
+      -30
+      -41
+      -43
+      -44
+      -57
+      -69
+      -72
+      -85

@@ -1,0 +1,22 @@
+script: |
+  super -f text -I q7001.spq | sort > q7001.out
+
+inputs:
+  - name: q7001.spq
+    data: |
+      SELECT - + cor0.col1 * 12 AS col0 FROM tab2 (FORMAT parquet) AS cor0 CROSS JOIN tab0 (FORMAT parquet) AS cor1;
+  - name: tab0
+  - name: tab2
+
+outputs:
+  - name: q7001.out
+    data: |
+      -204
+      -204
+      -204
+      -372
+      -372
+      -372
+      -708
+      -708
+      -708

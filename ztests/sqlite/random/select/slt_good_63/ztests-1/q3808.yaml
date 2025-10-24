@@ -1,0 +1,16 @@
+script: |
+  super -f text -I q3808.spq | sort > q3808.out
+
+inputs:
+  - name: q3808.spq
+    data: |
+      SELECT DISTINCT + 61 * - cor0.col2 FROM tab1 (FORMAT parquet), tab0 (FORMAT parquet) AS cor0;
+  - name: tab0
+  - name: tab1
+
+outputs:
+  - name: q3808.out
+    data: |
+      -2013
+      -5002
+      -61

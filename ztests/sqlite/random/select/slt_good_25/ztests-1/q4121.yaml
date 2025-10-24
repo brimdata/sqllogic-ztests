@@ -1,0 +1,23 @@
+script: |
+  super -f text -I q4121.spq | sort > q4121.out
+
+inputs:
+  - name: q4121.spq
+    data: |
+      SELECT DISTINCT - tab1.col1 * tab1.col2 * cor0.col1 FROM tab1 (FORMAT parquet), tab0 (FORMAT parquet), tab2 (FORMAT parquet) cor0;
+  - name: tab0
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q4121.out
+    data: |
+      -17670
+      -21216
+      -23868
+      -33630
+      -38688
+      -43524
+      -73632
+      -82836
+      -9690

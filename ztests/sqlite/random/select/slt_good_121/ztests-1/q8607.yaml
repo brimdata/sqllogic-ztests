@@ -1,0 +1,22 @@
+script: |
+  super -f text -I q8607.spq | sort > q8607.out
+
+inputs:
+  - name: q8607.spq
+    data: |
+      SELECT ALL tab1.col0 - tab1.col1 FROM tab1 (FORMAT parquet), tab2 (FORMAT parquet) AS cor0;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q8607.out
+    data: |
+      -23
+      -23
+      -23
+      54
+      54
+      54
+      67
+      67
+      67

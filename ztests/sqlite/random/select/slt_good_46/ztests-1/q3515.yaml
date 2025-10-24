@@ -1,0 +1,21 @@
+script: |
+  super -f text -I q3515.spq | sort > q3515.out
+
+inputs:
+  - name: q3515.spq
+    data: |
+      SELECT cor0.col1 * + 36 * cor0.col0 FROM tab0 (FORMAT parquet) AS cor0 CROSS JOIN tab0 (FORMAT parquet) cor1;
+  - name: tab0
+
+outputs:
+  - name: q3515.out
+    data: |
+      122220
+      122220
+      122220
+      291564
+      291564
+      291564
+      74304
+      74304
+      74304

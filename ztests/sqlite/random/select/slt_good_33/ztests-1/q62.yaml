@@ -1,0 +1,22 @@
+script: |
+  super -f text -I q62.spq | sort > q62.out
+
+inputs:
+  - name: q62.spq
+    data: |
+      SELECT ALL cor0.col2 * ( - 39 ) AS col0 FROM tab2 (FORMAT parquet), tab1 (FORMAT parquet) cor0;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q62.out
+    data: |
+      -2106
+      -2106
+      -2106
+      -2223
+      -2223
+      -2223
+      -3744
+      -3744
+      -3744

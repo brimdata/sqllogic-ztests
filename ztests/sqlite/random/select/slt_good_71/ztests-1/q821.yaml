@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q821.spq | sort > q821.out
+
+inputs:
+  - name: q821.spq
+    data: |
+      SELECT ALL * FROM tab0 (FORMAT parquet) AS cor0 WHERE - col2 IN ( - col2 );
+  - name: tab0
+
+outputs:
+  - name: q821.out
+    data: |
+      24	86	33
+      35	97	1
+      89	91	82

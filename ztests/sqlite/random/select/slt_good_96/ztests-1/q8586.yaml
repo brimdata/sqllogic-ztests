@@ -1,0 +1,22 @@
+script: |
+  super -f text -I q8586.spq | sort > q8586.out
+
+inputs:
+  - name: q8586.spq
+    data: |
+      SELECT ALL cor0.col2 * cor0.col2 * + 14 AS col0 FROM tab0 (FORMAT parquet), tab1 (FORMAT parquet) AS cor0;
+  - name: tab0
+  - name: tab1
+
+outputs:
+  - name: q8586.out
+    data: |
+      129024
+      129024
+      129024
+      40824
+      40824
+      40824
+      45486
+      45486
+      45486

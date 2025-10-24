@@ -1,0 +1,22 @@
+script: |
+  super -f text -I q601.spq | sort > q601.out
+
+inputs:
+  - name: q601.spq
+    data: |
+      SELECT cor0.col2 * ( 23 ) AS col2 FROM tab0 (FORMAT parquet), tab1 (FORMAT parquet) AS cor0;
+  - name: tab0
+  - name: tab1
+
+outputs:
+  - name: q601.out
+    data: |
+      1242
+      1242
+      1242
+      1311
+      1311
+      1311
+      2208
+      2208
+      2208

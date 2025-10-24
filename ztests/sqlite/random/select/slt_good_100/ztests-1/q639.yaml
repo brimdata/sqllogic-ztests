@@ -1,0 +1,21 @@
+script: |
+  super -f text -I q639.spq | sort > q639.out
+
+inputs:
+  - name: q639.spq
+    data: |
+      SELECT ALL + tab2.col1 * 55 AS col2 FROM tab2 (FORMAT parquet), tab2 (FORMAT parquet) AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q639.out
+    data: |
+      1705
+      1705
+      1705
+      3245
+      3245
+      3245
+      935
+      935
+      935

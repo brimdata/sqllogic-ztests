@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q9965.spq | sort > q9965.out
+
+inputs:
+  - name: q9965.spq
+    data: |
+      SELECT ALL * FROM tab1 (FORMAT parquet) WHERE ( + col2 / - col2 ) IN ( tab1.col1 );
+  - name: tab1
+
+outputs:
+  - name: q9965.out
+    data: |

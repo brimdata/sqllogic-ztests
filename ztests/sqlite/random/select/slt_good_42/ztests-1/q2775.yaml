@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q2775.spq | sort > q2775.out
+
+inputs:
+  - name: q2775.spq
+    data: |
+      SELECT DISTINCT * FROM tab1 (FORMAT parquet) AS cor0 WHERE col0 BETWEEN NULL AND NULL OR - col0 <> - col1;
+  - name: tab1
+
+outputs:
+  - name: q2775.out
+    data: |
+      3	26	54
+      64	10	57
+      80	13	96

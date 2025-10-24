@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q800.spq | sort > q800.out
+
+inputs:
+  - name: q800.spq
+    data: |
+      SELECT DISTINCT - 50 AS col0 FROM tab0 (FORMAT parquet) AS cor0 CROSS JOIN tab1 (FORMAT parquet) AS cor1;
+  - name: tab0
+  - name: tab1
+
+outputs:
+  - name: q800.out
+    data: |
+      -50

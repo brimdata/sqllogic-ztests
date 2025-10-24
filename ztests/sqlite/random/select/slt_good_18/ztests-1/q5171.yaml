@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q5171.spq | sort > q5171.out
+
+inputs:
+  - name: q5171.spq
+    data: |
+      SELECT ALL col2 / - tab1.col1 - col2 FROM tab1 (FORMAT parquet) WHERE col1 * - col1 BETWEEN NULL AND + col1 + - col1 / + col2 + col1 * col2;
+  - name: tab1
+
+outputs:
+  - name: q5171.out
+    data: |

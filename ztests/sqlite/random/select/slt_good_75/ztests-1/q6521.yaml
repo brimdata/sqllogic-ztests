@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q6521.spq | sort > q6521.out
+
+inputs:
+  - name: q6521.spq
+    data: |
+      SELECT DISTINCT + - 89 AS col2 FROM tab1 (FORMAT parquet) AS cor0 CROSS JOIN tab1 (FORMAT parquet), tab1 (FORMAT parquet) AS cor1;
+  - name: tab1
+
+outputs:
+  - name: q6521.out
+    data: |
+      -89

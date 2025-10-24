@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q7012.spq | sort > q7012.out
+
+inputs:
+  - name: q7012.spq
+    data: |
+      SELECT ALL col0 / - 15 + + col2 AS col2 FROM tab2 (FORMAT parquet) AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q7012.out
+    data: |
+      21
+      27
+      33

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q1030.spq | sort > q1030.out
+
+inputs:
+  - name: q1030.spq
+    data: |
+      SELECT - 80 * - col1 * + col1 - + col2 / - col1 FROM tab1 (FORMAT parquet) AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q1030.out
+    data: |
+      13527
+      54082
+      8005

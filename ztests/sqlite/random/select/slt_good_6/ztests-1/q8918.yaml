@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8918.spq | sort > q8918.out
+
+inputs:
+  - name: q8918.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE - col0 NOT BETWEEN col0 AND col0 * + col1 + col1;
+  - name: tab0
+
+outputs:
+  - name: q8918.out
+    data: |
+      24	86	33
+      35	97	1
+      89	91	82

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q9001.spq | sort > q9001.out
+
+inputs:
+  - name: q9001.spq
+    data: |
+      SELECT col1 / - col0 + + col1 * + 15 * col2 AS col0 FROM tab0 (FORMAT parquet) AS cor0;
+  - name: tab0
+
+outputs:
+  - name: q9001.out
+    data: |
+      111929
+      1453
+      42567

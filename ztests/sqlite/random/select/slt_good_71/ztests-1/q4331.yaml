@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q4331.spq | sort > q4331.out
+
+inputs:
+  - name: q4331.spq
+    data: |
+      SELECT DISTINCT 40 - + 33 FROM tab0 (FORMAT parquet), tab2 (FORMAT parquet) AS cor0, tab1 (FORMAT parquet) AS cor1;
+  - name: tab0
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q4331.out
+    data: |
+      7

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8040.spq | sort > q8040.out
+
+inputs:
+  - name: q8040.spq
+    data: |
+      SELECT col0 + tab2.col1 * - col2 * 34 AS col1 FROM tab2 (FORMAT parquet);
+  - name: tab2
+
+outputs:
+  - name: q8040.out
+    data: |
+      -21885
+      -28451
+      -52078

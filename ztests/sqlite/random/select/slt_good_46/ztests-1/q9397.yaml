@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q9397.spq | sort > q9397.out
+
+inputs:
+  - name: q9397.spq
+    data: |
+      SELECT ALL * FROM tab1 (FORMAT parquet), tab2 (FORMAT parquet), tab2 (FORMAT parquet) AS cor0 WHERE + tab2.col2 BETWEEN ( tab1.col0 ) AND NULL;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q9397.out
+    data: |

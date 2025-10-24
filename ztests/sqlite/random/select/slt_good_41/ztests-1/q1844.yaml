@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q1844.spq | sort > q1844.out
+
+inputs:
+  - name: q1844.spq
+    data: |
+      SELECT ALL 3 * cor0.col0 + col1 AS col1 FROM tab1 (FORMAT parquet) AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q1844.out
+    data: |
+      202
+      253
+      35

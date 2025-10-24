@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q6750.spq | sort > q6750.out
+
+inputs:
+  - name: q6750.spq
+    data: |
+      SELECT col2 FROM tab1 (FORMAT parquet) AS cor0 WHERE NOT - col0 * col0 NOT BETWEEN ( col1 ) AND cor0.col2;
+  - name: tab1
+
+outputs:
+  - name: q6750.out
+    data: |

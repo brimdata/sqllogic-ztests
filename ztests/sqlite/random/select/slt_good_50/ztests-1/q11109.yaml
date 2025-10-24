@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q11109.spq | sort > q11109.out
+
+inputs:
+  - name: q11109.spq
+    data: |
+      SELECT DISTINCT + 36 AS col0 FROM tab0 (FORMAT parquet), tab1 (FORMAT parquet) AS cor0, tab0 (FORMAT parquet) cor1;
+  - name: tab0
+  - name: tab1
+
+outputs:
+  - name: q11109.out
+    data: |
+      36

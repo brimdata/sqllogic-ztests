@@ -1,0 +1,17 @@
+script: |
+  super -f text -I q1217.spq | sort > q1217.out
+
+inputs:
+  - name: q1217.spq
+    data: |
+      SELECT DISTINCT cor1.col1 AS col2 FROM tab0 (FORMAT parquet), tab1 (FORMAT parquet), tab2 (FORMAT parquet) AS cor0, tab0 (FORMAT parquet) AS cor1;
+  - name: tab0
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q1217.out
+    data: |
+      86
+      91
+      97

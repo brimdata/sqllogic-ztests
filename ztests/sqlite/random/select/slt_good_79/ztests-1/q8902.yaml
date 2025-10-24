@@ -1,0 +1,21 @@
+script: |
+  super -f text -I q8902.spq | sort > q8902.out
+
+inputs:
+  - name: q8902.spq
+    data: |
+      SELECT - 11 * - cor0.col1 FROM tab1 (FORMAT parquet), tab1 (FORMAT parquet) cor0;
+  - name: tab1
+
+outputs:
+  - name: q8902.out
+    data: |
+      110
+      110
+      110
+      143
+      143
+      143
+      286
+      286
+      286

@@ -1,0 +1,16 @@
+script: |
+  super -f text -I q2961.spq | sort > q2961.out
+
+inputs:
+  - name: q2961.spq
+    data: |
+      SELECT DISTINCT + 43 + + cor0.col1 * 33 FROM tab2 (FORMAT parquet), tab0 (FORMAT parquet) AS cor0;
+  - name: tab0
+  - name: tab2
+
+outputs:
+  - name: q2961.out
+    data: |
+      2881
+      3046
+      3244

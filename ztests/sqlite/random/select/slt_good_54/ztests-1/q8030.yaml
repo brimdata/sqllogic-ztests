@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8030.spq | sort > q8030.out
+
+inputs:
+  - name: q8030.spq
+    data: |
+      SELECT - col1 + ( 3 + col1 ) * + 36 FROM tab2 (FORMAT parquet);
+  - name: tab2
+
+outputs:
+  - name: q8030.out
+    data: |
+      1193
+      2173
+      703

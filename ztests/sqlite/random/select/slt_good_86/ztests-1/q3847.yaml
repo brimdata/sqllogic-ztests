@@ -1,0 +1,22 @@
+script: |
+  super -f text -I q3847.spq | sort > q3847.out
+
+inputs:
+  - name: q3847.spq
+    data: |
+      SELECT - cor0.col0 * 50 * cor0.col0 - 23 AS col0 FROM tab1 (FORMAT parquet), tab0 (FORMAT parquet) AS cor0;
+  - name: tab0
+  - name: tab1
+
+outputs:
+  - name: q3847.out
+    data: |
+      -28823
+      -28823
+      -28823
+      -396073
+      -396073
+      -396073
+      -61273
+      -61273
+      -61273

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8723.spq | sort > q8723.out
+
+inputs:
+  - name: q8723.spq
+    data: |
+      SELECT + col2 FROM tab2 (FORMAT parquet) WHERE ( col1 ) IN ( + col1 );
+  - name: tab2
+
+outputs:
+  - name: q8723.out
+    data: |
+      26
+      27
+      38

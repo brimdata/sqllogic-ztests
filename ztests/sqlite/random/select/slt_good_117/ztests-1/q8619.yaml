@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8619.spq | sort > q8619.out
+
+inputs:
+  - name: q8619.spq
+    data: |
+      SELECT ALL - 47 * col1 + col1 * - col1 / tab0.col1 AS col2 FROM tab0 (FORMAT parquet);
+  - name: tab0
+
+outputs:
+  - name: q8619.out
+    data: |
+      -4128
+      -4368
+      -4656

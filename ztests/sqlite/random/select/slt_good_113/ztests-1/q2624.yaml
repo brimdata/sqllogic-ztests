@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q2624.spq | sort > q2624.out
+
+inputs:
+  - name: q2624.spq
+    data: |
+      SELECT ALL * FROM tab2 (FORMAT parquet) WHERE NOT col2 NOT IN ( tab2.col2 / + col1 );
+  - name: tab2
+
+outputs:
+  - name: q2624.out
+    data: |

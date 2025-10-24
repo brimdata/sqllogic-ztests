@@ -1,0 +1,22 @@
+script: |
+  super -f text -I q2315.spq | sort > q2315.out
+
+inputs:
+  - name: q2315.spq
+    data: |
+      SELECT ALL tab0.col2 * + 34 AS col0 FROM tab0 (FORMAT parquet), tab2 (FORMAT parquet) AS cor0;
+  - name: tab0
+  - name: tab2
+
+outputs:
+  - name: q2315.out
+    data: |
+      1122
+      1122
+      1122
+      2788
+      2788
+      2788
+      34
+      34
+      34

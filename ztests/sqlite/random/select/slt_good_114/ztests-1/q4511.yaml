@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q4511.spq | sort > q4511.out
+
+inputs:
+  - name: q4511.spq
+    data: |
+      SELECT DISTINCT col1 AS col0 FROM tab1 (FORMAT parquet) WHERE col0 BETWEEN ( col1 ) AND col0 / col1;
+  - name: tab1
+
+outputs:
+  - name: q4511.out
+    data: |

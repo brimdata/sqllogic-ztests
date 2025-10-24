@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q10979.spq | sort > q10979.out
+
+inputs:
+  - name: q10979.spq
+    data: |
+      SELECT DISTINCT + 98 * col1 + 15 AS col0 FROM tab0 (FORMAT parquet) AS cor0;
+  - name: tab0
+
+outputs:
+  - name: q10979.out
+    data: |
+      8443
+      8933
+      9521

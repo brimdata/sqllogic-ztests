@@ -1,0 +1,21 @@
+script: |
+  super -f text -I q9643.spq | sort > q9643.out
+
+inputs:
+  - name: q9643.spq
+    data: |
+      SELECT cor0.col0 * - 27 + 98 FROM tab1 (FORMAT parquet), tab1 (FORMAT parquet) AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q9643.out
+    data: |
+      -1630
+      -1630
+      -1630
+      -2062
+      -2062
+      -2062
+      17
+      17
+      17

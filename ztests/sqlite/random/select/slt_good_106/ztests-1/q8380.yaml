@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8380.spq | sort > q8380.out
+
+inputs:
+  - name: q8380.spq
+    data: |
+      SELECT ALL - 1 + + tab1.col1 AS col2 FROM tab1 (FORMAT parquet);
+  - name: tab1
+
+outputs:
+  - name: q8380.out
+    data: |
+      12
+      25
+      9

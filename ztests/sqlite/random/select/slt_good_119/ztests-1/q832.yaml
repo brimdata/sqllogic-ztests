@@ -1,0 +1,21 @@
+script: |
+  super -f text -I q832.spq | sort > q832.out
+
+inputs:
+  - name: q832.spq
+    data: |
+      SELECT ALL + + 60 * cor0.col1 + cor0.col0 FROM tab1 (FORMAT parquet), tab1 (FORMAT parquet) AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q832.out
+    data: |
+      1563
+      1563
+      1563
+      664
+      664
+      664
+      860
+      860
+      860

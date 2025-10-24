@@ -1,0 +1,22 @@
+script: |
+  super -f text -I q5283.spq | sort > q5283.out
+
+inputs:
+  - name: q5283.spq
+    data: |
+      SELECT ALL + 43 - cor1.col0 AS col1 FROM tab2 (FORMAT parquet) cor0 CROSS JOIN tab1 (FORMAT parquet) AS cor1;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q5283.out
+    data: |
+      -21
+      -21
+      -21
+      -37
+      -37
+      -37
+      40
+      40
+      40

@@ -1,0 +1,21 @@
+script: |
+  super -f text -I q7426.spq | sort > q7426.out
+
+inputs:
+  - name: q7426.spq
+    data: |
+      SELECT ALL 3 * + tab1.col0 AS col1 FROM tab1 (FORMAT parquet), tab1 (FORMAT parquet) AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q7426.out
+    data: |
+      192
+      192
+      192
+      240
+      240
+      240
+      9
+      9
+      9

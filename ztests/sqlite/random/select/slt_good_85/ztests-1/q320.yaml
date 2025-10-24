@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q320.spq | sort > q320.out
+
+inputs:
+  - name: q320.spq
+    data: |
+      SELECT ALL col2 - - 34 / + ( col0 + col2 ) FROM tab1 (FORMAT parquet);
+  - name: tab1
+
+outputs:
+  - name: q320.out
+    data: |
+      54
+      57
+      96

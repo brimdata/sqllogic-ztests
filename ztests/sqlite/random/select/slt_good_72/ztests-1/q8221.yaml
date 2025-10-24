@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8221.spq | sort > q8221.out
+
+inputs:
+  - name: q8221.spq
+    data: |
+      SELECT ALL + col1 * + col0 FROM tab0 (FORMAT parquet) WHERE NULL IN ( col1 );
+  - name: tab0
+
+outputs:
+  - name: q8221.out
+    data: |

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q265.spq | sort > q265.out
+
+inputs:
+  - name: q265.spq
+    data: |
+      SELECT DISTINCT + col1 / + tab1.col0 + + ( tab1.col0 ) * col1 AS col0 FROM tab1 (FORMAT parquet);
+  - name: tab1
+
+outputs:
+  - name: q265.out
+    data: |
+      1040
+      640
+      86

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q9084.spq | sort > q9084.out
+
+inputs:
+  - name: q9084.spq
+    data: |
+      SELECT col1 + + ( col2 + + col2 * col1 ) AS col0 FROM tab0 (FORMAT parquet);
+  - name: tab0
+
+outputs:
+  - name: q9084.out
+    data: |
+      195
+      2957
+      7635

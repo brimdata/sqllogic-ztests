@@ -1,0 +1,22 @@
+script: |
+  super -f text -I q8232.spq | sort > q8232.out
+
+inputs:
+  - name: q8232.spq
+    data: |
+      SELECT 34 * tab2.col0 - - cor0.col1 FROM tab2 (FORMAT parquet), tab1 (FORMAT parquet) cor0;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q8232.out
+    data: |
+      248
+      251
+      264
+      2662
+      2665
+      2678
+      2696
+      2699
+      2712

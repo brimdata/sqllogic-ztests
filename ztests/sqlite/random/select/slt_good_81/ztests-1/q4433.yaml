@@ -1,0 +1,17 @@
+script: |
+  super -f text -I q4433.spq | sort > q4433.out
+
+inputs:
+  - name: q4433.spq
+    data: |
+      SELECT DISTINCT + 69 * + cor0.col1 FROM tab1 (FORMAT parquet), tab0 (FORMAT parquet) AS cor0 CROSS JOIN tab2 (FORMAT parquet);
+  - name: tab0
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q4433.out
+    data: |
+      5934
+      6279
+      6693

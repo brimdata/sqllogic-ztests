@@ -5,7 +5,7 @@ test-one: test-run
 endif
 
 test-sqllogic:
-	@ZTEST_PATH="$(CURDIR)/../super/dist" go test -v -count=1 .
+	@ZTEST_PATH="$(CURDIR)/../super/dist" go test -v -timeout 6h -count=1 .
 
 test-run:
-	@ZTEST_PATH="$(CURDIR)/../super/dist" go test . -v -count=1 -run $(TEST)
+	@ZTEST_PATH="$(CURDIR)/../super/dist" go test . -v -timeout 6h -count=1 -run $(TEST)

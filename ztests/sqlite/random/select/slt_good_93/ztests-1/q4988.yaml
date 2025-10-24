@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q4988.spq | sort > q4988.out
+
+inputs:
+  - name: q4988.spq
+    data: |
+      SELECT ALL * FROM tab2 (FORMAT parquet) WHERE + col0 BETWEEN ( + col0 ) AND ( col1 );
+  - name: tab2
+
+outputs:
+  - name: q4988.out
+    data: |
+      7	31	27

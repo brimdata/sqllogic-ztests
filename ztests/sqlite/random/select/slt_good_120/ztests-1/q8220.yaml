@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8220.spq | sort > q8220.out
+
+inputs:
+  - name: q8220.spq
+    data: |
+      SELECT + 24 * - col1 * + col1 AS col0 FROM tab1 (FORMAT parquet) AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q8220.out
+    data: |
+      -16224
+      -2400
+      -4056

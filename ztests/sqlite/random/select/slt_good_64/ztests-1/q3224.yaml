@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q3224.spq | sort > q3224.out
+
+inputs:
+  - name: q3224.spq
+    data: |
+      SELECT DISTINCT - col1 * ( 15 + col1 * 43 ) FROM tab1 (FORMAT parquet);
+  - name: tab1
+
+outputs:
+  - name: q3224.out
+    data: |
+      -29458
+      -4450
+      -7462

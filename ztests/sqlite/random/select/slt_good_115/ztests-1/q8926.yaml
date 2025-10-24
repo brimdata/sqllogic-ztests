@@ -1,0 +1,22 @@
+script: |
+  super -f text -I q8926.spq | sort > q8926.out
+
+inputs:
+  - name: q8926.spq
+    data: |
+      SELECT - cor0.col1 * 90 / + cor0.col0 FROM tab1 (FORMAT parquet), tab2 (FORMAT parquet) AS cor0;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q8926.out
+    data: |
+      -19
+      -19
+      -19
+      -398
+      -398
+      -398
+      -68
+      -68
+      -68

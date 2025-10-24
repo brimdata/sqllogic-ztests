@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q405.spq | sort > q405.out
+
+inputs:
+  - name: q405.spq
+    data: |
+      SELECT - col0 FROM tab1 (FORMAT parquet) AS cor0 WHERE NOT col2 * col2 BETWEEN ( + col0 / col1 ) AND ( cor0.col1 );
+  - name: tab1
+
+outputs:
+  - name: q405.out
+    data: |
+      -3
+      -64
+      -80

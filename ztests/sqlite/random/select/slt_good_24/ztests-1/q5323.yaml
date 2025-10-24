@@ -1,0 +1,22 @@
+script: |
+  super -f text -I q5323.spq | sort > q5323.out
+
+inputs:
+  - name: q5323.spq
+    data: |
+      SELECT ALL 10 * 84 * - tab1.col2 AS col1 FROM tab1 (FORMAT parquet), tab2 (FORMAT parquet) cor0;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q5323.out
+    data: |
+      -45360
+      -45360
+      -45360
+      -47880
+      -47880
+      -47880
+      -80640
+      -80640
+      -80640

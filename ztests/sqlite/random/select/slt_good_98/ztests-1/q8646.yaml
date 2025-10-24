@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8646.spq | sort > q8646.out
+
+inputs:
+  - name: q8646.spq
+    data: |
+      SELECT 12 * + ( - col1 * + 80 ) FROM tab1 (FORMAT parquet);
+  - name: tab1
+
+outputs:
+  - name: q8646.out
+    data: |
+      -12480
+      -24960
+      -9600

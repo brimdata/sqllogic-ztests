@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q9016.spq | sort > q9016.out
+
+inputs:
+  - name: q9016.spq
+    data: |
+      SELECT + col2 + col1 * + tab2.col0 FROM tab2 (FORMAT parquet) WHERE NOT ( + col1 ) >= col0;
+  - name: tab2
+
+outputs:
+  - name: q9016.out
+    data: |
+      1381
+      4628

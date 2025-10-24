@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q2078.spq | sort > q2078.out
+
+inputs:
+  - name: q2078.spq
+    data: |
+      SELECT DISTINCT 30 + col1 AS col1 FROM tab1 (FORMAT parquet);
+  - name: tab1
+
+outputs:
+  - name: q2078.out
+    data: |
+      40
+      43
+      56

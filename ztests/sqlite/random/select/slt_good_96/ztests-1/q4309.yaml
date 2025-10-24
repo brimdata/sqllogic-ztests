@@ -1,0 +1,22 @@
+script: |
+  super -f text -I q4309.spq | sort > q4309.out
+
+inputs:
+  - name: q4309.spq
+    data: |
+      SELECT cor0.col1 * tab1.col2 AS col2 FROM tab1 (FORMAT parquet), tab2 (FORMAT parquet) AS cor0;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q4309.out
+    data: |
+      1632
+      1674
+      1767
+      2976
+      3186
+      3363
+      5664
+      918
+      969

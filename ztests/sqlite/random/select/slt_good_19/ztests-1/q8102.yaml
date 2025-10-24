@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q8102.spq | sort > q8102.out
+
+inputs:
+  - name: q8102.spq
+    data: |
+      SELECT DISTINCT - col2 + - col0 / col1 FROM tab2 (FORMAT parquet) cor0;
+  - name: tab2
+
+outputs:
+  - name: q8102.out
+    data: |
+      -27
+      -42

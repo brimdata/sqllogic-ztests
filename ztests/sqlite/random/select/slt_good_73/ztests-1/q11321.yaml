@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q11321.spq | sort > q11321.out
+
+inputs:
+  - name: q11321.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet), tab0 (FORMAT parquet) AS cor0, tab0 (FORMAT parquet) AS cor1, tab1 (FORMAT parquet), tab0 (FORMAT parquet) AS cor2 WHERE cor1.col2 < NULL;
+  - name: tab0
+  - name: tab1
+
+outputs:
+  - name: q11321.out
+    data: |

@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q8863.spq | sort > q8863.out
+
+inputs:
+  - name: q8863.spq
+    data: |
+      SELECT DISTINCT + col1 + - col0 + - 34 AS col0 FROM tab0 (FORMAT parquet) AS cor0;
+  - name: tab0
+
+outputs:
+  - name: q8863.out
+    data: |
+      -32
+      28

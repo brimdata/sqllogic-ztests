@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q30.spq | sort > q30.out
+
+inputs:
+  - name: q30.spq
+    data: |
+      SELECT DISTINCT col0 * - ( + 30 + - col1 * 83 ) AS col0 FROM tab0 (FORMAT parquet);
+  - name: tab0
+
+outputs:
+  - name: q30.out
+    data: |
+      170592
+      280735
+      669547

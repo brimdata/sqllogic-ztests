@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q360.spq | sort > q360.out
+
+inputs:
+  - name: q360.spq
+    data: |
+      SELECT ALL - col1 + - 3 FROM tab1 (FORMAT parquet) AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q360.out
+    data: |
+      -13
+      -16
+      -29

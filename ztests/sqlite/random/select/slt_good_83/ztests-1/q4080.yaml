@@ -1,0 +1,17 @@
+script: |
+  super -f text -I q4080.spq | sort > q4080.out
+
+inputs:
+  - name: q4080.spq
+    data: |
+      SELECT DISTINCT cor0.col2 * + cor0.col0 AS col0 FROM tab2 (FORMAT parquet), tab0 (FORMAT parquet) AS cor0, tab1 (FORMAT parquet) AS cor1;
+  - name: tab0
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q4080.out
+    data: |
+      35
+      7298
+      792
