@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q130.spq | sort > q130.out
+
+inputs:
+  - name: q130.spq
+    data: |
+      SELECT ALL + 2 * col2 + col1 * 21 FROM tab1 (FORMAT parquet) AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q130.out
+    data: |
+      324
+      465
+      654

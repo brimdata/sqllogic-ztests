@@ -1,0 +1,22 @@
+script: |
+  super -f text -I q8035.spq | sort > q8035.out
+
+inputs:
+  - name: q8035.spq
+    data: |
+      SELECT ALL tab0.col2 * + 11 AS col2 FROM tab0 (FORMAT parquet), tab1 (FORMAT parquet) AS cor0;
+  - name: tab0
+  - name: tab1
+
+outputs:
+  - name: q8035.out
+    data: |
+      11
+      11
+      11
+      363
+      363
+      363
+      902
+      902
+      902

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q5142.spq | sort > q5142.out
+
+inputs:
+  - name: q5142.spq
+    data: |
+      SELECT DISTINCT - 8 * col1 AS col2 FROM tab2 (FORMAT parquet) AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q5142.out
+    data: |
+      -136
+      -248
+      -472

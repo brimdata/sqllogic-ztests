@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q4670.spq | sort > q4670.out
+
+inputs:
+  - name: q4670.spq
+    data: |
+      SELECT DISTINCT col0 AS col2 FROM tab1 (FORMAT parquet) WHERE col1 / tab1.col1 + col0 / col1 IN ( col0 );
+  - name: tab1
+
+outputs:
+  - name: q4670.out
+    data: |

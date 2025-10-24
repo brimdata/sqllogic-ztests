@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q5200.spq | sort > q5200.out
+
+inputs:
+  - name: q5200.spq
+    data: |
+      SELECT col1 - col2 * col2 AS col1 FROM tab0 (FORMAT parquet);
+  - name: tab0
+
+outputs:
+  - name: q5200.out
+    data: |
+      -1003
+      -6633
+      96

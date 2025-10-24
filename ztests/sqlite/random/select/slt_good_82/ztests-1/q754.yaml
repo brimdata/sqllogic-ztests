@@ -1,0 +1,22 @@
+script: |
+  super -f text -I q754.spq | sort > q754.out
+
+inputs:
+  - name: q754.spq
+    data: |
+      SELECT + 32 * + ( + cor0.col2 * 14 ) FROM tab1 (FORMAT parquet) AS cor0 CROSS JOIN tab0 (FORMAT parquet) AS cor1;
+  - name: tab0
+  - name: tab1
+
+outputs:
+  - name: q754.out
+    data: |
+      24192
+      24192
+      24192
+      25536
+      25536
+      25536
+      43008
+      43008
+      43008

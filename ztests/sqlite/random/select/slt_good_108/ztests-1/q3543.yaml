@@ -1,0 +1,16 @@
+script: |
+  super -f text -I q3543.spq | sort > q3543.out
+
+inputs:
+  - name: q3543.spq
+    data: |
+      SELECT DISTINCT - ( ( - tab2.col2 ) + + 72 ) * 96 AS col0 FROM tab2 (FORMAT parquet), tab1 (FORMAT parquet) AS cor0;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q3543.out
+    data: |
+      -3264
+      -4320
+      -4416

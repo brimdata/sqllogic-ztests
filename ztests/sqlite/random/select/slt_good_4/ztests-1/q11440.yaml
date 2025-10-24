@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q11440.spq | sort > q11440.out
+
+inputs:
+  - name: q11440.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE ( + col1 ) IN ( - col1 );
+  - name: tab0
+
+outputs:
+  - name: q11440.out
+    data: |

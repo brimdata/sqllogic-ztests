@@ -1,0 +1,21 @@
+script: |
+  super -f text -I q8880.spq | sort > q8880.out
+
+inputs:
+  - name: q8880.spq
+    data: |
+      SELECT - tab0.col2 + cor0.col0 * tab0.col1 FROM tab0 (FORMAT parquet), tab0 (FORMAT parquet) AS cor0;
+  - name: tab0
+
+outputs:
+  - name: q8880.out
+    data: |
+      2031
+      2102
+      2327
+      2977
+      3103
+      3394
+      7621
+      8017
+      8632

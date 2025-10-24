@@ -1,0 +1,21 @@
+script: |
+  super -f text -I q784.spq | sort > q784.out
+
+inputs:
+  - name: q784.spq
+    data: |
+      SELECT ALL + 10 * cor0.col2 AS col1 FROM tab2 (FORMAT parquet), tab2 (FORMAT parquet) cor0;
+  - name: tab2
+
+outputs:
+  - name: q784.out
+    data: |
+      260
+      260
+      260
+      270
+      270
+      270
+      380
+      380
+      380

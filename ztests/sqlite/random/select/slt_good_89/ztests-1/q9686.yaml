@@ -1,0 +1,22 @@
+script: |
+  super -f text -I q9686.spq | sort > q9686.out
+
+inputs:
+  - name: q9686.spq
+    data: |
+      SELECT ALL 40 * cor0.col1 FROM tab1 (FORMAT parquet) AS cor0 CROSS JOIN tab0 (FORMAT parquet) AS cor1;
+  - name: tab0
+  - name: tab1
+
+outputs:
+  - name: q9686.out
+    data: |
+      1040
+      1040
+      1040
+      400
+      400
+      400
+      520
+      520
+      520

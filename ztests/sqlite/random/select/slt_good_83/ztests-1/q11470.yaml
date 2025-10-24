@@ -1,0 +1,22 @@
+script: |
+  super -f text -I q11470.spq | sort > q11470.out
+
+inputs:
+  - name: q11470.spq
+    data: |
+      SELECT ( + ( cor0.col0 ) ) * 3 FROM tab2 (FORMAT parquet), tab1 (FORMAT parquet) AS cor0;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q11470.out
+    data: |
+      192
+      192
+      192
+      240
+      240
+      240
+      9
+      9
+      9

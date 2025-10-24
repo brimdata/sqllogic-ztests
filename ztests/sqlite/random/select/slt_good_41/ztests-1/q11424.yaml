@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q11424.spq | sort > q11424.out
+
+inputs:
+  - name: q11424.spq
+    data: |
+      SELECT col1 + col1 AS col1 FROM tab1 (FORMAT parquet) WHERE - col2 - - col2 IN ( + tab1.col2 );
+  - name: tab1
+
+outputs:
+  - name: q11424.out
+    data: |

@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q1199.spq | sort > q1199.out
+
+inputs:
+  - name: q1199.spq
+    data: |
+      SELECT DISTINCT - 2 * - 43 FROM tab1 (FORMAT parquet) AS cor0 CROSS JOIN tab1 (FORMAT parquet) cor1;
+  - name: tab1
+
+outputs:
+  - name: q1199.out
+    data: |
+      86

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8062.spq | sort > q8062.out
+
+inputs:
+  - name: q8062.spq
+    data: |
+      SELECT DISTINCT col1 - col1 * + tab1.col1 FROM tab1 (FORMAT parquet) WHERE ( col0 ) BETWEEN NULL AND ( col1 + + col2 * col0 );
+  - name: tab1
+
+outputs:
+  - name: q8062.out
+    data: |

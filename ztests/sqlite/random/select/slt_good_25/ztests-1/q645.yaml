@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q645.spq | sort > q645.out
+
+inputs:
+  - name: q645.spq
+    data: |
+      SELECT 36 / col0 - col0 * 6 / + col1 AS col1 FROM tab0 (FORMAT parquet);
+  - name: tab0
+
+outputs:
+  - name: q645.out
+    data: |
+      -1
+      -5
+      0

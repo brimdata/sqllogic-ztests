@@ -1,0 +1,16 @@
+script: |
+  super -f text -I q7210.spq | sort > q7210.out
+
+inputs:
+  - name: q7210.spq
+    data: |
+      SELECT DISTINCT cor1.col2 * 72 FROM tab1 (FORMAT parquet), tab1 (FORMAT parquet) AS cor0, tab0 (FORMAT parquet) cor1;
+  - name: tab0
+  - name: tab1
+
+outputs:
+  - name: q7210.out
+    data: |
+      2376
+      5904
+      72

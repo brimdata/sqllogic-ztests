@@ -1,0 +1,22 @@
+script: |
+  super -f text -I q5820.spq | sort > q5820.out
+
+inputs:
+  - name: q5820.spq
+    data: |
+      SELECT - ( + cor0.col2 * - 46 + 48 ) FROM tab2 (FORMAT parquet), tab1 (FORMAT parquet) AS cor0;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q5820.out
+    data: |
+      2436
+      2436
+      2436
+      2574
+      2574
+      2574
+      4368
+      4368
+      4368

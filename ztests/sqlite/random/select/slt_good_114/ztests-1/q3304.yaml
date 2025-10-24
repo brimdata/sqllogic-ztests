@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q3304.spq | sort > q3304.out
+
+inputs:
+  - name: q3304.spq
+    data: |
+      SELECT DISTINCT col0 * - 3 - col2 / col0 AS col0 FROM tab1 (FORMAT parquet);
+  - name: tab1
+
+outputs:
+  - name: q3304.out
+    data: |
+      -192
+      -241
+      -27

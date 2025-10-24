@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q11736.spq | sort > q11736.out
+
+inputs:
+  - name: q11736.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) AS cor0 WHERE NOT - col0 * col1 / cor0.col0 IN ( col2 * + col1 + col2 ) OR NOT ( NULL ) >= NULL;
+  - name: tab1
+
+outputs:
+  - name: q11736.out
+    data: |
+      3	26	54
+      64	10	57
+      80	13	96

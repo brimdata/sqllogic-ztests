@@ -1,0 +1,22 @@
+script: |
+  super -f text -I q4023.spq | sort > q4023.out
+
+inputs:
+  - name: q4023.spq
+    data: |
+      SELECT - 4 * tab1.col0 * cor0.col0 AS col0 FROM tab1 (FORMAT parquet), tab2 (FORMAT parquet) AS cor0;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q4023.out
+    data: |
+      -1792
+      -19968
+      -20224
+      -2240
+      -24960
+      -25280
+      -84
+      -936
+      -948

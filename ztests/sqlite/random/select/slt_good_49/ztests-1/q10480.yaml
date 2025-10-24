@@ -1,0 +1,22 @@
+script: |
+  super -f text -I q10480.spq | sort > q10480.out
+
+inputs:
+  - name: q10480.spq
+    data: |
+      SELECT ALL 42 + - ( cor0.col0 ) FROM tab0 (FORMAT parquet), tab1 (FORMAT parquet) AS cor0;
+  - name: tab0
+  - name: tab1
+
+outputs:
+  - name: q10480.out
+    data: |
+      -22
+      -22
+      -22
+      -38
+      -38
+      -38
+      39
+      39
+      39

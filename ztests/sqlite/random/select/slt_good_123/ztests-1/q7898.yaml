@@ -1,0 +1,22 @@
+script: |
+  super -f text -I q7898.spq | sort > q7898.out
+
+inputs:
+  - name: q7898.spq
+    data: |
+      SELECT ALL + cor1.col2 + cor0.col2 * - 17 * 14 AS col2 FROM tab1 (FORMAT parquet) AS cor0 CROSS JOIN tab2 (FORMAT parquet) AS cor1;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q7898.out
+    data: |
+      -12814
+      -12825
+      -12826
+      -13528
+      -13539
+      -13540
+      -22810
+      -22821
+      -22822

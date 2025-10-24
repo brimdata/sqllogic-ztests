@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8540.spq | sort > q8540.out
+
+inputs:
+  - name: q8540.spq
+    data: |
+      SELECT - col1 * 51 * col2 + + col1 / + col0 AS col0 FROM tab2 (FORMAT parquet);
+  - name: tab2
+
+outputs:
+  - name: q8540.out
+    data: |
+      -32946
+      -42683
+      -78234

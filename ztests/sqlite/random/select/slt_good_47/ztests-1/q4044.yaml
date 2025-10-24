@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q4044.spq | sort > q4044.out
+
+inputs:
+  - name: q4044.spq
+    data: |
+      SELECT ALL + col1 * ( tab0.col1 * col2 ) + + col1 FROM tab0 (FORMAT parquet);
+  - name: tab0
+
+outputs:
+  - name: q4044.out
+    data: |
+      244154
+      679133
+      9506

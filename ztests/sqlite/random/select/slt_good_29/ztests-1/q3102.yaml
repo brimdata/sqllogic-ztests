@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q3102.spq | sort > q3102.out
+
+inputs:
+  - name: q3102.spq
+    data: |
+      SELECT col1 AS col2 FROM tab0 (FORMAT parquet) WHERE NOT NULL NOT BETWEEN NULL AND col2;
+  - name: tab0
+
+outputs:
+  - name: q3102.out
+    data: |

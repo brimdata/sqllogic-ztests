@@ -1,0 +1,22 @@
+script: |
+  super -f text -I q2840.spq | sort > q2840.out
+
+inputs:
+  - name: q2840.spq
+    data: |
+      SELECT ALL + 31 * cor0.col2 * tab0.col1 AS col1 FROM tab0 (FORMAT parquet), tab1 (FORMAT parquet) AS cor0;
+  - name: tab0
+  - name: tab1
+
+outputs:
+  - name: q2840.out
+    data: |
+      143964
+      151962
+      152334
+      160797
+      162378
+      171399
+      255936
+      270816
+      288672

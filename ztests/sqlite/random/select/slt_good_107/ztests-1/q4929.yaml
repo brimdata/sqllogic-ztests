@@ -1,0 +1,22 @@
+script: |
+  super -f text -I q4929.spq | sort > q4929.out
+
+inputs:
+  - name: q4929.spq
+    data: |
+      SELECT 93 + cor0.col1 * - tab2.col2 FROM tab2 (FORMAT parquet), tab0 (FORMAT parquet) AS cor0;
+  - name: tab0
+  - name: tab2
+
+outputs:
+  - name: q4929.out
+    data: |
+      -2143
+      -2229
+      -2273
+      -2364
+      -2429
+      -2526
+      -3175
+      -3365
+      -3593

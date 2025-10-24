@@ -1,0 +1,22 @@
+script: |
+  super -f text -I q6913.spq | sort > q6913.out
+
+inputs:
+  - name: q6913.spq
+    data: |
+      SELECT ALL + 23 + cor0.col1 * + cor0.col0 FROM tab1 (FORMAT parquet), tab0 (FORMAT parquet) AS cor0;
+  - name: tab0
+  - name: tab1
+
+outputs:
+  - name: q6913.out
+    data: |
+      2087
+      2087
+      2087
+      3418
+      3418
+      3418
+      8122
+      8122
+      8122

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q1721.spq | sort > q1721.out
+
+inputs:
+  - name: q1721.spq
+    data: |
+      SELECT ALL col0 * - tab0.col1 FROM tab0 (FORMAT parquet) WHERE NULL > NULL;
+  - name: tab0
+
+outputs:
+  - name: q1721.out
+    data: |

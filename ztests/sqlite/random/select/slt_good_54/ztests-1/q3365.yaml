@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q3365.spq | sort > q3365.out
+
+inputs:
+  - name: q3365.spq
+    data: |
+      SELECT + tab1.col0 * col1 - tab1.col1 * + col2 * col1 AS col1 FROM tab1 (FORMAT parquet);
+  - name: tab1
+
+outputs:
+  - name: q3365.out
+    data: |
+      -15184
+      -36426
+      -5060

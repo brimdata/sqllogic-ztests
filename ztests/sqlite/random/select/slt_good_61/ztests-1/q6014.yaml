@@ -1,0 +1,21 @@
+script: |
+  super -f text -I q6014.spq | sort > q6014.out
+
+inputs:
+  - name: q6014.spq
+    data: |
+      SELECT cor0.col1 + tab0.col2 * 63 FROM tab0 (FORMAT parquet), tab0 (FORMAT parquet) AS cor0;
+  - name: tab0
+
+outputs:
+  - name: q6014.out
+    data: |
+      149
+      154
+      160
+      2165
+      2170
+      2176
+      5252
+      5257
+      5263

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q6547.spq | sort > q6547.out
+
+inputs:
+  - name: q6547.spq
+    data: |
+      SELECT - ( col2 ) * 32 + ( - col1 ) AS col0 FROM tab1 (FORMAT parquet) AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q6547.out
+    data: |
+      -1754
+      -1834
+      -3085

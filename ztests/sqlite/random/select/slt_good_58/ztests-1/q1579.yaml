@@ -1,0 +1,22 @@
+script: |
+  super -f text -I q1579.spq | sort > q1579.out
+
+inputs:
+  - name: q1579.spq
+    data: |
+      SELECT ALL tab2.col0 + 78 AS col1 FROM tab2 (FORMAT parquet), tab1 (FORMAT parquet) AS cor0;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q1579.out
+    data: |
+      156
+      156
+      156
+      157
+      157
+      157
+      85
+      85
+      85

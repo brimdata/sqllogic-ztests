@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q2543.spq | sort > q2543.out
+
+inputs:
+  - name: q2543.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) WHERE col2 BETWEEN NULL AND col2;
+  - name: tab2
+
+outputs:
+  - name: q2543.out
+    data: |

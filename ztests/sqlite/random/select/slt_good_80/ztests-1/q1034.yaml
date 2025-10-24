@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q1034.spq | sort > q1034.out
+
+inputs:
+  - name: q1034.spq
+    data: |
+      SELECT ALL * FROM tab0 (FORMAT parquet), tab1 (FORMAT parquet) AS cor0 CROSS JOIN tab1 (FORMAT parquet) WHERE NOT NULL <= NULL;
+  - name: tab0
+  - name: tab1
+
+outputs:
+  - name: q1034.out
+    data: |

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8072.spq | sort > q8072.out
+
+inputs:
+  - name: q8072.spq
+    data: |
+      SELECT ALL * FROM tab1 (FORMAT parquet) WHERE - col1 - col0 < col0;
+  - name: tab1
+
+outputs:
+  - name: q8072.out
+    data: |
+      3	26	54
+      64	10	57
+      80	13	96

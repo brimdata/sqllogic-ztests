@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q6404.spq | sort > q6404.out
+
+inputs:
+  - name: q6404.spq
+    data: |
+      SELECT ALL col0 * tab2.col2 AS col1 FROM tab2 (FORMAT parquet) WHERE ( col2 * col1 ) = col0 * col0 * col1;
+  - name: tab2
+
+outputs:
+  - name: q6404.out
+    data: |

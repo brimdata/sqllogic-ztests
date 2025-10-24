@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q9344.spq | sort > q9344.out
+
+inputs:
+  - name: q9344.spq
+    data: |
+      SELECT ALL col1 + - col2 FROM tab2 (FORMAT parquet) WHERE col2 BETWEEN + col0 AND - col0;
+  - name: tab2
+
+outputs:
+  - name: q9344.out
+    data: |

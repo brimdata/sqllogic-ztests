@@ -1,0 +1,21 @@
+script: |
+  super -f text -I q265.spq | sort > q265.out
+
+inputs:
+  - name: q265.spq
+    data: |
+      SELECT ALL + cor0.col0 - - cor0.col1 AS col2 FROM tab2 (FORMAT parquet), tab2 (FORMAT parquet) AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q265.out
+    data: |
+      137
+      137
+      137
+      38
+      38
+      38
+      96
+      96
+      96

@@ -1,0 +1,21 @@
+script: |
+  super -f text -I q11074.spq | sort > q11074.out
+
+inputs:
+  - name: q11074.spq
+    data: |
+      SELECT 45 * + ( tab2.col1 * + 2 ) AS col1 FROM tab2 (FORMAT parquet), tab2 (FORMAT parquet) cor0;
+  - name: tab2
+
+outputs:
+  - name: q11074.out
+    data: |
+      1530
+      1530
+      1530
+      2790
+      2790
+      2790
+      5310
+      5310
+      5310

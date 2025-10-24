@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q2048.spq | sort > q2048.out
+
+inputs:
+  - name: q2048.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) WHERE NOT ( + col1 + col2 ) BETWEEN ( col0 ) AND col2;
+  - name: tab2
+
+outputs:
+  - name: q2048.out
+    data: |
+      7	31	27
+      78	59	26
+      79	17	38

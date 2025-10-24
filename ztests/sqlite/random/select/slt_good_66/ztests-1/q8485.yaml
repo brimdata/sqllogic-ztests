@@ -1,0 +1,21 @@
+script: |
+  super -f text -I q8485.spq | sort > q8485.out
+
+inputs:
+  - name: q8485.spq
+    data: |
+      SELECT 35 * + cor0.col0 AS col1 FROM tab1 (FORMAT parquet), tab1 (FORMAT parquet) cor0;
+  - name: tab1
+
+outputs:
+  - name: q8485.out
+    data: |
+      105
+      105
+      105
+      2240
+      2240
+      2240
+      2800
+      2800
+      2800

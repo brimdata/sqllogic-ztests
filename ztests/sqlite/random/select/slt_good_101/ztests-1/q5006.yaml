@@ -1,0 +1,22 @@
+script: |
+  super -f text -I q5006.spq | sort > q5006.out
+
+inputs:
+  - name: q5006.spq
+    data: |
+      SELECT ALL - - cor1.col0 * 15 AS col1 FROM tab2 (FORMAT parquet) AS cor0 CROSS JOIN tab1 (FORMAT parquet) AS cor1;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q5006.out
+    data: |
+      1200
+      1200
+      1200
+      45
+      45
+      45
+      960
+      960
+      960

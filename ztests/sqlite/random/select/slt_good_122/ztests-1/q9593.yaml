@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q9593.spq | sort > q9593.out
+
+inputs:
+  - name: q9593.spq
+    data: |
+      SELECT ALL * FROM tab2 (FORMAT parquet) WHERE NULL IN ( + col2 );
+  - name: tab2
+
+outputs:
+  - name: q9593.out
+    data: |

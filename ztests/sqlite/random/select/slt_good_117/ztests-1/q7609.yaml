@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q7609.spq | sort > q7609.out
+
+inputs:
+  - name: q7609.spq
+    data: |
+      SELECT - tab1.col0 / col1 - tab1.col2 * 75 AS col2 FROM tab1 (FORMAT parquet);
+  - name: tab1
+
+outputs:
+  - name: q7609.out
+    data: |
+      -4050
+      -4281
+      -7206

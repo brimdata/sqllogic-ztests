@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q605.spq | sort > q605.out
+
+inputs:
+  - name: q605.spq
+    data: |
+      SELECT DISTINCT 23 FROM tab2 (FORMAT parquet), tab2 (FORMAT parquet) AS cor0, tab2 (FORMAT parquet) cor1;
+  - name: tab2
+
+outputs:
+  - name: q605.out
+    data: |
+      23

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q340.spq | sort > q340.out
+
+inputs:
+  - name: q340.spq
+    data: |
+      SELECT + tab0.col1 + 73 * 7 * tab0.col1 FROM tab0 (FORMAT parquet);
+  - name: tab0
+
+outputs:
+  - name: q340.out
+    data: |
+      44032
+      46592
+      49664

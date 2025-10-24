@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q2448.spq | sort > q2448.out
+
+inputs:
+  - name: q2448.spq
+    data: |
+      SELECT ALL + tab1.col2 * - col0 AS col1 FROM tab1 (FORMAT parquet) WHERE - col2 * col2 NOT IN ( col2 );
+  - name: tab1
+
+outputs:
+  - name: q2448.out
+    data: |
+      -162
+      -3648
+      -7680

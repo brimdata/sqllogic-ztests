@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q7812.spq | sort > q7812.out
+
+inputs:
+  - name: q7812.spq
+    data: |
+      SELECT DISTINCT 3 FROM tab2 (FORMAT parquet), tab2 (FORMAT parquet) AS cor0, tab0 (FORMAT parquet) AS cor1;
+  - name: tab0
+  - name: tab2
+
+outputs:
+  - name: q7812.out
+    data: |
+      3

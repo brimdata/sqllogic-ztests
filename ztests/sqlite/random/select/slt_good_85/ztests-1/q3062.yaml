@@ -1,0 +1,22 @@
+script: |
+  super -f text -I q3062.spq | sort > q3062.out
+
+inputs:
+  - name: q3062.spq
+    data: |
+      SELECT ALL + cor0.col1 * + 13 AS col2 FROM tab2 (FORMAT parquet), tab1 (FORMAT parquet) AS cor0;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q3062.out
+    data: |
+      130
+      130
+      130
+      169
+      169
+      169
+      338
+      338
+      338

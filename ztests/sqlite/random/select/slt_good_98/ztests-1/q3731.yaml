@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q3731.spq | sort > q3731.out
+
+inputs:
+  - name: q3731.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE + tab0.col1 NOT BETWEEN - col2 AND col1;
+  - name: tab0
+
+outputs:
+  - name: q3731.out
+    data: |

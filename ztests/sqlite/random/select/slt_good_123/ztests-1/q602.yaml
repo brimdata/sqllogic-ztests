@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q602.spq | sort > q602.out
+
+inputs:
+  - name: q602.spq
+    data: |
+      SELECT DISTINCT - 3 + - ( - cor0.col0 ) / col1 FROM tab1 (FORMAT parquet) AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q602.out
+    data: |
+      -3
+      3

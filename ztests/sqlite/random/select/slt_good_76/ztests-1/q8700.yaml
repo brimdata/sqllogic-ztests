@@ -1,0 +1,40 @@
+script: |
+  super -f text -I q8700.spq | sort > q8700.out
+
+inputs:
+  - name: q8700.spq
+    data: |
+      SELECT ALL cor0.col1 + + cor1.col1 AS col1 FROM tab2 (FORMAT parquet), tab1 (FORMAT parquet) AS cor0, tab1 (FORMAT parquet) AS cor1;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q8700.out
+    data: |
+      20
+      20
+      20
+      23
+      23
+      23
+      23
+      23
+      23
+      26
+      26
+      26
+      36
+      36
+      36
+      36
+      36
+      36
+      39
+      39
+      39
+      39
+      39
+      39
+      52
+      52
+      52

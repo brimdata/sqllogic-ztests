@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8651.spq | sort > q8651.out
+
+inputs:
+  - name: q8651.spq
+    data: |
+      SELECT tab2.col2 * - col1 AS col1 FROM tab2 (FORMAT parquet) WHERE col0 * col1 + col1 / col2 <> NULL;
+  - name: tab2
+
+outputs:
+  - name: q8651.out
+    data: |

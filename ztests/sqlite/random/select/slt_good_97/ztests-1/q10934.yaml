@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q10934.spq | sort > q10934.out
+
+inputs:
+  - name: q10934.spq
+    data: |
+      SELECT DISTINCT 4 * - col1 AS col1 FROM tab2 (FORMAT parquet) cor0;
+  - name: tab2
+
+outputs:
+  - name: q10934.out
+    data: |
+      -124
+      -236
+      -68

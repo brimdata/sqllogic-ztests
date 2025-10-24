@@ -1,0 +1,18 @@
+script: |
+  super -f text -I q1633.spq | sort > q1633.out
+
+inputs:
+  - name: q1633.spq
+    data: |
+      SELECT DISTINCT + cor1.col1 / + 22 + + cor0.col0 FROM tab2 (FORMAT parquet) AS cor0 CROSS JOIN tab1 (FORMAT parquet) cor1;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q1633.out
+    data: |
+      7
+      78
+      79
+      8
+      80

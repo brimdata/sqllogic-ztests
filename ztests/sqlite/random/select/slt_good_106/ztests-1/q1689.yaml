@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q1689.spq | sort > q1689.out
+
+inputs:
+  - name: q1689.spq
+    data: |
+      SELECT col1 + tab0.col1 + 14 AS col1 FROM tab0 (FORMAT parquet);
+  - name: tab0
+
+outputs:
+  - name: q1689.out
+    data: |
+      186
+      196
+      208

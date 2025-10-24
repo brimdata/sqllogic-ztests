@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8512.spq | sort > q8512.out
+
+inputs:
+  - name: q8512.spq
+    data: |
+      SELECT col1 * - 10 + 54 AS col2 FROM tab2 (FORMAT parquet);
+  - name: tab2
+
+outputs:
+  - name: q8512.out
+    data: |
+      -116
+      -256
+      -536

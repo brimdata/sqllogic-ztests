@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q1770.spq | sort > q1770.out
+
+inputs:
+  - name: q1770.spq
+    data: |
+      SELECT DISTINCT * FROM tab1 (FORMAT parquet) WHERE col2 / + tab1.col1 + tab1.col0 * col0 * col1 < NULL;
+  - name: tab1
+
+outputs:
+  - name: q1770.out
+    data: |

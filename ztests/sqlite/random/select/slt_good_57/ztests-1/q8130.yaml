@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8130.spq | sort > q8130.out
+
+inputs:
+  - name: q8130.spq
+    data: |
+      SELECT ALL - col0 * col1 AS col2 FROM tab1 (FORMAT parquet) WHERE ( + col0 ) <> NULL;
+  - name: tab1
+
+outputs:
+  - name: q8130.out
+    data: |

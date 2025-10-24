@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q255.spq | sort > q255.out
+
+inputs:
+  - name: q255.spq
+    data: |
+      SELECT ALL + col1 * col1 - col1 * 38 FROM tab0 (FORMAT parquet);
+  - name: tab0
+
+outputs:
+  - name: q255.out
+    data: |
+      4128
+      4823
+      5723

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q1706.spq | sort > q1706.out
+
+inputs:
+  - name: q1706.spq
+    data: |
+      SELECT DISTINCT col1 - + 20 * - col1 AS col2 FROM tab2 (FORMAT parquet);
+  - name: tab2
+
+outputs:
+  - name: q1706.out
+    data: |
+      1239
+      357
+      651

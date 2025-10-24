@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q7101.spq | sort > q7101.out
+
+inputs:
+  - name: q7101.spq
+    data: |
+      SELECT col1 + - 32 * - col2 * - 25 FROM tab2 (FORMAT parquet) AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q7101.out
+    data: |
+      -20741
+      -21569
+      -30383

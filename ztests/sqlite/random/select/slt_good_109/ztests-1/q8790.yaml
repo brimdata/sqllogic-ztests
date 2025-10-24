@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8790.spq | sort > q8790.out
+
+inputs:
+  - name: q8790.spq
+    data: |
+      SELECT + ( 32 ) * col0 * + 24 FROM tab1 (FORMAT parquet);
+  - name: tab1
+
+outputs:
+  - name: q8790.out
+    data: |
+      2304
+      49152
+      61440

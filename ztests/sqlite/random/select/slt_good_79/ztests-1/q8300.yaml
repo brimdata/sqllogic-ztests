@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8300.spq | sort > q8300.out
+
+inputs:
+  - name: q8300.spq
+    data: |
+      SELECT DISTINCT 22 + - tab1.col2 * + col2 FROM tab1 (FORMAT parquet);
+  - name: tab1
+
+outputs:
+  - name: q8300.out
+    data: |
+      -2894
+      -3227
+      -9194

@@ -1,0 +1,22 @@
+script: |
+  super -f text -I q4134.spq | sort > q4134.out
+
+inputs:
+  - name: q4134.spq
+    data: |
+      SELECT + - cor1.col2 AS col1 FROM tab0 (FORMAT parquet) AS cor0 CROSS JOIN tab2 (FORMAT parquet) AS cor1;
+  - name: tab0
+  - name: tab2
+
+outputs:
+  - name: q4134.out
+    data: |
+      -26
+      -26
+      -26
+      -27
+      -27
+      -27
+      -38
+      -38
+      -38

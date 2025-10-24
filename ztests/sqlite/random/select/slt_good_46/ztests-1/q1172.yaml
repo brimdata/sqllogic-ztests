@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q1172.spq | sort > q1172.out
+
+inputs:
+  - name: q1172.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) WHERE NULL IN ( col2 * tab1.col1 + + tab1.col1 * - col1 );
+  - name: tab1
+
+outputs:
+  - name: q1172.out
+    data: |

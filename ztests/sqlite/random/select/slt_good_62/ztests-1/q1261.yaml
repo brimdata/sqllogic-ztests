@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q1261.spq | sort > q1261.out
+
+inputs:
+  - name: q1261.spq
+    data: |
+      SELECT + col0 * + 40 * col0 - ( + 4 ) / col1 AS col1 FROM tab1 (FORMAT parquet);
+  - name: tab1
+
+outputs:
+  - name: q1261.out
+    data: |
+      163840
+      256000
+      360

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q380.spq | sort > q380.out
+
+inputs:
+  - name: q380.spq
+    data: |
+      SELECT ALL - col2 AS col1 FROM tab1 (FORMAT parquet) WHERE NOT ( col0 + + col2 + col2 ) IN ( + col2 );
+  - name: tab1
+
+outputs:
+  - name: q380.out
+    data: |
+      -54
+      -57
+      -96

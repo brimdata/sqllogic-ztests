@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q64.spq | sort > q64.out
+
+inputs:
+  - name: q64.spq
+    data: |
+      SELECT - + 66 * col2 AS col2 FROM tab0 (FORMAT parquet) cor0;
+  - name: tab0
+
+outputs:
+  - name: q64.out
+    data: |
+      -2178
+      -5412
+      -66

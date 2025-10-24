@@ -1,0 +1,18 @@
+script: |
+  super -f text -I q7855.spq | sort > q7855.out
+
+inputs:
+  - name: q7855.spq
+    data: |
+      SELECT DISTINCT + cor1.col2 * ( - cor0.col2 ) AS col2 FROM tab0 (FORMAT parquet), tab0 (FORMAT parquet) AS cor0, tab0 (FORMAT parquet) AS cor1;
+  - name: tab0
+
+outputs:
+  - name: q7855.out
+    data: |
+      -1
+      -1089
+      -2706
+      -33
+      -6724
+      -82

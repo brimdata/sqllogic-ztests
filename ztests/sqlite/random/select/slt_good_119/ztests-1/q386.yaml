@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q386.spq | sort > q386.out
+
+inputs:
+  - name: q386.spq
+    data: |
+      SELECT ALL + cor0.col1 * 27 * + col0 AS col1 FROM tab2 (FORMAT parquet) cor0;
+  - name: tab2
+
+outputs:
+  - name: q386.out
+    data: |
+      124254
+      36261
+      5859

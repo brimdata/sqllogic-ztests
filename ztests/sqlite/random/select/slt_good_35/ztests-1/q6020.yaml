@@ -1,0 +1,40 @@
+script: |
+  super -f text -I q6020.spq | sort > q6020.out
+
+inputs:
+  - name: q6020.spq
+    data: |
+      SELECT tab1.col0 * cor0.col1 FROM tab1 (FORMAT parquet), tab2 (FORMAT parquet), tab1 (FORMAT parquet) AS cor0;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q6020.out
+    data: |
+      1040
+      1040
+      1040
+      1664
+      1664
+      1664
+      2080
+      2080
+      2080
+      30
+      30
+      30
+      39
+      39
+      39
+      640
+      640
+      640
+      78
+      78
+      78
+      800
+      800
+      800
+      832
+      832
+      832

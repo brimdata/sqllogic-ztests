@@ -1,0 +1,21 @@
+script: |
+  super -f text -I q8676.spq | sort > q8676.out
+
+inputs:
+  - name: q8676.spq
+    data: |
+      SELECT 51 - cor0.col0 * cor0.col2 * - 37 AS col2 FROM tab1 (FORMAT parquet) AS cor0 CROSS JOIN tab1 (FORMAT parquet) AS cor1;
+  - name: tab1
+
+outputs:
+  - name: q8676.out
+    data: |
+      135027
+      135027
+      135027
+      284211
+      284211
+      284211
+      6045
+      6045
+      6045

@@ -1,0 +1,22 @@
+script: |
+  super -f text -I q8010.spq | sort > q8010.out
+
+inputs:
+  - name: q8010.spq
+    data: |
+      SELECT 43 - cor0.col0 FROM tab2 (FORMAT parquet), tab0 (FORMAT parquet) AS cor0;
+  - name: tab0
+  - name: tab2
+
+outputs:
+  - name: q8010.out
+    data: |
+      -46
+      -46
+      -46
+      19
+      19
+      19
+      8
+      8
+      8

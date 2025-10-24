@@ -1,0 +1,22 @@
+script: |
+  super -f text -I q320.spq | sort > q320.out
+
+inputs:
+  - name: q320.spq
+    data: |
+      SELECT 8 + cor0.col0 FROM tab2 (FORMAT parquet), tab1 (FORMAT parquet) AS cor0;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q320.out
+    data: |
+      11
+      11
+      11
+      72
+      72
+      72
+      88
+      88
+      88

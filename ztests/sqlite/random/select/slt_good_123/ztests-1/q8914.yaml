@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8914.spq | sort > q8914.out
+
+inputs:
+  - name: q8914.spq
+    data: |
+      SELECT col1 + + ( - tab1.col2 ) FROM tab1 (FORMAT parquet);
+  - name: tab1
+
+outputs:
+  - name: q8914.out
+    data: |
+      -28
+      -47
+      -83

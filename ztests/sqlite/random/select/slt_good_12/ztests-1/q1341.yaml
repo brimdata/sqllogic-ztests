@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q1341.spq | sort > q1341.out
+
+inputs:
+  - name: q1341.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) WHERE col1 * col1 BETWEEN ( col1 ) AND + col2 + + col2;
+  - name: tab1
+
+outputs:
+  - name: q1341.out
+    data: |
+      64	10	57
+      80	13	96

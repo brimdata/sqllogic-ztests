@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q86.spq | sort > q86.out
+
+inputs:
+  - name: q86.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet), tab2 (FORMAT parquet), tab1 (FORMAT parquet) AS cor0 WHERE NULL NOT BETWEEN ( NULL ) AND NULL;
+  - name: tab0
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q86.out
+    data: |

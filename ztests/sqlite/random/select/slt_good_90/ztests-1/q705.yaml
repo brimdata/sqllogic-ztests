@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q705.spq | sort > q705.out
+
+inputs:
+  - name: q705.spq
+    data: |
+      SELECT col0 * + col1 + + col1 AS col2 FROM tab2 (FORMAT parquet) WHERE NOT ( col1 * col1 * col0 + col0 ) BETWEEN ( col0 ) AND ( + col2 );
+  - name: tab2
+
+outputs:
+  - name: q705.out
+    data: |
+      1360
+      248
+      4661

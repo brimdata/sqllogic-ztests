@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q7120.spq | sort > q7120.out
+
+inputs:
+  - name: q7120.spq
+    data: |
+      SELECT ALL * FROM tab0 (FORMAT parquet) WHERE - col2 * + col1 + - col1 > NULL;
+  - name: tab0
+
+outputs:
+  - name: q7120.out
+    data: |

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q7084.spq | sort > q7084.out
+
+inputs:
+  - name: q7084.spq
+    data: |
+      SELECT ALL col0 - cor0.col1 * cor0.col1 FROM tab1 (FORMAT parquet) AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q7084.out
+    data: |
+      -36
+      -673
+      -89

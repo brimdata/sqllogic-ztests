@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q8842.spq | sort > q8842.out
+
+inputs:
+  - name: q8842.spq
+    data: |
+      SELECT DISTINCT - 55 FROM tab2 (FORMAT parquet), tab0 (FORMAT parquet) AS cor0, tab0 (FORMAT parquet) AS cor1, tab0 (FORMAT parquet) AS cor2;
+  - name: tab0
+  - name: tab2
+
+outputs:
+  - name: q8842.out
+    data: |
+      -55

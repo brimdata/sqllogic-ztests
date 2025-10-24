@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q314.spq | sort > q314.out
+
+inputs:
+  - name: q314.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) WHERE - col1 * col0 BETWEEN col1 + - col0 AND - col0;
+  - name: tab1
+
+outputs:
+  - name: q314.out
+    data: |

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q6540.spq | sort > q6540.out
+
+inputs:
+  - name: q6540.spq
+    data: |
+      SELECT ALL tab1.col1 * tab1.col1 + 16 * 4 AS col2 FROM tab1 (FORMAT parquet);
+  - name: tab1
+
+outputs:
+  - name: q6540.out
+    data: |
+      164
+      233
+      740

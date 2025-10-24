@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q2002.spq | sort > q2002.out
+
+inputs:
+  - name: q2002.spq
+    data: |
+      SELECT DISTINCT - 90 AS col2 FROM tab2 (FORMAT parquet), tab2 (FORMAT parquet) AS cor0 CROSS JOIN tab1 (FORMAT parquet);
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q2002.out
+    data: |
+      -90

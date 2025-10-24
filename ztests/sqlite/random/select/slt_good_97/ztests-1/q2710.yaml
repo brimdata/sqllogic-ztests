@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q2710.spq | sort > q2710.out
+
+inputs:
+  - name: q2710.spq
+    data: |
+      SELECT DISTINCT * FROM tab1 (FORMAT parquet) AS cor0 WHERE ( + col1 ) IN ( + col1 );
+  - name: tab1
+
+outputs:
+  - name: q2710.out
+    data: |
+      3	26	54
+      64	10	57
+      80	13	96

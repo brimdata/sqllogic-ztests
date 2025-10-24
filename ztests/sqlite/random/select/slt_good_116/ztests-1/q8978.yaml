@@ -1,0 +1,22 @@
+script: |
+  super -f text -I q8978.spq | sort > q8978.out
+
+inputs:
+  - name: q8978.spq
+    data: |
+      SELECT ( - ( - cor0.col2 ) ) * - 85 FROM tab1 (FORMAT parquet), tab2 (FORMAT parquet) AS cor0;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q8978.out
+    data: |
+      -2210
+      -2210
+      -2210
+      -2295
+      -2295
+      -2295
+      -3230
+      -3230
+      -3230

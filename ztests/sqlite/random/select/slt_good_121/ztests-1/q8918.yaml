@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8918.spq | sort > q8918.out
+
+inputs:
+  - name: q8918.spq
+    data: |
+      SELECT DISTINCT + - 80 * + col2 AS col1 FROM tab1 (FORMAT parquet) AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q8918.out
+    data: |
+      -4320
+      -4560
+      -7680

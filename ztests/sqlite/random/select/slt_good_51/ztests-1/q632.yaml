@@ -1,0 +1,22 @@
+script: |
+  super -f text -I q632.spq | sort > q632.out
+
+inputs:
+  - name: q632.spq
+    data: |
+      SELECT 46 * + 55 * tab1.col1 FROM tab1 (FORMAT parquet), tab0 (FORMAT parquet) AS cor0;
+  - name: tab0
+  - name: tab1
+
+outputs:
+  - name: q632.out
+    data: |
+      25300
+      25300
+      25300
+      32890
+      32890
+      32890
+      65780
+      65780
+      65780

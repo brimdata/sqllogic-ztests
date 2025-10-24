@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q2012.spq | sort > q2012.out
+
+inputs:
+  - name: q2012.spq
+    data: |
+      SELECT DISTINCT + col2 * - 60 AS col1 FROM tab1 (FORMAT parquet) AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q2012.out
+    data: |
+      -3240
+      -3420
+      -5760

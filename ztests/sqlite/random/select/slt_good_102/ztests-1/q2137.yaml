@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q2137.spq | sort > q2137.out
+
+inputs:
+  - name: q2137.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet), tab2 (FORMAT parquet), tab2 (FORMAT parquet) AS cor0 WHERE NOT NULL >= ( NULL );
+  - name: tab0
+  - name: tab2
+
+outputs:
+  - name: q2137.out
+    data: |

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q443.spq | sort > q443.out
+
+inputs:
+  - name: q443.spq
+    data: |
+      SELECT col2 + col2 + ( col2 * 76 ) FROM tab2 (FORMAT parquet);
+  - name: tab2
+
+outputs:
+  - name: q443.out
+    data: |
+      2028
+      2106
+      2964
