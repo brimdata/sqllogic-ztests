@@ -1,12 +1,43 @@
 name: "Run sqllogictests"
 
 on:
+  schedule:
+    - cron: '5 8 * * *'
   workflow_dispatch:
+    inputs:
+      ref:
+        description: 'super repo branch name, tag, or commit SHA to test'
+        required: true
+        default: 'main'
+        type: string
 
 jobs:
   test-sqllogic:
     runs-on: ubuntu-22.04
     steps:
+      - id: checkout-ref
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "ref=${{ github.event.inputs.ref }}" >> $GITHUB_OUTPUT
+          else
+            echo "ref=main" >> $GITHUB_OUTPUT
+          fi
+      - uses: actions/checkout@v5
+        with:
+          repository: brimdata/super
+          path: super
+          ref: ${{ steps.checkout-ref.outputs.ref }}
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: super/go.mod
+          cache-dependency-path: super/go.sum
+      - run: make -C super build
       - uses: actions/checkout@v5
         with:
           path: sqllogic-ztests
+          ref: run-tests-here
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: sqllogic-ztests/go.mod
+          cache-dependency-path: sqllogic-ztests/go.sum
+      - run: make -C sqllogic-ztests test-sqllogic
