@@ -5,7 +5,16 @@ test-one: test-run
 endif
 
 test-sqllogic:
-	@ZTEST_PATH="$(CURDIR)/../super/dist" go test -v -timeout 6h -count=1 .
+	@failed=""; \
+	ZTEST_PATH="$(CURDIR)/../super/dist" go test . -v -timeout 6h -count=1 -run TestSPQ/ztests/sqlite/select[1-5] || failed="$${failed}\nsqlite-select"; \
+	ZTEST_PATH="$(CURDIR)/../super/dist" go test . -v -timeout 6h -count=1 -run TestSPQ/ztests/sqlite/random/aggregates || failed="$${failed}\nsqlite-random-aggregates"; \
+	ZTEST_PATH="$(CURDIR)/../super/dist" go test . -v -timeout 6h -count=1 -run TestSPQ/ztests/sqlite/random/select || failed="$${failed}\nsqlite-random-select"; \
+	if [ -n "$$failed" ]; then \
+		echo "\nFailed test sets:\n=================$${failed}\n"; \
+		exit 1; \
+	else \
+		echo "All test sets passed!"; \
+	fi
 
 test-run:
 	@ZTEST_PATH="$(CURDIR)/../super/dist" go test . -v -timeout 6h -count=1 -run $(TEST)
