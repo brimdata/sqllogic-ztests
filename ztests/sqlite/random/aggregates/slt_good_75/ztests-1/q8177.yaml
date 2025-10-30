@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8177.spq | sort > q8177.out
+
+inputs:
+  - name: q8177.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE NULL IN ( + 99 * + col2, + 32, + - col0 );
+  - name: tab0
+
+outputs:
+  - name: q8177.out
+    data: |

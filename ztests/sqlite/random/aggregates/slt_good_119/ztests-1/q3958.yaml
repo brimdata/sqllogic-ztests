@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q3958.spq | sort > q3958.out
+
+inputs:
+  - name: q3958.spq
+    data: |
+      SELECT DISTINCT + 7 FROM tab0 (FORMAT parquet) WHERE NOT col1 + - 51 NOT IN ( 1 );
+  - name: tab0
+
+outputs:
+  - name: q3958.out
+    data: |

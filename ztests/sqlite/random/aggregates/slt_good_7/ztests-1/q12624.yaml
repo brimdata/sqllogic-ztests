@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q12624.spq | sort > q12624.out
+
+inputs:
+  - name: q12624.spq
+    data: |
+      SELECT + col2 FROM tab1 (FORMAT parquet) WHERE NOT col1 * col1 * + - 51 NOT BETWEEN + col2 AND ( 41 ) / - col0;
+  - name: tab1
+
+outputs:
+  - name: q12624.out
+    data: |

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q7470.spq | sort > q7470.out
+
+inputs:
+  - name: q7470.spq
+    data: |
+      SELECT + 76 FROM tab1 (FORMAT parquet) WHERE NOT col0 BETWEEN ( - col1 * + 39 + CAST ( + col0 AS INTEGER ) ) AND ( - 90 );
+  - name: tab1
+
+outputs:
+  - name: q7470.out
+    data: |
+      76
+      76
+      76

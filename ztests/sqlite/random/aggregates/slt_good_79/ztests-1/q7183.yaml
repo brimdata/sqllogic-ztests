@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q7183.spq | sort > q7183.out
+
+inputs:
+  - name: q7183.spq
+    data: |
+      SELECT DISTINCT + - ( - MIN ( + 87 ) ) AS col2 FROM tab0 (FORMAT parquet) AS cor0;
+  - name: tab0
+
+outputs:
+  - name: q7183.out
+    data: |
+      87

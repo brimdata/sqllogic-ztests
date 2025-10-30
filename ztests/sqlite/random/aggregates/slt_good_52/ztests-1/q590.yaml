@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q590.spq | sort > q590.out
+
+inputs:
+  - name: q590.spq
+    data: |
+      SELECT DISTINCT * FROM tab2 (FORMAT parquet) AS cor0 WHERE ( NULL ) >= ( + CAST ( 16 AS REAL ) );
+  - name: tab2
+
+outputs:
+  - name: q590.out
+    data: |

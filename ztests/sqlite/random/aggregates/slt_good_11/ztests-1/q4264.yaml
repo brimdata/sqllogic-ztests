@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q4264.spq | sort > q4264.out
+
+inputs:
+  - name: q4264.spq
+    data: |
+      SELECT ALL * FROM tab1 (FORMAT parquet) AS cor0 WHERE NOT NULL BETWEEN - 3 - + - 88 AND ( 21 );
+  - name: tab1
+
+outputs:
+  - name: q4264.out
+    data: |

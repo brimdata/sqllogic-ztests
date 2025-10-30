@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q9408.spq | sort > q9408.out
+
+inputs:
+  - name: q9408.spq
+    data: |
+      SELECT COUNT ( DISTINCT ( + 6 ) ) AS col1 FROM tab1 (FORMAT parquet);
+  - name: tab1
+
+outputs:
+  - name: q9408.out
+    data: |
+      1

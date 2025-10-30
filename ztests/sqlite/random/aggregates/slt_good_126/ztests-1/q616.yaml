@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q616.spq | sort > q616.out
+
+inputs:
+  - name: q616.spq
+    data: |
+      SELECT 90 + - COUNT ( * ) FROM tab0 (FORMAT parquet) WHERE col0 + col2 IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q616.out
+    data: |
+      87

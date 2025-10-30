@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q1920.spq | sort > q1920.out
+
+inputs:
+  - name: q1920.spq
+    data: |
+      SELECT - 70 - ( COUNT ( * ) ) FROM tab2 (FORMAT parquet) WHERE col1 NOT BETWEEN ( NULL ) AND ( - col1 );
+  - name: tab2
+
+outputs:
+  - name: q1920.out
+    data: |
+      -73

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q12503.spq | sort > q12503.out
+
+inputs:
+  - name: q12503.spq
+    data: |
+      SELECT + 58 * 61 / - + col1 * CAST ( 36 AS INTEGER ) AS col2 FROM tab2 (FORMAT parquet) WHERE NOT ( NULL < NULL );
+  - name: tab2
+
+outputs:
+  - name: q12503.out
+    data: |

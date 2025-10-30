@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q10887.spq | sort > q10887.out
+
+inputs:
+  - name: q10887.spq
+    data: |
+      SELECT DISTINCT COUNT ( * ) FROM tab0 (FORMAT parquet) WHERE 99 NOT BETWEEN NULL AND + - 76;
+  - name: tab0
+
+outputs:
+  - name: q10887.out
+    data: |
+      3

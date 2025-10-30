@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q5122.spq | sort > q5122.out
+
+inputs:
+  - name: q5122.spq
+    data: |
+      SELECT + 80, - 79 * + col2 AS col2 FROM tab2 (FORMAT parquet);
+  - name: tab2
+
+outputs:
+  - name: q5122.out
+    data: |
+      80	-1817
+      80	-3160
+      80	-4582

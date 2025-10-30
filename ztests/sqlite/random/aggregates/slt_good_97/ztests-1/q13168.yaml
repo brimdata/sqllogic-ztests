@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q13168.spq | sort > q13168.out
+
+inputs:
+  - name: q13168.spq
+    data: |
+      SELECT ALL SUM ( DISTINCT col0 ) AS col1 FROM tab1 (FORMAT parquet);
+  - name: tab1
+
+outputs:
+  - name: q13168.out
+    data: |
+      227

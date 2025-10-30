@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q2575.spq | sort > q2575.out
+
+inputs:
+  - name: q2575.spq
+    data: |
+      SELECT DISTINCT * FROM tab0 (FORMAT parquet), tab2 (FORMAT parquet) AS cor0 WHERE NOT ( NULL ) IS NULL;
+  - name: tab0
+  - name: tab2
+
+outputs:
+  - name: q2575.out
+    data: |

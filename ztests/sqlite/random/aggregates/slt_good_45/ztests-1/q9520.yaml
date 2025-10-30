@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q9520.spq | sort > q9520.out
+
+inputs:
+  - name: q9520.spq
+    data: |
+      SELECT ALL * FROM tab0 (FORMAT parquet) WHERE NOT col0 / + col1 > ( 72 );
+  - name: tab0
+
+outputs:
+  - name: q9520.out
+    data: |
+      15	81	47
+      87	21	10

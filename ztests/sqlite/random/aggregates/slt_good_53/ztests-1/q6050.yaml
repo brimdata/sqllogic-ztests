@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q6050.spq | sort > q6050.out
+
+inputs:
+  - name: q6050.spq
+    data: |
+      SELECT ALL - COUNT ( * ) AS col1 FROM tab1 (FORMAT parquet) AS cor0 CROSS JOIN tab1 (FORMAT parquet) cor1;
+  - name: tab1
+
+outputs:
+  - name: q6050.out
+    data: |
+      -9

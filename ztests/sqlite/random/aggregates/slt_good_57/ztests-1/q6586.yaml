@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q6586.spq | sort > q6586.out
+
+inputs:
+  - name: q6586.spq
+    data: |
+      SELECT - col2 AS col1 FROM tab1 (FORMAT parquet) WHERE + col1 <= + 68 * - col2 + + col1;
+  - name: tab1
+
+outputs:
+  - name: q6586.out
+    data: |

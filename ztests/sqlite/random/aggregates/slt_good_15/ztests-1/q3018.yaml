@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q3018.spq | sort > q3018.out
+
+inputs:
+  - name: q3018.spq
+    data: |
+      SELECT ALL * FROM tab2 (FORMAT parquet) cor0 WHERE NOT 31 + col0 IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q3018.out
+    data: |

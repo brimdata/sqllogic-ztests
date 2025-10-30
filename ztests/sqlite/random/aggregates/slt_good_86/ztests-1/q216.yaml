@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q216.spq | sort > q216.out
+
+inputs:
+  - name: q216.spq
+    data: |
+      SELECT DISTINCT - col0 / col2 + - + 39 + col0 AS col2, col2 * + 42 FROM tab1 (FORMAT parquet) WHERE NOT 5 IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q216.out
+    data: |
+      12	4032
+      45	2478
+      51	2856

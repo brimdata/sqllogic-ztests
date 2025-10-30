@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q4384.spq | sort > q4384.out
+
+inputs:
+  - name: q4384.spq
+    data: |
+      SELECT DISTINCT * FROM tab1 (FORMAT parquet) WHERE NOT - CAST ( NULL AS INTEGER ) + - col2 BETWEEN - 91 AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q4384.out
+    data: |

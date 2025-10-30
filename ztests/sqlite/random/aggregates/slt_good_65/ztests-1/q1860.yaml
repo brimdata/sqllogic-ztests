@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q1860.spq | sort > q1860.out
+
+inputs:
+  - name: q1860.spq
+    data: |
+      SELECT ALL + 50 / 30 FROM tab1 (FORMAT parquet) WHERE NOT + col2 IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q1860.out
+    data: |

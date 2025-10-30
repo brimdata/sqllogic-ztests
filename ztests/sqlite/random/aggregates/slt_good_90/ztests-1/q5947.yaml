@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q5947.spq | sort > q5947.out
+
+inputs:
+  - name: q5947.spq
+    data: |
+      SELECT ALL ( + COUNT ( * ) ) + COUNT ( 27 ) + - 40 * + ( - COUNT ( * ) ) * + 55 FROM tab1 (FORMAT parquet) AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q5947.out
+    data: |
+      6606

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q974.spq | sort > q974.out
+
+inputs:
+  - name: q974.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE NOT NULL BETWEEN col1 * + 17 * - + 66 AND ( NULL );
+  - name: tab0
+
+outputs:
+  - name: q974.out
+    data: |

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q9264.spq | sort > q9264.out
+
+inputs:
+  - name: q9264.spq
+    data: |
+      SELECT DISTINCT + col1 AS col0, col0 + - col0 * col0 AS col2 FROM tab1 (FORMAT parquet);
+  - name: tab1
+
+outputs:
+  - name: q9264.out
+    data: |
+      14	-2550
+      47	-8190
+      5	-7140

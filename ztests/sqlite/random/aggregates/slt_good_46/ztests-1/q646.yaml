@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q646.spq | sort > q646.out
+
+inputs:
+  - name: q646.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) AS cor0 WHERE NOT NULL BETWEEN + 74 AND ( - 18 );
+  - name: tab1
+
+outputs:
+  - name: q646.out
+    data: |

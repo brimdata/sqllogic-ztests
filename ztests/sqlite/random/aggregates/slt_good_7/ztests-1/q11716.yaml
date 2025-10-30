@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q11716.spq | sort > q11716.out
+
+inputs:
+  - name: q11716.spq
+    data: |
+      SELECT - col2 * - 8 AS col2 FROM tab1 (FORMAT parquet) WHERE NOT - 11 IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q11716.out
+    data: |
+      472
+      544
+      768

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q235.spq | sort > q235.out
+
+inputs:
+  - name: q235.spq
+    data: |
+      SELECT ALL * FROM tab1 (FORMAT parquet) WHERE NOT + 96 NOT BETWEEN NULL AND + 23;
+  - name: tab1
+
+outputs:
+  - name: q235.out
+    data: |

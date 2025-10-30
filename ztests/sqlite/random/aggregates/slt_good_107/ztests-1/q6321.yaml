@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q6321.spq | sort > q6321.out
+
+inputs:
+  - name: q6321.spq
+    data: |
+      SELECT - col2 FROM tab1 (FORMAT parquet) WHERE NOT ( 95 * - col1 ) NOT BETWEEN - 57 AND col2;
+  - name: tab1
+
+outputs:
+  - name: q6321.out
+    data: |

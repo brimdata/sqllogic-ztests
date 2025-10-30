@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q13518.spq | sort > q13518.out
+
+inputs:
+  - name: q13518.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) WHERE NOT - 90 NOT BETWEEN + col2 AND ( + + col0 * - ( - + col2 ) - 50 );
+  - name: tab1
+
+outputs:
+  - name: q13518.out
+    data: |

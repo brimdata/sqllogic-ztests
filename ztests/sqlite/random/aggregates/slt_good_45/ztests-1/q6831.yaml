@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q6831.spq | sort > q6831.out
+
+inputs:
+  - name: q6831.spq
+    data: |
+      SELECT COUNT ( * ) FROM tab2 (FORMAT parquet) cor0 WHERE NOT 75 * + col0 BETWEEN NULL AND + col1 * - col0;
+  - name: tab2
+
+outputs:
+  - name: q6831.out
+    data: |
+      3

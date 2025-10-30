@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q2617.spq | sort > q2617.out
+
+inputs:
+  - name: q2617.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) WHERE col1 NOT IN ( - ( - 41 ) );
+  - name: tab1
+
+outputs:
+  - name: q2617.out
+    data: |
+      51	14	96
+      85	5	59
+      91	47	68

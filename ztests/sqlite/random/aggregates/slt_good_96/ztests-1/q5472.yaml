@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q5472.spq | sort > q5472.out
+
+inputs:
+  - name: q5472.spq
+    data: |
+      SELECT - col2 * + - 19 * - CAST ( NULL AS REAL ) AS col2 FROM tab0 (FORMAT parquet) WHERE col2 * - col0 NOT BETWEEN NULL AND ( - col1 );
+  - name: tab0
+
+outputs:
+  - name: q5472.out
+    data: |

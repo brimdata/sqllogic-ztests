@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q2421.spq | sort > q2421.out
+
+inputs:
+  - name: q2421.spq
+    data: |
+      SELECT ALL col1, 72 FROM tab2 (FORMAT parquet) WHERE NOT + col0 * + col1 + col0 IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q2421.out
+    data: |
+      51	72
+      67	72
+      77	72

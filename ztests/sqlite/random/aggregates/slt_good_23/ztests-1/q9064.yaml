@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q9064.spq | sort > q9064.out
+
+inputs:
+  - name: q9064.spq
+    data: |
+      SELECT DISTINCT * FROM tab2 (FORMAT parquet) AS cor0 WHERE NOT 3 * - 57 IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q9064.out
+    data: |

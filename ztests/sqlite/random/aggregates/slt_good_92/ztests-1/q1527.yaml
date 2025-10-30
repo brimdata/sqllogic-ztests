@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q1527.spq | sort > q1527.out
+
+inputs:
+  - name: q1527.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) AS cor0 WHERE NOT 56 BETWEEN - CAST ( + 19 AS INTEGER ) AND + + 17;
+  - name: tab2
+
+outputs:
+  - name: q1527.out
+    data: |
+      46	51	23
+      64	77	40
+      75	67	58

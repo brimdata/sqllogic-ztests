@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q5082.spq | sort > q5082.out
+
+inputs:
+  - name: q5082.spq
+    data: |
+      SELECT DISTINCT + col2 + - col2 FROM tab0 (FORMAT parquet) AS cor0 WHERE - col1 * col0 IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q5082.out
+    data: |

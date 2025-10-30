@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q9754.spq | sort > q9754.out
+
+inputs:
+  - name: q9754.spq
+    data: |
+      SELECT ALL col2 AS col1 FROM tab2 (FORMAT parquet) WHERE NOT - col0 NOT BETWEEN NULL AND + col1 / - CAST ( + 63 AS INTEGER );
+  - name: tab2
+
+outputs:
+  - name: q9754.out
+    data: |

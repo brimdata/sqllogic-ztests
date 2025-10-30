@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q5063.spq | sort > q5063.out
+
+inputs:
+  - name: q5063.spq
+    data: |
+      SELECT col1 + + ( col0 + - 1 ) * 54 FROM tab0 (FORMAT parquet) WHERE col0 * col0 IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q5063.out
+    data: |
+      4665
+      5185
+      837

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q4580.spq | sort > q4580.out
+
+inputs:
+  - name: q4580.spq
+    data: |
+      SELECT - + col1 + 9 FROM tab2 (FORMAT parquet) WHERE NOT 32 BETWEEN NULL AND 29;
+  - name: tab2
+
+outputs:
+  - name: q4580.out
+    data: |
+      -42
+      -58
+      -68

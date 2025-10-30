@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8253.spq | sort > q8253.out
+
+inputs:
+  - name: q8253.spq
+    data: |
+      SELECT ALL + col1 + col0 * - col1 + col1 AS col1, - 34 FROM tab2 (FORMAT parquet) AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q8253.out
+    data: |
+      -2244	-34
+      -4774	-34
+      -4891	-34

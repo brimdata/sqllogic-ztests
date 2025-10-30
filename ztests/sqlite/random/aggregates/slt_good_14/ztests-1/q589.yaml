@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q589.spq | sort > q589.out
+
+inputs:
+  - name: q589.spq
+    data: |
+      SELECT DISTINCT col0 * 3 * col2 + - 29 FROM tab0 (FORMAT parquet) AS cor0 WHERE ( NULL ) IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q589.out
+    data: |
+      2086
+      2581
+      28780

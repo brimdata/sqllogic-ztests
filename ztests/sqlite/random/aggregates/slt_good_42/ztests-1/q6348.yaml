@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q6348.spq | sort > q6348.out
+
+inputs:
+  - name: q6348.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE ( 82 * 3 ) BETWEEN - 16 AND + col0;
+  - name: tab0
+
+outputs:
+  - name: q6348.out
+    data: |

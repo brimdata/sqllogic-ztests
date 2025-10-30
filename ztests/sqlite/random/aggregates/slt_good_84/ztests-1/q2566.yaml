@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q2566.spq | sort > q2566.out
+
+inputs:
+  - name: q2566.spq
+    data: |
+      SELECT ALL 49 FROM tab1 (FORMAT parquet) WHERE NOT - 41 BETWEEN + col2 AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q2566.out
+    data: |
+      49
+      49
+      49

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q2125.spq | sort > q2125.out
+
+inputs:
+  - name: q2125.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) AS cor0 WHERE NOT - 12 + col2 NOT BETWEEN ( - col0 ) AND col1;
+  - name: tab2
+
+outputs:
+  - name: q2125.out
+    data: |
+      46	51	23
+      64	77	40
+      75	67	58

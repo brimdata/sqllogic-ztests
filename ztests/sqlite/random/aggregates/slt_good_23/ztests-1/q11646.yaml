@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q11646.spq | sort > q11646.out
+
+inputs:
+  - name: q11646.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) WHERE - 13 * + CAST ( NULL AS INTEGER ) + col1 IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q11646.out
+    data: |

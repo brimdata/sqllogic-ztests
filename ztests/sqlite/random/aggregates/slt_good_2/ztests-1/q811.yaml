@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q811.spq | sort > q811.out
+
+inputs:
+  - name: q811.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE NOT ( CAST ( NULL AS INTEGER ) ) BETWEEN + CAST ( NULL AS INTEGER ) * 26 + + col1 AND ( - col2 );
+  - name: tab0
+
+outputs:
+  - name: q811.out
+    data: |

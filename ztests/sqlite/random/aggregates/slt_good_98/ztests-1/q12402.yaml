@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q12402.spq | sort > q12402.out
+
+inputs:
+  - name: q12402.spq
+    data: |
+      SELECT DISTINCT COUNT ( * ) FROM tab1 (FORMAT parquet) WHERE + col2 NOT BETWEEN - 51 / col0 AND col2 - + col0;
+  - name: tab1
+
+outputs:
+  - name: q12402.out
+    data: |
+      3

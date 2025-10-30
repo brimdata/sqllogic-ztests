@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q7293.spq | sort > q7293.out
+
+inputs:
+  - name: q7293.spq
+    data: |
+      SELECT ALL * FROM tab1 (FORMAT parquet) WHERE + - col2 NOT IN ( col2, + 12 - + - 47 + 70 );
+  - name: tab1
+
+outputs:
+  - name: q7293.out
+    data: |
+      51	14	96
+      85	5	59
+      91	47	68

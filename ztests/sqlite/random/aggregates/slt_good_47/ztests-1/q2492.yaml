@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q2492.spq | sort > q2492.out
+
+inputs:
+  - name: q2492.spq
+    data: |
+      SELECT - MAX ( ( + 53 ) ) AS col0 FROM tab0 (FORMAT parquet) AS cor0 WHERE NOT col1 IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q2492.out
+    data: |
+      -53

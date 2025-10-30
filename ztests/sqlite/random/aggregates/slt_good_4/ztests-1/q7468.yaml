@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q7468.spq | sort > q7468.out
+
+inputs:
+  - name: q7468.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) AS cor0 WHERE NOT - ( + col1 ) >= - 18;
+  - name: tab1
+
+outputs:
+  - name: q7468.out
+    data: |
+      91	47	68

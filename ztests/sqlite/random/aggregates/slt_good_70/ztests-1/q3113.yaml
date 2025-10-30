@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q3113.spq | sort > q3113.out
+
+inputs:
+  - name: q3113.spq
+    data: |
+      SELECT ALL * FROM tab1 (FORMAT parquet) WHERE NOT NULL BETWEEN ( 13 / + col0 ) AND ( NULL );
+  - name: tab1
+
+outputs:
+  - name: q3113.out
+    data: |

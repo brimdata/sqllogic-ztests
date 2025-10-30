@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q929.spq | sort > q929.out
+
+inputs:
+  - name: q929.spq
+    data: |
+      SELECT ALL ( col2 ) * - col1 FROM tab1 (FORMAT parquet) WHERE - - col0 NOT BETWEEN NULL AND - 37;
+  - name: tab1
+
+outputs:
+  - name: q929.out
+    data: |
+      -1344
+      -295
+      -3196

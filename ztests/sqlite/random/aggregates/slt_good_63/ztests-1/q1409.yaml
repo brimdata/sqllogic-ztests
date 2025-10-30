@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q1409.spq | sort > q1409.out
+
+inputs:
+  - name: q1409.spq
+    data: |
+      SELECT DISTINCT * FROM tab2 (FORMAT parquet) WHERE - - col0 BETWEEN - + col2 AND 61;
+  - name: tab2
+
+outputs:
+  - name: q1409.out
+    data: |
+      46	51	23

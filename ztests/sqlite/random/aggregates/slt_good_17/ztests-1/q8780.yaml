@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q8780.spq | sort > q8780.out
+
+inputs:
+  - name: q8780.spq
+    data: |
+      SELECT DISTINCT * FROM tab0 (FORMAT parquet) AS cor0 WHERE NOT col2 < col1;
+  - name: tab0
+
+outputs:
+  - name: q8780.out
+    data: |
+      97	1	99

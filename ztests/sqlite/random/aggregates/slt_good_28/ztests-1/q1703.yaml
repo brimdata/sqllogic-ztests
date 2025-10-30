@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q1703.spq | sort > q1703.out
+
+inputs:
+  - name: q1703.spq
+    data: |
+      SELECT DISTINCT col2 - - col2 FROM tab1 (FORMAT parquet) WHERE NOT - col0 < ( + col2 + 78 ) OR NOT ( col1 * 36 ) <= - 66;
+  - name: tab1
+
+outputs:
+  - name: q1703.out
+    data: |
+      118
+      136
+      192

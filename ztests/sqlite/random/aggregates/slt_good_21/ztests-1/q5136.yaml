@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q5136.spq | sort > q5136.out
+
+inputs:
+  - name: q5136.spq
+    data: |
+      SELECT ALL * FROM tab1 (FORMAT parquet) AS cor0 WHERE NOT - 93 BETWEEN - col2 + - col1 AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q5136.out
+    data: |
+      85	5	59

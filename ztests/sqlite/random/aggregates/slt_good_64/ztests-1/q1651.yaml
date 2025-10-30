@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q1651.spq | sort > q1651.out
+
+inputs:
+  - name: q1651.spq
+    data: |
+      SELECT ALL 27 AS col2 FROM tab1 (FORMAT parquet) WHERE + - col2 BETWEEN ( + col2 ) AND + 36 / + col2;
+  - name: tab1
+
+outputs:
+  - name: q1651.out
+    data: |

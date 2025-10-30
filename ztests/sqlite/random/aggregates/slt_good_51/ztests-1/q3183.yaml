@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q3183.spq | sort > q3183.out
+
+inputs:
+  - name: q3183.spq
+    data: |
+      SELECT ALL COUNT ( * ) FROM tab1 (FORMAT parquet) WHERE NOT ( NULL ) IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q3183.out
+    data: |
+      3

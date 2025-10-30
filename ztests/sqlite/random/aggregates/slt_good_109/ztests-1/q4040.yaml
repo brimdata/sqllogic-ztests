@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q4040.spq | sort > q4040.out
+
+inputs:
+  - name: q4040.spq
+    data: |
+      SELECT ALL 30 - col0 * - col0 AS col1 FROM tab1 (FORMAT parquet) WHERE NOT NULL NOT BETWEEN col0 AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q4040.out
+    data: |

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q7544.spq | sort > q7544.out
+
+inputs:
+  - name: q7544.spq
+    data: |
+      SELECT ALL * FROM tab1 (FORMAT parquet) WHERE + col1 * + col2 + - CAST ( NULL AS REAL ) * - col1 BETWEEN NULL AND - col1;
+  - name: tab1
+
+outputs:
+  - name: q7544.out
+    data: |

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q3076.spq | sort > q3076.out
+
+inputs:
+  - name: q3076.spq
+    data: |
+      SELECT + col1 / + 64 + - col1 + - 15 * col1 AS col2 FROM tab0 (FORMAT parquet) AS cor0;
+  - name: tab0
+
+outputs:
+  - name: q3076.out
+    data: |
+      -1295
+      -16
+      -336

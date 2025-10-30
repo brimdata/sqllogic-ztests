@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q5654.spq | sort > q5654.out
+
+inputs:
+  - name: q5654.spq
+    data: |
+      SELECT ALL * FROM tab1 (FORMAT parquet) WHERE NOT ( NOT col1 + - col1 <= NULL );
+  - name: tab1
+
+outputs:
+  - name: q5654.out
+    data: |

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q25.spq | sort > q25.out
+
+inputs:
+  - name: q25.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) WHERE 16 IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q25.out
+    data: |
+      46	51	23
+      64	77	40
+      75	67	58

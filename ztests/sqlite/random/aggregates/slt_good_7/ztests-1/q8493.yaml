@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8493.spq | sort > q8493.out
+
+inputs:
+  - name: q8493.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) AS cor0 WHERE - col0 >= 61;
+  - name: tab1
+
+outputs:
+  - name: q8493.out
+    data: |

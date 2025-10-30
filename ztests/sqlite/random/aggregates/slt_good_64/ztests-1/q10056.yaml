@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q10056.spq | sort > q10056.out
+
+inputs:
+  - name: q10056.spq
+    data: |
+      SELECT 67 AS col0, + 26 AS col2 FROM tab2 (FORMAT parquet) AS cor0 WHERE col0 NOT IN ( - col1 );
+  - name: tab2
+
+outputs:
+  - name: q10056.out
+    data: |
+      67	26
+      67	26
+      67	26

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q12545.spq | sort > q12545.out
+
+inputs:
+  - name: q12545.spq
+    data: |
+      SELECT DISTINCT * FROM tab2 (FORMAT parquet) AS cor0 JOIN tab2 (FORMAT parquet) AS cor1 ON NOT ( + 2 + - 42 ) IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q12545.out
+    data: |

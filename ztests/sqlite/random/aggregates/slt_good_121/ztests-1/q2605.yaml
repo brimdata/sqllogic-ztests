@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q2605.spq | sort > q2605.out
+
+inputs:
+  - name: q2605.spq
+    data: |
+      SELECT ALL * FROM tab2 (FORMAT parquet) WHERE NOT col0 - + 20 NOT IN ( + CAST ( NULL AS INTEGER ) - 16 );
+  - name: tab2
+
+outputs:
+  - name: q2605.out
+    data: |

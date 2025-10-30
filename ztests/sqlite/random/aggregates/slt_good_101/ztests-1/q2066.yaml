@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q2066.spq | sort > q2066.out
+
+inputs:
+  - name: q2066.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) AS cor0 INNER JOIN tab1 (FORMAT parquet) AS cor1 ON NULL >= - CAST ( 85 AS INTEGER ) * 31;
+  - name: tab1
+
+outputs:
+  - name: q2066.out
+    data: |

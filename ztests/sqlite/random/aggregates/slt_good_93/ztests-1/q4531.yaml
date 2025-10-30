@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q4531.spq | sort > q4531.out
+
+inputs:
+  - name: q4531.spq
+    data: |
+      SELECT COUNT ( * ) AS col1, SUM ( DISTINCT + + col2 ) AS col2 FROM tab0 (FORMAT parquet);
+  - name: tab0
+
+outputs:
+  - name: q4531.out
+    data: |
+      3	156

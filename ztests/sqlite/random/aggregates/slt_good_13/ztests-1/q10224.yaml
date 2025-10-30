@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q10224.spq | sort > q10224.out
+
+inputs:
+  - name: q10224.spq
+    data: |
+      SELECT ALL * FROM tab2 (FORMAT parquet) WHERE NOT 35 + - 30 BETWEEN ( - 45 ) AND NULL;
+  - name: tab2
+
+outputs:
+  - name: q10224.out
+    data: |

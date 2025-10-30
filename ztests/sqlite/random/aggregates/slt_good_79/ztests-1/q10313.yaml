@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q10313.spq | sort > q10313.out
+
+inputs:
+  - name: q10313.spq
+    data: |
+      SELECT 32 AS col2 FROM tab2 (FORMAT parquet) WHERE NOT 96 * + 46 > NULL;
+  - name: tab2
+
+outputs:
+  - name: q10313.out
+    data: |

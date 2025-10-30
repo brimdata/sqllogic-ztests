@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q7243.spq | sort > q7243.out
+
+inputs:
+  - name: q7243.spq
+    data: |
+      SELECT ALL * FROM tab1 (FORMAT parquet) WHERE NOT + 17 <> col2;
+  - name: tab1
+
+outputs:
+  - name: q7243.out
+    data: |

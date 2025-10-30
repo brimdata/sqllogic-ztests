@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q2251.spq | sort > q2251.out
+
+inputs:
+  - name: q2251.spq
+    data: |
+      SELECT DISTINCT + col0 * col0 FROM tab2 (FORMAT parquet) WHERE NULL IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q2251.out
+    data: |
+      2116
+      4096
+      5625

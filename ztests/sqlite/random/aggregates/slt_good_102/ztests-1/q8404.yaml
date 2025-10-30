@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q8404.spq | sort > q8404.out
+
+inputs:
+  - name: q8404.spq
+    data: |
+      SELECT COUNT ( * ) FROM tab1 (FORMAT parquet) WHERE NOT 55 = 38;
+  - name: tab1
+
+outputs:
+  - name: q8404.out
+    data: |
+      3

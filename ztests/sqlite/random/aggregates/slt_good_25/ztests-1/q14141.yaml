@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q14141.spq | sort > q14141.out
+
+inputs:
+  - name: q14141.spq
+    data: |
+      SELECT - MIN ( - + col1 ) AS col1 FROM tab2 (FORMAT parquet) AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q14141.out
+    data: |
+      77

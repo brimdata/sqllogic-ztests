@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q590.spq | sort > q590.out
+
+inputs:
+  - name: q590.spq
+    data: |
+      SELECT ALL * FROM tab1 (FORMAT parquet) WHERE NOT ( NULL ) IS NULL OR ( 72 IS NOT NULL );
+  - name: tab1
+
+outputs:
+  - name: q590.out
+    data: |
+      51	14	96
+      85	5	59
+      91	47	68

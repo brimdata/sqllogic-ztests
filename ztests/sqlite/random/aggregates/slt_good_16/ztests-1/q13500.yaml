@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q13500.spq | sort > q13500.out
+
+inputs:
+  - name: q13500.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) WHERE NOT ( - col2 ) * 26 + 81 BETWEEN NULL AND ( col1 * 38 + 21 );
+  - name: tab2
+
+outputs:
+  - name: q13500.out
+    data: |

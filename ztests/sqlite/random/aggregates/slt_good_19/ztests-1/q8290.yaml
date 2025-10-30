@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8290.spq | sort > q8290.out
+
+inputs:
+  - name: q8290.spq
+    data: |
+      SELECT ALL * FROM tab1 (FORMAT parquet) cor0 WHERE NOT 70 * - col2 NOT BETWEEN - 18 * + col1 AND 46 + - col1;
+  - name: tab1
+
+outputs:
+  - name: q8290.out
+    data: |

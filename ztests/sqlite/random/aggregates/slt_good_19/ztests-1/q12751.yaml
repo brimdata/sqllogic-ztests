@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q12751.spq | sort > q12751.out
+
+inputs:
+  - name: q12751.spq
+    data: |
+      SELECT + SUM ( - - col2 ) AS col2 FROM tab2 (FORMAT parquet);
+  - name: tab2
+
+outputs:
+  - name: q12751.out
+    data: |
+      121

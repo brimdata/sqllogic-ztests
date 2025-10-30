@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q12842.spq | sort > q12842.out
+
+inputs:
+  - name: q12842.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE NOT NULL BETWEEN + 61 AND 30 * - - col1;
+  - name: tab0
+
+outputs:
+  - name: q12842.out
+    data: |

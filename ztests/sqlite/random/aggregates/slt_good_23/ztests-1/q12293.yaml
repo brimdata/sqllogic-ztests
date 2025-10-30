@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q12293.spq | sort > q12293.out
+
+inputs:
+  - name: q12293.spq
+    data: |
+      SELECT ALL col1 * - + 4 AS col0, + 37 FROM tab1 (FORMAT parquet) WHERE NULL IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q12293.out
+    data: |
+      -188	37
+      -20	37
+      -56	37

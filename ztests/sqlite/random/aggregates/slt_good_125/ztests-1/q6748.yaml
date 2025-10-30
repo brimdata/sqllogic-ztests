@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q6748.spq | sort > q6748.out
+
+inputs:
+  - name: q6748.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) WHERE - - 36 IN ( - col1 * col1, 45 / - col1, 5 - 24 );
+  - name: tab2
+
+outputs:
+  - name: q6748.out
+    data: |

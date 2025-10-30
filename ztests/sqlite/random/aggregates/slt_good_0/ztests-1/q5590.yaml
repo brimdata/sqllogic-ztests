@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q5590.spq | sort > q5590.out
+
+inputs:
+  - name: q5590.spq
+    data: |
+      SELECT - col2 AS col0, + ( + - col0 ) / 19 * 11 * - col2 FROM tab0 (FORMAT parquet) AS cor0 WHERE NOT + col1 < NULL;
+  - name: tab0
+
+outputs:
+  - name: q5590.out
+    data: |

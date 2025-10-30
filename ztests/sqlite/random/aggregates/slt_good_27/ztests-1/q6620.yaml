@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q6620.spq | sort > q6620.out
+
+inputs:
+  - name: q6620.spq
+    data: |
+      SELECT DISTINCT * FROM tab1 (FORMAT parquet) WHERE NOT - - 31 NOT BETWEEN ( + 43 ) AND ( + 10 );
+  - name: tab1
+
+outputs:
+  - name: q6620.out
+    data: |

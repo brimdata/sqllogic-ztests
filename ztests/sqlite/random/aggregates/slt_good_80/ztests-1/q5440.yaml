@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q5440.spq | sort > q5440.out
+
+inputs:
+  - name: q5440.spq
+    data: |
+      SELECT + 67 FROM tab1 (FORMAT parquet) WHERE NOT ( NOT ( col1 ) <> ( - ( col2 ) ) );
+  - name: tab1
+
+outputs:
+  - name: q5440.out
+    data: |
+      67
+      67
+      67

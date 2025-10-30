@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q9644.spq | sort > q9644.out
+
+inputs:
+  - name: q9644.spq
+    data: |
+      SELECT DISTINCT col2 AS col0 FROM tab1 (FORMAT parquet) WHERE 59 > ( 20 + CAST ( NULL AS INTEGER ) );
+  - name: tab1
+
+outputs:
+  - name: q9644.out
+    data: |

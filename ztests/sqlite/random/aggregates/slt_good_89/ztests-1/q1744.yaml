@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q1744.spq | sort > q1744.out
+
+inputs:
+  - name: q1744.spq
+    data: |
+      SELECT + - ( - + col2 ) AS col2, col2 AS col1 FROM tab2 (FORMAT parquet) AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q1744.out
+    data: |
+      23	23
+      40	40
+      58	58

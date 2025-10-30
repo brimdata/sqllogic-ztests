@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q6852.spq | sort > q6852.out
+
+inputs:
+  - name: q6852.spq
+    data: |
+      SELECT DISTINCT * FROM tab1 (FORMAT parquet) WHERE - 16 + col1 IN ( + 12 );
+  - name: tab1
+
+outputs:
+  - name: q6852.out
+    data: |

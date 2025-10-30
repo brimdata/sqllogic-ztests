@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q1648.spq | sort > q1648.out
+
+inputs:
+  - name: q1648.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) AS cor0 WHERE 16 * - CAST ( NULL AS REAL ) IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q1648.out
+    data: |

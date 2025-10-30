@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q8868.spq | sort > q8868.out
+
+inputs:
+  - name: q8868.spq
+    data: |
+      SELECT + ( - ( + 9 ) ) * COUNT ( * ) FROM tab1 (FORMAT parquet) WHERE NOT - 24 IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q8868.out
+    data: |
+      -27

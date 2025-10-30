@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q13166.spq | sort > q13166.out
+
+inputs:
+  - name: q13166.spq
+    data: |
+      SELECT + col0 AS col1, + col1 * - col1 * - col0 AS col0 FROM tab1 (FORMAT parquet);
+  - name: tab1
+
+outputs:
+  - name: q13166.out
+    data: |
+      51	9996
+      85	2125
+      91	201019

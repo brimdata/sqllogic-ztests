@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q10029.spq | sort > q10029.out
+
+inputs:
+  - name: q10029.spq
+    data: |
+      SELECT DISTINCT COUNT ( * ) AS col0 FROM tab0 (FORMAT parquet) WHERE + + col2 / + + ( - 25 ) IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q10029.out
+    data: |
+      3

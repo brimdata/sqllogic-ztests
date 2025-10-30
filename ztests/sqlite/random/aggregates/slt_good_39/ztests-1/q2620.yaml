@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q2620.spq | sort > q2620.out
+
+inputs:
+  - name: q2620.spq
+    data: |
+      SELECT DISTINCT * FROM tab1 (FORMAT parquet) WHERE NOT - col0 NOT BETWEEN col1 + - + 52 * CAST ( ( - 12 ) AS REAL ) AND - col1 * 13 + - col0;
+  - name: tab1
+
+outputs:
+  - name: q2620.out
+    data: |

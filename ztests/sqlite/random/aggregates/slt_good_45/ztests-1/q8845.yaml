@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8845.spq | sort > q8845.out
+
+inputs:
+  - name: q8845.spq
+    data: |
+      SELECT + col1 AS col0 FROM tab2 (FORMAT parquet) WHERE NOT col0 * 3 - - 19 IN ( - 45 );
+  - name: tab2
+
+outputs:
+  - name: q8845.out
+    data: |
+      51
+      67
+      77

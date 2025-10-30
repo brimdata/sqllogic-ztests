@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8920.spq | sort > q8920.out
+
+inputs:
+  - name: q8920.spq
+    data: |
+      SELECT ALL + col1 * - 9 AS col0 FROM tab0 (FORMAT parquet) WHERE + - 3 NOT IN ( col1, col0 );
+  - name: tab0
+
+outputs:
+  - name: q8920.out
+    data: |
+      -189
+      -729
+      -9

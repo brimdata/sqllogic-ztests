@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q4756.spq | sort > q4756.out
+
+inputs:
+  - name: q4756.spq
+    data: |
+      SELECT DISTINCT + col2 FROM tab2 (FORMAT parquet) WHERE NOT + col1 BETWEEN + + 2 AND ( 43 );
+  - name: tab2
+
+outputs:
+  - name: q4756.out
+    data: |
+      23
+      40
+      58

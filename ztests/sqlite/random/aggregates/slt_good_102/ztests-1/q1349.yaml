@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q1349.spq | sort > q1349.out
+
+inputs:
+  - name: q1349.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) AS cor0 WHERE 86 BETWEEN - 40 / + col0 AND + CAST ( NULL AS REAL );
+  - name: tab2
+
+outputs:
+  - name: q1349.out
+    data: |

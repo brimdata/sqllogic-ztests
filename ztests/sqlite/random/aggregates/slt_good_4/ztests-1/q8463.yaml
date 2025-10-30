@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8463.spq | sort > q8463.out
+
+inputs:
+  - name: q8463.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) WHERE NOT + col2 + - CAST ( NULL AS INTEGER ) BETWEEN + col2 * 56 AND ( - CAST ( + CAST ( NULL AS REAL ) AS INTEGER ) );
+  - name: tab2
+
+outputs:
+  - name: q8463.out
+    data: |

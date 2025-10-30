@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q7608.spq | sort > q7608.out
+
+inputs:
+  - name: q7608.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE NOT NULL BETWEEN - 3 AND + - ( - + col2 ) + + col1;
+  - name: tab0
+
+outputs:
+  - name: q7608.out
+    data: |

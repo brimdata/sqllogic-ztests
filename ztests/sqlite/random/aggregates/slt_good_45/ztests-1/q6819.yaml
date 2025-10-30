@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q6819.spq | sort > q6819.out
+
+inputs:
+  - name: q6819.spq
+    data: |
+      SELECT DISTINCT COUNT ( * ) FROM tab2 (FORMAT parquet) WHERE NOT 37 > col0;
+  - name: tab2
+
+outputs:
+  - name: q6819.out
+    data: |
+      3

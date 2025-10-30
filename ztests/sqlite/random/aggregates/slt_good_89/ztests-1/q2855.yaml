@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q2855.spq | sort > q2855.out
+
+inputs:
+  - name: q2855.spq
+    data: |
+      SELECT DISTINCT MAX ( DISTINCT + CAST ( NULL AS INTEGER ) ) col0 FROM tab2 (FORMAT parquet) WHERE NOT + col1 IS NOT NULL OR NOT + col2 IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q2855.out
+    data: |
+      -

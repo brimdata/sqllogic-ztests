@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q702.spq | sort > q702.out
+
+inputs:
+  - name: q702.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) WHERE NOT + 50 * 26 BETWEEN col0 AND - col2;
+  - name: tab1
+
+outputs:
+  - name: q702.out
+    data: |
+      51	14	96
+      85	5	59
+      91	47	68

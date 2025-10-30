@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8908.spq | sort > q8908.out
+
+inputs:
+  - name: q8908.spq
+    data: |
+      SELECT DISTINCT * FROM tab2 (FORMAT parquet) WHERE + CAST ( 47 AS INTEGER ) <> NULL;
+  - name: tab2
+
+outputs:
+  - name: q8908.out
+    data: |

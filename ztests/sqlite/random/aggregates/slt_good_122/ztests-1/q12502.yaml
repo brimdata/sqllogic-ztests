@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q12502.spq | sort > q12502.out
+
+inputs:
+  - name: q12502.spq
+    data: |
+      SELECT DISTINCT * FROM tab0 (FORMAT parquet) AS cor0 CROSS JOIN tab2 (FORMAT parquet) cor1 WHERE NOT 93 * - 36 IS NOT NULL;
+  - name: tab0
+  - name: tab2
+
+outputs:
+  - name: q12502.out
+    data: |

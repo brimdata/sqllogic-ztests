@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q4083.spq | sort > q4083.out
+
+inputs:
+  - name: q4083.spq
+    data: |
+      SELECT DISTINCT 93 FROM tab2 (FORMAT parquet) WHERE NOT ( NULL ) BETWEEN NULL AND col1 + - 4;
+  - name: tab2
+
+outputs:
+  - name: q4083.out
+    data: |

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q7217.spq | sort > q7217.out
+
+inputs:
+  - name: q7217.spq
+    data: |
+      SELECT - col1 AS col1, + 61 FROM tab0 (FORMAT parquet) WHERE NULL IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q7217.out
+    data: |
+      -1	61
+      -21	61
+      -81	61

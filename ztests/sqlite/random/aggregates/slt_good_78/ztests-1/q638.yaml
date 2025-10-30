@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q638.spq | sort > q638.out
+
+inputs:
+  - name: q638.spq
+    data: |
+      SELECT ALL * FROM tab0 (FORMAT parquet) WHERE NOT NULL <> - + 95 / + - CAST ( + 9 AS INTEGER );
+  - name: tab0
+
+outputs:
+  - name: q638.out
+    data: |

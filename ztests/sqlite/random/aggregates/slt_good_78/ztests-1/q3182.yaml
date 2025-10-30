@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q3182.spq | sort > q3182.out
+
+inputs:
+  - name: q3182.spq
+    data: |
+      SELECT + - 91 AS col1 FROM tab0 (FORMAT parquet) WHERE NOT NULL BETWEEN - + col1 AND - CAST ( - + 97 AS INTEGER );
+  - name: tab0
+
+outputs:
+  - name: q3182.out
+    data: |

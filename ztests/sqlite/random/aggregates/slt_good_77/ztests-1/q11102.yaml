@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q11102.spq | sort > q11102.out
+
+inputs:
+  - name: q11102.spq
+    data: |
+      SELECT - MIN ( + - col1 ) * ( + SUM ( col1 ) ) FROM tab0 (FORMAT parquet);
+  - name: tab0
+
+outputs:
+  - name: q11102.out
+    data: |
+      8343

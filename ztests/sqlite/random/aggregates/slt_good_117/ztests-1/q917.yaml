@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q917.spq | sort > q917.out
+
+inputs:
+  - name: q917.spq
+    data: |
+      SELECT DISTINCT + 42 * col0 + + col2 / - col1 AS col2 FROM tab1 (FORMAT parquet) WHERE + col0 IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q917.out
+    data: |

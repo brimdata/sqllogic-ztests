@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q4004.spq | sort > q4004.out
+
+inputs:
+  - name: q4004.spq
+    data: |
+      SELECT DISTINCT * FROM tab1 (FORMAT parquet) AS cor0 WHERE ( NULL ) BETWEEN 61 + col2 AND col1;
+  - name: tab1
+
+outputs:
+  - name: q4004.out
+    data: |

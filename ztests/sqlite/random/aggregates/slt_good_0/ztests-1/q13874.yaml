@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q13874.spq | sort > q13874.out
+
+inputs:
+  - name: q13874.spq
+    data: |
+      SELECT ALL * FROM tab0 (FORMAT parquet) WHERE NOT 85 NOT BETWEEN 20 AND NULL;
+  - name: tab0
+
+outputs:
+  - name: q13874.out
+    data: |

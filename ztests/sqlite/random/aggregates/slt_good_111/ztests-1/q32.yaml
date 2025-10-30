@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q32.spq | sort > q32.out
+
+inputs:
+  - name: q32.spq
+    data: |
+      SELECT DISTINCT col2, + col1 FROM tab1 (FORMAT parquet) AS cor0 WHERE - col0 IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q32.out
+    data: |
+      59	5
+      68	47
+      96	14

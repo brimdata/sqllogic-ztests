@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q7813.spq | sort > q7813.out
+
+inputs:
+  - name: q7813.spq
+    data: |
+      SELECT ALL - 16 + 13 AS col0 FROM tab1 (FORMAT parquet) WHERE NOT - col0 * col0 + 51 IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q7813.out
+    data: |
+      -3
+      -3
+      -3

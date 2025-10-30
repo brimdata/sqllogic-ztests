@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q9378.spq | sort > q9378.out
+
+inputs:
+  - name: q9378.spq
+    data: |
+      SELECT ALL * FROM tab1 (FORMAT parquet) WHERE ( - col0 ) > 86;
+  - name: tab1
+
+outputs:
+  - name: q9378.out
+    data: |

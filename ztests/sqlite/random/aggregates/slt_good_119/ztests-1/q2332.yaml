@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q2332.spq | sort > q2332.out
+
+inputs:
+  - name: q2332.spq
+    data: |
+      SELECT + + col1 / 25 AS col2 FROM tab0 (FORMAT parquet) WHERE - col2 * - + col1 <= NULL;
+  - name: tab0
+
+outputs:
+  - name: q2332.out
+    data: |

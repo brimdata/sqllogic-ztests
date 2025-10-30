@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q9622.spq | sort > q9622.out
+
+inputs:
+  - name: q9622.spq
+    data: |
+      SELECT ALL 51 AS col0 FROM tab1 (FORMAT parquet) AS cor0 WHERE NOT ( - col1 ) NOT BETWEEN + 1 AND col2 - - col1 + + CAST ( NULL AS INTEGER );
+  - name: tab1
+
+outputs:
+  - name: q9622.out
+    data: |

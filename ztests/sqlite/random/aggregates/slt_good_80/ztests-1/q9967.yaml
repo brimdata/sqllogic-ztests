@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q9967.spq | sort > q9967.out
+
+inputs:
+  - name: q9967.spq
+    data: |
+      SELECT ALL MIN ( DISTINCT + ( 60 ) ) AS col1 FROM tab2 (FORMAT parquet);
+  - name: tab2
+
+outputs:
+  - name: q9967.out
+    data: |
+      60

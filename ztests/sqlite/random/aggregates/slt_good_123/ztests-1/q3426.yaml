@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q3426.spq | sort > q3426.out
+
+inputs:
+  - name: q3426.spq
+    data: |
+      SELECT + col0 + + 96 / col2 AS col2 FROM tab0 (FORMAT parquet) WHERE NOT NULL BETWEEN NULL AND - + col1;
+  - name: tab0
+
+outputs:
+  - name: q3426.out
+    data: |

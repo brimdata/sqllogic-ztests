@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q6244.spq | sort > q6244.out
+
+inputs:
+  - name: q6244.spq
+    data: |
+      SELECT ALL - COUNT ( * ) FROM tab0 (FORMAT parquet) WHERE - col1 / + col1 + - col1 IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q6244.out
+    data: |
+      -3

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q10468.spq | sort > q10468.out
+
+inputs:
+  - name: q10468.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE 6 NOT BETWEEN NULL AND + 96 + - - CAST ( NULL AS INTEGER );
+  - name: tab0
+
+outputs:
+  - name: q10468.out
+    data: |

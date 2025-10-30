@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q6040.spq | sort > q6040.out
+
+inputs:
+  - name: q6040.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) WHERE NOT ( 75 ) + ( col0 ) >= 44;
+  - name: tab1
+
+outputs:
+  - name: q6040.out
+    data: |

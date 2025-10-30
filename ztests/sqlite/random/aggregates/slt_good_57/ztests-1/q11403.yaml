@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q11403.spq | sort > q11403.out
+
+inputs:
+  - name: q11403.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE NOT - 39 * - 3 IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q11403.out
+    data: |
+      15	81	47
+      87	21	10
+      97	1	99

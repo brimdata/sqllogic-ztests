@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q390.spq | sort > q390.out
+
+inputs:
+  - name: q390.spq
+    data: |
+      SELECT ALL + 75 * + col0 AS col2 FROM tab1 (FORMAT parquet) WHERE 55 IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q390.out
+    data: |
+      3825
+      6375
+      6825

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q11459.spq | sort > q11459.out
+
+inputs:
+  - name: q11459.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) WHERE NOT ( NOT CAST ( - 70 AS INTEGER ) = - ( 15 ) );
+  - name: tab1
+
+outputs:
+  - name: q11459.out
+    data: |

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q5823.spq | sort > q5823.out
+
+inputs:
+  - name: q5823.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE col0 * - 77 <= NULL OR ( 28 ) IN ( col2 );
+  - name: tab0
+
+outputs:
+  - name: q5823.out
+    data: |

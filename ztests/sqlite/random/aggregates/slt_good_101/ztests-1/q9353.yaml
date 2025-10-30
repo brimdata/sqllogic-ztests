@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q9353.spq | sort > q9353.out
+
+inputs:
+  - name: q9353.spq
+    data: |
+      SELECT ALL * FROM tab1 (FORMAT parquet) AS cor0 CROSS JOIN tab2 (FORMAT parquet) cor1 WHERE NOT NULL NOT BETWEEN - 67 AND NULL;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q9353.out
+    data: |

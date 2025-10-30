@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q5545.spq | sort > q5545.out
+
+inputs:
+  - name: q5545.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) WHERE NOT 30 BETWEEN - 95 AND ( 15 );
+  - name: tab2
+
+outputs:
+  - name: q5545.out
+    data: |
+      46	51	23
+      64	77	40
+      75	67	58

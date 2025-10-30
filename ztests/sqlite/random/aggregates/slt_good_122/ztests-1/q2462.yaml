@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q2462.spq | sort > q2462.out
+
+inputs:
+  - name: q2462.spq
+    data: |
+      SELECT ALL 56 * MIN ( col1 ) AS col2 FROM tab1 (FORMAT parquet);
+  - name: tab1
+
+outputs:
+  - name: q2462.out
+    data: |
+      280

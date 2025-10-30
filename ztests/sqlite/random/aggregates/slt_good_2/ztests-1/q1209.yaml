@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q1209.spq | sort > q1209.out
+
+inputs:
+  - name: q1209.spq
+    data: |
+      SELECT ALL * FROM tab2 (FORMAT parquet) WHERE + 99 IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q1209.out
+    data: |

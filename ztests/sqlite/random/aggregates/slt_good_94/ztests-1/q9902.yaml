@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q9902.spq | sort > q9902.out
+
+inputs:
+  - name: q9902.spq
+    data: |
+      SELECT 43 - COUNT ( * ) / - 45 FROM tab1 (FORMAT parquet) AS cor0 CROSS JOIN tab2 (FORMAT parquet) cor1;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q9902.out
+    data: |
+      43

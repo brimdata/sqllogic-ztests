@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q11091.spq | sort > q11091.out
+
+inputs:
+  - name: q11091.spq
+    data: |
+      SELECT DISTINCT + col2 FROM tab2 (FORMAT parquet) WHERE NOT ( - 24 / - col1 ) NOT BETWEEN 5 * 64 AND col2;
+  - name: tab2
+
+outputs:
+  - name: q11091.out
+    data: |

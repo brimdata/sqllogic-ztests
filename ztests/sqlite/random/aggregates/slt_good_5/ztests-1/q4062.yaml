@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q4062.spq | sort > q4062.out
+
+inputs:
+  - name: q4062.spq
+    data: |
+      SELECT ALL + 50 / - - col0 FROM tab1 (FORMAT parquet) WHERE NULL NOT BETWEEN ( NULL ) AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q4062.out
+    data: |

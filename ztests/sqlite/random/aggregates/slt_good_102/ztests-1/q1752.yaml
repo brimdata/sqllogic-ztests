@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q1752.spq | sort > q1752.out
+
+inputs:
+  - name: q1752.spq
+    data: |
+      SELECT DISTINCT * FROM tab2 (FORMAT parquet) WHERE + col2 IN ( - CAST ( NULL AS REAL ) );
+  - name: tab2
+
+outputs:
+  - name: q1752.out
+    data: |

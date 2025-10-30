@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q12464.spq | sort > q12464.out
+
+inputs:
+  - name: q12464.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) WHERE + CAST ( NULL AS REAL ) <> 31 + col2;
+  - name: tab1
+
+outputs:
+  - name: q12464.out
+    data: |

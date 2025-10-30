@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8580.spq | sort > q8580.out
+
+inputs:
+  - name: q8580.spq
+    data: |
+      SELECT ALL col2, + CAST ( NULL AS INTEGER ) AS col0 FROM tab2 (FORMAT parquet) WHERE - col2 BETWEEN NULL AND NULL;
+  - name: tab2
+
+outputs:
+  - name: q8580.out
+    data: |

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q1302.spq | sort > q1302.out
+
+inputs:
+  - name: q1302.spq
+    data: |
+      SELECT + - ( - + col0 ) AS col2 FROM tab2 (FORMAT parquet) AS cor0 WHERE NOT NULL BETWEEN col0 AND - + 1;
+  - name: tab2
+
+outputs:
+  - name: q1302.out
+    data: |

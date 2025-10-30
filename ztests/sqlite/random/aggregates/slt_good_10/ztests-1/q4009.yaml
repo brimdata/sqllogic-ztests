@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q4009.spq | sort > q4009.out
+
+inputs:
+  - name: q4009.spq
+    data: |
+      SELECT DISTINCT - COUNT ( * ) + 84 AS col1, COUNT ( * ) FROM tab2 (FORMAT parquet) AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q4009.out
+    data: |
+      81	3

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q6721.spq | sort > q6721.out
+
+inputs:
+  - name: q6721.spq
+    data: |
+      SELECT - 73 / - col1, + col1 AS col1 FROM tab2 (FORMAT parquet) AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q6721.out
+    data: |
+      0	77
+      1	51
+      1	67

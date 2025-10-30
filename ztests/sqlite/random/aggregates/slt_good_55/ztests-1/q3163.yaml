@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q3163.spq | sort > q3163.out
+
+inputs:
+  - name: q3163.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) AS cor0 WHERE - ( CAST ( NULL AS REAL ) ) IS NULL OR NOT NULL IN ( - 15, - col1 );
+  - name: tab0
+
+outputs:
+  - name: q3163.out
+    data: |
+      15	81	47
+      87	21	10
+      97	1	99

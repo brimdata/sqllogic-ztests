@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q12509.spq | sort > q12509.out
+
+inputs:
+  - name: q12509.spq
+    data: |
+      SELECT ALL SUM ( + col0 ) AS col2 FROM tab1 (FORMAT parquet) WHERE NOT NULL IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q12509.out
+    data: |
+      227

@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q743.spq | sort > q743.out
+
+inputs:
+  - name: q743.spq
+    data: |
+      SELECT ALL * FROM tab0 (FORMAT parquet) WHERE + col2 NOT BETWEEN - - CAST ( CAST ( col2 AS INTEGER ) AS INTEGER ) AND + 59 + 4;
+  - name: tab0
+
+outputs:
+  - name: q743.out
+    data: |
+      97	1	99

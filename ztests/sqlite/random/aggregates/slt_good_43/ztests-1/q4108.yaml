@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q4108.spq | sort > q4108.out
+
+inputs:
+  - name: q4108.spq
+    data: |
+      SELECT DISTINCT + COUNT ( * ) + ( - MAX ( - col1 ) ) + 19 AS col0 FROM tab2 (FORMAT parquet) AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q4108.out
+    data: |
+      73

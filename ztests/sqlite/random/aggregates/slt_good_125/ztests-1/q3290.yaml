@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q3290.spq | sort > q3290.out
+
+inputs:
+  - name: q3290.spq
+    data: |
+      SELECT DISTINCT col0 + - col1 AS col2 FROM tab2 (FORMAT parquet) WHERE ( col0 - 17 ) IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q3290.out
+    data: |
+      -13
+      -5
+      8

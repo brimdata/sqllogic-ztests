@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q4041.spq | sort > q4041.out
+
+inputs:
+  - name: q4041.spq
+    data: |
+      SELECT + ( col1 ) AS col0 FROM tab1 (FORMAT parquet) WHERE NOT 24 IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q4041.out
+    data: |

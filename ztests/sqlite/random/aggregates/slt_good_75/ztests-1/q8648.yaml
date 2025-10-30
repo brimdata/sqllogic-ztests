@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8648.spq | sort > q8648.out
+
+inputs:
+  - name: q8648.spq
+    data: |
+      SELECT ALL * FROM tab0 (FORMAT parquet) WHERE - 93 BETWEEN + col2 AND 7;
+  - name: tab0
+
+outputs:
+  - name: q8648.out
+    data: |

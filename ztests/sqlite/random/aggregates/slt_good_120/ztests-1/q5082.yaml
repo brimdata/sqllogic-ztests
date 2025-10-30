@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q5082.spq | sort > q5082.out
+
+inputs:
+  - name: q5082.spq
+    data: |
+      SELECT DISTINCT - 19 FROM tab1 (FORMAT parquet) WHERE NULL IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q5082.out
+    data: |

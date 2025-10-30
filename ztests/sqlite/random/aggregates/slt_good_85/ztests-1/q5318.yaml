@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q5318.spq | sort > q5318.out
+
+inputs:
+  - name: q5318.spq
+    data: |
+      SELECT ALL COUNT ( DISTINCT ( 78 ) ) AS col1 FROM tab0 (FORMAT parquet) AS cor0 CROSS JOIN tab0 (FORMAT parquet) cor1;
+  - name: tab0
+
+outputs:
+  - name: q5318.out
+    data: |
+      1

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q327.spq | sort > q327.out
+
+inputs:
+  - name: q327.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) WHERE ( col2 * + 75 ) <= col2 / - 4;
+  - name: tab1
+
+outputs:
+  - name: q327.out
+    data: |

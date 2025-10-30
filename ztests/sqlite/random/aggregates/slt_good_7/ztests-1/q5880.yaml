@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q5880.spq | sort > q5880.out
+
+inputs:
+  - name: q5880.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) AS cor0 WHERE + CAST ( + - col0 AS INTEGER ) >= + col2 * 63 + 91;
+  - name: tab1
+
+outputs:
+  - name: q5880.out
+    data: |

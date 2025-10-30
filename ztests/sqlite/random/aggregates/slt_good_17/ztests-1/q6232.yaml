@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q6232.spq | sort > q6232.out
+
+inputs:
+  - name: q6232.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) WHERE NULL BETWEEN - 90 AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q6232.out
+    data: |

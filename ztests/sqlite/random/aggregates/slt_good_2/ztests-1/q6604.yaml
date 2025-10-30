@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q6604.spq | sort > q6604.out
+
+inputs:
+  - name: q6604.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) WHERE NOT 29 = ( ( + 75 ) );
+  - name: tab2
+
+outputs:
+  - name: q6604.out
+    data: |
+      46	51	23
+      64	77	40
+      75	67	58

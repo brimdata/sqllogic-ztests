@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q6570.spq | sort > q6570.out
+
+inputs:
+  - name: q6570.spq
+    data: |
+      SELECT ALL * FROM tab1 (FORMAT parquet) WHERE - col2 / + CAST ( NULL AS INTEGER ) * + col2 + - col1 + + 30 BETWEEN 47 AND - col1;
+  - name: tab1
+
+outputs:
+  - name: q6570.out
+    data: |

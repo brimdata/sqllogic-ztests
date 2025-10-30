@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q3656.spq | sort > q3656.out
+
+inputs:
+  - name: q3656.spq
+    data: |
+      SELECT DISTINCT - col2, - col1 / + - col2 AS col1 FROM tab0 (FORMAT parquet) AS cor0 WHERE NOT ( col1 ) IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q3656.out
+    data: |
+      -10	2
+      -47	1
+      -99	0

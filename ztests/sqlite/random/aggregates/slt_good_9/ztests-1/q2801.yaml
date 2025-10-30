@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q2801.spq | sort > q2801.out
+
+inputs:
+  - name: q2801.spq
+    data: |
+      SELECT - ( + col1 ) FROM tab2 (FORMAT parquet) AS cor0 WHERE NOT + col1 / + + 64 IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q2801.out
+    data: |

@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q11842.spq | sort > q11842.out
+
+inputs:
+  - name: q11842.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) WHERE NOT ( 14 * + col1 ) NOT BETWEEN 45 AND ( 70 );
+  - name: tab1
+
+outputs:
+  - name: q11842.out
+    data: |
+      85	5	59

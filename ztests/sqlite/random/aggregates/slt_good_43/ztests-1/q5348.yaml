@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q5348.spq | sort > q5348.out
+
+inputs:
+  - name: q5348.spq
+    data: |
+      SELECT ALL * FROM tab0 (FORMAT parquet) WHERE NOT - 30 IN ( 43 / - col2, 36 + 12, + 84 );
+  - name: tab0
+
+outputs:
+  - name: q5348.out
+    data: |
+      15	81	47
+      87	21	10
+      97	1	99

@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q10083.spq | sort > q10083.out
+
+inputs:
+  - name: q10083.spq
+    data: |
+      SELECT DISTINCT COUNT ( * ) * - MAX ( + col0 ) FROM tab1 (FORMAT parquet);
+  - name: tab1
+
+outputs:
+  - name: q10083.out
+    data: |
+      -273

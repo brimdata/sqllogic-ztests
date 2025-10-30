@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q6780.spq | sort > q6780.out
+
+inputs:
+  - name: q6780.spq
+    data: |
+      SELECT ALL * FROM tab1 (FORMAT parquet) AS cor0 WHERE CAST ( - 41 AS INTEGER ) BETWEEN - col1 * - col2 AND + col1 * - col0;
+  - name: tab1
+
+outputs:
+  - name: q6780.out
+    data: |

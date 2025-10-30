@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8333.spq | sort > q8333.out
+
+inputs:
+  - name: q8333.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) AS cor0 WHERE NOT col0 * 25 + 30 * col0 NOT IN ( 1 * - CAST ( col0 AS INTEGER ), col1 * + CAST ( - col1 AS INTEGER ) * CAST ( + 33 AS INTEGER ) + - CAST ( - col2 AS INTEGER ) );
+  - name: tab0
+
+outputs:
+  - name: q8333.out
+    data: |

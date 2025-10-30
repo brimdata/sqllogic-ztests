@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q8611.spq | sort > q8611.out
+
+inputs:
+  - name: q8611.spq
+    data: |
+      SELECT - MIN ( + 32 ) FROM tab0 (FORMAT parquet) AS cor0 CROSS JOIN tab2 (FORMAT parquet) cor1;
+  - name: tab0
+  - name: tab2
+
+outputs:
+  - name: q8611.out
+    data: |
+      -32

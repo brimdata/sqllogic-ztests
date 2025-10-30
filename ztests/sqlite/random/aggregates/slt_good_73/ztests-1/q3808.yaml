@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q3808.spq | sort > q3808.out
+
+inputs:
+  - name: q3808.spq
+    data: |
+      SELECT ALL COUNT ( 4 ) * - 12 AS col1 FROM tab1 (FORMAT parquet) cor0;
+  - name: tab1
+
+outputs:
+  - name: q3808.out
+    data: |
+      -36

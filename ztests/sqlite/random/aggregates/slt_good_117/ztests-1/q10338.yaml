@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q10338.spq | sort > q10338.out
+
+inputs:
+  - name: q10338.spq
+    data: |
+      SELECT ALL MIN ( col0 ) + + 48 * 57 AS col0 FROM tab0 (FORMAT parquet) WHERE ( NULL ) IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q10338.out
+    data: |
+      2751

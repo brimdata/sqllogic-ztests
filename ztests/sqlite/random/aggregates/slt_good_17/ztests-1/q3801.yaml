@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q3801.spq | sort > q3801.out
+
+inputs:
+  - name: q3801.spq
+    data: |
+      SELECT ALL COUNT ( * ) * + SUM ( col1 ) FROM tab2 (FORMAT parquet) AS cor0 WHERE NULL IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q3801.out
+    data: |
+      585

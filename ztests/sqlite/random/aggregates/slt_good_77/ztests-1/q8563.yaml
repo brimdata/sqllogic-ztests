@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q8563.spq | sort > q8563.out
+
+inputs:
+  - name: q8563.spq
+    data: |
+      SELECT DISTINCT 2 AS col2 FROM tab1 (FORMAT parquet) WHERE NOT - - 86 * + col2 - 17 + - col2 < - 97;
+  - name: tab1
+
+outputs:
+  - name: q8563.out
+    data: |
+      2

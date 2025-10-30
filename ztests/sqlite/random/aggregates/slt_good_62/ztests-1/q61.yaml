@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q61.spq | sort > q61.out
+
+inputs:
+  - name: q61.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) WHERE - col2 BETWEEN NULL AND + ( 10 ) - - col0 * - 19;
+  - name: tab1
+
+outputs:
+  - name: q61.out
+    data: |

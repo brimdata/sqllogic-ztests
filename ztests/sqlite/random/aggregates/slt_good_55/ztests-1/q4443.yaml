@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q4443.spq | sort > q4443.out
+
+inputs:
+  - name: q4443.spq
+    data: |
+      SELECT ALL * FROM tab1 (FORMAT parquet) AS cor0 WHERE NOT ( 32 ) * - col2 / + col0 <> NULL;
+  - name: tab1
+
+outputs:
+  - name: q4443.out
+    data: |

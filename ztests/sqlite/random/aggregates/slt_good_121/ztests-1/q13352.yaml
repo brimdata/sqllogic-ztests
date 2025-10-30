@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q13352.spq | sort > q13352.out
+
+inputs:
+  - name: q13352.spq
+    data: |
+      SELECT + MIN ( 40 ) FROM tab0 (FORMAT parquet) AS cor0 CROSS JOIN tab0 (FORMAT parquet) AS cor1;
+  - name: tab0
+
+outputs:
+  - name: q13352.out
+    data: |
+      40

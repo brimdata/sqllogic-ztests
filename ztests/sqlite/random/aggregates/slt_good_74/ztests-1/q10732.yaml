@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q10732.spq | sort > q10732.out
+
+inputs:
+  - name: q10732.spq
+    data: |
+      SELECT + col2 FROM tab1 (FORMAT parquet) cor0 WHERE NOT ( col2 * 22 ) BETWEEN - col0 * - col0 AND col0 / col0 + 78;
+  - name: tab1
+
+outputs:
+  - name: q10732.out
+    data: |
+      59
+      68
+      96

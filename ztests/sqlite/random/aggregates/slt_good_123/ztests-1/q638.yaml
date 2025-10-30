@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q638.spq | sort > q638.out
+
+inputs:
+  - name: q638.spq
+    data: |
+      SELECT ALL * FROM tab2 (FORMAT parquet) WHERE - 48 NOT IN ( 54, + col2 - - + 25, + col1, - + col0 );
+  - name: tab2
+
+outputs:
+  - name: q638.out
+    data: |
+      46	51	23
+      64	77	40
+      75	67	58

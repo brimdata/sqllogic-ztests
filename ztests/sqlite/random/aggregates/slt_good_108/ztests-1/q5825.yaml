@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q5825.spq | sort > q5825.out
+
+inputs:
+  - name: q5825.spq
+    data: |
+      SELECT - - COUNT ( * ) - + 60 / - COUNT ( * ) AS col0 FROM tab2 (FORMAT parquet) AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q5825.out
+    data: |
+      23

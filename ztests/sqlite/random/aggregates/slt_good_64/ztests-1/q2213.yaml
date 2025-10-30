@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q2213.spq | sort > q2213.out
+
+inputs:
+  - name: q2213.spq
+    data: |
+      SELECT + col2 AS col2, - col0 * 19 * col1 AS col1, - - ( - col2 ) FROM tab2 (FORMAT parquet) AS cor0 WHERE NULL IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q2213.out
+    data: |
+      23	-44574	-23
+      40	-93632	-40
+      58	-95475	-58

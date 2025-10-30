@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q5396.spq | sort > q5396.out
+
+inputs:
+  - name: q5396.spq
+    data: |
+      SELECT ALL * FROM tab2 (FORMAT parquet) WHERE - + col1 NOT BETWEEN ( + CAST ( + col0 AS INTEGER ) * - + col0 + 56 + + - col0 ) AND NULL;
+  - name: tab2
+
+outputs:
+  - name: q5396.out
+    data: |

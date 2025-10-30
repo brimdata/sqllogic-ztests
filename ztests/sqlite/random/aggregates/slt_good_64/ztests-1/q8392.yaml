@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8392.spq | sort > q8392.out
+
+inputs:
+  - name: q8392.spq
+    data: |
+      SELECT ALL + col1 AS col1 FROM tab0 (FORMAT parquet) AS cor0 WHERE + col1 NOT BETWEEN - col0 AND - - col1;
+  - name: tab0
+
+outputs:
+  - name: q8392.out
+    data: |

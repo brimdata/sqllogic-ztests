@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q9584.spq | sort > q9584.out
+
+inputs:
+  - name: q9584.spq
+    data: |
+      SELECT DISTINCT 70 + COUNT ( * ) AS col2 FROM tab2 (FORMAT parquet);
+  - name: tab2
+
+outputs:
+  - name: q9584.out
+    data: |
+      73

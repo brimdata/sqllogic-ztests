@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q1603.spq | sort > q1603.out
+
+inputs:
+  - name: q1603.spq
+    data: |
+      SELECT + ( col1 ) / + 5 AS col2 FROM tab2 (FORMAT parquet) WHERE col2 IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q1603.out
+    data: |
+      10
+      13
+      15

@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q13382.spq | sort > q13382.out
+
+inputs:
+  - name: q13382.spq
+    data: |
+      SELECT + - COUNT ( * ) * ( + COUNT ( * ) ), SUM ( DISTINCT + col0 ) AS col1 FROM tab1 (FORMAT parquet) AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q13382.out
+    data: |
+      -9	227

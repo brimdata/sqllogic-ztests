@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q13098.spq | sort > q13098.out
+
+inputs:
+  - name: q13098.spq
+    data: |
+      SELECT ALL * FROM tab0 (FORMAT parquet) WHERE NOT ( - CAST ( + - col2 AS INTEGER ) ) <> col2 * + CAST ( + 67 AS INTEGER );
+  - name: tab0
+
+outputs:
+  - name: q13098.out
+    data: |

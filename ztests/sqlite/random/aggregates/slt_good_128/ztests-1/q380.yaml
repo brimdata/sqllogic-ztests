@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q380.spq | sort > q380.out
+
+inputs:
+  - name: q380.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE NOT 76 NOT IN ( - + 22 / col1 + - CAST ( NULL AS INTEGER ) );
+  - name: tab0
+
+outputs:
+  - name: q380.out
+    data: |

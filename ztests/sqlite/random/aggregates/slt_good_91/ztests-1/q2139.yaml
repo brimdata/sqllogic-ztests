@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q2139.spq | sort > q2139.out
+
+inputs:
+  - name: q2139.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) AS cor0 WHERE NOT 41 + 29 IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q2139.out
+    data: |

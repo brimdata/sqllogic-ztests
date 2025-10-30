@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q4.spq | sort > q4.out
+
+inputs:
+  - name: q4.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) AS cor0 WHERE NOT 40 + - col0 <= NULL;
+  - name: tab2
+
+outputs:
+  - name: q4.out
+    data: |

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q2028.spq | sort > q2028.out
+
+inputs:
+  - name: q2028.spq
+    data: |
+      SELECT ALL col2 * 77 * - col2 - col0 + col0 AS col2 FROM tab1 (FORMAT parquet) WHERE NOT - - col2 / col1 IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q2028.out
+    data: |
+      -268037
+      -356048
+      -709632

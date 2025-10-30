@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q5933.spq | sort > q5933.out
+
+inputs:
+  - name: q5933.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE NOT 85 * + 72 IS NULL OR NOT NULL <= + CAST ( + col2 AS INTEGER );
+  - name: tab0
+
+outputs:
+  - name: q5933.out
+    data: |
+      15	81	47
+      87	21	10
+      97	1	99

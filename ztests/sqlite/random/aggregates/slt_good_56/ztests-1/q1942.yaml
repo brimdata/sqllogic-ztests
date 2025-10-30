@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q1942.spq | sort > q1942.out
+
+inputs:
+  - name: q1942.spq
+    data: |
+      SELECT ALL 26 + 54 * - col0 FROM tab0 (FORMAT parquet) WHERE - col1 NOT IN ( - - col0, col0 );
+  - name: tab0
+
+outputs:
+  - name: q1942.out
+    data: |
+      -4672
+      -5212
+      -784

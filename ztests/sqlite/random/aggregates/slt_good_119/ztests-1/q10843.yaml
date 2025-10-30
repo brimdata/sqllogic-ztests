@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q10843.spq | sort > q10843.out
+
+inputs:
+  - name: q10843.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) cor0 WHERE - col1 / + col0 * col1 IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q10843.out
+    data: |

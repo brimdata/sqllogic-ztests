@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q4497.spq | sort > q4497.out
+
+inputs:
+  - name: q4497.spq
+    data: |
+      SELECT COUNT ( * ), - SUM ( 90 ) * - 41 AS col1 FROM tab2 (FORMAT parquet);
+  - name: tab2
+
+outputs:
+  - name: q4497.out
+    data: |
+      3	11070

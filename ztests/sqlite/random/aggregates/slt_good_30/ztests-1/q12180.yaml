@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q12180.spq | sort > q12180.out
+
+inputs:
+  - name: q12180.spq
+    data: |
+      SELECT DISTINCT col1 * - 23 + - col1 AS col1 FROM tab1 (FORMAT parquet);
+  - name: tab1
+
+outputs:
+  - name: q12180.out
+    data: |
+      -1128
+      -120
+      -336

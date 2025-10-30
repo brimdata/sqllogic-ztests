@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q11301.spq | sort > q11301.out
+
+inputs:
+  - name: q11301.spq
+    data: |
+      SELECT - col2 AS col0 FROM tab2 (FORMAT parquet) AS cor0 WHERE NULL BETWEEN 45 AND + 34 + + CAST ( col1 AS INTEGER );
+  - name: tab2
+
+outputs:
+  - name: q11301.out
+    data: |

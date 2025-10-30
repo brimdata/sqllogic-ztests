@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q13631.spq | sort > q13631.out
+
+inputs:
+  - name: q13631.spq
+    data: |
+      SELECT MIN ( + 59 ) FROM tab1 (FORMAT parquet) AS cor0 WHERE NULL IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q13631.out
+    data: |
+      59

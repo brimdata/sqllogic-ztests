@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q5240.spq | sort > q5240.out
+
+inputs:
+  - name: q5240.spq
+    data: |
+      SELECT ALL + + 42 * 52 + - ( - COUNT ( * ) ) FROM tab0 (FORMAT parquet) AS cor0 CROSS JOIN tab1 (FORMAT parquet) AS cor1;
+  - name: tab0
+  - name: tab1
+
+outputs:
+  - name: q5240.out
+    data: |
+      2193

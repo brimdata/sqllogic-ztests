@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q4664.spq | sort > q4664.out
+
+inputs:
+  - name: q4664.spq
+    data: |
+      SELECT ALL 27 AS col2 FROM tab0 (FORMAT parquet) WHERE ( - col1 * + 42 * 17 * + 63 - + 31 * col2 + + 86 ) IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q4664.out
+    data: |
+      27
+      27
+      27

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q4238.spq | sort > q4238.out
+
+inputs:
+  - name: q4238.spq
+    data: |
+      SELECT ALL * FROM tab2 (FORMAT parquet) AS cor0 WHERE NOT - col2 * col0 NOT BETWEEN - 18 AND + col1 + + 68;
+  - name: tab2
+
+outputs:
+  - name: q4238.out
+    data: |

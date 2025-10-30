@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q9942.spq | sort > q9942.out
+
+inputs:
+  - name: q9942.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE NULL <= ( + col0 + + 11 * - 64 );
+  - name: tab0
+
+outputs:
+  - name: q9942.out
+    data: |

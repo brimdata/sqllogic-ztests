@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8716.spq | sort > q8716.out
+
+inputs:
+  - name: q8716.spq
+    data: |
+      SELECT - + 4 AS col2 FROM tab0 (FORMAT parquet) WHERE NOT - ( + 77 ) - + col1 >= col2;
+  - name: tab0
+
+outputs:
+  - name: q8716.out
+    data: |
+      -4
+      -4
+      -4

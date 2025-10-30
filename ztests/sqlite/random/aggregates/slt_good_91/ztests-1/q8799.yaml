@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8799.spq | sort > q8799.out
+
+inputs:
+  - name: q8799.spq
+    data: |
+      SELECT ALL * FROM tab1 (FORMAT parquet) WHERE ( NOT - 36 * + 25 IS NULL );
+  - name: tab1
+
+outputs:
+  - name: q8799.out
+    data: |
+      51	14	96
+      85	5	59
+      91	47	68

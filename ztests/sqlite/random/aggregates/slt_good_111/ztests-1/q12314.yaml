@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q12314.spq | sort > q12314.out
+
+inputs:
+  - name: q12314.spq
+    data: |
+      SELECT DISTINCT ( 68 ) FROM tab2 (FORMAT parquet) WHERE col2 * - col0 + - col1 IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q12314.out
+    data: |

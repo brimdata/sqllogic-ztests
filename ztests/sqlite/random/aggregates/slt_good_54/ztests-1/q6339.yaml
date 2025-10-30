@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q6339.spq | sort > q6339.out
+
+inputs:
+  - name: q6339.spq
+    data: |
+      SELECT col0 + col1 AS col2 FROM tab1 (FORMAT parquet) AS cor0 WHERE NOT 34 IN ( 98 );
+  - name: tab1
+
+outputs:
+  - name: q6339.out
+    data: |
+      138
+      65
+      90

@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q661.spq | sort > q661.out
+
+inputs:
+  - name: q661.spq
+    data: |
+      SELECT DISTINCT + 94 / - ( + - COUNT ( * ) ) AS col1 FROM tab2 (FORMAT parquet) cor0 CROSS JOIN tab0 (FORMAT parquet) AS cor1;
+  - name: tab0
+  - name: tab2
+
+outputs:
+  - name: q661.out
+    data: |
+      10

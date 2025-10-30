@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q9084.spq | sort > q9084.out
+
+inputs:
+  - name: q9084.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) AS cor0 WHERE NOT 21 * col0 + 15 < ( NULL );
+  - name: tab0
+
+outputs:
+  - name: q9084.out
+    data: |

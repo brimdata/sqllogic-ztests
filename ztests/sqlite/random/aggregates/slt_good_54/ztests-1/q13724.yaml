@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q13724.spq | sort > q13724.out
+
+inputs:
+  - name: q13724.spq
+    data: |
+      SELECT col1 AS col1 FROM tab1 (FORMAT parquet) WHERE col2 * col0 BETWEEN 40 AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q13724.out
+    data: |

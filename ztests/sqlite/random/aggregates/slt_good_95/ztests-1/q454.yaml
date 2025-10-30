@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q454.spq | sort > q454.out
+
+inputs:
+  - name: q454.spq
+    data: |
+      SELECT ALL * FROM tab0 (FORMAT parquet) WHERE - CAST ( NULL AS REAL ) IN ( - col2 );
+  - name: tab0
+
+outputs:
+  - name: q454.out
+    data: |

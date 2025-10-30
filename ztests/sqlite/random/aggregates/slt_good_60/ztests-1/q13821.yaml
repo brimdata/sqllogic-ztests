@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q13821.spq | sort > q13821.out
+
+inputs:
+  - name: q13821.spq
+    data: |
+      SELECT ALL + col1 AS col2 FROM tab0 (FORMAT parquet) WHERE 22 + - col2 + - - 18 * + col1 >= NULL;
+  - name: tab0
+
+outputs:
+  - name: q13821.out
+    data: |

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q2892.spq | sort > q2892.out
+
+inputs:
+  - name: q2892.spq
+    data: |
+      SELECT col1 FROM tab1 (FORMAT parquet) WHERE NOT - 87 BETWEEN + + col1 AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q2892.out
+    data: |
+      14
+      47
+      5

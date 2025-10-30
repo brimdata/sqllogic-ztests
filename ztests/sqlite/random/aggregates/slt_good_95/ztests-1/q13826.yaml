@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q13826.spq | sort > q13826.out
+
+inputs:
+  - name: q13826.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) WHERE 34 <= 20 * - col0;
+  - name: tab2
+
+outputs:
+  - name: q13826.out
+    data: |

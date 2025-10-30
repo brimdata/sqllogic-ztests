@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q11549.spq | sort > q11549.out
+
+inputs:
+  - name: q11549.spq
+    data: |
+      SELECT ALL + col2 AS col0 FROM tab0 (FORMAT parquet) AS cor0 WHERE NOT NULL >= ( col0 - + 87 );
+  - name: tab0
+
+outputs:
+  - name: q11549.out
+    data: |

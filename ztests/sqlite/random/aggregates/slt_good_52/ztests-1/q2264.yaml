@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q2264.spq | sort > q2264.out
+
+inputs:
+  - name: q2264.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) AS cor0 WHERE NOT NULL NOT BETWEEN col1 * + ( ( - col1 ) ) AND NULL;
+  - name: tab0
+
+outputs:
+  - name: q2264.out
+    data: |

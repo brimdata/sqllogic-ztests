@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q4335.spq | sort > q4335.out
+
+inputs:
+  - name: q4335.spq
+    data: |
+      SELECT DISTINCT col2 FROM tab1 (FORMAT parquet) AS cor0 WHERE col2 NOT BETWEEN 6 + 96 AND - 13 + col2 * col0;
+  - name: tab1
+
+outputs:
+  - name: q4335.out
+    data: |
+      59
+      68
+      96

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q13962.spq | sort > q13962.out
+
+inputs:
+  - name: q13962.spq
+    data: |
+      SELECT ALL * FROM tab1 (FORMAT parquet) AS cor0 WHERE col1 * + ( - - 36 ) IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q13962.out
+    data: |

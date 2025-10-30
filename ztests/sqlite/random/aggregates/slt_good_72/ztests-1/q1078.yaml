@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q1078.spq | sort > q1078.out
+
+inputs:
+  - name: q1078.spq
+    data: |
+      SELECT - CAST ( 10 AS INTEGER ) FROM tab1 (FORMAT parquet) WHERE col1 * + - col0 >= - col2;
+  - name: tab1
+
+outputs:
+  - name: q1078.out
+    data: |

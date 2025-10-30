@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q6285.spq | sort > q6285.out
+
+inputs:
+  - name: q6285.spq
+    data: |
+      SELECT COUNT ( + + 60 ) + COUNT ( * ) * ( + 59 ) FROM tab2 (FORMAT parquet) WHERE NOT NULL IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q6285.out
+    data: |
+      180

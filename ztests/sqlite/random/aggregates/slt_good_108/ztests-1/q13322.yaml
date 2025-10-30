@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q13322.spq | sort > q13322.out
+
+inputs:
+  - name: q13322.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) cor0 WHERE NOT - CAST ( 7 AS INTEGER ) * + 27 IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q13322.out
+    data: |

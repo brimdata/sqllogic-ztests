@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q10634.spq | sort > q10634.out
+
+inputs:
+  - name: q10634.spq
+    data: |
+      SELECT - MIN ( col1 ) * - 61 AS col0 FROM tab1 (FORMAT parquet);
+  - name: tab1
+
+outputs:
+  - name: q10634.out
+    data: |
+      305

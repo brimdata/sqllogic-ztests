@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q7495.spq | sort > q7495.out
+
+inputs:
+  - name: q7495.spq
+    data: |
+      SELECT DISTINCT - col0 AS col2 FROM tab1 (FORMAT parquet) WHERE NOT + col0 <= ( ( + 33 ) );
+  - name: tab1
+
+outputs:
+  - name: q7495.out
+    data: |
+      -51
+      -85
+      -91

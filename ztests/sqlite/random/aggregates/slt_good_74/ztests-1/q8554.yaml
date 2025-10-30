@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8554.spq | sort > q8554.out
+
+inputs:
+  - name: q8554.spq
+    data: |
+      SELECT 74 AS col2 FROM tab0 (FORMAT parquet) WHERE - 22 / + col2 IN ( + CAST ( NULL AS INTEGER ) + col1 );
+  - name: tab0
+
+outputs:
+  - name: q8554.out
+    data: |

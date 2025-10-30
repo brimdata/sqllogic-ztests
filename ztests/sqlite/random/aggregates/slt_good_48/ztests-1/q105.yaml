@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q105.spq | sort > q105.out
+
+inputs:
+  - name: q105.spq
+    data: |
+      SELECT DISTINCT * FROM tab2 (FORMAT parquet) WHERE col2 IN ( + 40 / col2 );
+  - name: tab2
+
+outputs:
+  - name: q105.out
+    data: |

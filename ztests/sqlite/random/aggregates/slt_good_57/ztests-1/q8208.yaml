@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q8208.spq | sort > q8208.out
+
+inputs:
+  - name: q8208.spq
+    data: |
+      SELECT ALL SUM ( + 60 ) AS col2 FROM tab2 (FORMAT parquet), tab2 (FORMAT parquet) AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q8208.out
+    data: |
+      540

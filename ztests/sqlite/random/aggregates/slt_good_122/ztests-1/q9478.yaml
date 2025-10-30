@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q9478.spq | sort > q9478.out
+
+inputs:
+  - name: q9478.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) WHERE NOT + - 80 / - 81 BETWEEN - + ( - col1 ) AND + 37;
+  - name: tab1
+
+outputs:
+  - name: q9478.out
+    data: |
+      51	14	96
+      85	5	59
+      91	47	68

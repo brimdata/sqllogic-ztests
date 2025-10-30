@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q7603.spq | sort > q7603.out
+
+inputs:
+  - name: q7603.spq
+    data: |
+      SELECT DISTINCT * FROM tab2 (FORMAT parquet) AS cor0 WHERE ( col2 - 53 + - ( - col0 ) + col2 ) <> + 97;
+  - name: tab2
+
+outputs:
+  - name: q7603.out
+    data: |
+      46	51	23
+      64	77	40
+      75	67	58

@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q765.spq | sort > q765.out
+
+inputs:
+  - name: q765.spq
+    data: |
+      SELECT ALL COUNT ( + col0 ) AS col1 FROM tab1 (FORMAT parquet) AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q765.out
+    data: |
+      3

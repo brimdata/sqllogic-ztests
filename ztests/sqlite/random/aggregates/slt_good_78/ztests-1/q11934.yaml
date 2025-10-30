@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q11934.spq | sort > q11934.out
+
+inputs:
+  - name: q11934.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) AS cor0 WHERE col1 * - 84 * + 49 BETWEEN - col1 AND + col1;
+  - name: tab0
+
+outputs:
+  - name: q11934.out
+    data: |

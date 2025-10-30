@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q10509.spq | sort > q10509.out
+
+inputs:
+  - name: q10509.spq
+    data: |
+      SELECT + SUM ( + - col1 ) AS col1, ( - COUNT ( * ) ) FROM tab0 (FORMAT parquet);
+  - name: tab0
+
+outputs:
+  - name: q10509.out
+    data: |
+      -103	-3

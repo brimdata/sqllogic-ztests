@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8282.spq | sort > q8282.out
+
+inputs:
+  - name: q8282.spq
+    data: |
+      SELECT + 12, CAST ( NULL AS INTEGER ) - - + col0 AS col1 FROM tab0 (FORMAT parquet) WHERE + col0 BETWEEN NULL AND NULL;
+  - name: tab0
+
+outputs:
+  - name: q8282.out
+    data: |

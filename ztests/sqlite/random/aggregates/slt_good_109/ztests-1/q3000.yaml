@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q3000.spq | sort > q3000.out
+
+inputs:
+  - name: q3000.spq
+    data: |
+      SELECT + ( - col1 ) + col1 + col2 + - 60 * col2 * + + col1 AS col1, col2 / + 26 FROM tab0 (FORMAT parquet) AS cor0;
+  - name: tab0
+
+outputs:
+  - name: q3000.out
+    data: |
+      -12590	0
+      -228373	1
+      -5841	3

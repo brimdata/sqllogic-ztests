@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q11717.spq | sort > q11717.out
+
+inputs:
+  - name: q11717.spq
+    data: |
+      SELECT DISTINCT + COUNT ( * ) + + - COUNT ( * ) col0 FROM tab1 (FORMAT parquet) AS cor0 CROSS JOIN tab0 (FORMAT parquet) cor1 WHERE NOT NULL IS NOT NULL;
+  - name: tab0
+  - name: tab1
+
+outputs:
+  - name: q11717.out
+    data: |
+      0

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q7504.spq | sort > q7504.out
+
+inputs:
+  - name: q7504.spq
+    data: |
+      SELECT ALL * FROM tab1 (FORMAT parquet) WHERE - col0 + 30 * - + col2 + + col0 = 19;
+  - name: tab1
+
+outputs:
+  - name: q7504.out
+    data: |

@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q6387.spq | sort > q6387.out
+
+inputs:
+  - name: q6387.spq
+    data: |
+      SELECT ALL + COUNT ( * ) + + 67 * MIN ( + 42 ) AS col2 FROM tab1 (FORMAT parquet) AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q6387.out
+    data: |
+      2817

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q10840.spq | sort > q10840.out
+
+inputs:
+  - name: q10840.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) AS cor0 WHERE NULL NOT BETWEEN - col0 AND ( NULL );
+  - name: tab0
+
+outputs:
+  - name: q10840.out
+    data: |

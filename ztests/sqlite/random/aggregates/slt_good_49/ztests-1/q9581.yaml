@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q9581.spq | sort > q9581.out
+
+inputs:
+  - name: q9581.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE NOT 79 * col2 = + CAST ( NULL AS INTEGER );
+  - name: tab0
+
+outputs:
+  - name: q9581.out
+    data: |

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8120.spq | sort > q8120.out
+
+inputs:
+  - name: q8120.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE col0 <> col1 + + + 24;
+  - name: tab0
+
+outputs:
+  - name: q8120.out
+    data: |
+      15	81	47
+      87	21	10
+      97	1	99

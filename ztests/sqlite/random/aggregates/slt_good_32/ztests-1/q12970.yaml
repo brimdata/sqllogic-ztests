@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q12970.spq | sort > q12970.out
+
+inputs:
+  - name: q12970.spq
+    data: |
+      SELECT DISTINCT col0 * - 4 AS col0 FROM tab2 (FORMAT parquet) cor0 WHERE 19 IN ( + CAST ( NULL AS INTEGER ) );
+  - name: tab2
+
+outputs:
+  - name: q12970.out
+    data: |

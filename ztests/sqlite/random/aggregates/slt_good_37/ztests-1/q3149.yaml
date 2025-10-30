@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q3149.spq | sort > q3149.out
+
+inputs:
+  - name: q3149.spq
+    data: |
+      SELECT 51 AS col2, ( - - col2 ) AS col1 FROM tab0 (FORMAT parquet) AS cor0 WHERE NULL IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q3149.out
+    data: |

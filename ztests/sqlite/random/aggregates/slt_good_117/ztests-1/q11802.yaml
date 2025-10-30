@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q11802.spq | sort > q11802.out
+
+inputs:
+  - name: q11802.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) AS cor0 WHERE col2 - - - col2 <= + 26;
+  - name: tab0
+
+outputs:
+  - name: q11802.out
+    data: |
+      15	81	47
+      87	21	10
+      97	1	99

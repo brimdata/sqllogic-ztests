@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q9800.spq | sort > q9800.out
+
+inputs:
+  - name: q9800.spq
+    data: |
+      SELECT DISTINCT + CAST ( NULL AS INTEGER ) col1 FROM tab1 (FORMAT parquet) WHERE - 46 IN ( - 29 );
+  - name: tab1
+
+outputs:
+  - name: q9800.out
+    data: |

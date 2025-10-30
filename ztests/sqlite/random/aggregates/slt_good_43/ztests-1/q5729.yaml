@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q5729.spq | sort > q5729.out
+
+inputs:
+  - name: q5729.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) WHERE col1 IN ( CAST ( + 77 AS INTEGER ) * - 48 );
+  - name: tab1
+
+outputs:
+  - name: q5729.out
+    data: |

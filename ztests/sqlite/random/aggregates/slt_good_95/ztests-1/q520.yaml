@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q520.spq | sort > q520.out
+
+inputs:
+  - name: q520.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) AS cor0 CROSS JOIN tab2 (FORMAT parquet) AS cor1 WHERE 41 - - 50 IN ( 56 );
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q520.out
+    data: |

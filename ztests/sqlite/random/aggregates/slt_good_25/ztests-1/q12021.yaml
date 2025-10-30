@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q12021.spq | sort > q12021.out
+
+inputs:
+  - name: q12021.spq
+    data: |
+      SELECT 52, - col1 / 75 * + 11 AS col1 FROM tab0 (FORMAT parquet);
+  - name: tab0
+
+outputs:
+  - name: q12021.out
+    data: |
+      52	-11
+      52	0
+      52	0

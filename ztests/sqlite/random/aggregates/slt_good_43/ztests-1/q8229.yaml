@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8229.spq | sort > q8229.out
+
+inputs:
+  - name: q8229.spq
+    data: |
+      SELECT ALL - 95 + 83 AS col1 FROM tab1 (FORMAT parquet) AS cor0 WHERE NULL NOT BETWEEN ( CAST ( NULL AS INTEGER ) ) AND col1;
+  - name: tab1
+
+outputs:
+  - name: q8229.out
+    data: |

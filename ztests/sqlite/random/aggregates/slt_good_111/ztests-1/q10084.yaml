@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q10084.spq | sort > q10084.out
+
+inputs:
+  - name: q10084.spq
+    data: |
+      SELECT ALL + 12 AS col0 FROM tab0 (FORMAT parquet) WHERE NOT col0 BETWEEN + col0 AND - 92;
+  - name: tab0
+
+outputs:
+  - name: q10084.out
+    data: |
+      12
+      12
+      12

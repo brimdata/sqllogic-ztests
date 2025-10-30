@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q9978.spq | sort > q9978.out
+
+inputs:
+  - name: q9978.spq
+    data: |
+      SELECT ALL COUNT ( * ) col0 FROM tab1 (FORMAT parquet) WHERE ( col2 * col1 - 30 ) NOT BETWEEN ( 56 ) AND ( + col2 );
+  - name: tab1
+
+outputs:
+  - name: q9978.out
+    data: |
+      3

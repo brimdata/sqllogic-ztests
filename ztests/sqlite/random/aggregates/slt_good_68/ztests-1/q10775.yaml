@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q10775.spq | sort > q10775.out
+
+inputs:
+  - name: q10775.spq
+    data: |
+      SELECT ALL * FROM tab1 (FORMAT parquet) WHERE NULL BETWEEN NULL AND ( - col1 + 19 + - 30 - - + col0 * - - 24 * - col2 );
+  - name: tab1
+
+outputs:
+  - name: q10775.out
+    data: |

@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q13616.spq | sort > q13616.out
+
+inputs:
+  - name: q13616.spq
+    data: |
+      SELECT ALL + - MIN ( + 31 ) FROM tab2 (FORMAT parquet) AS cor0 WHERE + col1 + 88 IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q13616.out
+    data: |
+      -31

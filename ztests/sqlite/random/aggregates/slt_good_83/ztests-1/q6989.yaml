@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q6989.spq | sort > q6989.out
+
+inputs:
+  - name: q6989.spq
+    data: |
+      SELECT ALL - MAX ( 5 ) AS col1 FROM tab2 (FORMAT parquet) WHERE NOT + col0 BETWEEN 53 AND 7;
+  - name: tab2
+
+outputs:
+  - name: q6989.out
+    data: |
+      -5

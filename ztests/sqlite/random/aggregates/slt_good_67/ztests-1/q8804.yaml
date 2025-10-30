@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8804.spq | sort > q8804.out
+
+inputs:
+  - name: q8804.spq
+    data: |
+      SELECT ALL * FROM tab2 (FORMAT parquet) WHERE + 5 + col1 BETWEEN NULL AND ( + col2 - - 98 * + CAST ( - col1 AS INTEGER ) );
+  - name: tab2
+
+outputs:
+  - name: q8804.out
+    data: |

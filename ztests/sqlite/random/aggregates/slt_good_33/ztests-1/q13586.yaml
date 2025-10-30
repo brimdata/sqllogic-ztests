@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q13586.spq | sort > q13586.out
+
+inputs:
+  - name: q13586.spq
+    data: |
+      SELECT ALL + COUNT ( * ) * 80 AS col2 FROM tab2 (FORMAT parquet) AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q13586.out
+    data: |
+      240

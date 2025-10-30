@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q10639.spq | sort > q10639.out
+
+inputs:
+  - name: q10639.spq
+    data: |
+      SELECT ALL + col1 AS col1 FROM tab1 (FORMAT parquet) AS cor0 WHERE 22 >= + - col0;
+  - name: tab1
+
+outputs:
+  - name: q10639.out
+    data: |
+      14
+      47
+      5

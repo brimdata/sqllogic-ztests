@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q8227.spq | sort > q8227.out
+
+inputs:
+  - name: q8227.spq
+    data: |
+      SELECT ALL SUM ( - 91 ) FROM tab1 (FORMAT parquet) cor0 CROSS JOIN tab2 (FORMAT parquet) AS cor1;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q8227.out
+    data: |
+      -819

@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q1180.spq | sort > q1180.out
+
+inputs:
+  - name: q1180.spq
+    data: |
+      SELECT DISTINCT + MAX ( - col1 ) AS col0 FROM tab2 (FORMAT parquet) WHERE - 15 < - - 12;
+  - name: tab2
+
+outputs:
+  - name: q1180.out
+    data: |
+      -51

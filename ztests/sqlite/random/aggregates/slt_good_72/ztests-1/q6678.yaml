@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q6678.spq | sort > q6678.out
+
+inputs:
+  - name: q6678.spq
+    data: |
+      SELECT ALL + col2 FROM tab1 (FORMAT parquet) WHERE NULL BETWEEN 20 AND ( NULL );
+  - name: tab1
+
+outputs:
+  - name: q6678.out
+    data: |

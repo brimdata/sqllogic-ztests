@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q4168.spq | sort > q4168.out
+
+inputs:
+  - name: q4168.spq
+    data: |
+      SELECT DISTINCT * FROM tab2 (FORMAT parquet) WHERE NOT ( NULL ) < - CAST ( NULL AS INTEGER ) OR NULL IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q4168.out
+    data: |

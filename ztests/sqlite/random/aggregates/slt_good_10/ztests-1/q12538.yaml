@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q12538.spq | sort > q12538.out
+
+inputs:
+  - name: q12538.spq
+    data: |
+      SELECT - MIN ( + - 85 ) AS col1 FROM tab1 (FORMAT parquet) AS cor0 CROSS JOIN tab2 (FORMAT parquet) cor1;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q12538.out
+    data: |
+      85

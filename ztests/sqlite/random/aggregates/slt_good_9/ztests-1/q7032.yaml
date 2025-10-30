@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q7032.spq | sort > q7032.out
+
+inputs:
+  - name: q7032.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE 12 + col2 * - 7 IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q7032.out
+    data: |

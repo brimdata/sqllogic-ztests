@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q4505.spq | sort > q4505.out
+
+inputs:
+  - name: q4505.spq
+    data: |
+      SELECT + COUNT ( * ) * 94 + - COUNT ( * ) * COUNT ( * ) FROM tab1 (FORMAT parquet);
+  - name: tab1
+
+outputs:
+  - name: q4505.out
+    data: |
+      273

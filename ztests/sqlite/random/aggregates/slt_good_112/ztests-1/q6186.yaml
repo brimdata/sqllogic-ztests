@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q6186.spq | sort > q6186.out
+
+inputs:
+  - name: q6186.spq
+    data: |
+      SELECT - 12 AS col2 FROM tab2 (FORMAT parquet) WHERE NOT ( + col2 / - - col2 * + col0 IS NULL );
+  - name: tab2
+
+outputs:
+  - name: q6186.out
+    data: |
+      -12
+      -12
+      -12

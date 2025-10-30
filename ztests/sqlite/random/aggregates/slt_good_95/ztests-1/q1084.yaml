@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q1084.spq | sort > q1084.out
+
+inputs:
+  - name: q1084.spq
+    data: |
+      SELECT ALL col2 * + col1 AS col0 FROM tab2 (FORMAT parquet) WHERE col2 BETWEEN ( + col2 ) + 24 AND NULL;
+  - name: tab2
+
+outputs:
+  - name: q1084.out
+    data: |

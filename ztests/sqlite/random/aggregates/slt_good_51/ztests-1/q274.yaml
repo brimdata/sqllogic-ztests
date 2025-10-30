@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q274.spq | sort > q274.out
+
+inputs:
+  - name: q274.spq
+    data: |
+      SELECT ALL col1 * CAST ( + 81 AS REAL ) AS col2 FROM tab1 (FORMAT parquet) WHERE CAST ( + 42 AS INTEGER ) = + 3;
+  - name: tab1
+
+outputs:
+  - name: q274.out
+    data: |

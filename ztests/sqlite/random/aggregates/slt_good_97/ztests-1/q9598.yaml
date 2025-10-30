@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q9598.spq | sort > q9598.out
+
+inputs:
+  - name: q9598.spq
+    data: |
+      SELECT - CAST ( NULL AS INTEGER ) * col2 FROM tab0 (FORMAT parquet) WHERE NOT 31 / col2 IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q9598.out
+    data: |

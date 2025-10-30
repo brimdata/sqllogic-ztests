@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q174.spq | sort > q174.out
+
+inputs:
+  - name: q174.spq
+    data: |
+      SELECT DISTINCT * FROM tab1 (FORMAT parquet) WHERE NOT col0 / 66 BETWEEN 91 AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q174.out
+    data: |
+      51	14	96
+      85	5	59
+      91	47	68

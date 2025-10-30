@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q9578.spq | sort > q9578.out
+
+inputs:
+  - name: q9578.spq
+    data: |
+      SELECT COUNT ( * ) * + SUM ( - col1 ) FROM tab2 (FORMAT parquet);
+  - name: tab2
+
+outputs:
+  - name: q9578.out
+    data: |
+      -585

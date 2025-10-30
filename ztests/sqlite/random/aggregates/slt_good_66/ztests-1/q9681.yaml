@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q9681.spq | sort > q9681.out
+
+inputs:
+  - name: q9681.spq
+    data: |
+      SELECT DISTINCT + 24 / col2 AS col1, col0 + + col2 FROM tab1 (FORMAT parquet) WHERE NULL IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q9681.out
+    data: |

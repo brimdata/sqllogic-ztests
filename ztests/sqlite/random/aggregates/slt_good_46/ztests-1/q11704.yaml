@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q11704.spq | sort > q11704.out
+
+inputs:
+  - name: q11704.spq
+    data: |
+      SELECT DISTINCT CAST ( NULL AS REAL ) FROM tab2 (FORMAT parquet) WHERE col1 + + col2 BETWEEN + 18 + - 7 * - col0 AND ( 17 );
+  - name: tab2
+
+outputs:
+  - name: q11704.out
+    data: |

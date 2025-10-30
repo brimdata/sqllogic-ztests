@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q3786.spq | sort > q3786.out
+
+inputs:
+  - name: q3786.spq
+    data: |
+      SELECT ALL col2 * + 26 * - 80 AS col1, col2 / + 38 AS col2 FROM tab2 (FORMAT parquet);
+  - name: tab2
+
+outputs:
+  - name: q3786.out
+    data: |
+      -120640	1
+      -47840	0
+      -83200	1

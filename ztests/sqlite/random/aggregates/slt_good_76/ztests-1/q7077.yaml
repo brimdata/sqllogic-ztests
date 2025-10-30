@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q7077.spq | sort > q7077.out
+
+inputs:
+  - name: q7077.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) AS cor0 WHERE NOT NULL BETWEEN 30 + col0 AND NULL;
+  - name: tab2
+
+outputs:
+  - name: q7077.out
+    data: |

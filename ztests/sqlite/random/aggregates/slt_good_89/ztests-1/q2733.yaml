@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q2733.spq | sort > q2733.out
+
+inputs:
+  - name: q2733.spq
+    data: |
+      SELECT DISTINCT 50 AS col0 FROM tab2 (FORMAT parquet) AS cor0 WHERE 7 + col1 <= col2 * col0;
+  - name: tab2
+
+outputs:
+  - name: q2733.out
+    data: |
+      50

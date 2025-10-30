@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q8702.spq | sort > q8702.out
+
+inputs:
+  - name: q8702.spq
+    data: |
+      SELECT + 49 FROM tab0 (FORMAT parquet) WHERE NOT + col0 BETWEEN ( - col0 ) AND col2 + + + 3;
+  - name: tab0
+
+outputs:
+  - name: q8702.out
+    data: |
+      49

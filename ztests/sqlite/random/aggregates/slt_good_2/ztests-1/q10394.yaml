@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q10394.spq | sort > q10394.out
+
+inputs:
+  - name: q10394.spq
+    data: |
+      SELECT ALL * FROM tab0 (FORMAT parquet) WHERE - CAST ( NULL AS INTEGER ) / ( - col0 ) + 27 BETWEEN NULL AND - col1;
+  - name: tab0
+
+outputs:
+  - name: q10394.out
+    data: |

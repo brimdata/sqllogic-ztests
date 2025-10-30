@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q5005.spq | sort > q5005.out
+
+inputs:
+  - name: q5005.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) WHERE NOT - 59 BETWEEN NULL AND 23;
+  - name: tab2
+
+outputs:
+  - name: q5005.out
+    data: |

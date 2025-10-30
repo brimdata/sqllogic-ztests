@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q7821.spq | sort > q7821.out
+
+inputs:
+  - name: q7821.spq
+    data: |
+      SELECT ALL * FROM tab0 (FORMAT parquet) WHERE CAST ( NULL AS INTEGER ) * - col0 <= + 91;
+  - name: tab0
+
+outputs:
+  - name: q7821.out
+    data: |

@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q7880.spq | sort > q7880.out
+
+inputs:
+  - name: q7880.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE - col0 NOT BETWEEN NULL AND ( - + col1 + col1 / col1 );
+  - name: tab0
+
+outputs:
+  - name: q7880.out
+    data: |
+      15	81	47

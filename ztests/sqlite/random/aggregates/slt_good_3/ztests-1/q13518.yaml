@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q13518.spq | sort > q13518.out
+
+inputs:
+  - name: q13518.spq
+    data: |
+      SELECT DISTINCT * FROM tab2 (FORMAT parquet) WHERE - CAST ( - col0 AS INTEGER ) + col0 NOT BETWEEN ( - col1 ) AND + 29 * - - col0;
+  - name: tab2
+
+outputs:
+  - name: q13518.out
+    data: |

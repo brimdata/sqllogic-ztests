@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q5467.spq | sort > q5467.out
+
+inputs:
+  - name: q5467.spq
+    data: |
+      SELECT ALL + col1 FROM tab2 (FORMAT parquet) WHERE CAST ( NULL AS INTEGER ) BETWEEN + 91 * + col0 AND - col2 * + col0 * + - col1;
+  - name: tab2
+
+outputs:
+  - name: q5467.out
+    data: |

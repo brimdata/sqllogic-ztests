@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q9685.spq | sort > q9685.out
+
+inputs:
+  - name: q9685.spq
+    data: |
+      SELECT 38 * SUM ( col2 ) * ( + 73 ) + - COUNT ( * ) AS col1 FROM tab0 (FORMAT parquet) AS cor0;
+  - name: tab0
+
+outputs:
+  - name: q9685.out
+    data: |
+      432741

@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q9448.spq | sort > q9448.out
+
+inputs:
+  - name: q9448.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) WHERE col1 NOT BETWEEN - 72 AND 21;
+  - name: tab1
+
+outputs:
+  - name: q9448.out
+    data: |
+      91	47	68

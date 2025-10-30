@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q2475.spq | sort > q2475.out
+
+inputs:
+  - name: q2475.spq
+    data: |
+      SELECT - COUNT ( * ) + COUNT ( * ) FROM tab1 (FORMAT parquet) WHERE 38 * col0 NOT IN ( 25 );
+  - name: tab1
+
+outputs:
+  - name: q2475.out
+    data: |
+      0

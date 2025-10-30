@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q1886.spq | sort > q1886.out
+
+inputs:
+  - name: q1886.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) WHERE NULL IN ( 85 * 98 ) AND ( + col2 + col1 ) IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q1886.out
+    data: |

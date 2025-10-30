@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q1638.spq | sort > q1638.out
+
+inputs:
+  - name: q1638.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) AS cor0 WHERE NOT 14 * + 43 BETWEEN NULL AND ( NULL );
+  - name: tab2
+
+outputs:
+  - name: q1638.out
+    data: |

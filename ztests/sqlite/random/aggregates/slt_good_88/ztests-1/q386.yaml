@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q386.spq | sort > q386.out
+
+inputs:
+  - name: q386.spq
+    data: |
+      SELECT ALL * FROM tab1 (FORMAT parquet) cor0 WHERE col0 BETWEEN NULL AND col1;
+  - name: tab1
+
+outputs:
+  - name: q386.out
+    data: |

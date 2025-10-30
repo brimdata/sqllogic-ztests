@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q2005.spq | sort > q2005.out
+
+inputs:
+  - name: q2005.spq
+    data: |
+      SELECT col2 + - col0 AS col2, - col1 - col2 FROM tab2 (FORMAT parquet);
+  - name: tab2
+
+outputs:
+  - name: q2005.out
+    data: |
+      -17	-125
+      -23	-74
+      -24	-117

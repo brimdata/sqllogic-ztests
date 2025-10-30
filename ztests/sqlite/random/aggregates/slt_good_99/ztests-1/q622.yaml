@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q622.spq | sort > q622.out
+
+inputs:
+  - name: q622.spq
+    data: |
+      SELECT ALL - + 5 * - + 20 + - col0, + 32 * + - col2 AS col2 FROM tab0 (FORMAT parquet) WHERE NOT + col1 NOT BETWEEN NULL AND + col1;
+  - name: tab0
+
+outputs:
+  - name: q622.out
+    data: |

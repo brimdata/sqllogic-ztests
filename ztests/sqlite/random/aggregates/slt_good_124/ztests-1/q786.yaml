@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q786.spq | sort > q786.out
+
+inputs:
+  - name: q786.spq
+    data: |
+      SELECT DISTINCT + col0 * + + col1 AS col2 FROM tab2 (FORMAT parquet) WHERE NOT col1 = + - 71 - + col0;
+  - name: tab2
+
+outputs:
+  - name: q786.out
+    data: |
+      2346
+      4928
+      5025

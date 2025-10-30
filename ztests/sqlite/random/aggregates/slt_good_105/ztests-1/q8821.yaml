@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8821.spq | sort > q8821.out
+
+inputs:
+  - name: q8821.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE NOT NULL BETWEEN col1 / - col1 + col2 AND + 22 * - col1;
+  - name: tab0
+
+outputs:
+  - name: q8821.out
+    data: |

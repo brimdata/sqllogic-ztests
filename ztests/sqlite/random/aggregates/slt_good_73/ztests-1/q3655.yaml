@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q3655.spq | sort > q3655.out
+
+inputs:
+  - name: q3655.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) AS cor0 CROSS JOIN tab2 (FORMAT parquet) AS cor1 WHERE NOT 47 IS NOT NULL;
+  - name: tab0
+  - name: tab2
+
+outputs:
+  - name: q3655.out
+    data: |

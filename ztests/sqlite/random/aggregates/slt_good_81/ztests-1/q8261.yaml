@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q8261.spq | sort > q8261.out
+
+inputs:
+  - name: q8261.spq
+    data: |
+      SELECT + 40 + MIN ( - col1 ) AS col2 FROM tab1 (FORMAT parquet) AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q8261.out
+    data: |
+      -7

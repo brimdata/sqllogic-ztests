@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q11961.spq | sort > q11961.out
+
+inputs:
+  - name: q11961.spq
+    data: |
+      SELECT COUNT ( * ) - 38 * 99 AS col2 FROM tab0 (FORMAT parquet) AS cor0 WHERE ( - col1 * - col0 ) IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q11961.out
+    data: |
+      -3759

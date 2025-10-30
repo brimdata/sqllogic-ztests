@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q12476.spq | sort > q12476.out
+
+inputs:
+  - name: q12476.spq
+    data: |
+      SELECT ALL + ( + 44 ) AS col1, 29 * + col0 * col0 * 12 FROM tab1 (FORMAT parquet);
+  - name: tab1
+
+outputs:
+  - name: q12476.out
+    data: |
+      44	2514300
+      44	2881788
+      44	905148

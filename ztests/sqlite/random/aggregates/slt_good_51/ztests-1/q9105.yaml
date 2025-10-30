@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q9105.spq | sort > q9105.out
+
+inputs:
+  - name: q9105.spq
+    data: |
+      SELECT 30 * col1 + - 21 AS col2 FROM tab1 (FORMAT parquet);
+  - name: tab1
+
+outputs:
+  - name: q9105.out
+    data: |
+      129
+      1389
+      399

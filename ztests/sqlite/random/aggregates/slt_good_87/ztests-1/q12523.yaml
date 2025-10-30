@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q12523.spq | sort > q12523.out
+
+inputs:
+  - name: q12523.spq
+    data: |
+      SELECT ALL + 26 * - 61 + + 16 FROM tab2 (FORMAT parquet) WHERE NOT - CAST ( NULL AS INTEGER ) IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q12523.out
+    data: |

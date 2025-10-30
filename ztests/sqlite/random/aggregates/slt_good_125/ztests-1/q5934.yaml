@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q5934.spq | sort > q5934.out
+
+inputs:
+  - name: q5934.spq
+    data: |
+      SELECT + + CAST ( + 8 AS INTEGER ) AS col0 FROM tab1 (FORMAT parquet) WHERE NOT NULL IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q5934.out
+    data: |

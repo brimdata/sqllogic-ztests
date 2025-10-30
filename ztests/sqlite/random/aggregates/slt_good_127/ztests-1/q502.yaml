@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q502.spq | sort > q502.out
+
+inputs:
+  - name: q502.spq
+    data: |
+      SELECT 56 + - COUNT ( * ) FROM tab1 (FORMAT parquet);
+  - name: tab1
+
+outputs:
+  - name: q502.out
+    data: |
+      53

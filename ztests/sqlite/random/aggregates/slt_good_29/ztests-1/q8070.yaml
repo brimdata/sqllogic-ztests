@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q8070.spq | sort > q8070.out
+
+inputs:
+  - name: q8070.spq
+    data: |
+      SELECT - SUM ( - col1 ) * + 33 FROM tab2 (FORMAT parquet) AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q8070.out
+    data: |
+      6435

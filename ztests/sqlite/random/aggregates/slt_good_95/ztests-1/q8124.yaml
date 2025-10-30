@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8124.spq | sort > q8124.out
+
+inputs:
+  - name: q8124.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) AS cor0 WHERE 93 BETWEEN - col0 AND - + col1;
+  - name: tab0
+
+outputs:
+  - name: q8124.out
+    data: |

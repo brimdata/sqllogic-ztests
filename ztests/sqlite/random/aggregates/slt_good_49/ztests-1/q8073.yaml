@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q8073.spq | sort > q8073.out
+
+inputs:
+  - name: q8073.spq
+    data: |
+      SELECT DISTINCT + COUNT ( * ) * 38 FROM tab1 (FORMAT parquet) AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q8073.out
+    data: |
+      114

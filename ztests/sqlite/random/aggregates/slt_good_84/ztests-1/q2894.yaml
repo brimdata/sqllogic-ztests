@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q2894.spq | sort > q2894.out
+
+inputs:
+  - name: q2894.spq
+    data: |
+      SELECT DISTINCT col0 AS col1 FROM tab0 (FORMAT parquet) WHERE NOT NULL BETWEEN 77 / - col0 AND + col1;
+  - name: tab0
+
+outputs:
+  - name: q2894.out
+    data: |

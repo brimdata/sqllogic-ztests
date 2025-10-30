@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q6318.spq | sort > q6318.out
+
+inputs:
+  - name: q6318.spq
+    data: |
+      SELECT DISTINCT * FROM tab1 (FORMAT parquet) cor0 CROSS JOIN tab2 (FORMAT parquet) WHERE ( + 18 ) <> NULL;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q6318.out
+    data: |

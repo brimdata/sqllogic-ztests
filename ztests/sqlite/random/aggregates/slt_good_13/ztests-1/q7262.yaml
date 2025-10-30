@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q7262.spq | sort > q7262.out
+
+inputs:
+  - name: q7262.spq
+    data: |
+      SELECT DISTINCT + - col2 FROM tab1 (FORMAT parquet) WHERE col1 <> + + 3 * + + 61 + + col1 + + CAST ( NULL AS INTEGER ) + + 29;
+  - name: tab1
+
+outputs:
+  - name: q7262.out
+    data: |

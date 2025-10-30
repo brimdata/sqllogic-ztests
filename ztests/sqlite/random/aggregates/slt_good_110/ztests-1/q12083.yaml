@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q12083.spq | sort > q12083.out
+
+inputs:
+  - name: q12083.spq
+    data: |
+      SELECT ALL * FROM tab0 (FORMAT parquet) cor0 WHERE + col1 BETWEEN - CAST ( + col1 AS INTEGER ) + + col2 AND NULL;
+  - name: tab0
+
+outputs:
+  - name: q12083.out
+    data: |

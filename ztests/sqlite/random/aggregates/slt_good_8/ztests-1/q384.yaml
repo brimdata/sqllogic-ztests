@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q384.spq | sort > q384.out
+
+inputs:
+  - name: q384.spq
+    data: |
+      SELECT 12 FROM tab2 (FORMAT parquet) WHERE - + 18 IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q384.out
+    data: |
+      12
+      12
+      12

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q6931.spq | sort > q6931.out
+
+inputs:
+  - name: q6931.spq
+    data: |
+      SELECT DISTINCT * FROM tab2 (FORMAT parquet) AS cor0 WHERE + col0 BETWEEN col2 * 23 AND ( + ( 3 ) * 67 );
+  - name: tab2
+
+outputs:
+  - name: q6931.out
+    data: |

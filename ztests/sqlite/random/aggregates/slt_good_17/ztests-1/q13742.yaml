@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q13742.spq | sort > q13742.out
+
+inputs:
+  - name: q13742.spq
+    data: |
+      SELECT DISTINCT * FROM tab1 (FORMAT parquet) WHERE + - 33 BETWEEN ( col1 ) AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q13742.out
+    data: |

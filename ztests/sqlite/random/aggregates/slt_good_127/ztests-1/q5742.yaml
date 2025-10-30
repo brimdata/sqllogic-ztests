@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q5742.spq | sort > q5742.out
+
+inputs:
+  - name: q5742.spq
+    data: |
+      SELECT 41 AS col1 FROM tab2 (FORMAT parquet) cor0 WHERE ( + col2 + col0 * - 32 ) IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q5742.out
+    data: |
+      41
+      41
+      41

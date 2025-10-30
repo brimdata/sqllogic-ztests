@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q576.spq | sort > q576.out
+
+inputs:
+  - name: q576.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) AS cor0 WHERE ( - 7 * 12 ) NOT IN ( 63 );
+  - name: tab1
+
+outputs:
+  - name: q576.out
+    data: |
+      51	14	96
+      85	5	59
+      91	47	68

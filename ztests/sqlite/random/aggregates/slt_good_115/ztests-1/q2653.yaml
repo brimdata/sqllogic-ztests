@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q2653.spq | sort > q2653.out
+
+inputs:
+  - name: q2653.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) WHERE NOT ( NOT 27 NOT BETWEEN col0 AND NULL );
+  - name: tab1
+
+outputs:
+  - name: q2653.out
+    data: |
+      51	14	96
+      85	5	59
+      91	47	68

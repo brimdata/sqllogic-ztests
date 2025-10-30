@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q5606.spq | sort > q5606.out
+
+inputs:
+  - name: q5606.spq
+    data: |
+      SELECT DISTINCT * FROM tab1 (FORMAT parquet) WHERE NOT - + col1 NOT IN ( 86, + ( - + col0 ), + + col0 );
+  - name: tab1
+
+outputs:
+  - name: q5606.out
+    data: |

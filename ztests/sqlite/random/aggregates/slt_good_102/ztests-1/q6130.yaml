@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q6130.spq | sort > q6130.out
+
+inputs:
+  - name: q6130.spq
+    data: |
+      SELECT 7 - CAST ( NULL AS INTEGER ) AS col2 FROM tab0 (FORMAT parquet) AS cor0 WHERE NULL BETWEEN 67 AND col2 * col2 + - col1;
+  - name: tab0
+
+outputs:
+  - name: q6130.out
+    data: |

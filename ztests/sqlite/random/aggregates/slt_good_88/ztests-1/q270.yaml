@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q270.spq | sort > q270.out
+
+inputs:
+  - name: q270.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) AS cor0 WHERE ( + col0 <= + 25 + + - 47 + + - ( CAST ( + 25 AS INTEGER ) ) );
+  - name: tab1
+
+outputs:
+  - name: q270.out
+    data: |

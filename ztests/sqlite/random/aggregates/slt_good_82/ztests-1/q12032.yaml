@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q12032.spq | sort > q12032.out
+
+inputs:
+  - name: q12032.spq
+    data: |
+      SELECT - 35 + 87 + 15 AS col0 FROM tab1 (FORMAT parquet) WHERE NULL >= ( NULL );
+  - name: tab1
+
+outputs:
+  - name: q12032.out
+    data: |

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q7935.spq | sort > q7935.out
+
+inputs:
+  - name: q7935.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) WHERE col0 BETWEEN ( col1 - - 24 + + col1 / - col0 ) AND ( col0 );
+  - name: tab1
+
+outputs:
+  - name: q7935.out
+    data: |
+      51	14	96
+      85	5	59
+      91	47	68

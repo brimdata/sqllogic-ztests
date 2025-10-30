@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8567.spq | sort > q8567.out
+
+inputs:
+  - name: q8567.spq
+    data: |
+      SELECT ALL + col0 * col1 FROM tab2 (FORMAT parquet) WHERE NOT + 63 BETWEEN ( + 72 * + col0 ) AND NULL;
+  - name: tab2
+
+outputs:
+  - name: q8567.out
+    data: |
+      2346
+      4928
+      5025

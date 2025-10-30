@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8228.spq | sort > q8228.out
+
+inputs:
+  - name: q8228.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) WHERE NOT col1 * + col0 + 42 NOT BETWEEN ( NULL ) AND ( NULL );
+  - name: tab2
+
+outputs:
+  - name: q8228.out
+    data: |

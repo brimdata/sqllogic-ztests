@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q264.spq | sort > q264.out
+
+inputs:
+  - name: q264.spq
+    data: |
+      SELECT ALL * FROM tab2 (FORMAT parquet) AS cor0 WHERE NOT + 97 NOT IN ( CAST ( col2 AS INTEGER ) );
+  - name: tab2
+
+outputs:
+  - name: q264.out
+    data: |

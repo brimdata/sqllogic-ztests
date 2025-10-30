@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q4041.spq | sort > q4041.out
+
+inputs:
+  - name: q4041.spq
+    data: |
+      SELECT - col2 * CAST ( NULL AS INTEGER ) - + - 64 FROM tab1 (FORMAT parquet) WHERE ( + col1 ) IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q4041.out
+    data: |

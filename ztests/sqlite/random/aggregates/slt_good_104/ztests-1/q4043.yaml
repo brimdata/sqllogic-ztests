@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q4043.spq | sort > q4043.out
+
+inputs:
+  - name: q4043.spq
+    data: |
+      SELECT + 72 * col0 / + 7, col0 AS col2 FROM tab1 (FORMAT parquet) AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q4043.out
+    data: |
+      524	51
+      874	85
+      936	91

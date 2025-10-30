@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q3082.spq | sort > q3082.out
+
+inputs:
+  - name: q3082.spq
+    data: |
+      SELECT ALL + 32 * ( + col1 ) FROM tab2 (FORMAT parquet) cor0;
+  - name: tab2
+
+outputs:
+  - name: q3082.out
+    data: |
+      1632
+      2144
+      2464

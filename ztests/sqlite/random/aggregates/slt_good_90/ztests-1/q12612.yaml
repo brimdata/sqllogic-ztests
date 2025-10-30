@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q12612.spq | sort > q12612.out
+
+inputs:
+  - name: q12612.spq
+    data: |
+      SELECT col1 FROM tab1 (FORMAT parquet) WHERE 82 < col2;
+  - name: tab1
+
+outputs:
+  - name: q12612.out
+    data: |
+      14

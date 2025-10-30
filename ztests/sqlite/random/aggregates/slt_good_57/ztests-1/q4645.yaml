@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q4645.spq | sort > q4645.out
+
+inputs:
+  - name: q4645.spq
+    data: |
+      SELECT - ( + col2 ) * + col2 AS col1 FROM tab1 (FORMAT parquet) WHERE - col0 IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q4645.out
+    data: |
+      -3481
+      -4624
+      -9216

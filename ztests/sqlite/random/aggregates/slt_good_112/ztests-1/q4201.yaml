@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q4201.spq | sort > q4201.out
+
+inputs:
+  - name: q4201.spq
+    data: |
+      SELECT 58 AS col1 FROM tab1 (FORMAT parquet) WHERE col2 NOT IN ( 10 );
+  - name: tab1
+
+outputs:
+  - name: q4201.out
+    data: |
+      58
+      58
+      58

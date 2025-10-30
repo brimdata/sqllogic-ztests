@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q13808.spq | sort > q13808.out
+
+inputs:
+  - name: q13808.spq
+    data: |
+      SELECT ALL * FROM tab1 (FORMAT parquet) WHERE ( ( + ( - ( col2 ) ) ) ) NOT BETWEEN 97 AND + col0;
+  - name: tab1
+
+outputs:
+  - name: q13808.out
+    data: |
+      51	14	96
+      85	5	59
+      91	47	68

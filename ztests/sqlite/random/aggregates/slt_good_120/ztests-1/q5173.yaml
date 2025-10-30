@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q5173.spq | sort > q5173.out
+
+inputs:
+  - name: q5173.spq
+    data: |
+      SELECT ALL + SUM ( + col0 ) FROM tab2 (FORMAT parquet) WHERE col2 <= - ( - col2 );
+  - name: tab2
+
+outputs:
+  - name: q5173.out
+    data: |
+      185

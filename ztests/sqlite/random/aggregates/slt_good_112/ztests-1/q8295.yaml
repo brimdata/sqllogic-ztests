@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8295.spq | sort > q8295.out
+
+inputs:
+  - name: q8295.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) WHERE col1 / - col0 + 26 NOT BETWEEN ( NULL ) AND 20 * - col0;
+  - name: tab2
+
+outputs:
+  - name: q8295.out
+    data: |
+      46	51	23
+      64	77	40
+      75	67	58

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q265.spq | sort > q265.out
+
+inputs:
+  - name: q265.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE NOT + CAST ( - 1 AS REAL ) = NULL;
+  - name: tab0
+
+outputs:
+  - name: q265.out
+    data: |

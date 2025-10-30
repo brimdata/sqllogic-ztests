@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8021.spq | sort > q8021.out
+
+inputs:
+  - name: q8021.spq
+    data: |
+      SELECT ALL * FROM tab2 (FORMAT parquet) WHERE + col1 + + 3 BETWEEN NULL AND col1;
+  - name: tab2
+
+outputs:
+  - name: q8021.out
+    data: |

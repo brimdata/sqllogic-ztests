@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q1011.spq | sort > q1011.out
+
+inputs:
+  - name: q1011.spq
+    data: |
+      SELECT + COUNT ( * ) FROM tab1 (FORMAT parquet) WHERE - col2 NOT BETWEEN + 86 AND + col0;
+  - name: tab1
+
+outputs:
+  - name: q1011.out
+    data: |
+      3

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q6043.spq | sort > q6043.out
+
+inputs:
+  - name: q6043.spq
+    data: |
+      SELECT DISTINCT + col1 FROM tab1 (FORMAT parquet) AS cor0 WHERE col1 NOT BETWEEN + - 60 AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q6043.out
+    data: |

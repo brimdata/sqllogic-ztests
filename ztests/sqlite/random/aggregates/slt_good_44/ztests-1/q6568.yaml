@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q6568.spq | sort > q6568.out
+
+inputs:
+  - name: q6568.spq
+    data: |
+      SELECT + col2 FROM tab2 (FORMAT parquet) WHERE - 12 * + col0 BETWEEN + col0 AND NULL;
+  - name: tab2
+
+outputs:
+  - name: q6568.out
+    data: |

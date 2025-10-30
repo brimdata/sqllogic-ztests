@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q13315.spq | sort > q13315.out
+
+inputs:
+  - name: q13315.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) WHERE NOT ( - ( + 20 ) + 52 / - 83 ) <> col0 * CAST ( + col2 AS INTEGER );
+  - name: tab2
+
+outputs:
+  - name: q13315.out
+    data: |

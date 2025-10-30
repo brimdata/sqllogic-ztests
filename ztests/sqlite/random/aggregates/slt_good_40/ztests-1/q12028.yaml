@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q12028.spq | sort > q12028.out
+
+inputs:
+  - name: q12028.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet), tab2 (FORMAT parquet) AS cor0 WHERE NOT 85 * - 11 > NULL;
+  - name: tab0
+  - name: tab2
+
+outputs:
+  - name: q12028.out
+    data: |

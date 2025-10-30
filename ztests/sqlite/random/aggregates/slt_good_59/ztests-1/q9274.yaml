@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q9274.spq | sort > q9274.out
+
+inputs:
+  - name: q9274.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE NOT + CAST ( 3 AS INTEGER ) + col0 * col0 > NULL;
+  - name: tab0
+
+outputs:
+  - name: q9274.out
+    data: |

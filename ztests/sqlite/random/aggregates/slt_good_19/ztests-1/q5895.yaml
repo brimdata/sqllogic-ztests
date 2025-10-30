@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q5895.spq | sort > q5895.out
+
+inputs:
+  - name: q5895.spq
+    data: |
+      SELECT DISTINCT * FROM tab2 (FORMAT parquet) WHERE NOT col2 < - 65;
+  - name: tab2
+
+outputs:
+  - name: q5895.out
+    data: |
+      46	51	23
+      64	77	40
+      75	67	58

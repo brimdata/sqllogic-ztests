@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q3282.spq | sort > q3282.out
+
+inputs:
+  - name: q3282.spq
+    data: |
+      SELECT ALL * FROM tab0 (FORMAT parquet) WHERE 86 + - col0 - 4 IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q3282.out
+    data: |
+      15	81	47
+      87	21	10
+      97	1	99

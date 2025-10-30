@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8024.spq | sort > q8024.out
+
+inputs:
+  - name: q8024.spq
+    data: |
+      SELECT ALL col0 + 41 * - CAST ( + - col0 AS INTEGER ) AS col2, + ( col2 ) AS col1 FROM tab1 (FORMAT parquet) WHERE NOT 17 < + + col2;
+  - name: tab1
+
+outputs:
+  - name: q8024.out
+    data: |

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q6064.spq | sort > q6064.out
+
+inputs:
+  - name: q6064.spq
+    data: |
+      SELECT DISTINCT + col0 AS col2, - 18 * + - 78 * col0 AS col1 FROM tab1 (FORMAT parquet);
+  - name: tab1
+
+outputs:
+  - name: q6064.out
+    data: |
+      51	71604
+      85	119340
+      91	127764

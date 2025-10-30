@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q552.spq | sort > q552.out
+
+inputs:
+  - name: q552.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE NOT 18 + col2 >= ( - col1 );
+  - name: tab0
+
+outputs:
+  - name: q552.out
+    data: |

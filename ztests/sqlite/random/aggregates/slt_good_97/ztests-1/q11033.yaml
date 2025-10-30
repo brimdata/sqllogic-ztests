@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q11033.spq | sort > q11033.out
+
+inputs:
+  - name: q11033.spq
+    data: |
+      SELECT DISTINCT - + SUM ( + - 23 ) * 16 AS col2 FROM tab1 (FORMAT parquet) AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q11033.out
+    data: |
+      1104

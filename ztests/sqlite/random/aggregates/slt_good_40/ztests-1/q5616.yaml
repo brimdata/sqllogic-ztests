@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q5616.spq | sort > q5616.out
+
+inputs:
+  - name: q5616.spq
+    data: |
+      SELECT ALL + ( MAX ( + col1 ) ) FROM tab2 (FORMAT parquet) AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q5616.out
+    data: |
+      77

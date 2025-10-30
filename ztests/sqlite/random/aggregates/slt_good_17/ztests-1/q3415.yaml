@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q3415.spq | sort > q3415.out
+
+inputs:
+  - name: q3415.spq
+    data: |
+      SELECT - 61 AS col1 FROM tab1 (FORMAT parquet) WHERE NOT - 42 > + - col0 + ( - CAST ( + col2 AS INTEGER ) ) * - CAST ( + CAST ( NULL AS REAL ) AS INTEGER );
+  - name: tab1
+
+outputs:
+  - name: q3415.out
+    data: |

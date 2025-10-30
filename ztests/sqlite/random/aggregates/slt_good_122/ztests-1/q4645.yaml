@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q4645.spq | sort > q4645.out
+
+inputs:
+  - name: q4645.spq
+    data: |
+      SELECT ALL COUNT ( * ) col0 FROM tab1 (FORMAT parquet), tab2 (FORMAT parquet) AS cor0;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q4645.out
+    data: |
+      9

@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q12381.spq | sort > q12381.out
+
+inputs:
+  - name: q12381.spq
+    data: |
+      SELECT MIN ( - 66 ) / COUNT ( * ) - - COUNT ( 74 ) FROM tab0 (FORMAT parquet) WHERE NOT col2 IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q12381.out
+    data: |
+      -19

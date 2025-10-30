@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q5462.spq | sort > q5462.out
+
+inputs:
+  - name: q5462.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) AS cor0 WHERE NOT + col2 * 26 * + 3 IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q5462.out
+    data: |

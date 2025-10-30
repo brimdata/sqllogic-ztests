@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q530.spq | sort > q530.out
+
+inputs:
+  - name: q530.spq
+    data: |
+      SELECT - + SUM ( + col0 ) * + 98 AS col2 FROM tab2 (FORMAT parquet) AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q530.out
+    data: |
+      -18130

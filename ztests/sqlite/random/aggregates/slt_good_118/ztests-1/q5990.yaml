@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q5990.spq | sort > q5990.out
+
+inputs:
+  - name: q5990.spq
+    data: |
+      SELECT DISTINCT col2 + - col2 AS col2 FROM tab2 (FORMAT parquet) WHERE NOT ( 32 IS NOT NULL );
+  - name: tab2
+
+outputs:
+  - name: q5990.out
+    data: |

@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q5415.spq | sort > q5415.out
+
+inputs:
+  - name: q5415.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) AS cor0 CROSS JOIN tab2 (FORMAT parquet) cor1 WHERE ( - + 66 ) IS NULL;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q5415.out
+    data: |

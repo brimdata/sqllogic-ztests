@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q426.spq | sort > q426.out
+
+inputs:
+  - name: q426.spq
+    data: |
+      SELECT ALL 66 FROM tab0 (FORMAT parquet) WHERE ( - ( + 40 ) ) BETWEEN NULL AND - ( col2 );
+  - name: tab0
+
+outputs:
+  - name: q426.out
+    data: |

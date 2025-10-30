@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q13403.spq | sort > q13403.out
+
+inputs:
+  - name: q13403.spq
+    data: |
+      SELECT ALL - 76 AS col2 FROM tab1 (FORMAT parquet) WHERE 45 * CAST ( NULL AS INTEGER ) + + 88 <> + + col0 + - col1 + + col2;
+  - name: tab1
+
+outputs:
+  - name: q13403.out
+    data: |

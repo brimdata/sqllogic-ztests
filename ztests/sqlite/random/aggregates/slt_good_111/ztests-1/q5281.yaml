@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q5281.spq | sort > q5281.out
+
+inputs:
+  - name: q5281.spq
+    data: |
+      SELECT DISTINCT COUNT ( * ) * + 73 AS col2 FROM tab1 (FORMAT parquet);
+  - name: tab1
+
+outputs:
+  - name: q5281.out
+    data: |
+      219

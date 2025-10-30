@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q4160.spq | sort > q4160.out
+
+inputs:
+  - name: q4160.spq
+    data: |
+      SELECT ALL * FROM tab0 (FORMAT parquet) WHERE NOT col1 IS NOT NULL AND - 95 / + 60 * + col0 < ( + col2 * + ( + col2 ) );
+  - name: tab0
+
+outputs:
+  - name: q4160.out
+    data: |

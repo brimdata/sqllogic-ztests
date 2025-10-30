@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q2060.spq | sort > q2060.out
+
+inputs:
+  - name: q2060.spq
+    data: |
+      SELECT DISTINCT - 33 FROM tab0 (FORMAT parquet) WHERE - col1 IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q2060.out
+    data: |

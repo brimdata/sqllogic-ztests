@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q9327.spq | sort > q9327.out
+
+inputs:
+  - name: q9327.spq
+    data: |
+      SELECT ALL * FROM tab0 (FORMAT parquet) WHERE NULL NOT BETWEEN - 21 AND + col2 AND NOT - ( + col1 ) IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q9327.out
+    data: |

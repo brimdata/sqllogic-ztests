@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q6053.spq | sort > q6053.out
+
+inputs:
+  - name: q6053.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) AS cor0 WHERE NULL BETWEEN NULL AND 74 * + col0;
+  - name: tab2
+
+outputs:
+  - name: q6053.out
+    data: |

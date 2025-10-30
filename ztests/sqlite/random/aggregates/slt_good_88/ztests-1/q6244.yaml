@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q6244.spq | sort > q6244.out
+
+inputs:
+  - name: q6244.spq
+    data: |
+      SELECT DISTINCT - COUNT ( * ) - - 51 FROM tab0 (FORMAT parquet) AS cor0 CROSS JOIN tab2 (FORMAT parquet) AS cor1;
+  - name: tab0
+  - name: tab2
+
+outputs:
+  - name: q6244.out
+    data: |
+      42

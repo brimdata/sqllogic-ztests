@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q6022.spq | sort > q6022.out
+
+inputs:
+  - name: q6022.spq
+    data: |
+      SELECT col1 * col0 AS col2, + col0, + 25 FROM tab0 (FORMAT parquet);
+  - name: tab0
+
+outputs:
+  - name: q6022.out
+    data: |
+      1215	15	25
+      1827	87	25
+      97	97	25

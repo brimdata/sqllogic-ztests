@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q6919.spq | sort > q6919.out
+
+inputs:
+  - name: q6919.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) WHERE + - 54 BETWEEN + col2 - col1 AND 26;
+  - name: tab2
+
+outputs:
+  - name: q6919.out
+    data: |

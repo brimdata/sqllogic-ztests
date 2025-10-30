@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q902.spq | sort > q902.out
+
+inputs:
+  - name: q902.spq
+    data: |
+      SELECT ALL col2 - + + 50 FROM tab0 (FORMAT parquet) AS cor0 WHERE NOT NULL IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q902.out
+    data: |
+      -3
+      -40
+      49

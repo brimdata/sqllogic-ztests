@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q9845.spq | sort > q9845.out
+
+inputs:
+  - name: q9845.spq
+    data: |
+      SELECT ALL 13 AS col1 FROM tab1 (FORMAT parquet) WHERE NOT NULL < + 68 * - CAST ( + 5 AS INTEGER ) + col1 * + col1;
+  - name: tab1
+
+outputs:
+  - name: q9845.out
+    data: |

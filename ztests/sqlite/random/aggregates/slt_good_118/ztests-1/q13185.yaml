@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q13185.spq | sort > q13185.out
+
+inputs:
+  - name: q13185.spq
+    data: |
+      SELECT + col1 AS col0 FROM tab2 (FORMAT parquet) WHERE col0 + + 18 IN ( - 90 );
+  - name: tab2
+
+outputs:
+  - name: q13185.out
+    data: |

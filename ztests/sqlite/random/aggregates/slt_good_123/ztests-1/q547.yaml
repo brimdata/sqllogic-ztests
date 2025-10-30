@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q547.spq | sort > q547.out
+
+inputs:
+  - name: q547.spq
+    data: |
+      SELECT ALL * FROM tab1 (FORMAT parquet) WHERE NOT col0 * - col1 NOT BETWEEN 89 AND ( 33 + + col1 );
+  - name: tab1
+
+outputs:
+  - name: q547.out
+    data: |

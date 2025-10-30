@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q503.spq | sort > q503.out
+
+inputs:
+  - name: q503.spq
+    data: |
+      SELECT + col0 + 73 + - col0, - col2 AS col1 FROM tab0 (FORMAT parquet) WHERE NOT - col2 BETWEEN ( - col0 / - 86 ) AND col2;
+  - name: tab0
+
+outputs:
+  - name: q503.out
+    data: |
+      73	-10
+      73	-47
+      73	-99

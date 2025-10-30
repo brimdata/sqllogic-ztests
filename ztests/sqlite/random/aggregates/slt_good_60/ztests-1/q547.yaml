@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q547.spq | sort > q547.out
+
+inputs:
+  - name: q547.spq
+    data: |
+      SELECT DISTINCT + SUM ( 25 ) FROM tab2 (FORMAT parquet) AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q547.out
+    data: |
+      75

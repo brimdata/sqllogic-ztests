@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q12052.spq | sort > q12052.out
+
+inputs:
+  - name: q12052.spq
+    data: |
+      SELECT + 3 * - col0 FROM tab1 (FORMAT parquet) WHERE ( col1 + - col2 ) NOT BETWEEN col2 * + col1 + - col1 * 19 AND 12;
+  - name: tab1
+
+outputs:
+  - name: q12052.out
+    data: |
+      -153
+      -255
+      -273

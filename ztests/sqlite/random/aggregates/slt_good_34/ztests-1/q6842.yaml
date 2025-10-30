@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q6842.spq | sort > q6842.out
+
+inputs:
+  - name: q6842.spq
+    data: |
+      SELECT ALL * FROM tab1 (FORMAT parquet) AS cor0 WHERE col1 + col0 BETWEEN - 67 AND + 80;
+  - name: tab1
+
+outputs:
+  - name: q6842.out
+    data: |
+      51	14	96

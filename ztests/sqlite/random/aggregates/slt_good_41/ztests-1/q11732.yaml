@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q11732.spq | sort > q11732.out
+
+inputs:
+  - name: q11732.spq
+    data: |
+      SELECT ALL col0 AS col0 FROM tab2 (FORMAT parquet) WHERE NOT + col2 * 22 NOT BETWEEN - col1 AND ( - ( ( - col1 ) ) );
+  - name: tab2
+
+outputs:
+  - name: q11732.out
+    data: |

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q6825.spq | sort > q6825.out
+
+inputs:
+  - name: q6825.spq
+    data: |
+      SELECT - 99 AS col1 FROM tab2 (FORMAT parquet) WHERE 15 * + col0 - + - col0 + - ( - col2 ) * - col1 <> ( col1 * + col0 + + 34 );
+  - name: tab2
+
+outputs:
+  - name: q6825.out
+    data: |
+      -99
+      -99
+      -99

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q10624.spq | sort > q10624.out
+
+inputs:
+  - name: q10624.spq
+    data: |
+      SELECT DISTINCT * FROM tab2 (FORMAT parquet) AS cor0 WHERE NOT NULL NOT BETWEEN col1 AND ( + 57 - - col1 * - col2 );
+  - name: tab2
+
+outputs:
+  - name: q10624.out
+    data: |

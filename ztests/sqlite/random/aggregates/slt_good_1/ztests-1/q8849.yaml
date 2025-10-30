@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8849.spq | sort > q8849.out
+
+inputs:
+  - name: q8849.spq
+    data: |
+      SELECT ALL CAST ( NULL AS INTEGER ) * - col1 FROM tab2 (FORMAT parquet) WHERE NOT ( NULL ) BETWEEN NULL AND ( 15 );
+  - name: tab2
+
+outputs:
+  - name: q8849.out
+    data: |

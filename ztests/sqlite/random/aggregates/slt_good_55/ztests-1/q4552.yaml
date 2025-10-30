@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q4552.spq | sort > q4552.out
+
+inputs:
+  - name: q4552.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE NOT 14 <= - 15 / 13 + col2;
+  - name: tab0
+
+outputs:
+  - name: q4552.out
+    data: |
+      87	21	10

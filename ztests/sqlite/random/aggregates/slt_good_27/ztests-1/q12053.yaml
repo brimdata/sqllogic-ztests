@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q12053.spq | sort > q12053.out
+
+inputs:
+  - name: q12053.spq
+    data: |
+      SELECT ALL * FROM tab2 (FORMAT parquet) WHERE NOT + col1 BETWEEN ( NULL ) AND ( + col1 + 84 );
+  - name: tab2
+
+outputs:
+  - name: q12053.out
+    data: |

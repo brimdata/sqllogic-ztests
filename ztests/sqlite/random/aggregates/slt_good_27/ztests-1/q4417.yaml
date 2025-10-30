@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q4417.spq | sort > q4417.out
+
+inputs:
+  - name: q4417.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) WHERE + 78 + + CAST ( 44 AS REAL ) NOT BETWEEN + 74 AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q4417.out
+    data: |

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q12240.spq | sort > q12240.out
+
+inputs:
+  - name: q12240.spq
+    data: |
+      SELECT col2 FROM tab2 (FORMAT parquet) WHERE - 70 * + col2 NOT BETWEEN NULL AND 44;
+  - name: tab2
+
+outputs:
+  - name: q12240.out
+    data: |

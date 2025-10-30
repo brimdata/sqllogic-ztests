@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q11181.spq | sort > q11181.out
+
+inputs:
+  - name: q11181.spq
+    data: |
+      SELECT ALL * FROM tab1 (FORMAT parquet) AS cor0 WHERE NULL NOT BETWEEN + 20 / CAST ( - col0 AS INTEGER ) * + col0 + col0 AND ( 81 * + col2 );
+  - name: tab1
+
+outputs:
+  - name: q11181.out
+    data: |

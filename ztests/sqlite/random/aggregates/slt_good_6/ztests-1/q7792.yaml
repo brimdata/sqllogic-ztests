@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q7792.spq | sort > q7792.out
+
+inputs:
+  - name: q7792.spq
+    data: |
+      SELECT ALL * FROM tab2 (FORMAT parquet) WHERE + 79 * 16 + + - col0 IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q7792.out
+    data: |

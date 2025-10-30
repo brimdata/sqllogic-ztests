@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q11432.spq | sort > q11432.out
+
+inputs:
+  - name: q11432.spq
+    data: |
+      SELECT DISTINCT COUNT ( * ) AS col0, + 21 * + + 96 * + + MIN ( + col0 ) + 6 FROM tab2 (FORMAT parquet);
+  - name: tab2
+
+outputs:
+  - name: q11432.out
+    data: |
+      3	92742

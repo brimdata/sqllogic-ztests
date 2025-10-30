@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q6174.spq | sort > q6174.out
+
+inputs:
+  - name: q6174.spq
+    data: |
+      SELECT + col1 + - 9 FROM tab2 (FORMAT parquet) WHERE NULL IS NULL OR NOT NULL BETWEEN + 28 * - - col1 AND col0 * + col2;
+  - name: tab2
+
+outputs:
+  - name: q6174.out
+    data: |
+      42
+      58
+      68

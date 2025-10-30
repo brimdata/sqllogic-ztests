@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q4517.spq | sort > q4517.out
+
+inputs:
+  - name: q4517.spq
+    data: |
+      SELECT DISTINCT * FROM tab2 (FORMAT parquet) WHERE - 14 BETWEEN NULL AND - col2;
+  - name: tab2
+
+outputs:
+  - name: q4517.out
+    data: |

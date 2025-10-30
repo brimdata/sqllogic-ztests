@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q7532.spq | sort > q7532.out
+
+inputs:
+  - name: q7532.spq
+    data: |
+      SELECT DISTINCT * FROM tab1 (FORMAT parquet) AS cor0 WHERE col2 + 42 <= + col2 + + col2 * + col2;
+  - name: tab1
+
+outputs:
+  - name: q7532.out
+    data: |
+      51	14	96
+      85	5	59
+      91	47	68

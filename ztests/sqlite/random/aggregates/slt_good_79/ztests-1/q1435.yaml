@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q1435.spq | sort > q1435.out
+
+inputs:
+  - name: q1435.spq
+    data: |
+      SELECT DISTINCT * FROM tab1 (FORMAT parquet) cor0 WHERE NOT ( + col0 * - col2 + 4 * - + col2 ) IS NULL AND ( col1 - 48 ) IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q1435.out
+    data: |

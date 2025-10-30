@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q6.spq | sort > q6.out
+
+inputs:
+  - name: q6.spq
+    data: |
+      SELECT - col0 AS col0, + col0 * - 14 FROM tab1 (FORMAT parquet);
+  - name: tab1
+
+outputs:
+  - name: q6.out
+    data: |
+      -51	-714
+      -85	-1190
+      -91	-1274

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q9698.spq | sort > q9698.out
+
+inputs:
+  - name: q9698.spq
+    data: |
+      SELECT - col2 / + 7 + - col1 FROM tab0 (FORMAT parquet) WHERE NOT ( 38 ) IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q9698.out
+    data: |
+      -15
+      -22
+      -87

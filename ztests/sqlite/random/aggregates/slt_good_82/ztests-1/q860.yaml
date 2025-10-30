@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q860.spq | sort > q860.out
+
+inputs:
+  - name: q860.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) AS cor0 WHERE + col1 <> ( - + 25 / - 3 );
+  - name: tab2
+
+outputs:
+  - name: q860.out
+    data: |
+      46	51	23
+      64	77	40
+      75	67	58

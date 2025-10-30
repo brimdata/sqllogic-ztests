@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q10782.spq | sort > q10782.out
+
+inputs:
+  - name: q10782.spq
+    data: |
+      SELECT + 7 / MAX ( col1 ) FROM tab1 (FORMAT parquet) WHERE NULL IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q10782.out
+    data: |
+      0

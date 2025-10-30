@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q2892.spq | sort > q2892.out
+
+inputs:
+  - name: q2892.spq
+    data: |
+      SELECT ALL - 22 FROM tab2 (FORMAT parquet) WHERE col2 <> NULL;
+  - name: tab2
+
+outputs:
+  - name: q2892.out
+    data: |

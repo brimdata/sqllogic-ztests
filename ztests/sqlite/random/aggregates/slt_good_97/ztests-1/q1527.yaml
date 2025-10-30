@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q1527.spq | sort > q1527.out
+
+inputs:
+  - name: q1527.spq
+    data: |
+      SELECT col2 AS col0 FROM tab2 (FORMAT parquet) WHERE NOT + 23 * 49 + col2 + + 57 + col2 IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q1527.out
+    data: |
+      23
+      40
+      58

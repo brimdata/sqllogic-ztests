@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q1147.spq | sort > q1147.out
+
+inputs:
+  - name: q1147.spq
+    data: |
+      SELECT MIN ( + - col1 ) * - SUM ( + 17 ) AS col0 FROM tab0 (FORMAT parquet) AS cor0;
+  - name: tab0
+
+outputs:
+  - name: q1147.out
+    data: |
+      4131

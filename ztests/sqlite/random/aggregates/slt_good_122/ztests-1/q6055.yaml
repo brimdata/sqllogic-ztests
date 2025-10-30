@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q6055.spq | sort > q6055.out
+
+inputs:
+  - name: q6055.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) AS cor0 WHERE - col1 * - + col2 BETWEEN + col0 AND + col1 + - col1;
+  - name: tab1
+
+outputs:
+  - name: q6055.out
+    data: |

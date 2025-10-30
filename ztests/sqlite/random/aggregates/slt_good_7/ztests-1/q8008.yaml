@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8008.spq | sort > q8008.out
+
+inputs:
+  - name: q8008.spq
+    data: |
+      SELECT DISTINCT + + col2 AS col2 FROM tab2 (FORMAT parquet) cor0 WHERE NOT col0 < NULL;
+  - name: tab2
+
+outputs:
+  - name: q8008.out
+    data: |

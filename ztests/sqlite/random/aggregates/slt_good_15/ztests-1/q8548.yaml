@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8548.spq | sort > q8548.out
+
+inputs:
+  - name: q8548.spq
+    data: |
+      SELECT ALL 74 AS col0 FROM tab1 (FORMAT parquet) WHERE col0 * - + col0 < 3 + - col1 * - 3;
+  - name: tab1
+
+outputs:
+  - name: q8548.out
+    data: |
+      74
+      74
+      74

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q12960.spq | sort > q12960.out
+
+inputs:
+  - name: q12960.spq
+    data: |
+      SELECT + 1 AS col2 FROM tab1 (FORMAT parquet) WHERE - - 40 IN ( - + col0 );
+  - name: tab1
+
+outputs:
+  - name: q12960.out
+    data: |

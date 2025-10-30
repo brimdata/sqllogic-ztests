@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8200.spq | sort > q8200.out
+
+inputs:
+  - name: q8200.spq
+    data: |
+      SELECT ALL + - 4, col1 FROM tab2 (FORMAT parquet) AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q8200.out
+    data: |
+      -4	51
+      -4	67
+      -4	77

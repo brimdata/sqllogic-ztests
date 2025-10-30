@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q3539.spq | sort > q3539.out
+
+inputs:
+  - name: q3539.spq
+    data: |
+      SELECT + ( + MAX ( + col1 ) ) AS col2 FROM tab0 (FORMAT parquet);
+  - name: tab0
+
+outputs:
+  - name: q3539.out
+    data: |
+      81

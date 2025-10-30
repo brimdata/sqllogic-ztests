@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q3400.spq | sort > q3400.out
+
+inputs:
+  - name: q3400.spq
+    data: |
+      SELECT + col2 + + col0 AS col1 FROM tab2 (FORMAT parquet) AS cor0 WHERE - col0 BETWEEN - col2 AND - - 62 + - CAST ( NULL AS INTEGER ) - col1 * col1;
+  - name: tab2
+
+outputs:
+  - name: q3400.out
+    data: |

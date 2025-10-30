@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q334.spq | sort > q334.out
+
+inputs:
+  - name: q334.spq
+    data: |
+      SELECT col2 + 6 FROM tab2 (FORMAT parquet) WHERE - - 28 / - - col1 - - 23 IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q334.out
+    data: |

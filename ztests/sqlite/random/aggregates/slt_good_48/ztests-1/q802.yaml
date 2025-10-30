@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q802.spq | sort > q802.out
+
+inputs:
+  - name: q802.spq
+    data: |
+      SELECT DISTINCT + + 22 FROM tab0 (FORMAT parquet) AS cor0 CROSS JOIN tab2 (FORMAT parquet) AS cor1;
+  - name: tab0
+  - name: tab2
+
+outputs:
+  - name: q802.out
+    data: |
+      22

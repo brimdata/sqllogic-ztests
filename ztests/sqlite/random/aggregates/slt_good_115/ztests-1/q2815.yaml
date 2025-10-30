@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q2815.spq | sort > q2815.out
+
+inputs:
+  - name: q2815.spq
+    data: |
+      SELECT - + 35 * col0 + - + CAST ( 2 AS INTEGER ) FROM tab2 (FORMAT parquet) WHERE NOT ( NOT ( NOT NULL IS NULL ) );
+  - name: tab2
+
+outputs:
+  - name: q2815.out
+    data: |

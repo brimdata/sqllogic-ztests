@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q7756.spq | sort > q7756.out
+
+inputs:
+  - name: q7756.spq
+    data: |
+      SELECT 16, - col1 AS col0 FROM tab2 (FORMAT parquet) WHERE col1 IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q7756.out
+    data: |
+      16	-51
+      16	-67
+      16	-77

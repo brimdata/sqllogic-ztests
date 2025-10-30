@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q3390.spq | sort > q3390.out
+
+inputs:
+  - name: q3390.spq
+    data: |
+      SELECT ALL COUNT ( * ) FROM tab1 (FORMAT parquet) WHERE 79 * + 6 NOT BETWEEN ( NULL ) AND + col2 + 15;
+  - name: tab1
+
+outputs:
+  - name: q3390.out
+    data: |
+      3

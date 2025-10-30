@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q4895.spq | sort > q4895.out
+
+inputs:
+  - name: q4895.spq
+    data: |
+      SELECT ALL col0 + CAST ( - col2 AS INTEGER ) * 82 AS col0 FROM tab1 (FORMAT parquet) WHERE NOT NULL <= ( col1 + - + 59 );
+  - name: tab1
+
+outputs:
+  - name: q4895.out
+    data: |

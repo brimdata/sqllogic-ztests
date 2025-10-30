@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q3196.spq | sort > q3196.out
+
+inputs:
+  - name: q3196.spq
+    data: |
+      SELECT - 33 FROM tab1 (FORMAT parquet) WHERE NOT col2 + ( col0 + col1 ) BETWEEN + col2 * + 91 AND ( NULL );
+  - name: tab1
+
+outputs:
+  - name: q3196.out
+    data: |
+      -33
+      -33
+      -33

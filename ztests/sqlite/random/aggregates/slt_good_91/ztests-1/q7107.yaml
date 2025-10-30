@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q7107.spq | sort > q7107.out
+
+inputs:
+  - name: q7107.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) WHERE NOT ( col1 * col1 + col2 ) NOT BETWEEN NULL AND 18;
+  - name: tab2
+
+outputs:
+  - name: q7107.out
+    data: |

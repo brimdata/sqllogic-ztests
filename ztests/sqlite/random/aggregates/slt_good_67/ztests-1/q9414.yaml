@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q9414.spq | sort > q9414.out
+
+inputs:
+  - name: q9414.spq
+    data: |
+      SELECT ALL * FROM tab1 (FORMAT parquet) WHERE col1 + col2 - + col0 * + ( + 53 ) NOT BETWEEN col0 - 93 AND ( NULL );
+  - name: tab1
+
+outputs:
+  - name: q9414.out
+    data: |
+      51	14	96
+      85	5	59
+      91	47	68

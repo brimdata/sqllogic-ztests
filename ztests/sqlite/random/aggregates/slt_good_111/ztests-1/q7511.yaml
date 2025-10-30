@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q7511.spq | sort > q7511.out
+
+inputs:
+  - name: q7511.spq
+    data: |
+      SELECT ALL col0 + 50 AS col1 FROM tab1 (FORMAT parquet) WHERE 0 NOT BETWEEN NULL AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q7511.out
+    data: |

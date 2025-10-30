@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q6542.spq | sort > q6542.out
+
+inputs:
+  - name: q6542.spq
+    data: |
+      SELECT ALL * FROM tab0 (FORMAT parquet) WHERE ( NOT 86 IN ( + 5 ) );
+  - name: tab0
+
+outputs:
+  - name: q6542.out
+    data: |
+      15	81	47
+      87	21	10
+      97	1	99

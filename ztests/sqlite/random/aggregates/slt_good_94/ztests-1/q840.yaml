@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q840.spq | sort > q840.out
+
+inputs:
+  - name: q840.spq
+    data: |
+      SELECT ALL 33 FROM tab2 (FORMAT parquet) WHERE NOT ( col2 ) >= ( col2 );
+  - name: tab2
+
+outputs:
+  - name: q840.out
+    data: |

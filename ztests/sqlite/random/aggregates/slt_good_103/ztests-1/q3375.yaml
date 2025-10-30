@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q3375.spq | sort > q3375.out
+
+inputs:
+  - name: q3375.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) AS cor0 WHERE NOT NULL BETWEEN ( 83 + - col1 ) AND - col0 / - - col1;
+  - name: tab1
+
+outputs:
+  - name: q3375.out
+    data: |

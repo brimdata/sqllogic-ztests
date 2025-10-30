@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q3811.spq | sort > q3811.out
+
+inputs:
+  - name: q3811.spq
+    data: |
+      SELECT + col1 FROM tab0 (FORMAT parquet) WHERE NOT 39 - + col0 IN ( + col2 );
+  - name: tab0
+
+outputs:
+  - name: q3811.out
+    data: |
+      1
+      21
+      81

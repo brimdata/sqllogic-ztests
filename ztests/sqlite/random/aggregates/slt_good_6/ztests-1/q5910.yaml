@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q5910.spq | sort > q5910.out
+
+inputs:
+  - name: q5910.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE ( + + col0 ) * 56 + col2 <> + col0;
+  - name: tab0
+
+outputs:
+  - name: q5910.out
+    data: |
+      15	81	47
+      87	21	10
+      97	1	99

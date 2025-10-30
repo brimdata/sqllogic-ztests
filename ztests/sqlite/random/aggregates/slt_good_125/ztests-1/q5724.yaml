@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q5724.spq | sort > q5724.out
+
+inputs:
+  - name: q5724.spq
+    data: |
+      SELECT DISTINCT COUNT ( * ) + - ( + MAX ( col2 ) ) FROM tab1 (FORMAT parquet);
+  - name: tab1
+
+outputs:
+  - name: q5724.out
+    data: |
+      -93

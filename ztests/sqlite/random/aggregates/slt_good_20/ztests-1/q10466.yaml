@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q10466.spq | sort > q10466.out
+
+inputs:
+  - name: q10466.spq
+    data: |
+      SELECT ALL * FROM tab1 (FORMAT parquet) WHERE ( + 30 * 84 + + col2 ) NOT IN ( 39 );
+  - name: tab1
+
+outputs:
+  - name: q10466.out
+    data: |
+      51	14	96
+      85	5	59
+      91	47	68

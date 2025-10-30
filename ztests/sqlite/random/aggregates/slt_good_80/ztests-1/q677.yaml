@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q677.spq | sort > q677.out
+
+inputs:
+  - name: q677.spq
+    data: |
+      SELECT - col1 AS col1, col2 * + - col2 FROM tab0 (FORMAT parquet) AS cor0 WHERE NOT 50 <> NULL;
+  - name: tab0
+
+outputs:
+  - name: q677.out
+    data: |

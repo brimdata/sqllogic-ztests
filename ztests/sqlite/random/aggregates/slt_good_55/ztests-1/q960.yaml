@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q960.spq | sort > q960.out
+
+inputs:
+  - name: q960.spq
+    data: |
+      SELECT col1 + + - col1 * col1 * - col0 * + 80 FROM tab2 (FORMAT parquet);
+  - name: tab2
+
+outputs:
+  - name: q960.out
+    data: |
+      26934067
+      30356557
+      9571731

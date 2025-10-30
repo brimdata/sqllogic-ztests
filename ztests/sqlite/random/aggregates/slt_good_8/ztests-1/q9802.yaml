@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q9802.spq | sort > q9802.out
+
+inputs:
+  - name: q9802.spq
+    data: |
+      SELECT ALL + 48 / col1 AS col2 FROM tab0 (FORMAT parquet) AS cor0 WHERE NOT ( NULL ) IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q9802.out
+    data: |
+      0
+      2
+      48

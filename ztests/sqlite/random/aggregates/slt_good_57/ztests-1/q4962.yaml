@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q4962.spq | sort > q4962.out
+
+inputs:
+  - name: q4962.spq
+    data: |
+      SELECT ALL + col1 AS col0 FROM tab0 (FORMAT parquet) WHERE NOT ( NULL ) >= NULL AND ( NULL ) NOT IN ( + + col2 / 40 );
+  - name: tab0
+
+outputs:
+  - name: q4962.out
+    data: |

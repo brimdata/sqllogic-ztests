@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q576.spq | sort > q576.out
+
+inputs:
+  - name: q576.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) WHERE col2 BETWEEN - col1 AND ( + col0 );
+  - name: tab2
+
+outputs:
+  - name: q576.out
+    data: |
+      46	51	23
+      64	77	40
+      75	67	58

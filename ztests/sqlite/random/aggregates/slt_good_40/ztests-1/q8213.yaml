@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q8213.spq | sort > q8213.out
+
+inputs:
+  - name: q8213.spq
+    data: |
+      SELECT COUNT ( * ) * 65 + - - 40 AS col0 FROM tab1 (FORMAT parquet) AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q8213.out
+    data: |
+      235

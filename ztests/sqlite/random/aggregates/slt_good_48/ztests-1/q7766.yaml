@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q7766.spq | sort > q7766.out
+
+inputs:
+  - name: q7766.spq
+    data: |
+      SELECT DISTINCT * FROM tab1 (FORMAT parquet) WHERE - - 20 <= NULL;
+  - name: tab1
+
+outputs:
+  - name: q7766.out
+    data: |

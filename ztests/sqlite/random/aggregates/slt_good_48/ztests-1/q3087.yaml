@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q3087.spq | sort > q3087.out
+
+inputs:
+  - name: q3087.spq
+    data: |
+      SELECT DISTINCT * FROM tab1 (FORMAT parquet) WHERE NOT NULL < + 64;
+  - name: tab1
+
+outputs:
+  - name: q3087.out
+    data: |

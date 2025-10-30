@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q5402.spq | sort > q5402.out
+
+inputs:
+  - name: q5402.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) AS cor0 WHERE NOT CAST ( NULL AS INTEGER ) * col2 > - CAST ( - 43 AS INTEGER ) * - 4;
+  - name: tab1
+
+outputs:
+  - name: q5402.out
+    data: |

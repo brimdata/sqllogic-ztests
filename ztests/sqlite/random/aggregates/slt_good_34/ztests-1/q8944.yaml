@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8944.spq | sort > q8944.out
+
+inputs:
+  - name: q8944.spq
+    data: |
+      SELECT ALL * FROM tab1 (FORMAT parquet) AS cor0 WHERE NOT 4 * + - col1 IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q8944.out
+    data: |
+      51	14	96
+      85	5	59
+      91	47	68

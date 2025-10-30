@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q2772.spq | sort > q2772.out
+
+inputs:
+  - name: q2772.spq
+    data: |
+      SELECT DISTINCT * FROM tab1 (FORMAT parquet) AS cor0 WHERE col0 >= 9 - col0 + col2;
+  - name: tab1
+
+outputs:
+  - name: q2772.out
+    data: |
+      85	5	59
+      91	47	68

@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q3281.spq | sort > q3281.out
+
+inputs:
+  - name: q3281.spq
+    data: |
+      SELECT DISTINCT COUNT ( * ) + - 32 * + MAX ( - col1 ) FROM tab2 (FORMAT parquet) WHERE NOT ( + col2 ) IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q3281.out
+    data: |
+      1635

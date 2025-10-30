@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q767.spq | sort > q767.out
+
+inputs:
+  - name: q767.spq
+    data: |
+      SELECT DISTINCT - col2 FROM tab1 (FORMAT parquet) WHERE NOT + 72 * col2 NOT BETWEEN - col1 AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q767.out
+    data: |

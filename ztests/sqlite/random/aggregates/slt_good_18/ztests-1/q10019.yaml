@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q10019.spq | sort > q10019.out
+
+inputs:
+  - name: q10019.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE col0 / - 92 * + col0 IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q10019.out
+    data: |
+      15	81	47
+      87	21	10
+      97	1	99

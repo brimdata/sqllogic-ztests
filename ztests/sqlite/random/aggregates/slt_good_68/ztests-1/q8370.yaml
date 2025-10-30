@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8370.spq | sort > q8370.out
+
+inputs:
+  - name: q8370.spq
+    data: |
+      SELECT + col1 * - + CAST ( - col1 AS REAL ) * + - col0 AS col1 FROM tab0 (FORMAT parquet) AS cor0 WHERE NULL >= NULL;
+  - name: tab0
+
+outputs:
+  - name: q8370.out
+    data: |

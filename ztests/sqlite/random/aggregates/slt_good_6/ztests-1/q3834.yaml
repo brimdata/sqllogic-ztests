@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q3834.spq | sort > q3834.out
+
+inputs:
+  - name: q3834.spq
+    data: |
+      SELECT col1 AS col0 FROM tab1 (FORMAT parquet) WHERE - col1 IN ( - col0 * col0 );
+  - name: tab1
+
+outputs:
+  - name: q3834.out
+    data: |

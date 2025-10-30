@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q12967.spq | sort > q12967.out
+
+inputs:
+  - name: q12967.spq
+    data: |
+      SELECT DISTINCT * FROM tab1 (FORMAT parquet) WHERE - - col2 * 62 - - 50 BETWEEN 76 AND + ( 87 );
+  - name: tab1
+
+outputs:
+  - name: q12967.out
+    data: |

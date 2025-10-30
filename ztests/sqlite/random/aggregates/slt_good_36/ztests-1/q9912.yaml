@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q9912.spq | sort > q9912.out
+
+inputs:
+  - name: q9912.spq
+    data: |
+      SELECT DISTINCT * FROM tab0 (FORMAT parquet) AS cor0 WHERE 32 * - 40 * col2 NOT BETWEEN + + col0 AND NULL;
+  - name: tab0
+
+outputs:
+  - name: q9912.out
+    data: |
+      15	81	47
+      87	21	10
+      97	1	99

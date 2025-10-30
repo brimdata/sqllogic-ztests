@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q5232.spq | sort > q5232.out
+
+inputs:
+  - name: q5232.spq
+    data: |
+      SELECT DISTINCT * FROM tab2 (FORMAT parquet) WHERE - - col0 + - 35 IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q5232.out
+    data: |

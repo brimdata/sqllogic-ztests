@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q13109.spq | sort > q13109.out
+
+inputs:
+  - name: q13109.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) AS cor0 CROSS JOIN tab1 (FORMAT parquet) AS cor1 WHERE NULL BETWEEN - 15 AND NULL;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q13109.out
+    data: |

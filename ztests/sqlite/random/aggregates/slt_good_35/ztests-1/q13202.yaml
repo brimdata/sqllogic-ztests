@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q13202.spq | sort > q13202.out
+
+inputs:
+  - name: q13202.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE - - CAST ( - 39 AS INTEGER ) IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q13202.out
+    data: |

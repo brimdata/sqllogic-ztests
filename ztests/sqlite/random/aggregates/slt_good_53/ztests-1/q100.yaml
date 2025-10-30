@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q100.spq | sort > q100.out
+
+inputs:
+  - name: q100.spq
+    data: |
+      SELECT ALL * FROM tab2 (FORMAT parquet) WHERE - + 30 * - - 19 >= NULL;
+  - name: tab2
+
+outputs:
+  - name: q100.out
+    data: |

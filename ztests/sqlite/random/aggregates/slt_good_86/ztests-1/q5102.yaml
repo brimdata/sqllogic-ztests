@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q5102.spq | sort > q5102.out
+
+inputs:
+  - name: q5102.spq
+    data: |
+      SELECT ALL - col2 * + col0 + - CAST ( NULL AS INTEGER ) - - col0 FROM tab2 (FORMAT parquet) WHERE NULL NOT BETWEEN + col2 AND NULL;
+  - name: tab2
+
+outputs:
+  - name: q5102.out
+    data: |

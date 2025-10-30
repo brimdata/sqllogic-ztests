@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q11276.spq | sort > q11276.out
+
+inputs:
+  - name: q11276.spq
+    data: |
+      SELECT - ( - ( + COUNT ( * ) ) ) + + 33 FROM tab1 (FORMAT parquet) WHERE NULL IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q11276.out
+    data: |
+      36

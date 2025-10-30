@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q593.spq | sort > q593.out
+
+inputs:
+  - name: q593.spq
+    data: |
+      SELECT + col1 AS col0 FROM tab1 (FORMAT parquet) WHERE NOT 20 = - + col0;
+  - name: tab1
+
+outputs:
+  - name: q593.out
+    data: |
+      14
+      47
+      5

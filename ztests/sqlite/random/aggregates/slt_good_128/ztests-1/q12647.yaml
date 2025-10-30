@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q12647.spq | sort > q12647.out
+
+inputs:
+  - name: q12647.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) WHERE + - 45 BETWEEN + col2 + + col2 AND 93;
+  - name: tab1
+
+outputs:
+  - name: q12647.out
+    data: |

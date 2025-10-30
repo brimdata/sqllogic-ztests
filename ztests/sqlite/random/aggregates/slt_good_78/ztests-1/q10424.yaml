@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q10424.spq | sort > q10424.out
+
+inputs:
+  - name: q10424.spq
+    data: |
+      SELECT + 33 * + col1 AS col2, col2 * + CAST ( - col0 AS REAL ) AS col0 FROM tab2 (FORMAT parquet) AS cor0 WHERE NULL BETWEEN NULL AND + 25;
+  - name: tab2
+
+outputs:
+  - name: q10424.out
+    data: |

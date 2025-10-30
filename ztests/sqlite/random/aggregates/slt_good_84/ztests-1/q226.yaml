@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q226.spq | sort > q226.out
+
+inputs:
+  - name: q226.spq
+    data: |
+      SELECT ALL * FROM tab2 (FORMAT parquet) WHERE NULL BETWEEN NULL AND CAST ( col1 AS INTEGER ) * 27;
+  - name: tab2
+
+outputs:
+  - name: q226.out
+    data: |

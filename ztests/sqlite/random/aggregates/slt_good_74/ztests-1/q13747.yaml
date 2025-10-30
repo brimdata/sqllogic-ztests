@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q13747.spq | sort > q13747.out
+
+inputs:
+  - name: q13747.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) AS cor0 WHERE ( - col1 ) IN ( 70, col1 - + - CAST ( NULL AS INTEGER ), col2 * 88 + - col2 + - 19, - col2 );
+  - name: tab2
+
+outputs:
+  - name: q13747.out
+    data: |

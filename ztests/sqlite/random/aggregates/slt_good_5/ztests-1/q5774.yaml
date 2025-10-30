@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q5774.spq | sort > q5774.out
+
+inputs:
+  - name: q5774.spq
+    data: |
+      SELECT COUNT ( * ) * COUNT ( + 4 ) + - COUNT ( * ) FROM tab2 (FORMAT parquet) WHERE NOT + col1 + col2 IN ( col1 );
+  - name: tab2
+
+outputs:
+  - name: q5774.out
+    data: |
+      6

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q13020.spq | sort > q13020.out
+
+inputs:
+  - name: q13020.spq
+    data: |
+      SELECT DISTINCT * FROM tab0 (FORMAT parquet) WHERE NOT + ( col0 ) BETWEEN NULL AND NULL;
+  - name: tab0
+
+outputs:
+  - name: q13020.out
+    data: |

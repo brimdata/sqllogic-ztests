@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q12719.spq | sort > q12719.out
+
+inputs:
+  - name: q12719.spq
+    data: |
+      SELECT ALL * FROM tab0 (FORMAT parquet) WHERE NOT + col0 / + ( + - col2 ) >= + 75;
+  - name: tab0
+
+outputs:
+  - name: q12719.out
+    data: |
+      15	81	47
+      87	21	10
+      97	1	99

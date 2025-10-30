@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q77.spq | sort > q77.out
+
+inputs:
+  - name: q77.spq
+    data: |
+      SELECT DISTINCT - 26 * col2 * col0 AS col2 FROM tab1 (FORMAT parquet) WHERE - 15 IN ( col2 );
+  - name: tab1
+
+outputs:
+  - name: q77.out
+    data: |

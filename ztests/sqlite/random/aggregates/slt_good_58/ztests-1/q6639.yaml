@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q6639.spq | sort > q6639.out
+
+inputs:
+  - name: q6639.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) WHERE ( 33 * + 30 + - col2 * 30 IS NOT NULL );
+  - name: tab1
+
+outputs:
+  - name: q6639.out
+    data: |
+      51	14	96
+      85	5	59
+      91	47	68

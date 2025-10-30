@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q264.spq | sort > q264.out
+
+inputs:
+  - name: q264.spq
+    data: |
+      SELECT col0 AS col0, + ( - col0 ) + + - col1 + - col0 FROM tab0 (FORMAT parquet);
+  - name: tab0
+
+outputs:
+  - name: q264.out
+    data: |
+      15	-111
+      87	-195
+      97	-195

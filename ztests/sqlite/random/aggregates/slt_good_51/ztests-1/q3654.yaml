@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q3654.spq | sort > q3654.out
+
+inputs:
+  - name: q3654.spq
+    data: |
+      SELECT ALL + col1 AS col2, 63 * + col1 AS col0 FROM tab0 (FORMAT parquet) cor0;
+  - name: tab0
+
+outputs:
+  - name: q3654.out
+    data: |
+      1	63
+      21	1323
+      81	5103

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q7240.spq | sort > q7240.out
+
+inputs:
+  - name: q7240.spq
+    data: |
+      SELECT + CAST ( NULL AS INTEGER ) FROM tab1 (FORMAT parquet) AS cor0 WHERE - 18 IN ( col2 );
+  - name: tab1
+
+outputs:
+  - name: q7240.out
+    data: |

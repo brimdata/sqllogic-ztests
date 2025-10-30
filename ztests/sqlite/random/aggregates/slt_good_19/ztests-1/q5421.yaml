@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q5421.spq | sort > q5421.out
+
+inputs:
+  - name: q5421.spq
+    data: |
+      SELECT DISTINCT * FROM tab0 (FORMAT parquet) WHERE NOT - col0 * - CAST ( NULL AS INTEGER ) > + - 11;
+  - name: tab0
+
+outputs:
+  - name: q5421.out
+    data: |

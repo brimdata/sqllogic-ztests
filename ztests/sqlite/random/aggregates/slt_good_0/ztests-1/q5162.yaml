@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q5162.spq | sort > q5162.out
+
+inputs:
+  - name: q5162.spq
+    data: |
+      SELECT DISTINCT + MIN ( col1 ) + - - 80 FROM tab0 (FORMAT parquet);
+  - name: tab0
+
+outputs:
+  - name: q5162.out
+    data: |
+      81

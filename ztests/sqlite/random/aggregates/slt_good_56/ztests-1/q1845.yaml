@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q1845.spq | sort > q1845.out
+
+inputs:
+  - name: q1845.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE ( CAST ( NULL AS INTEGER ) ) BETWEEN - col1 * 19 AND ( NULL );
+  - name: tab0
+
+outputs:
+  - name: q1845.out
+    data: |

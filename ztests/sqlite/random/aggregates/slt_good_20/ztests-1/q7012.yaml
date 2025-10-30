@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q7012.spq | sort > q7012.out
+
+inputs:
+  - name: q7012.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) WHERE NOT ( ( 43 ) + - 48 <> NULL );
+  - name: tab2
+
+outputs:
+  - name: q7012.out
+    data: |

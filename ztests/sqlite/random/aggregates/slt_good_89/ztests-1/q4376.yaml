@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q4376.spq | sort > q4376.out
+
+inputs:
+  - name: q4376.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE NOT ( ( ( + CAST ( + 40 AS INTEGER ) * - - col0 ) < NULL ) );
+  - name: tab0
+
+outputs:
+  - name: q4376.out
+    data: |

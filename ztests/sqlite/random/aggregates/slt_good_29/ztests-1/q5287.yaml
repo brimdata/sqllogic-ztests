@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q5287.spq | sort > q5287.out
+
+inputs:
+  - name: q5287.spq
+    data: |
+      SELECT 66 * col1 AS col2 FROM tab1 (FORMAT parquet) WHERE col1 IN ( + 95 + - col1 );
+  - name: tab1
+
+outputs:
+  - name: q5287.out
+    data: |

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q502.spq | sort > q502.out
+
+inputs:
+  - name: q502.spq
+    data: |
+      SELECT 64, col1 + col2 AS col2 FROM tab0 (FORMAT parquet);
+  - name: tab0
+
+outputs:
+  - name: q502.out
+    data: |
+      64	100
+      64	128
+      64	31

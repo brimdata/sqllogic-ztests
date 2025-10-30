@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q7511.spq | sort > q7511.out
+
+inputs:
+  - name: q7511.spq
+    data: |
+      SELECT ALL + 64 AS col1, col2 FROM tab0 (FORMAT parquet);
+  - name: tab0
+
+outputs:
+  - name: q7511.out
+    data: |
+      64	10
+      64	47
+      64	99

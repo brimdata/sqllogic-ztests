@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q3617.spq | sort > q3617.out
+
+inputs:
+  - name: q3617.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) AS cor0 WHERE NOT ( NOT - + col1 * - col1 >= col2 * 2 );
+  - name: tab1
+
+outputs:
+  - name: q3617.out
+    data: |
+      51	14	96
+      91	47	68

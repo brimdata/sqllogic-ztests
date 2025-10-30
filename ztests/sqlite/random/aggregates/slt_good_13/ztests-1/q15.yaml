@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q15.spq | sort > q15.out
+
+inputs:
+  - name: q15.spq
+    data: |
+      SELECT ALL + 23 * MIN ( + col2 ) FROM tab0 (FORMAT parquet);
+  - name: tab0
+
+outputs:
+  - name: q15.out
+    data: |
+      230

@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q5834.spq | sort > q5834.out
+
+inputs:
+  - name: q5834.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE NOT 10 * - 49 >= + ( col2 ) * - ( 21 );
+  - name: tab0
+
+outputs:
+  - name: q5834.out
+    data: |
+      87	21	10

@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q10853.spq | sort > q10853.out
+
+inputs:
+  - name: q10853.spq
+    data: |
+      SELECT DISTINCT - + MAX ( + 28 ) AS col0, COUNT ( * ) FROM tab2 (FORMAT parquet) AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q10853.out
+    data: |
+      -28	3

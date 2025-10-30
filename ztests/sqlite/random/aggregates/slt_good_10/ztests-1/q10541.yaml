@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q10541.spq | sort > q10541.out
+
+inputs:
+  - name: q10541.spq
+    data: |
+      SELECT DISTINCT COUNT ( * ) AS col0 FROM tab1 (FORMAT parquet), tab0 (FORMAT parquet) AS cor0 WHERE NOT NULL IS NOT NULL;
+  - name: tab0
+  - name: tab1
+
+outputs:
+  - name: q10541.out
+    data: |
+      9

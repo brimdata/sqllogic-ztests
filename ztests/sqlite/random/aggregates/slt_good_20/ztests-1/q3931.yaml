@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q3931.spq | sort > q3931.out
+
+inputs:
+  - name: q3931.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) AS cor0 WHERE ( + ( - col2 ) ) NOT BETWEEN + 81 * - - col2 AND NULL;
+  - name: tab0
+
+outputs:
+  - name: q3931.out
+    data: |
+      15	81	47
+      87	21	10
+      97	1	99

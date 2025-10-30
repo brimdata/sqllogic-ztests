@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q5324.spq | sort > q5324.out
+
+inputs:
+  - name: q5324.spq
+    data: |
+      SELECT DISTINCT 24 * + 31 AS col0 FROM tab0 (FORMAT parquet) AS cor0 CROSS JOIN tab1 (FORMAT parquet) AS cor1;
+  - name: tab0
+  - name: tab1
+
+outputs:
+  - name: q5324.out
+    data: |
+      744

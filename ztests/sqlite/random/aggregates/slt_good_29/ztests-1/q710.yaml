@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q710.spq | sort > q710.out
+
+inputs:
+  - name: q710.spq
+    data: |
+      SELECT - col1 FROM tab2 (FORMAT parquet) WHERE - + col2 BETWEEN - ( - ( - col1 ) ) + - - col1 - - ( - 80 ) + - col2 + - 46 AND NULL;
+  - name: tab2
+
+outputs:
+  - name: q710.out
+    data: |

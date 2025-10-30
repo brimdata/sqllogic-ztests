@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q10180.spq | sort > q10180.out
+
+inputs:
+  - name: q10180.spq
+    data: |
+      SELECT ALL COUNT ( * ) + - ( + MIN ( + 12 ) ) FROM tab0 (FORMAT parquet);
+  - name: tab0
+
+outputs:
+  - name: q10180.out
+    data: |
+      -9

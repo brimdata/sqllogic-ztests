@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q6545.spq | sort > q6545.out
+
+inputs:
+  - name: q6545.spq
+    data: |
+      SELECT DISTINCT COUNT ( * ), COUNT ( * ) + + - MAX ( col0 ) - - ( + 25 ) AS col0 FROM tab1 (FORMAT parquet);
+  - name: tab1
+
+outputs:
+  - name: q6545.out
+    data: |
+      3	-63

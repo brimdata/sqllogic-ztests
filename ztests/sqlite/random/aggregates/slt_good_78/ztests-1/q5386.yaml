@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q5386.spq | sort > q5386.out
+
+inputs:
+  - name: q5386.spq
+    data: |
+      SELECT ALL * FROM tab1 (FORMAT parquet) WHERE NOT - 17 <> + col1 / + 25 * + col0 * + - 94 - CAST ( NULL AS INTEGER );
+  - name: tab1
+
+outputs:
+  - name: q5386.out
+    data: |

@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q4027.spq | sort > q4027.out
+
+inputs:
+  - name: q4027.spq
+    data: |
+      SELECT ALL COUNT ( * ) FROM tab0 (FORMAT parquet) AS cor0 WHERE ( - + 42 ) IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q4027.out
+    data: |
+      3

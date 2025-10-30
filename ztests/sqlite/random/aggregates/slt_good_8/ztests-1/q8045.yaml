@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q8045.spq | sort > q8045.out
+
+inputs:
+  - name: q8045.spq
+    data: |
+      SELECT COUNT ( * ) + + - COUNT ( * ) AS col1 FROM tab0 (FORMAT parquet) AS cor0 CROSS JOIN tab2 (FORMAT parquet) cor1;
+  - name: tab0
+  - name: tab2
+
+outputs:
+  - name: q8045.out
+    data: |
+      0

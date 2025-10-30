@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q6550.spq | sort > q6550.out
+
+inputs:
+  - name: q6550.spq
+    data: |
+      SELECT 50 / col1 col2 FROM tab0 (FORMAT parquet) WHERE NOT + 10 IN ( col1 * col2 );
+  - name: tab0
+
+outputs:
+  - name: q6550.out
+    data: |
+      0
+      2
+      50

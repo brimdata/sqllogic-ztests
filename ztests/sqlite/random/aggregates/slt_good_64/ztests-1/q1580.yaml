@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q1580.spq | sort > q1580.out
+
+inputs:
+  - name: q1580.spq
+    data: |
+      SELECT DISTINCT - 50 / + col2 + col1 AS col1 FROM tab2 (FORMAT parquet) WHERE NOT ( col0 - + 45 ) IN ( ( - col0 ) );
+  - name: tab2
+
+outputs:
+  - name: q1580.out
+    data: |
+      49
+      67
+      76

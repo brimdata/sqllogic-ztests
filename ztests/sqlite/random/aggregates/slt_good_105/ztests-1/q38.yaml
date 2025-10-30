@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q38.spq | sort > q38.out
+
+inputs:
+  - name: q38.spq
+    data: |
+      SELECT DISTINCT - - MAX ( 87 ) - COUNT ( * ) * MIN ( col1 ) FROM tab2 (FORMAT parquet) AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q38.out
+    data: |
+      -66

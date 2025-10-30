@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q11840.spq | sort > q11840.out
+
+inputs:
+  - name: q11840.spq
+    data: |
+      SELECT ALL * FROM tab2 (FORMAT parquet) WHERE NOT NULL BETWEEN col2 / 2 * - - 65 AND + col0;
+  - name: tab2
+
+outputs:
+  - name: q11840.out
+    data: |

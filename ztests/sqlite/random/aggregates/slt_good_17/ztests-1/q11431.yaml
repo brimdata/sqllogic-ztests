@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q11431.spq | sort > q11431.out
+
+inputs:
+  - name: q11431.spq
+    data: |
+      SELECT ALL * FROM tab1 (FORMAT parquet) WHERE ( + col2 ) BETWEEN NULL AND 20;
+  - name: tab1
+
+outputs:
+  - name: q11431.out
+    data: |

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q11724.spq | sort > q11724.out
+
+inputs:
+  - name: q11724.spq
+    data: |
+      SELECT DISTINCT + - col0 / - col2 + - col0 FROM tab1 (FORMAT parquet) WHERE col1 / + + col1 BETWEEN NULL AND + + col0;
+  - name: tab1
+
+outputs:
+  - name: q11724.out
+    data: |

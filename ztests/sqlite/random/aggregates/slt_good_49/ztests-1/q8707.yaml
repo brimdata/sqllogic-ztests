@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q8707.spq | sort > q8707.out
+
+inputs:
+  - name: q8707.spq
+    data: |
+      SELECT ALL * FROM tab2 (FORMAT parquet) WHERE + 51 NOT BETWEEN NULL AND ( - ( - col0 ) );
+  - name: tab2
+
+outputs:
+  - name: q8707.out
+    data: |
+      46	51	23

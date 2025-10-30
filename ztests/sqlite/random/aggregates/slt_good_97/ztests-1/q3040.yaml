@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q3040.spq | sort > q3040.out
+
+inputs:
+  - name: q3040.spq
+    data: |
+      SELECT 31 AS col1 FROM tab0 (FORMAT parquet) WHERE ( ( NOT NULL BETWEEN - 95 AND col1 ) );
+  - name: tab0
+
+outputs:
+  - name: q3040.out
+    data: |

@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q1710.spq | sort > q1710.out
+
+inputs:
+  - name: q1710.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet), tab1 (FORMAT parquet) AS cor0 WHERE NOT NULL NOT IN ( + + 23 );
+  - name: tab0
+  - name: tab1
+
+outputs:
+  - name: q1710.out
+    data: |

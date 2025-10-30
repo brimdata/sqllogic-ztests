@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q592.spq | sort > q592.out
+
+inputs:
+  - name: q592.spq
+    data: |
+      SELECT 57 AS col1 FROM tab1 (FORMAT parquet) WHERE col1 NOT BETWEEN 59 AND ( + col0 );
+  - name: tab1
+
+outputs:
+  - name: q592.out
+    data: |
+      57
+      57
+      57

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q1080.spq | sort > q1080.out
+
+inputs:
+  - name: q1080.spq
+    data: |
+      SELECT + col2 / - 32 AS col2 FROM tab0 (FORMAT parquet) WHERE NOT ( col1 * + CAST ( + 11 AS INTEGER ) ) IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q1080.out
+    data: |

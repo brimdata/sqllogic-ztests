@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q7834.spq | sort > q7834.out
+
+inputs:
+  - name: q7834.spq
+    data: |
+      SELECT 65 * - col1 * - col2 + 17, col0 FROM tab0 (FORMAT parquet) WHERE NOT NULL IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q7834.out
+    data: |

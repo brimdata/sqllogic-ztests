@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q8950.spq | sort > q8950.out
+
+inputs:
+  - name: q8950.spq
+    data: |
+      SELECT ALL + COUNT ( + col1 ) FROM tab1 (FORMAT parquet) cor0 WHERE NOT - col2 BETWEEN ( col2 ) AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q8950.out
+    data: |
+      3

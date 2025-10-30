@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q2039.spq | sort > q2039.out
+
+inputs:
+  - name: q2039.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE NOT 20 < - col0 + col1;
+  - name: tab0
+
+outputs:
+  - name: q2039.out
+    data: |
+      87	21	10
+      97	1	99

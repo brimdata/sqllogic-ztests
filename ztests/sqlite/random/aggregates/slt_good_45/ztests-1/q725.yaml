@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q725.spq | sort > q725.out
+
+inputs:
+  - name: q725.spq
+    data: |
+      SELECT col1 AS col2 FROM tab1 (FORMAT parquet) WHERE NOT 52 - 7 * - CAST ( NULL AS REAL ) NOT BETWEEN ( NULL ) AND ( + col1 + 13 );
+  - name: tab1
+
+outputs:
+  - name: q725.out
+    data: |

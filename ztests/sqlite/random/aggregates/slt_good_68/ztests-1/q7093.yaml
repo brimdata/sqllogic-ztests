@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q7093.spq | sort > q7093.out
+
+inputs:
+  - name: q7093.spq
+    data: |
+      SELECT DISTINCT * FROM tab0 (FORMAT parquet) cor0 WHERE CAST ( col2 AS INTEGER ) BETWEEN ( 82 * - ( + col0 ) * ( - col2 ) ) AND NULL;
+  - name: tab0
+
+outputs:
+  - name: q7093.out
+    data: |

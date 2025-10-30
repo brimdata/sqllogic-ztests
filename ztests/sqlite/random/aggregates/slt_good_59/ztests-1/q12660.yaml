@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q12660.spq | sort > q12660.out
+
+inputs:
+  - name: q12660.spq
+    data: |
+      SELECT + 42 / MIN ( col2 ) + 91 AS col0 FROM tab2 (FORMAT parquet) AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q12660.out
+    data: |
+      92

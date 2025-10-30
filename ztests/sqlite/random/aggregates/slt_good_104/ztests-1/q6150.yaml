@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q6150.spq | sort > q6150.out
+
+inputs:
+  - name: q6150.spq
+    data: |
+      SELECT DISTINCT * FROM tab1 (FORMAT parquet) WHERE 26 IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q6150.out
+    data: |
+      51	14	96
+      85	5	59
+      91	47	68

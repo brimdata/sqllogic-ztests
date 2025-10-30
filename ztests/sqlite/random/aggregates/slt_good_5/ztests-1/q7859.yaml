@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q7859.spq | sort > q7859.out
+
+inputs:
+  - name: q7859.spq
+    data: |
+      SELECT + SUM ( + col1 ) - - ( + 39 ) * 54 FROM tab1 (FORMAT parquet) WHERE NOT ( NOT col1 IS NOT NULL );
+  - name: tab1
+
+outputs:
+  - name: q7859.out
+    data: |
+      2172

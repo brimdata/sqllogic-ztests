@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q3647.spq | sort > q3647.out
+
+inputs:
+  - name: q3647.spq
+    data: |
+      SELECT DISTINCT * FROM tab1 (FORMAT parquet) WHERE - 82 BETWEEN - + 99 * - col2 AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q3647.out
+    data: |

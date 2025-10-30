@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q5853.spq | sort > q5853.out
+
+inputs:
+  - name: q5853.spq
+    data: |
+      SELECT 32 + COUNT ( * ) AS col0 FROM tab0 (FORMAT parquet) AS cor0 CROSS JOIN tab1 (FORMAT parquet) AS cor1;
+  - name: tab0
+  - name: tab1
+
+outputs:
+  - name: q5853.out
+    data: |
+      41

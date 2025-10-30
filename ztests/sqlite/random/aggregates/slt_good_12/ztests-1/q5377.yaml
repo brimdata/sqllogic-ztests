@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q5377.spq | sort > q5377.out
+
+inputs:
+  - name: q5377.spq
+    data: |
+      SELECT ALL 15 AS col1 FROM tab0 (FORMAT parquet) WHERE - col2 * + ( 33 * 51 ) IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q5377.out
+    data: |

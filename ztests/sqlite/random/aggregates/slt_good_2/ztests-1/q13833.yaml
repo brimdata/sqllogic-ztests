@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q13833.spq | sort > q13833.out
+
+inputs:
+  - name: q13833.spq
+    data: |
+      SELECT DISTINCT * FROM tab2 (FORMAT parquet) WHERE col0 IN ( - CAST ( NULL AS INTEGER ), 68 / + + col0, - - 71, + ( + col0 ) );
+  - name: tab2
+
+outputs:
+  - name: q13833.out
+    data: |
+      46	51	23
+      64	77	40
+      75	67	58

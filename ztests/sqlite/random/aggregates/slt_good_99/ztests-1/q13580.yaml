@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q13580.spq | sort > q13580.out
+
+inputs:
+  - name: q13580.spq
+    data: |
+      SELECT COUNT ( DISTINCT + 7 ) AS col1 FROM tab2 (FORMAT parquet) AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q13580.out
+    data: |
+      1

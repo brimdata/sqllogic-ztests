@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q1012.spq | sort > q1012.out
+
+inputs:
+  - name: q1012.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) WHERE 83 NOT BETWEEN CAST ( NULL AS INTEGER ) AND - 19;
+  - name: tab1
+
+outputs:
+  - name: q1012.out
+    data: |
+      51	14	96
+      85	5	59
+      91	47	68

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q11703.spq | sort > q11703.out
+
+inputs:
+  - name: q11703.spq
+    data: |
+      SELECT DISTINCT * FROM tab1 (FORMAT parquet) WHERE NOT - - col1 IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q11703.out
+    data: |

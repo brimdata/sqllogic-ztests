@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q3945.spq | sort > q3945.out
+
+inputs:
+  - name: q3945.spq
+    data: |
+      SELECT + COUNT ( * ), MIN ( - ( - 16 ) ) col0 FROM tab0 (FORMAT parquet);
+  - name: tab0
+
+outputs:
+  - name: q3945.out
+    data: |
+      3	16

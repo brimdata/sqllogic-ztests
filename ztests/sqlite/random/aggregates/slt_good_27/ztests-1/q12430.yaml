@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q12430.spq | sort > q12430.out
+
+inputs:
+  - name: q12430.spq
+    data: |
+      SELECT DISTINCT 15 FROM tab0 (FORMAT parquet), tab2 (FORMAT parquet) cor0;
+  - name: tab0
+  - name: tab2
+
+outputs:
+  - name: q12430.out
+    data: |
+      15

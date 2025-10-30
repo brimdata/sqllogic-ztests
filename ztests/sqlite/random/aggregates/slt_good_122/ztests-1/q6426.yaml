@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q6426.spq | sort > q6426.out
+
+inputs:
+  - name: q6426.spq
+    data: |
+      SELECT - col0 * - + col1 + - 19 * - col1 * + 1 AS col0 FROM tab0 (FORMAT parquet) WHERE NOT + col1 IN ( + ( + + col2 ) );
+  - name: tab0
+
+outputs:
+  - name: q6426.out
+    data: |
+      116
+      2226
+      2754

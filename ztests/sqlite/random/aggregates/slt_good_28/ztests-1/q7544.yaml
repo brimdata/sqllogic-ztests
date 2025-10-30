@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q7544.spq | sort > q7544.out
+
+inputs:
+  - name: q7544.spq
+    data: |
+      SELECT ALL COUNT ( * ) FROM tab1 (FORMAT parquet) AS cor0 WHERE NOT 82 IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q7544.out
+    data: |
+      3

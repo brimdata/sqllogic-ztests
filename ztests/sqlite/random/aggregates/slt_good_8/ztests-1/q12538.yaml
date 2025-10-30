@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q12538.spq | sort > q12538.out
+
+inputs:
+  - name: q12538.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE NOT + - col1 / - col2 BETWEEN - 22 AND + col2 * - - 39;
+  - name: tab0
+
+outputs:
+  - name: q12538.out
+    data: |

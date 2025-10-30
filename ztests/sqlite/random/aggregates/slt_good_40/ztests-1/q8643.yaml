@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8643.spq | sort > q8643.out
+
+inputs:
+  - name: q8643.spq
+    data: |
+      SELECT ALL - col0 FROM tab0 (FORMAT parquet) WHERE NOT ( 20 / 16 ) IN ( + col0 + col1 );
+  - name: tab0
+
+outputs:
+  - name: q8643.out
+    data: |
+      -15
+      -87
+      -97

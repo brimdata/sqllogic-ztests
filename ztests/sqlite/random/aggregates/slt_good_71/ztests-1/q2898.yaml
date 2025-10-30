@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q2898.spq | sort > q2898.out
+
+inputs:
+  - name: q2898.spq
+    data: |
+      SELECT ALL col2 + - 33 AS col0 FROM tab1 (FORMAT parquet) WHERE + 70 <> col1;
+  - name: tab1
+
+outputs:
+  - name: q2898.out
+    data: |
+      26
+      35
+      63

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q4125.spq | sort > q4125.out
+
+inputs:
+  - name: q4125.spq
+    data: |
+      SELECT DISTINCT * FROM tab1 (FORMAT parquet) WHERE NULL NOT BETWEEN + 0 + - ( + - 63 ) * + ( 91 ) AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q4125.out
+    data: |

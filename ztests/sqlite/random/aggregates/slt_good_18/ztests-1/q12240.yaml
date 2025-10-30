@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q12240.spq | sort > q12240.out
+
+inputs:
+  - name: q12240.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) WHERE 82 / + col1 BETWEEN NULL AND 93;
+  - name: tab1
+
+outputs:
+  - name: q12240.out
+    data: |

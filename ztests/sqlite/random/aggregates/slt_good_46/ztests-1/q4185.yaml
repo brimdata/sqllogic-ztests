@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q4185.spq | sort > q4185.out
+
+inputs:
+  - name: q4185.spq
+    data: |
+      SELECT ALL 26 + col1 * 14 AS col2 FROM tab0 (FORMAT parquet) WHERE NOT NULL BETWEEN ( - 64 + - 21 * col0 ) AND 6;
+  - name: tab0
+
+outputs:
+  - name: q4185.out
+    data: |

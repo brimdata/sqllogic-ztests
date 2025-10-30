@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q9383.spq | sort > q9383.out
+
+inputs:
+  - name: q9383.spq
+    data: |
+      SELECT DISTINCT * FROM tab2 (FORMAT parquet) WHERE - - col1 > col0 + + 24 + ( - CAST ( NULL AS INTEGER ) );
+  - name: tab2
+
+outputs:
+  - name: q9383.out
+    data: |

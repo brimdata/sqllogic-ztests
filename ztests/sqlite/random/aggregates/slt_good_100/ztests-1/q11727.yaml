@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q11727.spq | sort > q11727.out
+
+inputs:
+  - name: q11727.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) AS cor0 WHERE NOT ( CAST ( NULL AS INTEGER ) ) NOT BETWEEN ( - 17 ) AND col1 * 7;
+  - name: tab0
+
+outputs:
+  - name: q11727.out
+    data: |

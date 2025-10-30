@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q6424.spq | sort > q6424.out
+
+inputs:
+  - name: q6424.spq
+    data: |
+      SELECT ALL * FROM tab2 (FORMAT parquet) WHERE - - 72 BETWEEN + col1 * - + col2 AND 20;
+  - name: tab2
+
+outputs:
+  - name: q6424.out
+    data: |

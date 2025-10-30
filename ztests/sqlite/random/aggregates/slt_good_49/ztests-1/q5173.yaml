@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q5173.spq | sort > q5173.out
+
+inputs:
+  - name: q5173.spq
+    data: |
+      SELECT DISTINCT col1 AS col1 FROM tab0 (FORMAT parquet) WHERE col2 * + 13 / col2 + - - col2 NOT BETWEEN col2 AND - col1;
+  - name: tab0
+
+outputs:
+  - name: q5173.out
+    data: |
+      1
+      21
+      81

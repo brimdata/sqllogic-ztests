@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q13703.spq | sort > q13703.out
+
+inputs:
+  - name: q13703.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE NOT 16 + ( 86 ) IN ( col1 );
+  - name: tab0
+
+outputs:
+  - name: q13703.out
+    data: |
+      15	81	47
+      87	21	10
+      97	1	99

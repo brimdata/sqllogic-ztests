@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q3235.spq | sort > q3235.out
+
+inputs:
+  - name: q3235.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) cor0 WHERE NOT ( + 24 ) IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q3235.out
+    data: |

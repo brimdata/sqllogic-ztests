@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q3530.spq | sort > q3530.out
+
+inputs:
+  - name: q3530.spq
+    data: |
+      SELECT ALL ( COUNT ( col0 ) ) FROM tab2 (FORMAT parquet) WHERE - 55 NOT BETWEEN + col1 AND col0;
+  - name: tab2
+
+outputs:
+  - name: q3530.out
+    data: |
+      3

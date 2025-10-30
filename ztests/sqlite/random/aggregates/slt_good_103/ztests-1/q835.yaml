@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q835.spq | sort > q835.out
+
+inputs:
+  - name: q835.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE NOT 25 < NULL;
+  - name: tab0
+
+outputs:
+  - name: q835.out
+    data: |

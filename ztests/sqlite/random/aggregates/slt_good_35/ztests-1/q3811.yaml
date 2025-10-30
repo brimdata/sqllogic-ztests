@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q3811.spq | sort > q3811.out
+
+inputs:
+  - name: q3811.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE NULL NOT BETWEEN 30 / - - 22 AND NULL;
+  - name: tab0
+
+outputs:
+  - name: q3811.out
+    data: |

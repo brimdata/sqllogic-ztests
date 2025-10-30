@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q2131.spq | sort > q2131.out
+
+inputs:
+  - name: q2131.spq
+    data: |
+      SELECT ALL * FROM tab1 (FORMAT parquet) WHERE NULL NOT BETWEEN 16 AND - col1 / col2 + + 13;
+  - name: tab1
+
+outputs:
+  - name: q2131.out
+    data: |

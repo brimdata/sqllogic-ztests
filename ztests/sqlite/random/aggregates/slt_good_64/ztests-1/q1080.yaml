@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q1080.spq | sort > q1080.out
+
+inputs:
+  - name: q1080.spq
+    data: |
+      SELECT ALL col2 * ( - col1 ) FROM tab0 (FORMAT parquet) WHERE NOT NULL IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q1080.out
+    data: |
+      -210
+      -3807
+      -99

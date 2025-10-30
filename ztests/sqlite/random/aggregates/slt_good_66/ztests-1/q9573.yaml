@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q9573.spq | sort > q9573.out
+
+inputs:
+  - name: q9573.spq
+    data: |
+      SELECT ALL * FROM tab2 (FORMAT parquet) WHERE ( - - col0 ) = ( - 31 ) + - col1 * - col0;
+  - name: tab2
+
+outputs:
+  - name: q9573.out
+    data: |

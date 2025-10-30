@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q1874.spq | sort > q1874.out
+
+inputs:
+  - name: q1874.spq
+    data: |
+      SELECT DISTINCT CAST ( + 48 AS INTEGER ) AS col2 FROM tab2 (FORMAT parquet) WHERE NOT NULL IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q1874.out
+    data: |

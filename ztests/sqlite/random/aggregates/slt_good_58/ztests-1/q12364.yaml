@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q12364.spq | sort > q12364.out
+
+inputs:
+  - name: q12364.spq
+    data: |
+      SELECT DISTINCT - col0 / 31 + - col1 AS col1 FROM tab0 (FORMAT parquet) AS cor0 WHERE NOT col0 > ( + + CAST ( NULL AS INTEGER ) * col2 + col1 );
+  - name: tab0
+
+outputs:
+  - name: q12364.out
+    data: |

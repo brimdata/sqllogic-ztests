@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q2908.spq | sort > q2908.out
+
+inputs:
+  - name: q2908.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE NOT + 23 NOT BETWEEN ( 50 ) AND col1 - - col2;
+  - name: tab0
+
+outputs:
+  - name: q2908.out
+    data: |

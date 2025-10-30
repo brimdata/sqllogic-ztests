@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q11281.spq | sort > q11281.out
+
+inputs:
+  - name: q11281.spq
+    data: |
+      SELECT DISTINCT + 96 * 39 + MAX ( + - col1 ) + + COUNT ( * ) + - + MAX ( + - 61 ) FROM tab2 (FORMAT parquet) WHERE NOT NULL IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q11281.out
+    data: |
+      3757

@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q5382.spq | sort > q5382.out
+
+inputs:
+  - name: q5382.spq
+    data: |
+      SELECT - - SUM ( - - 31 ) AS col0 FROM tab1 (FORMAT parquet) AS cor0 CROSS JOIN tab0 (FORMAT parquet) AS cor1;
+  - name: tab0
+  - name: tab1
+
+outputs:
+  - name: q5382.out
+    data: |
+      279

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q7080.spq | sort > q7080.out
+
+inputs:
+  - name: q7080.spq
+    data: |
+      SELECT - col0 FROM tab1 (FORMAT parquet) WHERE NOT - col1 * - col1 IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q7080.out
+    data: |
+      -51
+      -85
+      -91

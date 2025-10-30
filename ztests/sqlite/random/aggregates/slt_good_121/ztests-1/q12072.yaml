@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q12072.spq | sort > q12072.out
+
+inputs:
+  - name: q12072.spq
+    data: |
+      SELECT DISTINCT * FROM tab0 (FORMAT parquet) WHERE NOT NULL BETWEEN - 50 AND NULL;
+  - name: tab0
+
+outputs:
+  - name: q12072.out
+    data: |

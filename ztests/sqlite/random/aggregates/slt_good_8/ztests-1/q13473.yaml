@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q13473.spq | sort > q13473.out
+
+inputs:
+  - name: q13473.spq
+    data: |
+      SELECT DISTINCT 54 AS col0 FROM tab1 (FORMAT parquet) WHERE NOT ( 24 IS NULL );
+  - name: tab1
+
+outputs:
+  - name: q13473.out
+    data: |
+      54

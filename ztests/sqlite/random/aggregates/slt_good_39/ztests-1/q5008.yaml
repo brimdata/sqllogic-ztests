@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q5008.spq | sort > q5008.out
+
+inputs:
+  - name: q5008.spq
+    data: |
+      SELECT DISTINCT SUM ( DISTINCT 1 ) FROM tab1 (FORMAT parquet);
+  - name: tab1
+
+outputs:
+  - name: q5008.out
+    data: |
+      1

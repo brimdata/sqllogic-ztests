@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q9007.spq | sort > q9007.out
+
+inputs:
+  - name: q9007.spq
+    data: |
+      SELECT ALL COUNT ( * ) FROM tab2 (FORMAT parquet) WHERE + ( col1 ) NOT IN ( col2 + col1 );
+  - name: tab2
+
+outputs:
+  - name: q9007.out
+    data: |
+      3

@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q32.spq | sort > q32.out
+
+inputs:
+  - name: q32.spq
+    data: |
+      SELECT DISTINCT col0 / + 90 AS col1 FROM tab1 (FORMAT parquet);
+  - name: tab1
+
+outputs:
+  - name: q32.out
+    data: |
+      0
+      1

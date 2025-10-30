@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q6576.spq | sort > q6576.out
+
+inputs:
+  - name: q6576.spq
+    data: |
+      SELECT ALL * FROM tab1 (FORMAT parquet) AS cor0 WHERE col0 IN ( col0 + + - 22, 91, 97, + + col2 + - 43 );
+  - name: tab1
+
+outputs:
+  - name: q6576.out
+    data: |
+      91	47	68

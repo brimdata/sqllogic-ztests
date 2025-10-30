@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q3440.spq | sort > q3440.out
+
+inputs:
+  - name: q3440.spq
+    data: |
+      SELECT + 6 + col2 * 32 FROM tab0 (FORMAT parquet) cor0 WHERE col1 IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q3440.out
+    data: |
+      1510
+      3174
+      326

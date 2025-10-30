@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q10504.spq | sort > q10504.out
+
+inputs:
+  - name: q10504.spq
+    data: |
+      SELECT ALL - 20 / - SUM ( col0 ) col1 FROM tab2 (FORMAT parquet) WHERE NOT ( NULL IS NOT NULL );
+  - name: tab2
+
+outputs:
+  - name: q10504.out
+    data: |
+      0

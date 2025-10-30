@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q7909.spq | sort > q7909.out
+
+inputs:
+  - name: q7909.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) cor0 JOIN tab1 (FORMAT parquet) AS cor1 ON NOT NULL IS NULL;
+  - name: tab0
+  - name: tab1
+
+outputs:
+  - name: q7909.out
+    data: |

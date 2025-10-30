@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q5289.spq | sort > q5289.out
+
+inputs:
+  - name: q5289.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE NOT + 45 BETWEEN + col0 AND 24;
+  - name: tab0
+
+outputs:
+  - name: q5289.out
+    data: |
+      15	81	47
+      87	21	10
+      97	1	99

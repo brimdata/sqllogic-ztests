@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q4284.spq | sort > q4284.out
+
+inputs:
+  - name: q4284.spq
+    data: |
+      SELECT - COUNT ( * ) * + 32 AS col2 FROM tab2 (FORMAT parquet) WHERE NOT ( col0 * - col0 ) IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q4284.out
+    data: |
+      -96

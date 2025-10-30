@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q3480.spq | sort > q3480.out
+
+inputs:
+  - name: q3480.spq
+    data: |
+      SELECT DISTINCT * FROM tab0 (FORMAT parquet), tab2 (FORMAT parquet) AS cor0 WHERE ( 20 * + + 99 ) < NULL;
+  - name: tab0
+  - name: tab2
+
+outputs:
+  - name: q3480.out
+    data: |

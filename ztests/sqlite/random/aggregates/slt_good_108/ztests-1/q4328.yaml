@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q4328.spq | sort > q4328.out
+
+inputs:
+  - name: q4328.spq
+    data: |
+      SELECT ALL * FROM tab2 (FORMAT parquet) WHERE NOT ( + col0 * + - col1 ) < + col0 * col1 + + col0 * + + 75;
+  - name: tab2
+
+outputs:
+  - name: q4328.out
+    data: |

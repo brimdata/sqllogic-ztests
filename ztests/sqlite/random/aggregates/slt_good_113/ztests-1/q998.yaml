@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q998.spq | sort > q998.out
+
+inputs:
+  - name: q998.spq
+    data: |
+      SELECT DISTINCT * FROM tab1 (FORMAT parquet) WHERE - 58 < - col2;
+  - name: tab1
+
+outputs:
+  - name: q998.out
+    data: |

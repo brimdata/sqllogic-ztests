@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q7266.spq | sort > q7266.out
+
+inputs:
+  - name: q7266.spq
+    data: |
+      SELECT ALL MAX ( - + 76 ) * COUNT ( * ) AS col2 FROM tab1 (FORMAT parquet) cor0 CROSS JOIN tab1 (FORMAT parquet) AS cor1;
+  - name: tab1
+
+outputs:
+  - name: q7266.out
+    data: |
+      -684

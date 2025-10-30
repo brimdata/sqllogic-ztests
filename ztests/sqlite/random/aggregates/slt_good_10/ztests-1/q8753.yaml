@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8753.spq | sort > q8753.out
+
+inputs:
+  - name: q8753.spq
+    data: |
+      SELECT CAST ( col2 AS REAL ) * 4 AS col1 FROM tab2 (FORMAT parquet) WHERE NOT - col1 NOT BETWEEN CAST ( NULL AS INTEGER ) + 43 AND ( NULL );
+  - name: tab2
+
+outputs:
+  - name: q8753.out
+    data: |

@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q7801.spq | sort > q7801.out
+
+inputs:
+  - name: q7801.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE - col2 NOT BETWEEN - + ( + col0 ) AND + 57;
+  - name: tab0
+
+outputs:
+  - name: q7801.out
+    data: |
+      15	81	47
+      97	1	99

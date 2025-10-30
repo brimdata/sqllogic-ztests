@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q1403.spq | sort > q1403.out
+
+inputs:
+  - name: q1403.spq
+    data: |
+      SELECT - 1 + + col2 AS col1 FROM tab0 (FORMAT parquet) AS cor0 WHERE col2 * + col1 <= NULL;
+  - name: tab0
+
+outputs:
+  - name: q1403.out
+    data: |

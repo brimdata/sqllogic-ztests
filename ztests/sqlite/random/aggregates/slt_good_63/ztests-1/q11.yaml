@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q11.spq | sort > q11.out
+
+inputs:
+  - name: q11.spq
+    data: |
+      SELECT DISTINCT - 11 AS col0 FROM tab2 (FORMAT parquet) cor0 CROSS JOIN tab1 (FORMAT parquet) AS cor1;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q11.out
+    data: |
+      -11

@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q3215.spq | sort > q3215.out
+
+inputs:
+  - name: q3215.spq
+    data: |
+      SELECT + COUNT ( * ) * MIN ( + col2 ) col2, + COUNT ( * ) AS col1 FROM tab1 (FORMAT parquet);
+  - name: tab1
+
+outputs:
+  - name: q3215.out
+    data: |
+      177	3

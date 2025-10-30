@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q3900.spq | sort > q3900.out
+
+inputs:
+  - name: q3900.spq
+    data: |
+      SELECT ALL * FROM tab0 (FORMAT parquet) WHERE ( col2 / - ( 70 + 70 ) ) < NULL;
+  - name: tab0
+
+outputs:
+  - name: q3900.out
+    data: |

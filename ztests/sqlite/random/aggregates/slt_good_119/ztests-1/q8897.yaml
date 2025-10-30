@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q8897.spq | sort > q8897.out
+
+inputs:
+  - name: q8897.spq
+    data: |
+      SELECT COUNT ( - CAST ( - col2 AS INTEGER ) ) AS col2 FROM tab1 (FORMAT parquet) WHERE NOT - 48 / + col0 IN ( 31 );
+  - name: tab1
+
+outputs:
+  - name: q8897.out
+    data: |
+      3

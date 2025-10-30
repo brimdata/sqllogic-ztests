@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q13780.spq | sort > q13780.out
+
+inputs:
+  - name: q13780.spq
+    data: |
+      SELECT col2 FROM tab0 (FORMAT parquet) AS cor0 WHERE 21 NOT BETWEEN NULL AND ( 43 );
+  - name: tab0
+
+outputs:
+  - name: q13780.out
+    data: |

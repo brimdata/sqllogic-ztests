@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q4697.spq | sort > q4697.out
+
+inputs:
+  - name: q4697.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) cor0 WHERE NOT ( - 17 ) NOT IN ( col1 );
+  - name: tab2
+
+outputs:
+  - name: q4697.out
+    data: |

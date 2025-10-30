@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q8078.spq | sort > q8078.out
+
+inputs:
+  - name: q8078.spq
+    data: |
+      SELECT + 57 + COUNT ( * ) AS col1 FROM tab1 (FORMAT parquet) WHERE NOT NULL IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q8078.out
+    data: |
+      60

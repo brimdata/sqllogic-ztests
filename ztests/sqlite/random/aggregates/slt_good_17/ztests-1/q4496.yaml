@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q4496.spq | sort > q4496.out
+
+inputs:
+  - name: q4496.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) WHERE NOT col2 * 22 BETWEEN ( + 96 ) AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q4496.out
+    data: |

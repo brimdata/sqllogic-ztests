@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8330.spq | sort > q8330.out
+
+inputs:
+  - name: q8330.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) WHERE NOT col2 < - col1;
+  - name: tab1
+
+outputs:
+  - name: q8330.out
+    data: |
+      51	14	96
+      85	5	59
+      91	47	68

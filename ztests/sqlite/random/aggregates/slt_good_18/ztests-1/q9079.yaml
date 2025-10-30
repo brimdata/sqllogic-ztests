@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q9079.spq | sort > q9079.out
+
+inputs:
+  - name: q9079.spq
+    data: |
+      SELECT + + 8 - + 15 AS col1 FROM tab1 (FORMAT parquet) AS cor0 JOIN tab2 (FORMAT parquet) AS cor1 ON NULL = 99 OR ( NOT NULL IS NULL );
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q9079.out
+    data: |

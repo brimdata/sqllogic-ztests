@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q13226.spq | sort > q13226.out
+
+inputs:
+  - name: q13226.spq
+    data: |
+      SELECT ALL - col1 FROM tab1 (FORMAT parquet) WHERE NOT col1 BETWEEN - 72 AND - 78 * + 4;
+  - name: tab1
+
+outputs:
+  - name: q13226.out
+    data: |
+      -14
+      -47
+      -5

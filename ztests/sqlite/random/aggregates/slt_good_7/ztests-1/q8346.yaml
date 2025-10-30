@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8346.spq | sort > q8346.out
+
+inputs:
+  - name: q8346.spq
+    data: |
+      SELECT 48 AS col2 FROM tab2 (FORMAT parquet) WHERE NOT ( NULL ) NOT BETWEEN - col1 AND + 96;
+  - name: tab2
+
+outputs:
+  - name: q8346.out
+    data: |

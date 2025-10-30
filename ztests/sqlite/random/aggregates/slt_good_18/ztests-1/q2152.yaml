@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q2152.spq | sort > q2152.out
+
+inputs:
+  - name: q2152.spq
+    data: |
+      SELECT ALL * FROM tab1 (FORMAT parquet) WHERE NOT - 64 / 5 + + col0 IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q2152.out
+    data: |

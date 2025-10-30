@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q8720.spq | sort > q8720.out
+
+inputs:
+  - name: q8720.spq
+    data: |
+      SELECT ALL * FROM tab2 (FORMAT parquet) WHERE NOT 68 BETWEEN ( - 27 ) AND + + col1;
+  - name: tab2
+
+outputs:
+  - name: q8720.out
+    data: |
+      46	51	23
+      75	67	58

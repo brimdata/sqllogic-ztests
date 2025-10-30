@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q7213.spq | sort > q7213.out
+
+inputs:
+  - name: q7213.spq
+    data: |
+      SELECT DISTINCT COUNT ( + - 56 ) AS col2 FROM tab1 (FORMAT parquet) WHERE NOT + col1 IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q7213.out
+    data: |
+      3

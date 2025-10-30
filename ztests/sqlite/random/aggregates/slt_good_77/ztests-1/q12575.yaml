@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q12575.spq | sort > q12575.out
+
+inputs:
+  - name: q12575.spq
+    data: |
+      SELECT ALL + CAST ( NULL AS INTEGER ) FROM tab2 (FORMAT parquet) AS cor0 CROSS JOIN tab2 (FORMAT parquet) AS cor1 WHERE NOT 79 IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q12575.out
+    data: |

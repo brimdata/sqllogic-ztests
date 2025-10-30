@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q10479.spq | sort > q10479.out
+
+inputs:
+  - name: q10479.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) WHERE + - 79 > ( col1 - - - col0 );
+  - name: tab2
+
+outputs:
+  - name: q10479.out
+    data: |

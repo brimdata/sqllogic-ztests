@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q4130.spq | sort > q4130.out
+
+inputs:
+  - name: q4130.spq
+    data: |
+      SELECT DISTINCT * FROM tab1 (FORMAT parquet) AS cor0 WHERE NOT 46 BETWEEN + 20 AND - col0 + + col1;
+  - name: tab1
+
+outputs:
+  - name: q4130.out
+    data: |
+      51	14	96
+      85	5	59
+      91	47	68

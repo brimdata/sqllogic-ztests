@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q10468.spq | sort > q10468.out
+
+inputs:
+  - name: q10468.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) AS cor0 JOIN tab1 (FORMAT parquet) AS cor1 ON NOT ( NOT NULL <= NULL );
+  - name: tab0
+  - name: tab1
+
+outputs:
+  - name: q10468.out
+    data: |

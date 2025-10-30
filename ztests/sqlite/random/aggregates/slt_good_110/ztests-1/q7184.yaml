@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q7184.spq | sort > q7184.out
+
+inputs:
+  - name: q7184.spq
+    data: |
+      SELECT 44 AS col1, + col0 * - + col1 * col1 * 32 * - + 82 FROM tab1 (FORMAT parquet) AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q7184.out
+    data: |
+      44	26229504
+      44	527473856
+      44	5576000

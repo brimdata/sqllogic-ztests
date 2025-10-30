@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q101.spq | sort > q101.out
+
+inputs:
+  - name: q101.spq
+    data: |
+      SELECT + col0 / col1 * col0 + + 52 FROM tab1 (FORMAT parquet) AS cor0 WHERE NOT col1 BETWEEN NULL AND + - 62;
+  - name: tab1
+
+outputs:
+  - name: q101.out
+    data: |
+      143
+      1497
+      205

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q860.spq | sort > q860.out
+
+inputs:
+  - name: q860.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) AS cor0 WHERE col2 BETWEEN + col2 * 81 - col0 * - CAST ( NULL AS INTEGER ) AND + - col1 + + col1;
+  - name: tab0
+
+outputs:
+  - name: q860.out
+    data: |

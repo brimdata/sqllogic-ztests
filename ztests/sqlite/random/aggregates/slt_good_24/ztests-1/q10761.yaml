@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q10761.spq | sort > q10761.out
+
+inputs:
+  - name: q10761.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) WHERE - + 31 BETWEEN ( col2 ) AND 65 - col2;
+  - name: tab2
+
+outputs:
+  - name: q10761.out
+    data: |

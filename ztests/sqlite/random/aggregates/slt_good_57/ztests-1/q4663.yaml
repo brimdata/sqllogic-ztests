@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q4663.spq | sort > q4663.out
+
+inputs:
+  - name: q4663.spq
+    data: |
+      SELECT + col2 + 30 * - + col2 * 10 FROM tab0 (FORMAT parquet) AS cor0 WHERE + col0 IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q4663.out
+    data: |
+      -14053
+      -29601
+      -2990

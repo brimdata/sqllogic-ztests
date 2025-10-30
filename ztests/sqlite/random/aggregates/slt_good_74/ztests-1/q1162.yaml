@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q1162.spq | sort > q1162.out
+
+inputs:
+  - name: q1162.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) AS cor0 WHERE - 96 / 2 IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q1162.out
+    data: |

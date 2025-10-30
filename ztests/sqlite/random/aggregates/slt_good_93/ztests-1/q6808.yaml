@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q6808.spq | sort > q6808.out
+
+inputs:
+  - name: q6808.spq
+    data: |
+      SELECT col1 * + col1 AS col2 FROM tab1 (FORMAT parquet) WHERE - + col2 IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q6808.out
+    data: |

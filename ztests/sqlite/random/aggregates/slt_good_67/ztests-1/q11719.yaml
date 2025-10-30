@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q11719.spq | sort > q11719.out
+
+inputs:
+  - name: q11719.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) AS cor0 WHERE NOT NULL BETWEEN NULL AND + 70 * + 21;
+  - name: tab1
+
+outputs:
+  - name: q11719.out
+    data: |

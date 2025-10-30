@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q890.spq | sort > q890.out
+
+inputs:
+  - name: q890.spq
+    data: |
+      SELECT ALL * FROM tab2 (FORMAT parquet) WHERE 83 BETWEEN ( + 31 ) AND ( NULL );
+  - name: tab2
+
+outputs:
+  - name: q890.out
+    data: |

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q13112.spq | sort > q13112.out
+
+inputs:
+  - name: q13112.spq
+    data: |
+      SELECT ALL - 95 FROM tab1 (FORMAT parquet) WHERE NOT col1 * + ( col2 ) BETWEEN - col2 * - col1 AND + col0;
+  - name: tab1
+
+outputs:
+  - name: q13112.out
+    data: |
+      -95
+      -95
+      -95

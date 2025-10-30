@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q11363.spq | sort > q11363.out
+
+inputs:
+  - name: q11363.spq
+    data: |
+      SELECT ( + + col2 ) AS col2, - col1 + - col2 FROM tab1 (FORMAT parquet) WHERE NOT 25 = ( - 12 );
+  - name: tab1
+
+outputs:
+  - name: q11363.out
+    data: |
+      59	-64
+      68	-115
+      96	-110

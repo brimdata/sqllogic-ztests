@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q12906.spq | sort > q12906.out
+
+inputs:
+  - name: q12906.spq
+    data: |
+      SELECT ALL * FROM tab2 (FORMAT parquet) WHERE + + col1 + + col2 BETWEEN - col1 AND col1 + col1;
+  - name: tab2
+
+outputs:
+  - name: q12906.out
+    data: |
+      46	51	23
+      64	77	40
+      75	67	58

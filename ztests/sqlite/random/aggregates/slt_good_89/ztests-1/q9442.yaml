@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q9442.spq | sort > q9442.out
+
+inputs:
+  - name: q9442.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) AS cor0 CROSS JOIN tab0 (FORMAT parquet) cor1 WHERE NOT NULL <= + ( - 26 );
+  - name: tab0
+
+outputs:
+  - name: q9442.out
+    data: |

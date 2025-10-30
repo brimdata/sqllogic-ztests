@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8134.spq | sort > q8134.out
+
+inputs:
+  - name: q8134.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE NOT - 28 * - col1 IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q8134.out
+    data: |

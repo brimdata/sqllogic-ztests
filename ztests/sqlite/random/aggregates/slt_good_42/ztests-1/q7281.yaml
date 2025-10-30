@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q7281.spq | sort > q7281.out
+
+inputs:
+  - name: q7281.spq
+    data: |
+      SELECT DISTINCT - SUM ( 36 ) AS col1 FROM tab1 (FORMAT parquet);
+  - name: tab1
+
+outputs:
+  - name: q7281.out
+    data: |
+      -108

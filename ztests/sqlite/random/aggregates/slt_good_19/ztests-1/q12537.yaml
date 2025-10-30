@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q12537.spq | sort > q12537.out
+
+inputs:
+  - name: q12537.spq
+    data: |
+      SELECT ALL * FROM tab1 (FORMAT parquet) WHERE NOT - col1 <> 28 * 75;
+  - name: tab1
+
+outputs:
+  - name: q12537.out
+    data: |

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q635.spq | sort > q635.out
+
+inputs:
+  - name: q635.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE NOT ( NOT NULL <> 41 );
+  - name: tab0
+
+outputs:
+  - name: q635.out
+    data: |

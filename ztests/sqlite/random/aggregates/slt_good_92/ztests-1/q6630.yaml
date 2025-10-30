@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q6630.spq | sort > q6630.out
+
+inputs:
+  - name: q6630.spq
+    data: |
+      SELECT DISTINCT + CAST ( NULL AS INTEGER ) FROM tab2 (FORMAT parquet) WHERE NOT ( 30 ) IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q6630.out
+    data: |

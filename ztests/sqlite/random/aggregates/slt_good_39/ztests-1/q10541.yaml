@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q10541.spq | sort > q10541.out
+
+inputs:
+  - name: q10541.spq
+    data: |
+      SELECT COUNT ( * ) - + + MIN ( CAST ( NULL AS REAL ) ) FROM tab1 (FORMAT parquet) AS cor0 CROSS JOIN tab2 (FORMAT parquet) AS cor1;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q10541.out
+    data: |
+      -

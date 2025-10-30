@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8582.spq | sort > q8582.out
+
+inputs:
+  - name: q8582.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE NOT 1 IN ( - 68 );
+  - name: tab0
+
+outputs:
+  - name: q8582.out
+    data: |
+      15	81	47
+      87	21	10
+      97	1	99

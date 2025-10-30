@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q12061.spq | sort > q12061.out
+
+inputs:
+  - name: q12061.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) WHERE + + col0 BETWEEN + col0 AND - 64;
+  - name: tab1
+
+outputs:
+  - name: q12061.out
+    data: |

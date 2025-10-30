@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q12399.spq | sort > q12399.out
+
+inputs:
+  - name: q12399.spq
+    data: |
+      SELECT col1 AS col2 FROM tab1 (FORMAT parquet) WHERE NULL IN ( + 84 );
+  - name: tab1
+
+outputs:
+  - name: q12399.out
+    data: |

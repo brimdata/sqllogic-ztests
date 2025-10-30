@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8870.spq | sort > q8870.out
+
+inputs:
+  - name: q8870.spq
+    data: |
+      SELECT ALL 24 * + 14 + col2 * 72 AS col0 FROM tab2 (FORMAT parquet) WHERE NOT col2 NOT IN ( 83 );
+  - name: tab2
+
+outputs:
+  - name: q8870.out
+    data: |

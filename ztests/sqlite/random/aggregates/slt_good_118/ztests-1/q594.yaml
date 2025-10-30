@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q594.spq | sort > q594.out
+
+inputs:
+  - name: q594.spq
+    data: |
+      SELECT ALL 30 * - 31 + - COUNT ( * ) FROM tab1 (FORMAT parquet);
+  - name: tab1
+
+outputs:
+  - name: q594.out
+    data: |
+      -933

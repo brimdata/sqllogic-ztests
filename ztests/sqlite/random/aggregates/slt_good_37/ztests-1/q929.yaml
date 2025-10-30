@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q929.spq | sort > q929.out
+
+inputs:
+  - name: q929.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE ( + 4 * - col1 ) NOT BETWEEN col1 AND col1 AND NOT ( + 32 * - col1 ) <> + col1;
+  - name: tab0
+
+outputs:
+  - name: q929.out
+    data: |

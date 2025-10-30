@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q10178.spq | sort > q10178.out
+
+inputs:
+  - name: q10178.spq
+    data: |
+      SELECT ALL MAX ( DISTINCT - - CAST ( NULL AS REAL ) ) col2 FROM tab1 (FORMAT parquet);
+  - name: tab1
+
+outputs:
+  - name: q10178.out
+    data: |
+      -

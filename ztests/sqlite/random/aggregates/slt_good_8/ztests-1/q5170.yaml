@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q5170.spq | sort > q5170.out
+
+inputs:
+  - name: q5170.spq
+    data: |
+      SELECT ALL col1 * col2 AS col1 FROM tab0 (FORMAT parquet) AS cor0 WHERE NOT - CAST ( NULL AS INTEGER ) + 71 + col2 IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q5170.out
+    data: |

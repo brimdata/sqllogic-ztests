@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q4799.spq | sort > q4799.out
+
+inputs:
+  - name: q4799.spq
+    data: |
+      SELECT DISTINCT - COUNT ( * ) + COUNT ( * ) - COUNT ( * ) * + COUNT ( * ) * COUNT ( * ) FROM tab2 (FORMAT parquet) AS cor0 CROSS JOIN tab0 (FORMAT parquet) AS cor1;
+  - name: tab0
+  - name: tab2
+
+outputs:
+  - name: q4799.out
+    data: |
+      -729

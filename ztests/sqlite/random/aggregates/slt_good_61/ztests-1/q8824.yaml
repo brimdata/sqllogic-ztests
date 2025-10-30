@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8824.spq | sort > q8824.out
+
+inputs:
+  - name: q8824.spq
+    data: |
+      SELECT ALL col1 AS col2 FROM tab0 (FORMAT parquet) cor0 WHERE NOT ( col2 * 29 ) NOT IN ( 11 * + ( 32 ) );
+  - name: tab0
+
+outputs:
+  - name: q8824.out
+    data: |

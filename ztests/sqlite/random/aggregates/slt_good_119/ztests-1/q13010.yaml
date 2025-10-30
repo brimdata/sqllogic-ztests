@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q13010.spq | sort > q13010.out
+
+inputs:
+  - name: q13010.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) WHERE NOT 4 NOT IN ( - + 68, + 61 / 92 + + ( - col2 ), - col2 + - - col2 );
+  - name: tab1
+
+outputs:
+  - name: q13010.out
+    data: |

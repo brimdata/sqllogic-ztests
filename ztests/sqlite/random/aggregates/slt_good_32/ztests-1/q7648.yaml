@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q7648.spq | sort > q7648.out
+
+inputs:
+  - name: q7648.spq
+    data: |
+      SELECT DISTINCT - + ( - - col1 ) * 23 + + col2 + + col1 + - ( col0 ) AS col1 FROM tab0 (FORMAT parquet) WHERE NULL IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q7648.out
+    data: |

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q6021.spq | sort > q6021.out
+
+inputs:
+  - name: q6021.spq
+    data: |
+      SELECT ALL ( 62 ) FROM tab2 (FORMAT parquet) WHERE NOT + - CAST ( + - col2 AS INTEGER ) * col0 >= - 82;
+  - name: tab2
+
+outputs:
+  - name: q6021.out
+    data: |

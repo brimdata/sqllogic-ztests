@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q2741.spq | sort > q2741.out
+
+inputs:
+  - name: q2741.spq
+    data: |
+      SELECT - 52, + col1, + + 42 + - + 80 AS col0 FROM tab0 (FORMAT parquet);
+  - name: tab0
+
+outputs:
+  - name: q2741.out
+    data: |
+      -52	1	-38
+      -52	21	-38
+      -52	81	-38

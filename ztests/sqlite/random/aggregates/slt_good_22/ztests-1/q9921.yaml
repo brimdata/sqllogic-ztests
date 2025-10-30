@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q9921.spq | sort > q9921.out
+
+inputs:
+  - name: q9921.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) AS cor0 WHERE ( col1 ) NOT IN ( 26 );
+  - name: tab1
+
+outputs:
+  - name: q9921.out
+    data: |
+      51	14	96
+      85	5	59
+      91	47	68

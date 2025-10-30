@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q12594.spq | sort > q12594.out
+
+inputs:
+  - name: q12594.spq
+    data: |
+      SELECT ALL - col1 / col1 * 42 AS col2 FROM tab2 (FORMAT parquet) WHERE NOT 47 IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q12594.out
+    data: |

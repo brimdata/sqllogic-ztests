@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8038.spq | sort > q8038.out
+
+inputs:
+  - name: q8038.spq
+    data: |
+      SELECT ALL * FROM tab2 (FORMAT parquet) WHERE NOT - CAST ( - 15 AS INTEGER ) IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q8038.out
+    data: |

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q5036.spq | sort > q5036.out
+
+inputs:
+  - name: q5036.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) AS cor0 WHERE ( ( + 23 ) * col2 ) IS NOT NULL AND + col1 >= + col1;
+  - name: tab2
+
+outputs:
+  - name: q5036.out
+    data: |
+      46	51	23
+      64	77	40
+      75	67	58

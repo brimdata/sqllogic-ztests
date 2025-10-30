@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q3078.spq | sort > q3078.out
+
+inputs:
+  - name: q3078.spq
+    data: |
+      SELECT DISTINCT * FROM tab0 (FORMAT parquet) WHERE ( 60 * 32 * + col2 ) <= col1 / + - col2 * - - col0;
+  - name: tab0
+
+outputs:
+  - name: q3078.out
+    data: |

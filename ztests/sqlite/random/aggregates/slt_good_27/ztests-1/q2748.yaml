@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q2748.spq | sort > q2748.out
+
+inputs:
+  - name: q2748.spq
+    data: |
+      SELECT ALL + 98 AS col2, - 33 * - - col2 AS col0 FROM tab2 (FORMAT parquet) WHERE col1 IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q2748.out
+    data: |
+      98	-1320
+      98	-1914
+      98	-759

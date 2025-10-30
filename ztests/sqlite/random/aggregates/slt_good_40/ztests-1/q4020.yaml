@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q4020.spq | sort > q4020.out
+
+inputs:
+  - name: q4020.spq
+    data: |
+      SELECT + 52 / col2 + 94 AS col2 FROM tab0 (FORMAT parquet) AS cor0 WHERE NULL IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q4020.out
+    data: |

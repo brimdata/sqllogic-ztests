@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q3009.spq | sort > q3009.out
+
+inputs:
+  - name: q3009.spq
+    data: |
+      SELECT ALL - col0 FROM tab1 (FORMAT parquet) WHERE col2 + 7 IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q3009.out
+    data: |

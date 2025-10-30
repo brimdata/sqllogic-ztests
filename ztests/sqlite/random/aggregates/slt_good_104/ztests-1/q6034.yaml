@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q6034.spq | sort > q6034.out
+
+inputs:
+  - name: q6034.spq
+    data: |
+      SELECT - 16 * COUNT ( * ) col0 FROM tab1 (FORMAT parquet), tab2 (FORMAT parquet) AS cor0;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q6034.out
+    data: |
+      -144

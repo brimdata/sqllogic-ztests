@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q4642.spq | sort > q4642.out
+
+inputs:
+  - name: q4642.spq
+    data: |
+      SELECT - COUNT ( * ) + + MIN ( + col1 ) FROM tab2 (FORMAT parquet) WHERE NOT NULL IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q4642.out
+    data: |
+      48

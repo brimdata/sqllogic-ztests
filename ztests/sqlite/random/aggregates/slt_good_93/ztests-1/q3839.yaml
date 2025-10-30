@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q3839.spq | sort > q3839.out
+
+inputs:
+  - name: q3839.spq
+    data: |
+      SELECT DISTINCT MIN ( - - 16 ) AS col2 FROM tab0 (FORMAT parquet);
+  - name: tab0
+
+outputs:
+  - name: q3839.out
+    data: |
+      16

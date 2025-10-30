@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q6446.spq | sort > q6446.out
+
+inputs:
+  - name: q6446.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) WHERE col1 - - 74 * col0 = ( - col0 );
+  - name: tab2
+
+outputs:
+  - name: q6446.out
+    data: |

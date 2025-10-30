@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q8235.spq | sort > q8235.out
+
+inputs:
+  - name: q8235.spq
+    data: |
+      SELECT COUNT ( * ) + - - ( + 10 ) FROM tab0 (FORMAT parquet) WHERE NOT NULL IS NOT NULL AND col0 IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q8235.out
+    data: |
+      13

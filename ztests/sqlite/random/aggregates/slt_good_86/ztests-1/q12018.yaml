@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q12018.spq | sort > q12018.out
+
+inputs:
+  - name: q12018.spq
+    data: |
+      SELECT 54 - - - col2 - + col2 + 84 FROM tab1 (FORMAT parquet) WHERE NOT ( NOT NULL IS NULL );
+  - name: tab1
+
+outputs:
+  - name: q12018.out
+    data: |
+      -54
+      2
+      20

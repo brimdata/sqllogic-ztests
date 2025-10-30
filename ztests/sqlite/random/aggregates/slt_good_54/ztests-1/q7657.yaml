@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q7657.spq | sort > q7657.out
+
+inputs:
+  - name: q7657.spq
+    data: |
+      SELECT DISTINCT * FROM tab2 (FORMAT parquet) WHERE NOT ( col1 ) NOT BETWEEN - 8 AND ( - col0 + - 96 * 36 );
+  - name: tab2
+
+outputs:
+  - name: q7657.out
+    data: |

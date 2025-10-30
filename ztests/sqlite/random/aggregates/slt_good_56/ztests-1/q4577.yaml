@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q4577.spq | sort > q4577.out
+
+inputs:
+  - name: q4577.spq
+    data: |
+      SELECT + col1 AS col0, col0 / - col1 - ( + col2 ) * 75 - + col1 * col0 FROM tab2 (FORMAT parquet);
+  - name: tab2
+
+outputs:
+  - name: q4577.out
+    data: |
+      51	-4071
+      67	-9376
+      77	-7928

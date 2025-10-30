@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q6681.spq | sort > q6681.out
+
+inputs:
+  - name: q6681.spq
+    data: |
+      SELECT ALL + ( - col1 ) * - 28 AS col2, ( - 57 ) FROM tab2 (FORMAT parquet);
+  - name: tab2
+
+outputs:
+  - name: q6681.out
+    data: |
+      1428	-57
+      1876	-57
+      2156	-57

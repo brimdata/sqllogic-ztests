@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q12029.spq | sort > q12029.out
+
+inputs:
+  - name: q12029.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE NULL NOT BETWEEN + + 80 AND NULL;
+  - name: tab0
+
+outputs:
+  - name: q12029.out
+    data: |

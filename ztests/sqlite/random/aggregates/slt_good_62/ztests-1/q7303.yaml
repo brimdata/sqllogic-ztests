@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q7303.spq | sort > q7303.out
+
+inputs:
+  - name: q7303.spq
+    data: |
+      SELECT ALL - + 8 AS col2 FROM tab2 (FORMAT parquet) AS cor0 WHERE col2 <= CAST ( - 34 AS INTEGER ) * + 25;
+  - name: tab2
+
+outputs:
+  - name: q7303.out
+    data: |

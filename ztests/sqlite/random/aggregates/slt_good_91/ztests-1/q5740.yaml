@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q5740.spq | sort > q5740.out
+
+inputs:
+  - name: q5740.spq
+    data: |
+      SELECT col0 AS col1 FROM tab2 (FORMAT parquet) WHERE NOT - 25 / 23 IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q5740.out
+    data: |
+      46
+      64
+      75

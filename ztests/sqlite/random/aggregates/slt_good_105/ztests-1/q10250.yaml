@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q10250.spq | sort > q10250.out
+
+inputs:
+  - name: q10250.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) WHERE NOT - + col0 + - + col2 - + col2 NOT IN ( + col2, - 89 );
+  - name: tab2
+
+outputs:
+  - name: q10250.out
+    data: |

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q9949.spq | sort > q9949.out
+
+inputs:
+  - name: q9949.spq
+    data: |
+      SELECT DISTINCT 39 AS col2 FROM tab2 (FORMAT parquet) WHERE NOT CAST ( NULL AS INTEGER ) BETWEEN ( - 6 + col2 ) AND NULL;
+  - name: tab2
+
+outputs:
+  - name: q9949.out
+    data: |

@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q9279.spq | sort > q9279.out
+
+inputs:
+  - name: q9279.spq
+    data: |
+      SELECT - COUNT ( * ) * - + 51 * + 45 AS col0 FROM tab1 (FORMAT parquet), tab2 (FORMAT parquet) AS cor0;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q9279.out
+    data: |
+      20655

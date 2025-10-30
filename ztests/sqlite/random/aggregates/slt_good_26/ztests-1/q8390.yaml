@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8390.spq | sort > q8390.out
+
+inputs:
+  - name: q8390.spq
+    data: |
+      SELECT ALL * FROM tab0 (FORMAT parquet) AS cor0 WHERE + col1 + - 43 BETWEEN + col1 + - - col0 AND NULL;
+  - name: tab0
+
+outputs:
+  - name: q8390.out
+    data: |

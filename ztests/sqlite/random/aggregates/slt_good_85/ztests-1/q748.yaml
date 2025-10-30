@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q748.spq | sort > q748.out
+
+inputs:
+  - name: q748.spq
+    data: |
+      SELECT ALL 78 * SUM ( - col2 * col1 ) col0 FROM tab0 (FORMAT parquet);
+  - name: tab0
+
+outputs:
+  - name: q748.out
+    data: |
+      -321048

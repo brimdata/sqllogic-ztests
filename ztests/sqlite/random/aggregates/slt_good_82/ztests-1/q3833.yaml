@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q3833.spq | sort > q3833.out
+
+inputs:
+  - name: q3833.spq
+    data: |
+      SELECT ALL 30 * + col2 AS col2 FROM tab1 (FORMAT parquet) AS cor0 WHERE NULL IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q3833.out
+    data: |
+      1770
+      2040
+      2880

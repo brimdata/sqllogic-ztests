@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q1824.spq | sort > q1824.out
+
+inputs:
+  - name: q1824.spq
+    data: |
+      SELECT ALL - col2 AS col2, - col1 FROM tab0 (FORMAT parquet) WHERE col0 IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q1824.out
+    data: |
+      -10	-21
+      -47	-81
+      -99	-1

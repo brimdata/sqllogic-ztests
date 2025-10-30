@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8406.spq | sort > q8406.out
+
+inputs:
+  - name: q8406.spq
+    data: |
+      SELECT - 12 AS col2, col2 * + 54 * - col1 * col0 FROM tab1 (FORMAT parquet);
+  - name: tab1
+
+outputs:
+  - name: q8406.out
+    data: |
+      -12	-1354050
+      -12	-15705144
+      -12	-3701376

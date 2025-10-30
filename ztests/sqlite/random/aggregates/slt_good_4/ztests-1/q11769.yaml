@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q11769.spq | sort > q11769.out
+
+inputs:
+  - name: q11769.spq
+    data: |
+      SELECT ALL COUNT ( * ) FROM tab1 (FORMAT parquet) AS cor0 WHERE - 90 * col2 NOT IN ( col1 * 88 );
+  - name: tab1
+
+outputs:
+  - name: q11769.out
+    data: |
+      3

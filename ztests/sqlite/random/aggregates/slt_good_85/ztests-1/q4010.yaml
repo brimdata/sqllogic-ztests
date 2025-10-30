@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q4010.spq | sort > q4010.out
+
+inputs:
+  - name: q4010.spq
+    data: |
+      SELECT ALL * FROM tab0 (FORMAT parquet) WHERE NOT 16 IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q4010.out
+    data: |
+      15	81	47
+      87	21	10
+      97	1	99

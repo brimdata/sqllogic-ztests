@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q7363.spq | sort > q7363.out
+
+inputs:
+  - name: q7363.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) WHERE ( NOT NULL <> 6 * + - col1 );
+  - name: tab1
+
+outputs:
+  - name: q7363.out
+    data: |

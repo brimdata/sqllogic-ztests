@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q11594.spq | sort > q11594.out
+
+inputs:
+  - name: q11594.spq
+    data: |
+      SELECT DISTINCT col0 FROM tab1 (FORMAT parquet) WHERE + col2 >= - col0;
+  - name: tab1
+
+outputs:
+  - name: q11594.out
+    data: |
+      51
+      85
+      91

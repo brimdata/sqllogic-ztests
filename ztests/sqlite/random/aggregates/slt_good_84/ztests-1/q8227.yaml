@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8227.spq | sort > q8227.out
+
+inputs:
+  - name: q8227.spq
+    data: |
+      SELECT ALL * FROM tab0 (FORMAT parquet) WHERE NULL BETWEEN + - 34 * - + col0 + col1 AND - 35;
+  - name: tab0
+
+outputs:
+  - name: q8227.out
+    data: |

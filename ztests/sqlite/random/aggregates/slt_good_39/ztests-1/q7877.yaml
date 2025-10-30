@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q7877.spq | sort > q7877.out
+
+inputs:
+  - name: q7877.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) WHERE 91 * + - 80 BETWEEN col1 AND + - col1 + - 83 * + col1;
+  - name: tab1
+
+outputs:
+  - name: q7877.out
+    data: |

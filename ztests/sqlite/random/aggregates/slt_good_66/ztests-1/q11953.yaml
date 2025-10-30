@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q11953.spq | sort > q11953.out
+
+inputs:
+  - name: q11953.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) WHERE NOT + 85 BETWEEN col0 AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q11953.out
+    data: |
+      91	47	68

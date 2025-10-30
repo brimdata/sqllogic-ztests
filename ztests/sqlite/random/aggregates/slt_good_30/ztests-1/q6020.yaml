@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q6020.spq | sort > q6020.out
+
+inputs:
+  - name: q6020.spq
+    data: |
+      SELECT col1 * 26 AS col2 FROM tab1 (FORMAT parquet) WHERE - col1 NOT BETWEEN ( - 90 ) AND + col0 + col0 * - 18;
+  - name: tab1
+
+outputs:
+  - name: q6020.out
+    data: |
+      1222
+      130
+      364

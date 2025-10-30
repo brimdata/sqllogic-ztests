@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8760.spq | sort > q8760.out
+
+inputs:
+  - name: q8760.spq
+    data: |
+      SELECT ALL * FROM tab0 (FORMAT parquet) WHERE NOT + - 30 + - 63 / - col1 < NULL;
+  - name: tab0
+
+outputs:
+  - name: q8760.out
+    data: |

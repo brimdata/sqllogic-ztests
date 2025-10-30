@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q2330.spq | sort > q2330.out
+
+inputs:
+  - name: q2330.spq
+    data: |
+      SELECT ALL * FROM tab2 (FORMAT parquet) WHERE NOT + 14 BETWEEN + + col1 AND - col0;
+  - name: tab2
+
+outputs:
+  - name: q2330.out
+    data: |
+      46	51	23
+      64	77	40
+      75	67	58

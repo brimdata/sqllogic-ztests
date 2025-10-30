@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q5785.spq | sort > q5785.out
+
+inputs:
+  - name: q5785.spq
+    data: |
+      SELECT ALL col2 AS col2 FROM tab1 (FORMAT parquet) WHERE 93 NOT BETWEEN col1 + CAST ( NULL AS INTEGER ) AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q5785.out
+    data: |

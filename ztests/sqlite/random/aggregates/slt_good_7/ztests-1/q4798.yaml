@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q4798.spq | sort > q4798.out
+
+inputs:
+  - name: q4798.spq
+    data: |
+      SELECT 50 * 1 AS col0 FROM tab0 (FORMAT parquet) AS cor0 WHERE NOT col0 NOT BETWEEN col0 - 52 * + col0 AND ( NULL );
+  - name: tab0
+
+outputs:
+  - name: q4798.out
+    data: |

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q523.spq | sort > q523.out
+
+inputs:
+  - name: q523.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) AS cor0 WHERE - 42 BETWEEN NULL AND + + ( + CAST ( NULL AS REAL ) );
+  - name: tab0
+
+outputs:
+  - name: q523.out
+    data: |

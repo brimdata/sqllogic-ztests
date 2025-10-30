@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q3263.spq | sort > q3263.out
+
+inputs:
+  - name: q3263.spq
+    data: |
+      SELECT col0 AS col0 FROM tab1 (FORMAT parquet) WHERE col2 * 81 IN ( + col2 );
+  - name: tab1
+
+outputs:
+  - name: q3263.out
+    data: |

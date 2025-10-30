@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8711.spq | sort > q8711.out
+
+inputs:
+  - name: q8711.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE NULL > - col0 OR + col0 IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q8711.out
+    data: |
+      15	81	47
+      87	21	10
+      97	1	99

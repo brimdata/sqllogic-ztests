@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q805.spq | sort > q805.out
+
+inputs:
+  - name: q805.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE NOT NULL > + CAST ( col0 AS INTEGER ) * 99;
+  - name: tab0
+
+outputs:
+  - name: q805.out
+    data: |

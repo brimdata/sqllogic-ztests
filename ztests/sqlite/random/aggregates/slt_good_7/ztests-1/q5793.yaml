@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q5793.spq | sort > q5793.out
+
+inputs:
+  - name: q5793.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) WHERE col0 * col2 BETWEEN + col0 * 63 * col1 AND col2 / + + 12;
+  - name: tab2
+
+outputs:
+  - name: q5793.out
+    data: |

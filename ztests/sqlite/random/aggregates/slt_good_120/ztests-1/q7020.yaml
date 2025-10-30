@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q7020.spq | sort > q7020.out
+
+inputs:
+  - name: q7020.spq
+    data: |
+      SELECT DISTINCT COUNT ( * ) + + - 10 + - COUNT ( * ) AS col2, COUNT ( * ) * + COUNT ( * ) / + COUNT ( col0 ) FROM tab2 (FORMAT parquet);
+  - name: tab2
+
+outputs:
+  - name: q7020.out
+    data: |
+      -10	3

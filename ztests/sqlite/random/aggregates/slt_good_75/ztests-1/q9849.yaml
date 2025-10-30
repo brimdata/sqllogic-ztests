@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q9849.spq | sort > q9849.out
+
+inputs:
+  - name: q9849.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) WHERE ( NOT - + col2 >= + - col1 - 21 ) OR 68 - + col1 * CAST ( NULL AS INTEGER ) <> ( 33 );
+  - name: tab1
+
+outputs:
+  - name: q9849.out
+    data: |
+      51	14	96
+      85	5	59

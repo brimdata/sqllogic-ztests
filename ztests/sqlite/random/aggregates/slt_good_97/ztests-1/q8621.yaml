@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q8621.spq | sort > q8621.out
+
+inputs:
+  - name: q8621.spq
+    data: |
+      SELECT 7 + COUNT ( * ) FROM tab2 (FORMAT parquet) cor0 WHERE NOT NULL IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q8621.out
+    data: |
+      10

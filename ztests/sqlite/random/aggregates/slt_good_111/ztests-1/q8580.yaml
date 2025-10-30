@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8580.spq | sort > q8580.out
+
+inputs:
+  - name: q8580.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) AS cor0 WHERE 89 + col1 BETWEEN + + col2 AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q8580.out
+    data: |

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q1682.spq | sort > q1682.out
+
+inputs:
+  - name: q1682.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) WHERE NOT col1 <> + 80;
+  - name: tab2
+
+outputs:
+  - name: q1682.out
+    data: |

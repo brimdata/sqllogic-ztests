@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q10654.spq | sort > q10654.out
+
+inputs:
+  - name: q10654.spq
+    data: |
+      SELECT ALL * FROM tab1 (FORMAT parquet) WHERE NULL <> ( - CAST ( 96 AS INTEGER ) + 36 * - CAST ( NULL AS INTEGER ) );
+  - name: tab1
+
+outputs:
+  - name: q10654.out
+    data: |

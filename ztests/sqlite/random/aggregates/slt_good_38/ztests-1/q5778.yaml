@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q5778.spq | sort > q5778.out
+
+inputs:
+  - name: q5778.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) AS cor0 WHERE NOT 3 / 2 BETWEEN + 70 AND NULL;
+  - name: tab0
+
+outputs:
+  - name: q5778.out
+    data: |
+      15	81	47
+      87	21	10
+      97	1	99

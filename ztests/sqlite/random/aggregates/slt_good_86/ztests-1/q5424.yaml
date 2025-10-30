@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q5424.spq | sort > q5424.out
+
+inputs:
+  - name: q5424.spq
+    data: |
+      SELECT DISTINCT * FROM tab1 (FORMAT parquet) WHERE col0 BETWEEN NULL AND - - col0 + col0 / + 37;
+  - name: tab1
+
+outputs:
+  - name: q5424.out
+    data: |

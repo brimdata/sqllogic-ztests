@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q400.spq | sort > q400.out
+
+inputs:
+  - name: q400.spq
+    data: |
+      SELECT DISTINCT col2 AS col2 FROM tab2 (FORMAT parquet) WHERE NOT ( NULL ) BETWEEN 21 * - 27 AND - col0 + - 71;
+  - name: tab2
+
+outputs:
+  - name: q400.out
+    data: |

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q796.spq | sort > q796.out
+
+inputs:
+  - name: q796.spq
+    data: |
+      SELECT DISTINCT * FROM tab1 (FORMAT parquet) WHERE NOT ( + 96 ) > + col0 / 59;
+  - name: tab1
+
+outputs:
+  - name: q796.out
+    data: |

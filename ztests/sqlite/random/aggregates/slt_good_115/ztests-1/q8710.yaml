@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q8710.spq | sort > q8710.out
+
+inputs:
+  - name: q8710.spq
+    data: |
+      SELECT DISTINCT - 36 FROM tab0 (FORMAT parquet) WHERE NOT ( NOT col1 * + col0 * - ( + col0 ) IS NOT NULL );
+  - name: tab0
+
+outputs:
+  - name: q8710.out
+    data: |
+      -36

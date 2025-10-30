@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q6350.spq | sort > q6350.out
+
+inputs:
+  - name: q6350.spq
+    data: |
+      SELECT DISTINCT * FROM tab0 (FORMAT parquet) WHERE NOT ( NOT CAST ( - 43 AS INTEGER ) > CAST ( - col0 AS REAL ) - - col0 );
+  - name: tab0
+
+outputs:
+  - name: q6350.out
+    data: |

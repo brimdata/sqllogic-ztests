@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q8200.spq | sort > q8200.out
+
+inputs:
+  - name: q8200.spq
+    data: |
+      SELECT ALL + SUM ( col2 ) * + 16 FROM tab2 (FORMAT parquet);
+  - name: tab2
+
+outputs:
+  - name: q8200.out
+    data: |
+      1936

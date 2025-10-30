@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q3527.spq | sort > q3527.out
+
+inputs:
+  - name: q3527.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) WHERE NOT + col2 / + 61 = - - col2;
+  - name: tab2
+
+outputs:
+  - name: q3527.out
+    data: |
+      46	51	23
+      64	77	40
+      75	67	58

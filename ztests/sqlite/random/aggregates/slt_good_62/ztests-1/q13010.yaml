@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q13010.spq | sort > q13010.out
+
+inputs:
+  - name: q13010.spq
+    data: |
+      SELECT DISTINCT MIN ( DISTINCT + col1 ) AS col0 FROM tab0 (FORMAT parquet);
+  - name: tab0
+
+outputs:
+  - name: q13010.out
+    data: |
+      1

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q12083.spq | sort > q12083.out
+
+inputs:
+  - name: q12083.spq
+    data: |
+      SELECT - col0 AS col2 FROM tab1 (FORMAT parquet) AS cor0 WHERE 85 * + 18 / col2 * + col0 NOT BETWEEN + 98 AND ( + CAST ( - col2 AS INTEGER ) * - - col1 );
+  - name: tab1
+
+outputs:
+  - name: q12083.out
+    data: |
+      -51
+      -85
+      -91

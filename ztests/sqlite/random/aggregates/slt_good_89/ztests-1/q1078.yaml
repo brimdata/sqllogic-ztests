@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q1078.spq | sort > q1078.out
+
+inputs:
+  - name: q1078.spq
+    data: |
+      SELECT ALL * FROM tab1 (FORMAT parquet) WHERE ( + ( - col1 ) NOT BETWEEN NULL AND - CAST ( + + CAST ( NULL AS REAL ) AS INTEGER ) + - - col1 + col2 );
+  - name: tab1
+
+outputs:
+  - name: q1078.out
+    data: |

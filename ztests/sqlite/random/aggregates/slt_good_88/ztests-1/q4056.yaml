@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q4056.spq | sort > q4056.out
+
+inputs:
+  - name: q4056.spq
+    data: |
+      SELECT ALL - 4 + COUNT ( * ) + 15 AS col1 FROM tab2 (FORMAT parquet) cor0;
+  - name: tab2
+
+outputs:
+  - name: q4056.out
+    data: |
+      14

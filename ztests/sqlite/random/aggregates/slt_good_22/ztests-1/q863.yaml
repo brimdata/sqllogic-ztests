@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q863.spq | sort > q863.out
+
+inputs:
+  - name: q863.spq
+    data: |
+      SELECT ALL - 82 * SUM ( - + col2 ) + + SUM ( col1 ) AS col2 FROM tab0 (FORMAT parquet) cor0;
+  - name: tab0
+
+outputs:
+  - name: q863.out
+    data: |
+      12895

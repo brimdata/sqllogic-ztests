@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q5811.spq | sort > q5811.out
+
+inputs:
+  - name: q5811.spq
+    data: |
+      SELECT DISTINCT - col1 / + 43 AS col1 FROM tab2 (FORMAT parquet);
+  - name: tab2
+
+outputs:
+  - name: q5811.out
+    data: |
+      -1

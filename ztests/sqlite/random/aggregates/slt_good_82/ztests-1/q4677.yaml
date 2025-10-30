@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q4677.spq | sort > q4677.out
+
+inputs:
+  - name: q4677.spq
+    data: |
+      SELECT ALL * FROM tab1 (FORMAT parquet) WHERE ( 78 ) NOT BETWEEN + CAST ( - 45 AS INTEGER ) AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q4677.out
+    data: |

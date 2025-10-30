@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q12085.spq | sort > q12085.out
+
+inputs:
+  - name: q12085.spq
+    data: |
+      SELECT ALL * FROM tab0 (FORMAT parquet) WHERE ( 50 * + col2 - 34 ) BETWEEN 55 + col2 AND ( ( + col1 ) );
+  - name: tab0
+
+outputs:
+  - name: q12085.out
+    data: |

@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q11317.spq | sort > q11317.out
+
+inputs:
+  - name: q11317.spq
+    data: |
+      SELECT ALL MAX ( col1 ) FROM tab0 (FORMAT parquet) WHERE + - col2 + + + col1 IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q11317.out
+    data: |
+      81

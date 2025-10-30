@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q11551.spq | sort > q11551.out
+
+inputs:
+  - name: q11551.spq
+    data: |
+      SELECT ALL * FROM tab2 (FORMAT parquet) cor0 CROSS JOIN tab2 (FORMAT parquet) WHERE NOT ( 0 ) NOT IN ( - 90 );
+  - name: tab2
+
+outputs:
+  - name: q11551.out
+    data: |

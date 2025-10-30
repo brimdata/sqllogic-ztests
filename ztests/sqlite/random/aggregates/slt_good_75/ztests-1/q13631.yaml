@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q13631.spq | sort > q13631.out
+
+inputs:
+  - name: q13631.spq
+    data: |
+      SELECT + 7 AS col0 FROM tab0 (FORMAT parquet) WHERE + col2 BETWEEN - 98 AND NULL;
+  - name: tab0
+
+outputs:
+  - name: q13631.out
+    data: |

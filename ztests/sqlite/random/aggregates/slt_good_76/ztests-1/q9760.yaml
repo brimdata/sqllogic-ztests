@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q9760.spq | sort > q9760.out
+
+inputs:
+  - name: q9760.spq
+    data: |
+      SELECT - + col2 AS col1 FROM tab1 (FORMAT parquet) WHERE NULL BETWEEN + - 36 AND + col1;
+  - name: tab1
+
+outputs:
+  - name: q9760.out
+    data: |

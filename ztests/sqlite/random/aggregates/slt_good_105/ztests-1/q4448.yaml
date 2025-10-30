@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q4448.spq | sort > q4448.out
+
+inputs:
+  - name: q4448.spq
+    data: |
+      SELECT + SUM ( col0 ) * COUNT ( * ) + + ( COUNT ( * ) ) + - + ( + 24 ) FROM tab0 (FORMAT parquet);
+  - name: tab0
+
+outputs:
+  - name: q4448.out
+    data: |
+      576

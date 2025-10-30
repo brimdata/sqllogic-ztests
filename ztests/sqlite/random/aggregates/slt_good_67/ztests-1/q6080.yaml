@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q6080.spq | sort > q6080.out
+
+inputs:
+  - name: q6080.spq
+    data: |
+      SELECT ALL * FROM tab0 (FORMAT parquet) WHERE ( - CAST ( NULL AS REAL ) ) IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q6080.out
+    data: |

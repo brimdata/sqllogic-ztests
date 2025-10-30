@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q12653.spq | sort > q12653.out
+
+inputs:
+  - name: q12653.spq
+    data: |
+      SELECT + col1 + - col1 * 97 AS col2 FROM tab1 (FORMAT parquet);
+  - name: tab1
+
+outputs:
+  - name: q12653.out
+    data: |
+      -1344
+      -4512
+      -480

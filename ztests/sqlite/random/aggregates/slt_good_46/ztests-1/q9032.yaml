@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q9032.spq | sort > q9032.out
+
+inputs:
+  - name: q9032.spq
+    data: |
+      SELECT DISTINCT * FROM tab1 (FORMAT parquet) WHERE 15 IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q9032.out
+    data: |

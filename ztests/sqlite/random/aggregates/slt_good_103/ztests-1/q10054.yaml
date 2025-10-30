@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q10054.spq | sort > q10054.out
+
+inputs:
+  - name: q10054.spq
+    data: |
+      SELECT DISTINCT + col2 FROM tab1 (FORMAT parquet) WHERE ( + 45 ) NOT BETWEEN + col1 AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q10054.out
+    data: |
+      68

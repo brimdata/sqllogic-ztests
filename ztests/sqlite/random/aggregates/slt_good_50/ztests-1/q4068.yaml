@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q4068.spq | sort > q4068.out
+
+inputs:
+  - name: q4068.spq
+    data: |
+      SELECT ALL - col0 FROM tab1 (FORMAT parquet) WHERE NULL BETWEEN ( 72 ) AND ( 43 + CAST ( col0 + - col1 AS REAL ) );
+  - name: tab1
+
+outputs:
+  - name: q4068.out
+    data: |

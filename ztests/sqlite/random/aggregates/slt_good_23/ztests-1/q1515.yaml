@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q1515.spq | sort > q1515.out
+
+inputs:
+  - name: q1515.spq
+    data: |
+      SELECT DISTINCT 62 / 22 AS col2, col2 * + - col2 AS col1 FROM tab1 (FORMAT parquet) AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q1515.out
+    data: |
+      2	-3481
+      2	-4624
+      2	-9216

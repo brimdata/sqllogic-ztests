@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8241.spq | sort > q8241.out
+
+inputs:
+  - name: q8241.spq
+    data: |
+      SELECT + - 10 * - col1 * + col0 * col1 AS col0 FROM tab1 (FORMAT parquet) WHERE NOT + - 17 = NULL;
+  - name: tab1
+
+outputs:
+  - name: q8241.out
+    data: |

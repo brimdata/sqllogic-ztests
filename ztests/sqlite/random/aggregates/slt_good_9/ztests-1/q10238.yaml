@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q10238.spq | sort > q10238.out
+
+inputs:
+  - name: q10238.spq
+    data: |
+      SELECT ALL - ( + col1 ) col0 FROM tab1 (FORMAT parquet) WHERE NOT col0 NOT BETWEEN CAST ( NULL AS INTEGER ) * col0 + - 45 AND ( + col0 / 87 );
+  - name: tab1
+
+outputs:
+  - name: q10238.out
+    data: |

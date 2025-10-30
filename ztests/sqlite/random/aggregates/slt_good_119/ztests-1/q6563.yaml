@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q6563.spq | sort > q6563.out
+
+inputs:
+  - name: q6563.spq
+    data: |
+      SELECT + col0 + ( - 80 ) AS col2 FROM tab1 (FORMAT parquet) WHERE NOT ( ( NULL ) <= + ( + 52 ) );
+  - name: tab1
+
+outputs:
+  - name: q6563.out
+    data: |

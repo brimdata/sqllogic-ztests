@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q12918.spq | sort > q12918.out
+
+inputs:
+  - name: q12918.spq
+    data: |
+      SELECT col2 / + - col0 * - 21 - + ( col2 ) - - col0 FROM tab2 (FORMAT parquet) WHERE NOT ( NOT 36 IS NOT NULL );
+  - name: tab2
+
+outputs:
+  - name: q12918.out
+    data: |
+      17
+      23
+      24
