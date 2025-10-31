@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q4504.spq | sort > q4504.out
+
+inputs:
+  - name: q4504.spq
+    data: |
+      SELECT DISTINCT * FROM tab2 (FORMAT parquet) WHERE NULL <= 85 * - 91;
+  - name: tab2
+
+outputs:
+  - name: q4504.out
+    data: |

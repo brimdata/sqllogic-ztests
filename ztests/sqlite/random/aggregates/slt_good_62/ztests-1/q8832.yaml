@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q8832.spq | sort > q8832.out
+
+inputs:
+  - name: q8832.spq
+    data: |
+      SELECT ALL + 84 + + 5 * + + COUNT ( * ) FROM tab2 (FORMAT parquet) AS cor0 CROSS JOIN tab1 (FORMAT parquet) AS cor1;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q8832.out
+    data: |
+      129

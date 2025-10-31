@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q6003.spq | sort > q6003.out
+
+inputs:
+  - name: q6003.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE 78 <= NULL;
+  - name: tab0
+
+outputs:
+  - name: q6003.out
+    data: |

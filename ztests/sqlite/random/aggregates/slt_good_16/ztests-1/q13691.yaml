@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q13691.spq | sort > q13691.out
+
+inputs:
+  - name: q13691.spq
+    data: |
+      SELECT ( - + COUNT ( * ) ), 3 / COUNT ( * ) * + 14 col2 FROM tab1 (FORMAT parquet);
+  - name: tab1
+
+outputs:
+  - name: q13691.out
+    data: |
+      -3	14

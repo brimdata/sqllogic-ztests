@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q7518.spq | sort > q7518.out
+
+inputs:
+  - name: q7518.spq
+    data: |
+      SELECT 9 + + COUNT ( * ) * MIN ( col0 ) AS col0 FROM tab1 (FORMAT parquet);
+  - name: tab1
+
+outputs:
+  - name: q7518.out
+    data: |
+      162

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8282.spq | sort > q8282.out
+
+inputs:
+  - name: q8282.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) WHERE NULL NOT BETWEEN + 86 AND NULL;
+  - name: tab2
+
+outputs:
+  - name: q8282.out
+    data: |

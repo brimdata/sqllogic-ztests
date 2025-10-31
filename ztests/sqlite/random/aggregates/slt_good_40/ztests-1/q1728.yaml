@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q1728.spq | sort > q1728.out
+
+inputs:
+  - name: q1728.spq
+    data: |
+      SELECT col2 FROM tab0 (FORMAT parquet) WHERE ( col1 / 10 ) <= + 55 * + 38;
+  - name: tab0
+
+outputs:
+  - name: q1728.out
+    data: |
+      10
+      47
+      99

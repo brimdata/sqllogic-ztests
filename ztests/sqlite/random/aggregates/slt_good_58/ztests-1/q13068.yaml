@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q13068.spq | sort > q13068.out
+
+inputs:
+  - name: q13068.spq
+    data: |
+      SELECT DISTINCT col2 AS col2 FROM tab2 (FORMAT parquet) WHERE NULL > + ( col0 ) + - + 60 * + 95 AND col2 NOT BETWEEN + col0 * - col1 AND - 20;
+  - name: tab2
+
+outputs:
+  - name: q13068.out
+    data: |

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q2177.spq | sort > q2177.out
+
+inputs:
+  - name: q2177.spq
+    data: |
+      SELECT ALL - CAST ( NULL AS INTEGER ) FROM tab1 (FORMAT parquet) WHERE NULL NOT BETWEEN - 10 AND - 40 / + 75;
+  - name: tab1
+
+outputs:
+  - name: q2177.out
+    data: |

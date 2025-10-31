@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q11363.spq | sort > q11363.out
+
+inputs:
+  - name: q11363.spq
+    data: |
+      SELECT - CAST ( NULL AS REAL ) AS col1 FROM tab0 (FORMAT parquet) WHERE NOT + 32 >= 8 * - col1;
+  - name: tab0
+
+outputs:
+  - name: q11363.out
+    data: |

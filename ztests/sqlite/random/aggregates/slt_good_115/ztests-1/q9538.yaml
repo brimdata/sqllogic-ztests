@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q9538.spq | sort > q9538.out
+
+inputs:
+  - name: q9538.spq
+    data: |
+      SELECT - 25 * - col1 FROM tab1 (FORMAT parquet) WHERE + ( + col1 ) + - col1 IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q9538.out
+    data: |
+      1175
+      125
+      350

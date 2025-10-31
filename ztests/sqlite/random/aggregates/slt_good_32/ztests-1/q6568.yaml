@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q6568.spq | sort > q6568.out
+
+inputs:
+  - name: q6568.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE col2 <= col1 * - col1 * + 80 * - col1;
+  - name: tab0
+
+outputs:
+  - name: q6568.out
+    data: |
+      15	81	47
+      87	21	10

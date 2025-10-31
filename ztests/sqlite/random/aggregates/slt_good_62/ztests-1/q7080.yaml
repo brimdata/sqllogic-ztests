@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q7080.spq | sort > q7080.out
+
+inputs:
+  - name: q7080.spq
+    data: |
+      SELECT DISTINCT * FROM tab0 (FORMAT parquet) WHERE NOT NULL NOT BETWEEN + + col1 AND - 65;
+  - name: tab0
+
+outputs:
+  - name: q7080.out
+    data: |

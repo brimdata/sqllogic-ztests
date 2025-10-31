@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q5934.spq | sort > q5934.out
+
+inputs:
+  - name: q5934.spq
+    data: |
+      SELECT ALL + col2 * - col2 + + 63 AS col1 FROM tab1 (FORMAT parquet) WHERE NULL IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q5934.out
+    data: |
+      -3418
+      -4561
+      -9153

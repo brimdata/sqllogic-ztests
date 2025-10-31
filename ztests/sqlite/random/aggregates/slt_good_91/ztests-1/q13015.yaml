@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q13015.spq | sort > q13015.out
+
+inputs:
+  - name: q13015.spq
+    data: |
+      SELECT DISTINCT + ( + col1 ) AS col0, + col0 * 7 AS col2 FROM tab1 (FORMAT parquet) AS cor0 WHERE 0 NOT BETWEEN NULL AND - + col1;
+  - name: tab1
+
+outputs:
+  - name: q13015.out
+    data: |
+      14	357
+      47	637
+      5	595

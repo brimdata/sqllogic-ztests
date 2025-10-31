@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q6586.spq | sort > q6586.out
+
+inputs:
+  - name: q6586.spq
+    data: |
+      SELECT + ( - 3 ), - ( ( - col2 ) ) * 72 + + - col0 AS col0 FROM tab0 (FORMAT parquet) AS cor0 WHERE NULL IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q6586.out
+    data: |
+      -3	3369
+      -3	633
+      -3	7031

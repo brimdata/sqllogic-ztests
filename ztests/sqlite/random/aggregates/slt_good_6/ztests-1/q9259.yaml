@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q9259.spq | sort > q9259.out
+
+inputs:
+  - name: q9259.spq
+    data: |
+      SELECT DISTINCT - - MAX ( - 18 ) FROM tab1 (FORMAT parquet) AS cor0 CROSS JOIN tab1 (FORMAT parquet) AS cor1;
+  - name: tab1
+
+outputs:
+  - name: q9259.out
+    data: |
+      -18

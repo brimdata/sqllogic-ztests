@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8288.spq | sort > q8288.out
+
+inputs:
+  - name: q8288.spq
+    data: |
+      SELECT ALL + col1 / - 1 col0, ( + 4 ) FROM tab1 (FORMAT parquet) AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q8288.out
+    data: |
+      -14	4
+      -47	4
+      -5	4

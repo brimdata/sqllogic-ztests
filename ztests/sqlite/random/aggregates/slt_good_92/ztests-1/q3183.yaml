@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q3183.spq | sort > q3183.out
+
+inputs:
+  - name: q3183.spq
+    data: |
+      SELECT + col1 AS col1 FROM tab1 (FORMAT parquet) AS cor0 WHERE 92 IN ( col0 );
+  - name: tab1
+
+outputs:
+  - name: q3183.out
+    data: |

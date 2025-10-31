@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q9511.spq | sort > q9511.out
+
+inputs:
+  - name: q9511.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) AS cor0 WHERE NOT CAST ( NULL AS REAL ) / 57 * - ( col1 ) NOT BETWEEN - - 43 AND 61;
+  - name: tab1
+
+outputs:
+  - name: q9511.out
+    data: |

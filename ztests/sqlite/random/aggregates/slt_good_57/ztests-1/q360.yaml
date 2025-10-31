@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q360.spq | sort > q360.out
+
+inputs:
+  - name: q360.spq
+    data: |
+      SELECT - 64 * ( - col2 ), col2 AS col1 FROM tab0 (FORMAT parquet);
+  - name: tab0
+
+outputs:
+  - name: q360.out
+    data: |
+      3008	47
+      6336	99
+      640	10

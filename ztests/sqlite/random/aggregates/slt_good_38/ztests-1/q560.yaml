@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q560.spq | sort > q560.out
+
+inputs:
+  - name: q560.spq
+    data: |
+      SELECT 80 AS col0, - 15 / - col1 FROM tab0 (FORMAT parquet) AS cor0;
+  - name: tab0
+
+outputs:
+  - name: q560.out
+    data: |
+      80	0
+      80	0
+      80	15

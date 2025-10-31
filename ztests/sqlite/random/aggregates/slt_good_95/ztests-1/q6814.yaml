@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q6814.spq | sort > q6814.out
+
+inputs:
+  - name: q6814.spq
+    data: |
+      SELECT 6 * 55 AS col2 FROM tab1 (FORMAT parquet) WHERE NOT ( NULL ) IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q6814.out
+    data: |
+      330
+      330
+      330

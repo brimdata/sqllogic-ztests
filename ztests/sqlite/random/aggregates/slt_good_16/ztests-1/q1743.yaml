@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q1743.spq | sort > q1743.out
+
+inputs:
+  - name: q1743.spq
+    data: |
+      SELECT ALL col1 * + 6 + 37 / col1 AS col2 FROM tab0 (FORMAT parquet) WHERE NOT ( - col0 ) BETWEEN - col0 AND - col1;
+  - name: tab0
+
+outputs:
+  - name: q1743.out
+    data: |
+      486

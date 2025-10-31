@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q11321.spq | sort > q11321.out
+
+inputs:
+  - name: q11321.spq
+    data: |
+      SELECT ALL * FROM tab0 (FORMAT parquet) WHERE + - CAST ( + 11 AS REAL ) BETWEEN col2 AND + CAST ( NULL AS INTEGER );
+  - name: tab0
+
+outputs:
+  - name: q11321.out
+    data: |

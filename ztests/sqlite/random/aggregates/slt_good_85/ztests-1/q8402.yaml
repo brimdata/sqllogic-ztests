@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8402.spq | sort > q8402.out
+
+inputs:
+  - name: q8402.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) WHERE + 14 IN ( col1 );
+  - name: tab2
+
+outputs:
+  - name: q8402.out
+    data: |

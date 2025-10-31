@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q7946.spq | sort > q7946.out
+
+inputs:
+  - name: q7946.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) WHERE NULL BETWEEN - col1 AND 80 + 62;
+  - name: tab2
+
+outputs:
+  - name: q7946.out
+    data: |

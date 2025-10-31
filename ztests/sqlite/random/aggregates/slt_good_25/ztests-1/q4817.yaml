@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q4817.spq | sort > q4817.out
+
+inputs:
+  - name: q4817.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) WHERE NOT ( 36 * 66 ) <> + ( col2 ) * - 26;
+  - name: tab1
+
+outputs:
+  - name: q4817.out
+    data: |

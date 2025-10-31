@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q10673.spq | sort > q10673.out
+
+inputs:
+  - name: q10673.spq
+    data: |
+      SELECT ALL * FROM tab2 (FORMAT parquet) AS cor0 WHERE NOT 6 BETWEEN NULL AND col1;
+  - name: tab2
+
+outputs:
+  - name: q10673.out
+    data: |

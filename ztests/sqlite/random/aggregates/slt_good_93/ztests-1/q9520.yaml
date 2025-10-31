@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q9520.spq | sort > q9520.out
+
+inputs:
+  - name: q9520.spq
+    data: |
+      SELECT ALL + col0 + - 85 * col0 AS col0 FROM tab2 (FORMAT parquet) WHERE col1 + col2 + col2 * col1 IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q9520.out
+    data: |

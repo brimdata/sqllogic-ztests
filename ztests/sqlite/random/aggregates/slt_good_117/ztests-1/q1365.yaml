@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q1365.spq | sort > q1365.out
+
+inputs:
+  - name: q1365.spq
+    data: |
+      SELECT ALL - COUNT ( * ) + COUNT ( * ) * 16 FROM tab0 (FORMAT parquet) AS cor0 WHERE NOT + col1 IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q1365.out
+    data: |
+      45

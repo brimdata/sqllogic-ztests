@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q5213.spq | sort > q5213.out
+
+inputs:
+  - name: q5213.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE NULL < 33 * + col0 - + CAST ( NULL AS REAL ) / + col1;
+  - name: tab0
+
+outputs:
+  - name: q5213.out
+    data: |

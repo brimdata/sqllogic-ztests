@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q3154.spq | sort > q3154.out
+
+inputs:
+  - name: q3154.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) WHERE NOT ( 23 ) <= col1 * col0 AND NULL IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q3154.out
+    data: |

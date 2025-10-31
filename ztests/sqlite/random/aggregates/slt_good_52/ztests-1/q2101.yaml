@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q2101.spq | sort > q2101.out
+
+inputs:
+  - name: q2101.spq
+    data: |
+      SELECT col2, 20 / + 12 AS col0 FROM tab1 (FORMAT parquet) WHERE - 22 IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q2101.out
+    data: |

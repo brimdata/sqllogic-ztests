@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q10500.spq | sort > q10500.out
+
+inputs:
+  - name: q10500.spq
+    data: |
+      SELECT - col2 * + 88 * 44 * - col1 FROM tab0 (FORMAT parquet) WHERE - col2 + + col0 NOT BETWEEN NULL AND - - col2 * - 23;
+  - name: tab0
+
+outputs:
+  - name: q10500.out
+    data: |
+      14740704
+      383328
+      813120

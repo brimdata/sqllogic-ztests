@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q10936.spq | sort > q10936.out
+
+inputs:
+  - name: q10936.spq
+    data: |
+      SELECT ALL * FROM tab2 (FORMAT parquet) WHERE NOT - 3 BETWEEN + CAST ( - 71 AS INTEGER ) AND ( NULL );
+  - name: tab2
+
+outputs:
+  - name: q10936.out
+    data: |

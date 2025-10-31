@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8660.spq | sort > q8660.out
+
+inputs:
+  - name: q8660.spq
+    data: |
+      SELECT DISTINCT - + col0 FROM tab2 (FORMAT parquet) WHERE NULL NOT BETWEEN 27 AND col1 * col1;
+  - name: tab2
+
+outputs:
+  - name: q8660.out
+    data: |

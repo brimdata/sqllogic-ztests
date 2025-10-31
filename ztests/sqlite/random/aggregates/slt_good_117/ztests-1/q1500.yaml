@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q1500.spq | sort > q1500.out
+
+inputs:
+  - name: q1500.spq
+    data: |
+      SELECT ALL * FROM tab2 (FORMAT parquet) AS cor0 WHERE + col1 NOT BETWEEN + 8 AND + + col0;
+  - name: tab2
+
+outputs:
+  - name: q1500.out
+    data: |
+      46	51	23
+      64	77	40

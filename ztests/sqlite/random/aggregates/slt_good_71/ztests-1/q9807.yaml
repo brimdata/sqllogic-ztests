@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q9807.spq | sort > q9807.out
+
+inputs:
+  - name: q9807.spq
+    data: |
+      SELECT ALL 98 AS col2 FROM tab2 (FORMAT parquet) AS cor0 WHERE col1 / ( - 32 ) * col2 * col0 - + col0 IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q9807.out
+    data: |

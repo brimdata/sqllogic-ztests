@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q9800.spq | sort > q9800.out
+
+inputs:
+  - name: q9800.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) AS cor0 WHERE 48 BETWEEN 13 AND - col1;
+  - name: tab0
+
+outputs:
+  - name: q9800.out
+    data: |

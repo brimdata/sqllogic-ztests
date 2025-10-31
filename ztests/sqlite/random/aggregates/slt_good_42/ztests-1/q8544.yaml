@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q8544.spq | sort > q8544.out
+
+inputs:
+  - name: q8544.spq
+    data: |
+      SELECT 36 * COUNT ( * ) AS col2 FROM tab1 (FORMAT parquet);
+  - name: tab1
+
+outputs:
+  - name: q8544.out
+    data: |
+      108

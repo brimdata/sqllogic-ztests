@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q3821.spq | sort > q3821.out
+
+inputs:
+  - name: q3821.spq
+    data: |
+      SELECT DISTINCT * FROM tab1 (FORMAT parquet) WHERE - 85 + - col2 * col1 = - col2;
+  - name: tab1
+
+outputs:
+  - name: q3821.out
+    data: |

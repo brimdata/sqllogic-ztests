@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q4041.spq | sort > q4041.out
+
+inputs:
+  - name: q4041.spq
+    data: |
+      SELECT + 92 AS col1, col1 FROM tab2 (FORMAT parquet);
+  - name: tab2
+
+outputs:
+  - name: q4041.out
+    data: |
+      92	51
+      92	67
+      92	77

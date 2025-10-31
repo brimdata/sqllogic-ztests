@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q6168.spq | sort > q6168.out
+
+inputs:
+  - name: q6168.spq
+    data: |
+      SELECT + 23 / + col1 FROM tab1 (FORMAT parquet) WHERE NOT + col0 BETWEEN NULL AND ( col1 * col1 );
+  - name: tab1
+
+outputs:
+  - name: q6168.out
+    data: |
+      4

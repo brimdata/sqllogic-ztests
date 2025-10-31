@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q12874.spq | sort > q12874.out
+
+inputs:
+  - name: q12874.spq
+    data: |
+      SELECT - col1 / - 3 * col2 FROM tab2 (FORMAT parquet) WHERE NOT - - col2 = ( col2 );
+  - name: tab2
+
+outputs:
+  - name: q12874.out
+    data: |

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q10338.spq | sort > q10338.out
+
+inputs:
+  - name: q10338.spq
+    data: |
+      SELECT ALL * FROM tab2 (FORMAT parquet) WHERE - 38 * col0 IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q10338.out
+    data: |
+      46	51	23
+      64	77	40
+      75	67	58

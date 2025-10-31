@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q3018.spq | sort > q3018.out
+
+inputs:
+  - name: q3018.spq
+    data: |
+      SELECT ALL * FROM tab0 (FORMAT parquet) WHERE NOT - col1 + + col2 + + + 99 + - col2 BETWEEN 82 AND 92;
+  - name: tab0
+
+outputs:
+  - name: q3018.out
+    data: |
+      15	81	47
+      87	21	10
+      97	1	99

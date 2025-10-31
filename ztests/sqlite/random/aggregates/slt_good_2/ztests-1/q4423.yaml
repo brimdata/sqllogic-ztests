@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q4423.spq | sort > q4423.out
+
+inputs:
+  - name: q4423.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) AS cor0 WHERE NOT + ( + CAST ( - col0 AS INTEGER ) ) BETWEEN NULL AND - - 20;
+  - name: tab2
+
+outputs:
+  - name: q4423.out
+    data: |

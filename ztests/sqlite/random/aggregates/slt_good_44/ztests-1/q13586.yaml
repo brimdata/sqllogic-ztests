@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q13586.spq | sort > q13586.out
+
+inputs:
+  - name: q13586.spq
+    data: |
+      SELECT + col0 + + 4 + - col0 FROM tab1 (FORMAT parquet) WHERE ( - 31 - ( + CAST ( NULL AS INTEGER ) ) ) >= col0;
+  - name: tab1
+
+outputs:
+  - name: q13586.out
+    data: |

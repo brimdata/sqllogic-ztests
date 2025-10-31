@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q1026.spq | sort > q1026.out
+
+inputs:
+  - name: q1026.spq
+    data: |
+      SELECT 1 * + - MAX ( - 16 ) AS col2, - COUNT ( * ) AS col0 FROM tab1 (FORMAT parquet);
+  - name: tab1
+
+outputs:
+  - name: q1026.out
+    data: |
+      16	-3

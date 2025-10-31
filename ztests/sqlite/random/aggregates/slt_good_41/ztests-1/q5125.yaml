@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q5125.spq | sort > q5125.out
+
+inputs:
+  - name: q5125.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) WHERE NOT 16 = ( col1 );
+  - name: tab1
+
+outputs:
+  - name: q5125.out
+    data: |
+      51	14	96
+      85	5	59
+      91	47	68

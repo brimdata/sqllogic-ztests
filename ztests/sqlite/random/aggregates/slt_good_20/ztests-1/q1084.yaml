@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q1084.spq | sort > q1084.out
+
+inputs:
+  - name: q1084.spq
+    data: |
+      SELECT ALL * FROM tab0 (FORMAT parquet) WHERE NOT - col1 * 31 / - col2 + - col0 * + col0 IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q1084.out
+    data: |
+      15	81	47
+      87	21	10
+      97	1	99

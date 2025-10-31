@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q12527.spq | sort > q12527.out
+
+inputs:
+  - name: q12527.spq
+    data: |
+      SELECT DISTINCT + COUNT ( * ) * 16 AS col1 FROM tab1 (FORMAT parquet) AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q12527.out
+    data: |
+      48

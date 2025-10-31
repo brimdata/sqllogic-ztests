@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q9122.spq | sort > q9122.out
+
+inputs:
+  - name: q9122.spq
+    data: |
+      SELECT ALL * FROM tab2 (FORMAT parquet) AS cor0 WHERE NOT + col2 * col0 * col2 <> - col1 + 40;
+  - name: tab2
+
+outputs:
+  - name: q9122.out
+    data: |

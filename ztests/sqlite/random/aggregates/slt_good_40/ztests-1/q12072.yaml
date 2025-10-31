@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q12072.spq | sort > q12072.out
+
+inputs:
+  - name: q12072.spq
+    data: |
+      SELECT ALL + col1 + col2 AS col2 FROM tab1 (FORMAT parquet) AS cor0 WHERE NOT 12 >= ( 17 );
+  - name: tab1
+
+outputs:
+  - name: q12072.out
+    data: |
+      110
+      115
+      64

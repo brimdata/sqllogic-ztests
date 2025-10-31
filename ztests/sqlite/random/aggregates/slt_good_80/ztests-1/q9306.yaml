@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q9306.spq | sort > q9306.out
+
+inputs:
+  - name: q9306.spq
+    data: |
+      SELECT col2 + col0 * - 59 FROM tab0 (FORMAT parquet) WHERE - col1 < col0;
+  - name: tab0
+
+outputs:
+  - name: q9306.out
+    data: |
+      -5123
+      -5624
+      -838

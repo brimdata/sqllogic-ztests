@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q12604.spq | sort > q12604.out
+
+inputs:
+  - name: q12604.spq
+    data: |
+      SELECT 1 FROM tab2 (FORMAT parquet) WHERE NOT + 49 BETWEEN NULL AND 19 + col2 + 29;
+  - name: tab2
+
+outputs:
+  - name: q12604.out
+    data: |

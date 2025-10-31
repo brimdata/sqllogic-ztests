@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q260.spq | sort > q260.out
+
+inputs:
+  - name: q260.spq
+    data: |
+      SELECT col1 + - 8 * 86 FROM tab1 (FORMAT parquet);
+  - name: tab1
+
+outputs:
+  - name: q260.out
+    data: |
+      -641
+      -674
+      -683

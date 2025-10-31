@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q7677.spq | sort > q7677.out
+
+inputs:
+  - name: q7677.spq
+    data: |
+      SELECT col0 AS col1 FROM tab1 (FORMAT parquet) WHERE NOT - + ( - col0 ) * 14 NOT IN ( ( 13 ) - - 64 );
+  - name: tab1
+
+outputs:
+  - name: q7677.out
+    data: |

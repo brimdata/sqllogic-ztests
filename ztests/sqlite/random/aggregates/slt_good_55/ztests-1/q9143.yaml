@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q9143.spq | sort > q9143.out
+
+inputs:
+  - name: q9143.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE NOT + 72 * - col2 BETWEEN NULL AND ( - col1 );
+  - name: tab0
+
+outputs:
+  - name: q9143.out
+    data: |

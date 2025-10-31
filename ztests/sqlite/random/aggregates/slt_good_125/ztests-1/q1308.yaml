@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q1308.spq | sort > q1308.out
+
+inputs:
+  - name: q1308.spq
+    data: |
+      SELECT + COUNT ( * ) FROM tab0 (FORMAT parquet) WHERE NOT + 60 * + 4 + + ( col0 ) <= col1;
+  - name: tab0
+
+outputs:
+  - name: q1308.out
+    data: |
+      3

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8950.spq | sort > q8950.out
+
+inputs:
+  - name: q8950.spq
+    data: |
+      SELECT ALL * FROM tab1 (FORMAT parquet) WHERE NOT - 59 / + CAST ( - col1 AS INTEGER ) IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q8950.out
+    data: |

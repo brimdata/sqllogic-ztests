@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q1333.spq | sort > q1333.out
+
+inputs:
+  - name: q1333.spq
+    data: |
+      SELECT DISTINCT - + 28 FROM tab2 (FORMAT parquet) WHERE NOT - - col0 * 4 + + col1 IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q1333.out
+    data: |
+      -28

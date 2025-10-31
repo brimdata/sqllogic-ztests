@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q12631.spq | sort > q12631.out
+
+inputs:
+  - name: q12631.spq
+    data: |
+      SELECT - 24 FROM tab0 (FORMAT parquet) WHERE NOT - col0 BETWEEN ( - col0 ) * - - 4 AND NULL;
+  - name: tab0
+
+outputs:
+  - name: q12631.out
+    data: |

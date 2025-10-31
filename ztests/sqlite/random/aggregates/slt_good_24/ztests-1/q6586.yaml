@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q6586.spq | sort > q6586.out
+
+inputs:
+  - name: q6586.spq
+    data: |
+      SELECT ALL * FROM tab1 (FORMAT parquet) WHERE - col1 * - 43 + 51 >= ( NULL );
+  - name: tab1
+
+outputs:
+  - name: q6586.out
+    data: |

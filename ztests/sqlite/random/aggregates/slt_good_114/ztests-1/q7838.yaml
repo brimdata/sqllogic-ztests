@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q7838.spq | sort > q7838.out
+
+inputs:
+  - name: q7838.spq
+    data: |
+      SELECT ALL col0 + 9 * col2 AS col2 FROM tab2 (FORMAT parquet) WHERE - col1 NOT BETWEEN col1 AND - + 10 * 96 * - CAST ( + 59 AS INTEGER ) * + 62;
+  - name: tab2
+
+outputs:
+  - name: q7838.out
+    data: |
+      253
+      424
+      597

@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q6116.spq | sort > q6116.out
+
+inputs:
+  - name: q6116.spq
+    data: |
+      SELECT ( MIN ( col2 ) ) + COUNT ( * ) AS col2 FROM tab0 (FORMAT parquet);
+  - name: tab0
+
+outputs:
+  - name: q6116.out
+    data: |
+      13

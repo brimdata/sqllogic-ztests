@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q5100.spq | sort > q5100.out
+
+inputs:
+  - name: q5100.spq
+    data: |
+      SELECT + 44 FROM tab0 (FORMAT parquet) WHERE NOT ( + col0 ) NOT BETWEEN col0 AND ( + col1 );
+  - name: tab0
+
+outputs:
+  - name: q5100.out
+    data: |
+      44

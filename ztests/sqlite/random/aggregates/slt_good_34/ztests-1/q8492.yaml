@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8492.spq | sort > q8492.out
+
+inputs:
+  - name: q8492.spq
+    data: |
+      SELECT - 90 FROM tab1 (FORMAT parquet) WHERE NOT col2 = col0 / - 20;
+  - name: tab1
+
+outputs:
+  - name: q8492.out
+    data: |
+      -90
+      -90
+      -90

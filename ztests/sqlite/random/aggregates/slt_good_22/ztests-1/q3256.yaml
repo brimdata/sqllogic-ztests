@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q3256.spq | sort > q3256.out
+
+inputs:
+  - name: q3256.spq
+    data: |
+      SELECT + 13 AS col2, + 86 * + + col0 FROM tab2 (FORMAT parquet) AS cor0 WHERE NULL IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q3256.out
+    data: |
+      13	3956
+      13	5504
+      13	6450

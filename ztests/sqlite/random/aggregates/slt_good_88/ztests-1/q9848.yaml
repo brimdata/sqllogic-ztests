@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q9848.spq | sort > q9848.out
+
+inputs:
+  - name: q9848.spq
+    data: |
+      SELECT ALL col2 * - col1, col1 * + + 82 AS col0 FROM tab2 (FORMAT parquet) WHERE NOT ( ( + col1 ) + col0 ) <= + col0;
+  - name: tab2
+
+outputs:
+  - name: q9848.out
+    data: |
+      -1173	4182
+      -3080	6314
+      -3886	5494

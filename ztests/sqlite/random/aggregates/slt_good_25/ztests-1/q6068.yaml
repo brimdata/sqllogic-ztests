@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q6068.spq | sort > q6068.out
+
+inputs:
+  - name: q6068.spq
+    data: |
+      SELECT DISTINCT + COUNT ( * ) AS col1 FROM tab1 (FORMAT parquet) WHERE NOT ( col2 ) IN ( + 5 );
+  - name: tab1
+
+outputs:
+  - name: q6068.out
+    data: |
+      3

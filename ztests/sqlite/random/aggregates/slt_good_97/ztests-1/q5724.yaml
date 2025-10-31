@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q5724.spq | sort > q5724.out
+
+inputs:
+  - name: q5724.spq
+    data: |
+      SELECT ALL + col1 AS col2 FROM tab2 (FORMAT parquet) WHERE NOT 78 + 61 * 22 = ( col0 );
+  - name: tab2
+
+outputs:
+  - name: q5724.out
+    data: |
+      51
+      67
+      77

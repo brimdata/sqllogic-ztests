@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q613.spq | sort > q613.out
+
+inputs:
+  - name: q613.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) WHERE + - col1 * 15 - ( - + col0 ) > NULL;
+  - name: tab1
+
+outputs:
+  - name: q613.out
+    data: |

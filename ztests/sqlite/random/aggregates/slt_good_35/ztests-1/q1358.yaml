@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q1358.spq | sort > q1358.out
+
+inputs:
+  - name: q1358.spq
+    data: |
+      SELECT col1 + 12 AS col2 FROM tab0 (FORMAT parquet) cor0 WHERE NOT 3 * + - col0 > col0 * col1 + col1 + - + col2;
+  - name: tab0
+
+outputs:
+  - name: q1358.out
+    data: |
+      13
+      33
+      93

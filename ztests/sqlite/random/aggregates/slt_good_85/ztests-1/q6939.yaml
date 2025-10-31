@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q6939.spq | sort > q6939.out
+
+inputs:
+  - name: q6939.spq
+    data: |
+      SELECT ( + COUNT ( * ) ) * MAX ( 29 ) AS col2 FROM tab2 (FORMAT parquet);
+  - name: tab2
+
+outputs:
+  - name: q6939.out
+    data: |
+      87

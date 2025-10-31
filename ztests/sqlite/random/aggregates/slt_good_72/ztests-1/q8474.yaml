@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8474.spq | sort > q8474.out
+
+inputs:
+  - name: q8474.spq
+    data: |
+      SELECT ALL + - 15 AS col1 FROM tab0 (FORMAT parquet) WHERE col1 * col2 BETWEEN NULL AND 4;
+  - name: tab0
+
+outputs:
+  - name: q8474.out
+    data: |

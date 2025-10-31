@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q3504.spq | sort > q3504.out
+
+inputs:
+  - name: q3504.spq
+    data: |
+      SELECT ALL * FROM tab0 (FORMAT parquet), tab2 (FORMAT parquet) AS cor0 WHERE NOT NULL <> + 76;
+  - name: tab0
+  - name: tab2
+
+outputs:
+  - name: q3504.out
+    data: |

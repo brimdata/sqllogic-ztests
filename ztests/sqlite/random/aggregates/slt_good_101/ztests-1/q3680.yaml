@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q3680.spq | sort > q3680.out
+
+inputs:
+  - name: q3680.spq
+    data: |
+      SELECT - + CAST ( NULL AS REAL ) FROM tab0 (FORMAT parquet) AS cor0 WHERE - CAST ( col1 AS INTEGER ) BETWEEN NULL AND col1;
+  - name: tab0
+
+outputs:
+  - name: q3680.out
+    data: |

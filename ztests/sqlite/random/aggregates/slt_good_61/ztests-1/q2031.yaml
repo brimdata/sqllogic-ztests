@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q2031.spq | sort > q2031.out
+
+inputs:
+  - name: q2031.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE NOT + 10 * + 50 > NULL;
+  - name: tab0
+
+outputs:
+  - name: q2031.out
+    data: |

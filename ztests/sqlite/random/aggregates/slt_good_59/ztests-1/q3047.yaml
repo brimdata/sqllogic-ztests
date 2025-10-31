@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q3047.spq | sort > q3047.out
+
+inputs:
+  - name: q3047.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) WHERE + CAST ( NULL AS INTEGER ) / + + col1 * - 8 NOT BETWEEN ( 59 ) AND NULL AND 72 <= + col1;
+  - name: tab2
+
+outputs:
+  - name: q3047.out
+    data: |

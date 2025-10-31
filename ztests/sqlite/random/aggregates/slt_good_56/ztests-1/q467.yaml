@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q467.spq | sort > q467.out
+
+inputs:
+  - name: q467.spq
+    data: |
+      SELECT - 10 FROM tab2 (FORMAT parquet) WHERE col0 IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q467.out
+    data: |

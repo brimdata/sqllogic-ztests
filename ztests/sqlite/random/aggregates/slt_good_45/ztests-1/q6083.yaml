@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q6083.spq | sort > q6083.out
+
+inputs:
+  - name: q6083.spq
+    data: |
+      SELECT + 3 + + col2 + CAST ( NULL AS INTEGER ) FROM tab2 (FORMAT parquet) WHERE + + 23 IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q6083.out
+    data: |

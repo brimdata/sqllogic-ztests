@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q2726.spq | sort > q2726.out
+
+inputs:
+  - name: q2726.spq
+    data: |
+      SELECT DISTINCT * FROM tab1 (FORMAT parquet) WHERE CAST ( col0 AS INTEGER ) IN ( - col0 * + ( - 84 * + col0 ) + col2 );
+  - name: tab1
+
+outputs:
+  - name: q2726.out
+    data: |

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q265.spq | sort > q265.out
+
+inputs:
+  - name: q265.spq
+    data: |
+      SELECT DISTINCT * FROM tab0 (FORMAT parquet) AS cor0 WHERE NOT 40 NOT BETWEEN NULL AND + - col1;
+  - name: tab0
+
+outputs:
+  - name: q265.out
+    data: |

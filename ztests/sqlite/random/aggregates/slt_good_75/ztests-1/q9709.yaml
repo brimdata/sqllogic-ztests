@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q9709.spq | sort > q9709.out
+
+inputs:
+  - name: q9709.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) WHERE NOT + 30 BETWEEN ( 89 ) AND ( col0 * - col1 );
+  - name: tab2
+
+outputs:
+  - name: q9709.out
+    data: |
+      46	51	23
+      64	77	40
+      75	67	58

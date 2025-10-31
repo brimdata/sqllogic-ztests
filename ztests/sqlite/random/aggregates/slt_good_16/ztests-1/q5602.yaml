@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q5602.spq | sort > q5602.out
+
+inputs:
+  - name: q5602.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE NOT NULL BETWEEN - 38 AND + - col2;
+  - name: tab0
+
+outputs:
+  - name: q5602.out
+    data: |

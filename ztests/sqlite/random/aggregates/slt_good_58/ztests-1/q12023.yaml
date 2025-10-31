@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q12023.spq | sort > q12023.out
+
+inputs:
+  - name: q12023.spq
+    data: |
+      SELECT DISTINCT col0, - 36 FROM tab0 (FORMAT parquet) AS cor0 WHERE NOT ( NOT + col0 IS NOT NULL );
+  - name: tab0
+
+outputs:
+  - name: q12023.out
+    data: |
+      15	-36
+      87	-36
+      97	-36

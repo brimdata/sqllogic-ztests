@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q6402.spq | sort > q6402.out
+
+inputs:
+  - name: q6402.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE NOT ( col2 + - col2 ) < NULL;
+  - name: tab0
+
+outputs:
+  - name: q6402.out
+    data: |

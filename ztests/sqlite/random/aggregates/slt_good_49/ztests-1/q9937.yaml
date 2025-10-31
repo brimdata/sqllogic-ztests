@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q9937.spq | sort > q9937.out
+
+inputs:
+  - name: q9937.spq
+    data: |
+      SELECT ALL - 56 AS col0 FROM tab2 (FORMAT parquet) WHERE NULL NOT BETWEEN ( col2 ) * + 63 AND col0 * 99;
+  - name: tab2
+
+outputs:
+  - name: q9937.out
+    data: |

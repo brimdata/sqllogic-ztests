@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q12111.spq | sort > q12111.out
+
+inputs:
+  - name: q12111.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE NOT ( NOT 38 * - col0 IS NULL );
+  - name: tab0
+
+outputs:
+  - name: q12111.out
+    data: |

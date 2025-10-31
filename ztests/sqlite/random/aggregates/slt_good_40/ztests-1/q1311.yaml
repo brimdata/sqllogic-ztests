@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q1311.spq | sort > q1311.out
+
+inputs:
+  - name: q1311.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) WHERE - 42 * - 89 * + col0 IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q1311.out
+    data: |
+      51	14	96
+      85	5	59
+      91	47	68

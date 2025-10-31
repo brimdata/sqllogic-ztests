@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q12250.spq | sort > q12250.out
+
+inputs:
+  - name: q12250.spq
+    data: |
+      SELECT DISTINCT * FROM tab1 (FORMAT parquet) AS cor0 WHERE 41 = ( - 57 * - col0 );
+  - name: tab1
+
+outputs:
+  - name: q12250.out
+    data: |

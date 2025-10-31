@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q10590.spq | sort > q10590.out
+
+inputs:
+  - name: q10590.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) WHERE ( CAST ( NULL AS REAL ) ) NOT BETWEEN col2 AND ( + 8 );
+  - name: tab2
+
+outputs:
+  - name: q10590.out
+    data: |

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q2314.spq | sort > q2314.out
+
+inputs:
+  - name: q2314.spq
+    data: |
+      SELECT ALL col0 AS col1 FROM tab1 (FORMAT parquet) WHERE - + 56 BETWEEN NULL AND + - col0;
+  - name: tab1
+
+outputs:
+  - name: q2314.out
+    data: |

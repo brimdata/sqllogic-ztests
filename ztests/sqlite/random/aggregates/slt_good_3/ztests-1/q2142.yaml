@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q2142.spq | sort > q2142.out
+
+inputs:
+  - name: q2142.spq
+    data: |
+      SELECT 42 FROM tab2 (FORMAT parquet) WHERE col2 * - 99 <> ( + col2 ) * + + col1 - + - col2;
+  - name: tab2
+
+outputs:
+  - name: q2142.out
+    data: |
+      42
+      42
+      42

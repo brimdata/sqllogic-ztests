@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q11699.spq | sort > q11699.out
+
+inputs:
+  - name: q11699.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) WHERE col2 + + col2 * col2 BETWEEN - 66 AND col2;
+  - name: tab2
+
+outputs:
+  - name: q11699.out
+    data: |

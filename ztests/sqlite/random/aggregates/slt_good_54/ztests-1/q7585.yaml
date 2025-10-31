@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q7585.spq | sort > q7585.out
+
+inputs:
+  - name: q7585.spq
+    data: |
+      SELECT - COUNT ( * ) + - COUNT ( * ) col0 FROM tab2 (FORMAT parquet) WHERE ( NULL IS NULL );
+  - name: tab2
+
+outputs:
+  - name: q7585.out
+    data: |
+      -6

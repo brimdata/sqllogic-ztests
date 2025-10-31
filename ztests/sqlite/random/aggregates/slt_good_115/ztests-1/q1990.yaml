@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q1990.spq | sort > q1990.out
+
+inputs:
+  - name: q1990.spq
+    data: |
+      SELECT DISTINCT * FROM tab1 (FORMAT parquet) WHERE + col1 BETWEEN - col0 / 33 + - col0 / + 85 AND col1;
+  - name: tab1
+
+outputs:
+  - name: q1990.out
+    data: |
+      51	14	96
+      85	5	59
+      91	47	68

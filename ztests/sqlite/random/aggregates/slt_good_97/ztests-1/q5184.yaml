@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q5184.spq | sort > q5184.out
+
+inputs:
+  - name: q5184.spq
+    data: |
+      SELECT DISTINCT - col1 AS col1 FROM tab0 (FORMAT parquet) AS cor0 WHERE NOT ( col0 - - col2 + + col0 ) <= ( NULL );
+  - name: tab0
+
+outputs:
+  - name: q5184.out
+    data: |

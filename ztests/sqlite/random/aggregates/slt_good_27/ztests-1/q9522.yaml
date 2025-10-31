@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q9522.spq | sort > q9522.out
+
+inputs:
+  - name: q9522.spq
+    data: |
+      SELECT DISTINCT * FROM tab2 (FORMAT parquet) WHERE NULL NOT BETWEEN - + 13 * - - col1 AND ( ( col2 ) ) / - + col1 * - + ( col1 );
+  - name: tab2
+
+outputs:
+  - name: q9522.out
+    data: |

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q1259.spq | sort > q1259.out
+
+inputs:
+  - name: q1259.spq
+    data: |
+      SELECT ALL col1 AS col1 FROM tab2 (FORMAT parquet) WHERE ( + 1 / - col0 ) IS NULL AND ( NULL ) = - 27;
+  - name: tab2
+
+outputs:
+  - name: q1259.out
+    data: |

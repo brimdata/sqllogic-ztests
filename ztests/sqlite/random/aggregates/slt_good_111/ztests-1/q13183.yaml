@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q13183.spq | sort > q13183.out
+
+inputs:
+  - name: q13183.spq
+    data: |
+      SELECT ALL * FROM tab1 (FORMAT parquet) WHERE col0 * col1 + col2 / 17 < col0;
+  - name: tab1
+
+outputs:
+  - name: q13183.out
+    data: |

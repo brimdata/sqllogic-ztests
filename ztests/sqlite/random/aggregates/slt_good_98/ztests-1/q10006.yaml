@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q10006.spq | sort > q10006.out
+
+inputs:
+  - name: q10006.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE NOT ( + col1 ) <= - col0 * 60;
+  - name: tab0
+
+outputs:
+  - name: q10006.out
+    data: |
+      15	81	47
+      87	21	10
+      97	1	99

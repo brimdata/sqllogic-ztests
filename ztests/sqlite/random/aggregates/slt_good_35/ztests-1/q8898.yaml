@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q8898.spq | sort > q8898.out
+
+inputs:
+  - name: q8898.spq
+    data: |
+      SELECT ALL - COUNT ( * ) FROM tab1 (FORMAT parquet) WHERE NOT - col1 / col2 BETWEEN 99 + - 19 AND col2;
+  - name: tab1
+
+outputs:
+  - name: q8898.out
+    data: |
+      -3

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q5030.spq | sort > q5030.out
+
+inputs:
+  - name: q5030.spq
+    data: |
+      SELECT DISTINCT * FROM tab2 (FORMAT parquet) AS cor0 WHERE col2 + + col2 BETWEEN NULL AND - - ( - - col2 );
+  - name: tab2
+
+outputs:
+  - name: q5030.out
+    data: |

@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q5895.spq | sort > q5895.out
+
+inputs:
+  - name: q5895.spq
+    data: |
+      SELECT COUNT ( * ) AS col0 FROM tab1 (FORMAT parquet) WHERE + 1 NOT BETWEEN ( + 89 ) AND - 88;
+  - name: tab1
+
+outputs:
+  - name: q5895.out
+    data: |
+      3

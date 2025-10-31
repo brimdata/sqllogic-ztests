@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q12248.spq | sort > q12248.out
+
+inputs:
+  - name: q12248.spq
+    data: |
+      SELECT ALL * FROM tab2 (FORMAT parquet) AS cor0 WHERE col2 < + 15;
+  - name: tab2
+
+outputs:
+  - name: q12248.out
+    data: |

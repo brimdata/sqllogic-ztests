@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8205.spq | sort > q8205.out
+
+inputs:
+  - name: q8205.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) WHERE 39 * + 33 IN ( + col1 );
+  - name: tab2
+
+outputs:
+  - name: q8205.out
+    data: |

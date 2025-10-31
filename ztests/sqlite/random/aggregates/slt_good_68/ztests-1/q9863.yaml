@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q9863.spq | sort > q9863.out
+
+inputs:
+  - name: q9863.spq
+    data: |
+      SELECT - 80 + col0 * + - 15 + col1 + + col2 FROM tab1 (FORMAT parquet) WHERE ( NOT 19 + col0 IS NULL );
+  - name: tab1
+
+outputs:
+  - name: q9863.out
+    data: |
+      -1291
+      -1330
+      -735

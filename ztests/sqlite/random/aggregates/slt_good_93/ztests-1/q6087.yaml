@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q6087.spq | sort > q6087.out
+
+inputs:
+  - name: q6087.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE NOT ( NOT col2 >= 73 );
+  - name: tab0
+
+outputs:
+  - name: q6087.out
+    data: |
+      97	1	99

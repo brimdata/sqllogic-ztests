@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q32.spq | sort > q32.out
+
+inputs:
+  - name: q32.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) AS cor0 WHERE NOT - ( + 82 ) * + col0 IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q32.out
+    data: |

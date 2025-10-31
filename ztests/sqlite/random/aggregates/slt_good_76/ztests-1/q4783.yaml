@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q4783.spq | sort > q4783.out
+
+inputs:
+  - name: q4783.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE NOT - 17 * 66 NOT BETWEEN ( CAST ( + col1 AS REAL ) ) AND + 33;
+  - name: tab0
+
+outputs:
+  - name: q4783.out
+    data: |

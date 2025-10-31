@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q7240.spq | sort > q7240.out
+
+inputs:
+  - name: q7240.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) AS cor0 WHERE NOT CAST ( + - 45 AS REAL ) BETWEEN NULL AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q7240.out
+    data: |

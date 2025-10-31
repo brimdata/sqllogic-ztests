@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q5011.spq | sort > q5011.out
+
+inputs:
+  - name: q5011.spq
+    data: |
+      SELECT + CAST ( + col0 AS REAL ) AS col1 FROM tab2 (FORMAT parquet) WHERE + - col0 BETWEEN NULL AND NULL;
+  - name: tab2
+
+outputs:
+  - name: q5011.out
+    data: |

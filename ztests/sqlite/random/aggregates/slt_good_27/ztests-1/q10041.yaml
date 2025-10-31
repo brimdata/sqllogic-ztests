@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q10041.spq | sort > q10041.out
+
+inputs:
+  - name: q10041.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) AS cor0 WHERE NOT ( 31 / + + col1 ) NOT BETWEEN ( NULL ) AND 19;
+  - name: tab0
+
+outputs:
+  - name: q10041.out
+    data: |

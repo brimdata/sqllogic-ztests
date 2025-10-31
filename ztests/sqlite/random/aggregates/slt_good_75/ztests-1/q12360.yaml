@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q12360.spq | sort > q12360.out
+
+inputs:
+  - name: q12360.spq
+    data: |
+      SELECT - MAX ( + col2 ) / 36 + - 34 AS col2 FROM tab2 (FORMAT parquet);
+  - name: tab2
+
+outputs:
+  - name: q12360.out
+    data: |
+      -35

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q6079.spq | sort > q6079.out
+
+inputs:
+  - name: q6079.spq
+    data: |
+      SELECT + 8 AS col2 FROM tab1 (FORMAT parquet) WHERE NOT ( NOT - col1 BETWEEN 86 AND - col1 );
+  - name: tab1
+
+outputs:
+  - name: q6079.out
+    data: |

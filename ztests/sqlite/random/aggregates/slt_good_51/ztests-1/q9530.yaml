@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q9530.spq | sort > q9530.out
+
+inputs:
+  - name: q9530.spq
+    data: |
+      SELECT 6 * - 72 + col1 * + 70 FROM tab0 (FORMAT parquet) WHERE NULL IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q9530.out
+    data: |
+      -362
+      1038
+      5238

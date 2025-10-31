@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q3020.spq | sort > q3020.out
+
+inputs:
+  - name: q3020.spq
+    data: |
+      SELECT DISTINCT col1, + col0 * + col1 AS col2 FROM tab0 (FORMAT parquet) WHERE ( NULL < 63 );
+  - name: tab0
+
+outputs:
+  - name: q3020.out
+    data: |

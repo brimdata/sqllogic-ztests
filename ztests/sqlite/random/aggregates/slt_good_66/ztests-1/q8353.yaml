@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8353.spq | sort > q8353.out
+
+inputs:
+  - name: q8353.spq
+    data: |
+      SELECT - + col2 * col0 * + + col1 AS col0 FROM tab0 (FORMAT parquet) WHERE NOT NULL BETWEEN + col2 * - col1 AND - + 8 * 38 + col0;
+  - name: tab0
+
+outputs:
+  - name: q8353.out
+    data: |

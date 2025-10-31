@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q5023.spq | sort > q5023.out
+
+inputs:
+  - name: q5023.spq
+    data: |
+      SELECT DISTINCT + + MAX ( col2 ) FROM tab0 (FORMAT parquet) AS cor0 WHERE NOT 38 BETWEEN NULL AND + col1;
+  - name: tab0
+
+outputs:
+  - name: q5023.out
+    data: |
+      99

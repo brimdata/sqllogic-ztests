@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8580.spq | sort > q8580.out
+
+inputs:
+  - name: q8580.spq
+    data: |
+      SELECT - + 40 - - col1 FROM tab0 (FORMAT parquet) AS cor0 WHERE col0 > NULL;
+  - name: tab0
+
+outputs:
+  - name: q8580.out
+    data: |

@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q10486.spq | sort > q10486.out
+
+inputs:
+  - name: q10486.spq
+    data: |
+      SELECT ALL SUM ( - ( - col0 ) ) * 66 FROM tab0 (FORMAT parquet) WHERE NULL IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q10486.out
+    data: |
+      13134

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q1232.spq | sort > q1232.out
+
+inputs:
+  - name: q1232.spq
+    data: |
+      SELECT DISTINCT * FROM tab2 (FORMAT parquet) WHERE NOT + 10 NOT IN ( + + ( + 39 ) + ( col1 ) );
+  - name: tab2
+
+outputs:
+  - name: q1232.out
+    data: |

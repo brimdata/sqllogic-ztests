@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8778.spq | sort > q8778.out
+
+inputs:
+  - name: q8778.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) WHERE + + col1 + 59 IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q8778.out
+    data: |
+      46	51	23
+      64	77	40
+      75	67	58

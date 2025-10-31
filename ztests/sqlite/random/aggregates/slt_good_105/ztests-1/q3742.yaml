@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q3742.spq | sort > q3742.out
+
+inputs:
+  - name: q3742.spq
+    data: |
+      SELECT DISTINCT * FROM tab1 (FORMAT parquet) AS cor0 WHERE NOT ( col0 NOT BETWEEN - col2 + - CAST ( 96 AS INTEGER ) AND ( NULL ) ) OR NOT + 39 IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q3742.out
+    data: |
+      51	14	96
+      85	5	59
+      91	47	68

@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q620.spq | sort > q620.out
+
+inputs:
+  - name: q620.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE NOT col0 < - ( - col1 ) + + col2;
+  - name: tab0
+
+outputs:
+  - name: q620.out
+    data: |
+      87	21	10

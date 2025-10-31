@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q12783.spq | sort > q12783.out
+
+inputs:
+  - name: q12783.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE ( - ( + col1 ) ) BETWEEN col1 AND col2 * 7;
+  - name: tab0
+
+outputs:
+  - name: q12783.out
+    data: |

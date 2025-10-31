@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q12952.spq | sort > q12952.out
+
+inputs:
+  - name: q12952.spq
+    data: |
+      SELECT - CAST ( 22 AS INTEGER ) * col2 FROM tab1 (FORMAT parquet) WHERE NULL NOT BETWEEN - col0 AND col2;
+  - name: tab1
+
+outputs:
+  - name: q12952.out
+    data: |

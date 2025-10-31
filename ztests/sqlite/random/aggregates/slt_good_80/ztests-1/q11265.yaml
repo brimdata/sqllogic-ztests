@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q11265.spq | sort > q11265.out
+
+inputs:
+  - name: q11265.spq
+    data: |
+      SELECT - COUNT ( * ) * - 40 FROM tab0 (FORMAT parquet) AS cor0 CROSS JOIN tab2 (FORMAT parquet) AS cor1;
+  - name: tab0
+  - name: tab2
+
+outputs:
+  - name: q11265.out
+    data: |
+      360

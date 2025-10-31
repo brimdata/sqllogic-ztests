@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q892.spq | sort > q892.out
+
+inputs:
+  - name: q892.spq
+    data: |
+      SELECT DISTINCT COUNT ( * ) + - - COUNT ( * ) FROM tab2 (FORMAT parquet) AS cor0 WHERE NULL IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q892.out
+    data: |
+      6

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q4015.spq | sort > q4015.out
+
+inputs:
+  - name: q4015.spq
+    data: |
+      SELECT ALL 14 + - CAST ( NULL AS INTEGER ) FROM tab0 (FORMAT parquet) WHERE NOT NULL IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q4015.out
+    data: |

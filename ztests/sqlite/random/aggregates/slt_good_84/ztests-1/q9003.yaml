@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q9003.spq | sort > q9003.out
+
+inputs:
+  - name: q9003.spq
+    data: |
+      SELECT DISTINCT + col2 FROM tab2 (FORMAT parquet) WHERE NOT NULL < ( + - col0 + 78 + - 14 );
+  - name: tab2
+
+outputs:
+  - name: q9003.out
+    data: |

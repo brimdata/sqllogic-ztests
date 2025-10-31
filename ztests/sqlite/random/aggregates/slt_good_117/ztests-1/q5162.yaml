@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q5162.spq | sort > q5162.out
+
+inputs:
+  - name: q5162.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) WHERE NOT NULL BETWEEN 32 / 76 AND ( NULL );
+  - name: tab2
+
+outputs:
+  - name: q5162.out
+    data: |

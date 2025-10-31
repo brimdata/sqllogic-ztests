@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q1116.spq | sort > q1116.out
+
+inputs:
+  - name: q1116.spq
+    data: |
+      SELECT - col1 * - 7 FROM tab2 (FORMAT parquet) WHERE ( NULL ) BETWEEN - CAST ( NULL AS REAL ) / col2 AND 16;
+  - name: tab2
+
+outputs:
+  - name: q1116.out
+    data: |

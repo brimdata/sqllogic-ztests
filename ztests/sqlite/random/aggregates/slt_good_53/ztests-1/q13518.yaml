@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q13518.spq | sort > q13518.out
+
+inputs:
+  - name: q13518.spq
+    data: |
+      SELECT DISTINCT 2 + COUNT ( * ) AS col0 FROM tab1 (FORMAT parquet) AS cor0 WHERE ( ( - col2 ) ) BETWEEN - col2 AND ( ( col1 ) * + col1 );
+  - name: tab1
+
+outputs:
+  - name: q13518.out
+    data: |
+      5

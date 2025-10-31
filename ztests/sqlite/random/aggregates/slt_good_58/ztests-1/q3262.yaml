@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q3262.spq | sort > q3262.out
+
+inputs:
+  - name: q3262.spq
+    data: |
+      SELECT ALL - col0 col0 FROM tab1 (FORMAT parquet) WHERE - col2 * - 73 + CAST ( NULL AS INTEGER ) IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q3262.out
+    data: |

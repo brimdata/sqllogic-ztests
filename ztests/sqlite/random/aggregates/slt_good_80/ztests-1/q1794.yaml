@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q1794.spq | sort > q1794.out
+
+inputs:
+  - name: q1794.spq
+    data: |
+      SELECT ALL * FROM tab2 (FORMAT parquet) WHERE NOT - + col1 < + 23 + + CAST ( + 12 AS INTEGER );
+  - name: tab2
+
+outputs:
+  - name: q1794.out
+    data: |

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q7948.spq | sort > q7948.out
+
+inputs:
+  - name: q7948.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE + - 31 < col1;
+  - name: tab0
+
+outputs:
+  - name: q7948.out
+    data: |
+      15	81	47
+      87	21	10
+      97	1	99

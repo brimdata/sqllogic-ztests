@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q2779.spq | sort > q2779.out
+
+inputs:
+  - name: q2779.spq
+    data: |
+      SELECT + 27 * ( col0 * 44 ) FROM tab2 (FORMAT parquet) WHERE NOT col0 BETWEEN + 59 AND col2;
+  - name: tab2
+
+outputs:
+  - name: q2779.out
+    data: |
+      54648
+      76032
+      89100

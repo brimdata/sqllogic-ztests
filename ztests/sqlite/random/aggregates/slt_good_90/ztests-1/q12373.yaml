@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q12373.spq | sort > q12373.out
+
+inputs:
+  - name: q12373.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) AS cor0 WHERE NULL NOT BETWEEN ( col1 ) AND + col1 / - col1 * CAST ( + + col1 AS REAL );
+  - name: tab0
+
+outputs:
+  - name: q12373.out
+    data: |

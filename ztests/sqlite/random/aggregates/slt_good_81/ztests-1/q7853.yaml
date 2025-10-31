@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q7853.spq | sort > q7853.out
+
+inputs:
+  - name: q7853.spq
+    data: |
+      SELECT DISTINCT + MAX ( - col2 ) col1 FROM tab2 (FORMAT parquet) AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q7853.out
+    data: |
+      -23

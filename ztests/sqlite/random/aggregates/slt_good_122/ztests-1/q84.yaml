@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q84.spq | sort > q84.out
+
+inputs:
+  - name: q84.spq
+    data: |
+      SELECT + 13 FROM tab2 (FORMAT parquet) AS cor0 WHERE NOT ( col1 ) IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q84.out
+    data: |

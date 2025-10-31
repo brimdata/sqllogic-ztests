@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q10338.spq | sort > q10338.out
+
+inputs:
+  - name: q10338.spq
+    data: |
+      SELECT 1 / + - MAX ( 52 ) + - COUNT ( * ) AS col2 FROM tab1 (FORMAT parquet) WHERE NOT NULL IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q10338.out
+    data: |
+      -3

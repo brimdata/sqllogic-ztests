@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q1468.spq | sort > q1468.out
+
+inputs:
+  - name: q1468.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) WHERE ( + CAST ( - CAST ( + + col1 AS REAL ) AS INTEGER ) IN ( + 6 ) );
+  - name: tab1
+
+outputs:
+  - name: q1468.out
+    data: |

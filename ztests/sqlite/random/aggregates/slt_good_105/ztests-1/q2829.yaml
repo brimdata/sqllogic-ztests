@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q2829.spq | sort > q2829.out
+
+inputs:
+  - name: q2829.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) WHERE - 94 / col1 - + col2 * + - 42 IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q2829.out
+    data: |

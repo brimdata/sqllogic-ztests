@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q4313.spq | sort > q4313.out
+
+inputs:
+  - name: q4313.spq
+    data: |
+      SELECT ALL + 97 * - col2 + col2 FROM tab2 (FORMAT parquet) WHERE + col0 NOT IN ( + col2 );
+  - name: tab2
+
+outputs:
+  - name: q4313.out
+    data: |
+      -2208
+      -3840
+      -5568

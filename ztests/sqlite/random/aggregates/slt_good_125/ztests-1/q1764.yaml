@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q1764.spq | sort > q1764.out
+
+inputs:
+  - name: q1764.spq
+    data: |
+      SELECT - + 26 * + + col1 + - ( - - col1 ) - - + 66 AS col2 FROM tab1 (FORMAT parquet) WHERE NOT - col1 IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q1764.out
+    data: |

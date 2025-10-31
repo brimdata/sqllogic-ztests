@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q1078.spq | sort > q1078.out
+
+inputs:
+  - name: q1078.spq
+    data: |
+      SELECT ALL + 57 AS col1 FROM tab1 (FORMAT parquet) WHERE NULL NOT BETWEEN 52 AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q1078.out
+    data: |

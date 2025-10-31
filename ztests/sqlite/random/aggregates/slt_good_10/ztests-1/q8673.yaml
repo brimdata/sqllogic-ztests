@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8673.spq | sort > q8673.out
+
+inputs:
+  - name: q8673.spq
+    data: |
+      SELECT - 66 FROM tab1 (FORMAT parquet) AS cor0 WHERE NOT col2 / - col0 >= - 51;
+  - name: tab1
+
+outputs:
+  - name: q8673.out
+    data: |

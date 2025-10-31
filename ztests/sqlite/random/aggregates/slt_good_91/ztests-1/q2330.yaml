@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q2330.spq | sort > q2330.out
+
+inputs:
+  - name: q2330.spq
+    data: |
+      SELECT DISTINCT + col1, 8 AS col0, + col2 FROM tab0 (FORMAT parquet) cor0;
+  - name: tab0
+
+outputs:
+  - name: q2330.out
+    data: |
+      1	8	99
+      21	8	10
+      81	8	47

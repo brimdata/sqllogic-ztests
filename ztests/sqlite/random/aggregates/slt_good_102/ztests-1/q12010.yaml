@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q12010.spq | sort > q12010.out
+
+inputs:
+  - name: q12010.spq
+    data: |
+      SELECT col2 * + ( - 17 ) + 98 AS col1 FROM tab1 (FORMAT parquet) WHERE NOT 0 BETWEEN col0 * col0 + - col0 AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q12010.out
+    data: |
+      -1058
+      -1534
+      -905

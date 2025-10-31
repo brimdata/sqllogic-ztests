@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q6198.spq | sort > q6198.out
+
+inputs:
+  - name: q6198.spq
+    data: |
+      SELECT DISTINCT - 15 * - 68 FROM tab2 (FORMAT parquet) WHERE NOT col1 IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q6198.out
+    data: |

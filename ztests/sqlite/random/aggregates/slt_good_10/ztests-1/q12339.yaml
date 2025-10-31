@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q12339.spq | sort > q12339.out
+
+inputs:
+  - name: q12339.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) AS cor0 INNER JOIN tab1 (FORMAT parquet) AS cor1 ON 98 IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q12339.out
+    data: |

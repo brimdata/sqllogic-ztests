@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q12970.spq | sort > q12970.out
+
+inputs:
+  - name: q12970.spq
+    data: |
+      SELECT ALL * FROM tab1 (FORMAT parquet) WHERE + + col0 * 35 BETWEEN - col2 AND - + col1 / - CAST ( 33 AS INTEGER );
+  - name: tab1
+
+outputs:
+  - name: q12970.out
+    data: |

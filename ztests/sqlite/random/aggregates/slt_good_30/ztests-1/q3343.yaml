@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q3343.spq | sort > q3343.out
+
+inputs:
+  - name: q3343.spq
+    data: |
+      SELECT + - 68 + col1 AS col0 FROM tab2 (FORMAT parquet) WHERE NOT col1 NOT BETWEEN + CAST ( NULL AS INTEGER ) + + CAST ( NULL AS REAL ) AND col1;
+  - name: tab2
+
+outputs:
+  - name: q3343.out
+    data: |

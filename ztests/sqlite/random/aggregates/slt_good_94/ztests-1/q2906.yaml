@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q2906.spq | sort > q2906.out
+
+inputs:
+  - name: q2906.spq
+    data: |
+      SELECT - 68 AS col1 FROM tab2 (FORMAT parquet) AS cor0 WHERE col1 * + 78 + - col1 NOT IN ( 10 + - 15 );
+  - name: tab2
+
+outputs:
+  - name: q2906.out
+    data: |
+      -68
+      -68
+      -68

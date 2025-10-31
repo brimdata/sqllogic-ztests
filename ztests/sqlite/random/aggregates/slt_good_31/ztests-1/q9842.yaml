@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q9842.spq | sort > q9842.out
+
+inputs:
+  - name: q9842.spq
+    data: |
+      SELECT ALL * FROM tab0 (FORMAT parquet) WHERE NOT - 10 BETWEEN + - 33 / col0 AND NULL;
+  - name: tab0
+
+outputs:
+  - name: q9842.out
+    data: |
+      15	81	47
+      87	21	10
+      97	1	99

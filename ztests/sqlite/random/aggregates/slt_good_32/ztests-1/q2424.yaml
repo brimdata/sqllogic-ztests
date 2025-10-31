@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q2424.spq | sort > q2424.out
+
+inputs:
+  - name: q2424.spq
+    data: |
+      SELECT DISTINCT COUNT ( * ) FROM tab0 (FORMAT parquet) WHERE NOT 3 * col2 IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q2424.out
+    data: |
+      3

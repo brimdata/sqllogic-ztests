@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q7560.spq | sort > q7560.out
+
+inputs:
+  - name: q7560.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) WHERE NOT 13 * - 26 + 39 NOT IN ( + 63 );
+  - name: tab1
+
+outputs:
+  - name: q7560.out
+    data: |

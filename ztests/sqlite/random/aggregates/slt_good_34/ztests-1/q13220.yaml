@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q13220.spq | sort > q13220.out
+
+inputs:
+  - name: q13220.spq
+    data: |
+      SELECT col2 AS col1 FROM tab1 (FORMAT parquet) WHERE 15 / - 17 >= NULL;
+  - name: tab1
+
+outputs:
+  - name: q13220.out
+    data: |

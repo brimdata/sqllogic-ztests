@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q2918.spq | sort > q2918.out
+
+inputs:
+  - name: q2918.spq
+    data: |
+      SELECT col2 AS col0 FROM tab1 (FORMAT parquet) AS cor0 WHERE NOT 13 * 14 NOT BETWEEN col2 AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q2918.out
+    data: |

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q4368.spq | sort > q4368.out
+
+inputs:
+  - name: q4368.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) WHERE ( ( 19 NOT BETWEEN 29 AND 82 ) );
+  - name: tab1
+
+outputs:
+  - name: q4368.out
+    data: |
+      51	14	96
+      85	5	59
+      91	47	68

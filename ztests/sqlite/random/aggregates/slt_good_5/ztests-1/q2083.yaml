@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q2083.spq | sort > q2083.out
+
+inputs:
+  - name: q2083.spq
+    data: |
+      SELECT - 7 AS col2 FROM tab2 (FORMAT parquet) WHERE NULL <= col2 + 88 * col1;
+  - name: tab2
+
+outputs:
+  - name: q2083.out
+    data: |

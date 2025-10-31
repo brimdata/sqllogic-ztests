@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q6061.spq | sort > q6061.out
+
+inputs:
+  - name: q6061.spq
+    data: |
+      SELECT ALL CAST ( - col2 AS INTEGER ) * + col1 AS col2 FROM tab2 (FORMAT parquet) AS cor0 WHERE ( - col2 * + col2 ) >= col1;
+  - name: tab2
+
+outputs:
+  - name: q6061.out
+    data: |

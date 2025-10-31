@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q486.spq | sort > q486.out
+
+inputs:
+  - name: q486.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) AS cor0 WHERE NOT - col1 * + 7 IN ( - + 17 );
+  - name: tab0
+
+outputs:
+  - name: q486.out
+    data: |
+      15	81	47
+      87	21	10
+      97	1	99

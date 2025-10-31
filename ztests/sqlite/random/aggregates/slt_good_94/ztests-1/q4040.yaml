@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q4040.spq | sort > q4040.out
+
+inputs:
+  - name: q4040.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) WHERE NOT + - 61 / - col1 + - - col2 = + + col1;
+  - name: tab1
+
+outputs:
+  - name: q4040.out
+    data: |
+      51	14	96
+      85	5	59
+      91	47	68

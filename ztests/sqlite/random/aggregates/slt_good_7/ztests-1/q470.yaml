@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q470.spq | sort > q470.out
+
+inputs:
+  - name: q470.spq
+    data: |
+      SELECT + 10 + + - ( - COUNT ( * ) ) FROM tab1 (FORMAT parquet) cor0;
+  - name: tab1
+
+outputs:
+  - name: q470.out
+    data: |
+      13

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q4810.spq | sort > q4810.out
+
+inputs:
+  - name: q4810.spq
+    data: |
+      SELECT DISTINCT + - col0 - + - 80 + - 81 + + col0 + + 22 * col1 AS col1 FROM tab2 (FORMAT parquet) WHERE NOT 47 IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q4810.out
+    data: |
+      1121
+      1473
+      1693

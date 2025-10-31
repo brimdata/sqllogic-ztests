@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q7381.spq | sort > q7381.out
+
+inputs:
+  - name: q7381.spq
+    data: |
+      SELECT - col2 * 18 + + - ( - col0 ) + + col2 / 52 * col0 FROM tab1 (FORMAT parquet) AS cor0 WHERE col0 * + col0 IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q7381.out
+    data: |
+      -1042
+      -1626
+      -892

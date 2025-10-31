@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q4582.spq | sort > q4582.out
+
+inputs:
+  - name: q4582.spq
+    data: |
+      SELECT + col0, ( + col2 ) + 67 - + col0 FROM tab0 (FORMAT parquet);
+  - name: tab0
+
+outputs:
+  - name: q4582.out
+    data: |
+      15	99
+      87	-10
+      97	69

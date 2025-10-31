@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q4014.spq | sort > q4014.out
+
+inputs:
+  - name: q4014.spq
+    data: |
+      SELECT DISTINCT * FROM tab2 (FORMAT parquet) WHERE - CAST ( + - col1 AS INTEGER ) <= + col0 + + - 82;
+  - name: tab2
+
+outputs:
+  - name: q4014.out
+    data: |

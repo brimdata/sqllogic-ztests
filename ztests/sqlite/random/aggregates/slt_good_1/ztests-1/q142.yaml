@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q142.spq | sort > q142.out
+
+inputs:
+  - name: q142.spq
+    data: |
+      SELECT ( + col1 ) + 3 FROM tab2 (FORMAT parquet) AS cor0 WHERE ( col1 + col2 ) >= + 23;
+  - name: tab2
+
+outputs:
+  - name: q142.out
+    data: |
+      54
+      70
+      80

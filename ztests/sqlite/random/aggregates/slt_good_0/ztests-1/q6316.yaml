@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q6316.spq | sort > q6316.out
+
+inputs:
+  - name: q6316.spq
+    data: |
+      SELECT ALL * FROM tab0 (FORMAT parquet) AS cor0 WHERE NOT col2 NOT BETWEEN + col1 AND ( - col2 ) * - 60;
+  - name: tab0
+
+outputs:
+  - name: q6316.out
+    data: |
+      97	1	99

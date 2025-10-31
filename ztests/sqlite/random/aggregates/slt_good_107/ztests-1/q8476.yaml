@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8476.spq | sort > q8476.out
+
+inputs:
+  - name: q8476.spq
+    data: |
+      SELECT + 42 FROM tab0 (FORMAT parquet) WHERE NOT ( 51 ) BETWEEN NULL AND 20;
+  - name: tab0
+
+outputs:
+  - name: q8476.out
+    data: |
+      42
+      42
+      42

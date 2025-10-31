@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q12983.spq | sort > q12983.out
+
+inputs:
+  - name: q12983.spq
+    data: |
+      SELECT ALL * FROM tab1 (FORMAT parquet) WHERE NOT col2 * 81 + 11 * col2 <> - 82;
+  - name: tab1
+
+outputs:
+  - name: q12983.out
+    data: |

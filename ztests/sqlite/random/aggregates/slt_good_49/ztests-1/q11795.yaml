@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q11795.spq | sort > q11795.out
+
+inputs:
+  - name: q11795.spq
+    data: |
+      SELECT COUNT ( * ) AS col2 FROM tab2 (FORMAT parquet) AS cor0 WHERE NOT col0 <= - 92 * - col0 * - 98;
+  - name: tab2
+
+outputs:
+  - name: q11795.out
+    data: |
+      3

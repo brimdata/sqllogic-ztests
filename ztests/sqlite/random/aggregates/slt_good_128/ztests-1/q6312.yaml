@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q6312.spq | sort > q6312.out
+
+inputs:
+  - name: q6312.spq
+    data: |
+      SELECT col1 * col2 FROM tab0 (FORMAT parquet) WHERE NOT ( - col1 / 63 <> NULL );
+  - name: tab0
+
+outputs:
+  - name: q6312.out
+    data: |

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q3618.spq | sort > q3618.out
+
+inputs:
+  - name: q3618.spq
+    data: |
+      SELECT + col1 * 79 + - col0 AS col2, + col1 FROM tab2 (FORMAT parquet) AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q3618.out
+    data: |
+      3983	51
+      5218	67
+      6019	77

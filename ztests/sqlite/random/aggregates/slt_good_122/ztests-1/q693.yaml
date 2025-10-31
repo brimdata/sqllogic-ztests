@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q693.spq | sort > q693.out
+
+inputs:
+  - name: q693.spq
+    data: |
+      SELECT DISTINCT * FROM tab1 (FORMAT parquet) WHERE NOT 29 < + col0;
+  - name: tab1
+
+outputs:
+  - name: q693.out
+    data: |

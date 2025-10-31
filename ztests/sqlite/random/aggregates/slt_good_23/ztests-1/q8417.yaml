@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8417.spq | sort > q8417.out
+
+inputs:
+  - name: q8417.spq
+    data: |
+      SELECT ALL * FROM tab2 (FORMAT parquet) WHERE + 63 IN ( col2 );
+  - name: tab2
+
+outputs:
+  - name: q8417.out
+    data: |

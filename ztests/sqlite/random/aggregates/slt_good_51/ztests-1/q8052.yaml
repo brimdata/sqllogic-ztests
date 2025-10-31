@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8052.spq | sort > q8052.out
+
+inputs:
+  - name: q8052.spq
+    data: |
+      SELECT col2, + col1 * col2 AS col1 FROM tab0 (FORMAT parquet) AS cor0 WHERE NOT NULL <> CAST ( col1 AS REAL ) * - 7;
+  - name: tab0
+
+outputs:
+  - name: q8052.out
+    data: |

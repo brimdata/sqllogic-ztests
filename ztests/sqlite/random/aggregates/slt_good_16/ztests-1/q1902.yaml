@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q1902.spq | sort > q1902.out
+
+inputs:
+  - name: q1902.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) AS cor0 WHERE col0 + - col0 < + col0 + - + col1 + + 29 * CAST ( NULL AS INTEGER );
+  - name: tab0
+
+outputs:
+  - name: q1902.out
+    data: |

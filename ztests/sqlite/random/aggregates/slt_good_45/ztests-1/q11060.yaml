@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q11060.spq | sort > q11060.out
+
+inputs:
+  - name: q11060.spq
+    data: |
+      SELECT DISTINCT * FROM tab2 (FORMAT parquet) WHERE 50 <> 92;
+  - name: tab2
+
+outputs:
+  - name: q11060.out
+    data: |
+      46	51	23
+      64	77	40
+      75	67	58

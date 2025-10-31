@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q220.spq | sort > q220.out
+
+inputs:
+  - name: q220.spq
+    data: |
+      SELECT ALL - + CAST ( + 75 AS INTEGER ) FROM tab0 (FORMAT parquet) WHERE NULL = col1 + + col1;
+  - name: tab0
+
+outputs:
+  - name: q220.out
+    data: |

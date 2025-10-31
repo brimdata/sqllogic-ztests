@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q562.spq | sort > q562.out
+
+inputs:
+  - name: q562.spq
+    data: |
+      SELECT ALL - COUNT ( * ) * 78 AS col1, COUNT ( * ) FROM tab0 (FORMAT parquet);
+  - name: tab0
+
+outputs:
+  - name: q562.out
+    data: |
+      -234	3

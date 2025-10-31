@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q60.spq | sort > q60.out
+
+inputs:
+  - name: q60.spq
+    data: |
+      SELECT ALL * FROM tab2 (FORMAT parquet) cor0 WHERE NOT NULL >= 45;
+  - name: tab2
+
+outputs:
+  - name: q60.out
+    data: |

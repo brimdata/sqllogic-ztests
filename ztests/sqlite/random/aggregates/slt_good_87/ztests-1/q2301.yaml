@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q2301.spq | sort > q2301.out
+
+inputs:
+  - name: q2301.spq
+    data: |
+      SELECT - ( SUM ( + 46 ) ) AS col2 FROM tab1 (FORMAT parquet) WHERE NOT NULL IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q2301.out
+    data: |
+      -138

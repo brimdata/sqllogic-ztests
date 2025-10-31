@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q4210.spq | sort > q4210.out
+
+inputs:
+  - name: q4210.spq
+    data: |
+      SELECT ALL * FROM tab2 (FORMAT parquet) WHERE + CAST ( col0 AS INTEGER ) BETWEEN - 21 * - col0 AND NULL;
+  - name: tab2
+
+outputs:
+  - name: q4210.out
+    data: |

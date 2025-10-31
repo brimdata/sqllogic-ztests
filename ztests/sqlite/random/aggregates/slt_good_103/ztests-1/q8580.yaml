@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8580.spq | sort > q8580.out
+
+inputs:
+  - name: q8580.spq
+    data: |
+      SELECT DISTINCT - col1 AS col0, - col2 * col2 AS col2 FROM tab1 (FORMAT parquet) AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q8580.out
+    data: |
+      -14	-9216
+      -47	-4624
+      -5	-3481

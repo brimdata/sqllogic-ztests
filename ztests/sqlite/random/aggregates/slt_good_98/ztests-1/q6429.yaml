@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q6429.spq | sort > q6429.out
+
+inputs:
+  - name: q6429.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) cor0 WHERE NOT CAST ( NULL AS INTEGER ) <> - col2 * 95;
+  - name: tab2
+
+outputs:
+  - name: q6429.out
+    data: |

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q9976.spq | sort > q9976.out
+
+inputs:
+  - name: q9976.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) WHERE ( + 46 ) BETWEEN - ( - col1 ) AND col1;
+  - name: tab1
+
+outputs:
+  - name: q9976.out
+    data: |

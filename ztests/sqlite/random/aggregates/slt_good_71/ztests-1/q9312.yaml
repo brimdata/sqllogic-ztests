@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q9312.spq | sort > q9312.out
+
+inputs:
+  - name: q9312.spq
+    data: |
+      SELECT ALL + CAST ( NULL AS INTEGER ) FROM tab2 (FORMAT parquet) WHERE - 61 IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q9312.out
+    data: |

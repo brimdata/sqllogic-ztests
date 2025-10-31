@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q3558.spq | sort > q3558.out
+
+inputs:
+  - name: q3558.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE NOT ( + col0 ) BETWEEN col2 * - CAST ( NULL AS INTEGER ) AND ( + col1 );
+  - name: tab0
+
+outputs:
+  - name: q3558.out
+    data: |
+      87	21	10
+      97	1	99

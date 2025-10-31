@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q3263.spq | sort > q3263.out
+
+inputs:
+  - name: q3263.spq
+    data: |
+      SELECT ALL + - 44 * col2, + 66 AS col0 FROM tab2 (FORMAT parquet) WHERE + col0 IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q3263.out
+    data: |
+      -1012	66
+      -1760	66
+      -2552	66

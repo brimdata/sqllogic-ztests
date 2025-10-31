@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q9273.spq | sort > q9273.out
+
+inputs:
+  - name: q9273.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE NOT + CAST ( NULL AS INTEGER ) <> NULL;
+  - name: tab0
+
+outputs:
+  - name: q9273.out
+    data: |

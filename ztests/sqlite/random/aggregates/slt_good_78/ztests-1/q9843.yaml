@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q9843.spq | sort > q9843.out
+
+inputs:
+  - name: q9843.spq
+    data: |
+      SELECT ALL + CAST ( col0 AS REAL ) AS col1 FROM tab1 (FORMAT parquet) WHERE NOT NULL = + col1;
+  - name: tab1
+
+outputs:
+  - name: q9843.out
+    data: |

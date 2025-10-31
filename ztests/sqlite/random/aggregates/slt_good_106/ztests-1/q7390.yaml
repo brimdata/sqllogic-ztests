@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q7390.spq | sort > q7390.out
+
+inputs:
+  - name: q7390.spq
+    data: |
+      SELECT ALL * FROM tab1 (FORMAT parquet) AS cor0 WHERE NULL BETWEEN 30 AND 48 * - col2;
+  - name: tab1
+
+outputs:
+  - name: q7390.out
+    data: |

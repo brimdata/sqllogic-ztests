@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q4502.spq | sort > q4502.out
+
+inputs:
+  - name: q4502.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE + 11 NOT BETWEEN NULL AND NULL;
+  - name: tab0
+
+outputs:
+  - name: q4502.out
+    data: |

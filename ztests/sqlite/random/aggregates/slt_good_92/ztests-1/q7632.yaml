@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q7632.spq | sort > q7632.out
+
+inputs:
+  - name: q7632.spq
+    data: |
+      SELECT DISTINCT col0 * - col1 + + col1 * - + col1 + + + col2 + - 27 FROM tab2 (FORMAT parquet) cor0;
+  - name: tab2
+
+outputs:
+  - name: q7632.out
+    data: |
+      -10844
+      -4951
+      -9483

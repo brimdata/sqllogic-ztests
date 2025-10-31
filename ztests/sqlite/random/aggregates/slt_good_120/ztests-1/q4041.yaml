@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q4041.spq | sort > q4041.out
+
+inputs:
+  - name: q4041.spq
+    data: |
+      SELECT + 70 FROM tab1 (FORMAT parquet) cor0 WHERE col0 <> - + ( col1 );
+  - name: tab1
+
+outputs:
+  - name: q4041.out
+    data: |
+      70
+      70
+      70

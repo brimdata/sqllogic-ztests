@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q320.spq | sort > q320.out
+
+inputs:
+  - name: q320.spq
+    data: |
+      SELECT - 61 * + col0 * + col2 AS col2, - col0 / 8 AS col0 FROM tab2 (FORMAT parquet) WHERE NOT NULL NOT BETWEEN NULL AND ( - - col0 );
+  - name: tab2
+
+outputs:
+  - name: q320.out
+    data: |

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q7544.spq | sort > q7544.out
+
+inputs:
+  - name: q7544.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) AS cor0 WHERE ( + col1 + 60 * + col1 ) IN ( + 17 * - col1 );
+  - name: tab0
+
+outputs:
+  - name: q7544.out
+    data: |

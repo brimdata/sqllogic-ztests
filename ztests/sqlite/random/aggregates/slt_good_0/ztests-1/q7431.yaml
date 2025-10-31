@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q7431.spq | sort > q7431.out
+
+inputs:
+  - name: q7431.spq
+    data: |
+      SELECT ALL - + 25 / + - col0 AS col0, - col0 * 26 FROM tab0 (FORMAT parquet) AS cor0 WHERE col0 IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q7431.out
+    data: |
+      0	-2262
+      0	-2522
+      1	-390

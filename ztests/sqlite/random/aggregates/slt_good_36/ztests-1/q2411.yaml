@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q2411.spq | sort > q2411.out
+
+inputs:
+  - name: q2411.spq
+    data: |
+      SELECT ALL 16 * ( SUM ( + ( col1 ) ) / - 99 ) FROM tab2 (FORMAT parquet);
+  - name: tab2
+
+outputs:
+  - name: q2411.out
+    data: |
+      -16

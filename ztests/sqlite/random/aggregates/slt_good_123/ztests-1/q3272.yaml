@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q3272.spq | sort > q3272.out
+
+inputs:
+  - name: q3272.spq
+    data: |
+      SELECT ALL COUNT ( * ) + - 31 - COUNT ( * ) AS col2 FROM tab1 (FORMAT parquet);
+  - name: tab1
+
+outputs:
+  - name: q3272.out
+    data: |
+      -31

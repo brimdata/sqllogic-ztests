@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q7710.spq | sort > q7710.out
+
+inputs:
+  - name: q7710.spq
+    data: |
+      SELECT ALL * FROM tab0 (FORMAT parquet) AS cor0 WHERE ( col2 ) IN ( + 3, - col2 * - ( col1 ), + 31 );
+  - name: tab0
+
+outputs:
+  - name: q7710.out
+    data: |
+      97	1	99

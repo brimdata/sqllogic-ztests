@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8330.spq | sort > q8330.out
+
+inputs:
+  - name: q8330.spq
+    data: |
+      SELECT DISTINCT * FROM tab0 (FORMAT parquet) WHERE - 85 IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q8330.out
+    data: |

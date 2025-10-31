@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q10865.spq | sort > q10865.out
+
+inputs:
+  - name: q10865.spq
+    data: |
+      SELECT ALL * FROM tab2 (FORMAT parquet) AS cor0 WHERE CAST ( NULL AS INTEGER ) BETWEEN 40 AND - - 90;
+  - name: tab2
+
+outputs:
+  - name: q10865.out
+    data: |

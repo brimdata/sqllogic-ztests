@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q5938.spq | sort > q5938.out
+
+inputs:
+  - name: q5938.spq
+    data: |
+      SELECT DISTINCT * FROM tab1 (FORMAT parquet) cor0 WHERE NULL NOT BETWEEN + col0 / + - col0 AND 49 - col1 + 21;
+  - name: tab1
+
+outputs:
+  - name: q5938.out
+    data: |

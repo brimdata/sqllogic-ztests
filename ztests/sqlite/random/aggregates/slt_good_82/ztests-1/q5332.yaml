@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q5332.spq | sort > q5332.out
+
+inputs:
+  - name: q5332.spq
+    data: |
+      SELECT ALL col2 - col1 AS col2 FROM tab1 (FORMAT parquet) WHERE ( 15 + ( 4 ) ) = - col2;
+  - name: tab1
+
+outputs:
+  - name: q5332.out
+    data: |

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q12594.spq | sort > q12594.out
+
+inputs:
+  - name: q12594.spq
+    data: |
+      SELECT 72 AS col2 FROM tab1 (FORMAT parquet) WHERE + - col1 <= ( col0 );
+  - name: tab1
+
+outputs:
+  - name: q12594.out
+    data: |
+      72
+      72
+      72

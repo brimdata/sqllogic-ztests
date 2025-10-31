@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q12366.spq | sort > q12366.out
+
+inputs:
+  - name: q12366.spq
+    data: |
+      SELECT ALL * FROM tab1 (FORMAT parquet) WHERE NULL IN ( - + ( - + CAST ( NULL AS REAL ) ), - 78, + + col1, - col1, + ( - + 51 ) + + 35 * - - col1, + col2 );
+  - name: tab1
+
+outputs:
+  - name: q12366.out
+    data: |

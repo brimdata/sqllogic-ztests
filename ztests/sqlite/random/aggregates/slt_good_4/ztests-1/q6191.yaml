@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q6191.spq | sort > q6191.out
+
+inputs:
+  - name: q6191.spq
+    data: |
+      SELECT ALL + MIN ( 40 ) AS col0 FROM tab0 (FORMAT parquet) WHERE NOT NULL IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q6191.out
+    data: |
+      40

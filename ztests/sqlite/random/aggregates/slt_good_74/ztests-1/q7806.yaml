@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q7806.spq | sort > q7806.out
+
+inputs:
+  - name: q7806.spq
+    data: |
+      SELECT 70 + COUNT ( + col1 + 93 ) AS col2 FROM tab2 (FORMAT parquet);
+  - name: tab2
+
+outputs:
+  - name: q7806.out
+    data: |
+      73

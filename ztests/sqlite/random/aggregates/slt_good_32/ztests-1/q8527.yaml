@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8527.spq | sort > q8527.out
+
+inputs:
+  - name: q8527.spq
+    data: |
+      SELECT ALL * FROM tab2 (FORMAT parquet) WHERE NOT CAST ( NULL AS REAL ) * col1 IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q8527.out
+    data: |

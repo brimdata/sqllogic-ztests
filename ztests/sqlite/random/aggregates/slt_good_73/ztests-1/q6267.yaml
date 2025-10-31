@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q6267.spq | sort > q6267.out
+
+inputs:
+  - name: q6267.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) WHERE + col1 * - col0 BETWEEN NULL AND - - 9 * + CAST ( + col2 AS INTEGER );
+  - name: tab2
+
+outputs:
+  - name: q6267.out
+    data: |

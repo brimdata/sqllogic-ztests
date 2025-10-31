@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q172.spq | sort > q172.out
+
+inputs:
+  - name: q172.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) WHERE NOT col2 BETWEEN NULL AND ( - col1 * col1 + - col0 ) AND ( 17 ) IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q172.out
+    data: |

@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q13240.spq | sort > q13240.out
+
+inputs:
+  - name: q13240.spq
+    data: |
+      SELECT SUM ( col2 ) FROM tab1 (FORMAT parquet) WHERE + col1 NOT BETWEEN 42 * - 73 AND + 1;
+  - name: tab1
+
+outputs:
+  - name: q13240.out
+    data: |
+      223

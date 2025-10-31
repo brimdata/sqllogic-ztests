@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q824.spq | sort > q824.out
+
+inputs:
+  - name: q824.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) AS cor0 WHERE NULL BETWEEN NULL AND 3 + - col2;
+  - name: tab0
+
+outputs:
+  - name: q824.out
+    data: |

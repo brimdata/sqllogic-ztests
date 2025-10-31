@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q9480.spq | sort > q9480.out
+
+inputs:
+  - name: q9480.spq
+    data: |
+      SELECT ALL * FROM tab2 (FORMAT parquet) WHERE NOT ( NULL ) >= - 80 / 78 * col1 + col2;
+  - name: tab2
+
+outputs:
+  - name: q9480.out
+    data: |

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q3053.spq | sort > q3053.out
+
+inputs:
+  - name: q3053.spq
+    data: |
+      SELECT ALL * FROM tab2 (FORMAT parquet) WHERE 82 NOT BETWEEN NULL AND ( 53 );
+  - name: tab2
+
+outputs:
+  - name: q3053.out
+    data: |
+      46	51	23
+      64	77	40
+      75	67	58

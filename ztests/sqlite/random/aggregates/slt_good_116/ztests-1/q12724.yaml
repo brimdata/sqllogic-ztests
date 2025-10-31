@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q12724.spq | sort > q12724.out
+
+inputs:
+  - name: q12724.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) AS cor0 WHERE + 33 BETWEEN ( + + col2 ) AND col0;
+  - name: tab1
+
+outputs:
+  - name: q12724.out
+    data: |

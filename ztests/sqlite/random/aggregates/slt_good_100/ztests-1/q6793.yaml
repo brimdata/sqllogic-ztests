@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q6793.spq | sort > q6793.out
+
+inputs:
+  - name: q6793.spq
+    data: |
+      SELECT DISTINCT - - col1, col1 * 18 - ( - + col2 ) AS col1 FROM tab0 (FORMAT parquet) WHERE NOT ( col0 ) >= 60 * + col0 + + + col1;
+  - name: tab0
+
+outputs:
+  - name: q6793.out
+    data: |
+      1	117
+      21	388
+      81	1505

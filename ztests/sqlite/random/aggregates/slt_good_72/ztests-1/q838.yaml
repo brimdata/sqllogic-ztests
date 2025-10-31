@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q838.spq | sort > q838.out
+
+inputs:
+  - name: q838.spq
+    data: |
+      SELECT ALL * FROM tab1 (FORMAT parquet) cor0 WHERE + CAST ( NULL AS INTEGER ) BETWEEN + col2 AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q838.out
+    data: |

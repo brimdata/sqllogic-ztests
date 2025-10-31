@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q1321.spq | sort > q1321.out
+
+inputs:
+  - name: q1321.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE NOT - - 18 * - col2 - - CAST ( NULL AS INTEGER ) NOT BETWEEN + CAST ( NULL AS INTEGER ) AND NULL;
+  - name: tab0
+
+outputs:
+  - name: q1321.out
+    data: |

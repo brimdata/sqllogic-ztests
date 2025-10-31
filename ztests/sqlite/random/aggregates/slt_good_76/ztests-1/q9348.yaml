@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q9348.spq | sort > q9348.out
+
+inputs:
+  - name: q9348.spq
+    data: |
+      SELECT - CAST ( CAST ( ( col0 ) AS REAL ) AS INTEGER ) AS col2 FROM tab1 (FORMAT parquet) WHERE ( col2 ) BETWEEN ( + ( 61 ) ) AND ( NULL );
+  - name: tab1
+
+outputs:
+  - name: q9348.out
+    data: |

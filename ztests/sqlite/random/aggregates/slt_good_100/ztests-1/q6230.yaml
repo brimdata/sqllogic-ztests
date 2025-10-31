@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q6230.spq | sort > q6230.out
+
+inputs:
+  - name: q6230.spq
+    data: |
+      SELECT + col0 FROM tab0 (FORMAT parquet) WHERE NOT NULL BETWEEN - + col0 + 45 / - col0 AND - col0 + + 81;
+  - name: tab0
+
+outputs:
+  - name: q6230.out
+    data: |

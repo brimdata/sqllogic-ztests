@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q6958.spq | sort > q6958.out
+
+inputs:
+  - name: q6958.spq
+    data: |
+      SELECT DISTINCT * FROM tab2 (FORMAT parquet) WHERE - col0 + + col2 < - 97 + + 77;
+  - name: tab2
+
+outputs:
+  - name: q6958.out
+    data: |
+      46	51	23
+      64	77	40

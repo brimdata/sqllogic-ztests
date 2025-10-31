@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q3724.spq | sort > q3724.out
+
+inputs:
+  - name: q3724.spq
+    data: |
+      SELECT DISTINCT * FROM tab2 (FORMAT parquet) WHERE + 86 > col2 + col1;
+  - name: tab2
+
+outputs:
+  - name: q3724.out
+    data: |
+      46	51	23

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q5390.spq | sort > q5390.out
+
+inputs:
+  - name: q5390.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) WHERE NOT - ( ( CAST ( NULL AS INTEGER ) ) ) = + col2 * 66;
+  - name: tab2
+
+outputs:
+  - name: q5390.out
+    data: |

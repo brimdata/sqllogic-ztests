@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q3810.spq | sort > q3810.out
+
+inputs:
+  - name: q3810.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) AS cor0 CROSS JOIN tab1 (FORMAT parquet) WHERE 84 <= ( - 0 * 12 );
+  - name: tab1
+
+outputs:
+  - name: q3810.out
+    data: |

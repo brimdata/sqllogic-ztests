@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q8633.spq | sort > q8633.out
+
+inputs:
+  - name: q8633.spq
+    data: |
+      SELECT ALL - 13 FROM tab0 (FORMAT parquet) WHERE NOT ( NULL ) IS NULL OR NOT ( + col2 ) BETWEEN col2 AND + col1;
+  - name: tab0
+
+outputs:
+  - name: q8633.out
+    data: |
+      -13

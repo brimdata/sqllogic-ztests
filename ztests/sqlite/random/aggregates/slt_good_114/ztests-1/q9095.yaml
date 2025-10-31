@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q9095.spq | sort > q9095.out
+
+inputs:
+  - name: q9095.spq
+    data: |
+      SELECT DISTINCT * FROM tab0 (FORMAT parquet) WHERE + - CAST ( 20 AS INTEGER ) BETWEEN NULL AND col1;
+  - name: tab0
+
+outputs:
+  - name: q9095.out
+    data: |

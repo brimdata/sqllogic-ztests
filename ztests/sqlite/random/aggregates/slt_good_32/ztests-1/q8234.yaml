@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q8234.spq | sort > q8234.out
+
+inputs:
+  - name: q8234.spq
+    data: |
+      SELECT DISTINCT COUNT ( * ) - - - COUNT ( * ) + - 56 AS col0 FROM tab2 (FORMAT parquet) AS cor0 WHERE NULL IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q8234.out
+    data: |
+      -56

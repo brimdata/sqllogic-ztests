@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q7603.spq | sort > q7603.out
+
+inputs:
+  - name: q7603.spq
+    data: |
+      SELECT ALL * FROM tab2 (FORMAT parquet) cor0 WHERE NOT ( 22 + ( col2 ) ) NOT BETWEEN NULL AND - ( - col2 ) + 53;
+  - name: tab2
+
+outputs:
+  - name: q7603.out
+    data: |

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q4024.spq | sort > q4024.out
+
+inputs:
+  - name: q4024.spq
+    data: |
+      SELECT CAST ( NULL AS INTEGER ) AS col2 FROM tab2 (FORMAT parquet) WHERE NOT col1 IS NOT NULL AND NOT NULL IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q4024.out
+    data: |

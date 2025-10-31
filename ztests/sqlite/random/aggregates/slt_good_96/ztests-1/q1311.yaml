@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q1311.spq | sort > q1311.out
+
+inputs:
+  - name: q1311.spq
+    data: |
+      SELECT ALL + col2 AS col0 FROM tab0 (FORMAT parquet) WHERE + col1 <= col2;
+  - name: tab0
+
+outputs:
+  - name: q1311.out
+    data: |
+      99

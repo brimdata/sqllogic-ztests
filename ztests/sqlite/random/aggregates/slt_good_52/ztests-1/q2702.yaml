@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q2702.spq | sort > q2702.out
+
+inputs:
+  - name: q2702.spq
+    data: |
+      SELECT col0 + col0 AS col0 FROM tab1 (FORMAT parquet) WHERE ( - 48 ) IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q2702.out
+    data: |
+      102
+      170
+      182

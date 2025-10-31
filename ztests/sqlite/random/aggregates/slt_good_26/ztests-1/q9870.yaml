@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q9870.spq | sort > q9870.out
+
+inputs:
+  - name: q9870.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) AS cor0 WHERE - 42 >= - col2;
+  - name: tab0
+
+outputs:
+  - name: q9870.out
+    data: |
+      15	81	47
+      97	1	99

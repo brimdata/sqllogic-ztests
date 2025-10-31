@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q2817.spq | sort > q2817.out
+
+inputs:
+  - name: q2817.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) AS cor0 JOIN tab1 (FORMAT parquet) AS cor1 ON ( NULL ) NOT IN ( + 39 );
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q2817.out
+    data: |

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q13407.spq | sort > q13407.out
+
+inputs:
+  - name: q13407.spq
+    data: |
+      SELECT col2 FROM tab0 (FORMAT parquet) WHERE NOT NULL NOT BETWEEN - 38 AND 56 AND NOT ( NULL ) BETWEEN NULL AND - ( - - 20 );
+  - name: tab0
+
+outputs:
+  - name: q13407.out
+    data: |

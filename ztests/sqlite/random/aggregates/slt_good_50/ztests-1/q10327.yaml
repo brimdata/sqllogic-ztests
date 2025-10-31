@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q10327.spq | sort > q10327.out
+
+inputs:
+  - name: q10327.spq
+    data: |
+      SELECT - 10 AS col0 FROM tab1 (FORMAT parquet) AS cor0 WHERE 90 + col1 < + col1;
+  - name: tab1
+
+outputs:
+  - name: q10327.out
+    data: |

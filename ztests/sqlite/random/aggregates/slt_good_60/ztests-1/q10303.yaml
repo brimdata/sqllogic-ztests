@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q10303.spq | sort > q10303.out
+
+inputs:
+  - name: q10303.spq
+    data: |
+      SELECT ALL * FROM tab0 (FORMAT parquet) AS cor0 WHERE ( NOT NULL IN ( + CAST ( col1 AS INTEGER ) * CAST ( NULL AS INTEGER ) ) );
+  - name: tab0
+
+outputs:
+  - name: q10303.out
+    data: |

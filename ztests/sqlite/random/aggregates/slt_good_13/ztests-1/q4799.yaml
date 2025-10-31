@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q4799.spq | sort > q4799.out
+
+inputs:
+  - name: q4799.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE NOT NULL BETWEEN col0 * 89 AND - 77 + + col1;
+  - name: tab0
+
+outputs:
+  - name: q4799.out
+    data: |

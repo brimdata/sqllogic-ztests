@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q9055.spq | sort > q9055.out
+
+inputs:
+  - name: q9055.spq
+    data: |
+      SELECT 43 * col1 AS col1, - col1 FROM tab1 (FORMAT parquet);
+  - name: tab1
+
+outputs:
+  - name: q9055.out
+    data: |
+      2021	-47
+      215	-5
+      602	-14

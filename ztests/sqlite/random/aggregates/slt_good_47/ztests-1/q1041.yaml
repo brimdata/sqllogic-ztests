@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q1041.spq | sort > q1041.out
+
+inputs:
+  - name: q1041.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) WHERE NOT col1 >= 78 / 68 - col1 * + 64;
+  - name: tab1
+
+outputs:
+  - name: q1041.out
+    data: |

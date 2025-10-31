@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q10049.spq | sort > q10049.out
+
+inputs:
+  - name: q10049.spq
+    data: |
+      SELECT CAST ( NULL AS INTEGER ) AS col1 FROM tab0 (FORMAT parquet) WHERE NOT - col1 + - 35 NOT IN ( 90 );
+  - name: tab0
+
+outputs:
+  - name: q10049.out
+    data: |

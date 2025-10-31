@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q6344.spq | sort > q6344.out
+
+inputs:
+  - name: q6344.spq
+    data: |
+      SELECT ALL * FROM tab1 (FORMAT parquet) WHERE NOT ( - 41 ) BETWEEN ( NULL ) AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q6344.out
+    data: |

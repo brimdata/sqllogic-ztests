@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q4704.spq | sort > q4704.out
+
+inputs:
+  - name: q4704.spq
+    data: |
+      SELECT ALL * FROM tab1 (FORMAT parquet) WHERE NOT ( + - col2 ) >= - 4;
+  - name: tab1
+
+outputs:
+  - name: q4704.out
+    data: |
+      51	14	96
+      85	5	59
+      91	47	68

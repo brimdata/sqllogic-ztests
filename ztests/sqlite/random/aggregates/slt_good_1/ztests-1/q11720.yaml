@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q11720.spq | sort > q11720.out
+
+inputs:
+  - name: q11720.spq
+    data: |
+      SELECT DISTINCT COUNT ( * ) * - + COUNT ( * ) * + MAX ( - col1 ) col0 FROM tab2 (FORMAT parquet);
+  - name: tab2
+
+outputs:
+  - name: q11720.out
+    data: |
+      459

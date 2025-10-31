@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q729.spq | sort > q729.out
+
+inputs:
+  - name: q729.spq
+    data: |
+      SELECT ALL * FROM tab1 (FORMAT parquet) WHERE NOT ( ( + + col0 BETWEEN + 25 * col1 * + + col2 * col1 - + 11 + + ( - col1 ) - - col1 AND ( col2 ) + - 59 ) );
+  - name: tab1
+
+outputs:
+  - name: q729.out
+    data: |
+      51	14	96
+      85	5	59
+      91	47	68

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q5235.spq | sort > q5235.out
+
+inputs:
+  - name: q5235.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) WHERE NULL BETWEEN + 46 + + col0 * - 44 AND 26;
+  - name: tab1
+
+outputs:
+  - name: q5235.out
+    data: |

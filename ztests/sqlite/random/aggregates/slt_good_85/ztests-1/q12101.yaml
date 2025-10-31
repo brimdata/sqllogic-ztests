@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q12101.spq | sort > q12101.out
+
+inputs:
+  - name: q12101.spq
+    data: |
+      SELECT - SUM ( - + 8 ) AS col1 FROM tab2 (FORMAT parquet) AS cor0 CROSS JOIN tab1 (FORMAT parquet) cor1;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q12101.out
+    data: |
+      72

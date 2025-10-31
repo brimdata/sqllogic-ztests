@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q3138.spq | sort > q3138.out
+
+inputs:
+  - name: q3138.spq
+    data: |
+      SELECT col2 * col1 - 70 AS col2 FROM tab2 (FORMAT parquet) WHERE col0 * - ( - 78 ) + col1 * + col2 IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q3138.out
+    data: |
+      1103
+      3010
+      3816

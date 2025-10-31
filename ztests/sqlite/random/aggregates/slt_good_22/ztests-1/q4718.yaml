@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q4718.spq | sort > q4718.out
+
+inputs:
+  - name: q4718.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) WHERE - - 3 * col1 * + col0 + - 36 - - 68 IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q4718.out
+    data: |

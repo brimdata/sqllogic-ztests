@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q10131.spq | sort > q10131.out
+
+inputs:
+  - name: q10131.spq
+    data: |
+      SELECT ALL + + MAX ( col1 ) FROM tab0 (FORMAT parquet) WHERE NULL IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q10131.out
+    data: |
+      81

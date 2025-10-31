@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q11256.spq | sort > q11256.out
+
+inputs:
+  - name: q11256.spq
+    data: |
+      SELECT col0 FROM tab0 (FORMAT parquet) WHERE NOT ( + col2 * col2 ) BETWEEN col2 - - 2 AND NULL;
+  - name: tab0
+
+outputs:
+  - name: q11256.out
+    data: |

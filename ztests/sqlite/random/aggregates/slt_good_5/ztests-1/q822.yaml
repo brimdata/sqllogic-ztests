@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q822.spq | sort > q822.out
+
+inputs:
+  - name: q822.spq
+    data: |
+      SELECT ALL COUNT ( * ) * + 73 AS col2 FROM tab1 (FORMAT parquet) AS cor0 CROSS JOIN tab0 (FORMAT parquet) WHERE NOT NULL IS NOT NULL;
+  - name: tab0
+  - name: tab1
+
+outputs:
+  - name: q822.out
+    data: |
+      657

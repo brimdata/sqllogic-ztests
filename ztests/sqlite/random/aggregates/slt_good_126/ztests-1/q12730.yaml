@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q12730.spq | sort > q12730.out
+
+inputs:
+  - name: q12730.spq
+    data: |
+      SELECT ALL + col2 FROM tab2 (FORMAT parquet) WHERE NOT ( 46 ) BETWEEN - CAST ( + col2 AS REAL ) + - + col2 AND NULL;
+  - name: tab2
+
+outputs:
+  - name: q12730.out
+    data: |

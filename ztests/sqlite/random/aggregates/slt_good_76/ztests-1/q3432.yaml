@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q3432.spq | sort > q3432.out
+
+inputs:
+  - name: q3432.spq
+    data: |
+      SELECT ALL * FROM tab0 (FORMAT parquet) WHERE - 55 * 24 NOT BETWEEN 97 AND ( - col2 );
+  - name: tab0
+
+outputs:
+  - name: q3432.out
+    data: |
+      15	81	47
+      87	21	10
+      97	1	99

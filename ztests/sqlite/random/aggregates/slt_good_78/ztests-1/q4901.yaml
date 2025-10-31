@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q4901.spq | sort > q4901.out
+
+inputs:
+  - name: q4901.spq
+    data: |
+      SELECT + COUNT ( CAST ( col1 AS INTEGER ) ) FROM tab2 (FORMAT parquet);
+  - name: tab2
+
+outputs:
+  - name: q4901.out
+    data: |
+      3

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q1390.spq | sort > q1390.out
+
+inputs:
+  - name: q1390.spq
+    data: |
+      SELECT 32 AS col1 FROM tab0 (FORMAT parquet) WHERE NULL IN ( CAST ( - ( - col2 ) AS INTEGER ) );
+  - name: tab0
+
+outputs:
+  - name: q1390.out
+    data: |

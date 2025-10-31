@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q384.spq | sort > q384.out
+
+inputs:
+  - name: q384.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) AS cor0 WHERE col0 - - 0 IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q384.out
+    data: |

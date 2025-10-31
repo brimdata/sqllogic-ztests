@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q5119.spq | sort > q5119.out
+
+inputs:
+  - name: q5119.spq
+    data: |
+      SELECT DISTINCT - 42 * + 48 * col0, col1 / + col0 + 59 AS col1, - col0 AS col0 FROM tab1 (FORMAT parquet) WHERE col1 IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q5119.out
+    data: |
+      -102816	59	-51
+      -171360	59	-85
+      -183456	59	-91

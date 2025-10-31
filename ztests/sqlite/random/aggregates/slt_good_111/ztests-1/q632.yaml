@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q632.spq | sort > q632.out
+
+inputs:
+  - name: q632.spq
+    data: |
+      SELECT DISTINCT col1 * + 6 AS col0 FROM tab0 (FORMAT parquet) WHERE NOT NULL BETWEEN 4 AND ( NULL );
+  - name: tab0
+
+outputs:
+  - name: q632.out
+    data: |

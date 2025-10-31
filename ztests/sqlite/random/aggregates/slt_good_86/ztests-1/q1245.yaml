@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q1245.spq | sort > q1245.out
+
+inputs:
+  - name: q1245.spq
+    data: |
+      SELECT DISTINCT MAX ( DISTINCT + col0 ) AS col0 FROM tab1 (FORMAT parquet);
+  - name: tab1
+
+outputs:
+  - name: q1245.out
+    data: |
+      91

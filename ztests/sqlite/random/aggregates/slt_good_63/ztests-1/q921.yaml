@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q921.spq | sort > q921.out
+
+inputs:
+  - name: q921.spq
+    data: |
+      SELECT ALL MAX ( DISTINCT 26 ) AS col2 FROM tab2 (FORMAT parquet);
+  - name: tab2
+
+outputs:
+  - name: q921.out
+    data: |
+      26

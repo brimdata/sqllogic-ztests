@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q8492.spq | sort > q8492.out
+
+inputs:
+  - name: q8492.spq
+    data: |
+      SELECT DISTINCT - COUNT ( * ) AS col0, MIN ( DISTINCT - col1 ) FROM tab2 (FORMAT parquet) AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q8492.out
+    data: |
+      -3	-77

@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q7195.spq | sort > q7195.out
+
+inputs:
+  - name: q7195.spq
+    data: |
+      SELECT - MAX ( 76 ) FROM tab1 (FORMAT parquet) AS cor0 CROSS JOIN tab0 (FORMAT parquet) cor1;
+  - name: tab0
+  - name: tab1
+
+outputs:
+  - name: q7195.out
+    data: |
+      -76

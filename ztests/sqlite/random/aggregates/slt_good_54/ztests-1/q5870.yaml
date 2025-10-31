@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q5870.spq | sort > q5870.out
+
+inputs:
+  - name: q5870.spq
+    data: |
+      SELECT DISTINCT - col0 AS col1 FROM tab2 (FORMAT parquet) WHERE NOT - 3 * + col2 * - 89 + - 56 BETWEEN NULL AND NULL;
+  - name: tab2
+
+outputs:
+  - name: q5870.out
+    data: |

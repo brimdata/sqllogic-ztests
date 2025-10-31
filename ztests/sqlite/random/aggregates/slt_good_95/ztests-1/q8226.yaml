@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8226.spq | sort > q8226.out
+
+inputs:
+  - name: q8226.spq
+    data: |
+      SELECT + 36 AS col2 FROM tab2 (FORMAT parquet) WHERE - - col1 - - col2 <= + col0 * - + CAST ( NULL AS REAL );
+  - name: tab2
+
+outputs:
+  - name: q8226.out
+    data: |

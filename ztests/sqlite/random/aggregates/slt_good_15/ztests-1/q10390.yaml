@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q10390.spq | sort > q10390.out
+
+inputs:
+  - name: q10390.spq
+    data: |
+      SELECT ALL + 38 / - 28 AS col1 FROM tab1 (FORMAT parquet) AS cor0 WHERE ( NULL ) <> + CAST ( + - col1 AS INTEGER );
+  - name: tab1
+
+outputs:
+  - name: q10390.out
+    data: |

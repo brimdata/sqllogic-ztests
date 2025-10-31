@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q13200.spq | sort > q13200.out
+
+inputs:
+  - name: q13200.spq
+    data: |
+      SELECT 42 * + ( + col2 / col1 ) FROM tab1 (FORMAT parquet) WHERE NOT - col2 = ( - col1 );
+  - name: tab1
+
+outputs:
+  - name: q13200.out
+    data: |
+      252
+      42
+      462

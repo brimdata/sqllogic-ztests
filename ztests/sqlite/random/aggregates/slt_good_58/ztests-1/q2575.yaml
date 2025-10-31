@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q2575.spq | sort > q2575.out
+
+inputs:
+  - name: q2575.spq
+    data: |
+      SELECT 5, + 73 * + col1 AS col1 FROM tab2 (FORMAT parquet) WHERE NOT - 3 + - col1 + - ( + - col2 ) IN ( + ( - col0 ), + col1 );
+  - name: tab2
+
+outputs:
+  - name: q2575.out
+    data: |
+      5	3723
+      5	4891
+      5	5621

@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q848.spq | sort > q848.out
+
+inputs:
+  - name: q848.spq
+    data: |
+      SELECT DISTINCT 24 / + COUNT ( * ) FROM tab2 (FORMAT parquet) WHERE + col1 < 50 * + ( 34 );
+  - name: tab2
+
+outputs:
+  - name: q848.out
+    data: |
+      8

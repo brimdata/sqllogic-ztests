@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q344.spq | sort > q344.out
+
+inputs:
+  - name: q344.spq
+    data: |
+      SELECT ALL MIN ( 31 ) / - COUNT ( * ) + - COUNT ( * ) AS col1 FROM tab2 (FORMAT parquet);
+  - name: tab2
+
+outputs:
+  - name: q344.out
+    data: |
+      -13

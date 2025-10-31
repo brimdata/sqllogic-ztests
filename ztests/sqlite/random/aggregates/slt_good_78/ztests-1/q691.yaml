@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q691.spq | sort > q691.out
+
+inputs:
+  - name: q691.spq
+    data: |
+      SELECT ALL CAST ( - ( + col1 ) AS INTEGER ) AS col0 FROM tab1 (FORMAT parquet) WHERE NOT + CAST ( NULL AS REAL ) BETWEEN 49 - - + col1 AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q691.out
+    data: |

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8674.spq | sort > q8674.out
+
+inputs:
+  - name: q8674.spq
+    data: |
+      SELECT - col2 AS col2 FROM tab2 (FORMAT parquet) WHERE NOT CAST ( NULL AS INTEGER ) * - 24 * - 94 BETWEEN NULL AND NULL;
+  - name: tab2
+
+outputs:
+  - name: q8674.out
+    data: |

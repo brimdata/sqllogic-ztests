@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q4708.spq | sort > q4708.out
+
+inputs:
+  - name: q4708.spq
+    data: |
+      SELECT + col2 FROM tab1 (FORMAT parquet) AS cor0 WHERE NOT 80 IN ( col0 );
+  - name: tab1
+
+outputs:
+  - name: q4708.out
+    data: |
+      59
+      68
+      96

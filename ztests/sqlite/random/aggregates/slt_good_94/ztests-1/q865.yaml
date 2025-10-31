@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q865.spq | sort > q865.out
+
+inputs:
+  - name: q865.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE NOT ( NULL ) <= - CAST ( NULL AS INTEGER );
+  - name: tab0
+
+outputs:
+  - name: q865.out
+    data: |

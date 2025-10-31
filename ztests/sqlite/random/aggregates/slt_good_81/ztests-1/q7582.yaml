@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q7582.spq | sort > q7582.out
+
+inputs:
+  - name: q7582.spq
+    data: |
+      SELECT ALL * FROM tab2 (FORMAT parquet) WHERE NULL <> ( + 70 );
+  - name: tab2
+
+outputs:
+  - name: q7582.out
+    data: |

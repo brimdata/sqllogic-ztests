@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q3354.spq | sort > q3354.out
+
+inputs:
+  - name: q3354.spq
+    data: |
+      SELECT + COUNT ( * ) AS col2 FROM tab1 (FORMAT parquet) WHERE - - 90 / - 46 IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q3354.out
+    data: |
+      3

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8600.spq | sort > q8600.out
+
+inputs:
+  - name: q8600.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) AS cor0 WHERE - 65 BETWEEN - col2 / 26 AND NULL;
+  - name: tab0
+
+outputs:
+  - name: q8600.out
+    data: |

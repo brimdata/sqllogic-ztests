@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q6475.spq | sort > q6475.out
+
+inputs:
+  - name: q6475.spq
+    data: |
+      SELECT + - 45 AS col1 FROM tab1 (FORMAT parquet) WHERE + + col1 IN ( + 63, 86, - ( col2 ) );
+  - name: tab1
+
+outputs:
+  - name: q6475.out
+    data: |

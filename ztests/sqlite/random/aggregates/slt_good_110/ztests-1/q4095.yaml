@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q4095.spq | sort > q4095.out
+
+inputs:
+  - name: q4095.spq
+    data: |
+      SELECT + 96 AS col0, col1 * - 51 AS col1 FROM tab0 (FORMAT parquet) AS cor0 WHERE - ( + + col0 ) IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q4095.out
+    data: |
+      96	-1071
+      96	-4131
+      96	-51

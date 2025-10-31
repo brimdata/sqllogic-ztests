@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q6502.spq | sort > q6502.out
+
+inputs:
+  - name: q6502.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) AS cor0 WHERE 17 BETWEEN NULL AND - + col2;
+  - name: tab0
+
+outputs:
+  - name: q6502.out
+    data: |

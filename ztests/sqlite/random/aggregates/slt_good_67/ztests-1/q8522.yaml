@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q8522.spq | sort > q8522.out
+
+inputs:
+  - name: q8522.spq
+    data: |
+      SELECT MIN ( DISTINCT col2 ) AS col1 FROM tab2 (FORMAT parquet) WHERE NOT NULL IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q8522.out
+    data: |
+      23

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q5393.spq | sort > q5393.out
+
+inputs:
+  - name: q5393.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) WHERE ( - 3 + col2 * + 27 ) <= NULL;
+  - name: tab2
+
+outputs:
+  - name: q5393.out
+    data: |

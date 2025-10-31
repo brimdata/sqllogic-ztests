@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q1627.spq | sort > q1627.out
+
+inputs:
+  - name: q1627.spq
+    data: |
+      SELECT + + col1 AS col0 FROM tab0 (FORMAT parquet) WHERE NOT col0 >= - 55;
+  - name: tab0
+
+outputs:
+  - name: q1627.out
+    data: |

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q2413.spq | sort > q2413.out
+
+inputs:
+  - name: q2413.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE col2 * - 76 / + col1 + 74 IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q2413.out
+    data: |
+      15	81	47
+      87	21	10
+      97	1	99

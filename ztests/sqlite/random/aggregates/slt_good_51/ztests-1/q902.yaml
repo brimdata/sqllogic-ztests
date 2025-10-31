@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q902.spq | sort > q902.out
+
+inputs:
+  - name: q902.spq
+    data: |
+      SELECT ALL * FROM tab0 (FORMAT parquet) WHERE + - ( + 99 ) IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q902.out
+    data: |

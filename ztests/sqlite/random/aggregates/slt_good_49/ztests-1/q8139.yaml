@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q8139.spq | sort > q8139.out
+
+inputs:
+  - name: q8139.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) AS cor0 CROSS JOIN tab1 (FORMAT parquet) AS cor1 WHERE ( NULL ) BETWEEN ( + 22 ) AND NULL;
+  - name: tab0
+  - name: tab1
+
+outputs:
+  - name: q8139.out
+    data: |

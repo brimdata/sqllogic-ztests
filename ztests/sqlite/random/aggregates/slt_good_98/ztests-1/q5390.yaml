@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q5390.spq | sort > q5390.out
+
+inputs:
+  - name: q5390.spq
+    data: |
+      SELECT - col1 * + col1 - - 28 AS col0 FROM tab2 (FORMAT parquet) WHERE NOT 39 = 13;
+  - name: tab2
+
+outputs:
+  - name: q5390.out
+    data: |
+      -2573
+      -4461
+      -5901

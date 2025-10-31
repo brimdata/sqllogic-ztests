@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q4394.spq | sort > q4394.out
+
+inputs:
+  - name: q4394.spq
+    data: |
+      SELECT DISTINCT - col2 + col0 / - 19 FROM tab1 (FORMAT parquet) WHERE NOT NULL BETWEEN - col1 AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q4394.out
+    data: |

@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q5914.spq | sort > q5914.out
+
+inputs:
+  - name: q5914.spq
+    data: |
+      SELECT DISTINCT 9 FROM tab1 (FORMAT parquet) AS cor0 WHERE NOT col0 / col1 IN ( 51 );
+  - name: tab1
+
+outputs:
+  - name: q5914.out
+    data: |
+      9

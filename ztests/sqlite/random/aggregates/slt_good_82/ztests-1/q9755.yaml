@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q9755.spq | sort > q9755.out
+
+inputs:
+  - name: q9755.spq
+    data: |
+      SELECT ALL * FROM tab1 (FORMAT parquet) WHERE CAST ( 28 AS REAL ) + + col0 * - col0 NOT BETWEEN ( NULL ) AND ( NULL );
+  - name: tab1
+
+outputs:
+  - name: q9755.out
+    data: |

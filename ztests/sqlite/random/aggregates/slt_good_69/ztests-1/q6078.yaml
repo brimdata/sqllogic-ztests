@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q6078.spq | sort > q6078.out
+
+inputs:
+  - name: q6078.spq
+    data: |
+      SELECT DISTINCT * FROM tab1 (FORMAT parquet) WHERE NOT col1 BETWEEN NULL AND + - col0 * 85 * - 50 + + CAST ( NULL AS INTEGER );
+  - name: tab1
+
+outputs:
+  - name: q6078.out
+    data: |

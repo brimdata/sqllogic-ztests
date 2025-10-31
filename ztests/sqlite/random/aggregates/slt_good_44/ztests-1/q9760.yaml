@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q9760.spq | sort > q9760.out
+
+inputs:
+  - name: q9760.spq
+    data: |
+      SELECT - + ( - CAST ( NULL AS REAL ) ) * + col0 FROM tab2 (FORMAT parquet) WHERE NULL = + col1;
+  - name: tab2
+
+outputs:
+  - name: q9760.out
+    data: |

@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q9249.spq | sort > q9249.out
+
+inputs:
+  - name: q9249.spq
+    data: |
+      SELECT - COUNT ( * ) AS col1, - COUNT ( * ) - 15 FROM tab0 (FORMAT parquet);
+  - name: tab0
+
+outputs:
+  - name: q9249.out
+    data: |
+      -3	-18

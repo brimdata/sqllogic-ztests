@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q4162.spq | sort > q4162.out
+
+inputs:
+  - name: q4162.spq
+    data: |
+      SELECT ALL - col1 FROM tab2 (FORMAT parquet) WHERE - 25 NOT BETWEEN 97 AND NULL;
+  - name: tab2
+
+outputs:
+  - name: q4162.out
+    data: |
+      -51
+      -67
+      -77

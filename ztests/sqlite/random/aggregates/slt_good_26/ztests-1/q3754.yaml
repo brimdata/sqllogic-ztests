@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q3754.spq | sort > q3754.out
+
+inputs:
+  - name: q3754.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE NOT - ( CAST ( 95 AS INTEGER ) ) IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q3754.out
+    data: |

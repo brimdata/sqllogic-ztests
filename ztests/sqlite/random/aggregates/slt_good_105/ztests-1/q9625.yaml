@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q9625.spq | sort > q9625.out
+
+inputs:
+  - name: q9625.spq
+    data: |
+      SELECT DISTINCT COUNT ( * ) * 98 AS col1 FROM tab0 (FORMAT parquet) AS cor0;
+  - name: tab0
+
+outputs:
+  - name: q9625.out
+    data: |
+      294

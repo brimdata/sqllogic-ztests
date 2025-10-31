@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q2537.spq | sort > q2537.out
+
+inputs:
+  - name: q2537.spq
+    data: |
+      SELECT ALL * FROM tab2 (FORMAT parquet) WHERE col0 - col2 IN ( - col1, col0 * + + 35 * 60 );
+  - name: tab2
+
+outputs:
+  - name: q2537.out
+    data: |

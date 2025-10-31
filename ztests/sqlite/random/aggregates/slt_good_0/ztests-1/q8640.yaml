@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8640.spq | sort > q8640.out
+
+inputs:
+  - name: q8640.spq
+    data: |
+      SELECT DISTINCT * FROM tab2 (FORMAT parquet) WHERE - + 90 BETWEEN + + col1 AND - - col2;
+  - name: tab2
+
+outputs:
+  - name: q8640.out
+    data: |

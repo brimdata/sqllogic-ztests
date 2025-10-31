@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q7831.spq | sort > q7831.out
+
+inputs:
+  - name: q7831.spq
+    data: |
+      SELECT ALL col2 FROM tab1 (FORMAT parquet) WHERE NOT - col2 + - - col1 + - 39 >= ( 2 ) - col0;
+  - name: tab1
+
+outputs:
+  - name: q7831.out
+    data: |
+      59
+      96

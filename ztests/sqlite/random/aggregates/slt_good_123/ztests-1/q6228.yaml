@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q6228.spq | sort > q6228.out
+
+inputs:
+  - name: q6228.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) WHERE ( ( 11 ) IN ( col2 + + 0 - 63 ) );
+  - name: tab2
+
+outputs:
+  - name: q6228.out
+    data: |

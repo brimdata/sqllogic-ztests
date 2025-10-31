@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q3867.spq | sort > q3867.out
+
+inputs:
+  - name: q3867.spq
+    data: |
+      SELECT + 36 / + col2 FROM tab1 (FORMAT parquet) WHERE NOT ( - 75 / - CAST ( - + col2 AS INTEGER ) ) IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q3867.out
+    data: |

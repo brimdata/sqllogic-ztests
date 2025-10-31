@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q11684.spq | sort > q11684.out
+
+inputs:
+  - name: q11684.spq
+    data: |
+      SELECT 52 FROM tab1 (FORMAT parquet) WHERE + col0 NOT IN ( 76 * + 82, col0 * col1, - - col1 );
+  - name: tab1
+
+outputs:
+  - name: q11684.out
+    data: |
+      52
+      52
+      52

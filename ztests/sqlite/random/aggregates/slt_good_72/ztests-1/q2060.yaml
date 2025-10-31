@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q2060.spq | sort > q2060.out
+
+inputs:
+  - name: q2060.spq
+    data: |
+      SELECT DISTINCT * FROM tab1 (FORMAT parquet) WHERE ( NULL ) BETWEEN ( col2 * 87 + 38 ) AND - col0 * col0;
+  - name: tab1
+
+outputs:
+  - name: q2060.out
+    data: |

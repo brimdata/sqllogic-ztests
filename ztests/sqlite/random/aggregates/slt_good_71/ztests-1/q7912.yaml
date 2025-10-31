@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q7912.spq | sort > q7912.out
+
+inputs:
+  - name: q7912.spq
+    data: |
+      SELECT DISTINCT SUM ( DISTINCT - 56 ) AS col1 FROM tab2 (FORMAT parquet);
+  - name: tab2
+
+outputs:
+  - name: q7912.out
+    data: |
+      -56

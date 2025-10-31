@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q10706.spq | sort > q10706.out
+
+inputs:
+  - name: q10706.spq
+    data: |
+      SELECT DISTINCT + 33 FROM tab0 (FORMAT parquet) WHERE NOT col2 - + col2 * col2 BETWEEN - col2 AND ( + col2 );
+  - name: tab0
+
+outputs:
+  - name: q10706.out
+    data: |
+      33

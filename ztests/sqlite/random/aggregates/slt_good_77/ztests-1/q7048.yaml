@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q7048.spq | sort > q7048.out
+
+inputs:
+  - name: q7048.spq
+    data: |
+      SELECT DISTINCT * FROM tab2 (FORMAT parquet) WHERE ( col2 ) NOT IN ( 50 / - ( 23 * - col0 ) + + 4 );
+  - name: tab2
+
+outputs:
+  - name: q7048.out
+    data: |
+      46	51	23
+      64	77	40
+      75	67	58

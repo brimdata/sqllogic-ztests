@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q11404.spq | sort > q11404.out
+
+inputs:
+  - name: q11404.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) WHERE ( 15 + col2 * 94 ) <= CAST ( - 24 AS INTEGER ) / - col2;
+  - name: tab2
+
+outputs:
+  - name: q11404.out
+    data: |

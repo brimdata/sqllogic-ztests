@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8791.spq | sort > q8791.out
+
+inputs:
+  - name: q8791.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) AS cor0 WHERE NOT col2 / - col0 NOT BETWEEN ( CAST ( col1 AS REAL ) * col2 ) AND 4;
+  - name: tab0
+
+outputs:
+  - name: q8791.out
+    data: |

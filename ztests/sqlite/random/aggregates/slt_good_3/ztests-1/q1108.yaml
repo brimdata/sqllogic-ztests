@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q1108.spq | sort > q1108.out
+
+inputs:
+  - name: q1108.spq
+    data: |
+      SELECT col2 FROM tab1 (FORMAT parquet) WHERE - 13 * - col2 <> col1;
+  - name: tab1
+
+outputs:
+  - name: q1108.out
+    data: |
+      59
+      68
+      96

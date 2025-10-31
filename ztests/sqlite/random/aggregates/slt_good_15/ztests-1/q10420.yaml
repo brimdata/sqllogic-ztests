@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q10420.spq | sort > q10420.out
+
+inputs:
+  - name: q10420.spq
+    data: |
+      SELECT ALL ( + col2 ) * col0 + - + 32, - col1 / - col0 + + col2 AS col1 FROM tab2 (FORMAT parquet);
+  - name: tab2
+
+outputs:
+  - name: q10420.out
+    data: |
+      1026	24
+      2528	41
+      4318	58

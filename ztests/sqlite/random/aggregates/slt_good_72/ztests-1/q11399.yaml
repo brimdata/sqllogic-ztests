@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q11399.spq | sort > q11399.out
+
+inputs:
+  - name: q11399.spq
+    data: |
+      SELECT ALL 27 * - + 33, - col0 FROM tab1 (FORMAT parquet) WHERE NOT col1 IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q11399.out
+    data: |

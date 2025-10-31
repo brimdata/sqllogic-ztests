@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q10407.spq | sort > q10407.out
+
+inputs:
+  - name: q10407.spq
+    data: |
+      SELECT DISTINCT - COUNT ( * ) AS col0 FROM tab1 (FORMAT parquet) AS cor0 CROSS JOIN tab2 (FORMAT parquet);
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q10407.out
+    data: |
+      -9

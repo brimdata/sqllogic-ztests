@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q530.spq | sort > q530.out
+
+inputs:
+  - name: q530.spq
+    data: |
+      SELECT ALL 55 * col0 FROM tab2 (FORMAT parquet) WHERE NOT col1 BETWEEN - col2 + - 58 AND 80 OR NOT ( - col0 * col0 ) IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q530.out
+    data: |

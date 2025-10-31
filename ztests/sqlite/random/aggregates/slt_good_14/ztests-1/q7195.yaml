@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q7195.spq | sort > q7195.out
+
+inputs:
+  - name: q7195.spq
+    data: |
+      SELECT DISTINCT * FROM tab1 (FORMAT parquet) WHERE NOT - col2 / ( + + 6 ) BETWEEN - col2 - - 57 AND col2 + col1;
+  - name: tab1
+
+outputs:
+  - name: q7195.out
+    data: |
+      85	5	59

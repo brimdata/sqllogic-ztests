@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q12500.spq | sort > q12500.out
+
+inputs:
+  - name: q12500.spq
+    data: |
+      SELECT 58 * SUM ( col0 ) + - 94 * - + COUNT ( * ) FROM tab2 (FORMAT parquet) cor0 WHERE NOT ( NULL ) IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q12500.out
+    data: |
+      11012

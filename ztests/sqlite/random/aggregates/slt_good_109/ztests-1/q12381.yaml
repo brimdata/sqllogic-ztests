@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q12381.spq | sort > q12381.out
+
+inputs:
+  - name: q12381.spq
+    data: |
+      SELECT col0 AS col2 FROM tab1 (FORMAT parquet) WHERE NOT col0 * - 52 + 49 BETWEEN ( col1 + 97 ) AND - 68;
+  - name: tab1
+
+outputs:
+  - name: q12381.out
+    data: |
+      51
+      85
+      91

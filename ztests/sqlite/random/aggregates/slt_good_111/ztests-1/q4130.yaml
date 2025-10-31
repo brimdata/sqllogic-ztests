@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q4130.spq | sort > q4130.out
+
+inputs:
+  - name: q4130.spq
+    data: |
+      SELECT DISTINCT SUM ( DISTINCT col0 ) AS col1 FROM tab1 (FORMAT parquet);
+  - name: tab1
+
+outputs:
+  - name: q4130.out
+    data: |
+      227

@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q8610.spq | sort > q8610.out
+
+inputs:
+  - name: q8610.spq
+    data: |
+      SELECT ALL + COUNT ( * ) col0 FROM tab0 (FORMAT parquet) WHERE + col1 IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q8610.out
+    data: |
+      3

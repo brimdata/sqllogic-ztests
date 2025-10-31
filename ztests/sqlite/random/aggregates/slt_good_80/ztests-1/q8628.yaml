@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8628.spq | sort > q8628.out
+
+inputs:
+  - name: q8628.spq
+    data: |
+      SELECT ALL * FROM tab0 (FORMAT parquet) AS cor0 WHERE NOT 70 * + col2 > ( NULL );
+  - name: tab0
+
+outputs:
+  - name: q8628.out
+    data: |

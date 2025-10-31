@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q1769.spq | sort > q1769.out
+
+inputs:
+  - name: q1769.spq
+    data: |
+      SELECT DISTINCT - COUNT ( * ) + 82 AS col2 FROM tab2 (FORMAT parquet) cor0;
+  - name: tab2
+
+outputs:
+  - name: q1769.out
+    data: |
+      79

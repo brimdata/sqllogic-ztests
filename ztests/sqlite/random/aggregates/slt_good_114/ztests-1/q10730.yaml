@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q10730.spq | sort > q10730.out
+
+inputs:
+  - name: q10730.spq
+    data: |
+      SELECT - COUNT ( * ) * 48 * - - COUNT ( * ) AS col1 FROM tab2 (FORMAT parquet);
+  - name: tab2
+
+outputs:
+  - name: q10730.out
+    data: |
+      -432

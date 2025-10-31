@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q2768.spq | sort > q2768.out
+
+inputs:
+  - name: q2768.spq
+    data: |
+      SELECT - col1 * + 53 AS col1 FROM tab0 (FORMAT parquet) WHERE CAST ( NULL AS REAL ) IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q2768.out
+    data: |

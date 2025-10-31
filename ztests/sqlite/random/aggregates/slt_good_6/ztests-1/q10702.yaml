@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q10702.spq | sort > q10702.out
+
+inputs:
+  - name: q10702.spq
+    data: |
+      SELECT - - col1 AS col0 FROM tab0 (FORMAT parquet) AS cor0 WHERE 17 IN ( + 60, col1 );
+  - name: tab0
+
+outputs:
+  - name: q10702.out
+    data: |

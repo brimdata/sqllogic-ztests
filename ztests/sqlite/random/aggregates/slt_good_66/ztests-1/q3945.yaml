@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q3945.spq | sort > q3945.out
+
+inputs:
+  - name: q3945.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) WHERE NOT CAST ( col2 AS REAL ) < + + col2 / + - CAST ( NULL AS INTEGER );
+  - name: tab2
+
+outputs:
+  - name: q3945.out
+    data: |

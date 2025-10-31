@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8444.spq | sort > q8444.out
+
+inputs:
+  - name: q8444.spq
+    data: |
+      SELECT ALL + CAST ( NULL AS REAL ) * - 11 AS col0 FROM tab0 (FORMAT parquet) WHERE NOT - col1 * col1 = ( NULL );
+  - name: tab0
+
+outputs:
+  - name: q8444.out
+    data: |

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q6930.spq | sort > q6930.out
+
+inputs:
+  - name: q6930.spq
+    data: |
+      SELECT 36 FROM tab1 (FORMAT parquet) WHERE NULL NOT BETWEEN 42 AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q6930.out
+    data: |

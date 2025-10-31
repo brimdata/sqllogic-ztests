@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q3489.spq | sort > q3489.out
+
+inputs:
+  - name: q3489.spq
+    data: |
+      SELECT ALL * FROM tab2 (FORMAT parquet) WHERE NOT + 39 * + - col2 BETWEEN - - col0 AND NULL;
+  - name: tab2
+
+outputs:
+  - name: q3489.out
+    data: |
+      46	51	23
+      64	77	40
+      75	67	58

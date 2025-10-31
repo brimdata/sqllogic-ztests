@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q11613.spq | sort > q11613.out
+
+inputs:
+  - name: q11613.spq
+    data: |
+      SELECT ALL col0 * col1 FROM tab1 (FORMAT parquet) WHERE NOT - 89 BETWEEN col2 AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q11613.out
+    data: |
+      425
+      4277
+      714

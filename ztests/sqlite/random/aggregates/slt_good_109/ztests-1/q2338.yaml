@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q2338.spq | sort > q2338.out
+
+inputs:
+  - name: q2338.spq
+    data: |
+      SELECT col1 AS col2 FROM tab2 (FORMAT parquet) WHERE NOT + 6 * - ( 27 ) IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q2338.out
+    data: |
+      51
+      67
+      77

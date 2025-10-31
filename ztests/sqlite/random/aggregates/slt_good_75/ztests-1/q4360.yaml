@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q4360.spq | sort > q4360.out
+
+inputs:
+  - name: q4360.spq
+    data: |
+      SELECT DISTINCT * FROM tab1 (FORMAT parquet) WHERE ( ( NULL ) BETWEEN - 96 AND + CAST ( + 64 AS INTEGER ) );
+  - name: tab1
+
+outputs:
+  - name: q4360.out
+    data: |

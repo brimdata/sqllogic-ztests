@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q1835.spq | sort > q1835.out
+
+inputs:
+  - name: q1835.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) WHERE NOT ( NOT - col1 * + col2 >= 76 * 2 );
+  - name: tab1
+
+outputs:
+  - name: q1835.out
+    data: |

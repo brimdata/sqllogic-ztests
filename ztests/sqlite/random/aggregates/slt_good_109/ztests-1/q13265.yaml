@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q13265.spq | sort > q13265.out
+
+inputs:
+  - name: q13265.spq
+    data: |
+      SELECT - col2 * ( - col1 ) / col2 FROM tab0 (FORMAT parquet) WHERE + col0 IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q13265.out
+    data: |

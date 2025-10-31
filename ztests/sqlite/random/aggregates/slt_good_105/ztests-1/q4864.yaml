@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q4864.spq | sort > q4864.out
+
+inputs:
+  - name: q4864.spq
+    data: |
+      SELECT ALL + SUM ( + ( col2 ) ) * 35 AS col1 FROM tab1 (FORMAT parquet) AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q4864.out
+    data: |
+      7805

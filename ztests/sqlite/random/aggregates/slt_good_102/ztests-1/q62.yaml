@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q62.spq | sort > q62.out
+
+inputs:
+  - name: q62.spq
+    data: |
+      SELECT DISTINCT + 32 - + col0 AS col2 FROM tab2 (FORMAT parquet) AS cor0 WHERE NOT 32 NOT BETWEEN NULL AND col1;
+  - name: tab2
+
+outputs:
+  - name: q62.out
+    data: |

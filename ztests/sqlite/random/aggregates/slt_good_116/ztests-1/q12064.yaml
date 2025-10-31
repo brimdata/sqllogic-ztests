@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q12064.spq | sort > q12064.out
+
+inputs:
+  - name: q12064.spq
+    data: |
+      SELECT DISTINCT 22 AS col2, col0 FROM tab1 (FORMAT parquet);
+  - name: tab1
+
+outputs:
+  - name: q12064.out
+    data: |
+      22	51
+      22	85
+      22	91

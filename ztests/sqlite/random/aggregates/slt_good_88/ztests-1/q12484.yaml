@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q12484.spq | sort > q12484.out
+
+inputs:
+  - name: q12484.spq
+    data: |
+      SELECT - 5 AS col0 FROM tab2 (FORMAT parquet) WHERE NOT ( NOT col1 * + + 8 + + 72 BETWEEN + - col0 * - CAST ( NULL AS INTEGER ) + col1 AND NULL );
+  - name: tab2
+
+outputs:
+  - name: q12484.out
+    data: |

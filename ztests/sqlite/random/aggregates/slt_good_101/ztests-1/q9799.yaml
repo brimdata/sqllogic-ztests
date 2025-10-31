@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q9799.spq | sort > q9799.out
+
+inputs:
+  - name: q9799.spq
+    data: |
+      SELECT + 38 * - 82 + col2 FROM tab1 (FORMAT parquet) WHERE NOT - col1 * 64 BETWEEN ( - col1 ) AND ( CAST ( NULL AS INTEGER ) );
+  - name: tab1
+
+outputs:
+  - name: q9799.out
+    data: |
+      -3020
+      -3048
+      -3057

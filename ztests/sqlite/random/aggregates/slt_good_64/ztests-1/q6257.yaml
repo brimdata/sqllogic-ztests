@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q6257.spq | sort > q6257.out
+
+inputs:
+  - name: q6257.spq
+    data: |
+      SELECT ALL MIN ( + col1 ) * + - MAX ( + col1 ) FROM tab1 (FORMAT parquet);
+  - name: tab1
+
+outputs:
+  - name: q6257.out
+    data: |
+      -235

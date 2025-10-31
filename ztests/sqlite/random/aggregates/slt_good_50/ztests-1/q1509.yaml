@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q1509.spq | sort > q1509.out
+
+inputs:
+  - name: q1509.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) WHERE ( + col0 - - 58 ) = 0;
+  - name: tab1
+
+outputs:
+  - name: q1509.out
+    data: |

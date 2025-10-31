@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q222.spq | sort > q222.out
+
+inputs:
+  - name: q222.spq
+    data: |
+      SELECT + 26 * col2 AS col2, col0 AS col1 FROM tab0 (FORMAT parquet);
+  - name: tab0
+
+outputs:
+  - name: q222.out
+    data: |
+      1222	15
+      2574	97
+      260	87

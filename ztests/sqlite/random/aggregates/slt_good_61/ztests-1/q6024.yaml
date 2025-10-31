@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q6024.spq | sort > q6024.out
+
+inputs:
+  - name: q6024.spq
+    data: |
+      SELECT ALL 33 FROM tab0 (FORMAT parquet) WHERE NULL BETWEEN - - col0 / + col0 AND NULL;
+  - name: tab0
+
+outputs:
+  - name: q6024.out
+    data: |

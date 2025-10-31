@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q3206.spq | sort > q3206.out
+
+inputs:
+  - name: q3206.spq
+    data: |
+      SELECT DISTINCT * FROM tab2 (FORMAT parquet) WHERE NOT NULL IS NOT NULL OR NOT + 34 * - ( + col1 * - 32 ) BETWEEN ( NULL ) AND NULL;
+  - name: tab2
+
+outputs:
+  - name: q3206.out
+    data: |
+      46	51	23
+      64	77	40
+      75	67	58

@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q7131.spq | sort > q7131.out
+
+inputs:
+  - name: q7131.spq
+    data: |
+      SELECT DISTINCT + 92 * 5 + + - COUNT ( * ) FROM tab2 (FORMAT parquet) AS cor0 WHERE NOT col1 * + 62 IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q7131.out
+    data: |
+      457

@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q3812.spq | sort > q3812.out
+
+inputs:
+  - name: q3812.spq
+    data: |
+      SELECT ALL * FROM tab0 (FORMAT parquet) WHERE NOT ( 24 ) BETWEEN col0 / - 89 AND ( col1 + - col0 );
+  - name: tab0
+
+outputs:
+  - name: q3812.out
+    data: |
+      87	21	10
+      97	1	99

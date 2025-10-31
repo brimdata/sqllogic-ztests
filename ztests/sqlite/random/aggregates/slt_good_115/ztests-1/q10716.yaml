@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q10716.spq | sort > q10716.out
+
+inputs:
+  - name: q10716.spq
+    data: |
+      SELECT - COUNT ( * ) col0 FROM tab0 (FORMAT parquet) WHERE NOT ( ( NOT ( col1 < col2 ) ) );
+  - name: tab0
+
+outputs:
+  - name: q10716.out
+    data: |
+      -1

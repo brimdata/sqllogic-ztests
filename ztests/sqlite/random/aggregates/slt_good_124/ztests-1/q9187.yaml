@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q9187.spq | sort > q9187.out
+
+inputs:
+  - name: q9187.spq
+    data: |
+      SELECT DISTINCT col0, col2 / - 43 * col0 AS col0 FROM tab2 (FORMAT parquet) cor0 WHERE ( - col0 ) >= NULL;
+  - name: tab2
+
+outputs:
+  - name: q9187.out
+    data: |

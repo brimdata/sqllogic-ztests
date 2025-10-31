@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q8664.spq | sort > q8664.out
+
+inputs:
+  - name: q8664.spq
+    data: |
+      SELECT ALL - 32 - MIN ( + col2 ) AS col2, SUM ( col1 ) FROM tab0 (FORMAT parquet);
+  - name: tab0
+
+outputs:
+  - name: q8664.out
+    data: |
+      -42	103

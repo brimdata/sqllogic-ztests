@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q12747.spq | sort > q12747.out
+
+inputs:
+  - name: q12747.spq
+    data: |
+      SELECT DISTINCT CAST ( NULL AS INTEGER ) AS col1 FROM tab1 (FORMAT parquet) WHERE NOT NULL NOT IN ( 83, col1, + - col0 * + + col1, + col2 + col1 * col0, - 49, col1 * + col0 / - 67 );
+  - name: tab1
+
+outputs:
+  - name: q12747.out
+    data: |

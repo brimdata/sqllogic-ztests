@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q5064.spq | sort > q5064.out
+
+inputs:
+  - name: q5064.spq
+    data: |
+      SELECT + - 46 * - 45 AS col2 FROM tab0 (FORMAT parquet), tab1 (FORMAT parquet) AS cor0 WHERE NOT NULL <> NULL;
+  - name: tab0
+  - name: tab1
+
+outputs:
+  - name: q5064.out
+    data: |

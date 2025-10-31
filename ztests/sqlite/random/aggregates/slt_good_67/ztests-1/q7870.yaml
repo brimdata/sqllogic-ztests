@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q7870.spq | sort > q7870.out
+
+inputs:
+  - name: q7870.spq
+    data: |
+      SELECT DISTINCT - MIN ( 40 ) AS col0, - COUNT ( * ) FROM tab0 (FORMAT parquet) AS cor0;
+  - name: tab0
+
+outputs:
+  - name: q7870.out
+    data: |
+      -40	-3

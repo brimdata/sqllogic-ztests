@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q3022.spq | sort > q3022.out
+
+inputs:
+  - name: q3022.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) AS cor0 WHERE - CAST ( NULL AS INTEGER ) BETWEEN + 27 * + 19 + + col0 AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q3022.out
+    data: |

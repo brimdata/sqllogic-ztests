@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q3053.spq | sort > q3053.out
+
+inputs:
+  - name: q3053.spq
+    data: |
+      SELECT DISTINCT * FROM tab2 (FORMAT parquet) AS cor0 CROSS JOIN tab0 (FORMAT parquet) cor1 WHERE NOT 68 BETWEEN NULL AND NULL;
+  - name: tab0
+  - name: tab2
+
+outputs:
+  - name: q3053.out
+    data: |

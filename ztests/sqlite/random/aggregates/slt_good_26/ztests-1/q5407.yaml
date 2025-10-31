@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q5407.spq | sort > q5407.out
+
+inputs:
+  - name: q5407.spq
+    data: |
+      SELECT DISTINCT * FROM tab2 (FORMAT parquet) WHERE NOT NULL <> 51 + - col1;
+  - name: tab2
+
+outputs:
+  - name: q5407.out
+    data: |

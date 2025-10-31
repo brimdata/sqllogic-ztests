@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q12737.spq | sort > q12737.out
+
+inputs:
+  - name: q12737.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE col0 + - 23 BETWEEN col1 AND col0 + - col0;
+  - name: tab0
+
+outputs:
+  - name: q12737.out
+    data: |

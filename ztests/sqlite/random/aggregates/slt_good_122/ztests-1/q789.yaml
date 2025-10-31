@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q789.spq | sort > q789.out
+
+inputs:
+  - name: q789.spq
+    data: |
+      SELECT 2 FROM tab1 (FORMAT parquet) AS cor0 CROSS JOIN tab1 (FORMAT parquet) cor1 WHERE 85 + - 14 IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q789.out
+    data: |

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q10485.spq | sort > q10485.out
+
+inputs:
+  - name: q10485.spq
+    data: |
+      SELECT + col0 AS col2 FROM tab1 (FORMAT parquet) WHERE ( NULL ) <= 83 / + col2 * 85 * - col2 * - CAST ( NULL AS INTEGER );
+  - name: tab1
+
+outputs:
+  - name: q10485.out
+    data: |

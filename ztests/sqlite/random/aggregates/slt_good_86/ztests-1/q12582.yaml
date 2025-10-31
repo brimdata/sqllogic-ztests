@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q12582.spq | sort > q12582.out
+
+inputs:
+  - name: q12582.spq
+    data: |
+      SELECT + 12 * + SUM ( col2 ) FROM tab0 (FORMAT parquet);
+  - name: tab0
+
+outputs:
+  - name: q12582.out
+    data: |
+      1872

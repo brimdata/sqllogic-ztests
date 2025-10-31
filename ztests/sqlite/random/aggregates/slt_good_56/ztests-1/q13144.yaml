@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q13144.spq | sort > q13144.out
+
+inputs:
+  - name: q13144.spq
+    data: |
+      SELECT col1 * 94 AS col0 FROM tab1 (FORMAT parquet) AS cor0 WHERE col1 / - col2 * - col1 NOT BETWEEN 3 AND ( - 20 );
+  - name: tab1
+
+outputs:
+  - name: q13144.out
+    data: |
+      1316
+      4418
+      470

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q13563.spq | sort > q13563.out
+
+inputs:
+  - name: q13563.spq
+    data: |
+      SELECT ALL * FROM tab0 (FORMAT parquet) AS cor0 WHERE NOT 42 NOT BETWEEN NULL AND - 44;
+  - name: tab0
+
+outputs:
+  - name: q13563.out
+    data: |

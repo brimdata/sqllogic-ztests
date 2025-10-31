@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8556.spq | sort > q8556.out
+
+inputs:
+  - name: q8556.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) WHERE NULL IN ( ( + 49 ) * col2 );
+  - name: tab1
+
+outputs:
+  - name: q8556.out
+    data: |

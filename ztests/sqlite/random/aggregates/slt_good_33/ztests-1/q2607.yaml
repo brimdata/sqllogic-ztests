@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q2607.spq | sort > q2607.out
+
+inputs:
+  - name: q2607.spq
+    data: |
+      SELECT 76 + col1 + - col1 * - + ( + + col1 ) AS col0 FROM tab1 (FORMAT parquet);
+  - name: tab1
+
+outputs:
+  - name: q2607.out
+    data: |
+      106
+      2332
+      286

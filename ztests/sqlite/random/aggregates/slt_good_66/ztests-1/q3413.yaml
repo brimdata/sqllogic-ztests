@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q3413.spq | sort > q3413.out
+
+inputs:
+  - name: q3413.spq
+    data: |
+      SELECT - col1 + col0 AS col1 FROM tab1 (FORMAT parquet) WHERE + col1 IN ( - col0 * 96 );
+  - name: tab1
+
+outputs:
+  - name: q3413.out
+    data: |

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q42.spq | sort > q42.out
+
+inputs:
+  - name: q42.spq
+    data: |
+      SELECT - 36 FROM tab2 (FORMAT parquet) cor0 WHERE NULL BETWEEN NULL AND 42;
+  - name: tab2
+
+outputs:
+  - name: q42.out
+    data: |

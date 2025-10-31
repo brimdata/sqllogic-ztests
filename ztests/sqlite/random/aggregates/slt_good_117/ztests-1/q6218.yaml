@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q6218.spq | sort > q6218.out
+
+inputs:
+  - name: q6218.spq
+    data: |
+      SELECT col0 * 67, - col1 * col0 AS col0 FROM tab1 (FORMAT parquet) WHERE col2 BETWEEN ( col1 ) AND 83 * col1;
+  - name: tab1
+
+outputs:
+  - name: q6218.out
+    data: |
+      3417	-714
+      5695	-425
+      6097	-4277

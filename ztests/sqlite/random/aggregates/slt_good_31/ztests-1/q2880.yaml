@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q2880.spq | sort > q2880.out
+
+inputs:
+  - name: q2880.spq
+    data: |
+      SELECT - ( + ( + 60 ) ) / col1 * - 13 - ( - col2 ) + - col0 * col0 FROM tab0 (FORMAT parquet) WHERE NOT NULL IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q2880.out
+    data: |
+      -178
+      -7533
+      -8530

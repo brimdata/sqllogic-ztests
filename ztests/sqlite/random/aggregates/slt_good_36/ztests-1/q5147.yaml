@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q5147.spq | sort > q5147.out
+
+inputs:
+  - name: q5147.spq
+    data: |
+      SELECT col0 FROM tab1 (FORMAT parquet) WHERE + col0 * + 75 <= 60 * - col2 + + 56;
+  - name: tab1
+
+outputs:
+  - name: q5147.out
+    data: |

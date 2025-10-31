@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q6860.spq | sort > q6860.out
+
+inputs:
+  - name: q6860.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) AS cor0 WHERE NOT NULL < ( CAST ( + 64 AS INTEGER ) * col0 );
+  - name: tab2
+
+outputs:
+  - name: q6860.out
+    data: |

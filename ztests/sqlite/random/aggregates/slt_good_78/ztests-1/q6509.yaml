@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q6509.spq | sort > q6509.out
+
+inputs:
+  - name: q6509.spq
+    data: |
+      SELECT ALL 37 FROM tab1 (FORMAT parquet) WHERE CAST ( col1 AS INTEGER ) / 37 * col2 + col2 BETWEEN + - col1 AND col1;
+  - name: tab1
+
+outputs:
+  - name: q6509.out
+    data: |

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8832.spq | sort > q8832.out
+
+inputs:
+  - name: q8832.spq
+    data: |
+      SELECT DISTINCT col2 AS col1 FROM tab1 (FORMAT parquet) AS cor0 WHERE NOT 15 * - col2 NOT BETWEEN NULL AND - 28;
+  - name: tab1
+
+outputs:
+  - name: q8832.out
+    data: |

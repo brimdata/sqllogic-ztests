@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q2343.spq | sort > q2343.out
+
+inputs:
+  - name: q2343.spq
+    data: |
+      SELECT + - ( ( 72 ) ) AS col1 FROM tab1 (FORMAT parquet) WHERE NULL IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q2343.out
+    data: |
+      -72
+      -72
+      -72

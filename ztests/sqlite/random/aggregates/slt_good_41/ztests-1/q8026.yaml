@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8026.spq | sort > q8026.out
+
+inputs:
+  - name: q8026.spq
+    data: |
+      SELECT ALL col1 AS col2, + col1 * + 54 FROM tab1 (FORMAT parquet);
+  - name: tab1
+
+outputs:
+  - name: q8026.out
+    data: |
+      14	756
+      47	2538
+      5	270

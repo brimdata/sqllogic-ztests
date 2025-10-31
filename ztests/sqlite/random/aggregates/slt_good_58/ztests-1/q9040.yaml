@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q9040.spq | sort > q9040.out
+
+inputs:
+  - name: q9040.spq
+    data: |
+      SELECT 12 FROM tab0 (FORMAT parquet) WHERE NOT + 59 / col0 + - - col1 IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q9040.out
+    data: |

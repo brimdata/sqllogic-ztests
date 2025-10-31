@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q126.spq | sort > q126.out
+
+inputs:
+  - name: q126.spq
+    data: |
+      SELECT COUNT ( * ) + 10 * - 5 AS col2 FROM tab0 (FORMAT parquet) AS cor0 WHERE 16 + + col0 NOT IN ( col0 * 74 );
+  - name: tab0
+
+outputs:
+  - name: q126.out
+    data: |
+      -47

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q1623.spq | sort > q1623.out
+
+inputs:
+  - name: q1623.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE NULL IN ( 84 * + 5 );
+  - name: tab0
+
+outputs:
+  - name: q1623.out
+    data: |

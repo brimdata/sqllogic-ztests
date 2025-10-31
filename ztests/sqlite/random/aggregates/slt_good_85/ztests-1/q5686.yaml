@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q5686.spq | sort > q5686.out
+
+inputs:
+  - name: q5686.spq
+    data: |
+      SELECT ALL * FROM tab1 (FORMAT parquet) WHERE NOT ( - col0 * - col2 + - + 2 * + col2 + + col0 ) NOT BETWEEN ( - col1 - + 81 ) AND ( col2 );
+  - name: tab1
+
+outputs:
+  - name: q5686.out
+    data: |

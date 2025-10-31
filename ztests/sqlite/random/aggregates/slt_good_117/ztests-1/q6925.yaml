@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q6925.spq | sort > q6925.out
+
+inputs:
+  - name: q6925.spq
+    data: |
+      SELECT ALL * FROM tab1 (FORMAT parquet) WHERE NOT NULL BETWEEN + 15 * + - 73 AND - col0 * + - 5;
+  - name: tab1
+
+outputs:
+  - name: q6925.out
+    data: |

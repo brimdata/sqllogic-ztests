@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q3376.spq | sort > q3376.out
+
+inputs:
+  - name: q3376.spq
+    data: |
+      SELECT ALL + COUNT ( + col0 ) + SUM ( - col0 ) AS col1 FROM tab2 (FORMAT parquet);
+  - name: tab2
+
+outputs:
+  - name: q3376.out
+    data: |
+      -182

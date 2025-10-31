@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q12349.spq | sort > q12349.out
+
+inputs:
+  - name: q12349.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE NOT col1 BETWEEN col1 + - 83 - - col1 * + col1 AND CAST ( - CAST ( NULL AS INTEGER ) AS INTEGER );
+  - name: tab0
+
+outputs:
+  - name: q12349.out
+    data: |
+      15	81	47
+      87	21	10

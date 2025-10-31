@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8045.spq | sort > q8045.out
+
+inputs:
+  - name: q8045.spq
+    data: |
+      SELECT ALL * FROM tab0 (FORMAT parquet) AS cor0 WHERE + col1 BETWEEN + col0 + - 64 AND NULL;
+  - name: tab0
+
+outputs:
+  - name: q8045.out
+    data: |

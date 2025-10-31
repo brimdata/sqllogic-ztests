@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q11183.spq | sort > q11183.out
+
+inputs:
+  - name: q11183.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE 25 IN ( + col0 * 31, col0, + col0 / col0 + - col1 );
+  - name: tab0
+
+outputs:
+  - name: q11183.out
+    data: |

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q3214.spq | sort > q3214.out
+
+inputs:
+  - name: q3214.spq
+    data: |
+      SELECT - col1 FROM tab0 (FORMAT parquet) WHERE + 15 NOT IN ( - 16, CAST ( + col1 AS REAL ) * - col0 );
+  - name: tab0
+
+outputs:
+  - name: q3214.out
+    data: |
+      -1
+      -21
+      -81

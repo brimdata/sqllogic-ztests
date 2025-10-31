@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q6060.spq | sort > q6060.out
+
+inputs:
+  - name: q6060.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) WHERE NULL BETWEEN + ( + ( - + 20 ) ) AND col1 * + CAST ( NULL AS REAL ) * - col2 * - CAST ( NULL AS REAL );
+  - name: tab1
+
+outputs:
+  - name: q6060.out
+    data: |

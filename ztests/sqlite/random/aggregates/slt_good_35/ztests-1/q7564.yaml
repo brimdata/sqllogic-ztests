@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q7564.spq | sort > q7564.out
+
+inputs:
+  - name: q7564.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE NOT + col2 + 86 / - col2 BETWEEN NULL AND ( + col1 );
+  - name: tab0
+
+outputs:
+  - name: q7564.out
+    data: |
+      97	1	99

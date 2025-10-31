@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8647.spq | sort > q8647.out
+
+inputs:
+  - name: q8647.spq
+    data: |
+      SELECT + 80 AS col1 FROM tab2 (FORMAT parquet) WHERE col2 * - col0 * - col0 = + CAST ( - 11 AS INTEGER );
+  - name: tab2
+
+outputs:
+  - name: q8647.out
+    data: |

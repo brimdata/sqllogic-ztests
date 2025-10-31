@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q7092.spq | sort > q7092.out
+
+inputs:
+  - name: q7092.spq
+    data: |
+      SELECT DISTINCT col1, + 57 / - + col0 + - col0 FROM tab1 (FORMAT parquet) WHERE NOT col2 * + col1 IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q7092.out
+    data: |
+      14	-52
+      47	-91
+      5	-85

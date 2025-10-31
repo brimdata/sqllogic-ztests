@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q1988.spq | sort > q1988.out
+
+inputs:
+  - name: q1988.spq
+    data: |
+      SELECT CAST ( - col1 AS INTEGER ) col1 FROM tab2 (FORMAT parquet) AS cor0 WHERE NOT NULL = CAST ( NULL AS REAL ) * 11 + 90;
+  - name: tab2
+
+outputs:
+  - name: q1988.out
+    data: |

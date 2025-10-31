@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q6700.spq | sort > q6700.out
+
+inputs:
+  - name: q6700.spq
+    data: |
+      SELECT MAX ( ( - 53 ) ) FROM tab1 (FORMAT parquet) WHERE NULL IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q6700.out
+    data: |
+      -53

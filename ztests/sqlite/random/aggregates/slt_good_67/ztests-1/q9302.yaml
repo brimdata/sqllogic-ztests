@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q9302.spq | sort > q9302.out
+
+inputs:
+  - name: q9302.spq
+    data: |
+      SELECT ALL + - col0 / - + 32 AS col0 FROM tab1 (FORMAT parquet) WHERE col2 + - col2 >= + + col0 + - + 79 + - + CAST ( NULL AS INTEGER );
+  - name: tab1
+
+outputs:
+  - name: q9302.out
+    data: |

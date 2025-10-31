@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q9446.spq | sort > q9446.out
+
+inputs:
+  - name: q9446.spq
+    data: |
+      SELECT DISTINCT col2 AS col1, + ( col1 ) + ( - col1 ) FROM tab1 (FORMAT parquet);
+  - name: tab1
+
+outputs:
+  - name: q9446.out
+    data: |
+      59	0
+      68	0
+      96	0

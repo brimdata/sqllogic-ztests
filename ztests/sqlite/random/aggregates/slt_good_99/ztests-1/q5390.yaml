@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q5390.spq | sort > q5390.out
+
+inputs:
+  - name: q5390.spq
+    data: |
+      SELECT DISTINCT * FROM tab1 (FORMAT parquet) WHERE NOT ( - 19 <> NULL );
+  - name: tab1
+
+outputs:
+  - name: q5390.out
+    data: |

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q3517.spq | sort > q3517.out
+
+inputs:
+  - name: q3517.spq
+    data: |
+      SELECT ALL * FROM tab2 (FORMAT parquet) WHERE - col1 * - col2 BETWEEN - 71 AND NULL;
+  - name: tab2
+
+outputs:
+  - name: q3517.out
+    data: |

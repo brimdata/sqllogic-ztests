@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q7659.spq | sort > q7659.out
+
+inputs:
+  - name: q7659.spq
+    data: |
+      SELECT ALL - CAST ( 37 AS INTEGER ) FROM tab1 (FORMAT parquet) WHERE NOT NULL IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q7659.out
+    data: |

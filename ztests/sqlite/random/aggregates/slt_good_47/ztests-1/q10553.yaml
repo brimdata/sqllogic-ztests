@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q10553.spq | sort > q10553.out
+
+inputs:
+  - name: q10553.spq
+    data: |
+      SELECT ALL * FROM tab1 (FORMAT parquet) WHERE NOT 95 NOT BETWEEN ( + col1 ) AND - 11 + - 1;
+  - name: tab1
+
+outputs:
+  - name: q10553.out
+    data: |

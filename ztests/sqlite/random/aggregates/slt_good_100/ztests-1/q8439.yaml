@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q8439.spq | sort > q8439.out
+
+inputs:
+  - name: q8439.spq
+    data: |
+      SELECT ALL * FROM tab0 (FORMAT parquet) WHERE col2 / col1 NOT BETWEEN + col0 AND NULL;
+  - name: tab0
+
+outputs:
+  - name: q8439.out
+    data: |
+      15	81	47
+      87	21	10

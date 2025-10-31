@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q703.spq | sort > q703.out
+
+inputs:
+  - name: q703.spq
+    data: |
+      SELECT - col1 * - 77 + - 27 AS col2 FROM tab2 (FORMAT parquet) WHERE NOT col0 BETWEEN NULL AND ( NULL );
+  - name: tab2
+
+outputs:
+  - name: q703.out
+    data: |

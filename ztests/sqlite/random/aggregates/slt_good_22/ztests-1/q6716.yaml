@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q6716.spq | sort > q6716.out
+
+inputs:
+  - name: q6716.spq
+    data: |
+      SELECT + col2 * - col2 AS col2 FROM tab0 (FORMAT parquet) WHERE col1 * - col2 + 43 * + 25 IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q6716.out
+    data: |
+      -100
+      -2209
+      -9801

@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q6946.spq | sort > q6946.out
+
+inputs:
+  - name: q6946.spq
+    data: |
+      SELECT DISTINCT - SUM ( - + col0 ) * + 32 AS col0, COUNT ( * ) AS col2 FROM tab0 (FORMAT parquet);
+  - name: tab0
+
+outputs:
+  - name: q6946.out
+    data: |
+      6368	3

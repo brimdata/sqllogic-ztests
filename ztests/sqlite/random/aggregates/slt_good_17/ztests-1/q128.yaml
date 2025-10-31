@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q128.spq | sort > q128.out
+
+inputs:
+  - name: q128.spq
+    data: |
+      SELECT ALL * FROM tab1 (FORMAT parquet) cor0 WHERE NOT - 7 BETWEEN + 97 AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q128.out
+    data: |
+      51	14	96
+      85	5	59
+      91	47	68

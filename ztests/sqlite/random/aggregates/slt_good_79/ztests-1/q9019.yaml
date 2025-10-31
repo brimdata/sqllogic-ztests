@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q9019.spq | sort > q9019.out
+
+inputs:
+  - name: q9019.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE NULL NOT BETWEEN ( 91 / 35 ) AND ( + col1 * CAST ( NULL AS REAL ) );
+  - name: tab0
+
+outputs:
+  - name: q9019.out
+    data: |

@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q2040.spq | sort > q2040.out
+
+inputs:
+  - name: q2040.spq
+    data: |
+      SELECT + ( COUNT ( + col1 ) ) * + 61 col0 FROM tab2 (FORMAT parquet) AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q2040.out
+    data: |
+      183

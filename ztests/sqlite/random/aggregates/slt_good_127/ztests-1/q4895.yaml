@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q4895.spq | sort > q4895.out
+
+inputs:
+  - name: q4895.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) WHERE - CAST ( NULL AS REAL ) >= + - col0;
+  - name: tab2
+
+outputs:
+  - name: q4895.out
+    data: |

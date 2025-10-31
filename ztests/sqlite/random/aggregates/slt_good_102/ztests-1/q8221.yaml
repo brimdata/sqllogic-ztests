@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8221.spq | sort > q8221.out
+
+inputs:
+  - name: q8221.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE NULL NOT BETWEEN + CAST ( col0 AS INTEGER ) AND col1 + - 84;
+  - name: tab0
+
+outputs:
+  - name: q8221.out
+    data: |

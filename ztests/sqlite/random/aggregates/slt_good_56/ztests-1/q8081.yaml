@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8081.spq | sort > q8081.out
+
+inputs:
+  - name: q8081.spq
+    data: |
+      SELECT DISTINCT col0, - 38 FROM tab2 (FORMAT parquet) cor0;
+  - name: tab2
+
+outputs:
+  - name: q8081.out
+    data: |
+      46	-38
+      64	-38
+      75	-38

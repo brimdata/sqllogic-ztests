@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q612.spq | sort > q612.out
+
+inputs:
+  - name: q612.spq
+    data: |
+      SELECT ALL * FROM tab1 (FORMAT parquet) WHERE - 87 BETWEEN + col0 * 58 AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q612.out
+    data: |

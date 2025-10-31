@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q2078.spq | sort > q2078.out
+
+inputs:
+  - name: q2078.spq
+    data: |
+      SELECT col0 FROM tab1 (FORMAT parquet) WHERE NOT ( - col1 * + + 5 ) IN ( 79 / + - 30 );
+  - name: tab1
+
+outputs:
+  - name: q2078.out
+    data: |
+      51
+      85
+      91

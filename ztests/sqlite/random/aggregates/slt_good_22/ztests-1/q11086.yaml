@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q11086.spq | sort > q11086.out
+
+inputs:
+  - name: q11086.spq
+    data: |
+      SELECT col0 AS col0 FROM tab2 (FORMAT parquet) WHERE 60 < col0;
+  - name: tab2
+
+outputs:
+  - name: q11086.out
+    data: |
+      64
+      75

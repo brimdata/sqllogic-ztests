@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q5256.spq | sort > q5256.out
+
+inputs:
+  - name: q5256.spq
+    data: |
+      SELECT ALL + col1 + col1 * 15 AS col0 FROM tab2 (FORMAT parquet) AS cor0 WHERE ( col1 ) BETWEEN ( NULL ) AND ( col1 );
+  - name: tab2
+
+outputs:
+  - name: q5256.out
+    data: |

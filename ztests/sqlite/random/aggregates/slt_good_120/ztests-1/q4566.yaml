@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q4566.spq | sort > q4566.out
+
+inputs:
+  - name: q4566.spq
+    data: |
+      SELECT DISTINCT * FROM tab2 (FORMAT parquet) WHERE NOT ( + 54 * + col2 ) BETWEEN ( 58 ) AND - col0 * - 9;
+  - name: tab2
+
+outputs:
+  - name: q4566.out
+    data: |
+      46	51	23
+      64	77	40
+      75	67	58

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q710.spq | sort > q710.out
+
+inputs:
+  - name: q710.spq
+    data: |
+      SELECT 38 / col0 + - 79 * - col2 AS col2 FROM tab0 (FORMAT parquet) AS cor0 WHERE NOT NULL IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q710.out
+    data: |
+      3715
+      7821
+      790

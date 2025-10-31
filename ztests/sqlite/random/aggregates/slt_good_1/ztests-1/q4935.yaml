@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q4935.spq | sort > q4935.out
+
+inputs:
+  - name: q4935.spq
+    data: |
+      SELECT 35 + - + col0 + + 50 * + - 64 * - col2 AS col1 FROM tab1 (FORMAT parquet) AS cor0 WHERE NOT NULL IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q4935.out
+    data: |
+      188750
+      217544
+      307184

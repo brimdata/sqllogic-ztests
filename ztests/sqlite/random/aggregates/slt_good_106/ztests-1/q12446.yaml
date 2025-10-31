@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q12446.spq | sort > q12446.out
+
+inputs:
+  - name: q12446.spq
+    data: |
+      SELECT ALL col2 * + - 31 * + col1 AS col2 FROM tab0 (FORMAT parquet);
+  - name: tab0
+
+outputs:
+  - name: q12446.out
+    data: |
+      -118017
+      -3069
+      -6510

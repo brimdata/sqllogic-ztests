@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q5562.spq | sort > q5562.out
+
+inputs:
+  - name: q5562.spq
+    data: |
+      SELECT + COUNT ( * ) + 20 FROM tab2 (FORMAT parquet) WHERE col2 NOT BETWEEN - 13 * col2 AND 13;
+  - name: tab2
+
+outputs:
+  - name: q5562.out
+    data: |
+      23

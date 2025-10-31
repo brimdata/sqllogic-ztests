@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q10780.spq | sort > q10780.out
+
+inputs:
+  - name: q10780.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) WHERE + 86 <> - col1;
+  - name: tab2
+
+outputs:
+  - name: q10780.out
+    data: |
+      46	51	23
+      64	77	40
+      75	67	58

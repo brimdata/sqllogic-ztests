@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q2474.spq | sort > q2474.out
+
+inputs:
+  - name: q2474.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) AS cor0 JOIN tab2 (FORMAT parquet) cor1 ON 89 BETWEEN NULL AND NULL;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q2474.out
+    data: |

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q4903.spq | sort > q4903.out
+
+inputs:
+  - name: q4903.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) WHERE - 79 <= NULL;
+  - name: tab1
+
+outputs:
+  - name: q4903.out
+    data: |

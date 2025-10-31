@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q2486.spq | sort > q2486.out
+
+inputs:
+  - name: q2486.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE NOT - + CAST ( + 56 AS INTEGER ) <> NULL;
+  - name: tab0
+
+outputs:
+  - name: q2486.out
+    data: |

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8442.spq | sort > q8442.out
+
+inputs:
+  - name: q8442.spq
+    data: |
+      SELECT DISTINCT * FROM tab1 (FORMAT parquet) WHERE NOT + - 42 BETWEEN col1 AND + col2 - + 1;
+  - name: tab1
+
+outputs:
+  - name: q8442.out
+    data: |
+      51	14	96
+      85	5	59
+      91	47	68

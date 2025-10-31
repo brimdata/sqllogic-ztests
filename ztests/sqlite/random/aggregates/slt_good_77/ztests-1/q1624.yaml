@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q1624.spq | sort > q1624.out
+
+inputs:
+  - name: q1624.spq
+    data: |
+      SELECT DISTINCT + CAST ( + col0 AS INTEGER ) + - col0 + 38 FROM tab2 (FORMAT parquet) WHERE NOT NULL NOT BETWEEN NULL AND + 42;
+  - name: tab2
+
+outputs:
+  - name: q1624.out
+    data: |

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q1128.spq | sort > q1128.out
+
+inputs:
+  - name: q1128.spq
+    data: |
+      SELECT ALL 28 * 23 FROM tab0 (FORMAT parquet) WHERE NOT NULL IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q1128.out
+    data: |

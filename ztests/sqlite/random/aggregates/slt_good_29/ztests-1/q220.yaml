@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q220.spq | sort > q220.out
+
+inputs:
+  - name: q220.spq
+    data: |
+      SELECT col0 AS col2 FROM tab2 (FORMAT parquet) AS cor0 WHERE NOT ( - 30 / + col0 ) NOT BETWEEN ( NULL ) AND ( NULL );
+  - name: tab2
+
+outputs:
+  - name: q220.out
+    data: |

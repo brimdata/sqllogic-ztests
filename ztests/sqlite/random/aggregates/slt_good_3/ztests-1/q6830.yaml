@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q6830.spq | sort > q6830.out
+
+inputs:
+  - name: q6830.spq
+    data: |
+      SELECT 11 AS col2 FROM tab0 (FORMAT parquet) WHERE ( NOT NULL <= ( + 24 ) ) OR CAST ( NULL AS INTEGER ) BETWEEN NULL AND - 18 * col1;
+  - name: tab0
+
+outputs:
+  - name: q6830.out
+    data: |

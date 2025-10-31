@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q6982.spq | sort > q6982.out
+
+inputs:
+  - name: q6982.spq
+    data: |
+      SELECT + col1 FROM tab1 (FORMAT parquet) AS cor0 WHERE NOT col1 * + 41 BETWEEN - 81 + - + ( - + col2 ) AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q6982.out
+    data: |

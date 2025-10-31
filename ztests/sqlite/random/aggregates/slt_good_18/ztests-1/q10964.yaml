@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q10964.spq | sort > q10964.out
+
+inputs:
+  - name: q10964.spq
+    data: |
+      SELECT 13 * SUM ( 23 ) FROM tab0 (FORMAT parquet) WHERE NOT + col0 = 66 * col2;
+  - name: tab0
+
+outputs:
+  - name: q10964.out
+    data: |
+      897

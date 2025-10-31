@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8022.spq | sort > q8022.out
+
+inputs:
+  - name: q8022.spq
+    data: |
+      SELECT + col0 * - - ( - col2 ) * + + 42 - - 42 + + col1 * + col2 * - col2 AS col2, - col1 * col2 FROM tab2 (FORMAT parquet) AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q8022.out
+    data: |
+      -230678	-3080
+      -408046	-3886
+      -71373	-1173

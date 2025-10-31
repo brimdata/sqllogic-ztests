@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q138.spq | sort > q138.out
+
+inputs:
+  - name: q138.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) AS cor0 WHERE 24 + - ( + + col0 ) - ( - + 92 ) * 8 NOT BETWEEN ( col1 ) AND NULL OR NULL NOT BETWEEN col0 AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q138.out
+    data: |

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q10256.spq | sort > q10256.out
+
+inputs:
+  - name: q10256.spq
+    data: |
+      SELECT ALL col2 * ( + 43 * - col2 ) FROM tab0 (FORMAT parquet);
+  - name: tab0
+
+outputs:
+  - name: q10256.out
+    data: |
+      -421443
+      -4300
+      -94987

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q2282.spq | sort > q2282.out
+
+inputs:
+  - name: q2282.spq
+    data: |
+      SELECT 59 AS col2 FROM tab1 (FORMAT parquet) WHERE NULL NOT BETWEEN 27 AND col0;
+  - name: tab1
+
+outputs:
+  - name: q2282.out
+    data: |

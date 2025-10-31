@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q12509.spq | sort > q12509.out
+
+inputs:
+  - name: q12509.spq
+    data: |
+      SELECT + col2 AS col0 FROM tab0 (FORMAT parquet) AS cor0 WHERE NOT 32 BETWEEN col2 - - 5 AND - 3;
+  - name: tab0
+
+outputs:
+  - name: q12509.out
+    data: |
+      10
+      47
+      99

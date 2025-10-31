@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8303.spq | sort > q8303.out
+
+inputs:
+  - name: q8303.spq
+    data: |
+      SELECT ALL * FROM tab1 (FORMAT parquet) WHERE + col2 BETWEEN ( col1 / col2 + + CAST ( col1 AS INTEGER ) * 60 ) AND - 92;
+  - name: tab1
+
+outputs:
+  - name: q8303.out
+    data: |

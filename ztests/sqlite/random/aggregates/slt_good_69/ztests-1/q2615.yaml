@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q2615.spq | sort > q2615.out
+
+inputs:
+  - name: q2615.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) AS cor0 WHERE col2 IN ( + CAST ( + 21 AS INTEGER ) );
+  - name: tab1
+
+outputs:
+  - name: q2615.out
+    data: |

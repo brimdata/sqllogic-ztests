@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q2876.spq | sort > q2876.out
+
+inputs:
+  - name: q2876.spq
+    data: |
+      SELECT - COUNT ( * ) + MIN ( + + 31 ) AS col1 FROM tab1 (FORMAT parquet);
+  - name: tab1
+
+outputs:
+  - name: q2876.out
+    data: |
+      28

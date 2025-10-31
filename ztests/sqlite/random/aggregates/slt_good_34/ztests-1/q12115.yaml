@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q12115.spq | sort > q12115.out
+
+inputs:
+  - name: q12115.spq
+    data: |
+      SELECT ALL * FROM tab1 (FORMAT parquet) AS cor0 WHERE NOT col1 + col2 BETWEEN NULL AND + ( 20 ) * col0;
+  - name: tab1
+
+outputs:
+  - name: q12115.out
+    data: |

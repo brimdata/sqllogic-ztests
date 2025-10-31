@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q389.spq | sort > q389.out
+
+inputs:
+  - name: q389.spq
+    data: |
+      SELECT DISTINCT - + COUNT ( * ) AS col0 FROM tab1 (FORMAT parquet) WHERE NOT NULL IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q389.out
+    data: |
+      -3

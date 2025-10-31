@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q2033.spq | sort > q2033.out
+
+inputs:
+  - name: q2033.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) AS cor0 WHERE NOT 90 NOT BETWEEN ( col0 ) AND ( col0 + ( - col0 ) );
+  - name: tab2
+
+outputs:
+  - name: q2033.out
+    data: |

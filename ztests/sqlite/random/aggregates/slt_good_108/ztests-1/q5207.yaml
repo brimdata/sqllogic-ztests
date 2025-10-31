@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q5207.spq | sort > q5207.out
+
+inputs:
+  - name: q5207.spq
+    data: |
+      SELECT ALL col2 FROM tab2 (FORMAT parquet) WHERE 35 NOT BETWEEN NULL AND ( + col0 ) AND NOT ( col1 ) BETWEEN + col1 AND NULL;
+  - name: tab2
+
+outputs:
+  - name: q5207.out
+    data: |

@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q2492.spq | sort > q2492.out
+
+inputs:
+  - name: q2492.spq
+    data: |
+      SELECT ALL ( + COUNT ( - col0 ) ) FROM tab0 (FORMAT parquet) WHERE NOT NULL IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q2492.out
+    data: |
+      3

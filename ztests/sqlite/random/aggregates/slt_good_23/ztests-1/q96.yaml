@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q96.spq | sort > q96.out
+
+inputs:
+  - name: q96.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) WHERE NULL NOT IN ( + CAST ( ( 57 ) AS REAL ) * 90 );
+  - name: tab1
+
+outputs:
+  - name: q96.out
+    data: |

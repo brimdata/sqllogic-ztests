@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q5210.spq | sort > q5210.out
+
+inputs:
+  - name: q5210.spq
+    data: |
+      SELECT DISTINCT col2, 98 FROM tab2 (FORMAT parquet);
+  - name: tab2
+
+outputs:
+  - name: q5210.out
+    data: |
+      23	98
+      40	98
+      58	98

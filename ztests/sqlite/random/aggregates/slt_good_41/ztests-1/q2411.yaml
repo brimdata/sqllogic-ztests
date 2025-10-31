@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q2411.spq | sort > q2411.out
+
+inputs:
+  - name: q2411.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) AS cor0 WHERE 62 NOT BETWEEN ( 35 * + CAST ( NULL AS INTEGER ) ) AND ( NULL );
+  - name: tab2
+
+outputs:
+  - name: q2411.out
+    data: |

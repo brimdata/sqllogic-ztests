@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q3264.spq | sort > q3264.out
+
+inputs:
+  - name: q3264.spq
+    data: |
+      SELECT DISTINCT col1, col1 * + - col2 + - ( - col1 ) + - + 67 FROM tab0 (FORMAT parquet);
+  - name: tab0
+
+outputs:
+  - name: q3264.out
+    data: |
+      1	-165
+      21	-256
+      81	-3793

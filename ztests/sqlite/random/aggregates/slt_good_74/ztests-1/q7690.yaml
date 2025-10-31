@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q7690.spq | sort > q7690.out
+
+inputs:
+  - name: q7690.spq
+    data: |
+      SELECT DISTINCT * FROM tab1 (FORMAT parquet) WHERE NULL BETWEEN - + ( 56 ) AND + 63 * - + ( - col2 ) + + 14;
+  - name: tab1
+
+outputs:
+  - name: q7690.out
+    data: |

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q7962.spq | sort > q7962.out
+
+inputs:
+  - name: q7962.spq
+    data: |
+      SELECT ALL * FROM tab2 (FORMAT parquet) AS cor0 WHERE col1 BETWEEN NULL AND 7 * + 20 - - col0;
+  - name: tab2
+
+outputs:
+  - name: q7962.out
+    data: |

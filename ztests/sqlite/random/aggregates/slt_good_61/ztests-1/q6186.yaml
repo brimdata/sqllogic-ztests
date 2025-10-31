@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q6186.spq | sort > q6186.out
+
+inputs:
+  - name: q6186.spq
+    data: |
+      SELECT DISTINCT + 8 * - COUNT ( * ) FROM tab1 (FORMAT parquet);
+  - name: tab1
+
+outputs:
+  - name: q6186.out
+    data: |
+      -24

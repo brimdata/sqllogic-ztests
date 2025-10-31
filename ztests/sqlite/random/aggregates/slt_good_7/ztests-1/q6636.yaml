@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q6636.spq | sort > q6636.out
+
+inputs:
+  - name: q6636.spq
+    data: |
+      SELECT ALL col1 AS col1 FROM tab1 (FORMAT parquet) AS cor0 WHERE NOT 36 BETWEEN - CAST ( ( 38 ) AS INTEGER ) * + col1 AND ( - col0 );
+  - name: tab1
+
+outputs:
+  - name: q6636.out
+    data: |
+      14
+      47
+      5

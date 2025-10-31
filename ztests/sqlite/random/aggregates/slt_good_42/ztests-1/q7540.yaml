@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q7540.spq | sort > q7540.out
+
+inputs:
+  - name: q7540.spq
+    data: |
+      SELECT ALL - col1 AS col2, col2 FROM tab0 (FORMAT parquet) WHERE NOT ( + col2 ) IN ( 5 + + - col2 * + - col1, col1 );
+  - name: tab0
+
+outputs:
+  - name: q7540.out
+    data: |
+      -1	99
+      -21	10
+      -81	47

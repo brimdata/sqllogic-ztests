@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q13877.spq | sort > q13877.out
+
+inputs:
+  - name: q13877.spq
+    data: |
+      SELECT ALL + 23 FROM tab2 (FORMAT parquet) WHERE col0 BETWEEN + + 6 AND 9;
+  - name: tab2
+
+outputs:
+  - name: q13877.out
+    data: |

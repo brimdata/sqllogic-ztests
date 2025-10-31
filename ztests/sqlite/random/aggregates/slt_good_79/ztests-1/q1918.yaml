@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q1918.spq | sort > q1918.out
+
+inputs:
+  - name: q1918.spq
+    data: |
+      SELECT DISTINCT ( - 8 ) / COUNT ( * ) FROM tab0 (FORMAT parquet) AS cor0 WHERE NOT ( col2 ) IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q1918.out
+    data: |
+      -2

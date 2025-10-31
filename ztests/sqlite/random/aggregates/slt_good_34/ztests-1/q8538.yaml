@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8538.spq | sort > q8538.out
+
+inputs:
+  - name: q8538.spq
+    data: |
+      SELECT DISTINCT * FROM tab2 (FORMAT parquet) WHERE NULL <= ( - 96 * - col0 + col0 - - col1 - col1 );
+  - name: tab2
+
+outputs:
+  - name: q8538.out
+    data: |

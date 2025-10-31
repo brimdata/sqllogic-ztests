@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q12821.spq | sort > q12821.out
+
+inputs:
+  - name: q12821.spq
+    data: |
+      SELECT ALL * FROM tab0 (FORMAT parquet) AS cor0 WHERE NOT ( ( - col1 + + col1 ) IN ( - 10 / - ( col1 ), - 95 ) );
+  - name: tab0
+
+outputs:
+  - name: q12821.out
+    data: |
+      97	1	99

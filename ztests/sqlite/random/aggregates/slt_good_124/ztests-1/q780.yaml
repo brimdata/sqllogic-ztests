@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q780.spq | sort > q780.out
+
+inputs:
+  - name: q780.spq
+    data: |
+      SELECT DISTINCT * FROM tab0 (FORMAT parquet) WHERE NOT - 61 * col2 IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q780.out
+    data: |

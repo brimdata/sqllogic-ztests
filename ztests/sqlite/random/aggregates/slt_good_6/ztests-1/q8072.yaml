@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8072.spq | sort > q8072.out
+
+inputs:
+  - name: q8072.spq
+    data: |
+      SELECT DISTINCT + col2 FROM tab1 (FORMAT parquet) cor0 WHERE - col0 BETWEEN + col2 AND 16;
+  - name: tab1
+
+outputs:
+  - name: q8072.out
+    data: |

@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q4840.spq | sort > q4840.out
+
+inputs:
+  - name: q4840.spq
+    data: |
+      SELECT ALL SUM ( - col2 ) + - 27 AS col1 FROM tab1 (FORMAT parquet);
+  - name: tab1
+
+outputs:
+  - name: q4840.out
+    data: |
+      -250

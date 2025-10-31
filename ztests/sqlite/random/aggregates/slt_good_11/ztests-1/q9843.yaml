@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q9843.spq | sort > q9843.out
+
+inputs:
+  - name: q9843.spq
+    data: |
+      SELECT ALL * FROM tab0 (FORMAT parquet) WHERE NOT NULL BETWEEN ( - 54 ) AND CAST ( 78 AS INTEGER );
+  - name: tab0
+
+outputs:
+  - name: q9843.out
+    data: |

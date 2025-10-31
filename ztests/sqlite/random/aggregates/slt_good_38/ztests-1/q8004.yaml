@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8004.spq | sort > q8004.out
+
+inputs:
+  - name: q8004.spq
+    data: |
+      SELECT ALL + col1 * + col0 FROM tab0 (FORMAT parquet) AS cor0 WHERE NOT ( col1 + 95 ) IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q8004.out
+    data: |
+      1215
+      1827
+      97

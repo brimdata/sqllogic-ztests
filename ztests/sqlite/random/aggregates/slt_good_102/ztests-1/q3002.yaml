@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q3002.spq | sort > q3002.out
+
+inputs:
+  - name: q3002.spq
+    data: |
+      SELECT DISTINCT * FROM tab2 (FORMAT parquet) WHERE NOT - ( col0 ) - 55 <= ( col2 );
+  - name: tab2
+
+outputs:
+  - name: q3002.out
+    data: |

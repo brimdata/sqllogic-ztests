@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q5559.spq | sort > q5559.out
+
+inputs:
+  - name: q5559.spq
+    data: |
+      SELECT DISTINCT - MAX ( 23 ) FROM tab1 (FORMAT parquet) AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q5559.out
+    data: |
+      -23

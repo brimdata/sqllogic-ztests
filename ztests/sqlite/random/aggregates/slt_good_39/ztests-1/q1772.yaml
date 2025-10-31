@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q1772.spq | sort > q1772.out
+
+inputs:
+  - name: q1772.spq
+    data: |
+      SELECT + - 44 + + col1 FROM tab2 (FORMAT parquet) WHERE NOT - col1 BETWEEN + col0 AND NULL;
+  - name: tab2
+
+outputs:
+  - name: q1772.out
+    data: |
+      23
+      33
+      7

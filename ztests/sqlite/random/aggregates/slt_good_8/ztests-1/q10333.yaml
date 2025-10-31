@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q10333.spq | sort > q10333.out
+
+inputs:
+  - name: q10333.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) WHERE 14 BETWEEN col1 AND ( 73 );
+  - name: tab1
+
+outputs:
+  - name: q10333.out
+    data: |
+      51	14	96
+      85	5	59

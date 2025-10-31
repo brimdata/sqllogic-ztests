@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q626.spq | sort > q626.out
+
+inputs:
+  - name: q626.spq
+    data: |
+      SELECT - col2 * + 17 - 49 FROM tab0 (FORMAT parquet) WHERE NOT - CAST ( col1 AS REAL ) / col2 NOT BETWEEN ( NULL ) AND NULL;
+  - name: tab0
+
+outputs:
+  - name: q626.out
+    data: |

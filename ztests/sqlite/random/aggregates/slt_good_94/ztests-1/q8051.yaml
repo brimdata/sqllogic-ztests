@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8051.spq | sort > q8051.out
+
+inputs:
+  - name: q8051.spq
+    data: |
+      SELECT ALL * FROM tab2 (FORMAT parquet) WHERE NOT NULL IS NULL OR NULL <= + 43;
+  - name: tab2
+
+outputs:
+  - name: q8051.out
+    data: |

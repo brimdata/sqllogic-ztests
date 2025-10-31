@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q660.spq | sort > q660.out
+
+inputs:
+  - name: q660.spq
+    data: |
+      SELECT DISTINCT * FROM tab1 (FORMAT parquet) WHERE ( - ( + 62 ) ) <= NULL;
+  - name: tab1
+
+outputs:
+  - name: q660.out
+    data: |

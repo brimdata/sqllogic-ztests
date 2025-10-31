@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q13152.spq | sort > q13152.out
+
+inputs:
+  - name: q13152.spq
+    data: |
+      SELECT DISTINCT col0 - col1 FROM tab1 (FORMAT parquet) WHERE ( - col0 - - 56 ) = 39;
+  - name: tab1
+
+outputs:
+  - name: q13152.out
+    data: |

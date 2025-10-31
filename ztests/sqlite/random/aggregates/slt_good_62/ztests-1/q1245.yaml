@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q1245.spq | sort > q1245.out
+
+inputs:
+  - name: q1245.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) AS cor0 CROSS JOIN tab0 (FORMAT parquet) AS cor1 WHERE NULL NOT BETWEEN NULL AND 35;
+  - name: tab0
+
+outputs:
+  - name: q1245.out
+    data: |

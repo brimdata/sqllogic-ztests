@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q240.spq | sort > q240.out
+
+inputs:
+  - name: q240.spq
+    data: |
+      SELECT + - 79 * - col1 AS col1 FROM tab0 (FORMAT parquet) AS cor0 WHERE NOT ( - col1 ) IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q240.out
+    data: |
+      1659
+      6399
+      79

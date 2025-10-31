@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q793.spq | sort > q793.out
+
+inputs:
+  - name: q793.spq
+    data: |
+      SELECT col0 AS col1 FROM tab2 (FORMAT parquet) WHERE NOT NULL NOT BETWEEN 7 AND + + col2;
+  - name: tab2
+
+outputs:
+  - name: q793.out
+    data: |

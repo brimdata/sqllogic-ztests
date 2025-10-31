@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q8411.spq | sort > q8411.out
+
+inputs:
+  - name: q8411.spq
+    data: |
+      SELECT DISTINCT COUNT ( * ) * - 6 / 27 FROM tab1 (FORMAT parquet) AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q8411.out
+    data: |
+      0

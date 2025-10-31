@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q725.spq | sort > q725.out
+
+inputs:
+  - name: q725.spq
+    data: |
+      SELECT DISTINCT * FROM tab0 (FORMAT parquet) AS cor0 WHERE CAST ( NULL AS REAL ) IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q725.out
+    data: |

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8220.spq | sort > q8220.out
+
+inputs:
+  - name: q8220.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE NOT - ( col2 ) <> + 23;
+  - name: tab0
+
+outputs:
+  - name: q8220.out
+    data: |

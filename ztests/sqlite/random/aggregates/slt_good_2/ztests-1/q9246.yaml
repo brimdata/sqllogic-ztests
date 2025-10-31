@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q9246.spq | sort > q9246.out
+
+inputs:
+  - name: q9246.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE NOT col2 <= + - 26 * col0 + - col1;
+  - name: tab0
+
+outputs:
+  - name: q9246.out
+    data: |
+      15	81	47
+      87	21	10
+      97	1	99

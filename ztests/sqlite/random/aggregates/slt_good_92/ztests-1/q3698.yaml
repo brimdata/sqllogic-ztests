@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q3698.spq | sort > q3698.out
+
+inputs:
+  - name: q3698.spq
+    data: |
+      SELECT ALL col1 / + col1 + 28 + - ( - col0 ) AS col1 FROM tab1 (FORMAT parquet) AS cor0 WHERE + col1 BETWEEN NULL AND col1;
+  - name: tab1
+
+outputs:
+  - name: q3698.out
+    data: |

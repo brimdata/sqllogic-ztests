@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q57.spq | sort > q57.out
+
+inputs:
+  - name: q57.spq
+    data: |
+      SELECT - COUNT ( * ) * 70 AS col2 FROM tab0 (FORMAT parquet) WHERE + ( + col1 ) IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q57.out
+    data: |
+      -210

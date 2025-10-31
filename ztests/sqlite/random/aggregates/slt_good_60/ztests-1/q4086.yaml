@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q4086.spq | sort > q4086.out
+
+inputs:
+  - name: q4086.spq
+    data: |
+      SELECT ALL - - 42 FROM tab1 (FORMAT parquet) WHERE - col2 <> + - 85;
+  - name: tab1
+
+outputs:
+  - name: q4086.out
+    data: |
+      42
+      42
+      42

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q896.spq | sort > q896.out
+
+inputs:
+  - name: q896.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE NOT ( col0 * - 8 ) = NULL;
+  - name: tab0
+
+outputs:
+  - name: q896.out
+    data: |

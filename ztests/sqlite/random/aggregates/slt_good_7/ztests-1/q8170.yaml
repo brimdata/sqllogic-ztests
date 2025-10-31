@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8170.spq | sort > q8170.out
+
+inputs:
+  - name: q8170.spq
+    data: |
+      SELECT ALL * FROM tab0 (FORMAT parquet) WHERE NOT - col2 * - col1 * + 29 IN ( - - col1 * - col1, ( + 16 ) + 17 );
+  - name: tab0
+
+outputs:
+  - name: q8170.out
+    data: |
+      15	81	47
+      87	21	10
+      97	1	99

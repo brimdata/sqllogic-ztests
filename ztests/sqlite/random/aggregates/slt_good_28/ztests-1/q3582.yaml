@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q3582.spq | sort > q3582.out
+
+inputs:
+  - name: q3582.spq
+    data: |
+      SELECT col1 * + col1 FROM tab2 (FORMAT parquet) AS cor0 WHERE NOT 45 BETWEEN + - col1 + - 78 * 43 AND ( ( col0 ) );
+  - name: tab2
+
+outputs:
+  - name: q3582.out
+    data: |

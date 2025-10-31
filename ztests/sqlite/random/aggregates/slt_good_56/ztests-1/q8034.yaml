@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8034.spq | sort > q8034.out
+
+inputs:
+  - name: q8034.spq
+    data: |
+      SELECT col0 * + + 5 * 27 AS col0, + col1 FROM tab1 (FORMAT parquet);
+  - name: tab1
+
+outputs:
+  - name: q8034.out
+    data: |
+      11475	5
+      12285	47
+      6885	14

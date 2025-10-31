@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q9650.spq | sort > q9650.out
+
+inputs:
+  - name: q9650.spq
+    data: |
+      SELECT ALL * FROM tab1 (FORMAT parquet) WHERE col1 + + 76 NOT BETWEEN col0 AND ( col0 );
+  - name: tab1
+
+outputs:
+  - name: q9650.out
+    data: |
+      51	14	96
+      85	5	59
+      91	47	68

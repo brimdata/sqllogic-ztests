@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8240.spq | sort > q8240.out
+
+inputs:
+  - name: q8240.spq
+    data: |
+      SELECT col0 FROM tab0 (FORMAT parquet) cor0 WHERE NOT col0 > - col1 - - - CAST ( NULL AS INTEGER );
+  - name: tab0
+
+outputs:
+  - name: q8240.out
+    data: |

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q5048.spq | sort > q5048.out
+
+inputs:
+  - name: q5048.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) AS cor0 WHERE + col1 > + - col1 * - ( + CAST ( NULL AS INTEGER ) );
+  - name: tab1
+
+outputs:
+  - name: q5048.out
+    data: |

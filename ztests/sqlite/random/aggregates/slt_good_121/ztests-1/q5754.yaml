@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q5754.spq | sort > q5754.out
+
+inputs:
+  - name: q5754.spq
+    data: |
+      SELECT col1 FROM tab2 (FORMAT parquet) WHERE - col2 > + 32 * + 11 + - 55;
+  - name: tab2
+
+outputs:
+  - name: q5754.out
+    data: |

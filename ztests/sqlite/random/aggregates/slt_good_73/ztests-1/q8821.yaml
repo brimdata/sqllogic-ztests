@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q8821.spq | sort > q8821.out
+
+inputs:
+  - name: q8821.spq
+    data: |
+      SELECT + 76 * - COUNT ( * ) * MAX ( - col2 ) FROM tab0 (FORMAT parquet);
+  - name: tab0
+
+outputs:
+  - name: q8821.out
+    data: |
+      2280

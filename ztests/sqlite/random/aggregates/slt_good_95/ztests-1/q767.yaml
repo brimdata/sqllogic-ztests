@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q767.spq | sort > q767.out
+
+inputs:
+  - name: q767.spq
+    data: |
+      SELECT DISTINCT - 82 AS col2 FROM tab2 (FORMAT parquet) WHERE NOT + col1 IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q767.out
+    data: |
+      -82

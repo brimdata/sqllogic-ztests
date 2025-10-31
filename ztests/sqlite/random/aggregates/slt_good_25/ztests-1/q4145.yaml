@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q4145.spq | sort > q4145.out
+
+inputs:
+  - name: q4145.spq
+    data: |
+      SELECT + COUNT ( * ) FROM tab0 (FORMAT parquet) WHERE NOT 81 IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q4145.out
+    data: |
+      3

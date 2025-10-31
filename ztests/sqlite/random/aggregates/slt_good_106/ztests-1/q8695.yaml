@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8695.spq | sort > q8695.out
+
+inputs:
+  - name: q8695.spq
+    data: |
+      SELECT DISTINCT CAST ( NULL AS INTEGER ) + + ( - col2 ) / 50 col1 FROM tab0 (FORMAT parquet) WHERE NOT NULL < ( col1 );
+  - name: tab0
+
+outputs:
+  - name: q8695.out
+    data: |

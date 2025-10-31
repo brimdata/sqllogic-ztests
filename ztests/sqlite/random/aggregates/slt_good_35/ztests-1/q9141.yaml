@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q9141.spq | sort > q9141.out
+
+inputs:
+  - name: q9141.spq
+    data: |
+      SELECT col1 - - ( - col1 ) + + col1 / - ( + + col0 ) FROM tab1 (FORMAT parquet) AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q9141.out
+    data: |
+      0
+      0
+      0

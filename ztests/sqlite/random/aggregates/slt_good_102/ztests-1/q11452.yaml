@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q11452.spq | sort > q11452.out
+
+inputs:
+  - name: q11452.spq
+    data: |
+      SELECT MIN ( - 39 ) AS col0 FROM tab2 (FORMAT parquet) WHERE col2 IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q11452.out
+    data: |
+      -39

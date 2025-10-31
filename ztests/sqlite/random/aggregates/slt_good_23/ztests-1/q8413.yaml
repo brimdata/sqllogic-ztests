@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8413.spq | sort > q8413.out
+
+inputs:
+  - name: q8413.spq
+    data: |
+      SELECT DISTINCT CAST ( col0 AS REAL ) AS col1 FROM tab0 (FORMAT parquet) WHERE NOT NULL NOT BETWEEN ( NULL ) AND + col2;
+  - name: tab0
+
+outputs:
+  - name: q8413.out
+    data: |

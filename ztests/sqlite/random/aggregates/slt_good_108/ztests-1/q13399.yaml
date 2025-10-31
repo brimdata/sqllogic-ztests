@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q13399.spq | sort > q13399.out
+
+inputs:
+  - name: q13399.spq
+    data: |
+      SELECT DISTINCT - ( - + 26 ) * - - MIN ( col1 ) AS col1 FROM tab0 (FORMAT parquet) AS cor0;
+  - name: tab0
+
+outputs:
+  - name: q13399.out
+    data: |
+      26

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q5419.spq | sort > q5419.out
+
+inputs:
+  - name: q5419.spq
+    data: |
+      SELECT ALL * FROM tab0 (FORMAT parquet) WHERE NOT 24 * - - 32 * col1 IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q5419.out
+    data: |

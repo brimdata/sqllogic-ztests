@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q9856.spq | sort > q9856.out
+
+inputs:
+  - name: q9856.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) AS cor0 WHERE col1 BETWEEN - + CAST ( - + col1 AS REAL ) AND - col2;
+  - name: tab2
+
+outputs:
+  - name: q9856.out
+    data: |

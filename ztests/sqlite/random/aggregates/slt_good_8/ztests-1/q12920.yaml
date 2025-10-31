@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q12920.spq | sort > q12920.out
+
+inputs:
+  - name: q12920.spq
+    data: |
+      SELECT DISTINCT - col0 AS col2 FROM tab1 (FORMAT parquet) WHERE NOT - col1 IN ( col0 * + 28 );
+  - name: tab1
+
+outputs:
+  - name: q12920.out
+    data: |
+      -51
+      -85
+      -91

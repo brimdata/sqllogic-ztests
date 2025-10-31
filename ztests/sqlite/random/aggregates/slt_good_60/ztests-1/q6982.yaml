@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q6982.spq | sort > q6982.out
+
+inputs:
+  - name: q6982.spq
+    data: |
+      SELECT COUNT ( * ) + MIN ( - 99 - col0 * - col2 ) AS col0 FROM tab1 (FORMAT parquet);
+  - name: tab1
+
+outputs:
+  - name: q6982.out
+    data: |
+      4800

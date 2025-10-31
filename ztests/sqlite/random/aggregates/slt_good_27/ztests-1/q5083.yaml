@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q5083.spq | sort > q5083.out
+
+inputs:
+  - name: q5083.spq
+    data: |
+      SELECT ALL + 55, col1 * - col1 AS col2 FROM tab1 (FORMAT parquet) AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q5083.out
+    data: |
+      55	-196
+      55	-2209
+      55	-25

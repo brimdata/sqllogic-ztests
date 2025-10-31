@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q2030.spq | sort > q2030.out
+
+inputs:
+  - name: q2030.spq
+    data: |
+      SELECT ALL 2 + col0 / col0 FROM tab2 (FORMAT parquet) WHERE NOT + col2 * 27 IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q2030.out
+    data: |

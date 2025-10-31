@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q13020.spq | sort > q13020.out
+
+inputs:
+  - name: q13020.spq
+    data: |
+      SELECT col1 + 49 AS col2 FROM tab0 (FORMAT parquet) AS cor0 WHERE ( + col1 ) IN ( 59 );
+  - name: tab0
+
+outputs:
+  - name: q13020.out
+    data: |

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q7900.spq | sort > q7900.out
+
+inputs:
+  - name: q7900.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) WHERE + - col1 < + 22;
+  - name: tab1
+
+outputs:
+  - name: q7900.out
+    data: |
+      51	14	96
+      85	5	59
+      91	47	68

@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q9344.spq | sort > q9344.out
+
+inputs:
+  - name: q9344.spq
+    data: |
+      SELECT DISTINCT - MAX ( 10 ) AS col0 FROM tab2 (FORMAT parquet) cor0;
+  - name: tab2
+
+outputs:
+  - name: q9344.out
+    data: |
+      -10

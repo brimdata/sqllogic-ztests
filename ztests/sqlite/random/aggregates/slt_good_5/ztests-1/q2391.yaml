@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q2391.spq | sort > q2391.out
+
+inputs:
+  - name: q2391.spq
+    data: |
+      SELECT + + 6 AS col1, col2 FROM tab1 (FORMAT parquet) AS cor0 WHERE NOT col1 + + 4 NOT BETWEEN + + col1 * + - 86 AND - - 85;
+  - name: tab1
+
+outputs:
+  - name: q2391.out
+    data: |
+      6	59
+      6	68
+      6	96

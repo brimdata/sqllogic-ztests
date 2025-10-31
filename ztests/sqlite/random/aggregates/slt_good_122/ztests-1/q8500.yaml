@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8500.spq | sort > q8500.out
+
+inputs:
+  - name: q8500.spq
+    data: |
+      SELECT ALL + col1 FROM tab1 (FORMAT parquet) WHERE NULL > NULL AND NOT ( NOT 40 < + col1 );
+  - name: tab1
+
+outputs:
+  - name: q8500.out
+    data: |

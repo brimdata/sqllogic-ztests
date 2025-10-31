@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q3758.spq | sort > q3758.out
+
+inputs:
+  - name: q3758.spq
+    data: |
+      SELECT - 26 + + COUNT ( * ) AS col2 FROM tab2 (FORMAT parquet) AS cor0 CROSS JOIN tab2 (FORMAT parquet) AS cor1;
+  - name: tab2
+
+outputs:
+  - name: q3758.out
+    data: |
+      -17

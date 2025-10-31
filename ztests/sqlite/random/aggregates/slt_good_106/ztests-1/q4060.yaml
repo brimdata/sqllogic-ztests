@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q4060.spq | sort > q4060.out
+
+inputs:
+  - name: q4060.spq
+    data: |
+      SELECT ALL + col1 + - 68 FROM tab2 (FORMAT parquet) AS cor0 WHERE NOT col0 + - col0 - - col1 BETWEEN NULL AND NULL;
+  - name: tab2
+
+outputs:
+  - name: q4060.out
+    data: |

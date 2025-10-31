@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q486.spq | sort > q486.out
+
+inputs:
+  - name: q486.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) AS cor0 CROSS JOIN tab2 (FORMAT parquet) AS cor1 WHERE NOT - 84 <= NULL;
+  - name: tab2
+
+outputs:
+  - name: q486.out
+    data: |

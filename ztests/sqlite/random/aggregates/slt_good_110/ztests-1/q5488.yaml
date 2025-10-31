@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q5488.spq | sort > q5488.out
+
+inputs:
+  - name: q5488.spq
+    data: |
+      SELECT ALL 2 * - col2 + col1 FROM tab2 (FORMAT parquet) WHERE ( - col0 + 97 / + col2 ) > NULL;
+  - name: tab2
+
+outputs:
+  - name: q5488.out
+    data: |

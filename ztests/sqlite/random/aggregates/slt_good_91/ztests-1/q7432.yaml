@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q7432.spq | sort > q7432.out
+
+inputs:
+  - name: q7432.spq
+    data: |
+      SELECT 13 + + col1 AS col0, 41 FROM tab0 (FORMAT parquet);
+  - name: tab0
+
+outputs:
+  - name: q7432.out
+    data: |
+      14	41
+      34	41
+      94	41

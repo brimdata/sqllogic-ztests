@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q2977.spq | sort > q2977.out
+
+inputs:
+  - name: q2977.spq
+    data: |
+      SELECT + col0 AS col2 FROM tab2 (FORMAT parquet) WHERE NOT col0 + 95 <= NULL;
+  - name: tab2
+
+outputs:
+  - name: q2977.out
+    data: |

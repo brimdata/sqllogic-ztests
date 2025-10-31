@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q9754.spq | sort > q9754.out
+
+inputs:
+  - name: q9754.spq
+    data: |
+      SELECT DISTINCT + 15 FROM tab1 (FORMAT parquet) AS cor0 WHERE NOT 50 IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q9754.out
+    data: |
+      15

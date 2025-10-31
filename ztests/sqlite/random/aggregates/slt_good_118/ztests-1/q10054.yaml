@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q10054.spq | sort > q10054.out
+
+inputs:
+  - name: q10054.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) AS cor0 WHERE NOT ( 9 IS NULL );
+  - name: tab1
+
+outputs:
+  - name: q10054.out
+    data: |
+      51	14	96
+      85	5	59
+      91	47	68

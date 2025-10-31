@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q5029.spq | sort > q5029.out
+
+inputs:
+  - name: q5029.spq
+    data: |
+      SELECT ALL * FROM tab0 (FORMAT parquet) WHERE - col1 + - col1 / + - col1 BETWEEN ( + 30 ) AND NULL;
+  - name: tab0
+
+outputs:
+  - name: q5029.out
+    data: |

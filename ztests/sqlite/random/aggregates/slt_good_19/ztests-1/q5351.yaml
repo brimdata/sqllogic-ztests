@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q5351.spq | sort > q5351.out
+
+inputs:
+  - name: q5351.spq
+    data: |
+      SELECT ALL * FROM tab2 (FORMAT parquet) AS cor0 WHERE CAST ( + + col1 AS INTEGER ) * - 90 * 15 BETWEEN NULL AND ( + + col1 );
+  - name: tab2
+
+outputs:
+  - name: q5351.out
+    data: |

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q7606.spq | sort > q7606.out
+
+inputs:
+  - name: q7606.spq
+    data: |
+      SELECT ALL - col2 FROM tab2 (FORMAT parquet) WHERE NOT - col2 * 8 * - + col1 IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q7606.out
+    data: |

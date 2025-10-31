@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q5069.spq | sort > q5069.out
+
+inputs:
+  - name: q5069.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) WHERE ( col0 * col0 ) <= + 96;
+  - name: tab2
+
+outputs:
+  - name: q5069.out
+    data: |

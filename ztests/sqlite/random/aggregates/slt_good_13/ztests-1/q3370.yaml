@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q3370.spq | sort > q3370.out
+
+inputs:
+  - name: q3370.spq
+    data: |
+      SELECT DISTINCT MAX ( DISTINCT - CAST ( NULL AS INTEGER ) ) FROM tab1 (FORMAT parquet);
+  - name: tab1
+
+outputs:
+  - name: q3370.out
+    data: |
+      -

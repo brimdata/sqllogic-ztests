@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q3808.spq | sort > q3808.out
+
+inputs:
+  - name: q3808.spq
+    data: |
+      SELECT ALL + + col1 AS col1 FROM tab2 (FORMAT parquet) AS cor0 WHERE NOT + col1 NOT BETWEEN CAST ( - CAST ( NULL AS INTEGER ) AS INTEGER ) * + 26 AND + - col0 + - col1;
+  - name: tab2
+
+outputs:
+  - name: q3808.out
+    data: |

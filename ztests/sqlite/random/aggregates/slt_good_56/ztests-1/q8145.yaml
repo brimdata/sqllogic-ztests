@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8145.spq | sort > q8145.out
+
+inputs:
+  - name: q8145.spq
+    data: |
+      SELECT 75 - - col2 AS col2 FROM tab1 (FORMAT parquet) AS cor0 WHERE NOT CAST ( - col1 AS INTEGER ) NOT BETWEEN - col2 AND - + CAST ( NULL AS INTEGER );
+  - name: tab1
+
+outputs:
+  - name: q8145.out
+    data: |

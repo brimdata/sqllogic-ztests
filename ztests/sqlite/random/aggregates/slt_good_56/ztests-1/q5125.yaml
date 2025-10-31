@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q5125.spq | sort > q5125.out
+
+inputs:
+  - name: q5125.spq
+    data: |
+      SELECT ALL * FROM tab1 (FORMAT parquet) WHERE NOT - 87 / CAST ( + CAST ( NULL AS INTEGER ) AS INTEGER ) = NULL;
+  - name: tab1
+
+outputs:
+  - name: q5125.out
+    data: |

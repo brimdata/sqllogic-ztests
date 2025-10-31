@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q7426.spq | sort > q7426.out
+
+inputs:
+  - name: q7426.spq
+    data: |
+      SELECT - col2 + - col2 / - ( - col1 ) FROM tab1 (FORMAT parquet) WHERE - - col1 IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q7426.out
+    data: |
+      -102
+      -69
+      -70

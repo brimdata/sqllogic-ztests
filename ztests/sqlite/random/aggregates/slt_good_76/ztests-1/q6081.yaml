@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q6081.spq | sort > q6081.out
+
+inputs:
+  - name: q6081.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) WHERE + ( ( CAST ( NULL AS REAL ) ) ) <> ( + col1 / 84 - - 87 );
+  - name: tab2
+
+outputs:
+  - name: q6081.out
+    data: |

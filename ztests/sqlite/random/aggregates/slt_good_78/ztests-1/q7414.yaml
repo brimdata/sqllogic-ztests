@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q7414.spq | sort > q7414.out
+
+inputs:
+  - name: q7414.spq
+    data: |
+      SELECT DISTINCT MAX ( DISTINCT 20 ) FROM tab1 (FORMAT parquet);
+  - name: tab1
+
+outputs:
+  - name: q7414.out
+    data: |
+      20

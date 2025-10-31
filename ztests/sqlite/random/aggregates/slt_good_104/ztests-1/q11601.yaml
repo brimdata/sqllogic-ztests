@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q11601.spq | sort > q11601.out
+
+inputs:
+  - name: q11601.spq
+    data: |
+      SELECT ALL * FROM tab0 (FORMAT parquet) cor0 WHERE NOT ( NOT - col0 * col1 >= 18 );
+  - name: tab0
+
+outputs:
+  - name: q11601.out
+    data: |

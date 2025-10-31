@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q5902.spq | sort > q5902.out
+
+inputs:
+  - name: q5902.spq
+    data: |
+      SELECT - - 31 + col2 FROM tab2 (FORMAT parquet) AS cor0 WHERE col1 NOT BETWEEN + ( + 75 ) AND + 8 + col2;
+  - name: tab2
+
+outputs:
+  - name: q5902.out
+    data: |
+      54
+      71
+      89

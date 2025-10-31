@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q5037.spq | sort > q5037.out
+
+inputs:
+  - name: q5037.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) AS cor0 WHERE col1 * - col2 BETWEEN 48 AND ( - col0 );
+  - name: tab1
+
+outputs:
+  - name: q5037.out
+    data: |

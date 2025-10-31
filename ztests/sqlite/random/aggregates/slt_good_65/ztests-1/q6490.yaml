@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q6490.spq | sort > q6490.out
+
+inputs:
+  - name: q6490.spq
+    data: |
+      SELECT + COUNT ( * ) FROM tab0 (FORMAT parquet) WHERE NOT 61 * ( + - col2 ) * + + col0 BETWEEN col2 AND NULL;
+  - name: tab0
+
+outputs:
+  - name: q6490.out
+    data: |
+      3

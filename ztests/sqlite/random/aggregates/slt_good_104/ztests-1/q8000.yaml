@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8000.spq | sort > q8000.out
+
+inputs:
+  - name: q8000.spq
+    data: |
+      SELECT ALL * FROM tab0 (FORMAT parquet) AS cor0 WHERE NOT NULL BETWEEN ( NULL ) AND ( + 27 );
+  - name: tab0
+
+outputs:
+  - name: q8000.out
+    data: |

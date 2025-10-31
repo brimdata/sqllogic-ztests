@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q10182.spq | sort > q10182.out
+
+inputs:
+  - name: q10182.spq
+    data: |
+      SELECT ALL + CAST ( NULL AS REAL ) AS col1 FROM tab2 (FORMAT parquet) WHERE NOT - col1 NOT BETWEEN - + 35 AND - col0 + + col1;
+  - name: tab2
+
+outputs:
+  - name: q10182.out
+    data: |

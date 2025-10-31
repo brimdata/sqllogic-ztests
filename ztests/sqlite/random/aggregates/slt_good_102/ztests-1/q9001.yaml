@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q9001.spq | sort > q9001.out
+
+inputs:
+  - name: q9001.spq
+    data: |
+      SELECT ALL MIN ( + - col0 ) AS col0 FROM tab0 (FORMAT parquet);
+  - name: tab0
+
+outputs:
+  - name: q9001.out
+    data: |
+      -97

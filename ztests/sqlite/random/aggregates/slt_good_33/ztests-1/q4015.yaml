@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q4015.spq | sort > q4015.out
+
+inputs:
+  - name: q4015.spq
+    data: |
+      SELECT ALL + + SUM ( 46 ) FROM tab2 (FORMAT parquet) AS cor0 CROSS JOIN tab1 (FORMAT parquet) AS cor1;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q4015.out
+    data: |
+      414

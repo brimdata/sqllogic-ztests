@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q590.spq | sort > q590.out
+
+inputs:
+  - name: q590.spq
+    data: |
+      SELECT ALL - 20 + ( CAST ( NULL AS INTEGER ) ) * col0 AS col0 FROM tab1 (FORMAT parquet) WHERE NOT col0 NOT BETWEEN col1 * + 1 - + col2 AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q590.out
+    data: |

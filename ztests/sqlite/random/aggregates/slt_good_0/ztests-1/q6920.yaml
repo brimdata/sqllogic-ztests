@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q6920.spq | sort > q6920.out
+
+inputs:
+  - name: q6920.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) AS cor0 WHERE ( NOT - col1 * 75 + - col1 >= - col2 );
+  - name: tab0
+
+outputs:
+  - name: q6920.out
+    data: |
+      15	81	47
+      87	21	10

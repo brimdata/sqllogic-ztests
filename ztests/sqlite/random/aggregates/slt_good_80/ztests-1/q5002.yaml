@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q5002.spq | sort > q5002.out
+
+inputs:
+  - name: q5002.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE CAST ( NULL AS INTEGER ) IN ( col0, CAST ( col1 AS INTEGER ), - + 45 );
+  - name: tab0
+
+outputs:
+  - name: q5002.out
+    data: |

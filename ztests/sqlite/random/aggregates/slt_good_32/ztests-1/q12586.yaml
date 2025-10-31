@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q12586.spq | sort > q12586.out
+
+inputs:
+  - name: q12586.spq
+    data: |
+      SELECT - ( + + COUNT ( * ) ) * MAX ( + + ( + col1 ) ) FROM tab1 (FORMAT parquet);
+  - name: tab1
+
+outputs:
+  - name: q12586.out
+    data: |
+      -141

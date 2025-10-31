@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q10524.spq | sort > q10524.out
+
+inputs:
+  - name: q10524.spq
+    data: |
+      SELECT col0 FROM tab1 (FORMAT parquet) cor0 WHERE CAST ( + col1 AS INTEGER ) + 60 BETWEEN NULL AND col2 + - 73 * CAST ( NULL AS INTEGER ) AND col1 IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q10524.out
+    data: |

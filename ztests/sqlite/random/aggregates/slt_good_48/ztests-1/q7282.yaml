@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q7282.spq | sort > q7282.out
+
+inputs:
+  - name: q7282.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) WHERE NULL > col2 AND NOT + 32 IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q7282.out
+    data: |

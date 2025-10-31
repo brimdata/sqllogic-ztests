@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q5642.spq | sort > q5642.out
+
+inputs:
+  - name: q5642.spq
+    data: |
+      SELECT + SUM ( - col0 ) col0 FROM tab1 (FORMAT parquet) AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q5642.out
+    data: |
+      -227

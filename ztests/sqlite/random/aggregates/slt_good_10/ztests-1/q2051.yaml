@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q2051.spq | sort > q2051.out
+
+inputs:
+  - name: q2051.spq
+    data: |
+      SELECT col1 * - - col2 FROM tab1 (FORMAT parquet) WHERE - col0 < NULL;
+  - name: tab1
+
+outputs:
+  - name: q2051.out
+    data: |

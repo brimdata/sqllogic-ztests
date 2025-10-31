@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q11340.spq | sort > q11340.out
+
+inputs:
+  - name: q11340.spq
+    data: |
+      SELECT DISTINCT 85 AS col2 FROM tab1 (FORMAT parquet) AS cor0 WHERE NOT col0 BETWEEN + - col2 AND - - 95 - col0;
+  - name: tab1
+
+outputs:
+  - name: q11340.out
+    data: |
+      85

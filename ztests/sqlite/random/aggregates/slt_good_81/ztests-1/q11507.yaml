@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q11507.spq | sort > q11507.out
+
+inputs:
+  - name: q11507.spq
+    data: |
+      SELECT ALL col0 FROM tab1 (FORMAT parquet) WHERE col0 + - col0 IN ( + 48 / - 9 );
+  - name: tab1
+
+outputs:
+  - name: q11507.out
+    data: |

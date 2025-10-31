@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q12438.spq | sort > q12438.out
+
+inputs:
+  - name: q12438.spq
+    data: |
+      SELECT col2 FROM tab1 (FORMAT parquet) cor0 WHERE ( + 20 * 99 ) NOT BETWEEN NULL AND ( + col2 * - - ( CAST ( CAST ( NULL AS INTEGER ) AS INTEGER ) ) + col1 * + col2 );
+  - name: tab1
+
+outputs:
+  - name: q12438.out
+    data: |

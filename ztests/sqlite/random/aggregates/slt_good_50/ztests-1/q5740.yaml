@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q5740.spq | sort > q5740.out
+
+inputs:
+  - name: q5740.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) WHERE NULL NOT BETWEEN + ( col1 ) AND CAST ( - col1 AS INTEGER ) * + col1 + - 52 + - - col1;
+  - name: tab1
+
+outputs:
+  - name: q5740.out
+    data: |

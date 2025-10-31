@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q7959.spq | sort > q7959.out
+
+inputs:
+  - name: q7959.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) WHERE 39 IS NOT NULL AND ( col1 + - 66 * col1 ) BETWEEN + 35 * - 26 AND + col1 * + col1;
+  - name: tab2
+
+outputs:
+  - name: q7959.out
+    data: |

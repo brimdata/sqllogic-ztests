@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q802.spq | sort > q802.out
+
+inputs:
+  - name: q802.spq
+    data: |
+      SELECT ALL * FROM tab0 (FORMAT parquet) WHERE NOT + col1 + col0 <= ( - col0 );
+  - name: tab0
+
+outputs:
+  - name: q802.out
+    data: |
+      15	81	47
+      87	21	10
+      97	1	99

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q11143.spq | sort > q11143.out
+
+inputs:
+  - name: q11143.spq
+    data: |
+      SELECT ALL + 95 * col1 FROM tab1 (FORMAT parquet) AS cor0 WHERE NULL NOT BETWEEN 50 + - col2 * + col1 AND ( col2 ) - + - col1 + ( - col1 ) * + col2;
+  - name: tab1
+
+outputs:
+  - name: q11143.out
+    data: |

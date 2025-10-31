@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8870.spq | sort > q8870.out
+
+inputs:
+  - name: q8870.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) WHERE + 13 * col2 * + CAST ( col2 AS INTEGER ) <= + + ( col0 );
+  - name: tab2
+
+outputs:
+  - name: q8870.out
+    data: |

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q6736.spq | sort > q6736.out
+
+inputs:
+  - name: q6736.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE NOT - 87 NOT BETWEEN ( col1 + - 27 ) AND + col0;
+  - name: tab0
+
+outputs:
+  - name: q6736.out
+    data: |

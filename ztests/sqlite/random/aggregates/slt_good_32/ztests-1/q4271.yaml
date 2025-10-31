@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q4271.spq | sort > q4271.out
+
+inputs:
+  - name: q4271.spq
+    data: |
+      SELECT - col0 - - 33 FROM tab2 (FORMAT parquet) WHERE NOT 6 <= col1;
+  - name: tab2
+
+outputs:
+  - name: q4271.out
+    data: |

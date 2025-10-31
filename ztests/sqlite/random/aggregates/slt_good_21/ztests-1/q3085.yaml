@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q3085.spq | sort > q3085.out
+
+inputs:
+  - name: q3085.spq
+    data: |
+      SELECT + COUNT ( * ) / MIN ( + col0 ) AS col2 FROM tab1 (FORMAT parquet) WHERE col1 IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q3085.out
+    data: |
+      0

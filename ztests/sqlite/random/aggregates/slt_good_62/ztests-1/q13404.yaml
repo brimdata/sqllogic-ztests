@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q13404.spq | sort > q13404.out
+
+inputs:
+  - name: q13404.spq
+    data: |
+      SELECT MAX ( + col1 ) FROM tab0 (FORMAT parquet) WHERE NOT NULL IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q13404.out
+    data: |
+      81

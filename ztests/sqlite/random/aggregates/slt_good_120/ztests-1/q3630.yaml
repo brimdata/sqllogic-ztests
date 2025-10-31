@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q3630.spq | sort > q3630.out
+
+inputs:
+  - name: q3630.spq
+    data: |
+      SELECT ALL COUNT ( * ) * - 3 / + COUNT ( * ) FROM tab1 (FORMAT parquet) AS cor0 WHERE NOT ( 3 - col1 IN ( - col2 ) );
+  - name: tab1
+
+outputs:
+  - name: q3630.out
+    data: |
+      -3

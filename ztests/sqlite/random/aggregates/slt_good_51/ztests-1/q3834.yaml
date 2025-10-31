@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q3834.spq | sort > q3834.out
+
+inputs:
+  - name: q3834.spq
+    data: |
+      SELECT DISTINCT - + 28 - + col1 FROM tab1 (FORMAT parquet) WHERE NOT NULL IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q3834.out
+    data: |
+      -33
+      -42
+      -75

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q2726.spq | sort > q2726.out
+
+inputs:
+  - name: q2726.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) WHERE + col0 BETWEEN - ( + col0 ) * + col0 * - - 2 AND 40;
+  - name: tab1
+
+outputs:
+  - name: q2726.out
+    data: |

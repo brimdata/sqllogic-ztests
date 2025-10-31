@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q4327.spq | sort > q4327.out
+
+inputs:
+  - name: q4327.spq
+    data: |
+      SELECT DISTINCT + - col0 * - ( + col1 ) + + - col2 FROM tab1 (FORMAT parquet) WHERE 23 IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q4327.out
+    data: |
+      366
+      4209
+      618

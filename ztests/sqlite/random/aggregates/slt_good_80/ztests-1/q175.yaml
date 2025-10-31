@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q175.spq | sort > q175.out
+
+inputs:
+  - name: q175.spq
+    data: |
+      SELECT + COUNT ( 10 ) AS col2 FROM tab1 (FORMAT parquet) AS cor0 CROSS JOIN tab2 (FORMAT parquet) AS cor1;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q175.out
+    data: |
+      9

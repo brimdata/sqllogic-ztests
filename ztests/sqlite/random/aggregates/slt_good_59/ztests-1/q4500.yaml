@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q4500.spq | sort > q4500.out
+
+inputs:
+  - name: q4500.spq
+    data: |
+      SELECT ALL + - 36 * - col1 + - 64 / - col0 AS col1 FROM tab0 (FORMAT parquet) AS cor0;
+  - name: tab0
+
+outputs:
+  - name: q4500.out
+    data: |
+      2920
+      36
+      756

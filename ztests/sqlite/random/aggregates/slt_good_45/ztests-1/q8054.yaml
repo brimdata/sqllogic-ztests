@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8054.spq | sort > q8054.out
+
+inputs:
+  - name: q8054.spq
+    data: |
+      SELECT ALL + col2 + + - 30 * - 12 * - col2 AS col1 FROM tab1 (FORMAT parquet);
+  - name: tab1
+
+outputs:
+  - name: q8054.out
+    data: |
+      -21181
+      -24412
+      -34464

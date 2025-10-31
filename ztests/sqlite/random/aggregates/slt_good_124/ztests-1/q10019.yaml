@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q10019.spq | sort > q10019.out
+
+inputs:
+  - name: q10019.spq
+    data: |
+      SELECT ALL + COUNT ( - col0 ) AS col0 FROM tab1 (FORMAT parquet) AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q10019.out
+    data: |
+      3

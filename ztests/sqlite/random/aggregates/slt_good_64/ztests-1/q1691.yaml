@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q1691.spq | sort > q1691.out
+
+inputs:
+  - name: q1691.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE ( ( NULL ) BETWEEN - 80 AND + col0 * col1 );
+  - name: tab0
+
+outputs:
+  - name: q1691.out
+    data: |

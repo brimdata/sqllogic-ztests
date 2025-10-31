@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q9702.spq | sort > q9702.out
+
+inputs:
+  - name: q9702.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) AS cor0 WHERE NOT ( ( + 73 ) <> col2 );
+  - name: tab0
+
+outputs:
+  - name: q9702.out
+    data: |

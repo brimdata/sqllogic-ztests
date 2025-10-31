@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q8637.spq | sort > q8637.out
+
+inputs:
+  - name: q8637.spq
+    data: |
+      SELECT 36 * - col0 + col1 AS col0 FROM tab0 (FORMAT parquet) WHERE col2 BETWEEN 32 AND col2 / col1 + + col1;
+  - name: tab0
+
+outputs:
+  - name: q8637.out
+    data: |
+      -3491
+      -459

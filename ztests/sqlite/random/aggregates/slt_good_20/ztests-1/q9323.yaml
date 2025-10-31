@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q9323.spq | sort > q9323.out
+
+inputs:
+  - name: q9323.spq
+    data: |
+      SELECT col1 * - col1, + ( - col2 ) / + col2 AS col1 FROM tab1 (FORMAT parquet) WHERE NOT 79 IN ( + col0 );
+  - name: tab1
+
+outputs:
+  - name: q9323.out
+    data: |
+      -196	-1
+      -2209	-1
+      -25	-1

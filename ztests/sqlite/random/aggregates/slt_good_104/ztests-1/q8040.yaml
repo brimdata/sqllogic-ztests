@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8040.spq | sort > q8040.out
+
+inputs:
+  - name: q8040.spq
+    data: |
+      SELECT col2 AS col0 FROM tab0 (FORMAT parquet) WHERE - col0 BETWEEN + 76 AND 2;
+  - name: tab0
+
+outputs:
+  - name: q8040.out
+    data: |

@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q7195.spq | sort > q7195.out
+
+inputs:
+  - name: q7195.spq
+    data: |
+      SELECT DISTINCT 10 FROM tab1 (FORMAT parquet) cor0 WHERE NOT 39 IN ( - col2 );
+  - name: tab1
+
+outputs:
+  - name: q7195.out
+    data: |
+      10

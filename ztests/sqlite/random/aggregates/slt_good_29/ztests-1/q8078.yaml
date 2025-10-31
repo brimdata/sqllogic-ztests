@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8078.spq | sort > q8078.out
+
+inputs:
+  - name: q8078.spq
+    data: |
+      SELECT ALL * FROM tab2 (FORMAT parquet) WHERE NOT 20 <> - 66;
+  - name: tab2
+
+outputs:
+  - name: q8078.out
+    data: |

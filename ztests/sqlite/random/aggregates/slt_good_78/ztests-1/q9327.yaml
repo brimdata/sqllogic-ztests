@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q9327.spq | sort > q9327.out
+
+inputs:
+  - name: q9327.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE NOT + - ( + - col0 ) BETWEEN - + 1 + 47 AND NULL;
+  - name: tab0
+
+outputs:
+  - name: q9327.out
+    data: |
+      15	81	47

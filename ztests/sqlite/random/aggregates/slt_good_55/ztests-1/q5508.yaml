@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q5508.spq | sort > q5508.out
+
+inputs:
+  - name: q5508.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE NULL BETWEEN - 10 + + col2 + col2 - col2 - + col0 AND + col2;
+  - name: tab0
+
+outputs:
+  - name: q5508.out
+    data: |

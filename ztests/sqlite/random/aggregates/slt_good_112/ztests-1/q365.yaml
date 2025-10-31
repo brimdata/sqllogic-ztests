@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q365.spq | sort > q365.out
+
+inputs:
+  - name: q365.spq
+    data: |
+      SELECT col2 AS col0, 92 * col2 + col0 FROM tab2 (FORMAT parquet);
+  - name: tab2
+
+outputs:
+  - name: q365.out
+    data: |
+      23	2162
+      40	3744
+      58	5411

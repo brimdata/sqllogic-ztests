@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q3227.spq | sort > q3227.out
+
+inputs:
+  - name: q3227.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) AS cor0 WHERE NOT + 37 BETWEEN col0 + 86 AND col2;
+  - name: tab0
+
+outputs:
+  - name: q3227.out
+    data: |
+      15	81	47
+      87	21	10
+      97	1	99

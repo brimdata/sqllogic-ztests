@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q9921.spq | sort > q9921.out
+
+inputs:
+  - name: q9921.spq
+    data: |
+      SELECT - col0 * CAST ( NULL AS REAL ) AS col2 FROM tab0 (FORMAT parquet) WHERE NULL IS NOT NULL AND ( NULL IS NOT NULL );
+  - name: tab0
+
+outputs:
+  - name: q9921.out
+    data: |

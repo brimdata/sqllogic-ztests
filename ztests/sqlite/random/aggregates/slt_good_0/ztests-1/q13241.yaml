@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q13241.spq | sort > q13241.out
+
+inputs:
+  - name: q13241.spq
+    data: |
+      SELECT ALL col1 AS col1, + ( - 98 ) * 29 * ( + - 51 ) AS col2 FROM tab1 (FORMAT parquet);
+  - name: tab1
+
+outputs:
+  - name: q13241.out
+    data: |
+      14	144942
+      47	144942
+      5	144942

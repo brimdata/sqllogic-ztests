@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q5352.spq | sort > q5352.out
+
+inputs:
+  - name: q5352.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) AS cor0 WHERE col1 * + 32 NOT BETWEEN + col0 + 55 + ( - col2 ) AND col0;
+  - name: tab2
+
+outputs:
+  - name: q5352.out
+    data: |
+      46	51	23
+      64	77	40
+      75	67	58

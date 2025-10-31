@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q25.spq | sort > q25.out
+
+inputs:
+  - name: q25.spq
+    data: |
+      SELECT - MAX ( - + 31 ) FROM tab1 (FORMAT parquet) cor0;
+  - name: tab1
+
+outputs:
+  - name: q25.out
+    data: |
+      31

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q265.spq | sort > q265.out
+
+inputs:
+  - name: q265.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) AS cor0 WHERE 88 * - col1 * col1 + - col0 IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q265.out
+    data: |
+      46	51	23
+      64	77	40
+      75	67	58

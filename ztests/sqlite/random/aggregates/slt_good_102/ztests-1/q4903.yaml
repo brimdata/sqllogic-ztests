@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q4903.spq | sort > q4903.out
+
+inputs:
+  - name: q4903.spq
+    data: |
+      SELECT 22 AS col2 FROM tab1 (FORMAT parquet) WHERE col0 * - col1 <= col2;
+  - name: tab1
+
+outputs:
+  - name: q4903.out
+    data: |
+      22
+      22
+      22

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q6102.spq | sort > q6102.out
+
+inputs:
+  - name: q6102.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) WHERE NULL BETWEEN NULL AND - ( - 14 );
+  - name: tab1
+
+outputs:
+  - name: q6102.out
+    data: |

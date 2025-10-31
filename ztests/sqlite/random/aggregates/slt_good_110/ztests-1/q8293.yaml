@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8293.spq | sort > q8293.out
+
+inputs:
+  - name: q8293.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE col2 + col1 * 60 BETWEEN NULL AND NULL;
+  - name: tab0
+
+outputs:
+  - name: q8293.out
+    data: |

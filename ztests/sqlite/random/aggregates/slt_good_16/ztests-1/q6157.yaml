@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q6157.spq | sort > q6157.out
+
+inputs:
+  - name: q6157.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) WHERE - - 31 BETWEEN col1 / col0 - - col0 + - col2 * 9 AND ( col0 );
+  - name: tab1
+
+outputs:
+  - name: q6157.out
+    data: |
+      51	14	96
+      85	5	59
+      91	47	68

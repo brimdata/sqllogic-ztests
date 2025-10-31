@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q2148.spq | sort > q2148.out
+
+inputs:
+  - name: q2148.spq
+    data: |
+      SELECT - col2 / + CAST ( NULL AS INTEGER ) - - 6 * + col0 FROM tab0 (FORMAT parquet) AS cor0 WHERE col2 > NULL;
+  - name: tab0
+
+outputs:
+  - name: q2148.out
+    data: |

@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q2094.spq | sort > q2094.out
+
+inputs:
+  - name: q2094.spq
+    data: |
+      SELECT 77 / - COUNT ( * ) col2 FROM tab0 (FORMAT parquet) AS cor0 WHERE col1 IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q2094.out
+    data: |
+      -25

@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q7294.spq | sort > q7294.out
+
+inputs:
+  - name: q7294.spq
+    data: |
+      SELECT DISTINCT COUNT ( * ) - 98 / 11 FROM tab1 (FORMAT parquet) AS cor0 CROSS JOIN tab0 (FORMAT parquet) AS cor1;
+  - name: tab0
+  - name: tab1
+
+outputs:
+  - name: q7294.out
+    data: |
+      1

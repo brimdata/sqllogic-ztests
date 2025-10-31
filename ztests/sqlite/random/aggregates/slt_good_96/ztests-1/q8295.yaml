@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8295.spq | sort > q8295.out
+
+inputs:
+  - name: q8295.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE NOT NULL <> + ( - col0 ) * 46;
+  - name: tab0
+
+outputs:
+  - name: q8295.out
+    data: |

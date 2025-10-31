@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q9549.spq | sort > q9549.out
+
+inputs:
+  - name: q9549.spq
+    data: |
+      SELECT DISTINCT * FROM tab1 (FORMAT parquet) WHERE NOT ( 76 * col0 ) NOT BETWEEN + CAST ( NULL AS INTEGER ) / - 28 AND ( 30 );
+  - name: tab1
+
+outputs:
+  - name: q9549.out
+    data: |

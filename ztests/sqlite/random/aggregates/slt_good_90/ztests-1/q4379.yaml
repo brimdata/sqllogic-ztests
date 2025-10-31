@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q4379.spq | sort > q4379.out
+
+inputs:
+  - name: q4379.spq
+    data: |
+      SELECT SUM ( DISTINCT 27 ) AS col0 FROM tab0 (FORMAT parquet) WHERE NOT col1 IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q4379.out
+    data: |
+      27

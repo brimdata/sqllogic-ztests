@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q2015.spq | sort > q2015.out
+
+inputs:
+  - name: q2015.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) AS cor0 WHERE - col1 NOT BETWEEN NULL AND - 29 + + col2;
+  - name: tab0
+
+outputs:
+  - name: q2015.out
+    data: |

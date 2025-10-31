@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q13039.spq | sort > q13039.out
+
+inputs:
+  - name: q13039.spq
+    data: |
+      SELECT DISTINCT * FROM tab1 (FORMAT parquet) AS cor0 WHERE 50 BETWEEN 67 + - 33 AND ( + 81 );
+  - name: tab1
+
+outputs:
+  - name: q13039.out
+    data: |
+      51	14	96
+      85	5	59
+      91	47	68

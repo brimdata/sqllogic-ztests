@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q11294.spq | sort > q11294.out
+
+inputs:
+  - name: q11294.spq
+    data: |
+      SELECT DISTINCT * FROM tab0 (FORMAT parquet) WHERE - col1 + col2 < + ( - col2 );
+  - name: tab0
+
+outputs:
+  - name: q11294.out
+    data: |
+      87	21	10

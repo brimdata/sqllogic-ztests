@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q368.spq | sort > q368.out
+
+inputs:
+  - name: q368.spq
+    data: |
+      SELECT DISTINCT * FROM tab1 (FORMAT parquet) AS cor0 CROSS JOIN tab0 (FORMAT parquet) AS cor1 WHERE - 90 IS NULL;
+  - name: tab0
+  - name: tab1
+
+outputs:
+  - name: q368.out
+    data: |

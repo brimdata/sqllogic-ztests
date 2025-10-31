@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q7334.spq | sort > q7334.out
+
+inputs:
+  - name: q7334.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) AS cor0 CROSS JOIN tab2 (FORMAT parquet) AS cor1 WHERE NULL IS NOT NULL AND NULL < 10;
+  - name: tab0
+  - name: tab2
+
+outputs:
+  - name: q7334.out
+    data: |

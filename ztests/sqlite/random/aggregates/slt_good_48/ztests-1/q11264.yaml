@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q11264.spq | sort > q11264.out
+
+inputs:
+  - name: q11264.spq
+    data: |
+      SELECT ALL * FROM tab1 (FORMAT parquet) WHERE NOT col1 * 37 BETWEEN col2 + col2 / 7 AND col1;
+  - name: tab1
+
+outputs:
+  - name: q11264.out
+    data: |
+      51	14	96
+      85	5	59
+      91	47	68

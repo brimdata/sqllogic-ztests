@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q779.spq | sort > q779.out
+
+inputs:
+  - name: q779.spq
+    data: |
+      SELECT 36 FROM tab2 (FORMAT parquet) AS cor0 WHERE NOT col1 BETWEEN ( + 35 - col0 + - col1 ) AND + col0 * + 80;
+  - name: tab2
+
+outputs:
+  - name: q779.out
+    data: |

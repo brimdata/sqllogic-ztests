@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q7780.spq | sort > q7780.out
+
+inputs:
+  - name: q7780.spq
+    data: |
+      SELECT ALL + COUNT ( * ), MAX ( DISTINCT col2 ) AS col1 FROM tab1 (FORMAT parquet);
+  - name: tab1
+
+outputs:
+  - name: q7780.out
+    data: |
+      3	96

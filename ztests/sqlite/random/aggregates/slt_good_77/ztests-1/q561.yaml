@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q561.spq | sort > q561.out
+
+inputs:
+  - name: q561.spq
+    data: |
+      SELECT ALL col1 FROM tab1 (FORMAT parquet) WHERE ( + 23 ) IN ( col0 );
+  - name: tab1
+
+outputs:
+  - name: q561.out
+    data: |

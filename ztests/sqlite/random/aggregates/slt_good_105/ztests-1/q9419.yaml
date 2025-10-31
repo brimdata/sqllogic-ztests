@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q9419.spq | sort > q9419.out
+
+inputs:
+  - name: q9419.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE NOT + col1 < ( 46 );
+  - name: tab0
+
+outputs:
+  - name: q9419.out
+    data: |
+      15	81	47

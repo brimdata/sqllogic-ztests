@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8790.spq | sort > q8790.out
+
+inputs:
+  - name: q8790.spq
+    data: |
+      SELECT DISTINCT * FROM tab2 (FORMAT parquet) WHERE 32 IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q8790.out
+    data: |
+      46	51	23
+      64	77	40
+      75	67	58

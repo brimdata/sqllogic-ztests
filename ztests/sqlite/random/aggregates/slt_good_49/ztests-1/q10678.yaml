@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q10678.spq | sort > q10678.out
+
+inputs:
+  - name: q10678.spq
+    data: |
+      SELECT col0 AS col2 FROM tab2 (FORMAT parquet) WHERE ( 49 + + 40 * - col0 ) > ( NULL );
+  - name: tab2
+
+outputs:
+  - name: q10678.out
+    data: |

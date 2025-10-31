@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q12206.spq | sort > q12206.out
+
+inputs:
+  - name: q12206.spq
+    data: |
+      SELECT - 52 * SUM ( - col0 ) * 80 AS col1 FROM tab0 (FORMAT parquet);
+  - name: tab0
+
+outputs:
+  - name: q12206.out
+    data: |
+      827840

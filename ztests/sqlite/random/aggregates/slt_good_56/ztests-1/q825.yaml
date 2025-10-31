@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q825.spq | sort > q825.out
+
+inputs:
+  - name: q825.spq
+    data: |
+      SELECT - col2 AS col0 FROM tab0 (FORMAT parquet) WHERE + 60 BETWEEN - col2 AND col2;
+  - name: tab0
+
+outputs:
+  - name: q825.out
+    data: |
+      -99

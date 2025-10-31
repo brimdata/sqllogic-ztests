@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q1138.spq | sort > q1138.out
+
+inputs:
+  - name: q1138.spq
+    data: |
+      SELECT 75 FROM tab1 (FORMAT parquet) WHERE CAST ( col0 AS REAL ) / 57 + col2 IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q1138.out
+    data: |

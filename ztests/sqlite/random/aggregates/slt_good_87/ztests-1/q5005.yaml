@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q5005.spq | sort > q5005.out
+
+inputs:
+  - name: q5005.spq
+    data: |
+      SELECT DISTINCT 19 AS col2, col1 * - 10 AS col0 FROM tab1 (FORMAT parquet) AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q5005.out
+    data: |
+      19	-140
+      19	-470
+      19	-50

@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q4433.spq | sort > q4433.out
+
+inputs:
+  - name: q4433.spq
+    data: |
+      SELECT DISTINCT + COUNT ( * ) col1 FROM tab2 (FORMAT parquet) AS cor0 WHERE ( - col0 NOT IN ( - col2 ) );
+  - name: tab2
+
+outputs:
+  - name: q4433.out
+    data: |
+      3

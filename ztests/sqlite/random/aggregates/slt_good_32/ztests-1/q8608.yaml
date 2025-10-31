@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8608.spq | sort > q8608.out
+
+inputs:
+  - name: q8608.spq
+    data: |
+      SELECT 9 AS col0 FROM tab1 (FORMAT parquet) WHERE - + 99 BETWEEN 48 * - col0 AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q8608.out
+    data: |

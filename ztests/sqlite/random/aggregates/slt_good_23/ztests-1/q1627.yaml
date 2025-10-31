@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q1627.spq | sort > q1627.out
+
+inputs:
+  - name: q1627.spq
+    data: |
+      SELECT ALL + - ( - 3 ) FROM tab1 (FORMAT parquet) WHERE + col2 NOT BETWEEN NULL AND + - col2;
+  - name: tab1
+
+outputs:
+  - name: q1627.out
+    data: |
+      3
+      3
+      3

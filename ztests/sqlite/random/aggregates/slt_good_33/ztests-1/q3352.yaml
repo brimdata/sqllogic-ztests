@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q3352.spq | sort > q3352.out
+
+inputs:
+  - name: q3352.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) WHERE NOT NULL NOT BETWEEN 27 * + + 29 + + col1 / 9 AND 75 * 56;
+  - name: tab2
+
+outputs:
+  - name: q3352.out
+    data: |

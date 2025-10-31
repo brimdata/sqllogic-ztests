@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q9605.spq | sort > q9605.out
+
+inputs:
+  - name: q9605.spq
+    data: |
+      SELECT + col1 col2 FROM tab2 (FORMAT parquet) cor0 WHERE NOT CAST ( 34 AS INTEGER ) NOT BETWEEN NULL AND - col2;
+  - name: tab2
+
+outputs:
+  - name: q9605.out
+    data: |

@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q12952.spq | sort > q12952.out
+
+inputs:
+  - name: q12952.spq
+    data: |
+      SELECT DISTINCT + 7 / COUNT ( * ) * - 60 / - COUNT ( * ) FROM tab0 (FORMAT parquet) AS cor0 CROSS JOIN tab1 (FORMAT parquet) AS cor1;
+  - name: tab0
+  - name: tab1
+
+outputs:
+  - name: q12952.out
+    data: |
+      0

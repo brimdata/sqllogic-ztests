@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q1099.spq | sort > q1099.out
+
+inputs:
+  - name: q1099.spq
+    data: |
+      SELECT col1 FROM tab2 (FORMAT parquet) WHERE NOT col1 NOT BETWEEN + 97 AND NULL;
+  - name: tab2
+
+outputs:
+  - name: q1099.out
+    data: |

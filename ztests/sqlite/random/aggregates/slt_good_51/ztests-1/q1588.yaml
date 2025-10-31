@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q1588.spq | sort > q1588.out
+
+inputs:
+  - name: q1588.spq
+    data: |
+      SELECT ALL + col2 FROM tab1 (FORMAT parquet) WHERE + col1 * col2 + 31 IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q1588.out
+    data: |

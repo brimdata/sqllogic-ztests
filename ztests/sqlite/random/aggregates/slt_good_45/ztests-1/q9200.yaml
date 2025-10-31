@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q9200.spq | sort > q9200.out
+
+inputs:
+  - name: q9200.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) AS cor0 JOIN tab2 (FORMAT parquet) AS cor1 ON NOT NULL NOT BETWEEN NULL AND + CAST ( - 28 AS REAL );
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q9200.out
+    data: |

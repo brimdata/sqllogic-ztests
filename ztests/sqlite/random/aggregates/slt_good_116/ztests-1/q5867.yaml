@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q5867.spq | sort > q5867.out
+
+inputs:
+  - name: q5867.spq
+    data: |
+      SELECT ALL * FROM tab2 (FORMAT parquet) cor0 WHERE NOT NULL NOT IN ( - 24, 8 - - 21 );
+  - name: tab2
+
+outputs:
+  - name: q5867.out
+    data: |

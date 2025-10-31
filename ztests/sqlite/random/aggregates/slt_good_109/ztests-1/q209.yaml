@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q209.spq | sort > q209.out
+
+inputs:
+  - name: q209.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) WHERE + ( - col0 ) * 81 = + col0 * 6;
+  - name: tab2
+
+outputs:
+  - name: q209.out
+    data: |

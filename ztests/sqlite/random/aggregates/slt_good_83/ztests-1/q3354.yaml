@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q3354.spq | sort > q3354.out
+
+inputs:
+  - name: q3354.spq
+    data: |
+      SELECT ALL + MAX ( - col1 ) + - 46 AS col0 FROM tab0 (FORMAT parquet);
+  - name: tab0
+
+outputs:
+  - name: q3354.out
+    data: |
+      -47

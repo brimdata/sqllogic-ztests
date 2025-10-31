@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q3826.spq | sort > q3826.out
+
+inputs:
+  - name: q3826.spq
+    data: |
+      SELECT DISTINCT * FROM tab2 (FORMAT parquet) cor0 WHERE NOT ( col2 * - col1 ) NOT BETWEEN 73 AND ( - + col0 );
+  - name: tab2
+
+outputs:
+  - name: q3826.out
+    data: |

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8482.spq | sort > q8482.out
+
+inputs:
+  - name: q8482.spq
+    data: |
+      SELECT DISTINCT + 38 FROM tab2 (FORMAT parquet) WHERE NOT NULL IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q8482.out
+    data: |

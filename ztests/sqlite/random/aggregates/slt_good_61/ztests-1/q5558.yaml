@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q5558.spq | sort > q5558.out
+
+inputs:
+  - name: q5558.spq
+    data: |
+      SELECT ALL * FROM tab0 (FORMAT parquet) WHERE NOT 0 / col0 <= col1;
+  - name: tab0
+
+outputs:
+  - name: q5558.out
+    data: |

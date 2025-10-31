@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q2530.spq | sort > q2530.out
+
+inputs:
+  - name: q2530.spq
+    data: |
+      SELECT ALL + 96 * MAX ( - col1 ) FROM tab2 (FORMAT parquet) AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q2530.out
+    data: |
+      -4896

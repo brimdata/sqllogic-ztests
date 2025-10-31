@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q13585.spq | sort > q13585.out
+
+inputs:
+  - name: q13585.spq
+    data: |
+      SELECT - MAX ( + col2 ) AS col1 FROM tab0 (FORMAT parquet) WHERE NULL IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q13585.out
+    data: |
+      -99

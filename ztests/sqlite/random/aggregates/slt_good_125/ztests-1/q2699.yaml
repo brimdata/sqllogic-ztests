@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q2699.spq | sort > q2699.out
+
+inputs:
+  - name: q2699.spq
+    data: |
+      SELECT col0 AS col2 FROM tab1 (FORMAT parquet) WHERE ( NULL ) BETWEEN ( - col0 ) AND ( - + 31 * col0 );
+  - name: tab1
+
+outputs:
+  - name: q2699.out
+    data: |

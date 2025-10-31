@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q12539.spq | sort > q12539.out
+
+inputs:
+  - name: q12539.spq
+    data: |
+      SELECT ALL - 5 * 92 AS col0 FROM tab2 (FORMAT parquet) WHERE col0 IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q12539.out
+    data: |

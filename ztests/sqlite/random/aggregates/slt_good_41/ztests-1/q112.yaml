@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q112.spq | sort > q112.out
+
+inputs:
+  - name: q112.spq
+    data: |
+      SELECT ALL col0 AS col2 FROM tab2 (FORMAT parquet) cor0 WHERE NOT ( col1 * col1 - 84 ) NOT BETWEEN NULL AND ( 41 );
+  - name: tab2
+
+outputs:
+  - name: q112.out
+    data: |

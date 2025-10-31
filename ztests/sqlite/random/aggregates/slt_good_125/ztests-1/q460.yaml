@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q460.spq | sort > q460.out
+
+inputs:
+  - name: q460.spq
+    data: |
+      SELECT DISTINCT COUNT ( * ) AS col0 FROM tab2 (FORMAT parquet) AS cor0 WHERE NOT col2 * + 37 <= - + col1;
+  - name: tab2
+
+outputs:
+  - name: q460.out
+    data: |
+      3

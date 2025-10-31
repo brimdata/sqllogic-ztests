@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q8163.spq | sort > q8163.out
+
+inputs:
+  - name: q8163.spq
+    data: |
+      SELECT ALL + COUNT ( * ) FROM tab2 (FORMAT parquet) WHERE NOT ( 46 * - col0 + + 76 IS NULL );
+  - name: tab2
+
+outputs:
+  - name: q8163.out
+    data: |
+      3

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q13931.spq | sort > q13931.out
+
+inputs:
+  - name: q13931.spq
+    data: |
+      SELECT ALL * FROM tab1 (FORMAT parquet) WHERE ( col1 + 94 - - 22 ) BETWEEN - 41 * 22 * col1 + col2 AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q13931.out
+    data: |

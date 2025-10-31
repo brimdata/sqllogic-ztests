@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q1108.spq | sort > q1108.out
+
+inputs:
+  - name: q1108.spq
+    data: |
+      SELECT col0 AS col2 FROM tab2 (FORMAT parquet) WHERE NOT + 86 BETWEEN - 80 AND NULL;
+  - name: tab2
+
+outputs:
+  - name: q1108.out
+    data: |

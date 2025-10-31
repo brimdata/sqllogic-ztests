@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q4375.spq | sort > q4375.out
+
+inputs:
+  - name: q4375.spq
+    data: |
+      SELECT ALL COUNT ( * ) * + COUNT ( * ) AS col1 FROM tab2 (FORMAT parquet), tab1 (FORMAT parquet) AS cor0;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q4375.out
+    data: |
+      81

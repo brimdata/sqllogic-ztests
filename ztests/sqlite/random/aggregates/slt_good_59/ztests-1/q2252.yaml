@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q2252.spq | sort > q2252.out
+
+inputs:
+  - name: q2252.spq
+    data: |
+      SELECT ALL COUNT ( * ) * 50, - COUNT ( * ) AS col1 FROM tab0 (FORMAT parquet);
+  - name: tab0
+
+outputs:
+  - name: q2252.out
+    data: |
+      150	-3

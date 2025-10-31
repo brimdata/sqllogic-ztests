@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q5632.spq | sort > q5632.out
+
+inputs:
+  - name: q5632.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE - + col0 IN ( - col0 * - - 70 );
+  - name: tab0
+
+outputs:
+  - name: q5632.out
+    data: |

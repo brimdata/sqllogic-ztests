@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q3554.spq | sort > q3554.out
+
+inputs:
+  - name: q3554.spq
+    data: |
+      SELECT DISTINCT + COUNT ( * ) / 34 AS col2 FROM tab1 (FORMAT parquet) WHERE NOT col1 IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q3554.out
+    data: |
+      0

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q7432.spq | sort > q7432.out
+
+inputs:
+  - name: q7432.spq
+    data: |
+      SELECT - 70 AS col2 FROM tab2 (FORMAT parquet) WHERE NULL IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q7432.out
+    data: |
+      -70
+      -70
+      -70

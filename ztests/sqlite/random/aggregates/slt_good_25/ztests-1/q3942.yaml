@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q3942.spq | sort > q3942.out
+
+inputs:
+  - name: q3942.spq
+    data: |
+      SELECT DISTINCT * FROM tab1 (FORMAT parquet) WHERE col0 * - col0 * + - 38 + - 94 IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q3942.out
+    data: |

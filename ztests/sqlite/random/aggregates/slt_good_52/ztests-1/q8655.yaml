@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q8655.spq | sort > q8655.out
+
+inputs:
+  - name: q8655.spq
+    data: |
+      SELECT + + COUNT ( * ) * + + COUNT ( * ) * - + 99 FROM tab2 (FORMAT parquet) WHERE ( + col0 / col1 NOT BETWEEN col2 AND NULL );
+  - name: tab2
+
+outputs:
+  - name: q8655.out
+    data: |
+      -891

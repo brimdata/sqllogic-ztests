@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q12847.spq | sort > q12847.out
+
+inputs:
+  - name: q12847.spq
+    data: |
+      SELECT ( - 5 ) * + MAX ( + col2 ) * - 9 AS col2 FROM tab1 (FORMAT parquet);
+  - name: tab1
+
+outputs:
+  - name: q12847.out
+    data: |
+      4320

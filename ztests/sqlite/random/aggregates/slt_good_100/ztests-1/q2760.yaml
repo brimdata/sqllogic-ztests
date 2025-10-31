@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q2760.spq | sort > q2760.out
+
+inputs:
+  - name: q2760.spq
+    data: |
+      SELECT ALL 67 * + col2 FROM tab0 (FORMAT parquet) WHERE NOT NULL IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q2760.out
+    data: |
+      3149
+      6633
+      670

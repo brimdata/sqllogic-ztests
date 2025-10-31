@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q2883.spq | sort > q2883.out
+
+inputs:
+  - name: q2883.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) WHERE + col2 + - 14 BETWEEN ( col1 * + 96 + 37 + - CAST ( + - 7 AS REAL ) ) AND ( NULL );
+  - name: tab1
+
+outputs:
+  - name: q2883.out
+    data: |

@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q5513.spq | sort > q5513.out
+
+inputs:
+  - name: q5513.spq
+    data: |
+      SELECT DISTINCT * FROM tab1 (FORMAT parquet) AS cor0 WHERE NOT col2 BETWEEN + + 81 AND + col2;
+  - name: tab1
+
+outputs:
+  - name: q5513.out
+    data: |
+      85	5	59
+      91	47	68

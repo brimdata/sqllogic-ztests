@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q1589.spq | sort > q1589.out
+
+inputs:
+  - name: q1589.spq
+    data: |
+      SELECT ALL * FROM tab2 (FORMAT parquet) WHERE - 14 BETWEEN + col1 * - 43 + + 32 AND 90;
+  - name: tab2
+
+outputs:
+  - name: q1589.out
+    data: |
+      46	51	23
+      64	77	40
+      75	67	58

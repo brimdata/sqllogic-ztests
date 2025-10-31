@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q7338.spq | sort > q7338.out
+
+inputs:
+  - name: q7338.spq
+    data: |
+      SELECT DISTINCT * FROM tab1 (FORMAT parquet) WHERE ( - col1 * + 21 + - 0 + - col1 NOT BETWEEN + col0 AND + 21 );
+  - name: tab1
+
+outputs:
+  - name: q7338.out
+    data: |
+      51	14	96
+      85	5	59
+      91	47	68

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q7317.spq | sort > q7317.out
+
+inputs:
+  - name: q7317.spq
+    data: |
+      SELECT DISTINCT * FROM tab2 (FORMAT parquet) WHERE NOT NULL < ( 16 / - 76 );
+  - name: tab2
+
+outputs:
+  - name: q7317.out
+    data: |

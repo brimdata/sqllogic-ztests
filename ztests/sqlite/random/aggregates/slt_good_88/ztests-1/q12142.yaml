@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q12142.spq | sort > q12142.out
+
+inputs:
+  - name: q12142.spq
+    data: |
+      SELECT - MAX ( 18 ) FROM tab0 (FORMAT parquet) WHERE NOT col1 < 47 - + 35;
+  - name: tab0
+
+outputs:
+  - name: q12142.out
+    data: |
+      -18

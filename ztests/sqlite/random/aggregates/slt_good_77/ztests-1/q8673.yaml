@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8673.spq | sort > q8673.out
+
+inputs:
+  - name: q8673.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) WHERE + 53 NOT BETWEEN + + col1 AND + + 29 + - col1 - + col0 + + - 66 / + ( - 66 );
+  - name: tab1
+
+outputs:
+  - name: q8673.out
+    data: |
+      51	14	96
+      85	5	59
+      91	47	68

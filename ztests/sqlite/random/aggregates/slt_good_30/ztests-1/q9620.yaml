@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q9620.spq | sort > q9620.out
+
+inputs:
+  - name: q9620.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE NOT ( NOT ( - col1 * + 98 ) BETWEEN + 45 AND NULL );
+  - name: tab0
+
+outputs:
+  - name: q9620.out
+    data: |

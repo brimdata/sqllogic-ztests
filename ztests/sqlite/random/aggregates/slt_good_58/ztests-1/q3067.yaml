@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q3067.spq | sort > q3067.out
+
+inputs:
+  - name: q3067.spq
+    data: |
+      SELECT ALL - 23 AS col1 FROM tab1 (FORMAT parquet) WHERE + 22 IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q3067.out
+    data: |
+      -23
+      -23
+      -23

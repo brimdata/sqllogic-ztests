@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8083.spq | sort > q8083.out
+
+inputs:
+  - name: q8083.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) WHERE NOT NULL IS NULL AND - 82 * 82 IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q8083.out
+    data: |

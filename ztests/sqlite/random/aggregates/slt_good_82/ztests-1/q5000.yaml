@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q5000.spq | sort > q5000.out
+
+inputs:
+  - name: q5000.spq
+    data: |
+      SELECT ALL * FROM tab0 (FORMAT parquet) AS cor0 WHERE 36 > ( - + col1 ) + - col1;
+  - name: tab0
+
+outputs:
+  - name: q5000.out
+    data: |
+      15	81	47
+      87	21	10
+      97	1	99

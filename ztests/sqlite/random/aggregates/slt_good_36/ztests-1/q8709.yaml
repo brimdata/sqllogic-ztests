@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q8709.spq | sort > q8709.out
+
+inputs:
+  - name: q8709.spq
+    data: |
+      SELECT + MAX ( - 43 ) AS col1 FROM tab0 (FORMAT parquet) WHERE 28 NOT BETWEEN 91 AND NULL;
+  - name: tab0
+
+outputs:
+  - name: q8709.out
+    data: |
+      -43

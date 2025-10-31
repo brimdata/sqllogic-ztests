@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q6501.spq | sort > q6501.out
+
+inputs:
+  - name: q6501.spq
+    data: |
+      SELECT ALL - ( MAX ( + 44 ) ) AS col1 FROM tab2 (FORMAT parquet);
+  - name: tab2
+
+outputs:
+  - name: q6501.out
+    data: |
+      -44

@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q7874.spq | sort > q7874.out
+
+inputs:
+  - name: q7874.spq
+    data: |
+      SELECT DISTINCT SUM ( DISTINCT 20 ) col0 FROM tab1 (FORMAT parquet) AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q7874.out
+    data: |
+      20

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8724.spq | sort > q8724.out
+
+inputs:
+  - name: q8724.spq
+    data: |
+      SELECT ALL 20 * col2 AS col0 FROM tab0 (FORMAT parquet) AS cor0 WHERE NOT 23 <> - + col2;
+  - name: tab0
+
+outputs:
+  - name: q8724.out
+    data: |

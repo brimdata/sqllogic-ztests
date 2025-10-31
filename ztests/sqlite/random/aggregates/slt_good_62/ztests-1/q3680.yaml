@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q3680.spq | sort > q3680.out
+
+inputs:
+  - name: q3680.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) WHERE NOT 40 <= + col0 * + 18 + 1;
+  - name: tab1
+
+outputs:
+  - name: q3680.out
+    data: |

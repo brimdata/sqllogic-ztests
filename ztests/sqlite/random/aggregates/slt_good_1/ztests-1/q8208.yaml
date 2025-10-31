@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8208.spq | sort > q8208.out
+
+inputs:
+  - name: q8208.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) WHERE + - 14 NOT BETWEEN + 14 AND + ( col1 );
+  - name: tab1
+
+outputs:
+  - name: q8208.out
+    data: |
+      51	14	96
+      85	5	59
+      91	47	68

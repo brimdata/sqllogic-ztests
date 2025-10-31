@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8081.spq | sort > q8081.out
+
+inputs:
+  - name: q8081.spq
+    data: |
+      SELECT ALL - 81 AS col2, col2 / + - col2 FROM tab0 (FORMAT parquet);
+  - name: tab0
+
+outputs:
+  - name: q8081.out
+    data: |
+      -81	-1
+      -81	-1
+      -81	-1

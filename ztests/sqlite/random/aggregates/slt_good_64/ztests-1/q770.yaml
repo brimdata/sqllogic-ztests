@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q770.spq | sort > q770.out
+
+inputs:
+  - name: q770.spq
+    data: |
+      SELECT CAST ( NULL AS REAL ) AS col2 FROM tab1 (FORMAT parquet) AS cor0 WHERE NULL IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q770.out
+    data: |

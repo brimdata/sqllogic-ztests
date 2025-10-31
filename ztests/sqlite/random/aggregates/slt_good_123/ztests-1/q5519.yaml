@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q5519.spq | sort > q5519.out
+
+inputs:
+  - name: q5519.spq
+    data: |
+      SELECT COUNT ( * ) / 32 col1 FROM tab2 (FORMAT parquet) AS cor0 CROSS JOIN tab2 (FORMAT parquet);
+  - name: tab2
+
+outputs:
+  - name: q5519.out
+    data: |
+      0

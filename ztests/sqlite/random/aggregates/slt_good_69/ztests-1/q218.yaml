@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q218.spq | sort > q218.out
+
+inputs:
+  - name: q218.spq
+    data: |
+      SELECT - col0 AS col1 FROM tab1 (FORMAT parquet) WHERE NULL IN ( - col0 * - CAST ( + 12 AS INTEGER ), + col2 * - col0 * col0 );
+  - name: tab1
+
+outputs:
+  - name: q218.out
+    data: |

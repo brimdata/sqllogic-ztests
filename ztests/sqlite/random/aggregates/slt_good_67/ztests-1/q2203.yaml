@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q2203.spq | sort > q2203.out
+
+inputs:
+  - name: q2203.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) AS cor0 WHERE NOT ( CAST ( - + 0 AS INTEGER ) ) BETWEEN CAST ( - 94 AS INTEGER ) AND ( 90 + + col1 );
+  - name: tab1
+
+outputs:
+  - name: q2203.out
+    data: |

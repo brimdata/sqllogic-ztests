@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q12378.spq | sort > q12378.out
+
+inputs:
+  - name: q12378.spq
+    data: |
+      SELECT DISTINCT * FROM tab0 (FORMAT parquet) WHERE ( + 95 BETWEEN 60 AND NULL );
+  - name: tab0
+
+outputs:
+  - name: q12378.out
+    data: |

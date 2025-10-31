@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q5995.spq | sort > q5995.out
+
+inputs:
+  - name: q5995.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) WHERE - col0 * ( 64 ) > ( - col1 );
+  - name: tab1
+
+outputs:
+  - name: q5995.out
+    data: |

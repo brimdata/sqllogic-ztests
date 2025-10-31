@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q13380.spq | sort > q13380.out
+
+inputs:
+  - name: q13380.spq
+    data: |
+      SELECT ALL col1 * - 4, 27 AS col2 FROM tab2 (FORMAT parquet);
+  - name: tab2
+
+outputs:
+  - name: q13380.out
+    data: |
+      -204	27
+      -268	27
+      -308	27

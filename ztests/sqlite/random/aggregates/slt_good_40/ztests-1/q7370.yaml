@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q7370.spq | sort > q7370.out
+
+inputs:
+  - name: q7370.spq
+    data: |
+      SELECT ALL * FROM tab2 (FORMAT parquet) WHERE + + CAST ( + + 18 AS INTEGER ) BETWEEN col2 AND NULL;
+  - name: tab2
+
+outputs:
+  - name: q7370.out
+    data: |

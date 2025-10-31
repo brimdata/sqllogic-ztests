@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q849.spq | sort > q849.out
+
+inputs:
+  - name: q849.spq
+    data: |
+      SELECT MIN ( + - 48 ) * + MIN ( col1 ) AS col2 FROM tab1 (FORMAT parquet);
+  - name: tab1
+
+outputs:
+  - name: q849.out
+    data: |
+      -240

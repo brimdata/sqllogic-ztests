@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q12086.spq | sort > q12086.out
+
+inputs:
+  - name: q12086.spq
+    data: |
+      SELECT DISTINCT + + COUNT ( * ) AS col1 FROM tab1 (FORMAT parquet) WHERE 42 BETWEEN 9 AND + col2;
+  - name: tab1
+
+outputs:
+  - name: q12086.out
+    data: |
+      3

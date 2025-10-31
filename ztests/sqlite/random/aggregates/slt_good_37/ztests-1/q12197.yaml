@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q12197.spq | sort > q12197.out
+
+inputs:
+  - name: q12197.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) AS cor0 WHERE NULL BETWEEN - 56 + + col0 * + col2 AND ( CAST ( 66 AS INTEGER ) + col1 );
+  - name: tab2
+
+outputs:
+  - name: q12197.out
+    data: |

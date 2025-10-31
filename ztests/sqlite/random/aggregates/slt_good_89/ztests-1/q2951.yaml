@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q2951.spq | sort > q2951.out
+
+inputs:
+  - name: q2951.spq
+    data: |
+      SELECT DISTINCT col0 FROM tab1 (FORMAT parquet) AS cor0 WHERE NOT 2 * col0 + + 6 / + 37 IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q2951.out
+    data: |
+      51
+      85
+      91

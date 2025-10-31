@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q2048.spq | sort > q2048.out
+
+inputs:
+  - name: q2048.spq
+    data: |
+      SELECT + col0 - - + col1 - col0 AS col0 FROM tab1 (FORMAT parquet) WHERE 50 BETWEEN + 76 AND + + col1;
+  - name: tab1
+
+outputs:
+  - name: q2048.out
+    data: |

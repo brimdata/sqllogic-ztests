@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q914.spq | sort > q914.out
+
+inputs:
+  - name: q914.spq
+    data: |
+      SELECT - ( col1 ) / 15, col1 / + col2 AS col2 FROM tab2 (FORMAT parquet);
+  - name: tab2
+
+outputs:
+  - name: q914.out
+    data: |
+      -3	2
+      -4	1
+      -5	1

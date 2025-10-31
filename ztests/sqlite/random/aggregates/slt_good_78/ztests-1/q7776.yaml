@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q7776.spq | sort > q7776.out
+
+inputs:
+  - name: q7776.spq
+    data: |
+      SELECT + 26 AS col2 FROM tab1 (FORMAT parquet) WHERE CAST ( NULL AS INTEGER ) > 78 * + 14;
+  - name: tab1
+
+outputs:
+  - name: q7776.out
+    data: |

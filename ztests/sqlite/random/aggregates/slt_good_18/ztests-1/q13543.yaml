@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q13543.spq | sort > q13543.out
+
+inputs:
+  - name: q13543.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE NOT ( col0 * + 3 + + 14 ) >= 8;
+  - name: tab0
+
+outputs:
+  - name: q13543.out
+    data: |

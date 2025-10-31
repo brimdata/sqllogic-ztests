@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q1875.spq | sort > q1875.out
+
+inputs:
+  - name: q1875.spq
+    data: |
+      SELECT - 19 + col2 FROM tab2 (FORMAT parquet) WHERE col1 NOT BETWEEN 94 + + col1 AND ( col0 );
+  - name: tab2
+
+outputs:
+  - name: q1875.out
+    data: |
+      21
+      39
+      4

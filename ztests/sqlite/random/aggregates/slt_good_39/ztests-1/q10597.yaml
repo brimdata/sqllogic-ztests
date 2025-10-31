@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q10597.spq | sort > q10597.out
+
+inputs:
+  - name: q10597.spq
+    data: |
+      SELECT + 10 * 32 + + - SUM ( - col2 ) AS col2 FROM tab2 (FORMAT parquet) AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q10597.out
+    data: |
+      441

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8522.spq | sort > q8522.out
+
+inputs:
+  - name: q8522.spq
+    data: |
+      SELECT DISTINCT col2 * + col1 AS col2 FROM tab0 (FORMAT parquet) WHERE + 85 NOT IN ( + CAST ( NULL AS REAL ) * 64 );
+  - name: tab0
+
+outputs:
+  - name: q8522.out
+    data: |

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q6890.spq | sort > q6890.out
+
+inputs:
+  - name: q6890.spq
+    data: |
+      SELECT + col0 FROM tab2 (FORMAT parquet) AS cor0 WHERE NOT NULL NOT BETWEEN + 17 AND + CAST ( ( col0 ) AS INTEGER ) * + CAST ( col2 AS INTEGER ) * 41;
+  - name: tab2
+
+outputs:
+  - name: q6890.out
+    data: |

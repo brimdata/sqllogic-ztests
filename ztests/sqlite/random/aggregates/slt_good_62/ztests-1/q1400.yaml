@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q1400.spq | sort > q1400.out
+
+inputs:
+  - name: q1400.spq
+    data: |
+      SELECT ALL + 13 AS col2 FROM tab0 (FORMAT parquet) WHERE NOT NULL IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q1400.out
+    data: |
+      13
+      13
+      13

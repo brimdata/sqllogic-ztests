@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q12385.spq | sort > q12385.out
+
+inputs:
+  - name: q12385.spq
+    data: |
+      SELECT DISTINCT - MIN ( - col2 ) / - COUNT ( * ) AS col1 FROM tab1 (FORMAT parquet);
+  - name: tab1
+
+outputs:
+  - name: q12385.out
+    data: |
+      -32

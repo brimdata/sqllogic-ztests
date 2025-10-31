@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q7582.spq | sort > q7582.out
+
+inputs:
+  - name: q7582.spq
+    data: |
+      SELECT ALL col1 * col2 AS col2 FROM tab0 (FORMAT parquet) WHERE col0 NOT IN ( col2 );
+  - name: tab0
+
+outputs:
+  - name: q7582.out
+    data: |
+      210
+      3807
+      99

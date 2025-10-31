@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q11487.spq | sort > q11487.out
+
+inputs:
+  - name: q11487.spq
+    data: |
+      SELECT DISTINCT col2 FROM tab2 (FORMAT parquet) WHERE NOT ( + CAST ( - 77 AS INTEGER ) ) < + 1;
+  - name: tab2
+
+outputs:
+  - name: q11487.out
+    data: |

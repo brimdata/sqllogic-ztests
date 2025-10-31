@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q3770.spq | sort > q3770.out
+
+inputs:
+  - name: q3770.spq
+    data: |
+      SELECT - col0 AS col2 FROM tab1 (FORMAT parquet) WHERE col2 * - 99 * + col2 IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q3770.out
+    data: |

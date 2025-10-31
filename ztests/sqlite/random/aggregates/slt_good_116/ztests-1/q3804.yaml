@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q3804.spq | sort > q3804.out
+
+inputs:
+  - name: q3804.spq
+    data: |
+      SELECT - 21 * + col1 / - col2 * col0 FROM tab2 (FORMAT parquet) WHERE NOT + col1 IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q3804.out
+    data: |

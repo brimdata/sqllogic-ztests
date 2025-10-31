@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q3222.spq | sort > q3222.out
+
+inputs:
+  - name: q3222.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE NOT + col1 / CAST ( NULL AS INTEGER ) * 51 + + - CAST ( 42 AS INTEGER ) > col1;
+  - name: tab0
+
+outputs:
+  - name: q3222.out
+    data: |

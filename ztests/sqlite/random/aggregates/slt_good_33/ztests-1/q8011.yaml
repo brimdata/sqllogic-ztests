@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8011.spq | sort > q8011.out
+
+inputs:
+  - name: q8011.spq
+    data: |
+      SELECT + col1 AS col1 FROM tab1 (FORMAT parquet) AS cor0 WHERE NOT ( NOT + col1 < - CAST ( - - col0 AS REAL ) / col1 );
+  - name: tab1
+
+outputs:
+  - name: q8011.out
+    data: |

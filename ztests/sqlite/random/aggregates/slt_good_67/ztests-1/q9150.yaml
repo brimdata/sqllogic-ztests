@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q9150.spq | sort > q9150.out
+
+inputs:
+  - name: q9150.spq
+    data: |
+      SELECT ALL 52 AS col1, 20 / + ( + col1 ) + col2 / 22 * - col1 FROM tab2 (FORMAT parquet) AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q9150.out
+    data: |
+      52	-134
+      52	-51
+      52	-77

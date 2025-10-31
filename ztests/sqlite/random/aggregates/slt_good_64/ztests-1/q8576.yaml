@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q8576.spq | sort > q8576.out
+
+inputs:
+  - name: q8576.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) AS cor0 WHERE NOT 8 - - col0 <= ( col1 );
+  - name: tab0
+
+outputs:
+  - name: q8576.out
+    data: |
+      87	21	10
+      97	1	99

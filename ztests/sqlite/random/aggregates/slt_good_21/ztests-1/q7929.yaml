@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q7929.spq | sort > q7929.out
+
+inputs:
+  - name: q7929.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) WHERE ( + 20 + + + 72 ) IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q7929.out
+    data: |
+      46	51	23
+      64	77	40
+      75	67	58

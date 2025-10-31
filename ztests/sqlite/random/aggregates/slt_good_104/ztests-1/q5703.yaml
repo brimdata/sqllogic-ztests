@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q5703.spq | sort > q5703.out
+
+inputs:
+  - name: q5703.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) WHERE NOT + col0 / 53 * + col2 * col2 BETWEEN col1 / + 19 + + col0 AND ( NULL );
+  - name: tab0
+
+outputs:
+  - name: q5703.out
+    data: |
+      15	81	47

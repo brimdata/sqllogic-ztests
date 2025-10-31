@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q5027.spq | sort > q5027.out
+
+inputs:
+  - name: q5027.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) AS cor0 CROSS JOIN tab1 (FORMAT parquet) AS cor1 WHERE NOT - 50 IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q5027.out
+    data: |

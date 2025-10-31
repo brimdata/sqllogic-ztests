@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q5614.spq | sort > q5614.out
+
+inputs:
+  - name: q5614.spq
+    data: |
+      SELECT + 89 * - 10 AS col2 FROM tab1 (FORMAT parquet) WHERE NOT col0 * + - col1 IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q5614.out
+    data: |
+      -890
+      -890
+      -890

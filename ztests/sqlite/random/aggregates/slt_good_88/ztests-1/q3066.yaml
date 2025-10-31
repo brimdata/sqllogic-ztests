@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q3066.spq | sort > q3066.out
+
+inputs:
+  - name: q3066.spq
+    data: |
+      SELECT DISTINCT * FROM tab1 (FORMAT parquet) AS cor0 WHERE ( col2 NOT BETWEEN + 27 + + - col2 AND NULL );
+  - name: tab1
+
+outputs:
+  - name: q3066.out
+    data: |

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q1029.spq | sort > q1029.out
+
+inputs:
+  - name: q1029.spq
+    data: |
+      SELECT col2 FROM tab1 (FORMAT parquet) AS cor0 WHERE NOT 80 / - - ( + col1 ) = ( + col0 );
+  - name: tab1
+
+outputs:
+  - name: q1029.out
+    data: |
+      59
+      68
+      96

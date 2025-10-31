@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q2858.spq | sort > q2858.out
+
+inputs:
+  - name: q2858.spq
+    data: |
+      SELECT ALL + 12 FROM tab1 (FORMAT parquet) AS cor0 WHERE NULL IN ( col1 );
+  - name: tab1
+
+outputs:
+  - name: q2858.out
+    data: |

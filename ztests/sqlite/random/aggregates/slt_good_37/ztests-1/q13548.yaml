@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q13548.spq | sort > q13548.out
+
+inputs:
+  - name: q13548.spq
+    data: |
+      SELECT - 39 FROM tab1 (FORMAT parquet) WHERE + col1 BETWEEN - - col1 AND - - col0;
+  - name: tab1
+
+outputs:
+  - name: q13548.out
+    data: |
+      -39
+      -39
+      -39

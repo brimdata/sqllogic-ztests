@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q2825.spq | sort > q2825.out
+
+inputs:
+  - name: q2825.spq
+    data: |
+      SELECT col0 * col0 FROM tab1 (FORMAT parquet) WHERE NOT ( ( 61 - + ( - 60 ) ) IS NULL );
+  - name: tab1
+
+outputs:
+  - name: q2825.out
+    data: |
+      2601
+      7225
+      8281

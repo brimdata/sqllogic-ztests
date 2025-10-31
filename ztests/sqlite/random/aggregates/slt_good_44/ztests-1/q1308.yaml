@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q1308.spq | sort > q1308.out
+
+inputs:
+  - name: q1308.spq
+    data: |
+      SELECT DISTINCT CAST ( + col1 AS INTEGER ) FROM tab0 (FORMAT parquet) WHERE 33 IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q1308.out
+    data: |

@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q4223.spq | sort > q4223.out
+
+inputs:
+  - name: q4223.spq
+    data: |
+      SELECT + COUNT ( * ) + - 42 FROM tab0 (FORMAT parquet) cor0;
+  - name: tab0
+
+outputs:
+  - name: q4223.out
+    data: |
+      -39

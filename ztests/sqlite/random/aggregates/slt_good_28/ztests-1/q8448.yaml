@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8448.spq | sort > q8448.out
+
+inputs:
+  - name: q8448.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) WHERE 80 = - 39 / col2 * - - col2;
+  - name: tab1
+
+outputs:
+  - name: q8448.out
+    data: |

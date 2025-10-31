@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q7023.spq | sort > q7023.out
+
+inputs:
+  - name: q7023.spq
+    data: |
+      SELECT 57 AS col1, + col2 * - col1 - - col2 FROM tab0 (FORMAT parquet);
+  - name: tab0
+
+outputs:
+  - name: q7023.out
+    data: |
+      57	-200
+      57	-3760
+      57	0

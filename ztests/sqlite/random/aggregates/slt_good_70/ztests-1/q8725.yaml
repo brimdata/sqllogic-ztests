@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8725.spq | sort > q8725.out
+
+inputs:
+  - name: q8725.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) AS cor0 WHERE 2 BETWEEN col1 * + 29 - 81 + - col0 * + 82 * - - col2 * + + col0 - + + col0 AND col0;
+  - name: tab2
+
+outputs:
+  - name: q8725.out
+    data: |
+      46	51	23
+      64	77	40
+      75	67	58

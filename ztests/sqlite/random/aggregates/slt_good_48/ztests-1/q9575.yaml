@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q9575.spq | sort > q9575.out
+
+inputs:
+  - name: q9575.spq
+    data: |
+      SELECT - + 5 AS col1 FROM tab1 (FORMAT parquet) WHERE NULL IN ( 4, - 84 );
+  - name: tab1
+
+outputs:
+  - name: q9575.out
+    data: |

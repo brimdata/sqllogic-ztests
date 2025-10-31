@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q1668.spq | sort > q1668.out
+
+inputs:
+  - name: q1668.spq
+    data: |
+      SELECT ALL - MAX ( + 43 ) col2 FROM tab0 (FORMAT parquet) AS cor0 CROSS JOIN tab0 (FORMAT parquet) AS cor1;
+  - name: tab0
+
+outputs:
+  - name: q1668.out
+    data: |
+      -43

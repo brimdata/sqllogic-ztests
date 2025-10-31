@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q13160.spq | sort > q13160.out
+
+inputs:
+  - name: q13160.spq
+    data: |
+      SELECT ALL * FROM tab1 (FORMAT parquet) WHERE NOT ( NULL ) BETWEEN 16 + + col2 AND ( col2 );
+  - name: tab1
+
+outputs:
+  - name: q13160.out
+    data: |

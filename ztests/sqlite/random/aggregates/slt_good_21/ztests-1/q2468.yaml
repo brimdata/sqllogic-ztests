@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q2468.spq | sort > q2468.out
+
+inputs:
+  - name: q2468.spq
+    data: |
+      SELECT ALL * FROM tab2 (FORMAT parquet) AS cor0 WHERE NOT 84 * - CAST ( NULL AS REAL ) > col1 * + col2;
+  - name: tab2
+
+outputs:
+  - name: q2468.out
+    data: |

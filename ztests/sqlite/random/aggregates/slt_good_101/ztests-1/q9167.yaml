@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q9167.spq | sort > q9167.out
+
+inputs:
+  - name: q9167.spq
+    data: |
+      SELECT ALL 9 / + col0 + - col0 * 12 FROM tab2 (FORMAT parquet) WHERE ( - col1 - + col2 * CAST ( NULL AS REAL ) ) IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q9167.out
+    data: |

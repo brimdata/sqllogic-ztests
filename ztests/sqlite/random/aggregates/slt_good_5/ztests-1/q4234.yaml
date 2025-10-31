@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q4234.spq | sort > q4234.out
+
+inputs:
+  - name: q4234.spq
+    data: |
+      SELECT ALL * FROM tab2 (FORMAT parquet) WHERE 51 - - - 28 BETWEEN 19 AND col0;
+  - name: tab2
+
+outputs:
+  - name: q4234.out
+    data: |
+      46	51	23
+      64	77	40
+      75	67	58

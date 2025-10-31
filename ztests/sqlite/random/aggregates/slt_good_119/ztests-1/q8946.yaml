@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q8946.spq | sort > q8946.out
+
+inputs:
+  - name: q8946.spq
+    data: |
+      SELECT DISTINCT + COUNT ( 53 ) FROM tab2 (FORMAT parquet) WHERE + col2 BETWEEN NULL AND NULL OR NULL IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q8946.out
+    data: |
+      3

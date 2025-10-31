@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8554.spq | sort > q8554.out
+
+inputs:
+  - name: q8554.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) WHERE ( + col0 * col2 * col0 ) NOT BETWEEN 94 + col0 AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q8554.out
+    data: |

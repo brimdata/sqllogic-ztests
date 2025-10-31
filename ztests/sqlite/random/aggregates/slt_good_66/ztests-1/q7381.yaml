@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q7381.spq | sort > q7381.out
+
+inputs:
+  - name: q7381.spq
+    data: |
+      SELECT ALL + 7 + - ( 70 + - col1 / col2 ) AS col2 FROM tab1 (FORMAT parquet) WHERE col1 BETWEEN NULL AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q7381.out
+    data: |

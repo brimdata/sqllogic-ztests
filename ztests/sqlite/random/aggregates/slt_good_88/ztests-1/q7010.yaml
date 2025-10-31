@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q7010.spq | sort > q7010.out
+
+inputs:
+  - name: q7010.spq
+    data: |
+      SELECT ALL * FROM tab0 (FORMAT parquet) WHERE NOT 27 NOT BETWEEN ( + 50 + + 45 * - col2 ) AND ( + col1 * col1 + + col1 );
+  - name: tab0
+
+outputs:
+  - name: q7010.out
+    data: |
+      15	81	47
+      87	21	10

@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q4717.spq | sort > q4717.out
+
+inputs:
+  - name: q4717.spq
+    data: |
+      SELECT * FROM tab0 (FORMAT parquet) AS cor0 WHERE - col1 * col2 BETWEEN - col2 AND + - col2;
+  - name: tab0
+
+outputs:
+  - name: q4717.out
+    data: |
+      97	1	99

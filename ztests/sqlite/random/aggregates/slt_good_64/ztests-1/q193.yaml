@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q193.spq | sort > q193.out
+
+inputs:
+  - name: q193.spq
+    data: |
+      SELECT ALL COUNT ( + col2 ) FROM tab0 (FORMAT parquet) WHERE - col0 NOT BETWEEN 15 AND NULL;
+  - name: tab0
+
+outputs:
+  - name: q193.out
+    data: |
+      3

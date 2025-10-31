@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q4038.spq | sort > q4038.out
+
+inputs:
+  - name: q4038.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) WHERE NOT 45 / + 39 < + col1;
+  - name: tab2
+
+outputs:
+  - name: q4038.out
+    data: |

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q12750.spq | sort > q12750.out
+
+inputs:
+  - name: q12750.spq
+    data: |
+      SELECT DISTINCT col2 * 55 FROM tab1 (FORMAT parquet) WHERE NULL BETWEEN - 86 AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q12750.out
+    data: |

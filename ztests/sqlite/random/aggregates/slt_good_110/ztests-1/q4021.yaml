@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q4021.spq | sort > q4021.out
+
+inputs:
+  - name: q4021.spq
+    data: |
+      SELECT - SUM ( 18 ) AS col2 FROM tab2 (FORMAT parquet) AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q4021.out
+    data: |
+      -54

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q1102.spq | sort > q1102.out
+
+inputs:
+  - name: q1102.spq
+    data: |
+      SELECT + 78 * col2 AS col1, + 79 * + col1 * + col1, 18 AS col0 FROM tab1 (FORMAT parquet) AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q1102.out
+    data: |
+      4602	1975	18
+      5304	174511	18
+      7488	15484	18

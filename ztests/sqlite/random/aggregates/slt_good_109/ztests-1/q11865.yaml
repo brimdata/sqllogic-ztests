@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q11865.spq | sort > q11865.out
+
+inputs:
+  - name: q11865.spq
+    data: |
+      SELECT MIN ( DISTINCT + - 24 ), SUM ( - - col2 ) AS col1 FROM tab2 (FORMAT parquet);
+  - name: tab2
+
+outputs:
+  - name: q11865.out
+    data: |
+      -24	121

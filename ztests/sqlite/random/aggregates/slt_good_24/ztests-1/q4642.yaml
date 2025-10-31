@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q4642.spq | sort > q4642.out
+
+inputs:
+  - name: q4642.spq
+    data: |
+      SELECT MIN ( DISTINCT - ( 98 ) ) FROM tab1 (FORMAT parquet) AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q4642.out
+    data: |
+      -98

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q5743.spq | sort > q5743.out
+
+inputs:
+  - name: q5743.spq
+    data: |
+      SELECT col2 + col2 * col1 AS col2 FROM tab2 (FORMAT parquet) WHERE 49 * col2 BETWEEN NULL AND ( NULL );
+  - name: tab2
+
+outputs:
+  - name: q5743.out
+    data: |

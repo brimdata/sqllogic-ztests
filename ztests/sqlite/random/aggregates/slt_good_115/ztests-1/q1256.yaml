@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q1256.spq | sort > q1256.out
+
+inputs:
+  - name: q1256.spq
+    data: |
+      SELECT ALL + 26 * SUM ( 23 ) AS col2 FROM tab0 (FORMAT parquet);
+  - name: tab0
+
+outputs:
+  - name: q1256.out
+    data: |
+      1794

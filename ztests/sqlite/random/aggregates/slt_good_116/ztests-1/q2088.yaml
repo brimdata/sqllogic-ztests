@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q2088.spq | sort > q2088.out
+
+inputs:
+  - name: q2088.spq
+    data: |
+      SELECT ALL * FROM tab0 (FORMAT parquet) WHERE NOT ( + + 72 * + col0 + - CAST ( NULL AS INTEGER ) ) IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q2088.out
+    data: |

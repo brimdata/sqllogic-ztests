@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q11619.spq | sort > q11619.out
+
+inputs:
+  - name: q11619.spq
+    data: |
+      SELECT - MAX ( - 30 ) / COUNT ( * ) + 91 * 8 FROM tab1 (FORMAT parquet) WHERE NOT NULL IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q11619.out
+    data: |
+      738

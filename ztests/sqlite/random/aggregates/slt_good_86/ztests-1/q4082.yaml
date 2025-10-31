@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q4082.spq | sort > q4082.out
+
+inputs:
+  - name: q4082.spq
+    data: |
+      SELECT * FROM tab1 (FORMAT parquet) WHERE ( 52 + col0 ) <> col0 OR - col1 / col0 + + 2 IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q4082.out
+    data: |
+      51	14	96
+      85	5	59
+      91	47	68

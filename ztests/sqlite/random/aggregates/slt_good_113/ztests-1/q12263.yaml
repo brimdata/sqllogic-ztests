@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q12263.spq | sort > q12263.out
+
+inputs:
+  - name: q12263.spq
+    data: |
+      SELECT * FROM tab2 (FORMAT parquet) WHERE NOT + 31 * - + ( + col2 ) * + col1 BETWEEN - 82 AND NULL;
+  - name: tab2
+
+outputs:
+  - name: q12263.out
+    data: |
+      46	51	23
+      64	77	40
+      75	67	58

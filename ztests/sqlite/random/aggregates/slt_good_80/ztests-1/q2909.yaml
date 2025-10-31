@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q2909.spq | sort > q2909.out
+
+inputs:
+  - name: q2909.spq
+    data: |
+      SELECT ALL * FROM tab0 (FORMAT parquet) AS cor0 WHERE col2 IN ( - - col2 * col2 );
+  - name: tab0
+
+outputs:
+  - name: q2909.out
+    data: |

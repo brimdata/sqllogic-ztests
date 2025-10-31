@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q5728.spq | sort > q5728.out
+
+inputs:
+  - name: q5728.spq
+    data: |
+      SELECT + 31 * + ( + col1 * + col1 ) + col2 FROM tab1 (FORMAT parquet) AS cor0 WHERE NOT col0 IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q5728.out
+    data: |
+      6172
+      68547
+      834
