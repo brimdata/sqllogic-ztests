@@ -1,0 +1,19 @@
+script: |
+  super -f text -I q228.sql | sort > q228.out
+
+inputs:
+  - name: q228.sql
+    data: |
+      SELECT abs(b-c),
+      (a+b+c+d+e)/5,
+      b-c,
+      a+b*2
+      FROM t1
+      WHERE e+d BETWEEN a+b-10 AND c+130
+      AND d NOT BETWEEN 110 AND 150;
+  - name: t1
+
+outputs:
+  - name: q228.out
+    data: |
+      1	107	-1	317

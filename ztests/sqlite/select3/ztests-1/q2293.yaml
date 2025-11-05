@@ -1,0 +1,19 @@
+script: |
+  super -f text -I q2293.sql | sort > q2293.out
+
+inputs:
+  - name: q2293.sql
+    data: |
+      SELECT a+b*2+c*3+d*4
+      FROM t1
+      WHERE c>d
+      AND (c<=d-2 OR c>=d+2)
+      AND d>e
+      ORDER BY 1;
+  - name: t1
+
+outputs:
+  - name: q2293.out
+    data: |
+      2125
+      2226

@@ -1,0 +1,16 @@
+script: |
+  super -f text -I q3112.sql | sort > q3112.out
+
+inputs:
+  - name: q3112.sql
+    data: |
+      SELECT a
+      FROM t1
+      WHERE c BETWEEN b-2 AND d+2
+      AND c>d
+      AND e+d BETWEEN a+b-10 AND c+130;
+  - name: t1
+
+outputs:
+  - name: q3112.out
+    data: |

@@ -1,0 +1,21 @@
+script: |
+  super -f text -I q1367.sql | sort > q1367.out
+
+inputs:
+  - name: q1367.sql
+    data: |
+      SELECT d-e,
+      a,
+      b
+      FROM t1
+      WHERE d NOT BETWEEN 110 AND 150
+      AND (e>a AND e<b)
+      ORDER BY 3,1,2;
+  - name: t1
+
+outputs:
+  - name: q1367.out
+    data: |
+      -2	191	194
+      1	220	223
+      2	245	249

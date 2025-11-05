@@ -1,0 +1,22 @@
+script: |
+  super -f text -I q671.sql | sort > q671.out
+
+inputs:
+  - name: q671.sql
+    data: |
+      SELECT CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      c,
+      a+b*2+c*3,
+      d,
+      d-e
+      FROM t1
+      WHERE (e>a AND e<b);
+  - name: t1
+
+outputs:
+  - name: q671.out
+    data: |
+      444	193	1158	190	-2
+      444	224	1338	222	1
+      444	247	1484	248	2

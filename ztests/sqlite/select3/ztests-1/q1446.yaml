@@ -1,0 +1,20 @@
+script: |
+  super -f text -I q1446.sql | sort > q1446.out
+
+inputs:
+  - name: q1446.sql
+    data: |
+      SELECT d,
+      c-d,
+      c,
+      abs(a),
+      a-b
+      FROM t1
+      WHERE c>d
+      AND a>b
+      AND b>c;
+  - name: t1
+
+outputs:
+  - name: q1446.out
+    data: |

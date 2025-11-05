@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q450.sql | sort > q450.out
+
+inputs:
+  - name: q450.sql
+    data: |
+      SELECT abs(b-c)
+      FROM t1
+      WHERE a IS NULL
+      AND e+d BETWEEN a+b-10 AND c+130;
+  - name: t1
+
+outputs:
+  - name: q450.out
+    data: |

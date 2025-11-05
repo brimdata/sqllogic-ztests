@@ -1,0 +1,27 @@
+script: |
+  super -f text -I q92.sql | tr '\t' '\n' | sort > q92.out
+
+inputs:
+  - name: q92.sql
+    data: |
+      SELECT b6 FROM t6
+      WHERE (e6=175 OR 668=e6)
+      OR (595=e6)
+      OR (956=d6 AND e6=646)
+      UNION ALL
+      SELECT a4 FROM t4
+      WHERE e4 in (349,677,565);
+  - name: t4
+  - name: t6
+
+outputs:
+  - name: q92.out
+    data: |
+      210
+      44
+      513
+      540
+      739
+      915
+      954
+      963

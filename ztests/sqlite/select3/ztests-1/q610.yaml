@@ -1,0 +1,31 @@
+script: |
+  super -f text -I q610.sql | sort > q610.out
+
+inputs:
+  - name: q610.sql
+    data: |
+      SELECT (a+b+c+d+e)/5,
+      CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END,
+      a+b*2,
+      e,
+      abs(b-c),
+      c,
+      a-b
+      FROM t1
+      WHERE c>d
+      AND c BETWEEN b-2 AND d+2;
+  - name: t1
+
+outputs:
+  - name: q610.out
+    data: |
+      -	-	-	-	2	208	-
+      -	1240	369	-	1	123	-3
+      132	1300	391	132	4	134	1
+      137	1390	416	135	2	137	-1
+      142	1430	428	144	2	141	-1
+      172	1700	514	173	2	172	4
+      182	364	544	180	3	184	1
+      187	376	560	189	1	187	2
+      212	426	635	210	3	214	2
+      222	440	666	221	1	224	-3

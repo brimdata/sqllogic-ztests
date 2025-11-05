@@ -1,0 +1,42 @@
+script: |
+  super -f text -I q1921.sql | sort > q1921.out
+
+inputs:
+  - name: q1921.sql
+    data: |
+      SELECT CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      a-b,
+      a
+      FROM t1
+      WHERE e+d BETWEEN a+b-10 AND c+130
+      OR d>e
+      OR a>b
+      ORDER BY 1,2,3;
+  - name: t1
+
+outputs:
+  - name: q1921.out
+    data: |
+      111	-1	138
+      222	2	213
+      222	3	243
+      333	-2	127
+      333	1	182
+      333	2	107
+      333	3	163
+      444	-3	220
+      444	-4	245
+      444	1	131
+      444	2	188
+      555	-	-
+      555	1	159
+      555	1	168
+      555	1	199
+      555	1	229
+      555	2	153
+      555	2	234
+      555	3	239
+      555	4	149
+      555	4	174
+      555	4	179

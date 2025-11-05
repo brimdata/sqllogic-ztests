@@ -1,0 +1,35 @@
+script: |
+  super -f text -I q690.sql | sort > q690.out
+
+inputs:
+  - name: q690.sql
+    data: |
+      SELECT d-e,
+      CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END
+      FROM t1
+      WHERE c>d
+      OR (c<=d-2 OR c>=d+2)
+      OR e+d BETWEEN a+b-10 AND c+130;
+  - name: t1
+
+outputs:
+  - name: q690.out
+    data: |
+      -	-
+      -	-
+      -	1240
+      -1	-
+      -1	1050
+      -2	1700
+      -2	382
+      -2	432
+      -4	1430
+      -4	376
+      1	1300
+      1	1390
+      1	440
+      2	1290
+      2	1600
+      2	426
+      3	364
+      3	468

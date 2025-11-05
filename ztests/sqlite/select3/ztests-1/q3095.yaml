@@ -1,0 +1,22 @@
+script: |
+  super -f text -I q3095.sql | sort > q3095.out
+
+inputs:
+  - name: q3095.sql
+    data: |
+      SELECT c,
+      a+b*2+c*3+d*4
+      FROM t1
+      WHERE c>d
+      AND a>b
+      ORDER BY 2,1;
+  - name: t1
+
+outputs:
+  - name: q3095.out
+    data: |
+      134	1325
+      172	1714
+      184	1828
+      187	1861
+      214	2125

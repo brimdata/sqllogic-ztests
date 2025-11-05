@@ -1,0 +1,32 @@
+script: |
+  super -f text -I q999.sql | sort > q999.out
+
+inputs:
+  - name: q999.sql
+    data: |
+      SELECT a+b*2+c*3
+      FROM t1
+      WHERE e+d BETWEEN a+b-10 AND c+130
+      OR c>d
+      OR a IS NULL;
+  - name: t1
+
+outputs:
+  - name: q999.out
+    data: |
+      -
+      -
+      -
+      -
+      1030
+      1096
+      1121
+      1158
+      1277
+      1338
+      635
+      738
+      760
+      793
+      827
+      851

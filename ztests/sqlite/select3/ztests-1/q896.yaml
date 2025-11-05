@@ -1,0 +1,24 @@
+script: |
+  super -f text -I q896.sql | sort > q896.out
+
+inputs:
+  - name: q896.sql
+    data: |
+      SELECT a-b
+      FROM t1
+      WHERE (c<=d-2 OR c>=d+2);
+  - name: t1
+
+outputs:
+  - name: q896.out
+    data: |
+      -
+      -2
+      -2
+      -3
+      -3
+      2
+      2
+      2
+      2
+      3

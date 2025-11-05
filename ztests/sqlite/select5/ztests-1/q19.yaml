@@ -1,0 +1,27 @@
+script: |
+  super -f text -I q19.sql | tr '\t' '\n' | sort > q19.out
+
+inputs:
+  - name: q19.sql
+    data: |
+      SELECT x34,x50,x16,x12,x24
+      FROM t50,t12,t34,t24,t16
+      WHERE b16=a34
+      AND a34=9
+      AND b12=a16
+      AND b50=a24
+      AND b24=a12;
+  - name: t12
+  - name: t16
+  - name: t24
+  - name: t34
+  - name: t50
+
+outputs:
+  - name: q19.out
+    data: |
+      table t12 row 4
+      table t16 row 6
+      table t24 row 6
+      table t34 row 9
+      table t50 row 3

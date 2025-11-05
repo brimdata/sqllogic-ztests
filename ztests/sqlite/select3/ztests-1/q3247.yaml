@@ -1,0 +1,45 @@
+script: |
+  super -f text -I q3247.sql | sort > q3247.out
+
+inputs:
+  - name: q3247.sql
+    data: |
+      SELECT a-b,
+      CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END
+      FROM t1
+      ORDER BY 1,2;
+  - name: t1
+
+outputs:
+  - name: q3247.out
+    data: |
+      -	-
+      -	-
+      -	-
+      -	1120
+      -	402
+      -1	1390
+      -1	1430
+      -2	1290
+      -2	432
+      -3	1240
+      -3	382
+      -3	440
+      -4	490
+      1	1300
+      1	1580
+      1	1670
+      1	364
+      1	398
+      1	458
+      2	1050
+      2	1510
+      2	376
+      2	426
+      2	468
+      3	1600
+      3	2360
+      3	486
+      4	1450
+      4	1700
+      4	358

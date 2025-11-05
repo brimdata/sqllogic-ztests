@@ -1,0 +1,19 @@
+script: |
+  super -f text -I q1931.sql | sort > q1931.out
+
+inputs:
+  - name: q1931.sql
+    data: |
+      SELECT (a+b+c+d+e)/5,
+      abs(b-c)
+      FROM t1
+      WHERE (a>b-2 AND a<b+2)
+      AND b>c
+      AND d>e
+      ORDER BY 1,2;
+  - name: t1
+
+outputs:
+  - name: q1931.out
+    data: |
+      137	2

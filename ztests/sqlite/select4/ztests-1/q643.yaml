@@ -1,0 +1,41 @@
+script: |
+  super -f text -I q643.sql | tr '\t' '\n' | sort > q643.out
+
+inputs:
+  - name: q643.sql
+    data: |
+      SELECT b1 FROM t1
+      WHERE (d1=310 OR 276=a1)
+      OR a1 in (170,579,996,767,864,337,936,591,395,314,173,604,20)
+      OR (32=b1 AND d1=793)
+      UNION
+      SELECT a2 FROM t2
+      WHERE (442=a2 OR d2=215)
+      OR (337=c2)
+      OR (b2=634);
+  - name: t1
+  - name: t2
+
+outputs:
+  - name: q643.out
+    data: |
+      297
+      32
+      442
+      447
+      462
+      523
+      572
+      660
+      674
+      696
+      75
+      781
+      788
+      822
+      857
+      862
+      874
+      891
+      914
+      94

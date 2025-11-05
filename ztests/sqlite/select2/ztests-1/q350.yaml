@@ -1,0 +1,25 @@
+script: |
+  super -f text -I q350.sql | sort > q350.out
+
+inputs:
+  - name: q350.sql
+    data: |
+      SELECT a+b*2+c*3+d*4+e*5,
+      c,
+      abs(a),
+      a+b*2+c*3+d*4,
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END
+      FROM t1
+      WHERE c BETWEEN b-2 AND d+2
+      AND b>c;
+  - name: t1
+
+outputs:
+  - name: q350.out
+    data: |
+      -	123	121	1226	333
+      2046	137	138	1371	111
+      2131	141	142	1411	111
+      3473	231	234	2323	555
+      3706	247	245	2476	444

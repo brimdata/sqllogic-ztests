@@ -1,0 +1,24 @@
+script: |
+  super -f text -I q2247.sql | sort > q2247.out
+
+inputs:
+  - name: q2247.sql
+    data: |
+      SELECT e
+      FROM t1
+      WHERE d>e
+      AND d NOT BETWEEN 110 AND 150
+      AND (e>c OR e<d)
+      ORDER BY 1;
+  - name: t1
+
+outputs:
+  - name: q2247.out
+    data: |
+      162
+      180
+      210
+      221
+      230
+      237
+      246

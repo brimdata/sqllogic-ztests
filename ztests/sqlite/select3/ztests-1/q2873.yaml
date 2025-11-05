@@ -1,0 +1,26 @@
+script: |
+  super -f text -I q2873.sql | sort > q2873.out
+
+inputs:
+  - name: q2873.sql
+    data: |
+      SELECT c-d,
+      d,
+      CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END,
+      abs(a),
+      d-e,
+      b,
+      e
+      FROM t1
+      WHERE (e>c OR e<d)
+      AND (a>b-2 AND a<b+2)
+      AND d NOT BETWEEN 110 AND 150
+      ORDER BY 7,6,4,1;
+  - name: t1
+
+outputs:
+  - name: q2873.out
+    data: |
+      -1	196	398	199	-1	198	197
+      -1	226	458	229	-1	228	227
+      1	183	364	182	3	181	180

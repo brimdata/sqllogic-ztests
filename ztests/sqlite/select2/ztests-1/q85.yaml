@@ -1,0 +1,26 @@
+script: |
+  super -f text -I q85.sql | sort > q85.out
+
+inputs:
+  - name: q85.sql
+    data: |
+      SELECT abs(b-c),
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END,
+      b,
+      d,
+      e,
+      c,
+      (a+b+c+d+e)/5
+      FROM t1
+      WHERE d>e
+      AND (c<=d-2 OR c>=d+2)
+      AND a>b;
+  - name: t1
+
+outputs:
+  - name: q85.out
+    data: |
+      1	333	232	233	230	231	232
+      1	444	160	164	162	161	162
+      3	333	211	212	210	214	212

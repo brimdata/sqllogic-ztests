@@ -1,0 +1,30 @@
+script: |
+  super -f text -I q847.sql | sort > q847.out
+
+inputs:
+  - name: q847.sql
+    data: |
+      SELECT c,
+      b-c,
+      a+b*2+c*3
+      FROM t1
+      WHERE b>c
+      AND coalesce(a,b,c,d,e)<>0;
+  - name: t1
+
+outputs:
+  - name: q847.out
+    data: |
+      123	1	738
+      125	4	760
+      137	2	827
+      141	2	851
+      150	1	905
+      155	3	940
+      166	1	1000
+      193	1	1158
+      195	3	1180
+      215	3	1297
+      225	3	1360
+      231	1	1391
+      247	2	1484

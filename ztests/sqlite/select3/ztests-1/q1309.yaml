@@ -1,0 +1,29 @@
+script: |
+  super -f text -I q1309.sql | sort > q1309.out
+
+inputs:
+  - name: q1309.sql
+    data: |
+      SELECT c,
+      a,
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END,
+      a+b*2+c*3+d*4,
+      a+b*2,
+      (a+b+c+d+e)/5,
+      e
+      FROM t1
+      WHERE b>c
+      AND d NOT BETWEEN 110 AND 150
+      ORDER BY 1,2,5,7,3,4,6;
+  - name: t1
+
+outputs:
+  - name: q1309.out
+    data: |
+      193	191	222	1918	579	192	192
+      195	199	333	1964	595	197	197
+      215	216	222	2165	652	217	219
+      225	229	333	2264	685	227	227
+      231	234	333	2323	698	232	230
+      247	245	111	2476	743	247	246

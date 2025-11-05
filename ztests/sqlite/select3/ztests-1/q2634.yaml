@@ -1,0 +1,16 @@
+script: |
+  super -f text -I q2634.sql | sort > q2634.out
+
+inputs:
+  - name: q2634.sql
+    data: |
+      SELECT c
+      FROM t1
+      WHERE d NOT BETWEEN 110 AND 150
+      AND (e>a AND e<b)
+      AND (a>b-2 AND a<b+2);
+  - name: t1
+
+outputs:
+  - name: q2634.out
+    data: |

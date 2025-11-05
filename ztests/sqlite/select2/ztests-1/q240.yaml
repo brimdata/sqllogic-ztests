@@ -1,0 +1,33 @@
+script: |
+  super -f text -I q240.sql | sort > q240.out
+
+inputs:
+  - name: q240.sql
+    data: |
+      SELECT b,
+      c-d,
+      CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END
+      FROM t1
+      WHERE d NOT BETWEEN 110 AND 150;
+  - name: t1
+
+outputs:
+  - name: q240.out
+    data: |
+      -	-1	402
+      -	1	-
+      105	-2	1050
+      160	-3	1600
+      170	1	1700
+      181	1	364
+      186	2	376
+      194	3	382
+      198	-1	398
+      206	1	-
+      211	2	426
+      218	-2	432
+      223	2	440
+      228	-1	458
+      232	-2	468
+      236	-	2360
+      249	-1	490

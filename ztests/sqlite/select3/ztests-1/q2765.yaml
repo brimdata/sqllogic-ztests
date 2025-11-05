@@ -1,0 +1,23 @@
+script: |
+  super -f text -I q2765.sql | sort > q2765.out
+
+inputs:
+  - name: q2765.sql
+    data: |
+      SELECT abs(a),
+      d-e
+      FROM t1
+      WHERE (a>b-2 AND a<b+2)
+      AND b>c
+      ORDER BY 1,2;
+  - name: t1
+
+outputs:
+  - name: q2765.out
+    data: |
+      138	1
+      142	-4
+      159	-
+      168	-
+      199	-1
+      229	-1

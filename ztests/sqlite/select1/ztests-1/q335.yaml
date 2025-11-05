@@ -1,0 +1,23 @@
+script: |
+  super -f text -I q335.sql > q335.out
+
+inputs:
+  - name: q335.sql
+    data: |
+      SELECT a+b*2+c*3,
+      a+b*2+c*3+d*4,
+      a-b,
+      a+b*2
+      FROM t1
+      WHERE d>e
+      AND c>d
+      AND a>b
+      ORDER BY 3,1,2,4;
+  - name: t1
+
+outputs:
+  - name: q335.out
+    data: |
+      793	1325	1	391
+      1096	1828	1	544
+      1277	2125	2	635

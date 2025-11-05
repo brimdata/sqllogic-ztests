@@ -1,0 +1,18 @@
+script: |
+  super -f text -I q2031.sql | sort > q2031.out
+
+inputs:
+  - name: q2031.sql
+    data: |
+      SELECT d,
+      a+b*2
+      FROM t1
+      WHERE e+d BETWEEN a+b-10 AND c+130
+      AND d>e
+      AND c BETWEEN b-2 AND d+2
+      ORDER BY 1,2;
+  - name: t1
+
+outputs:
+  - name: q2031.out
+    data: |

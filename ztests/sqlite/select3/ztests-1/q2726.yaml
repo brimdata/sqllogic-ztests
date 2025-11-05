@@ -1,0 +1,25 @@
+script: |
+  super -f text -I q2726.sql | sort > q2726.out
+
+inputs:
+  - name: q2726.sql
+    data: |
+      SELECT a+b*2+c*3
+      FROM t1
+      WHERE c BETWEEN b-2 AND d+2
+      AND d NOT BETWEEN 110 AND 150
+      AND (e>c OR e<d);
+  - name: t1
+
+outputs:
+  - name: q2726.out
+    data: |
+      1030
+      1096
+      1121
+      1277
+      1338
+      1391
+      1484
+      635
+      966

@@ -1,0 +1,49 @@
+script: |
+  super -f text -I q301.sql | tr '\t' '\n' | sort > q301.out
+
+inputs:
+  - name: q301.sql
+    data: |
+      SELECT c8 FROM t8
+      WHERE (421=c8 AND b8=615 AND a8=210 AND 190=d8 AND e8=105)
+      OR (a8=289)
+      OR c8 in (844,442,117,377,298,113,448,291,160,79,998,979)
+      UNION
+      SELECT d7 FROM t7
+      WHERE b7 in (949,660,396,717,340,579,422,913,679,426,250,979,221)
+      OR (a7=325 AND 478=c7);
+  - name: t7
+  - name: t8
+
+outputs:
+  - name: q301.out
+    data: |
+      113
+      117
+      160
+      265
+      291
+      296
+      298
+      341
+      377
+      399
+      418
+      421
+      436
+      442
+      448
+      500
+      508
+      527
+      575
+      684
+      781
+      79
+      805
+      844
+      885
+      91
+      916
+      979
+      998

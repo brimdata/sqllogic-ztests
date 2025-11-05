@@ -1,0 +1,33 @@
+script: |
+  super -f text -I q627.sql | tr '\t' '\n' | sort > q627.out
+
+inputs:
+  - name: q627.sql
+    data: |
+      SELECT c8 FROM t8
+      WHERE (563=a8 AND d8=761 AND c8=762)
+      UNION
+      SELECT e3 FROM t3
+      WHERE (b3=76 OR 399=d3 OR 360=c3)
+      UNION
+      SELECT a4 FROM t4
+      WHERE d4 in (166,264,105)
+      OR (162=c4 OR c4=948 OR e4=725);
+  - name: t3
+  - name: t4
+  - name: t8
+
+outputs:
+  - name: q627.out
+    data: |
+      151
+      378
+      442
+      459
+      474
+      60
+      600
+      637
+      762
+      793
+      914

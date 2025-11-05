@@ -1,0 +1,25 @@
+script: |
+  super -f text -I q435.sql | sort > q435.out
+
+inputs:
+  - name: q435.sql
+    data: |
+      SELECT CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      b,
+      a-b,
+      a+b*2+c*3+d*4
+      FROM t1
+      WHERE (c<=d-2 OR c>=d+2)
+      AND d>e
+      ORDER BY 2,1;
+  - name: t1
+
+outputs:
+  - name: q435.out
+    data: |
+      222	211	2	2125
+      333	129	-2	1272
+      333	160	3	1622
+      444	223	-3	2226
+      555	232	2	2323

@@ -1,0 +1,19 @@
+script: |
+  super -f text -I q113.sql | sort > q113.out
+
+inputs:
+  - name: q113.sql
+    data: |
+      SELECT b-c,
+      b,
+      a+b*2+c*3+d*4
+      FROM t1
+      WHERE (c<=d-2 OR c>=d+2)
+      AND (a>b-2 AND a<b+2)
+      AND a>b
+      ORDER BY 1,2,3;
+  - name: t1
+
+outputs:
+  - name: q113.out
+    data: |

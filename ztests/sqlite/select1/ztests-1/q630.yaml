@@ -1,0 +1,24 @@
+script: |
+  super -f text -I q630.sql > q630.out
+
+inputs:
+  - name: q630.sql
+    data: |
+      SELECT a+b*2+c*3+d*4,
+      a+b*2,
+      e,
+      (a+b+c+d+e)/5
+      FROM t1
+      WHERE e+d BETWEEN a+b-10 AND c+130
+      AND (e>c OR e<d)
+      ORDER BY 2,4,3,1;
+  - name: t1
+
+outputs:
+  - name: q630.out
+    data: |
+      1014	304	103	102
+      1067	317	109	107
+      1130	335	110	112
+      1226	369	120	122
+      1272	385	126	127

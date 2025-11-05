@@ -1,0 +1,24 @@
+script: |
+  super -f text -I q4.sql | tr '\t' '\n' | sort > q4.out
+
+inputs:
+  - name: q4.sql
+    data: |
+      SELECT x27,x41,x54,x32
+      FROM t54,t27,t32,t41
+      WHERE a54=2
+      AND b32=a41
+      AND b41=a54
+      AND b27=a32;
+  - name: t27
+  - name: t32
+  - name: t41
+  - name: t54
+
+outputs:
+  - name: q4.out
+    data: |
+      table t27 row 9
+      table t32 row 5
+      table t41 row 4
+      table t54 row 2

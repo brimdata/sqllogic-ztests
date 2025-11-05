@@ -1,0 +1,27 @@
+script: |
+  super -f text -I q46.sql > q46.out
+
+inputs:
+  - name: q46.sql
+    data: |
+      SELECT c,
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END,
+      abs(a),
+      (a+b+c+d+e)/5,
+      a+b*2,
+      d-e
+      FROM t1
+      WHERE b>c
+      AND (a>b-2 AND a<b+2)
+      AND d NOT BETWEEN 110 AND 150
+      ORDER BY 4,5,3,1,2,6;
+  - name: t1
+
+outputs:
+  - name: q46.out
+    data: |
+      155	333	159	157	475	-1
+      166	333	168	167	502	4
+      195	333	199	197	595	-1
+      225	333	229	227	685	-1

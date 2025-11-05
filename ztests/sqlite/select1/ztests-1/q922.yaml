@@ -1,0 +1,29 @@
+script: |
+  super -f text -I q922.sql > q922.out
+
+inputs:
+  - name: q922.sql
+    data: |
+      SELECT c,
+      CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END,
+      d-e,
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END
+      FROM t1
+      WHERE b>c
+      AND a>b
+      ORDER BY 3,4,2,5,1;
+  - name: t1
+
+outputs:
+  - name: q922.out
+    data: |
+      195	398	-1	555	333
+      225	458	-1	555	333
+      155	1580	-1	555	333
+      235	478	1	555	444
+      150	1510	2	333	333
+      231	468	3	555	333
+      166	1670	4	333	333

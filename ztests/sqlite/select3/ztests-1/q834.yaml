@@ -1,0 +1,44 @@
+script: |
+  super -f text -I q834.sql | sort > q834.out
+
+inputs:
+  - name: q834.sql
+    data: |
+      SELECT abs(a),
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END
+      FROM t1
+      WHERE d>e
+      OR (e>c OR e<d)
+      OR c>d;
+  - name: t1
+
+outputs:
+  - name: q834.out
+    data: |
+      -	444
+      -	444
+      104	444
+      107	333
+      115	444
+      121	222
+      127	222
+      131	333
+      138	222
+      142	222
+      159	333
+      163	444
+      174	444
+      179	444
+      182	333
+      188	333
+      191	222
+      199	333
+      201	444
+      213	333
+      216	222
+      220	222
+      229	333
+      234	333
+      239	444
+      245	111

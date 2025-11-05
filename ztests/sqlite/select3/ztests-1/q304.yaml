@@ -1,0 +1,27 @@
+script: |
+  super -f text -I q304.sql | sort > q304.out
+
+inputs:
+  - name: q304.sql
+    data: |
+      SELECT c,
+      b-c,
+      a+b*2+c*3,
+      abs(a),
+      CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END,
+      a
+      FROM t1
+      WHERE (a>b-2 AND a<b+2);
+  - name: t1
+
+outputs:
+  - name: q304.out
+    data: |
+      134	-4	793	131	1300	131
+      137	2	827	138	1390	138
+      141	2	851	142	1430	142
+      155	3	940	159	1580	159
+      166	1	1000	168	1670	168
+      184	-3	1096	182	364	182
+      195	3	1180	199	398	199
+      225	3	1360	229	458	229

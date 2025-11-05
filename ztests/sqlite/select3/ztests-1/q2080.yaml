@@ -1,0 +1,31 @@
+script: |
+  super -f text -I q2080.sql | sort > q2080.out
+
+inputs:
+  - name: q2080.sql
+    data: |
+      SELECT c-d,
+      c,
+      abs(a),
+      a+b*2+c*3
+      FROM t1
+      WHERE c BETWEEN b-2 AND d+2
+      AND (e>c OR e<d);
+  - name: t1
+
+outputs:
+  - name: q2080.out
+    data: |
+      -1	113	-	-
+      -1	247	245	1484
+      -2	106	107	635
+      -2	231	234	1391
+      -3	161	163	966
+      1	134	131	793
+      1	137	138	827
+      1	141	142	851
+      1	172	174	1030
+      1	184	182	1096
+      2	187	188	1121
+      2	214	213	1277
+      2	224	220	1338

@@ -1,0 +1,29 @@
+script: |
+  super -f text -I q894.sql > q894.out
+
+inputs:
+  - name: q894.sql
+    data: |
+      SELECT b-c,
+      CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END,
+      a,
+      d
+      FROM t1
+      WHERE (a>b-2 AND a<b+2)
+      ORDER BY 4,2,3,1;
+  - name: t1
+
+outputs:
+  - name: q894.out
+    data: |
+      -1	1120	111	114
+      -4	1300	131	133
+      2	1390	138	136
+      2	1430	142	140
+      3	1580	159	156
+      1	1670	168	169
+      -3	364	182	183
+      3	398	199	196
+      -2	402	201	203
+      -2	410	205	207
+      3	458	229	226

@@ -1,0 +1,25 @@
+script: |
+  super -f text -I q97.sql > q97.out
+
+inputs:
+  - name: q97.sql
+    data: |
+      SELECT c-d,
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      a,
+      abs(a),
+      abs(b-c),
+      a+b*2+c*3,
+      e
+      FROM t1
+      WHERE d>e
+      AND (e>a AND e<b)
+      ORDER BY 7,2,6,1,3,4,5;
+  - name: t1
+
+outputs:
+  - name: q97.out
+    data: |
+      2	444	220	220	1	1338	221
+      -1	444	245	245	2	1484	246

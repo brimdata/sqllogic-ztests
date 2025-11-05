@@ -1,0 +1,26 @@
+script: |
+  super -f text -I q1027.sql | sort > q1027.out
+
+inputs:
+  - name: q1027.sql
+    data: |
+      SELECT a+b*2+c*3+d*4,
+      a
+      FROM t1
+      WHERE (c<=d-2 OR c>=d+2)
+      ORDER BY 2,1;
+  - name: t1
+
+outputs:
+  - name: q1027.out
+    data: |
+      -	115
+      1067	107
+      1272	127
+      1622	163
+      1861	188
+      1918	191
+      2125	213
+      2165	216
+      2226	220
+      2323	234

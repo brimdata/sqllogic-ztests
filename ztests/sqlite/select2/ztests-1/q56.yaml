@@ -1,0 +1,35 @@
+script: |
+  super -f text -I q56.sql | sort > q56.out
+
+inputs:
+  - name: q56.sql
+    data: |
+      SELECT CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      a+b*2,
+      a+b*2+c*3,
+      (a+b+c+d+e)/5,
+      d-e
+      FROM t1
+      WHERE (a>b-2 AND a<b+2)
+      OR b>c;
+  - name: t1
+
+outputs:
+  - name: q56.out
+    data: |
+      111	416	827	137	1
+      111	428	851	142	-4
+      333	369	738	-	-
+      333	385	760	127	2
+      333	544	1096	182	3
+      333	652	1297	217	-2
+      444	391	793	132	1
+      444	579	1158	192	-2
+      444	743	1484	247	2
+      555	455	905	-	-
+      555	475	940	-	-
+      555	502	1000	-	-
+      555	595	1180	197	-1
+      555	685	1360	227	-1
+      555	698	1391	232	3

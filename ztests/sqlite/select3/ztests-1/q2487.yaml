@@ -1,0 +1,30 @@
+script: |
+  super -f text -I q2487.sql | sort > q2487.out
+
+inputs:
+  - name: q2487.sql
+    data: |
+      SELECT CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      a-b,
+      abs(a),
+      b
+      FROM t1
+      WHERE d>e
+      ORDER BY 3,1;
+  - name: t1
+
+outputs:
+  - name: q2487.out
+    data: |
+      111	-1	138	139
+      222	2	213	211
+      333	-2	127	129
+      333	1	182	181
+      333	3	163	160
+      444	-3	220	223
+      444	-4	245	249
+      444	1	131	130
+      555	-	-	112
+      555	2	234	232
+      555	3	239	236

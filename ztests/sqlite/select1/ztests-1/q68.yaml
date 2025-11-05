@@ -1,0 +1,33 @@
+script: |
+  super -f text -I q68.sql > q68.out
+
+inputs:
+  - name: q68.sql
+    data: |
+      SELECT CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END,
+      a+b*2+c*3+d*4+e*5
+      FROM t1
+      WHERE c BETWEEN b-2 AND d+2
+      AND d>e
+      ORDER BY 1,2;
+  - name: t1
+
+outputs:
+  - name: q68.out
+    data: |
+      111	3706
+      222	1680
+      222	1826
+      222	2046
+      222	3331
+      333	1985
+      333	2281
+      333	2501
+      333	2728
+      333	3175
+      333	3473
+      444	2202
+      444	2432
+      444	2654
+      444	3553

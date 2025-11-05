@@ -1,0 +1,27 @@
+script: |
+  super -f text -I q682.sql | sort > q682.out
+
+inputs:
+  - name: q682.sql
+    data: |
+      SELECT c-d,
+      a+b*2+c*3+d*4+e*5,
+      b,
+      d
+      FROM t1
+      WHERE (c<=d-2 OR c>=d+2)
+      AND b IS NOT NULL;
+  - name: t1
+
+outputs:
+  - name: q682.out
+    data: |
+      -2	1612	105	108
+      -2	3260	218	217
+      -2	3473	232	233
+      -3	1902	129	128
+      -3	2432	160	164
+      2	2806	186	185
+      2	3175	211	212
+      2	3331	223	222
+      3	2878	194	190

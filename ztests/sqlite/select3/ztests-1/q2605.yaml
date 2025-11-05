@@ -1,0 +1,27 @@
+script: |
+  super -f text -I q2605.sql | sort > q2605.out
+
+inputs:
+  - name: q2605.sql
+    data: |
+      SELECT a-b
+      FROM t1
+      WHERE (e>c OR e<d)
+      AND d NOT BETWEEN 110 AND 150
+      AND a>b
+      ORDER BY 1;
+  - name: t1
+
+outputs:
+  - name: q2605.out
+    data: |
+      1
+      1
+      1
+      2
+      2
+      2
+      2
+      3
+      3
+      4

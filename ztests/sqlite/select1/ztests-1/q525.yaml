@@ -1,0 +1,43 @@
+script: |
+  super -f text -I q525.sql > q525.out
+
+inputs:
+  - name: q525.sql
+    data: |
+      SELECT CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END,
+      b-c
+      FROM t1
+      WHERE b>c
+      OR d NOT BETWEEN 110 AND 150
+      ORDER BY 2,1;
+  - name: t1
+
+outputs:
+  - name: q525.out
+    data: |
+      486	-4
+      364	-3
+      426	-3
+      402	-2
+      410	-2
+      1000	-2
+      1700	-2
+      358	-1
+      376	-1
+      440	-1
+      1050	-1
+      1600	-1
+      382	1
+      468	1
+      478	1
+      1240	1
+      1510	1
+      1670	1
+      490	2
+      1390	2
+      1430	2
+      398	3
+      432	3
+      458	3
+      1580	3
+      1290	4

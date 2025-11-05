@@ -1,0 +1,20 @@
+script: |
+  super -f text -I q737.sql | sort > q737.out
+
+inputs:
+  - name: q737.sql
+    data: |
+      SELECT c-d,
+      d,
+      CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END
+      FROM t1
+      WHERE (a>b-2 AND a<b+2)
+      AND d NOT BETWEEN 110 AND 150;
+  - name: t1
+
+outputs:
+  - name: q737.out
+    data: |
+      -1	196	398
+      -1	226	458
+      1	183	364

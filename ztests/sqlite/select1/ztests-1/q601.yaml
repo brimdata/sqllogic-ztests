@@ -1,0 +1,35 @@
+script: |
+  super -f text -I q601.sql > q601.out
+
+inputs:
+  - name: q601.sql
+    data: |
+      SELECT a+b*2+c*3+d*4,
+      abs(b-c),
+      b-c,
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END
+      FROM t1
+      WHERE d>e
+      ORDER BY 3,1,2,4;
+  - name: t1
+
+outputs:
+  - name: q601.out
+    data: |
+      1325	4	-4	444
+      1828	3	-3	333
+      2125	3	-3	222
+      1472	2	-2	555
+      1130	1	-1	111
+      1622	1	-1	333
+      1769	1	-1	555
+      2226	1	-1	444
+      1226	1	1	333
+      1521	1	1	333
+      1676	1	1	333
+      2323	1	1	555
+      2368	1	1	555
+      1371	2	2	111
+      2476	2	2	444
+      1272	4	4	333

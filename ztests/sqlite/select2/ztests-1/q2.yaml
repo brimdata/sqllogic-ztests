@@ -1,0 +1,25 @@
+script: |
+  super -f text -I q2.sql | sort > q2.out
+
+inputs:
+  - name: q2.sql
+    data: |
+      SELECT abs(b-c),
+      b,
+      a+b*2+c*3+d*4
+      FROM t1
+      WHERE coalesce(a,b,c,d,e)<>0
+      AND (a>b-2 AND a<b+2);
+  - name: t1
+
+outputs:
+  - name: q2.out
+    data: |
+      1	167	-
+      2	139	1371
+      2	143	1411
+      3	158	-
+      3	181	1828
+      3	198	1964
+      3	228	2264
+      4	130	1325

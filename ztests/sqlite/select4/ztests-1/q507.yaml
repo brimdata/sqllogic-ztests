@@ -1,0 +1,35 @@
+script: |
+  super -f text -I q507.sql | tr '\t' '\n' | sort > q507.out
+
+inputs:
+  - name: q507.sql
+    data: |
+      SELECT e3 FROM t3
+      WHERE (d3=726 AND 871=e3 AND c3=29 AND 198=a3)
+      OR (467=e3 AND d3=115 AND 407=b3)
+      OR e3 in (848,239,818,596,829,913,913,821,593,467,7,846,319)
+      UNION
+      SELECT a8 FROM t8
+      WHERE (d8=845 OR 119=c8 OR c8=541);
+  - name: t3
+  - name: t8
+
+outputs:
+  - name: q507.out
+    data: |
+      200
+      239
+      319
+      328
+      46
+      467
+      593
+      596
+      7
+      818
+      821
+      829
+      846
+      848
+      871
+      913

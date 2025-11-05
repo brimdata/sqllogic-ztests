@@ -1,0 +1,35 @@
+script: |
+  super -f text -I q3059.sql | sort > q3059.out
+
+inputs:
+  - name: q3059.sql
+    data: |
+      SELECT d,
+      abs(b-c),
+      b,
+      b-c
+      FROM t1
+      WHERE d NOT BETWEEN 110 AND 150
+      ORDER BY 2,4;
+  - name: t1
+
+outputs:
+  - name: q3059.out
+    data: |
+      101	-	-	-
+      108	1	105	-1
+      164	1	160	-1
+      171	2	170	-2
+      183	3	181	-3
+      185	1	186	-1
+      190	1	194	1
+      196	3	198	3
+      203	-	-	-
+      207	2	206	-2
+      212	3	211	-3
+      217	3	218	3
+      222	1	223	-1
+      226	3	228	3
+      233	1	232	1
+      238	-	236	-
+      248	2	249	2

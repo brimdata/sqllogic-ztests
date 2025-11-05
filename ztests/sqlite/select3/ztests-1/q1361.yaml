@@ -1,0 +1,41 @@
+script: |
+  super -f text -I q1361.sql | sort > q1361.out
+
+inputs:
+  - name: q1361.sql
+    data: |
+      SELECT b-c,
+      c,
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END
+      FROM t1
+      WHERE (a>b-2 AND a<b+2)
+      OR (e>c OR e<d)
+      ORDER BY 3,1,2;
+  - name: t1
+
+outputs:
+  - name: q1361.out
+    data: |
+      -	-	555
+      -	202	222
+      -1	106	333
+      -1	113	555
+      -1	161	333
+      -1	176	555
+      -1	187	444
+      -1	224	444
+      -2	172	555
+      -3	184	333
+      -3	214	222
+      -4	134	444
+      1	166	555
+      1	231	555
+      2	137	111
+      2	141	111
+      2	247	444
+      3	155	555
+      3	195	555
+      3	215	333
+      3	225	555
+      4	125	333

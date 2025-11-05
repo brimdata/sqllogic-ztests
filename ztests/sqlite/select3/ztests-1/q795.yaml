@@ -1,0 +1,22 @@
+script: |
+  super -f text -I q795.sql | sort > q795.out
+
+inputs:
+  - name: q795.sql
+    data: |
+      SELECT CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END,
+      b-c
+      FROM t1
+      WHERE c>d
+      AND (c<=d-2 OR c>=d+2)
+      ORDER BY 2,1;
+  - name: t1
+
+outputs:
+  - name: q795.out
+    data: |
+      -	-
+      376	-1
+      382	1
+      426	-3
+      440	-1

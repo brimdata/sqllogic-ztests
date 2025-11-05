@@ -1,0 +1,29 @@
+script: |
+  super -f text -I q68.sql | sort > q68.out
+
+inputs:
+  - name: q68.sql
+    data: |
+      SELECT d-e,
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      a+b*2,
+      a+b*2+c*3+d*4,
+      b-c
+      FROM t1
+      WHERE (c<=d-2 OR c>=d+2);
+  - name: t1
+
+outputs:
+  - name: q68.out
+    data: |
+      -1	333	-	-	-
+      -1	333	317	1067	-1
+      -2	333	652	2165	3
+      -2	444	579	1918	1
+      -4	444	560	1861	-1
+      1	444	666	2226	-1
+      2	222	635	2125	-3
+      2	333	385	1272	4
+      2	333	483	1622	-1
+      3	555	698	2323	1

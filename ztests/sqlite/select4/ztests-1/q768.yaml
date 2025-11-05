@@ -1,0 +1,27 @@
+script: |
+  super -f text -I q768.sql | tr '\t' '\n' | sort > q768.out
+
+inputs:
+  - name: q768.sql
+    data: |
+      SELECT a2 FROM t2
+      WHERE (e2=579)
+      UNION
+      SELECT a1 FROM t1
+      WHERE (498=c1)
+      OR (e1=896 OR a1=629)
+      UNION
+      SELECT c6 FROM t6
+      WHERE (910=c6);
+  - name: t1
+  - name: t2
+  - name: t6
+
+outputs:
+  - name: q768.out
+    data: |
+      545
+      553
+      629
+      640
+      910
