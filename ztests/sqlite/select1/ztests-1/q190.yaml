@@ -1,0 +1,26 @@
+script: |
+  super -f text -I q190.sql > q190.out
+
+inputs:
+  - name: q190.sql
+    data: |
+      SELECT a+b*2+c*3+d*4+e*5,
+      d,
+      a+b*2+c*3+d*4,
+      c,
+      d-e,
+      a+b*2
+      FROM t1
+      WHERE d NOT BETWEEN 110 AND 150
+      AND (a>b-2 AND a<b+2)
+      AND c BETWEEN b-2 AND d+2
+      ORDER BY 4,6,2,5,1,3;
+  - name: t1
+
+outputs:
+  - name: q190.out
+    data: |
+      2501	169	1676	166	4	502
+      2728	183	1828	184	3	544
+      3039	203	2019	202	-1	601
+      3114	207	2069	208	-2	617

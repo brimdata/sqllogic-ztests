@@ -1,0 +1,30 @@
+script: |
+  super -f text -I q33.sql | tr '\t' '\n' | sort > q33.out
+
+inputs:
+  - name: q33.sql
+    data: |
+      SELECT x6,x10,x28,x42,x4,x25
+      FROM t10,t25,t28,t42,t4,t6
+      WHERE b42=a10
+      AND a28=b25
+      AND b4=a6
+      AND a6=4
+      AND a4=b10
+      AND b28=a42;
+  - name: t10
+  - name: t25
+  - name: t28
+  - name: t4
+  - name: t42
+  - name: t6
+
+outputs:
+  - name: q33.out
+    data: |
+      table t10 row 6
+      table t25 row 9
+      table t28 row 4
+      table t4 row 4
+      table t42 row 4
+      table t6 row 4

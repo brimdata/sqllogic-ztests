@@ -1,0 +1,26 @@
+script: |
+  super -f text -I q1973.sql | sort > q1973.out
+
+inputs:
+  - name: q1973.sql
+    data: |
+      SELECT b-c,
+      a+b*2+c*3
+      FROM t1
+      WHERE (c<=d-2 OR c>=d+2)
+      ORDER BY 2,1;
+  - name: t1
+
+outputs:
+  - name: q1973.out
+    data: |
+      -	-
+      -1	1121
+      -1	1338
+      -1	635
+      -1	966
+      -3	1277
+      1	1158
+      1	1391
+      3	1297
+      4	760

@@ -1,0 +1,18 @@
+script: |
+  super -f text -I q1208.sql | sort > q1208.out
+
+inputs:
+  - name: q1208.sql
+    data: |
+      SELECT c-d,
+      abs(a)
+      FROM t1
+      WHERE b>c
+      AND c>d
+      AND (c<=d-2 OR c>=d+2);
+  - name: t1
+
+outputs:
+  - name: q1208.out
+    data: |
+      3	191

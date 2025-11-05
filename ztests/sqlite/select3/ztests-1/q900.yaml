@@ -1,0 +1,34 @@
+script: |
+  super -f text -I q900.sql | sort > q900.out
+
+inputs:
+  - name: q900.sql
+    data: |
+      SELECT c,
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      a+b*2+c*3
+      FROM t1
+      WHERE a>b;
+  - name: t1
+
+outputs:
+  - name: q900.out
+    data: |
+      -	555	-
+      106	333	635
+      134	444	793
+      147	555	880
+      150	555	905
+      155	555	940
+      161	333	966
+      166	555	1000
+      172	555	1030
+      176	555	1057
+      184	333	1096
+      187	444	1121
+      195	555	1180
+      214	222	1277
+      225	555	1360
+      231	555	1391
+      244	222	1455

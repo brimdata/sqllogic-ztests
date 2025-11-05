@@ -1,0 +1,33 @@
+script: |
+  super -f text -I q808.sql | sort > q808.out
+
+inputs:
+  - name: q808.sql
+    data: |
+      SELECT a+b*2+c*3,
+      a+b*2+c*3+d*4+e*5,
+      a,
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      d,
+      c-d
+      FROM t1
+      WHERE b>c;
+  - name: t1
+
+outputs:
+  - name: q808.out
+    data: |
+      1000	-	168	555	-	-
+      1158	2878	191	444	190	3
+      1180	2949	199	555	196	-1
+      1297	3260	216	333	217	-2
+      1360	3399	229	555	226	-1
+      1391	3473	234	555	233	-2
+      1484	3706	245	444	248	-1
+      738	-	121	333	122	1
+      760	1902	127	333	128	-3
+      827	2046	138	111	136	1
+      851	2131	142	111	140	1
+      905	-	153	555	-	-
+      940	-	159	555	-	-

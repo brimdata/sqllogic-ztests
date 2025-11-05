@@ -1,0 +1,32 @@
+script: |
+  super -f text -I q406.sql | sort > q406.out
+
+inputs:
+  - name: q406.sql
+    data: |
+      SELECT c,
+      a+b*2,
+      abs(b-c)
+      FROM t1
+      WHERE (a>b-2 AND a<b+2)
+      OR b>c;
+  - name: t1
+
+outputs:
+  - name: q406.out
+    data: |
+      123	369	1
+      125	385	4
+      134	391	4
+      137	416	2
+      141	428	2
+      150	455	1
+      155	475	3
+      166	502	1
+      184	544	3
+      193	579	1
+      195	595	3
+      215	652	3
+      225	685	3
+      231	698	1
+      247	743	2

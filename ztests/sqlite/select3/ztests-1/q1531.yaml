@@ -1,0 +1,25 @@
+script: |
+  super -f text -I q1531.sql | sort > q1531.out
+
+inputs:
+  - name: q1531.sql
+    data: |
+      SELECT CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END,
+      c-d,
+      c
+      FROM t1
+      WHERE (e>c OR e<d)
+      AND a>b
+      AND (c<=d-2 OR c>=d+2)
+      ORDER BY 1,2;
+  - name: t1
+
+outputs:
+  - name: q1531.out
+    data: |
+      333	-2	106
+      333	-2	231
+      333	2	187
+      333	2	214
+      444	-3	161

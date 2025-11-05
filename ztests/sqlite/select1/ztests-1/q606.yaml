@@ -1,0 +1,27 @@
+script: |
+  super -f text -I q606.sql > q606.out
+
+inputs:
+  - name: q606.sql
+    data: |
+      SELECT a+b*2+c*3+d*4+e*5,
+      c,
+      e,
+      a+b*2+c*3,
+      abs(b-c),
+      CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END
+      FROM t1
+      WHERE (a>b-2 AND a<b+2)
+      AND d>e
+      AND (e>c OR e<d)
+      ORDER BY 1,5,3,6,4,2;
+  - name: t1
+
+outputs:
+  - name: q606.out
+    data: |
+      1680	113	110	674	1	1120
+      1985	134	132	793	4	1300
+      2046	137	135	827	2	1390
+      2501	166	165	1000	1	1670
+      2728	184	180	1096	3	364

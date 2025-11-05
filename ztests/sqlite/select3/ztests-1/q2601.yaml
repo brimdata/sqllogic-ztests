@@ -1,0 +1,33 @@
+script: |
+  super -f text -I q2601.sql | sort > q2601.out
+
+inputs:
+  - name: q2601.sql
+    data: |
+      SELECT CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END,
+      c-d,
+      (a+b+c+d+e)/5,
+      d
+      FROM t1
+      WHERE (e>c OR e<d)
+      AND d NOT BETWEEN 110 AND 150
+      ORDER BY 3,2,4,1;
+  - name: t1
+
+outputs:
+  - name: q2601.out
+    data: |
+      1050	-2	107	108
+      1600	-3	162	164
+      1700	1	172	171
+      2360	-	-	238
+      364	1	182	183
+      376	2	187	185
+      398	-1	197	196
+      402	-1	-	203
+      426	2	212	212
+      432	-2	217	217
+      440	2	222	222
+      458	-1	227	226
+      468	-2	232	233
+      490	-1	247	248

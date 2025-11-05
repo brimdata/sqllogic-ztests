@@ -1,0 +1,26 @@
+script: |
+  super -f text -I q488.sql | sort > q488.out
+
+inputs:
+  - name: q488.sql
+    data: |
+      SELECT a-b,
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END,
+      abs(a),
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      abs(b-c)
+      FROM t1
+      WHERE (e>a AND e<b)
+      OR e+d BETWEEN a+b-10 AND c+130;
+  - name: t1
+
+outputs:
+  - name: q488.out
+    data: |
+      -2	222	127	333	4
+      -3	222	191	444	1
+      -3	222	220	444	1
+      -4	111	245	444	2
+      2	333	107	333	1

@@ -1,0 +1,36 @@
+script: |
+  super -f text -I q3226.sql | sort > q3226.out
+
+inputs:
+  - name: q3226.sql
+    data: |
+      SELECT abs(b-c)
+      FROM t1
+      WHERE c>d
+      OR (c<=d-2 OR c>=d+2)
+      OR c BETWEEN b-2 AND d+2;
+  - name: t1
+
+outputs:
+  - name: q3226.out
+    data: |
+      -
+      -
+      1
+      1
+      1
+      1
+      1
+      1
+      1
+      1
+      2
+      2
+      2
+      2
+      2
+      3
+      3
+      3
+      4
+      4

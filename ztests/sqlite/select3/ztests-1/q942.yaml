@@ -1,0 +1,21 @@
+script: |
+  super -f text -I q942.sql | sort > q942.out
+
+inputs:
+  - name: q942.sql
+    data: |
+      SELECT abs(a),
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END
+      FROM t1
+      WHERE d>e
+      AND (a>b-2 AND a<b+2)
+      AND c>d;
+  - name: t1
+
+outputs:
+  - name: q942.out
+    data: |
+      131	333
+      138	222
+      182	333

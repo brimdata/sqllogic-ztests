@@ -1,0 +1,44 @@
+script: |
+  super -f text -I q325.sql | sort > q325.out
+
+inputs:
+  - name: q325.sql
+    data: |
+      SELECT (a+b+c+d+e)/5,
+      abs(b-c),
+      d
+      FROM t1
+      WHERE a>b
+      OR a IS NULL
+      OR b>c;
+  - name: t1
+
+outputs:
+  - name: q325.out
+    data: |
+      -	-	238
+      -	1	-
+      -	1	-
+      -	1	-
+      -	1	114
+      -	1	122
+      -	2	-
+      -	2	207
+      -	3	-
+      -	4	-
+      107	1	108
+      127	4	128
+      132	4	133
+      137	2	136
+      142	2	140
+      162	1	164
+      172	2	171
+      182	3	183
+      187	1	185
+      192	1	190
+      197	3	196
+      212	3	212
+      217	3	217
+      227	3	226
+      232	1	233
+      247	2	248

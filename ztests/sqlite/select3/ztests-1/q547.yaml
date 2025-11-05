@@ -1,0 +1,18 @@
+script: |
+  super -f text -I q547.sql | sort > q547.out
+
+inputs:
+  - name: q547.sql
+    data: |
+      SELECT a-b
+      FROM t1
+      WHERE (e>a AND e<b)
+      AND d>e
+      AND b>c
+      ORDER BY 1;
+  - name: t1
+
+outputs:
+  - name: q547.out
+    data: |
+      -4

@@ -1,0 +1,19 @@
+script: |
+  super -f text -I q2913.sql | sort > q2913.out
+
+inputs:
+  - name: q2913.sql
+    data: |
+      SELECT e,
+      a,
+      a-b
+      FROM t1
+      WHERE e+d BETWEEN a+b-10 AND c+130
+      ORDER BY 3,2,1;
+  - name: t1
+
+outputs:
+  - name: q2913.out
+    data: |
+      109	107	2
+      126	127	-2

@@ -1,0 +1,25 @@
+script: |
+  super -f text -I q72.sql > q72.out
+
+inputs:
+  - name: q72.sql
+    data: |
+      SELECT b-c,
+      (a+b+c+d+e)/5,
+      c-d,
+      b,
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END,
+      a+b*2+c*3+d*4+e*5
+      FROM t1
+      WHERE d>e
+      AND d NOT BETWEEN 110 AND 150
+      AND (e>a AND e<b)
+      ORDER BY 1,3,2,5,4,6;
+  - name: t1
+
+outputs:
+  - name: q72.out
+    data: |
+      -1	222	2	223	222	3331
+      2	247	-1	249	111	3706

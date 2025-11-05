@@ -1,0 +1,34 @@
+script: |
+  super -f text -I q349.sql | tr '\t' '\n' | sort > q349.out
+
+inputs:
+  - name: q349.sql
+    data: |
+      SELECT c8 FROM t8
+      WHERE (370=d8 AND e8=476 AND 648=c8 AND 184=a8 AND 906=b8)
+      OR (e8=497 AND 792=b8 AND 119=c8 AND 675=d8)
+      OR (b8=186)
+      UNION ALL
+      SELECT a6 FROM t6
+      WHERE (992=c6 AND 390=b6 AND e6=707 AND 45=a6)
+      OR c6 in (910,717,992,216,159,413,295,369,297,506,561);
+  - name: t6
+  - name: t8
+
+outputs:
+  - name: q349.out
+    data: |
+      100
+      116
+      119
+      173
+      396
+      45
+      648
+      683
+      725
+      764
+      787
+      811
+      811
+      971

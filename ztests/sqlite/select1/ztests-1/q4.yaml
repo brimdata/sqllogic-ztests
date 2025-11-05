@@ -1,0 +1,26 @@
+script: |
+  super -f text -I q4.sql > q4.out
+
+inputs:
+  - name: q4.sql
+    data: |
+      SELECT a+b*2+c*3+d*4,
+      (a+b+c+d+e)/5,
+      abs(a),
+      e,
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      d
+      FROM t1
+      WHERE b>c
+      AND c>d
+      ORDER BY 3,4,5,1,2,6;
+  - name: t1
+
+outputs:
+  - name: q4.out
+    data: |
+      1226	122	121	120	333	122
+      1371	137	138	135	111	136
+      1411	142	142	144	111	140
+      1918	192	191	192	444	190

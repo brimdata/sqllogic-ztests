@@ -1,0 +1,30 @@
+script: |
+  super -f text -I q293.sql > q293.out
+
+inputs:
+  - name: q293.sql
+    data: |
+      SELECT b-c,
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      (a+b+c+d+e)/5,
+      b,
+      c-d,
+      a+b*2,
+      a+b*2+c*3
+      FROM t1
+      WHERE c>d
+      AND (e>c OR e<d)
+      AND d>e
+      ORDER BY 4,7,5,2,1,6,3;
+  - name: t1
+
+outputs:
+  - name: q293.out
+    data: |
+      1	333	122	124	1	369	738
+      -4	444	132	130	1	391	793
+      2	111	137	139	1	416	827
+      -3	333	182	181	1	544	1096
+      -3	222	212	211	2	635	1277
+      -1	444	222	223	2	666	1338

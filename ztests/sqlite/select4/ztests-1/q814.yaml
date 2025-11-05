@@ -1,0 +1,32 @@
+script: |
+  super -f text -I q814.sql | tr '\t' '\n' | sort > q814.out
+
+inputs:
+  - name: q814.sql
+    data: |
+      SELECT c9 FROM t9
+      WHERE a9 in (450,962,567,511,149,815)
+      OR (b9=410 AND a9=149 AND 723=e9 AND 843=c9)
+      OR (a9=78)
+      UNION
+      SELECT e3 FROM t3
+      WHERE (d3=782)
+      UNION
+      SELECT d7 FROM t7
+      WHERE (30=b7 AND 886=d7 AND e7=590 AND c7=931 AND 31=a7);
+  - name: t3
+  - name: t7
+  - name: t9
+
+outputs:
+  - name: q814.out
+    data: |
+      349
+      526
+      639
+      702
+      800
+      843
+      886
+      935
+      973

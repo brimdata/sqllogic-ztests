@@ -1,0 +1,16 @@
+script: |
+  super -f text -I q2983.sql | sort > q2983.out
+
+inputs:
+  - name: q2983.sql
+    data: |
+      SELECT d-e
+      FROM t1
+      WHERE (e>a AND e<b)
+      AND e+d BETWEEN a+b-10 AND c+130
+      ORDER BY 1;
+  - name: t1
+
+outputs:
+  - name: q2983.out
+    data: |

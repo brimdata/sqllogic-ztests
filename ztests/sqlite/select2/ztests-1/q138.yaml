@@ -1,0 +1,22 @@
+script: |
+  super -f text -I q138.sql | sort > q138.out
+
+inputs:
+  - name: q138.sql
+    data: |
+      SELECT abs(a),
+      (a+b+c+d+e)/5,
+      a+b*2,
+      c,
+      b,
+      d
+      FROM t1
+      WHERE e+d BETWEEN a+b-10 AND c+130
+      AND (c<=d-2 OR c>=d+2);
+  - name: t1
+
+outputs:
+  - name: q138.out
+    data: |
+      107	107	317	106	105	108
+      127	127	385	125	129	128

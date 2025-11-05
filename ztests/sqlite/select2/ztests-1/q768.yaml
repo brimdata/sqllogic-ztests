@@ -1,0 +1,34 @@
+script: |
+  super -f text -I q768.sql | sort > q768.out
+
+inputs:
+  - name: q768.sql
+    data: |
+      SELECT d-e,
+      a+b*2,
+      b-c,
+      abs(b-c),
+      c-d,
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      a+b*2+c*3
+      FROM t1
+      WHERE b>c;
+  - name: t1
+
+outputs:
+  - name: q768.out
+    data: |
+      -	369	1	1	1	333	738
+      -	455	1	1	-	555	905
+      -	475	3	3	-	555	940
+      -	502	1	1	-	555	1000
+      -1	595	3	3	-1	555	1180
+      -1	685	3	3	-1	555	1360
+      -2	579	1	1	3	444	1158
+      -2	652	3	3	-2	333	1297
+      -4	428	2	2	1	111	851
+      1	416	2	2	1	111	827
+      2	385	4	4	-3	333	760
+      2	743	2	2	-1	444	1484
+      3	698	1	1	-2	555	1391

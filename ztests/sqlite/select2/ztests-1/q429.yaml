@@ -1,0 +1,20 @@
+script: |
+  super -f text -I q429.sql | sort > q429.out
+
+inputs:
+  - name: q429.sql
+    data: |
+      SELECT a,
+      c-d,
+      b,
+      a+b*2+c*3+d*4+e*5
+      FROM t1
+      WHERE a>b
+      AND (c<=d-2 OR c>=d+2)
+      AND b>c;
+  - name: t1
+
+outputs:
+  - name: q429.out
+    data: |
+      234	-2	232	3473

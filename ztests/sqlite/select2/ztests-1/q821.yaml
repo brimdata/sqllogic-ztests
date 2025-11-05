@@ -1,0 +1,24 @@
+script: |
+  super -f text -I q821.sql | sort > q821.out
+
+inputs:
+  - name: q821.sql
+    data: |
+      SELECT CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END,
+      c-d,
+      e,
+      abs(a),
+      a+b*2+c*3,
+      abs(b-c)
+      FROM t1
+      WHERE d NOT BETWEEN 110 AND 150
+      AND (e>a AND e<b);
+  - name: t1
+
+outputs:
+  - name: q821.out
+    data: |
+      111	-1	246	245	1484	2
+      222	2	221	220	1338	1
+      222	3	192	191	1158	1

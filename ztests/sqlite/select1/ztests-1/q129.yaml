@@ -1,0 +1,26 @@
+script: |
+  super -f text -I q129.sql > q129.out
+
+inputs:
+  - name: q129.sql
+    data: |
+      SELECT a+b*2,
+      b-c,
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END
+      FROM t1
+      WHERE b>c
+      AND a>b
+      ORDER BY 3,2,1;
+  - name: t1
+
+outputs:
+  - name: q129.out
+    data: |
+      455	1	333
+      502	1	333
+      698	1	555
+      711	1	555
+      475	3	555
+      595	3	555
+      685	3	555

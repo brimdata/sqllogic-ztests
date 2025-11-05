@@ -1,0 +1,39 @@
+script: |
+  super -f text -I q2103.sql | sort > q2103.out
+
+inputs:
+  - name: q2103.sql
+    data: |
+      SELECT a-b
+      FROM t1
+      WHERE (a>b-2 AND a<b+2)
+      OR (e>c OR e<d)
+      OR e+d BETWEEN a+b-10 AND c+130
+      ORDER BY 1;
+  - name: t1
+
+outputs:
+  - name: q2103.out
+    data: |
+      -
+      -
+      -1
+      -1
+      -2
+      -2
+      -3
+      -4
+      1
+      1
+      1
+      1
+      1
+      1
+      2
+      2
+      2
+      2
+      3
+      3
+      4
+      4

@@ -1,0 +1,43 @@
+script: |
+  super -f text -I q0.sql | sort > q0.out
+
+inputs:
+  - name: q0.sql
+    data: |
+      SELECT CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END
+      FROM t1;
+  - name: t1
+
+outputs:
+  - name: q0.out
+    data: |
+      -
+      -
+      -
+      1050
+      1120
+      1240
+      1290
+      1300
+      1390
+      1430
+      1450
+      1510
+      1580
+      1600
+      1670
+      1700
+      2360
+      358
+      364
+      376
+      382
+      398
+      402
+      426
+      432
+      440
+      458
+      468
+      486
+      490

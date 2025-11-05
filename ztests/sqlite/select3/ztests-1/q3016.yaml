@@ -1,0 +1,19 @@
+script: |
+  super -f text -I q3016.sql | sort > q3016.out
+
+inputs:
+  - name: q3016.sql
+    data: |
+      SELECT a+b*2,
+      abs(b-c)
+      FROM t1
+      WHERE (c<=d-2 OR c>=d+2)
+      AND (e>a AND e<b)
+      AND c>d;
+  - name: t1
+
+outputs:
+  - name: q3016.out
+    data: |
+      579	1
+      666	1

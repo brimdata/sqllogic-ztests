@@ -1,0 +1,36 @@
+script: |
+  super -f text -I q141.sql > q141.out
+
+inputs:
+  - name: q141.sql
+    data: |
+      SELECT a+b*2+c*3+d*4+e*5,
+      b-c,
+      CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END
+      FROM t1
+      WHERE a>b
+      ORDER BY 3,1,2;
+  - name: t1
+
+outputs:
+  - name: q141.out
+    data: |
+      2654	-1	358
+      2728	-3	364
+      2806	-1	376
+      2949	3	398
+      3039	-2	402
+      3175	-3	426
+      3399	3	458
+      3473	1	468
+      3553	1	478
+      3629	-4	486
+      1529	-2	1000
+      1612	-1	1050
+      1985	-4	1300
+      2202	-2	1450
+      2281	1	1510
+      2349	3	1580
+      2432	-1	1600
+      2501	1	1670
+      2579	-2	1700

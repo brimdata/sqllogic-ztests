@@ -1,0 +1,19 @@
+script: |
+  super -f text -I q3018.sql | sort > q3018.out
+
+inputs:
+  - name: q3018.sql
+    data: |
+      SELECT a+b*2,
+      abs(b-c)
+      FROM t1
+      WHERE c>d
+      AND (e>a AND e<b)
+      AND (c<=d-2 OR c>=d+2);
+  - name: t1
+
+outputs:
+  - name: q3018.out
+    data: |
+      579	1
+      666	1

@@ -1,0 +1,42 @@
+script: |
+  super -f text -I q104.sql | sort > q104.out
+
+inputs:
+  - name: q104.sql
+    data: |
+      SELECT a+b*2,
+      a+b*2+c*3+d*4
+      FROM t1
+      WHERE d NOT BETWEEN 110 AND 150
+      OR b>c
+      OR (a>b-2 AND a<b+2);
+  - name: t1
+
+outputs:
+  - name: q104.out
+    data: |
+      -	-
+      -	-
+      -	-
+      317	1067
+      369	1226
+      385	1272
+      391	1325
+      416	1371
+      428	1411
+      455	-
+      475	-
+      483	1622
+      502	-
+      514	1714
+      544	1828
+      560	1861
+      579	1918
+      595	1964
+      635	2125
+      652	2165
+      666	2226
+      685	2264
+      698	2323
+      711	-
+      743	2476

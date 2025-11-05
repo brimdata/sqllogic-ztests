@@ -1,0 +1,31 @@
+script: |
+  super -f text -I q459.sql | tr '\t' '\n' | sort > q459.out
+
+inputs:
+  - name: q459.sql
+    data: |
+      SELECT a7 FROM t7
+      WHERE (e7=506 OR 906=c7)
+      UNION
+      SELECT b1 FROM t1
+      WHERE (d1=922 OR d1=4 OR b1=779)
+      OR c1 in (814,48,296)
+      UNION
+      SELECT a5 FROM t5
+      WHERE (924=c5 AND 851=a5 AND 732=e5 AND b5=338);
+  - name: t1
+  - name: t5
+  - name: t7
+
+outputs:
+  - name: q459.out
+    data: |
+      345
+      446
+      48
+      572
+      736
+      766
+      773
+      779
+      851

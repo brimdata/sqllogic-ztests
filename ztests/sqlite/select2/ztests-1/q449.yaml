@@ -1,0 +1,28 @@
+script: |
+  super -f text -I q449.sql | sort > q449.out
+
+inputs:
+  - name: q449.sql
+    data: |
+      SELECT a-b,
+      b,
+      CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END,
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END
+      FROM t1
+      WHERE (c<=d-2 OR c>=d+2);
+  - name: t1
+
+outputs:
+  - name: q449.out
+    data: |
+      -	-	-	444
+      -2	129	1290	222
+      -2	218	432	222
+      -3	194	382	222
+      -3	223	440	222
+      2	105	1050	333
+      2	186	376	333
+      2	211	426	333
+      2	232	468	333
+      3	160	1600	444

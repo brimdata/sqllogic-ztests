@@ -1,0 +1,26 @@
+script: |
+  super -f text -I q2521.sql | sort > q2521.out
+
+inputs:
+  - name: q2521.sql
+    data: |
+      SELECT c,
+      d,
+      a
+      FROM t1
+      WHERE d NOT BETWEEN 110 AND 150
+      AND (c<=d-2 OR c>=d+2)
+      ORDER BY 1,2,3;
+  - name: t1
+
+outputs:
+  - name: q2521.out
+    data: |
+      106	108	107
+      161	164	163
+      187	185	188
+      193	190	191
+      214	212	213
+      215	217	216
+      224	222	220
+      231	233	234

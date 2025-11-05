@@ -1,0 +1,19 @@
+script: |
+  super -f text -I q460.sql | sort > q460.out
+
+inputs:
+  - name: q460.sql
+    data: |
+      SELECT (a+b+c+d+e)/5
+      FROM t1
+      WHERE coalesce(a,b,c,d,e)<>0
+      AND (e>a AND e<b)
+      AND b IS NOT NULL;
+  - name: t1
+
+outputs:
+  - name: q460.out
+    data: |
+      192
+      222
+      247

@@ -1,0 +1,23 @@
+script: |
+  super -f text -I q2975.sql | sort > q2975.out
+
+inputs:
+  - name: q2975.sql
+    data: |
+      SELECT abs(b-c),
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      a+b*2+c*3,
+      a-b
+      FROM t1
+      WHERE (a>b-2 AND a<b+2)
+      AND c BETWEEN b-2 AND d+2
+      AND b>c
+      ORDER BY 1,3;
+  - name: t1
+
+outputs:
+  - name: q2975.out
+    data: |
+      2	111	827	-1
+      2	111	851	-1

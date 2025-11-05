@@ -1,0 +1,24 @@
+script: |
+  super -f text -I q286.sql | sort > q286.out
+
+inputs:
+  - name: q286.sql
+    data: |
+      SELECT CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      b,
+      a+b*2,
+      abs(b-c),
+      abs(a),
+      b-c,
+      d
+      FROM t1
+      WHERE c BETWEEN b-2 AND d+2
+      AND (e>a AND e<b);
+  - name: t1
+
+outputs:
+  - name: q286.out
+    data: |
+      444	223	666	1	220	-1	222
+      444	249	743	2	245	2	248

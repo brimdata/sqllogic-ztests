@@ -1,0 +1,34 @@
+script: |
+  super -f text -I q83.sql | sort > q83.out
+
+inputs:
+  - name: q83.sql
+    data: |
+      SELECT c,
+      CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END
+      FROM t1
+      WHERE e+d BETWEEN a+b-10 AND c+130
+      OR a>b;
+  - name: t1
+
+outputs:
+  - name: q83.out
+    data: |
+      -	2360
+      106	1050
+      125	1290
+      134	1300
+      147	1450
+      150	1510
+      155	1580
+      161	1600
+      166	1670
+      172	1700
+      176	358
+      184	364
+      187	376
+      195	398
+      214	426
+      225	458
+      231	468
+      244	486

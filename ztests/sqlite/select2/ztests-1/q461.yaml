@@ -1,0 +1,27 @@
+script: |
+  super -f text -I q461.sql | sort > q461.out
+
+inputs:
+  - name: q461.sql
+    data: |
+      SELECT abs(b-c),
+      c,
+      CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END,
+      e,
+      b-c
+      FROM t1
+      WHERE (a>b-2 AND a<b+2)
+      AND coalesce(a,b,c,d,e)<>0;
+  - name: t1
+
+outputs:
+  - name: q461.out
+    data: |
+      1	166	1670	165	1
+      2	137	1390	135	2
+      2	141	1430	144	2
+      3	155	1580	157	3
+      3	184	364	180	-3
+      3	195	398	197	3
+      3	225	458	227	3
+      4	134	1300	132	-4

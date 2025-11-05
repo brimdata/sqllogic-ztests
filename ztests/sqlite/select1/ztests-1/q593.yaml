@@ -1,0 +1,30 @@
+script: |
+  super -f text -I q593.sql > q593.out
+
+inputs:
+  - name: q593.sql
+    data: |
+      SELECT d,
+      abs(b-c)
+      FROM t1
+      WHERE (e>c OR e<d)
+      AND b>c
+      ORDER BY 2,1;
+  - name: t1
+
+outputs:
+  - name: q593.out
+    data: |
+      122	1
+      154	1
+      169	1
+      233	1
+      238	1
+      136	2
+      140	2
+      248	2
+      156	3
+      196	3
+      217	3
+      226	3
+      128	4

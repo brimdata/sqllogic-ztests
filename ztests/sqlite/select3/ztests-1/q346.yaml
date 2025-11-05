@@ -1,0 +1,35 @@
+script: |
+  super -f text -I q346.sql | sort > q346.out
+
+inputs:
+  - name: q346.sql
+    data: |
+      SELECT a+b*2+c*3,
+      b-c,
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END,
+      (a+b+c+d+e)/5,
+      c-d,
+      d
+      FROM t1
+      WHERE c BETWEEN b-2 AND d+2;
+  - name: t1
+
+outputs:
+  - name: q346.out
+    data: |
+      -	-1	444	-	-1	114
+      -	-2	444	-	1	207
+      1030	-2	444	172	1	171
+      1096	-3	333	182	1	183
+      1121	-1	333	187	2	185
+      1277	-3	333	212	2	212
+      1338	-1	222	222	2	222
+      1391	1	333	232	-2	233
+      1484	2	111	247	-1	248
+      635	-1	333	107	-2	108
+      738	1	222	-	1	122
+      793	-4	333	132	1	133
+      827	2	222	137	1	136
+      851	2	222	142	1	140
+      966	-1	444	162	-3	164

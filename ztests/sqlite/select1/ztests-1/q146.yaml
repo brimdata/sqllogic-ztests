@@ -1,0 +1,32 @@
+script: |
+  super -f text -I q146.sql > q146.out
+
+inputs:
+  - name: q146.sql
+    data: |
+      SELECT a+b*2+c*3+d*4+e*5,
+      abs(a),
+      a-b
+      FROM t1
+      WHERE (c<=d-2 OR c>=d+2)
+      ORDER BY 1,3,2;
+  - name: t1
+
+outputs:
+  - name: q146.out
+    data: |
+      1612	107	2
+      1757	115	-3
+      1902	127	-2
+      2281	153	2
+      2432	163	3
+      2501	168	1
+      2654	179	4
+      2806	188	2
+      2878	191	-3
+      3175	213	2
+      3260	216	-2
+      3331	220	-3
+      3473	234	2
+      3553	239	3
+      3629	243	3

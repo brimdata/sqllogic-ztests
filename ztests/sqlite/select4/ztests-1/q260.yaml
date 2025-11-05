@@ -1,0 +1,23 @@
+script: |
+  super -f text -I q260.sql | tr '\t' '\n' | sort > q260.out
+
+inputs:
+  - name: q260.sql
+    data: |
+      SELECT e9 FROM t9
+      WHERE a9 in (457,11,559)
+      UNION
+      SELECT c5 FROM t5
+      WHERE (b5=674 OR 853=a5 OR 883=d5);
+  - name: t5
+  - name: t9
+
+outputs:
+  - name: q260.out
+    data: |
+      261
+      383
+      544
+      570
+      750
+      841

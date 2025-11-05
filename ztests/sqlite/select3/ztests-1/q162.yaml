@@ -1,0 +1,20 @@
+script: |
+  super -f text -I q162.sql | sort > q162.out
+
+inputs:
+  - name: q162.sql
+    data: |
+      SELECT b,
+      a+b*2,
+      a
+      FROM t1
+      WHERE b>c
+      AND (a>b-2 AND a<b+2)
+      AND c BETWEEN b-2 AND d+2;
+  - name: t1
+
+outputs:
+  - name: q162.out
+    data: |
+      139	416	138
+      143	428	142

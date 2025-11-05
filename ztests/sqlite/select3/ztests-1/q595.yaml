@@ -1,0 +1,30 @@
+script: |
+  super -f text -I q595.sql | sort > q595.out
+
+inputs:
+  - name: q595.sql
+    data: |
+      SELECT a+b*2+c*3+d*4+e*5,
+      b,
+      e
+      FROM t1
+      WHERE e+d BETWEEN a+b-10 AND c+130
+      OR d>e
+      ORDER BY 1,2,3;
+  - name: t1
+
+outputs:
+  - name: q595.out
+    data: |
+      -	112	110
+      -	236	237
+      1612	105	109
+      1902	129	126
+      1985	130	132
+      2046	139	135
+      2432	160	162
+      2728	181	180
+      3175	211	210
+      3331	223	221
+      3473	232	230
+      3706	249	246

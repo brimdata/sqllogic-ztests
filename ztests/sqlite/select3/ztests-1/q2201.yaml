@@ -1,0 +1,44 @@
+script: |
+  super -f text -I q2201.sql | sort > q2201.out
+
+inputs:
+  - name: q2201.sql
+    data: |
+      SELECT CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END,
+      b
+      FROM t1
+      WHERE b>c
+      OR c>d
+      OR c BETWEEN b-2 AND d+2
+      ORDER BY 1,2;
+  - name: t1
+
+outputs:
+  - name: q2201.out
+    data: |
+      111	249
+      222	124
+      222	129
+      222	139
+      222	143
+      222	194
+      222	218
+      222	223
+      333	105
+      333	130
+      333	151
+      333	158
+      333	167
+      333	181
+      333	186
+      333	198
+      333	211
+      333	228
+      333	232
+      444	-
+      444	-
+      444	112
+      444	160
+      444	170
+      444	206

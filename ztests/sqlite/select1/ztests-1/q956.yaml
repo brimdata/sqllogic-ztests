@@ -1,0 +1,22 @@
+script: |
+  super -f text -I q956.sql > q956.out
+
+inputs:
+  - name: q956.sql
+    data: |
+      SELECT b-c,
+      a+b*2+c*3,
+      a+b*2,
+      c-d,
+      (a+b+c+d+e)/5,
+      a-b
+      FROM t1
+      WHERE e+d BETWEEN a+b-10 AND c+130
+      AND d NOT BETWEEN 110 AND 150
+      AND d>e
+      ORDER BY 6,1,5,3,2,4;
+  - name: t1
+
+outputs:
+  - name: q956.out
+    data: |

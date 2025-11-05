@@ -1,0 +1,17 @@
+script: |
+  super -f text -I q257.sql | sort > q257.out
+
+inputs:
+  - name: q257.sql
+    data: |
+      SELECT a+b*2
+      FROM t1
+      WHERE (c<=d-2 OR c>=d+2)
+      AND e+d BETWEEN a+b-10 AND c+130;
+  - name: t1
+
+outputs:
+  - name: q257.out
+    data: |
+      317
+      385

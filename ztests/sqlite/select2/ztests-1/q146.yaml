@@ -1,0 +1,33 @@
+script: |
+  super -f text -I q146.sql | sort > q146.out
+
+inputs:
+  - name: q146.sql
+    data: |
+      SELECT c-d,
+      d-e,
+      a-b,
+      (a+b+c+d+e)/5,
+      b,
+      a,
+      abs(b-c)
+      FROM t1
+      WHERE d>e
+      AND b IS NOT NULL
+      AND coalesce(a,b,c,d,e)<>0;
+  - name: t1
+
+outputs:
+  - name: q146.out
+    data: |
+      -	1	3	-	236	239	-
+      -1	2	-4	247	249	245	2
+      -1	4	-	-	112	-	1
+      -2	3	2	232	232	234	1
+      -3	2	-2	127	129	127	4
+      -3	2	3	162	160	163	1
+      1	1	-1	137	139	138	2
+      1	1	1	132	130	131	4
+      1	3	1	182	181	182	3
+      2	1	-3	222	223	220	1
+      2	2	2	212	211	213	3

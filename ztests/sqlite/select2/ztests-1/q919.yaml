@@ -1,0 +1,22 @@
+script: |
+  super -f text -I q919.sql | sort > q919.out
+
+inputs:
+  - name: q919.sql
+    data: |
+      SELECT CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END,
+      b,
+      abs(a),
+      a+b*2+c*3+d*4
+      FROM t1
+      WHERE b>c
+      AND (e>a AND e<b)
+      AND b IS NOT NULL;
+  - name: t1
+
+outputs:
+  - name: q919.out
+    data: |
+      111	249	245	2476
+      222	194	191	1918

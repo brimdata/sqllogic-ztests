@@ -1,0 +1,34 @@
+script: |
+  super -f text -I q3281.sql | sort > q3281.out
+
+inputs:
+  - name: q3281.sql
+    data: |
+      SELECT CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END
+      FROM t1
+      WHERE c>d
+      OR (c<=d-2 OR c>=d+2)
+      ORDER BY 1;
+  - name: t1
+
+outputs:
+  - name: q3281.out
+    data: |
+      -
+      -
+      -
+      1050
+      1240
+      1290
+      1300
+      1390
+      1430
+      1600
+      1700
+      364
+      376
+      382
+      426
+      432
+      440
+      468

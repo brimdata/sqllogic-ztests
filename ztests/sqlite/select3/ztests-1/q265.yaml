@@ -1,0 +1,33 @@
+script: |
+  super -f text -I q265.sql | sort > q265.out
+
+inputs:
+  - name: q265.sql
+    data: |
+      SELECT a-b,
+      a+b*2+c*3
+      FROM t1
+      WHERE d NOT BETWEEN 110 AND 150
+      ORDER BY 1,2;
+  - name: t1
+
+outputs:
+  - name: q265.out
+    data: |
+      -	-
+      -	-
+      -	-
+      -2	1297
+      -3	1158
+      -3	1338
+      -4	1484
+      1	1096
+      1	1180
+      1	1360
+      2	1121
+      2	1277
+      2	1391
+      2	635
+      3	-
+      3	966
+      4	1030

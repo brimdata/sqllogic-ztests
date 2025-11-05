@@ -1,0 +1,22 @@
+script: |
+  super -f text -I q2585.sql | sort > q2585.out
+
+inputs:
+  - name: q2585.sql
+    data: |
+      SELECT b-c,
+      a+b*2+c*3,
+      a+b*2,
+      c-d,
+      (a+b+c+d+e)/5,
+      a-b
+      FROM t1
+      WHERE d NOT BETWEEN 110 AND 150
+      AND d>e
+      AND e+d BETWEEN a+b-10 AND c+130
+      ORDER BY 6,4,5,2,3,1;
+  - name: t1
+
+outputs:
+  - name: q2585.out
+    data: |

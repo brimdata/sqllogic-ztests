@@ -1,0 +1,30 @@
+script: |
+  super -f text -I q1365.sql | sort > q1365.out
+
+inputs:
+  - name: q1365.sql
+    data: |
+      SELECT d,
+      c,
+      a+b*2,
+      abs(b-c),
+      abs(a),
+      c-d,
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END
+      FROM t1
+      WHERE (a>b-2 AND a<b+2)
+      ORDER BY 4,2;
+  - name: t1
+
+outputs:
+  - name: q1365.out
+    data: |
+      -	155	475	3	159	-	555
+      -	166	502	1	168	-	555
+      133	134	391	4	131	1	444
+      136	137	416	2	138	1	111
+      140	141	428	2	142	1	111
+      183	184	544	3	182	1	333
+      196	195	595	3	199	-1	555
+      226	225	685	3	229	-1	555

@@ -1,0 +1,25 @@
+script: |
+  super -f text -I q143.sql | tr '\t' '\n' | sort > q143.out
+
+inputs:
+  - name: q143.sql
+    data: |
+      SELECT b4 FROM t4
+      WHERE a4 in (756,968,637,919,596)
+      UNION
+      SELECT e6 FROM t6
+      WHERE (353=e6 OR e6=969 OR 766=e6);
+  - name: t4
+  - name: t6
+
+outputs:
+  - name: q143.out
+    data: |
+      175
+      353
+      700
+      721
+      749
+      766
+      907
+      969

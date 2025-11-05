@@ -1,0 +1,21 @@
+script: |
+  super -f text -I q363.sql | tr '\t' '\n' | sort > q363.out
+
+inputs:
+  - name: q363.sql
+    data: |
+      SELECT e5 FROM t5
+      WHERE (569=b5 AND d5=757 AND a5=976 AND c5=313 AND 209=e5)
+      OR (d5=787 AND e5=558 AND b5=433)
+      UNION
+      SELECT e1 FROM t1
+      WHERE (b1=981 AND 172=c1 AND e1=299 AND 283=a1);
+  - name: t1
+  - name: t5
+
+outputs:
+  - name: q363.out
+    data: |
+      209
+      299
+      558

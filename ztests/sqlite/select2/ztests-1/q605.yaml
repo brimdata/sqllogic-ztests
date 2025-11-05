@@ -1,0 +1,24 @@
+script: |
+  super -f text -I q605.sql | sort > q605.out
+
+inputs:
+  - name: q605.sql
+    data: |
+      SELECT (a+b+c+d+e)/5,
+      c-d
+      FROM t1
+      WHERE (c<=d-2 OR c>=d+2)
+      AND d NOT BETWEEN 110 AND 150;
+  - name: t1
+
+outputs:
+  - name: q605.out
+    data: |
+      107	-2
+      162	-3
+      187	2
+      192	3
+      212	2
+      217	-2
+      222	2
+      232	-2

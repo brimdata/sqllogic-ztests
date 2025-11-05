@@ -1,0 +1,24 @@
+script: |
+  super -f text -I q2185.sql | sort > q2185.out
+
+inputs:
+  - name: q2185.sql
+    data: |
+      SELECT d-e,
+      e
+      FROM t1
+      WHERE (a>b-2 AND a<b+2)
+      ORDER BY 2,1;
+  - name: t1
+
+outputs:
+  - name: q2185.out
+    data: |
+      -	157
+      -	165
+      -1	197
+      -1	227
+      -4	144
+      1	132
+      1	135
+      3	180

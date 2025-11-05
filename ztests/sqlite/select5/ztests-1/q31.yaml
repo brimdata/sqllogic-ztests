@@ -1,0 +1,30 @@
+script: |
+  super -f text -I q31.sql | tr '\t' '\n' | sort > q31.out
+
+inputs:
+  - name: q31.sql
+    data: |
+      SELECT x37,x45,x6,x17,x41,x57
+      FROM t57,t41,t45,t6,t37,t17
+      WHERE a37=2
+      AND a57=b17
+      AND b41=a45
+      AND b6=a37
+      AND a6=b45
+      AND a41=b57;
+  - name: t17
+  - name: t37
+  - name: t41
+  - name: t45
+  - name: t57
+  - name: t6
+
+outputs:
+  - name: q31.out
+    data: |
+      table t17 row 2
+      table t37 row 2
+      table t41 row 5
+      table t45 row 9
+      table t57 row 2
+      table t6 row 1

@@ -1,0 +1,28 @@
+script: |
+  super -f text -I q1072.sql | sort > q1072.out
+
+inputs:
+  - name: q1072.sql
+    data: |
+      SELECT a,
+      a+b*2+c*3+d*4,
+      e,
+      a-b,
+      abs(b-c),
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END
+      FROM t1
+      WHERE (a>b-2 AND a<b+2);
+  - name: t1
+
+outputs:
+  - name: q1072.out
+    data: |
+      131	1325	132	1	4	333
+      138	1371	135	-1	2	222
+      142	1411	144	-1	2	222
+      159	-	157	1	3	333
+      168	-	165	1	1	333
+      182	1828	180	1	3	333
+      199	1964	197	1	3	333
+      229	2264	227	1	3	333

@@ -1,0 +1,63 @@
+script: |
+  super -f text -I q290.sql | tr '\t' '\n' | sort > q290.out
+
+inputs:
+  - name: q290.sql
+    data: |
+      SELECT d8 FROM t8
+      WHERE c8 in (32,501,427,233,683,117,461,166)
+      OR (a8=15 OR c8=775 OR 870=b8)
+      UNION
+      SELECT a2 FROM t2
+      WHERE (125=e2)
+      UNION ALL
+      SELECT a3 FROM t3
+      WHERE (456=b3 AND a3=895)
+      OR a3 in (499,525,913,105,184,341,376,548,965,935,754,396,822)
+      UNION ALL
+      SELECT b5 FROM t5
+      WHERE e5 in (661,150,144,929,271,232,206);
+  - name: t2
+  - name: t3
+  - name: t5
+  - name: t8
+
+outputs:
+  - name: q290.out
+    data: |
+      105
+      179
+      184
+      192
+      291
+      320
+      326
+      330
+      339
+      341
+      376
+      396
+      456
+      484
+      486
+      499
+      499
+      525
+      548
+      554
+      610
+      630
+      706
+      754
+      822
+      858
+      874
+      894
+      895
+      913
+      935
+      935
+      950
+      951
+      965
+      975

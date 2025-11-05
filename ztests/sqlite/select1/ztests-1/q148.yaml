@@ -1,0 +1,29 @@
+script: |
+  super -f text -I q148.sql > q148.out
+
+inputs:
+  - name: q148.sql
+    data: |
+      SELECT (a+b+c+d+e)/5,
+      abs(b-c),
+      c,
+      a+b*2+c*3+d*4+e*5,
+      abs(a),
+      e
+      FROM t1
+      WHERE b>c
+      AND d>e
+      ORDER BY 4,5,6,3,2,1;
+  - name: t1
+
+outputs:
+  - name: q148.out
+    data: |
+      122	1	123	1826	121	120
+      127	4	125	1902	127	126
+      137	2	137	2046	138	135
+      152	1	150	2281	153	152
+      167	1	166	2501	168	165
+      232	1	231	3473	234	230
+      237	1	235	3553	239	237
+      247	2	247	3706	245	246
