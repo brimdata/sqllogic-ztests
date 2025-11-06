@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q9858.sql | sort > q9858.out
+
+inputs:
+  - name: q9858.sql
+    data: |
+      SELECT DISTINCT col1 FROM tab1 GROUP BY col1, col1 HAVING NOT col1 IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q9858.out
+    data: |
+      44
+      57
+      6

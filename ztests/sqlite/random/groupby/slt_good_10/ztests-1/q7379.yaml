@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q7379.sql | sort > q7379.out
+
+inputs:
+  - name: q7379.sql
+    data: |
+      SELECT DISTINCT + col1 FROM tab2 GROUP BY col1 HAVING NOT NULL <> NULL;
+  - name: tab2
+
+outputs:
+  - name: q7379.out
+    data: |

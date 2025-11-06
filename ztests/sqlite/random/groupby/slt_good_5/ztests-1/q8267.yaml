@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8267.sql | sort > q8267.out
+
+inputs:
+  - name: q8267.sql
+    data: |
+      SELECT + tab2.col1 AS col1 FROM tab2 WHERE NOT + tab2.col2 NOT BETWEEN NULL AND + tab2.col2 GROUP BY tab2.col1;
+  - name: tab2
+
+outputs:
+  - name: q8267.out
+    data: |

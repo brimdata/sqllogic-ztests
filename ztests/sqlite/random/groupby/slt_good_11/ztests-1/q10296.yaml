@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q10296.sql | sort > q10296.out
+
+inputs:
+  - name: q10296.sql
+    data: |
+      SELECT col1 FROM tab1 GROUP BY col1, col2 HAVING NOT 99 IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q10296.out
+    data: |
+      44
+      57
+      6

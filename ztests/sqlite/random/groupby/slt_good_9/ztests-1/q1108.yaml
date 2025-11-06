@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q1108.sql | sort > q1108.out
+
+inputs:
+  - name: q1108.sql
+    data: |
+      SELECT col1 FROM tab0 GROUP BY col1 HAVING NOT ( NULL ) IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q1108.out
+    data: |
+      0
+      81

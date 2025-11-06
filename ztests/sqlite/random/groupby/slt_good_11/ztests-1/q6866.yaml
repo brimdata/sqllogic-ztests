@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q6866.sql | sort > q6866.out
+
+inputs:
+  - name: q6866.sql
+    data: |
+      SELECT col2 FROM tab2 GROUP BY col2 HAVING NOT ( - 99 ) NOT BETWEEN col2 AND ( NULL );
+  - name: tab2
+
+outputs:
+  - name: q6866.out
+    data: |

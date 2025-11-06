@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q4946.sql | sort > q4946.out
+
+inputs:
+  - name: q4946.sql
+    data: |
+      SELECT col0 AS col2 FROM tab1 GROUP BY col0, col1 HAVING NOT ( NOT NULL > NULL );
+  - name: tab1
+
+outputs:
+  - name: q4946.out
+    data: |

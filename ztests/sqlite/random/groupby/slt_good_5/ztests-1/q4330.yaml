@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q4330.sql | sort > q4330.out
+
+inputs:
+  - name: q4330.sql
+    data: |
+      SELECT DISTINCT tab2.col0 FROM tab2 WHERE NOT NULL BETWEEN NULL AND - tab2.col1 GROUP BY tab2.col0 HAVING NOT NULL IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q4330.out
+    data: |

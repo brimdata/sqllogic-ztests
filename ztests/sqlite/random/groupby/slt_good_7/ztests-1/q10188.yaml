@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q10188.sql | sort > q10188.out
+
+inputs:
+  - name: q10188.sql
+    data: |
+      SELECT DISTINCT + tab0.col2 FROM tab0 WHERE NOT NULL IN ( - tab0.col1 ) AND NOT ( NULL ) IS NULL GROUP BY tab0.col2;
+  - name: tab0
+
+outputs:
+  - name: q10188.out
+    data: |

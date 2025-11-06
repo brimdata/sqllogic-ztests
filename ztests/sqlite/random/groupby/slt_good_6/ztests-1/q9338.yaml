@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q9338.sql | sort > q9338.out
+
+inputs:
+  - name: q9338.sql
+    data: |
+      SELECT + cor0.col2 + - col2 / cor0.col2 AS col2 FROM tab1 AS cor0 GROUP BY col2;
+  - name: tab1
+
+outputs:
+  - name: q9338.out
+    data: |
+      44
+      7
+      70

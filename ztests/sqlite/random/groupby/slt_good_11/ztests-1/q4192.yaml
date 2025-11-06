@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q4192.sql | sort > q4192.out
+
+inputs:
+  - name: q4192.sql
+    data: |
+      SELECT ALL - ( + col2 ) * col0 AS col1 FROM tab0 AS cor0 GROUP BY col1, col2, col0 HAVING NOT NULL IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q4192.out
+    data: |

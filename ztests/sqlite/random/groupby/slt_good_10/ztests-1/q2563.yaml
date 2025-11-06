@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q2563.sql | sort > q2563.out
+
+inputs:
+  - name: q2563.sql
+    data: |
+      SELECT col1 + col1 + col1 AS col1 FROM tab0 GROUP BY col1 HAVING NOT ( NULL IS NOT NULL );
+  - name: tab0
+
+outputs:
+  - name: q2563.out
+    data: |
+      0
+      243

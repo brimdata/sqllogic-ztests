@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8125.sql | sort > q8125.out
+
+inputs:
+  - name: q8125.sql
+    data: |
+      SELECT ALL + col2 AS col1 FROM tab1 WHERE NOT ( NOT col1 = + + col1 ) GROUP BY col2;
+  - name: tab1
+
+outputs:
+  - name: q8125.out
+    data: |
+      45
+      71
+      8

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q1824.sql | sort > q1824.out
+
+inputs:
+  - name: q1824.sql
+    data: |
+      SELECT + col1 AS col1 FROM tab1 WHERE - col0 <> NULL GROUP BY col1, col2, col2;
+  - name: tab1
+
+outputs:
+  - name: q1824.out
+    data: |

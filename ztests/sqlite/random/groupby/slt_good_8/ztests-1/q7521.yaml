@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q7521.sql | sort > q7521.out
+
+inputs:
+  - name: q7521.sql
+    data: |
+      SELECT col0 FROM tab0 GROUP BY col0 HAVING NOT ( NOT NULL IS NULL );
+  - name: tab0
+
+outputs:
+  - name: q7521.out
+    data: |
+      26
+      43
+      83

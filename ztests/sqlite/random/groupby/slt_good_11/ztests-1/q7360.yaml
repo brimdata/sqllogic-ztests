@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q7360.sql | sort > q7360.out
+
+inputs:
+  - name: q7360.sql
+    data: |
+      SELECT col2 * + ( - col0 ) * - + col0 AS col0 FROM tab1 GROUP BY col2, col0;
+  - name: tab1
+
+outputs:
+  - name: q7360.out
+    data: |
+      35280
+      3872
+      477404

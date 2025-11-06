@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q877.sql | sort > q877.out
+
+inputs:
+  - name: q877.sql
+    data: |
+      SELECT DISTINCT col2 FROM tab1 AS cor0 GROUP BY col2, col0 HAVING NOT ( NOT ( - col2 ) IS NULL );
+  - name: tab1
+
+outputs:
+  - name: q877.out
+    data: |

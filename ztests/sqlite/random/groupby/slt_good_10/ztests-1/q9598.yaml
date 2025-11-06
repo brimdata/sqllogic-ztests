@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q9598.sql | sort > q9598.out
+
+inputs:
+  - name: q9598.sql
+    data: |
+      SELECT col2 AS col0 FROM tab1 GROUP BY col2 HAVING NOT NULL IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q9598.out
+    data: |

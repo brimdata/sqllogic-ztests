@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8213.sql | sort > q8213.out
+
+inputs:
+  - name: q8213.sql
+    data: |
+      SELECT ALL + col1 FROM tab2 cor0 GROUP BY col1 HAVING AVG ( col0 ) IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q8213.out
+    data: |

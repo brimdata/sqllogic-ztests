@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q4104.sql | sort > q4104.out
+
+inputs:
+  - name: q4104.sql
+    data: |
+      SELECT DISTINCT cor0.col1 FROM tab0 AS cor0 WHERE NOT NULL IS NULL GROUP BY cor0.col1 HAVING NOT - col1 IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q4104.out
+    data: |

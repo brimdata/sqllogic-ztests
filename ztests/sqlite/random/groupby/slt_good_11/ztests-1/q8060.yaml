@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8060.sql | sort > q8060.out
+
+inputs:
+  - name: q8060.sql
+    data: |
+      SELECT DISTINCT 18 * + col0 AS col1, col0 * - col0 AS col0 FROM tab2 GROUP BY col0, col1;
+  - name: tab2
+
+outputs:
+  - name: q8060.out
+    data: |
+      1638	-8281
+      1656	-8464
+      270	-225

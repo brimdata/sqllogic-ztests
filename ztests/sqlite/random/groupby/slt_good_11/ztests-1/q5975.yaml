@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q5975.sql | sort > q5975.out
+
+inputs:
+  - name: q5975.sql
+    data: |
+      SELECT col2 AS col0 FROM tab2 WHERE NOT 75 IN ( - col2 ) GROUP BY col2, col1;
+  - name: tab2
+
+outputs:
+  - name: q5975.out
+    data: |
+      58
+      79
+      87

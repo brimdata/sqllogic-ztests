@@ -1,0 +1,16 @@
+script: |
+  super -f text -I q6483.sql | sort > q6483.out
+
+inputs:
+  - name: q6483.sql
+    data: |
+      SELECT + cor1.col1 FROM tab0 AS cor0 CROSS JOIN tab1 AS cor1 GROUP BY cor1.col1;
+  - name: tab0
+  - name: tab1
+
+outputs:
+  - name: q6483.out
+    data: |
+      44
+      57
+      6

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q5302.sql | sort > q5302.out
+
+inputs:
+  - name: q5302.sql
+    data: |
+      SELECT DISTINCT col1 FROM tab1 AS cor0 GROUP BY col0, col1 HAVING NOT NULL IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q5302.out
+    data: |
+      44
+      57
+      6

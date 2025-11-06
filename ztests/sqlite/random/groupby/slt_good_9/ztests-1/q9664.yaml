@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q9664.sql | sort > q9664.out
+
+inputs:
+  - name: q9664.sql
+    data: |
+      SELECT col1 FROM tab2 GROUP BY col1, col0 HAVING NOT + col1 IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q9664.out
+    data: |

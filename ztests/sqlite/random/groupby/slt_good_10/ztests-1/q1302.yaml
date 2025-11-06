@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q1302.sql | sort > q1302.out
+
+inputs:
+  - name: q1302.sql
+    data: |
+      SELECT + AVG ( + col1 ) FROM tab1 GROUP BY col1 HAVING NOT NULL IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q1302.out
+    data: |

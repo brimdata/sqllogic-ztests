@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q10992.sql | sort > q10992.out
+
+inputs:
+  - name: q10992.sql
+    data: |
+      SELECT DISTINCT col1 AS col2 FROM tab0 GROUP BY col1 HAVING NULL IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q10992.out
+    data: |
+      0
+      81

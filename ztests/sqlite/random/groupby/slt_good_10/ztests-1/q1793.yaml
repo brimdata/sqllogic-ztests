@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q1793.sql | sort > q1793.out
+
+inputs:
+  - name: q1793.sql
+    data: |
+      SELECT DISTINCT col2 FROM tab2 GROUP BY col2, col1 HAVING NOT NULL BETWEEN NULL AND ( NULL );
+  - name: tab2
+
+outputs:
+  - name: q1793.out
+    data: |

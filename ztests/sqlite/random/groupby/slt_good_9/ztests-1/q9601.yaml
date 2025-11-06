@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q9601.sql | sort > q9601.out
+
+inputs:
+  - name: q9601.sql
+    data: |
+      SELECT ALL + col2 AS col1 FROM tab1 AS cor0 WHERE NOT col2 IS NULL GROUP BY col1, col2 HAVING NULL IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q9601.out
+    data: |

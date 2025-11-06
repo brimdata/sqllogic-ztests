@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q5120.sql | sort > q5120.out
+
+inputs:
+  - name: q5120.sql
+    data: |
+      SELECT col1 FROM tab2 GROUP BY col1 HAVING NOT - ( + 59 ) IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q5120.out
+    data: |

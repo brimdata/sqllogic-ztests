@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q10607.sql | sort > q10607.out
+
+inputs:
+  - name: q10607.sql
+    data: |
+      SELECT ALL - col2 AS col2 FROM tab1 WHERE NOT NULL <> ( 78 + CASE WHEN NOT ( NULL ) IS NULL THEN + col0 ELSE NULL END ) GROUP BY col1, col2;
+  - name: tab1
+
+outputs:
+  - name: q10607.out
+    data: |

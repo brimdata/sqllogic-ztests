@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q10182.sql | sort > q10182.out
+
+inputs:
+  - name: q10182.sql
+    data: |
+      SELECT tab2.col0 FROM tab2 WHERE NOT NULL NOT BETWEEN NULL AND col1 + + tab2.col1 GROUP BY tab2.col0;
+  - name: tab2
+
+outputs:
+  - name: q10182.out
+    data: |

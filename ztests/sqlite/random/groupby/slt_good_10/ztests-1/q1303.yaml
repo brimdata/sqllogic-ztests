@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q1303.sql | sort > q1303.out
+
+inputs:
+  - name: q1303.sql
+    data: |
+      SELECT DISTINCT + col1 FROM tab1 AS cor0 GROUP BY col1 HAVING NOT ( NOT NULL IS NOT NULL );
+  - name: tab1
+
+outputs:
+  - name: q1303.out
+    data: |

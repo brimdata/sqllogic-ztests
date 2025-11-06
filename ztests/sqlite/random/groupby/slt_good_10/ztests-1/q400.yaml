@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q400.sql | sort > q400.out
+
+inputs:
+  - name: q400.sql
+    data: |
+      SELECT + col2 AS col0 FROM tab1 WHERE NOT col1 IS NOT NULL GROUP BY col2;
+  - name: tab1
+
+outputs:
+  - name: q400.out
+    data: |

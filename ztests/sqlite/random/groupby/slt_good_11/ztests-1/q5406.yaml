@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q5406.sql | sort > q5406.out
+
+inputs:
+  - name: q5406.sql
+    data: |
+      SELECT DISTINCT col1 + col1 * - col2 * - col2 AS col2 FROM tab2 AS cor0 GROUP BY col1, col2;
+  - name: tab2
+
+outputs:
+  - name: q5406.out
+    data: |
+      137965
+      368278
+      461770

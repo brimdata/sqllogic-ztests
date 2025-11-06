@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q10603.sql | sort > q10603.out
+
+inputs:
+  - name: q10603.sql
+    data: |
+      SELECT ALL tab2.col0 AS col0 FROM tab2 WHERE NOT NULL IN ( - tab2.col2 * + tab2.col0 - - tab2.col0 ) GROUP BY tab2.col0 HAVING NOT ( NULL ) >= NULL;
+  - name: tab2
+
+outputs:
+  - name: q10603.out
+    data: |
