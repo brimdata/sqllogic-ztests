@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q5421.sql | sort > q5421.out
+
+inputs:
+  - name: q5421.sql
+    data: |
+      SELECT col1 FROM tab0 GROUP BY col1, col0 HAVING NOT - + col1 IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q5421.out
+    data: |

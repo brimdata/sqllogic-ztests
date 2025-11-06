@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q8351.sql | sort > q8351.out
+
+inputs:
+  - name: q8351.sql
+    data: |
+      SELECT ALL + col2 AS col0 FROM tab2 WHERE NOT ( ( NOT col1 * - col0 IS NULL ) ) GROUP BY col2, col1;
+  - name: tab2
+
+outputs:
+  - name: q8351.out
+    data: |

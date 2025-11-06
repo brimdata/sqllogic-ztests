@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q5111.sql | sort > q5111.out
+
+inputs:
+  - name: q5111.sql
+    data: |
+      SELECT ALL col2 FROM tab1 WHERE - - col0 NOT BETWEEN - - col0 AND - col2 GROUP BY col2;
+  - name: tab1
+
+outputs:
+  - name: q5111.out
+    data: |
+      45
+      71
+      8

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q322.sql | sort > q322.out
+
+inputs:
+  - name: q322.sql
+    data: |
+      SELECT DISTINCT col1 + col2 AS col2 FROM tab0 cor0 GROUP BY col2, col1 HAVING NULL IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q322.out
+    data: |
+      105
+      38
+      79

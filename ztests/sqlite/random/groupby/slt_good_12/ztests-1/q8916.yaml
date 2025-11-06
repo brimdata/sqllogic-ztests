@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8916.sql | sort > q8916.out
+
+inputs:
+  - name: q8916.sql
+    data: |
+      SELECT DISTINCT + col1 + - 56 AS col1 FROM tab2 GROUP BY col1;
+  - name: tab2
+
+outputs:
+  - name: q8916.out
+    data: |
+      -15
+      3
+      5

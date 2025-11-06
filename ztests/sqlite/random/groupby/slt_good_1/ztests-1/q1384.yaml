@@ -1,0 +1,16 @@
+script: |
+  super -f text -I q1384.sql | sort > q1384.out
+
+inputs:
+  - name: q1384.sql
+    data: |
+      SELECT + cor0.col0 AS col0 FROM tab1, tab2 cor0, tab1 AS cor1 GROUP BY cor0.col0;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q1384.out
+    data: |
+      15
+      91
+      92

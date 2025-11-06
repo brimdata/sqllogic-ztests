@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q7610.sql | sort > q7610.out
+
+inputs:
+  - name: q7610.sql
+    data: |
+      SELECT DISTINCT - col0 AS col0 FROM tab1 WHERE 77 IS NOT NULL GROUP BY col1, col0;
+  - name: tab1
+
+outputs:
+  - name: q7610.out
+    data: |
+      -22
+      -28
+      -82

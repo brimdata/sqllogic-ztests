@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q5024.sql | sort > q5024.out
+
+inputs:
+  - name: q5024.sql
+    data: |
+      SELECT - 10 + cor0.col1 * - cor0.col1 AS col1 FROM tab2 cor0 GROUP BY col1;
+  - name: tab2
+
+outputs:
+  - name: q5024.out
+    data: |
+      -1691
+      -3491
+      -3731

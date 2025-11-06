@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q7767.sql | sort > q7767.out
+
+inputs:
+  - name: q7767.sql
+    data: |
+      SELECT col1 + - col1 * + - 90 AS col1 FROM tab1 GROUP BY col1;
+  - name: tab1
+
+outputs:
+  - name: q7767.out
+    data: |
+      4004
+      5187
+      546

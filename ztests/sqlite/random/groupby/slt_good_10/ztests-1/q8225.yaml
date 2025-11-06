@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8225.sql | sort > q8225.out
+
+inputs:
+  - name: q8225.sql
+    data: |
+      SELECT col1 + - - col1 + + col1 AS col1 FROM tab2 GROUP BY col1;
+  - name: tab2
+
+outputs:
+  - name: q8225.out
+    data: |
+      123
+      177
+      183

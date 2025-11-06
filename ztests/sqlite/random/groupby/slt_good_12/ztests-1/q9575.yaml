@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q9575.sql | sort > q9575.out
+
+inputs:
+  - name: q9575.sql
+    data: |
+      SELECT 41 + ( col2 ) * - 64 AS col2 FROM tab1 GROUP BY col2 HAVING NULL IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q9575.out
+    data: |
+      -2839
+      -4503
+      -471

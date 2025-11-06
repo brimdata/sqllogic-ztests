@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q9064.sql | sort > q9064.out
+
+inputs:
+  - name: q9064.sql
+    data: |
+      SELECT DISTINCT + COALESCE ( cor0.col1, cor0.col1 ) + cor0.col1 * 31 AS col1 FROM tab2 AS cor0 GROUP BY col1;
+  - name: tab2
+
+outputs:
+  - name: q9064.out
+    data: |
+      1312
+      1888
+      1952

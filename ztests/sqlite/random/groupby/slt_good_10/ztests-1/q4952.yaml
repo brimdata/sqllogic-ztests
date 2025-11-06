@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q4952.sql | sort > q4952.out
+
+inputs:
+  - name: q4952.sql
+    data: |
+      SELECT ALL col1 FROM tab2 GROUP BY col0, col1 HAVING NOT + col1 IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q4952.out
+    data: |
+      41
+      59
+      61

@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q4641.sql | sort > q4641.out
+
+inputs:
+  - name: q4641.sql
+    data: |
+      SELECT + col2 AS col0 FROM tab0 WHERE NOT col0 BETWEEN NULL AND - - col1 AND NOT NULL IS NULL GROUP BY col2, col2;
+  - name: tab0
+
+outputs:
+  - name: q4641.out
+    data: |

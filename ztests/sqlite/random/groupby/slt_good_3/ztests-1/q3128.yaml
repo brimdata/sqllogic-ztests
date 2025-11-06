@@ -1,0 +1,16 @@
+script: |
+  super -f text -I q3128.sql | sort > q3128.out
+
+inputs:
+  - name: q3128.sql
+    data: |
+      SELECT DISTINCT cor0.col0 AS col0 FROM tab2, tab1 AS cor0 GROUP BY cor0.col0;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q3128.out
+    data: |
+      22
+      28
+      82

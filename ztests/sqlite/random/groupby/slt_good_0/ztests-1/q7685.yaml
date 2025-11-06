@@ -1,0 +1,16 @@
+script: |
+  super -f text -I q7685.sql | sort > q7685.out
+
+inputs:
+  - name: q7685.sql
+    data: |
+      SELECT ALL + cor1.col2 AS col2 FROM tab2 AS cor0 CROSS JOIN tab1 AS cor1 GROUP BY cor1.col1, cor1.col2, cor1.col1;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q7685.out
+    data: |
+      45
+      71
+      8

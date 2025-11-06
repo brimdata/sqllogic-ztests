@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q10888.sql | sort > q10888.out
+
+inputs:
+  - name: q10888.sql
+    data: |
+      SELECT + 78 AS col1 FROM tab2 WHERE NOT COALESCE ( - col0, + col1 ) IS NOT NULL GROUP BY col2, col1 HAVING NOT NULL IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q10888.out
+    data: |

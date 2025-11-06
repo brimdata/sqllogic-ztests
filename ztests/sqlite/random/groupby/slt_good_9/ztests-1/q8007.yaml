@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8007.sql | sort > q8007.out
+
+inputs:
+  - name: q8007.sql
+    data: |
+      SELECT DISTINCT + - col2 * col2 + - col2 AS col2 FROM tab1 AS cor0 GROUP BY col2 HAVING NOT NULL IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q8007.out
+    data: |
+      -2070
+      -5112
+      -72

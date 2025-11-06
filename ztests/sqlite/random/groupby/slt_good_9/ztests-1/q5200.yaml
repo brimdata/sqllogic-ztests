@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q5200.sql | sort > q5200.out
+
+inputs:
+  - name: q5200.sql
+    data: |
+      SELECT DISTINCT col0 AS col1 FROM tab2 GROUP BY col0, col1 HAVING NOT ( NULL ) <> ( NULL );
+  - name: tab2
+
+outputs:
+  - name: q5200.out
+    data: |

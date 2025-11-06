@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q4318.sql | sort > q4318.out
+
+inputs:
+  - name: q4318.sql
+    data: |
+      SELECT ALL col2 FROM tab1 GROUP BY col1, col2 HAVING NOT NULL IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q4318.out
+    data: |

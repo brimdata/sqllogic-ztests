@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q3620.sql | sort > q3620.out
+
+inputs:
+  - name: q3620.sql
+    data: |
+      SELECT DISTINCT + col2 * col2 AS col2 FROM tab1 WHERE - col2 IS NOT NULL GROUP BY col2;
+  - name: tab1
+
+outputs:
+  - name: q3620.out
+    data: |
+      2025
+      5041
+      64

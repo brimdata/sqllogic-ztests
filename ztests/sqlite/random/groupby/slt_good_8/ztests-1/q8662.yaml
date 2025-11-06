@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8662.sql | sort > q8662.out
+
+inputs:
+  - name: q8662.sql
+    data: |
+      SELECT col1 AS col1 FROM tab1 GROUP BY col1 HAVING NOT NULL IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q8662.out
+    data: |
+      44
+      57
+      6

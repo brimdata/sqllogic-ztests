@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q7954.sql | sort > q7954.out
+
+inputs:
+  - name: q7954.sql
+    data: |
+      SELECT ALL col1 AS col1 FROM tab0 GROUP BY col1 HAVING NOT ( NOT NULL IS NULL );
+  - name: tab0
+
+outputs:
+  - name: q7954.out
+    data: |
+      0
+      81

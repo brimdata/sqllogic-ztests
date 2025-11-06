@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8510.sql | sort > q8510.out
+
+inputs:
+  - name: q8510.sql
+    data: |
+      SELECT DISTINCT col2 * - - col2 + col2 AS col1 FROM tab2 AS cor0 GROUP BY col1, col2;
+  - name: tab2
+
+outputs:
+  - name: q8510.out
+    data: |
+      3422
+      6320
+      7656

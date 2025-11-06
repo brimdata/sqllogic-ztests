@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q4950.sql | sort > q4950.out
+
+inputs:
+  - name: q4950.sql
+    data: |
+      SELECT ALL + col2 FROM tab1 GROUP BY col2, col2 HAVING NULL IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q4950.out
+    data: |
+      45
+      71
+      8

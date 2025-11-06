@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q3892.sql | sort > q3892.out
+
+inputs:
+  - name: q3892.sql
+    data: |
+      SELECT ALL col1 FROM tab1 GROUP BY col1 HAVING ( NULL ) = ( - col1 );
+  - name: tab1
+
+outputs:
+  - name: q3892.out
+    data: |
