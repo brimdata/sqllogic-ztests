@@ -10,33 +10,85 @@ on:
         required: true
         default: 'main'
         type: string
+      fail-fast:
+        description: 'Stop all tests if one fails'
+        required: false
+        default: false
+        type: boolean
 
 jobs:
-  test-sqllogic:
+  setup:
     runs-on: ubuntu-22.04
+    outputs:
+      ref: ${{ steps.set-ref.outputs.ref }}
+      fail-fast: ${{ steps.set-fail-fast.outputs.fail-fast }}
     steps:
-      - id: checkout-ref
+      - id: set-ref
         run: |
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             echo "ref=${{ github.event.inputs.ref }}" >> $GITHUB_OUTPUT
           else
             echo "ref=main" >> $GITHUB_OUTPUT
           fi
+      - id: set-fail-fast
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "fail-fast=${{ github.event.inputs.fail-fast }}" >> $GITHUB_OUTPUT
+          else
+            echo "fail-fast=false" >> $GITHUB_OUTPUT
+          fi
+
+  test-sqllogic:
+    needs: setup
+    runs-on: ubuntu-22.04
+    strategy:
+      fail-fast: ${{ needs.setup.outputs.fail-fast == 'true' }}
+      matrix:
+        test:
+          - name: sqlite-select
+            pattern: TestSPQ/ztests/sqlite/select[1-5]
+          - name: sqlite-random-aggregates
+            pattern: TestSPQ/ztests/sqlite/random/aggregates
+          - name: sqlite-random-expr
+            pattern: TestSPQ/ztests/sqlite/random/expr
+          - name: sqlite-random-select
+            pattern: TestSPQ/ztests/sqlite/random/select
+    name: test-${{ matrix.test.name }}
+    steps:
       - uses: actions/checkout@v5
         with:
           repository: brimdata/super
           path: super
-          ref: ${{ steps.checkout-ref.outputs.ref }}
-      - uses: actions/setup-go@v5
-        with:
-          go-version-file: super/go.mod
-          cache-dependency-path: super/go.sum
-      - run: make -C super build
+          ref: ${{ needs.setup.outputs.ref }}
       - uses: actions/checkout@v5
         with:
           path: sqllogic-ztests
       - uses: actions/setup-go@v5
         with:
-          go-version-file: sqllogic-ztests/go.mod
-          cache-dependency-path: sqllogic-ztests/go.sum
-      - run: make -C sqllogic-ztests test-sqllogic
+          go-version-file: super/go.mod
+          cache-dependency-path: |
+            super/go.sum
+            sqllogic-ztests/go.sum
+      - run: make -C super build
+      - name: Run ${{ matrix.test.name }} tests
+        run: |
+          cd sqllogic-ztests
+          ZTEST_PATH="$(pwd)/../super/dist" go test . -v -timeout 6h -count=1 -run ${{ matrix.test.pattern }}
+
+  summary:
+    needs: test-sqllogic
+    runs-on: ubuntu-22.04
+    if: always()
+    steps:
+      - name: Check test results
+        run: |
+          echo "Test Results Summary"
+          echo "===================="
+          results='${{ needs.test-sqllogic.result }}'
+          if [ "$results" != "success" ]; then
+            echo "❌ Some tests failed"
+            echo "Check individual job results above for details"
+            exit 1
+          else
+            echo "✅ All test sets passed!"
+          fi
