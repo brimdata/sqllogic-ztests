@@ -1,10 +1,10 @@
 script: |
-  super -f text -I q7360.spq | sort > q7360.out
+  super -f text -I q7360.sql | sort > q7360.out
 
 inputs:
-  - name: q7360.spq
+  - name: q7360.sql
     data: |
-      SELECT * FROM tab1 (FORMAT parquet) WHERE 81 * col0 NOT BETWEEN ( - 38 * CAST ( - col1 AS INTEGER ) ) AND NULL;
+      SELECT * FROM tab1 WHERE 81 * col0 NOT BETWEEN ( - 38 * CAST ( - col1 AS INTEGER ) ) AND NULL;
   - name: tab1
 
 outputs:

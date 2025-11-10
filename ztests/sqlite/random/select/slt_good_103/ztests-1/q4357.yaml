@@ -1,10 +1,10 @@
 script: |
-  super -f text -I q4357.spq | sort > q4357.out
+  super -f text -I q4357.sql | sort > q4357.out
 
 inputs:
-  - name: q4357.spq
+  - name: q4357.sql
     data: |
-      SELECT * FROM tab0 (FORMAT parquet), tab1 (FORMAT parquet), tab1 (FORMAT parquet) AS cor0 WHERE NOT NULL BETWEEN - tab1.col2 AND NULL;
+      SELECT * FROM tab0, tab1, tab1 AS cor0 WHERE NOT NULL BETWEEN - tab1.col2 AND NULL;
   - name: tab0
   - name: tab1
 

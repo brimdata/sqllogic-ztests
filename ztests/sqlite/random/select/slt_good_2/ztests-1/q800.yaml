@@ -1,10 +1,10 @@
 script: |
-  super -f text -I q800.spq | sort > q800.out
+  super -f text -I q800.sql | sort > q800.out
 
 inputs:
-  - name: q800.spq
+  - name: q800.sql
     data: |
-      SELECT ALL * FROM tab1 (FORMAT parquet) AS cor0 CROSS JOIN tab1 (FORMAT parquet), tab1 (FORMAT parquet) AS cor1 WHERE NOT NULL BETWEEN ( NULL ) AND NULL;
+      SELECT ALL * FROM tab1 AS cor0 CROSS JOIN tab1, tab1 AS cor1 WHERE NOT NULL BETWEEN ( NULL ) AND NULL;
   - name: tab1
 
 outputs:

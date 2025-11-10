@@ -1,10 +1,10 @@
 script: |
-  super -f text -I q939.spq | sort > q939.out
+  super -f text -I q939.sql | sort > q939.out
 
 inputs:
-  - name: q939.spq
+  - name: q939.sql
     data: |
-      SELECT ALL 9 * - cor1.col2 AS col1 FROM tab1 (FORMAT parquet), tab1 (FORMAT parquet) AS cor0, tab1 (FORMAT parquet) AS cor1;
+      SELECT ALL 9 * - cor1.col2 AS col1 FROM tab1, tab1 AS cor0, tab1 AS cor1;
   - name: tab1
 
 outputs:

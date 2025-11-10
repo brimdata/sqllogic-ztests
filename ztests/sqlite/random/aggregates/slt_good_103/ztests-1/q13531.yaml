@@ -1,10 +1,10 @@
 script: |
-  super -f text -I q13531.spq | sort > q13531.out
+  super -f text -I q13531.sql | sort > q13531.out
 
 inputs:
-  - name: q13531.spq
+  - name: q13531.sql
     data: |
-      SELECT DISTINCT * FROM tab2 (FORMAT parquet) WHERE CAST ( + col0 AS INTEGER ) + - col1 BETWEEN NULL AND col1;
+      SELECT DISTINCT * FROM tab2 WHERE CAST ( + col0 AS INTEGER ) + - col1 BETWEEN NULL AND col1;
   - name: tab2
 
 outputs:

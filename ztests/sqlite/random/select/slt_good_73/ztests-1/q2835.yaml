@@ -1,10 +1,10 @@
 script: |
-  super -f text -I q2835.spq | sort > q2835.out
+  super -f text -I q2835.sql | sort > q2835.out
 
 inputs:
-  - name: q2835.spq
+  - name: q2835.sql
     data: |
-      SELECT cor2.col2 FROM tab1 (FORMAT parquet), tab0 (FORMAT parquet) AS cor0, tab0 (FORMAT parquet) cor1, tab1 (FORMAT parquet) AS cor2;
+      SELECT cor2.col2 FROM tab1, tab0 AS cor0, tab0 cor1, tab1 AS cor2;
   - name: tab0
   - name: tab1
 

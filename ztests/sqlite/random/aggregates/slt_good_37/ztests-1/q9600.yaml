@@ -1,10 +1,10 @@
 script: |
-  super -f text -I q9600.spq | sort > q9600.out
+  super -f text -I q9600.sql | sort > q9600.out
 
 inputs:
-  - name: q9600.spq
+  - name: q9600.sql
     data: |
-      SELECT DISTINCT * FROM tab2 (FORMAT parquet) WHERE NOT ( - col2 * 17 ) <> col1;
+      SELECT DISTINCT * FROM tab2 WHERE NOT ( - col2 * 17 ) <> col1;
   - name: tab2
 
 outputs:

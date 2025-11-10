@@ -1,10 +1,10 @@
 script: |
-  super -f text -I q6350.spq | sort > q6350.out
+  super -f text -I q6350.sql | sort > q6350.out
 
 inputs:
-  - name: q6350.spq
+  - name: q6350.sql
     data: |
-      SELECT * FROM tab2 (FORMAT parquet) WHERE ( - col1 * + CAST ( ( + col1 ) AS INTEGER ) ) IN ( col1 );
+      SELECT * FROM tab2 WHERE ( - col1 * + CAST ( ( + col1 ) AS INTEGER ) ) IN ( col1 );
   - name: tab2
 
 outputs:

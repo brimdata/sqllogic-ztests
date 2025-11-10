@@ -1,10 +1,10 @@
 script: |
-  super -f text -I q12400.spq | sort > q12400.out
+  super -f text -I q12400.sql | sort > q12400.out
 
 inputs:
-  - name: q12400.spq
+  - name: q12400.sql
     data: |
-      SELECT DISTINCT * FROM tab2 (FORMAT parquet) WHERE col1 BETWEEN NULL AND ( - 7 ) OR NOT + 17 IN ( + col1 );
+      SELECT DISTINCT * FROM tab2 WHERE col1 BETWEEN NULL AND ( - 7 ) OR NOT + 17 IN ( + col1 );
   - name: tab2
 
 outputs:

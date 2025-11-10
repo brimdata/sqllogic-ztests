@@ -1,10 +1,10 @@
 script: |
-  super -f text -I q3995.spq | sort > q3995.out
+  super -f text -I q3995.sql | sort > q3995.out
 
 inputs:
-  - name: q3995.spq
+  - name: q3995.sql
     data: |
-      SELECT * FROM tab2 (FORMAT parquet) WHERE NOT ( - CAST ( col0 AS REAL ) * col1 ) NOT IN ( + col0 * 40 );
+      SELECT * FROM tab2 WHERE NOT ( - CAST ( col0 AS REAL ) * col1 ) NOT IN ( + col0 * 40 );
   - name: tab2
 
 outputs:

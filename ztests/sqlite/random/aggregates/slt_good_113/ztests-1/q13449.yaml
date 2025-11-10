@@ -1,10 +1,10 @@
 script: |
-  super -f text -I q13449.spq | sort > q13449.out
+  super -f text -I q13449.sql | sort > q13449.out
 
 inputs:
-  - name: q13449.spq
+  - name: q13449.sql
     data: |
-      SELECT ALL * FROM tab1 (FORMAT parquet) AS cor0 WHERE ( NOT - col1 NOT IN ( - - col2, col1 ) ) OR ( + CAST ( + col2 AS INTEGER ) + - CAST ( NULL AS INTEGER ) ) NOT BETWEEN NULL AND ( NULL );
+      SELECT ALL * FROM tab1 AS cor0 WHERE ( NOT - col1 NOT IN ( - - col2, col1 ) ) OR ( + CAST ( + col2 AS INTEGER ) + - CAST ( NULL AS INTEGER ) ) NOT BETWEEN NULL AND ( NULL );
   - name: tab1
 
 outputs:

@@ -1,10 +1,10 @@
 script: |
-  super -f text -I q12374.spq | sort > q12374.out
+  super -f text -I q12374.sql | sort > q12374.out
 
 inputs:
-  - name: q12374.spq
+  - name: q12374.sql
     data: |
-      SELECT ALL * FROM tab2 (FORMAT parquet) WHERE NULL BETWEEN NULL AND ( - col1 / CAST ( + ( col2 ) * - col1 AS REAL ) );
+      SELECT ALL * FROM tab2 WHERE NULL BETWEEN NULL AND ( - col1 / CAST ( + ( col2 ) * - col1 AS REAL ) );
   - name: tab2
 
 outputs:

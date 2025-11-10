@@ -1,10 +1,10 @@
 script: |
-  super -f text -I q4861.spq | sort > q4861.out
+  super -f text -I q4861.sql | sort > q4861.out
 
 inputs:
-  - name: q4861.spq
+  - name: q4861.sql
     data: |
-      SELECT - col1 FROM tab0 (FORMAT parquet) WHERE NOT ( - - CAST ( NULL AS INTEGER ) - + - 80 - - + col1 ) IS NULL;
+      SELECT - col1 FROM tab0 WHERE NOT ( - - CAST ( NULL AS INTEGER ) - + - 80 - - + col1 ) IS NULL;
   - name: tab0
 
 outputs:

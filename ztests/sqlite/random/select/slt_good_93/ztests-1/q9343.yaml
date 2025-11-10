@@ -1,10 +1,10 @@
 script: |
-  super -f text -I q9343.spq | sort > q9343.out
+  super -f text -I q9343.sql | sort > q9343.out
 
 inputs:
-  - name: q9343.spq
+  - name: q9343.sql
     data: |
-      SELECT * FROM tab1 (FORMAT parquet), tab1 (FORMAT parquet) AS cor0 CROSS JOIN tab2 (FORMAT parquet) WHERE NOT NULL >= ( NULL );
+      SELECT * FROM tab1, tab1 AS cor0 CROSS JOIN tab2 WHERE NOT NULL >= ( NULL );
   - name: tab1
   - name: tab2
 

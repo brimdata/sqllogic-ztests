@@ -1,10 +1,10 @@
 script: |
-  super -f text -I q7080.spq | sort > q7080.out
+  super -f text -I q7080.sql | sort > q7080.out
 
 inputs:
-  - name: q7080.spq
+  - name: q7080.sql
     data: |
-      SELECT DISTINCT CAST ( col2 AS INTEGER ) AS col1 FROM tab1 (FORMAT parquet) WHERE NOT ( + + col2 + - 34 + + col2 ) NOT BETWEEN ( col2 ) AND NULL;
+      SELECT DISTINCT CAST ( col2 AS INTEGER ) AS col1 FROM tab1 WHERE NOT ( + + col2 + - 34 + + col2 ) NOT BETWEEN ( col2 ) AND NULL;
   - name: tab1
 
 outputs:
