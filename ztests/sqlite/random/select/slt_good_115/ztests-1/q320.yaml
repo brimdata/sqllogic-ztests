@@ -1,10 +1,10 @@
 script: |
-  super -f text -I q320.spq | sort > q320.out
+  super -f text -I q320.sql | sort > q320.out
 
 inputs:
-  - name: q320.spq
+  - name: q320.sql
     data: |
-      SELECT ALL + col1 AS col1 FROM tab1 (FORMAT parquet) WHERE NOT - col1 NOT IN ( - tab1.col0 + col0 );
+      SELECT ALL + col1 AS col1 FROM tab1 WHERE NOT - col1 NOT IN ( - tab1.col0 + col0 );
   - name: tab1
 
 outputs:

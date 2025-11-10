@@ -1,10 +1,10 @@
 script: |
-  super -f text -I q9583.spq | sort > q9583.out
+  super -f text -I q9583.sql | sort > q9583.out
 
 inputs:
-  - name: q9583.spq
+  - name: q9583.sql
     data: |
-      SELECT ALL * FROM tab1 (FORMAT parquet) WHERE NOT ( - CAST ( - col2 AS INTEGER ) * 52 ) <= ( NULL );
+      SELECT ALL * FROM tab1 WHERE NOT ( - CAST ( - col2 AS INTEGER ) * 52 ) <= ( NULL );
   - name: tab1
 
 outputs:

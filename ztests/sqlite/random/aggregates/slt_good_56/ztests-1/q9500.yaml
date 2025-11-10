@@ -1,10 +1,10 @@
 script: |
-  super -f text -I q9500.spq | sort > q9500.out
+  super -f text -I q9500.sql | sort > q9500.out
 
 inputs:
-  - name: q9500.spq
+  - name: q9500.sql
     data: |
-      SELECT DISTINCT COUNT ( * ) AS col2 FROM tab1 (FORMAT parquet) AS cor0 CROSS JOIN tab2 (FORMAT parquet) cor1 WHERE NOT NULL IS NOT NULL;
+      SELECT DISTINCT COUNT ( * ) AS col2 FROM tab1 AS cor0 CROSS JOIN tab2 cor1 WHERE NOT NULL IS NOT NULL;
   - name: tab1
   - name: tab2
 

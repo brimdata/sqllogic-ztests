@@ -1,10 +1,10 @@
 script: |
-  super -f text -I q4326.spq | sort > q4326.out
+  super -f text -I q4326.sql | sort > q4326.out
 
 inputs:
-  - name: q4326.spq
+  - name: q4326.sql
     data: |
-      SELECT DISTINCT - col1 AS col1 FROM tab1 (FORMAT parquet) WHERE NOT - col2 > - - col2 + - 42;
+      SELECT DISTINCT - col1 AS col1 FROM tab1 WHERE NOT - col2 > - - col2 + - 42;
   - name: tab1
 
 outputs:

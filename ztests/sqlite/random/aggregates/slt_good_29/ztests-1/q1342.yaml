@@ -1,10 +1,10 @@
 script: |
-  super -f text -I q1342.spq | sort > q1342.out
+  super -f text -I q1342.sql | sort > q1342.out
 
 inputs:
-  - name: q1342.spq
+  - name: q1342.sql
     data: |
-      SELECT - ( - + COUNT ( * ) ) AS col1 FROM tab2 (FORMAT parquet) cor0 CROSS JOIN tab2 (FORMAT parquet) AS cor1 WHERE NULL IS NULL;
+      SELECT - ( - + COUNT ( * ) ) AS col1 FROM tab2 cor0 CROSS JOIN tab2 AS cor1 WHERE NULL IS NULL;
   - name: tab2
 
 outputs:

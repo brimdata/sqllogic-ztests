@@ -1,10 +1,10 @@
 script: |
-  super -f text -I q1441.spq | sort > q1441.out
+  super -f text -I q1441.sql | sort > q1441.out
 
 inputs:
-  - name: q1441.spq
+  - name: q1441.sql
     data: |
-      SELECT DISTINCT tab1.col1 + - tab1.col1 AS col0 FROM tab1 (FORMAT parquet), tab0 (FORMAT parquet), tab2 (FORMAT parquet) AS cor0;
+      SELECT DISTINCT tab1.col1 + - tab1.col1 AS col0 FROM tab1, tab0, tab2 AS cor0;
   - name: tab0
   - name: tab1
   - name: tab2

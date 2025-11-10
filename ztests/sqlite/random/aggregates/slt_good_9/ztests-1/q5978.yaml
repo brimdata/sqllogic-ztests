@@ -1,10 +1,10 @@
 script: |
-  super -f text -I q5978.spq | sort > q5978.out
+  super -f text -I q5978.sql | sort > q5978.out
 
 inputs:
-  - name: q5978.spq
+  - name: q5978.sql
     data: |
-      SELECT * FROM tab2 (FORMAT parquet) WHERE NOT CAST ( - 23 AS REAL ) > - + col1 * CAST ( - col1 AS REAL ) + - 11 * ( - col2 ) * + col0 + - col1 AND NOT NULL BETWEEN - 20 + col1 AND NULL;
+      SELECT * FROM tab2 WHERE NOT CAST ( - 23 AS REAL ) > - + col1 * CAST ( - col1 AS REAL ) + - 11 * ( - col2 ) * + col0 + - col1 AND NOT NULL BETWEEN - 20 + col1 AND NULL;
   - name: tab2
 
 outputs:

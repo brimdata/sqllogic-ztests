@@ -1,10 +1,10 @@
 script: |
-  super -f text -I q9006.spq | sort > q9006.out
+  super -f text -I q9006.sql | sort > q9006.out
 
 inputs:
-  - name: q9006.spq
+  - name: q9006.sql
     data: |
-      SELECT * FROM tab2 (FORMAT parquet) WHERE NULL NOT IN ( col0 / - 97 - - CAST ( NULL AS INTEGER ) );
+      SELECT * FROM tab2 WHERE NULL NOT IN ( col0 / - 97 - - CAST ( NULL AS INTEGER ) );
   - name: tab2
 
 outputs:

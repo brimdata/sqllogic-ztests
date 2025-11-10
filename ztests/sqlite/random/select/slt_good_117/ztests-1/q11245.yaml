@@ -1,10 +1,10 @@
 script: |
-  super -f text -I q11245.spq | sort > q11245.out
+  super -f text -I q11245.sql | sort > q11245.out
 
 inputs:
-  - name: q11245.spq
+  - name: q11245.sql
     data: |
-      SELECT ALL + 80 + cor2.col2 FROM tab1 (FORMAT parquet) AS cor0 CROSS JOIN tab2 (FORMAT parquet), tab1 (FORMAT parquet) AS cor1, tab2 (FORMAT parquet) cor2, tab1 (FORMAT parquet) AS cor3;
+      SELECT ALL + 80 + cor2.col2 FROM tab1 AS cor0 CROSS JOIN tab2, tab1 AS cor1, tab2 cor2, tab1 AS cor3;
   - name: tab1
   - name: tab2
 

@@ -1,10 +1,10 @@
 script: |
-  super -f text -I q150.spq | sort > q150.out
+  super -f text -I q150.sql | sort > q150.out
 
 inputs:
-  - name: q150.spq
+  - name: q150.sql
     data: |
-      SELECT ALL col1 * - col2 + - col2 * - col1 FROM tab0 (FORMAT parquet) WHERE NOT ( + col2 + + col2 ) NOT BETWEEN col1 AND NULL;
+      SELECT ALL col1 * - col2 + - col2 * - col1 FROM tab0 WHERE NOT ( + col2 + + col2 ) NOT BETWEEN col1 AND NULL;
   - name: tab0
 
 outputs:

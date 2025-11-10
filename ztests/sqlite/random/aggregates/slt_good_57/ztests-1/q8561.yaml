@@ -1,10 +1,10 @@
 script: |
-  super -f text -I q8561.spq | sort > q8561.out
+  super -f text -I q8561.sql | sort > q8561.out
 
 inputs:
-  - name: q8561.spq
+  - name: q8561.sql
     data: |
-      SELECT DISTINCT * FROM tab2 (FORMAT parquet) WHERE col2 * 64 BETWEEN ( - col2 ) + col1 AND ( + CAST ( 93 AS REAL ) );
+      SELECT DISTINCT * FROM tab2 WHERE col2 * 64 BETWEEN ( - col2 ) + col1 AND ( + CAST ( 93 AS REAL ) );
   - name: tab2
 
 outputs:

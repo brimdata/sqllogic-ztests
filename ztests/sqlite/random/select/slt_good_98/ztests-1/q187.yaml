@@ -1,10 +1,10 @@
 script: |
-  super -f text -I q187.spq | sort > q187.out
+  super -f text -I q187.sql | sort > q187.out
 
 inputs:
-  - name: q187.spq
+  - name: q187.sql
     data: |
-      SELECT ALL + cor1.col2 * cor1.col1 AS col0 FROM tab1 (FORMAT parquet), tab1 (FORMAT parquet) cor0, tab1 (FORMAT parquet) AS cor1;
+      SELECT ALL + cor1.col2 * cor1.col1 AS col0 FROM tab1, tab1 cor0, tab1 AS cor1;
   - name: tab1
 
 outputs:

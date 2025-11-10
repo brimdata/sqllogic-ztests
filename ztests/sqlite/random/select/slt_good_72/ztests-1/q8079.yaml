@@ -1,10 +1,10 @@
 script: |
-  super -f text -I q8079.spq | sort > q8079.out
+  super -f text -I q8079.sql | sort > q8079.out
 
 inputs:
-  - name: q8079.spq
+  - name: q8079.sql
     data: |
-      SELECT DISTINCT - cor0.col1 * + cor1.col0 AS col2 FROM tab2 (FORMAT parquet), tab2 (FORMAT parquet) AS cor0, tab1 (FORMAT parquet) cor1;
+      SELECT DISTINCT - cor0.col1 * + cor1.col0 AS col2 FROM tab2, tab2 AS cor0, tab1 cor1;
   - name: tab1
   - name: tab2
 

@@ -1,10 +1,10 @@
 script: |
-  super -f text -I q8612.spq | sort > q8612.out
+  super -f text -I q8612.sql | sort > q8612.out
 
 inputs:
-  - name: q8612.spq
+  - name: q8612.sql
     data: |
-      SELECT 0 - + cor0.col1 AS col1 FROM tab2 (FORMAT parquet), tab1 (FORMAT parquet), tab2 (FORMAT parquet) AS cor0;
+      SELECT 0 - + cor0.col1 AS col1 FROM tab2, tab1, tab2 AS cor0;
   - name: tab1
   - name: tab2
 

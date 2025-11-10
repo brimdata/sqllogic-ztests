@@ -1,10 +1,10 @@
 script: |
-  super -f text -I q12389.spq | sort > q12389.out
+  super -f text -I q12389.sql | sort > q12389.out
 
 inputs:
-  - name: q12389.spq
+  - name: q12389.sql
     data: |
-      SELECT DISTINCT * FROM tab2 (FORMAT parquet) WHERE NOT ( + CAST ( NULL AS INTEGER ) + + col1 ) IS NULL;
+      SELECT DISTINCT * FROM tab2 WHERE NOT ( + CAST ( NULL AS INTEGER ) + + col1 ) IS NULL;
   - name: tab2
 
 outputs:

@@ -1,10 +1,10 @@
 script: |
-  super -f text -I q10407.spq | sort > q10407.out
+  super -f text -I q10407.sql | sort > q10407.out
 
 inputs:
-  - name: q10407.spq
+  - name: q10407.sql
     data: |
-      SELECT DISTINCT + col2 * col1 + tab1.col0 * col0 FROM tab1 (FORMAT parquet) WHERE NOT col2 * + col1 + - col0 NOT IN ( col1 );
+      SELECT DISTINCT + col2 * col1 + tab1.col0 * col0 FROM tab1 WHERE NOT col2 * + col1 + - col0 NOT IN ( col1 );
   - name: tab1
 
 outputs:

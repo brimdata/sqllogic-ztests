@@ -1,10 +1,10 @@
 script: |
-  super -f text -I q5968.spq | sort > q5968.out
+  super -f text -I q5968.sql | sort > q5968.out
 
 inputs:
-  - name: q5968.spq
+  - name: q5968.sql
     data: |
-      SELECT DISTINCT * FROM tab2 (FORMAT parquet) WHERE NOT col1 BETWEEN ( - ( - col2 ) ) AND NULL;
+      SELECT DISTINCT * FROM tab2 WHERE NOT col1 BETWEEN ( - ( - col2 ) ) AND NULL;
   - name: tab2
 
 outputs:

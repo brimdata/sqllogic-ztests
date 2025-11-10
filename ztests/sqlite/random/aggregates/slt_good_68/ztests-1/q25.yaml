@@ -1,10 +1,10 @@
 script: |
-  super -f text -I q25.spq | sort > q25.out
+  super -f text -I q25.sql | sort > q25.out
 
 inputs:
-  - name: q25.spq
+  - name: q25.sql
     data: |
-      SELECT * FROM tab2 (FORMAT parquet) WHERE NOT 20 BETWEEN - CAST ( + col0 AS INTEGER ) / 4 AND + + col1;
+      SELECT * FROM tab2 WHERE NOT 20 BETWEEN - CAST ( + col0 AS INTEGER ) / 4 AND + + col1;
   - name: tab2
 
 outputs:

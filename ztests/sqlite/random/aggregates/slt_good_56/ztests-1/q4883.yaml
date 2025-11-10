@@ -1,10 +1,10 @@
 script: |
-  super -f text -I q4883.spq | sort > q4883.out
+  super -f text -I q4883.sql | sort > q4883.out
 
 inputs:
-  - name: q4883.spq
+  - name: q4883.sql
     data: |
-      SELECT DISTINCT * FROM tab1 (FORMAT parquet) WHERE NOT - - 50 * - col0 + - col1 IS NULL;
+      SELECT DISTINCT * FROM tab1 WHERE NOT - - 50 * - col0 + - col1 IS NULL;
   - name: tab1
 
 outputs:

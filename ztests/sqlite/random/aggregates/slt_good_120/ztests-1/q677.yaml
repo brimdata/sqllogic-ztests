@@ -1,10 +1,10 @@
 script: |
-  super -f text -I q677.spq | sort > q677.out
+  super -f text -I q677.sql | sort > q677.out
 
 inputs:
-  - name: q677.spq
+  - name: q677.sql
     data: |
-      SELECT - col1 FROM tab2 (FORMAT parquet) WHERE NOT CAST ( col2 AS INTEGER ) NOT BETWEEN ( + col2 + + col2 ) AND NULL;
+      SELECT - col1 FROM tab2 WHERE NOT CAST ( col2 AS INTEGER ) NOT BETWEEN ( + col2 + + col2 ) AND NULL;
   - name: tab2
 
 outputs:

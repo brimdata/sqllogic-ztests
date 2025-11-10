@@ -1,10 +1,10 @@
 script: |
-  super -f text -I q11192.spq | sort > q11192.out
+  super -f text -I q11192.sql | sort > q11192.out
 
 inputs:
-  - name: q11192.spq
+  - name: q11192.sql
     data: |
-      SELECT DISTINCT + 32 AS col0 FROM tab2 (FORMAT parquet), tab1 (FORMAT parquet) AS cor0 CROSS JOIN tab1 (FORMAT parquet);
+      SELECT DISTINCT + 32 AS col0 FROM tab2, tab1 AS cor0 CROSS JOIN tab1;
   - name: tab1
   - name: tab2
 
