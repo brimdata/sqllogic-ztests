@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q652.sql | sort > q652.out
+
+inputs:
+  - name: q652.sql
+    data: |
+      SELECT ALL col2 * CAST ( 61 + - col1 * - col1 AS INTEGER ) FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q652.out
+    data: |
+      22080
+      39798
+      9177

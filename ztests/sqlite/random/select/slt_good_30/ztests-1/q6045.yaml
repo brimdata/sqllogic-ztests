@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q6045.sql | sort > q6045.out
+
+inputs:
+  - name: q6045.sql
+    data: |
+      SELECT col0 * + col1 * - CAST ( col2 * col0 AS INTEGER ) + ( col0 ) FROM tab1 AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q6045.out
+    data: |
+      -12633
+      -2334656
+      -7987120

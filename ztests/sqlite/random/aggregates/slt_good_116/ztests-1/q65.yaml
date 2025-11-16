@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q65.sql | sort > q65.out
+
+inputs:
+  - name: q65.sql
+    data: |
+      SELECT ALL COUNT ( - col1 ) FROM tab2 WHERE NOT - 3 IN ( - CAST ( + col1 AS INTEGER ) );
+  - name: tab2
+
+outputs:
+  - name: q65.out
+    data: |
+      3

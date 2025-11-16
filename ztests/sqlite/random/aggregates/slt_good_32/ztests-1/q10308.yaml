@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q10308.sql | sort > q10308.out
+
+inputs:
+  - name: q10308.sql
+    data: |
+      SELECT * FROM tab0 WHERE col1 * CAST ( NULL AS REAL ) IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q10308.out
+    data: |
+      15	81	47
+      87	21	10
+      97	1	99

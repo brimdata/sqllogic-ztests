@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q4340.sql | sort > q4340.out
+
+inputs:
+  - name: q4340.sql
+    data: |
+      SELECT ( + + CAST ( NULL AS REAL ) ) * col1 * col2 AS col0, - col2 AS col1 FROM tab2 AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q4340.out
+    data: |
+      -	-23
+      -	-40
+      -	-58

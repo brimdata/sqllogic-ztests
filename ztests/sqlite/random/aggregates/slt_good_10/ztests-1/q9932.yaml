@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q9932.sql | sort > q9932.out
+
+inputs:
+  - name: q9932.sql
+    data: |
+      SELECT 9 AS col1 FROM tab1 WHERE ( NOT CAST ( NULL AS REAL ) IS NOT NULL );
+  - name: tab1
+
+outputs:
+  - name: q9932.out
+    data: |
+      9
+      9
+      9

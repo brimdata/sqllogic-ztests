@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q10282.sql | sort > q10282.out
+
+inputs:
+  - name: q10282.sql
+    data: |
+      SELECT DISTINCT * FROM tab0 WHERE NOT 45 = + 20 * + CAST ( - col2 AS REAL );
+  - name: tab0
+
+outputs:
+  - name: q10282.out
+    data: |
+      15	81	47
+      87	21	10
+      97	1	99

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q6964.sql | sort > q6964.out
+
+inputs:
+  - name: q6964.sql
+    data: |
+      SELECT DISTINCT * FROM tab1 WHERE NOT ( 75 + col0 ) = CAST ( 34 AS REAL );
+  - name: tab1
+
+outputs:
+  - name: q6964.out
+    data: |
+      51	14	96
+      85	5	59
+      91	47	68

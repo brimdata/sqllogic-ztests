@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q13120.sql | sort > q13120.out
+
+inputs:
+  - name: q13120.sql
+    data: |
+      SELECT 50 AS col0, - CAST ( NULL AS INTEGER ) + - - ( - - col0 ) * 4 AS col2 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q13120.out
+    data: |
+      50	-
+      50	-
+      50	-

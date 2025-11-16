@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q244.sql | sort > q244.out
+
+inputs:
+  - name: q244.sql
+    data: |
+      SELECT DISTINCT - ( - col1 ) - CAST ( + 10 AS INTEGER ) * 8 AS col1 FROM tab2 AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q244.out
+    data: |
+      -13
+      -29
+      -3

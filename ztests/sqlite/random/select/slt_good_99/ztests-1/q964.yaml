@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q964.sql | sort > q964.out
+
+inputs:
+  - name: q964.sql
+    data: |
+      SELECT ALL CAST ( + ( col1 ) AS INTEGER ) + CAST ( ( col2 ) AS INTEGER ) / - col0 + col0 * + col1 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q964.out
+    data: |
+      1052
+      650
+      86

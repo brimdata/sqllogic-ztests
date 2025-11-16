@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q7432.sql | sort > q7432.out
+
+inputs:
+  - name: q7432.sql
+    data: |
+      SELECT DISTINCT CAST ( + - ( + - col1 ) AS INTEGER ) AS col1, 90 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q7432.out
+    data: |
+      14	90
+      47	90
+      5	90

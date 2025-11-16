@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q9082.sql | sort > q9082.out
+
+inputs:
+  - name: q9082.sql
+    data: |
+      SELECT * FROM tab1 WHERE NOT ( NULL ) IS NULL OR - CAST ( NULL AS INTEGER ) IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q9082.out
+    data: |
+      51	14	96
+      85	5	59
+      91	47	68

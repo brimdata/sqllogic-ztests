@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q543.sql | sort > q543.out
+
+inputs:
+  - name: q543.sql
+    data: |
+      SELECT DISTINCT * FROM tab2 WHERE NOT ( col1 * - col1 * - 9 + + col2 ) BETWEEN 78 * CAST ( col1 AS INTEGER ) * 80 AND ( CAST ( NULL AS INTEGER ) );
+  - name: tab2
+
+outputs:
+  - name: q543.out
+    data: |
+      46	51	23
+      64	77	40
+      75	67	58

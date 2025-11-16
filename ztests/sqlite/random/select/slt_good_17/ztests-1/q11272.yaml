@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q11272.sql | sort > q11272.out
+
+inputs:
+  - name: q11272.sql
+    data: |
+      SELECT ALL + col1 + - tab1.col1 - - CAST ( 2 AS REAL ) FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q11272.out
+    data: |
+      2
+      2
+      2

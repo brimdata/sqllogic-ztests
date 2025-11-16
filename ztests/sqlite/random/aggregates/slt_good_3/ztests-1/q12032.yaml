@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q12032.sql | sort > q12032.out
+
+inputs:
+  - name: q12032.sql
+    data: |
+      SELECT DISTINCT + COUNT ( * ) FROM ( tab1 AS cor0 CROSS JOIN tab2 cor1 );
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q12032.out
+    data: |
+      9

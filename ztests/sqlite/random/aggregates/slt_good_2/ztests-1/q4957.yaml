@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q4957.sql | sort > q4957.out
+
+inputs:
+  - name: q4957.sql
+    data: |
+      SELECT ALL + col1 col0 FROM tab0 WHERE NOT ( 4 * CAST ( NULL AS INTEGER ) ) IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q4957.out
+    data: |
+      1
+      21
+      81

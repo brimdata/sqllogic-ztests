@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q7543.sql | sort > q7543.out
+
+inputs:
+  - name: q7543.sql
+    data: |
+      SELECT DISTINCT CAST ( - MAX ( - ( + col1 ) ) AS INTEGER ) FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q7543.out
+    data: |
+      51

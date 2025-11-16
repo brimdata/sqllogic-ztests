@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8121.sql | sort > q8121.out
+
+inputs:
+  - name: q8121.sql
+    data: |
+      SELECT ALL CAST ( - col2 AS INTEGER ) * col1 + col2 * col0 AS col1 FROM tab1 AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q8121.out
+    data: |
+      -1242
+      3078
+      6432

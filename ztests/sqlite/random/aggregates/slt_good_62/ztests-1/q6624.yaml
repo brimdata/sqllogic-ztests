@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q6624.sql | sort > q6624.out
+
+inputs:
+  - name: q6624.sql
+    data: |
+      SELECT DISTINCT CAST ( 47 AS INTEGER ) + col1 + - + 68 + + - ( + col2 ) * - - col2 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q6624.out
+    data: |
+      -3497
+      -4598
+      -9223

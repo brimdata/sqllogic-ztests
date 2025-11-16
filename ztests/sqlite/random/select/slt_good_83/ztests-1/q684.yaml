@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q684.sql | sort > q684.out
+
+inputs:
+  - name: q684.sql
+    data: |
+      SELECT DISTINCT col1 * + CAST ( + 12 AS INTEGER ) * col1 + 67 AS col0 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q684.out
+    data: |
+      1267
+      2095
+      8179

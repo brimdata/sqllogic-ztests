@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q64.sql | sort > q64.out
+
+inputs:
+  - name: q64.sql
+    data: |
+      SELECT - CAST ( col2 AS INTEGER ) * col1 + + col0 * + ( tab1.col2 ) FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q64.out
+    data: |
+      -1242
+      3078
+      6432

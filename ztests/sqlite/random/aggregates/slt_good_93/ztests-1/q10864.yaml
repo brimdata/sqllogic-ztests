@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q10864.sql | sort > q10864.out
+
+inputs:
+  - name: q10864.sql
+    data: |
+      SELECT ALL CAST ( col2 AS INTEGER ) + - col0 col0 FROM tab1 WHERE - col2 NOT IN ( - 76 + col1 );
+  - name: tab1
+
+outputs:
+  - name: q10864.out
+    data: |
+      -23
+      -26
+      45

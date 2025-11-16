@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8748.sql | sort > q8748.out
+
+inputs:
+  - name: q8748.sql
+    data: |
+      SELECT * FROM tab0 WHERE CAST ( NULL AS REAL ) + - - ( col0 ) IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q8748.out
+    data: |
+      15	81	47
+      87	21	10
+      97	1	99

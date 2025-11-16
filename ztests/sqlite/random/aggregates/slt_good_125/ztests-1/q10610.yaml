@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q10610.sql | sort > q10610.out
+
+inputs:
+  - name: q10610.sql
+    data: |
+      SELECT DISTINCT + col2 AS col1 FROM tab2 WHERE ( NOT CAST ( + col0 AS INTEGER ) IS NULL );
+  - name: tab2
+
+outputs:
+  - name: q10610.out
+    data: |
+      23
+      40
+      58

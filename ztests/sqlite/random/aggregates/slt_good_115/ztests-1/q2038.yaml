@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q2038.sql | sort > q2038.out
+
+inputs:
+  - name: q2038.sql
+    data: |
+      SELECT CAST ( + col2 AS INTEGER ) + + - 80 * + col1 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q2038.out
+    data: |
+      -4057
+      -5302
+      -6120

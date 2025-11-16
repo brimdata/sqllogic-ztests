@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q6381.sql | sort > q6381.out
+
+inputs:
+  - name: q6381.sql
+    data: |
+      SELECT DISTINCT * FROM tab1 WHERE - CAST ( NULL AS INTEGER ) / - + 47 + - col1 IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q6381.out
+    data: |
+      51	14	96
+      85	5	59
+      91	47	68

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q7974.sql | sort > q7974.out
+
+inputs:
+  - name: q7974.sql
+    data: |
+      SELECT DISTINCT col1 + - col1 * + - 98 + - CAST ( + col1 AS INTEGER ) AS col1 FROM tab2 GROUP BY col1 HAVING NOT col1 * 0 IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q7974.out
+    data: |
+      4018
+      5782
+      5978

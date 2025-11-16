@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q10327.sql | sort > q10327.out
+
+inputs:
+  - name: q10327.sql
+    data: |
+      SELECT COUNT ( * ) AS col2 FROM tab2 WHERE NOT - + CAST ( NULL AS INTEGER ) IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q10327.out
+    data: |
+      3

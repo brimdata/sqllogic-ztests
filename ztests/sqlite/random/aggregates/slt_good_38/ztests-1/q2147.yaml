@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q2147.sql | sort > q2147.out
+
+inputs:
+  - name: q2147.sql
+    data: |
+      SELECT ALL CAST ( col1 AS INTEGER ) * 27 + - 38 + col0 AS col2 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q2147.out
+    data: |
+      1322
+      182
+      391

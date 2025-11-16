@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q11606.sql | sort > q11606.out
+
+inputs:
+  - name: q11606.sql
+    data: |
+      SELECT DISTINCT CAST ( - ( + CAST ( + - 71 AS INTEGER ) ) AS INTEGER ) * - col1 AS col2 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q11606.out
+    data: |
+      -3337
+      -355
+      -994

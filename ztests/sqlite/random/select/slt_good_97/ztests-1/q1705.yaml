@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q1705.sql | sort > q1705.out
+
+inputs:
+  - name: q1705.sql
+    data: |
+      SELECT ALL - - CAST ( 19 AS REAL ) * - col0 + ( + col2 ) * col1 + ( + col0 + col2 ) * - cor0.col2 FROM tab1 AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q1705.out
+    data: |
+      -17168
+      -1731
+      -7543

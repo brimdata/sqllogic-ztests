@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q12509.sql | sort > q12509.out
+
+inputs:
+  - name: q12509.sql
+    data: |
+      SELECT * FROM tab2 WHERE NOT + col1 + col1 * col2 * - col1 + - CAST ( NULL AS INTEGER ) IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q12509.out
+    data: |
+      46	51	23
+      64	77	40
+      75	67	58

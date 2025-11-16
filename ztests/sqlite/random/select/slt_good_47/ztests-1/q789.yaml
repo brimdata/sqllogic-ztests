@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q789.sql | sort > q789.out
+
+inputs:
+  - name: q789.sql
+    data: |
+      SELECT ALL CAST ( - cor0.col1 AS INTEGER ) * col2 * - col1 AS col1 FROM tab1 AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q789.out
+    data: |
+      16224
+      36504
+      5700

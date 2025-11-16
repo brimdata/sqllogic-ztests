@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q6681.sql | sort > q6681.out
+
+inputs:
+  - name: q6681.sql
+    data: |
+      SELECT + col1, CAST ( + col1 AS INTEGER ) AS col2, 44 AS col0 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q6681.out
+    data: |
+      51	51	44
+      67	67	44
+      77	77	44

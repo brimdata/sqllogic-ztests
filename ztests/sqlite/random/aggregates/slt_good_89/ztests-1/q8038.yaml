@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q8038.sql | sort > q8038.out
+
+inputs:
+  - name: q8038.sql
+    data: |
+      SELECT CAST ( COUNT ( * ) AS INTEGER ) FROM tab2 AS cor0 WHERE NOT ( NOT ( col1 = ( col1 ) ) );
+  - name: tab2
+
+outputs:
+  - name: q8038.out
+    data: |
+      3

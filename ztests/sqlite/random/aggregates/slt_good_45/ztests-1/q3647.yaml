@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q3647.sql | sort > q3647.out
+
+inputs:
+  - name: q3647.sql
+    data: |
+      SELECT - CAST ( + + COUNT ( * ) AS INTEGER ) AS col1 FROM ( tab1 AS cor0 CROSS JOIN tab1 AS cor1 );
+  - name: tab1
+
+outputs:
+  - name: q3647.out
+    data: |
+      -9

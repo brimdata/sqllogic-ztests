@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q10701.sql | sort > q10701.out
+
+inputs:
+  - name: q10701.sql
+    data: |
+      SELECT - + 42 AS col2 FROM tab2 WHERE NOT + - CAST ( 85 AS INTEGER ) + ( col1 ) IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q10701.out
+    data: |
+      -42
+      -42
+      -42

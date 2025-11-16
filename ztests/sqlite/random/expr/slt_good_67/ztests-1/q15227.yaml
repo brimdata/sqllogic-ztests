@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q15227.sql | sort > q15227.out
+
+inputs:
+  - name: q15227.sql
+    data: |
+      SELECT ALL CAST ( NULL AS REAL ) + - COALESCE ( + 40, - 33 * COUNT ( * ), + CAST ( - COUNT ( * ) AS INTEGER ) - 11 ) col0;
+
+outputs:
+  - name: q15227.out
+    data: |
+      -

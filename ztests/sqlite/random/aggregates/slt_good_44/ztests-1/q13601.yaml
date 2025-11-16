@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q13601.sql | sort > q13601.out
+
+inputs:
+  - name: q13601.sql
+    data: |
+      SELECT * FROM tab1 AS cor0 WHERE NOT - CAST ( NULL AS REAL ) IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q13601.out
+    data: |
+      51	14	96
+      85	5	59
+      91	47	68

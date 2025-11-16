@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q12149.sql | sort > q12149.out
+
+inputs:
+  - name: q12149.sql
+    data: |
+      SELECT * FROM tab0 WHERE NOT CAST ( NULL AS INTEGER ) * 26 IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q12149.out
+    data: |
+      15	81	47
+      87	21	10
+      97	1	99

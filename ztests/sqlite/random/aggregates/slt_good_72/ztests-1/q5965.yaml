@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q5965.sql | sort > q5965.out
+
+inputs:
+  - name: q5965.sql
+    data: |
+      SELECT col2 * ( 42 ) AS col1 FROM tab2 WHERE NOT + CAST ( NULL AS INTEGER ) IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q5965.out
+    data: |
+      1680
+      2436
+      966

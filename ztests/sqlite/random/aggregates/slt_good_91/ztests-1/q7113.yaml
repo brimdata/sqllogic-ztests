@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q7113.sql | sort > q7113.out
+
+inputs:
+  - name: q7113.sql
+    data: |
+      SELECT ALL + COUNT ( CAST ( NULL AS REAL ) ) col2 FROM tab1 cor0 CROSS JOIN tab1;
+  - name: tab1
+
+outputs:
+  - name: q7113.out
+    data: |
+      0

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q11472.sql | sort > q11472.out
+
+inputs:
+  - name: q11472.sql
+    data: |
+      SELECT * FROM tab2 WHERE NOT CAST ( + col2 AS INTEGER ) / + col2 > col1;
+  - name: tab2
+
+outputs:
+  - name: q11472.out
+    data: |
+      46	51	23
+      64	77	40
+      75	67	58

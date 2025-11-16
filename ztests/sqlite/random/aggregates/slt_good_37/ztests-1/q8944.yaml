@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q8944.sql | sort > q8944.out
+
+inputs:
+  - name: q8944.sql
+    data: |
+      SELECT DISTINCT - CAST ( 16 AS INTEGER ) FROM tab2 WHERE NOT ( col2 ) <> ( col2 );
+  - name: tab2
+
+outputs:
+  - name: q8944.out
+    data: |
+      -16

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q547.sql | sort > q547.out
+
+inputs:
+  - name: q547.sql
+    data: |
+      SELECT * FROM tab1 AS cor0 WHERE col2 * CAST ( 9 AS REAL ) * col2 + col1 IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q547.out
+    data: |
+      51	14	96
+      85	5	59
+      91	47	68

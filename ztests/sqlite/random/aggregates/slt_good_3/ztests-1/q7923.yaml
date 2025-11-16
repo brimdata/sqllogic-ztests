@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q7923.sql | sort > q7923.out
+
+inputs:
+  - name: q7923.sql
+    data: |
+      SELECT DISTINCT col2 + 32 * CAST ( NULL AS INTEGER ) - - CAST ( 40 AS INTEGER ) AS col2 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q7923.out
+    data: |
+      -

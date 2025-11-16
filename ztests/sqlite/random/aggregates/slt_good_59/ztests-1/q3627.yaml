@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q3627.sql | sort > q3627.out
+
+inputs:
+  - name: q3627.sql
+    data: |
+      SELECT ALL + 12 * col1 AS col0 FROM tab1 WHERE NOT ( + 96 - col2 / - CAST ( NULL AS INTEGER ) ) IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q3627.out
+    data: |
+      168
+      564
+      60

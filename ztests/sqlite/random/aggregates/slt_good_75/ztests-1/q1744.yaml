@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q1744.sql | sort > q1744.out
+
+inputs:
+  - name: q1744.sql
+    data: |
+      SELECT ALL SUM ( DISTINCT 20 ) AS col1, ( - - CAST ( + SUM ( col1 ) AS INTEGER ) ) AS col0 FROM tab1 AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q1744.out
+    data: |
+      20	66

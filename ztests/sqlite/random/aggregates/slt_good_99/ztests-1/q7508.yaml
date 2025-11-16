@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q7508.sql | sort > q7508.out
+
+inputs:
+  - name: q7508.sql
+    data: |
+      SELECT * FROM tab2 WHERE NOT col1 * + CAST ( 1 AS INTEGER ) IN ( - col2 );
+  - name: tab2
+
+outputs:
+  - name: q7508.out
+    data: |
+      46	51	23
+      64	77	40
+      75	67	58

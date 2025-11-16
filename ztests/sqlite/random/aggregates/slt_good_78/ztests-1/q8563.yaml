@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q8563.sql | sort > q8563.out
+
+inputs:
+  - name: q8563.sql
+    data: |
+      SELECT ALL COUNT ( * ) AS col2 FROM tab2 WHERE NOT - CAST ( + + col0 AS INTEGER ) IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q8563.out
+    data: |
+      3

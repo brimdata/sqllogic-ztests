@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q3600.sql | sort > q3600.out
+
+inputs:
+  - name: q3600.sql
+    data: |
+      SELECT DISTINCT 31 + CAST ( MAX ( + 1 ) AS INTEGER ) AS col2 FROM tab0;
+  - name: tab0
+
+outputs:
+  - name: q3600.out
+    data: |
+      32

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q4824.sql | sort > q4824.out
+
+inputs:
+  - name: q4824.sql
+    data: |
+      SELECT ALL + CAST ( col2 AS INTEGER ) + + 9 AS col1 FROM tab2 WHERE NOT NULL IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q4824.out
+    data: |
+      32
+      49
+      67

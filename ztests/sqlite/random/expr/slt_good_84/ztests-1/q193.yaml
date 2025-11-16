@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q193.sql | sort > q193.out
+
+inputs:
+  - name: q193.sql
+    data: |
+      SELECT ( - CAST ( COALESCE ( + + 42, - 43 + 7, ( - 62 ) + 13 ) AS INTEGER ) ) AS col2;
+
+outputs:
+  - name: q193.out
+    data: |
+      -42

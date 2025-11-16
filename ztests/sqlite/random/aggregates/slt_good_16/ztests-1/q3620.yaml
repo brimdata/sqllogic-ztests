@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q3620.sql | sort > q3620.out
+
+inputs:
+  - name: q3620.sql
+    data: |
+      SELECT DISTINCT * FROM tab1 AS cor0 WHERE NOT ( NOT ( - CAST ( col1 AS INTEGER ) ) NOT IN ( col0 ) );
+  - name: tab1
+
+outputs:
+  - name: q3620.out
+    data: |
+      51	14	96
+      85	5	59
+      91	47	68

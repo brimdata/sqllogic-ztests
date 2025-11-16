@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8655.sql | sort > q8655.out
+
+inputs:
+  - name: q8655.sql
+    data: |
+      SELECT * FROM tab1 WHERE NOT + col0 IN ( + 66 * CAST ( + col2 AS INTEGER ) );
+  - name: tab1
+
+outputs:
+  - name: q8655.out
+    data: |
+      51	14	96
+      85	5	59
+      91	47	68

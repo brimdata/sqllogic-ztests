@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q22.sql | sort > q22.out
+
+inputs:
+  - name: q22.sql
+    data: |
+      SELECT DISTINCT + CAST ( ( - COUNT ( * ) ) AS INTEGER ) AS col0 FROM tab1 AS cor0 WHERE NOT NULL IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q22.out
+    data: |
+      -3

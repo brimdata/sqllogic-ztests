@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8682.sql | sort > q8682.out
+
+inputs:
+  - name: q8682.sql
+    data: |
+      SELECT ALL * FROM tab1 AS cor0 WHERE NOT - CAST ( - 1 AS INTEGER ) = - col1;
+  - name: tab1
+
+outputs:
+  - name: q8682.out
+    data: |
+      51	14	96
+      85	5	59
+      91	47	68

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q5446.sql | sort > q5446.out
+
+inputs:
+  - name: q5446.sql
+    data: |
+      SELECT DISTINCT ( col2 ) / CAST ( - ( + col2 ) AS INTEGER ) + + col2 * ( col2 ) FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q5446.out
+    data: |
+      2915
+      3248
+      9215

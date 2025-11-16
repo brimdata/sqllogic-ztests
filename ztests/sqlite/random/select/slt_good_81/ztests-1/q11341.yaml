@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q11341.sql | sort > q11341.out
+
+inputs:
+  - name: q11341.sql
+    data: |
+      SELECT col2 * - CAST ( 29 * col2 AS INTEGER ) + col2 / cor0.col0 AS col2 FROM tab1 AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q11341.out
+    data: |
+      -267263
+      -84546
+      -94221

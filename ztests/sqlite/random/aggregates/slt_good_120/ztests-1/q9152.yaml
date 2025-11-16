@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q9152.sql | sort > q9152.out
+
+inputs:
+  - name: q9152.sql
+    data: |
+      SELECT DISTINCT 32 * col0 / CAST ( + 5 AS INTEGER ) AS col0, col0 AS col1 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q9152.out
+    data: |
+      326	51
+      544	85
+      582	91

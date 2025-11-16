@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q10720.sql | sort > q10720.out
+
+inputs:
+  - name: q10720.sql
+    data: |
+      SELECT - CAST ( col1 AS INTEGER ) + - col1 AS col2 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q10720.out
+    data: |
+      -20
+      -26
+      -52

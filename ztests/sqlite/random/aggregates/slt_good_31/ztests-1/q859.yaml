@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q859.sql | sort > q859.out
+
+inputs:
+  - name: q859.sql
+    data: |
+      SELECT col0 * - CAST ( col0 AS INTEGER ) col2, + 42 FROM tab2 AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q859.out
+    data: |
+      -2116	42
+      -4096	42
+      -5625	42

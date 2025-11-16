@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q1745.sql | sort > q1745.out
+
+inputs:
+  - name: q1745.sql
+    data: |
+      SELECT * FROM tab0 WHERE NOT - CAST ( col1 AS INTEGER ) = ( - 0 ) * 75;
+  - name: tab0
+
+outputs:
+  - name: q1745.out
+    data: |
+      15	81	47
+      87	21	10
+      97	1	99

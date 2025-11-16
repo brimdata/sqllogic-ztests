@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q4747.sql | sort > q4747.out
+
+inputs:
+  - name: q4747.sql
+    data: |
+      SELECT ALL - COUNT ( * ) FROM tab0 WHERE NOT ( col2 + CAST ( NULL AS REAL ) * - 32 ) IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q4747.out
+    data: |
+      -3

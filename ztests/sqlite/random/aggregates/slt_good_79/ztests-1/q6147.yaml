@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q6147.sql | sort > q6147.out
+
+inputs:
+  - name: q6147.sql
+    data: |
+      SELECT DISTINCT * FROM tab1 cor0 WHERE - col2 <= - CAST ( col2 AS REAL );
+  - name: tab1
+
+outputs:
+  - name: q6147.out
+    data: |
+      51	14	96
+      85	5	59
+      91	47	68

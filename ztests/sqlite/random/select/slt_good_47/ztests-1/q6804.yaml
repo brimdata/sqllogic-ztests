@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q6804.sql | sort > q6804.out
+
+inputs:
+  - name: q6804.sql
+    data: |
+      SELECT col0 + - col1 + + cor0.col1 * CAST ( - col0 AS REAL ) AS col1 FROM tab1 AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q6804.out
+    data: |
+      -101
+      -586
+      -973

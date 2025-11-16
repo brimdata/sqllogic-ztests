@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q12683.sql | sort > q12683.out
+
+inputs:
+  - name: q12683.sql
+    data: |
+      SELECT col2 * CAST ( + + col2 AS INTEGER ) * col2 / + - 9 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q12683.out
+    data: |
+      -22819
+      -34936
+      -98304

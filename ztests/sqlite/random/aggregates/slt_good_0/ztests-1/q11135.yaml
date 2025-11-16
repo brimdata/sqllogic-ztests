@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q11135.sql | sort > q11135.out
+
+inputs:
+  - name: q11135.sql
+    data: |
+      SELECT ALL - col2 AS col1 FROM tab1 WHERE ( NOT + CAST ( NULL AS REAL ) IS NOT NULL );
+  - name: tab1
+
+outputs:
+  - name: q11135.out
+    data: |
+      -59
+      -68
+      -96

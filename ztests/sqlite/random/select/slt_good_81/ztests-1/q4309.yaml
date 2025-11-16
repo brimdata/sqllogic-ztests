@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q4309.sql | sort > q4309.out
+
+inputs:
+  - name: q4309.sql
+    data: |
+      SELECT ALL 37 + col1 * - col2 * CAST ( - col2 AS INTEGER ) FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q4309.out
+    data: |
+      119845
+      32527
+      75853

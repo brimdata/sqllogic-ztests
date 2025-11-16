@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q12052.sql | sort > q12052.out
+
+inputs:
+  - name: q12052.sql
+    data: |
+      SELECT DISTINCT * FROM tab0 cor0 WHERE NOT ( CAST ( + 99 AS INTEGER ) ) IN ( - col1, + ( - col1 ) );
+  - name: tab0
+
+outputs:
+  - name: q12052.out
+    data: |
+      15	81	47
+      87	21	10
+      97	1	99

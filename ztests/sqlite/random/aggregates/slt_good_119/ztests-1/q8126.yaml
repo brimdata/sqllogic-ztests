@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8126.sql | sort > q8126.out
+
+inputs:
+  - name: q8126.sql
+    data: |
+      SELECT * FROM tab2 WHERE NOT - CAST ( - 15 AS REAL ) NOT BETWEEN - CAST ( col2 AS INTEGER ) AND + col0 + + col1;
+  - name: tab2
+
+outputs:
+  - name: q8126.out
+    data: |
+      46	51	23
+      64	77	40
+      75	67	58

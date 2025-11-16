@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q8008.sql | sort > q8008.out
+
+inputs:
+  - name: q8008.sql
+    data: |
+      SELECT - - COUNT ( * ) * 79 AS col2 FROM ( tab2 AS cor0 CROSS JOIN tab2 AS cor1 );
+  - name: tab2
+
+outputs:
+  - name: q8008.out
+    data: |
+      711

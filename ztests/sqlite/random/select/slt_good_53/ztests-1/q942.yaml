@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q942.sql | sort > q942.out
+
+inputs:
+  - name: q942.sql
+    data: |
+      SELECT DISTINCT col2 + col1 * col0 + CAST ( + col1 AS INTEGER ) / - col1 AS col0 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q942.out
+    data: |
+      1380
+      243
+      4627

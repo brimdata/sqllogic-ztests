@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q80.sql | sort > q80.out
+
+inputs:
+  - name: q80.sql
+    data: |
+      SELECT DISTINCT col2 * CAST ( col0 * - col0 AS INTEGER ) - ( col1 ) FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q80.out
+    data: |
+      -1354
+      -158243
+      -237175

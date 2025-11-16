@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q4402.sql | sort > q4402.out
+
+inputs:
+  - name: q4402.sql
+    data: |
+      SELECT DISTINCT + CAST ( COUNT ( * ) AS INTEGER ) AS col1 FROM ( tab0 cor0 CROSS JOIN tab1 cor1 );
+  - name: tab0
+  - name: tab1
+
+outputs:
+  - name: q4402.out
+    data: |
+      9

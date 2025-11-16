@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q11182.sql | sort > q11182.out
+
+inputs:
+  - name: q11182.sql
+    data: |
+      SELECT - 1 AS col2, + CAST ( NULL AS REAL ) * col2 AS col1 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q11182.out
+    data: |
+      -1	-
+      -1	-
+      -1	-

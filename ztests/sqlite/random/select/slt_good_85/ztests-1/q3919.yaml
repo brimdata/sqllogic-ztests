@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q3919.sql | sort > q3919.out
+
+inputs:
+  - name: q3919.sql
+    data: |
+      SELECT - ( + col2 ) * col1 - CAST ( col1 * col1 AS REAL ) AS col0 FROM tab2 AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q3919.out
+    data: |
+      -1798
+      -5015
+      -935

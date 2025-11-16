@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q9820.sql | sort > q9820.out
+
+inputs:
+  - name: q9820.sql
+    data: |
+      SELECT DISTINCT COUNT ( * ) * CAST ( COUNT ( * ) AS INTEGER ) AS col0 FROM tab1, tab1 AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q9820.out
+    data: |
+      81

@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q12582.sql | sort > q12582.out
+
+inputs:
+  - name: q12582.sql
+    data: |
+      SELECT + ( - COUNT ( * ) ) AS col2 FROM ( tab0 cor0 CROSS JOIN tab2 AS cor1 );
+  - name: tab0
+  - name: tab2
+
+outputs:
+  - name: q12582.out
+    data: |
+      -9

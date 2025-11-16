@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q6864.sql | sort > q6864.out
+
+inputs:
+  - name: q6864.sql
+    data: |
+      SELECT DISTINCT + 49 + col1 AS col2 FROM tab1 WHERE + CAST ( NULL AS INTEGER ) IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q6864.out
+    data: |
+      54
+      63
+      96

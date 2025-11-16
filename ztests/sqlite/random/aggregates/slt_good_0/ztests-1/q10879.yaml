@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q10879.sql | sort > q10879.out
+
+inputs:
+  - name: q10879.sql
+    data: |
+      SELECT * FROM tab0 WHERE NOT 23 BETWEEN NULL AND + CAST ( + col2 AS INTEGER );
+  - name: tab0
+
+outputs:
+  - name: q10879.out
+    data: |
+      87	21	10

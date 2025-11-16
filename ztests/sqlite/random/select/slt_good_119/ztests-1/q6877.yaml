@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q6877.sql | sort > q6877.out
+
+inputs:
+  - name: q6877.sql
+    data: |
+      SELECT DISTINCT col1 + col2 + - CAST ( col2 + - col0 AS REAL ) * col0 AS col1 FROM tab0;
+  - name: tab0
+
+outputs:
+  - name: q6877.out
+    data: |
+      -97
+      1288
+      796

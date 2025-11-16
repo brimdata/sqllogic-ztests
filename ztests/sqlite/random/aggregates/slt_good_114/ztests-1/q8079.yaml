@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8079.sql | sort > q8079.out
+
+inputs:
+  - name: q8079.sql
+    data: |
+      SELECT DISTINCT - col1 + 54 * CAST ( + - col2 AS INTEGER ) + - 97 AS col1 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q8079.out
+    data: |
+      -3288
+      -3816
+      -5295

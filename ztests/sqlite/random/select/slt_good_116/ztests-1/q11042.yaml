@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q11042.sql | sort > q11042.out
+
+inputs:
+  - name: q11042.sql
+    data: |
+      SELECT + col1 * + CAST ( 89 * col0 AS REAL ) AS col2 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q11042.out
+    data: |
+      56960
+      6942
+      92560

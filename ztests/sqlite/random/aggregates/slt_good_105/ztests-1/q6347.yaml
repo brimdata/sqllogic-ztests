@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q6347.sql | sort > q6347.out
+
+inputs:
+  - name: q6347.sql
+    data: |
+      SELECT COUNT ( + - ( col0 ) ) FROM tab1 AS cor0 WHERE NOT ( CAST ( + CAST ( col1 AS INTEGER ) AS REAL ) ) IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q6347.out
+    data: |
+      3

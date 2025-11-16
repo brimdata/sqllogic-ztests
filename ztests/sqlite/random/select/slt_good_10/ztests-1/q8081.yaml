@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8081.sql | sort > q8081.out
+
+inputs:
+  - name: q8081.sql
+    data: |
+      SELECT ALL col1 * CAST ( + col2 AS INTEGER ) * + col1 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q8081.out
+    data: |
+      16224
+      36504
+      5700

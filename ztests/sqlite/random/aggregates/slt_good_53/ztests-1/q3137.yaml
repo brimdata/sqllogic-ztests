@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q3137.sql | sort > q3137.out
+
+inputs:
+  - name: q3137.sql
+    data: |
+      SELECT 78 AS col2 FROM tab0 WHERE NOT - CAST ( - col0 AS INTEGER ) - CAST ( - - col0 AS INTEGER ) IN ( col2 );
+  - name: tab0
+
+outputs:
+  - name: q3137.out
+    data: |
+      78
+      78
+      78

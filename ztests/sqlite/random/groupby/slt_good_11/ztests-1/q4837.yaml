@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q4837.sql | sort > q4837.out
+
+inputs:
+  - name: q4837.sql
+    data: |
+      SELECT ALL col0 AS col0 FROM tab1 GROUP BY col0 HAVING + CAST ( ( col0 ) AS INTEGER ) IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q4837.out
+    data: |

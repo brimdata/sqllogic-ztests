@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q4240.sql | sort > q4240.out
+
+inputs:
+  - name: q4240.sql
+    data: |
+      SELECT ALL + col2 * col0 + - CAST ( col2 * - col0 AS REAL ) + - tab1.col1 * 65 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q4240.out
+    data: |
+      -1366
+      14515
+      6646

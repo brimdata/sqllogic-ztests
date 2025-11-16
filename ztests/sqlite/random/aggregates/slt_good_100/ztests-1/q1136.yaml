@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q1136.sql | sort > q1136.out
+
+inputs:
+  - name: q1136.sql
+    data: |
+      SELECT DISTINCT + 80 AS col2, CAST ( - col2 AS INTEGER ) AS col1 FROM tab2 AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q1136.out
+    data: |
+      80	-23
+      80	-40
+      80	-58

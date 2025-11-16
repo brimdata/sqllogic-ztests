@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8042.sql | sort > q8042.out
+
+inputs:
+  - name: q8042.sql
+    data: |
+      SELECT CAST ( + col1 AS INTEGER ) * + 64 AS col1 FROM tab0;
+  - name: tab0
+
+outputs:
+  - name: q8042.out
+    data: |
+      1344
+      5184
+      64

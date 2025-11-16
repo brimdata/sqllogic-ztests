@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q8929.sql | sort > q8929.out
+
+inputs:
+  - name: q8929.sql
+    data: |
+      SELECT DISTINCT col0 + CAST ( NULL AS INTEGER ) * col1 + tab1.col0 AS col2 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q8929.out
+    data: |
+      -

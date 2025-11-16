@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q9707.sql | sort > q9707.out
+
+inputs:
+  - name: q9707.sql
+    data: |
+      SELECT - col1 + + col1 + 90 FROM tab1 WHERE NOT + CAST ( NULL AS INTEGER ) + - CAST ( NULL AS INTEGER ) / + col2 IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q9707.out
+    data: |
+      90
+      90
+      90

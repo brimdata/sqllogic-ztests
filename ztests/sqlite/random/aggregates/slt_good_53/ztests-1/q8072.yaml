@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q8072.sql | sort > q8072.out
+
+inputs:
+  - name: q8072.sql
+    data: |
+      SELECT DISTINCT * FROM tab2 AS cor0 WHERE NOT col1 BETWEEN CAST ( - - col0 AS INTEGER ) AND NULL;
+  - name: tab2
+
+outputs:
+  - name: q8072.out
+    data: |
+      75	67	58

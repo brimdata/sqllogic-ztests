@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q5822.sql | sort > q5822.out
+
+inputs:
+  - name: q5822.sql
+    data: |
+      SELECT ALL - col2 * + 31 * col0 AS col2, + col2 * - CAST ( - 31 AS INTEGER ) FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q5822.out
+    data: |
+      -151776	2976
+      -155465	1829
+      -191828	2108

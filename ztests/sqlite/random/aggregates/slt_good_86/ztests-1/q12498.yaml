@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q12498.sql | sort > q12498.out
+
+inputs:
+  - name: q12498.sql
+    data: |
+      SELECT ALL - col1 FROM tab1 WHERE NOT - 50 * CAST ( NULL AS REAL ) IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q12498.out
+    data: |
+      -14
+      -47
+      -5

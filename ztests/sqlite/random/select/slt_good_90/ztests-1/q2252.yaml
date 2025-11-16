@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q2252.sql | sort > q2252.out
+
+inputs:
+  - name: q2252.sql
+    data: |
+      SELECT - - col1 * - CAST ( 42 * col1 AS INTEGER ) AS col1 FROM tab1 AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q2252.out
+    data: |
+      -28392
+      -4200
+      -7098

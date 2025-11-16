@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q13127.sql | sort > q13127.out
+
+inputs:
+  - name: q13127.sql
+    data: |
+      SELECT - col2 * col2 + 50 FROM tab1 WHERE NOT CAST ( NULL AS INTEGER ) IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q13127.out
+    data: |
+      -3431
+      -4574
+      -9166

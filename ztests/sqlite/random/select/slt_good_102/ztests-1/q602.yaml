@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q602.sql | sort > q602.out
+
+inputs:
+  - name: q602.sql
+    data: |
+      SELECT + 49 + col2 - CAST ( ( col2 ) AS INTEGER ) * ( + col1 ) FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q602.out
+    data: |
+      -1103
+      -1301
+      -464

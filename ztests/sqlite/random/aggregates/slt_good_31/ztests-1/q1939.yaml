@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q1939.sql | sort > q1939.out
+
+inputs:
+  - name: q1939.sql
+    data: |
+      SELECT DISTINCT col2 * CAST ( col1 AS INTEGER ) + 22 FROM tab1 WHERE NOT - col1 IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q1939.out
+    data: |
+      1366
+      317
+      3218

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q7076.sql | sort > q7076.out
+
+inputs:
+  - name: q7076.sql
+    data: |
+      SELECT DISTINCT col2 * + CAST ( ( + col2 ) AS INTEGER ) + 25 FROM tab0;
+  - name: tab0
+
+outputs:
+  - name: q7076.out
+    data: |
+      1114
+      26
+      6749

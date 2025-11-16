@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q4162.sql | sort > q4162.out
+
+inputs:
+  - name: q4162.sql
+    data: |
+      SELECT * FROM tab2 WHERE NOT ( + - CAST ( 25 AS INTEGER ) ) IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q4162.out
+    data: |
+      46	51	23
+      64	77	40
+      75	67	58

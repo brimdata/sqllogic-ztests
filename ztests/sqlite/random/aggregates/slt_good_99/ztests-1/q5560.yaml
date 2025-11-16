@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q5560.sql | sort > q5560.out
+
+inputs:
+  - name: q5560.sql
+    data: |
+      SELECT col2 FROM tab2 WHERE CAST ( col1 AS REAL ) + col1 IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q5560.out
+    data: |
+      23
+      40
+      58

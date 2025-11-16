@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q5945.sql | sort > q5945.out
+
+inputs:
+  - name: q5945.sql
+    data: |
+      SELECT ALL - col1 * CAST ( 12 AS REAL ) + - col1 * - col2 * col2 AS col1 FROM tab0;
+  - name: tab0
+
+outputs:
+  - name: q5945.out
+    data: |
+      -1067
+      610792
+      92622

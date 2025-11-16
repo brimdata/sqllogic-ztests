@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q10402.sql | sort > q10402.out
+
+inputs:
+  - name: q10402.sql
+    data: |
+      SELECT + + 20 + + col1 AS col2 FROM tab1 WHERE + CAST ( - + col2 AS REAL ) NOT BETWEEN + 43 AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q10402.out
+    data: |
+      25
+      34
+      67

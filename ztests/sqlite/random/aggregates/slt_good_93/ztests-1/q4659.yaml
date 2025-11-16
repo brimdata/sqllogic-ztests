@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q4659.sql | sort > q4659.out
+
+inputs:
+  - name: q4659.sql
+    data: |
+      SELECT ALL col1 + - - col2 * - + 79 AS col1 FROM tab1 WHERE NOT + col2 IN ( CAST ( + 55 AS REAL ) );
+  - name: tab1
+
+outputs:
+  - name: q4659.out
+    data: |
+      -4656
+      -5325
+      -7570

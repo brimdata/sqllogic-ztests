@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q7766.sql | sort > q7766.out
+
+inputs:
+  - name: q7766.sql
+    data: |
+      SELECT DISTINCT * FROM tab2 WHERE + CAST ( - col2 AS REAL ) NOT BETWEEN 47 + col1 AND 86;
+  - name: tab2
+
+outputs:
+  - name: q7766.out
+    data: |
+      46	51	23
+      64	77	40
+      75	67	58

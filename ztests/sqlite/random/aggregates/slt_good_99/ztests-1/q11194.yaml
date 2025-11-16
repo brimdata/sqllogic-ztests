@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q11194.sql | sort > q11194.out
+
+inputs:
+  - name: q11194.sql
+    data: |
+      SELECT SUM ( + CAST ( col1 AS INTEGER ) ) AS col2, COUNT ( * ) + 60 * COUNT ( * ) FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q11194.out
+    data: |
+      195	183

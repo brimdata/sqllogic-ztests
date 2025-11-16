@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q6892.sql | sort > q6892.out
+
+inputs:
+  - name: q6892.sql
+    data: |
+      SELECT - CAST ( + col2 AS INTEGER ) * - col1 + tab1.col0 * - col0 AS col0 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q6892.out
+    data: |
+      -3526
+      -5152
+      1395

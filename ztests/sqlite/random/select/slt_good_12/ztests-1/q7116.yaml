@@ -1,0 +1,20 @@
+script: |
+  super -f text -I q7116.sql | sort > q7116.out
+
+inputs:
+  - name: q7116.sql
+    data: |
+      SELECT DISTINCT CAST ( cor2.col1 AS REAL ) * + cor0.col1 AS col0 FROM tab0, tab1 cor0, tab2 AS cor1, tab1, tab1 AS cor2;
+  - name: tab0
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q7116.out
+    data: |
+      100
+      130
+      169
+      260
+      338
+      676

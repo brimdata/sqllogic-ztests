@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q11791.sql | sort > q11791.out
+
+inputs:
+  - name: q11791.sql
+    data: |
+      SELECT DISTINCT 30 * - + ( - CAST ( COUNT ( col1 ) AS INTEGER ) ) AS col0 FROM tab0;
+  - name: tab0
+
+outputs:
+  - name: q11791.out
+    data: |
+      90

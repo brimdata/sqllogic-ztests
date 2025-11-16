@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q6814.sql | sort > q6814.out
+
+inputs:
+  - name: q6814.sql
+    data: |
+      SELECT DISTINCT * FROM tab2 AS cor0 CROSS JOIN tab2 WHERE NOT - CAST ( NULL AS INTEGER ) IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q6814.out
+    data: |

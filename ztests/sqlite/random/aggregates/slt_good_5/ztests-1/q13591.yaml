@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q13591.sql | sort > q13591.out
+
+inputs:
+  - name: q13591.sql
+    data: |
+      SELECT ALL + CAST ( + col0 AS INTEGER ) AS col0 FROM tab1 WHERE NOT col0 / 13 >= + col2 + 20;
+  - name: tab1
+
+outputs:
+  - name: q13591.out
+    data: |
+      51
+      85
+      91

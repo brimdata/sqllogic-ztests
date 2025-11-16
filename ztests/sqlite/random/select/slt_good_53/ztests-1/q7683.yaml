@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q7683.sql | sort > q7683.out
+
+inputs:
+  - name: q7683.sql
+    data: |
+      SELECT ( - col2 ) * CAST ( - 10 AS INTEGER ) + col0 * tab1.col2 - 17 * - col1 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q7683.out
+    data: |
+      1144
+      4388
+      8861

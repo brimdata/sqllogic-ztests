@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q10678.sql | sort > q10678.out
+
+inputs:
+  - name: q10678.sql
+    data: |
+      SELECT col2 / col0 + - ( CAST ( 34 AS INTEGER ) + - col1 ) FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q10678.out
+    data: |
+      -19
+      -29
+      13

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q3117.sql | sort > q3117.out
+
+inputs:
+  - name: q3117.sql
+    data: |
+      SELECT * FROM tab2 WHERE NOT CAST ( 47 AS INTEGER ) BETWEEN - col0 AND 44;
+  - name: tab2
+
+outputs:
+  - name: q3117.out
+    data: |
+      46	51	23
+      64	77	40
+      75	67	58

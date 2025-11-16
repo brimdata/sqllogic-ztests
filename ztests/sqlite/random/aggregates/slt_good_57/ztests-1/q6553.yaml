@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q6553.sql | sort > q6553.out
+
+inputs:
+  - name: q6553.sql
+    data: |
+      SELECT DISTINCT CAST ( NULL AS REAL ) + - 30 col2 FROM tab2 AS cor0 CROSS JOIN tab2 cor1;
+  - name: tab2
+
+outputs:
+  - name: q6553.out
+    data: |
+      -

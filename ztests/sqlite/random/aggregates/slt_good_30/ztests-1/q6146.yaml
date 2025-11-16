@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q6146.sql | sort > q6146.out
+
+inputs:
+  - name: q6146.sql
+    data: |
+      SELECT DISTINCT col1 * CAST ( + col1 AS INTEGER ) AS col2 FROM tab2 AS cor0 WHERE + 34 NOT IN ( + col0 );
+  - name: tab2
+
+outputs:
+  - name: q6146.out
+    data: |
+      2601
+      4489
+      5929

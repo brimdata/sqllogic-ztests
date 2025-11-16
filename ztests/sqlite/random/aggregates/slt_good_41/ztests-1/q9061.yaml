@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q9061.sql | sort > q9061.out
+
+inputs:
+  - name: q9061.sql
+    data: |
+      SELECT ALL col1 AS col0 FROM tab2 WHERE NOT - - CAST ( - CAST ( col2 AS INTEGER ) AS REAL ) IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q9061.out
+    data: |
+      51
+      67
+      77

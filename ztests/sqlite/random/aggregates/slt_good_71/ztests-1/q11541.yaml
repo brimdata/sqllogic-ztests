@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q11541.sql | sort > q11541.out
+
+inputs:
+  - name: q11541.sql
+    data: |
+      SELECT ALL + SUM ( - col1 ) - + CAST ( NULL AS REAL ) AS col1 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q11541.out
+    data: |
+      -

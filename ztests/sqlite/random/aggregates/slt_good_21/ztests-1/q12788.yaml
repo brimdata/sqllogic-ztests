@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q12788.sql | sort > q12788.out
+
+inputs:
+  - name: q12788.sql
+    data: |
+      SELECT + CAST ( - COUNT ( * ) AS INTEGER ) - - 80 AS col0 FROM tab1 WHERE NOT col2 IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q12788.out
+    data: |
+      77

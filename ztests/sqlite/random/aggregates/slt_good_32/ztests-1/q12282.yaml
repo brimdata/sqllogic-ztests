@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q12282.sql | sort > q12282.out
+
+inputs:
+  - name: q12282.sql
+    data: |
+      SELECT ALL * FROM tab1 WHERE - CAST ( + col1 AS INTEGER ) <= 92 * 20 - - col1;
+  - name: tab1
+
+outputs:
+  - name: q12282.out
+    data: |
+      51	14	96
+      85	5	59
+      91	47	68

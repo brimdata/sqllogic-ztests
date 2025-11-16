@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q5786.sql | sort > q5786.out
+
+inputs:
+  - name: q5786.sql
+    data: |
+      SELECT ALL col1 + - col1 * CAST ( 62 AS REAL ) FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q5786.out
+    data: |
+      -1037
+      -1891
+      -3599

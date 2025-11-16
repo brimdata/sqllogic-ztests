@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q2805.sql | sort > q2805.out
+
+inputs:
+  - name: q2805.sql
+    data: |
+      SELECT DISTINCT * FROM tab1 WHERE NOT - CAST ( + 45 AS INTEGER ) IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q2805.out
+    data: |
+      51	14	96
+      85	5	59
+      91	47	68

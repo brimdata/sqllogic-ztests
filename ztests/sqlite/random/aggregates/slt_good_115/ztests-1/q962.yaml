@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q962.sql | sort > q962.out
+
+inputs:
+  - name: q962.sql
+    data: |
+      SELECT * FROM tab1 WHERE - CAST ( NULL AS REAL ) IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q962.out
+    data: |
+      51	14	96
+      85	5	59
+      91	47	68

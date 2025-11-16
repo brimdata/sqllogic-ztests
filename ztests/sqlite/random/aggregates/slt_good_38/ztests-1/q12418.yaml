@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q12418.sql | sort > q12418.out
+
+inputs:
+  - name: q12418.sql
+    data: |
+      SELECT ALL col0, + CAST ( - col0 AS INTEGER ) + col1 FROM tab1 AS cor0 WHERE ( col1 ) IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q12418.out
+    data: |
+      51	-37
+      85	-80
+      91	-44

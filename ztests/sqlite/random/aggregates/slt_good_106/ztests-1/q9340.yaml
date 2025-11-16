@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q9340.sql | sort > q9340.out
+
+inputs:
+  - name: q9340.sql
+    data: |
+      SELECT ALL MAX ( ALL col2 ) AS col0 FROM tab1 WHERE NOT - ( - col1 ) IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q9340.out
+    data: |
+      96

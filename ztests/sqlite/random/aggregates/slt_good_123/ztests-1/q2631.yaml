@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q2631.sql | sort > q2631.out
+
+inputs:
+  - name: q2631.sql
+    data: |
+      SELECT - + col0 * - col1 AS col2, 15 FROM tab0 WHERE NOT CAST ( NULL AS REAL ) + + col0 IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q2631.out
+    data: |
+      1215	15
+      1827	15
+      97	15

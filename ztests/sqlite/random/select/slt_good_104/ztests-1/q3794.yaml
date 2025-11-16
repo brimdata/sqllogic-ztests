@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q3794.sql | sort > q3794.out
+
+inputs:
+  - name: q3794.sql
+    data: |
+      SELECT - tab1.col1 + col1 / col0 + col0 / CAST ( - col2 AS INTEGER ) FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q3794.out
+    data: |
+      -11
+      -13
+      -18

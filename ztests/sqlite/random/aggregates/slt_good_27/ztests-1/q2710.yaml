@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q2710.sql | sort > q2710.out
+
+inputs:
+  - name: q2710.sql
+    data: |
+      SELECT * FROM tab0 WHERE col2 + - + CAST ( + 87 AS INTEGER ) NOT BETWEEN col0 AND + col0;
+  - name: tab0
+
+outputs:
+  - name: q2710.out
+    data: |
+      15	81	47
+      87	21	10
+      97	1	99
