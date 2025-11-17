@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q4597.sql | sort > q4597.out
+
+inputs:
+  - name: q4597.sql
+    data: |
+      SELECT DISTINCT COUNT ( * ), MAX ( - - CAST ( CAST ( col0 AS INTEGER ) AS INTEGER ) ) AS col2 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q4597.out
+    data: |
+      3	91

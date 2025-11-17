@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q6659.sql | sort > q6659.out
+
+inputs:
+  - name: q6659.sql
+    data: |
+      SELECT CAST ( 37 AS INTEGER ), col0 * CAST ( col2 AS INTEGER ) AS col1, + - col2 * - - col2 + col2 AS col0 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q6659.out
+    data: |
+      37	1058	-506
+      37	2560	-1560
+      37	4350	-3306

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8909.sql | sort > q8909.out
+
+inputs:
+  - name: q8909.sql
+    data: |
+      SELECT ALL col1 * + CAST ( + - col2 AS INTEGER ) AS col0, - ( + 17 ) FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q8909.out
+    data: |
+      -1344	-17
+      -295	-17
+      -3196	-17

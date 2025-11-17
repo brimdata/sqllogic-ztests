@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q5432.sql | sort > q5432.out
+
+inputs:
+  - name: q5432.sql
+    data: |
+      SELECT ALL col0 * ( tab1.col0 ) * col1 - + CAST ( col1 AS INTEGER ) / col2 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q5432.out
+    data: |
+      234
+      40960
+      83200

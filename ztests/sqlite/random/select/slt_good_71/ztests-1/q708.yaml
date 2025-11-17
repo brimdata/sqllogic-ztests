@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q708.sql | sort > q708.out
+
+inputs:
+  - name: q708.sql
+    data: |
+      SELECT ALL + 60 + col0 * - CAST ( col0 AS REAL ) AS col1 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q708.out
+    data: |
+      -6024
+      -6181
+      11

@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q13706.sql | sort > q13706.out
+
+inputs:
+  - name: q13706.sql
+    data: |
+      SELECT CAST ( COUNT ( * ) AS INTEGER ) + - COUNT ( * ) * - SUM ( + - col2 ) AS col0 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q13706.out
+    data: |
+      -360

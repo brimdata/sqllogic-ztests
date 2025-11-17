@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q13172.sql | sort > q13172.out
+
+inputs:
+  - name: q13172.sql
+    data: |
+      SELECT ALL ( + col2 ) + 3 * CAST ( 97 * + col2 + - 72 AS INTEGER ) FROM tab0 WHERE NOT ( col2 ) < ( 15 );
+  - name: tab0
+
+outputs:
+  - name: q13172.out
+    data: |
+      13508
+      28692

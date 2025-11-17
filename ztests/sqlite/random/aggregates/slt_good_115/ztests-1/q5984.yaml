@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q5984.sql | sort > q5984.out
+
+inputs:
+  - name: q5984.sql
+    data: |
+      SELECT ALL + CAST ( - - COUNT ( * ) AS INTEGER ) + 21 AS col1 FROM tab1 AS cor0 CROSS JOIN tab0 AS cor1;
+  - name: tab0
+  - name: tab1
+
+outputs:
+  - name: q5984.out
+    data: |
+      30

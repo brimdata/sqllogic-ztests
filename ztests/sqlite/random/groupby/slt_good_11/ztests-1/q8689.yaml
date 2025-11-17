@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8689.sql | sort > q8689.out
+
+inputs:
+  - name: q8689.sql
+    data: |
+      SELECT + 96 AS col2 FROM tab0 GROUP BY col0, col2 HAVING NOT CAST ( + - 96 AS INTEGER ) IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q8689.out
+    data: |
+      96
+      96
+      96

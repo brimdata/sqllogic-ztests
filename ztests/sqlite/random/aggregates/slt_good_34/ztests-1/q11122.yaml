@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q11122.sql | sort > q11122.out
+
+inputs:
+  - name: q11122.sql
+    data: |
+      SELECT ALL CAST ( - + col1 AS INTEGER ) / col2 * + col1 * - 65 AS col0 FROM tab0;
+  - name: tab0
+
+outputs:
+  - name: q11122.out
+    data: |
+      0
+      2730
+      5265

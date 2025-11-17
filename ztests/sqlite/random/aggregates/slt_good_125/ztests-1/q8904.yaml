@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8904.sql | sort > q8904.out
+
+inputs:
+  - name: q8904.sql
+    data: |
+      SELECT DISTINCT col0 * + 59 FROM tab1 WHERE NOT CAST ( col1 AS INTEGER ) * col1 + 5 / + 37 IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q8904.out
+    data: |
+      3009
+      5015
+      5369

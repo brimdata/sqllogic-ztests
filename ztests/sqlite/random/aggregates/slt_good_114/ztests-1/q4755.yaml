@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q4755.sql | sort > q4755.out
+
+inputs:
+  - name: q4755.sql
+    data: |
+      SELECT ALL * FROM tab1 WHERE col2 * col2 - + - ( - col2 ) - - - CAST ( - + col2 AS INTEGER ) IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q4755.out
+    data: |
+      51	14	96
+      85	5	59
+      91	47	68

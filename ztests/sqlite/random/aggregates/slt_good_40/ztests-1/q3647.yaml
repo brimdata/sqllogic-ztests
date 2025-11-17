@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q3647.sql | sort > q3647.out
+
+inputs:
+  - name: q3647.sql
+    data: |
+      SELECT DISTINCT col1 / + CAST ( - CAST ( col0 AS REAL ) AS INTEGER ) FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q3647.out
+    data: |
+      0

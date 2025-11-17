@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q7111.sql | sort > q7111.out
+
+inputs:
+  - name: q7111.sql
+    data: |
+      SELECT DISTINCT * FROM tab2 WHERE NOT - col2 IN ( + CAST ( + 53 AS REAL ) );
+  - name: tab2
+
+outputs:
+  - name: q7111.out
+    data: |
+      46	51	23
+      64	77	40
+      75	67	58

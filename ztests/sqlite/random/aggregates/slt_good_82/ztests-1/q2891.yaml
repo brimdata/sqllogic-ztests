@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q2891.sql | sort > q2891.out
+
+inputs:
+  - name: q2891.sql
+    data: |
+      SELECT * FROM tab0 WHERE NOT - ( - + CAST ( col0 AS REAL ) ) < ( + + col2 );
+  - name: tab0
+
+outputs:
+  - name: q2891.out
+    data: |
+      87	21	10

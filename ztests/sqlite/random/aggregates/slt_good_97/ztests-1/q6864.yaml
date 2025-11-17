@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q6864.sql | sort > q6864.out
+
+inputs:
+  - name: q6864.sql
+    data: |
+      SELECT col1, CAST ( NULL AS REAL ) / - col2 * - 18 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q6864.out
+    data: |
+      14	-
+      47	-
+      5	-

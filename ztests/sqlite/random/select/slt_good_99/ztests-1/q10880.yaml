@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q10880.sql | sort > q10880.out
+
+inputs:
+  - name: q10880.sql
+    data: |
+      SELECT ALL tab2.col0 * col1 + - col2 * col1 * CAST ( col1 * + col0 AS REAL ) FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q10880.out
+    data: |
+      -181412
+      -7054866
+      -866235

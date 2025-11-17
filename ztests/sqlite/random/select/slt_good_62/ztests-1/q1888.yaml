@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q1888.sql | sort > q1888.out
+
+inputs:
+  - name: q1888.sql
+    data: |
+      SELECT ALL col1 * CAST ( 43 * + col2 AS REAL ) + col0 AS col2 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q1888.out
+    data: |
+      27857
+      35998
+      66040

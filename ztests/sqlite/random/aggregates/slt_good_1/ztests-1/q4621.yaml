@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q4621.sql | sort > q4621.out
+
+inputs:
+  - name: q4621.sql
+    data: |
+      SELECT col1 * + - col1, + col1 AS col0 FROM tab2 WHERE NOT ( + - CAST ( NULL AS INTEGER ) ) IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q4621.out
+    data: |
+      -2601	51
+      -4489	67
+      -5929	77

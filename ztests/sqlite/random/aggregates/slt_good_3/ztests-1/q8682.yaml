@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8682.sql | sort > q8682.out
+
+inputs:
+  - name: q8682.sql
+    data: |
+      SELECT DISTINCT * FROM tab0 WHERE ( 23 * CAST ( NULL AS REAL ) ) IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q8682.out
+    data: |
+      15	81	47
+      87	21	10
+      97	1	99

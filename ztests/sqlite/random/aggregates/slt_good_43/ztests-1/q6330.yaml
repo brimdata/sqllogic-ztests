@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q6330.sql | sort > q6330.out
+
+inputs:
+  - name: q6330.sql
+    data: |
+      SELECT * FROM tab1 AS cor0 WHERE - col0 * + col1 NOT BETWEEN ( - CAST ( col1 AS INTEGER ) ) AND - col0;
+  - name: tab1
+
+outputs:
+  - name: q6330.out
+    data: |
+      51	14	96
+      85	5	59
+      91	47	68

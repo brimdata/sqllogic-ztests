@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q6259.sql | sort > q6259.out
+
+inputs:
+  - name: q6259.sql
+    data: |
+      SELECT ALL col1 * + - 35 FROM tab2 WHERE NOT + CAST ( NULL AS INTEGER ) - col2 * + - col2 IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q6259.out
+    data: |
+      -1785
+      -2345
+      -2695

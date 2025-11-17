@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q12381.sql | sort > q12381.out
+
+inputs:
+  - name: q12381.sql
+    data: |
+      SELECT ALL COUNT ( * ) * + - 64 FROM tab1 WHERE NOT + CAST ( col0 AS INTEGER ) IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q12381.out
+    data: |
+      -192

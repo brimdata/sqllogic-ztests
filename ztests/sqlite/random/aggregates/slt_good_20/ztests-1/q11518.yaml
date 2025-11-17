@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q11518.sql | sort > q11518.out
+
+inputs:
+  - name: q11518.sql
+    data: |
+      SELECT ALL COUNT ( * ) / CAST ( NULL AS INTEGER ) + - 98 FROM tab1 AS cor0 WHERE NOT col1 * ( col2 * col1 ) IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q11518.out
+    data: |
+      -

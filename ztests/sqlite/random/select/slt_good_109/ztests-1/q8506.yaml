@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8506.sql | sort > q8506.out
+
+inputs:
+  - name: q8506.sql
+    data: |
+      SELECT ALL CAST ( col1 AS INTEGER ) / col1 + - ( + col2 ) * col2 FROM tab0;
+  - name: tab0
+
+outputs:
+  - name: q8506.out
+    data: |
+      -1088
+      -6723
+      0

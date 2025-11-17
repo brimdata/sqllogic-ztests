@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q9987.sql | sort > q9987.out
+
+inputs:
+  - name: q9987.sql
+    data: |
+      SELECT DISTINCT col0 / col1 * CAST ( + - col0 AS INTEGER ) * 66 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q9987.out
+    data: |
+      -10098
+      -6006
+      -95370

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q9576.sql | sort > q9576.out
+
+inputs:
+  - name: q9576.sql
+    data: |
+      SELECT * FROM tab2 WHERE NOT CAST ( + col0 AS REAL ) / + - CAST ( NULL AS REAL ) + + - 76 IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q9576.out
+    data: |
+      46	51	23
+      64	77	40
+      75	67	58

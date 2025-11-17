@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q7585.sql | sort > q7585.out
+
+inputs:
+  - name: q7585.sql
+    data: |
+      SELECT - 71 AS col1, + col1 * - col0 - CAST ( - col1 AS INTEGER ) FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q7585.out
+    data: |
+      -71	-420
+      -71	-4230
+      -71	-700

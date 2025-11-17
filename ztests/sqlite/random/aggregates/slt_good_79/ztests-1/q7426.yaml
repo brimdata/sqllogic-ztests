@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q7426.sql | sort > q7426.out
+
+inputs:
+  - name: q7426.sql
+    data: |
+      SELECT * FROM tab1 WHERE 1 / + CAST ( NULL AS INTEGER ) + + ( - + 42 ) IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q7426.out
+    data: |
+      51	14	96
+      85	5	59
+      91	47	68

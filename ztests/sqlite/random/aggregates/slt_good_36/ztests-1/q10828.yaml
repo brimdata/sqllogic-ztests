@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q10828.sql | sort > q10828.out
+
+inputs:
+  - name: q10828.sql
+    data: |
+      SELECT DISTINCT * FROM tab2 cor0 WHERE NOT ( NOT ( + + col1 + + ( + + col2 ) ) = - CAST ( - ( + col1 ) AS INTEGER ) + + col2 );
+  - name: tab2
+
+outputs:
+  - name: q10828.out
+    data: |
+      46	51	23
+      64	77	40
+      75	67	58

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q5622.sql | sort > q5622.out
+
+inputs:
+  - name: q5622.sql
+    data: |
+      SELECT DISTINCT + col0 AS col1 FROM tab1 GROUP BY col0 HAVING ( - CAST ( - 8 AS INTEGER ) IS NOT NULL );
+  - name: tab1
+
+outputs:
+  - name: q5622.out
+    data: |
+      22
+      28
+      82

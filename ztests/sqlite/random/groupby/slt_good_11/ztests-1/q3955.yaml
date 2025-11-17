@@ -1,0 +1,12 @@
+script: |
+  super -f text -I q3955.sql | sort > q3955.out
+
+inputs:
+  - name: q3955.sql
+    data: |
+      SELECT col2 AS col0 FROM tab1 GROUP BY col2 HAVING NOT ( - CAST ( NULL AS INTEGER ) ) <= + 43;
+  - name: tab1
+
+outputs:
+  - name: q3955.out
+    data: |

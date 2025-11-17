@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q5427.sql | sort > q5427.out
+
+inputs:
+  - name: q5427.sql
+    data: |
+      SELECT + CAST ( col1 AS INTEGER ) + - tab2.col1 + - ( col0 ) FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q5427.out
+    data: |
+      -7
+      -78
+      -79

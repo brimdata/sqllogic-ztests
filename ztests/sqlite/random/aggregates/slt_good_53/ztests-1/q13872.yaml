@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q13872.sql | sort > q13872.out
+
+inputs:
+  - name: q13872.sql
+    data: |
+      SELECT * FROM tab1 AS cor0 WHERE NOT ( - CAST ( 15 AS INTEGER ) + col2 + col1 <= - CAST ( + - col1 AS INTEGER ) );
+  - name: tab1
+
+outputs:
+  - name: q13872.out
+    data: |
+      51	14	96
+      85	5	59
+      91	47	68

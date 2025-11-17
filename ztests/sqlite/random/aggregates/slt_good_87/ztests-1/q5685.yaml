@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q5685.sql | sort > q5685.out
+
+inputs:
+  - name: q5685.sql
+    data: |
+      SELECT MIN ( ALL 25 ) FROM tab0 WHERE NOT ( CAST ( NULL AS REAL ) ) IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q5685.out
+    data: |
+      25

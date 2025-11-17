@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q9040.sql | sort > q9040.out
+
+inputs:
+  - name: q9040.sql
+    data: |
+      SELECT DISTINCT + col0 * CAST ( cor0.col0 AS INTEGER ) + - col1 * - col0 * cor0.col0 + + cor0.col2 FROM tab2 AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q9040.out
+    data: |
+      112376
+      1595
+      365066

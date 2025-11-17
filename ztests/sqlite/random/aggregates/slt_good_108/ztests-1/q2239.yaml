@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q2239.sql | sort > q2239.out
+
+inputs:
+  - name: q2239.sql
+    data: |
+      SELECT * FROM tab2 WHERE NOT CAST ( + col1 AS REAL ) - col1 * + col0 IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q2239.out
+    data: |
+      46	51	23
+      64	77	40
+      75	67	58

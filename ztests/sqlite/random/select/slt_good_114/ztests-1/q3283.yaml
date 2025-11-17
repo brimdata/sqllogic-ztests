@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q3283.sql | sort > q3283.out
+
+inputs:
+  - name: q3283.sql
+    data: |
+      SELECT - 75 * col1 / CAST ( + ( col1 ) AS INTEGER ) + col2 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q3283.out
+    data: |
+      -18
+      -21
+      21

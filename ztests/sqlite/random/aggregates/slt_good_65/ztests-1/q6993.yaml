@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q6993.sql | sort > q6993.out
+
+inputs:
+  - name: q6993.sql
+    data: |
+      SELECT DISTINCT col0 FROM tab0 WHERE NOT ( + CAST ( - col1 AS INTEGER ) ) BETWEEN NULL AND ( - col1 * + col2 + + 8 );
+  - name: tab0
+
+outputs:
+  - name: q6993.out
+    data: |
+      15
+      87
+      97

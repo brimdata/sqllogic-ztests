@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q4226.sql | sort > q4226.out
+
+inputs:
+  - name: q4226.sql
+    data: |
+      SELECT DISTINCT * FROM tab0 WHERE + CAST ( + col2 AS INTEGER ) <> - 3 AND NOT NULL IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q4226.out
+    data: |
+      15	81	47
+      87	21	10
+      97	1	99

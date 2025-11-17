@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q5163.sql | sort > q5163.out
+
+inputs:
+  - name: q5163.sql
+    data: |
+      SELECT DISTINCT col1 + - CAST ( col0 + col1 AS INTEGER ) * + 47 AS col1 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q5163.out
+    data: |
+      -1755
+      -4495
+      -6380

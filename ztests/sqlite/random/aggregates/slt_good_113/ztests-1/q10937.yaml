@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q10937.sql | sort > q10937.out
+
+inputs:
+  - name: q10937.sql
+    data: |
+      SELECT DISTINCT COUNT ( * ) / CAST ( + COUNT ( - 21 ) AS INTEGER ) AS col1, + SUM ( + + 1 ) FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q10937.out
+    data: |
+      1	3

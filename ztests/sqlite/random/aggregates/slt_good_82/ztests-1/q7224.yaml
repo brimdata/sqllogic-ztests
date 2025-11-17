@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q7224.sql | sort > q7224.out
+
+inputs:
+  - name: q7224.sql
+    data: |
+      SELECT ALL * FROM tab1 WHERE NOT 4 + - CAST ( 39 AS INTEGER ) >= - col1 + + col2 * col1;
+  - name: tab1
+
+outputs:
+  - name: q7224.out
+    data: |
+      51	14	96
+      85	5	59
+      91	47	68

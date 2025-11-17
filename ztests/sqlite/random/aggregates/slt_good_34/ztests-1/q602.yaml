@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q602.sql | sort > q602.out
+
+inputs:
+  - name: q602.sql
+    data: |
+      SELECT * FROM tab1 WHERE - col0 - CAST ( NULL AS INTEGER ) IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q602.out
+    data: |
+      51	14	96
+      85	5	59
+      91	47	68

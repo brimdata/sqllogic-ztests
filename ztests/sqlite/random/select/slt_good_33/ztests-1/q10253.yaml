@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q10253.sql | sort > q10253.out
+
+inputs:
+  - name: q10253.sql
+    data: |
+      SELECT ALL + cor0.col2 / col1 + - CAST ( - col1 AS INTEGER ) * - col2 FROM tab1 AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q10253.out
+    data: |
+      -1241
+      -1402
+      -565

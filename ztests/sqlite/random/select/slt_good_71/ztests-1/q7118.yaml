@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q7118.sql | sort > q7118.out
+
+inputs:
+  - name: q7118.sql
+    data: |
+      SELECT ALL col1 + - col2 * - CAST ( 40 AS INTEGER ) * cor0.col2 + ( col1 ) / col1 AS col0 FROM tab1 AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q7118.out
+    data: |
+      116667
+      129971
+      368654

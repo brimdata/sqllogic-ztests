@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q5199.sql | sort > q5199.out
+
+inputs:
+  - name: q5199.sql
+    data: |
+      SELECT - COUNT ( * ) col2, + CAST ( SUM ( + col0 ) AS INTEGER ) AS col0 FROM tab0;
+  - name: tab0
+
+outputs:
+  - name: q5199.out
+    data: |
+      -3	199

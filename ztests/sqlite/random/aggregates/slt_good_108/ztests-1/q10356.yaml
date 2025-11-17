@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q10356.sql | sort > q10356.out
+
+inputs:
+  - name: q10356.sql
+    data: |
+      SELECT col1 * - 99 FROM tab2 WHERE NOT CAST ( + col2 AS REAL ) + col1 IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q10356.out
+    data: |
+      -5049
+      -6633
+      -7623

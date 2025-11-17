@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q9789.sql | sort > q9789.out
+
+inputs:
+  - name: q9789.sql
+    data: |
+      SELECT DISTINCT col2 + - CAST ( - ( + col1 ) AS INTEGER ) * - 13 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q9789.out
+    data: |
+      -284
+      -73

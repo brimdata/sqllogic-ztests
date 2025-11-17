@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8798.sql | sort > q8798.out
+
+inputs:
+  - name: q8798.sql
+    data: |
+      SELECT ALL + col0 FROM tab0 AS cor0 GROUP BY col2, col0 HAVING NOT + - CAST ( NULL AS REAL ) IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q8798.out
+    data: |
+      26
+      43
+      83

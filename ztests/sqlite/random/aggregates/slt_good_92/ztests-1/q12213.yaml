@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q12213.sql | sort > q12213.out
+
+inputs:
+  - name: q12213.sql
+    data: |
+      SELECT DISTINCT col1, + CAST ( + 20 AS INTEGER ) * - ( + col0 ) AS col2 FROM tab0;
+  - name: tab0
+
+outputs:
+  - name: q12213.out
+    data: |
+      1	-1940
+      21	-1740
+      81	-300

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q13366.sql | sort > q13366.out
+
+inputs:
+  - name: q13366.sql
+    data: |
+      SELECT ALL col2 * 7 + - CAST ( - col2 AS INTEGER ), - 55 AS col1 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q13366.out
+    data: |
+      184	-55
+      320	-55
+      464	-55

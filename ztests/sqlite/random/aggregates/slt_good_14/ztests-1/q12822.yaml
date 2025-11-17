@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q12822.sql | sort > q12822.out
+
+inputs:
+  - name: q12822.sql
+    data: |
+      SELECT DISTINCT 62 / + COUNT ( * ) FROM tab2 WHERE NOT CAST ( NULL AS INTEGER ) IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q12822.out
+    data: |
+      20

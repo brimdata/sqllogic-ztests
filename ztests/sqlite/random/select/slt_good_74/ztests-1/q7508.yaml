@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q7508.sql | sort > q7508.out
+
+inputs:
+  - name: q7508.sql
+    data: |
+      SELECT + col1 * - CAST ( 25 * col1 AS INTEGER ) + ( col1 ) FROM tab0;
+  - name: tab0
+
+outputs:
+  - name: q7508.out
+    data: |
+      -184814
+      -206934
+      -235128

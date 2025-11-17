@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q1369.sql | sort > q1369.out
+
+inputs:
+  - name: q1369.sql
+    data: |
+      SELECT ALL - CAST ( col2 + col1 AS REAL ) * 42 * col1 AS col1 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q1369.out
+    data: |
+      -28140
+      -59514
+      -87360

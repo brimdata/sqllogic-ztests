@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q1732.sql | sort > q1732.out
+
+inputs:
+  - name: q1732.sql
+    data: |
+      SELECT DISTINCT * FROM tab1 WHERE - col2 / - + CAST ( col2 AS INTEGER ) > - 24;
+  - name: tab1
+
+outputs:
+  - name: q1732.out
+    data: |
+      51	14	96
+      85	5	59
+      91	47	68

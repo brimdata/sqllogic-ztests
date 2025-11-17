@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q5540.sql | sort > q5540.out
+
+inputs:
+  - name: q5540.sql
+    data: |
+      SELECT ALL 7, col2 col1 FROM tab2 WHERE NOT + - CAST ( - + col0 AS INTEGER ) IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q5540.out
+    data: |
+      7	23
+      7	40
+      7	58

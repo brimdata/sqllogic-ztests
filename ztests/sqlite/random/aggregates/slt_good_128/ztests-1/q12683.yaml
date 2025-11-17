@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q12683.sql | sort > q12683.out
+
+inputs:
+  - name: q12683.sql
+    data: |
+      SELECT 43 - - + CAST ( + + CAST ( - col0 AS REAL ) AS INTEGER ) FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q12683.out
+    data: |
+      -42
+      -48
+      -8

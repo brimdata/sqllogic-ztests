@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q6002.sql | sort > q6002.out
+
+inputs:
+  - name: q6002.sql
+    data: |
+      SELECT * FROM tab2 WHERE ( + CAST ( NULL AS INTEGER ) + col1 ) IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q6002.out
+    data: |
+      46	51	23
+      64	77	40
+      75	67	58

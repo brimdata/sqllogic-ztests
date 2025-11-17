@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q5599.sql | sort > q5599.out
+
+inputs:
+  - name: q5599.sql
+    data: |
+      SELECT DISTINCT * FROM tab2 WHERE NOT ( ( + CAST ( - - col1 AS INTEGER ) ) IS NULL );
+  - name: tab2
+
+outputs:
+  - name: q5599.out
+    data: |
+      46	51	23
+      64	77	40
+      75	67	58

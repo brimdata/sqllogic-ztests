@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q7533.sql | sort > q7533.out
+
+inputs:
+  - name: q7533.sql
+    data: |
+      SELECT ALL + CAST ( - col1 AS REAL ) * - col1 * - col2 AS col0 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q7533.out
+    data: |
+      -16224
+      -36504
+      -5700

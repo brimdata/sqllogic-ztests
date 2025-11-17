@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8320.sql | sort > q8320.out
+
+inputs:
+  - name: q8320.sql
+    data: |
+      SELECT + CAST ( + col2 AS INTEGER ) * col2 + + col0 * tab1.col2 AS col1 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q8320.out
+    data: |
+      16896
+      3078
+      6897

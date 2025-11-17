@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q5073.sql | sort > q5073.out
+
+inputs:
+  - name: q5073.sql
+    data: |
+      SELECT DISTINCT col0 AS col0 FROM tab1 WHERE NOT col0 * - col1 - + col2 * CAST ( + 12 AS REAL ) IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q5073.out
+    data: |
+      51
+      85
+      91

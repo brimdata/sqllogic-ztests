@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q5400.sql | sort > q5400.out
+
+inputs:
+  - name: q5400.sql
+    data: |
+      SELECT * FROM tab2 WHERE NOT ( CAST ( + col0 AS REAL ) ) IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q5400.out
+    data: |
+      46	51	23
+      64	77	40
+      75	67	58

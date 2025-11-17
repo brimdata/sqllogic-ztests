@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q6950.sql | sort > q6950.out
+
+inputs:
+  - name: q6950.sql
+    data: |
+      SELECT ALL col0, col1 * ( CAST ( + 43 AS INTEGER ) ) / - col1 AS col2 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q6950.out
+    data: |
+      51	-43
+      85	-43
+      91	-43

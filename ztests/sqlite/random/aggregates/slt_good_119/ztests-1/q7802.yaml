@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q7802.sql | sort > q7802.out
+
+inputs:
+  - name: q7802.sql
+    data: |
+      SELECT ALL - + CAST ( col0 AS INTEGER ) + + ( + col0 ) - col0 FROM tab2 WHERE NULL IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q7802.out
+    data: |
+      -46
+      -64
+      -75

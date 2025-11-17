@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q393.sql | sort > q393.out
+
+inputs:
+  - name: q393.sql
+    data: |
+      SELECT DISTINCT col2 col1 FROM tab0 WHERE + - CAST ( NULL AS INTEGER ) IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q393.out
+    data: |
+      10
+      47
+      99

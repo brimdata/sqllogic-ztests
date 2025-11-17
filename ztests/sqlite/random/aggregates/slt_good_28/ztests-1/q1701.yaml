@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q1701.sql | sort > q1701.out
+
+inputs:
+  - name: q1701.sql
+    data: |
+      SELECT ALL COUNT ( * ) * CAST ( NULL AS INTEGER ) AS col1 FROM tab2 WHERE 78 >= - CAST ( - col0 AS INTEGER ) / col2;
+  - name: tab2
+
+outputs:
+  - name: q1701.out
+    data: |
+      -

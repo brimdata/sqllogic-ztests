@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q966.sql | sort > q966.out
+
+inputs:
+  - name: q966.sql
+    data: |
+      SELECT ALL col1 FROM tab2 GROUP BY col1, col1 HAVING + + CAST ( + - col1 AS INTEGER ) IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q966.out
+    data: |
+      41
+      59
+      61

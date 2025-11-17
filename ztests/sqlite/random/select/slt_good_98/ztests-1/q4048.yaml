@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q4048.sql | sort > q4048.out
+
+inputs:
+  - name: q4048.sql
+    data: |
+      SELECT DISTINCT CAST ( col1 AS INTEGER ) / + col1 + - col0 AS col2 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q4048.out
+    data: |
+      -2
+      -63
+      -79

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8552.sql | sort > q8552.out
+
+inputs:
+  - name: q8552.sql
+    data: |
+      SELECT ALL * FROM tab0 cor0 WHERE NOT - CAST ( col1 AS INTEGER ) / col1 * - col2 / col2 IN ( - 5, - col1 * - col0 );
+  - name: tab0
+
+outputs:
+  - name: q8552.out
+    data: |
+      15	81	47
+      87	21	10
+      97	1	99

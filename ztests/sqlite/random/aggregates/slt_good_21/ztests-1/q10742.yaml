@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q10742.sql | sort > q10742.out
+
+inputs:
+  - name: q10742.sql
+    data: |
+      SELECT 67 + - col1 FROM tab0 WHERE + CAST ( + col1 AS INTEGER ) NOT BETWEEN NULL AND + col2;
+  - name: tab0
+
+outputs:
+  - name: q10742.out
+    data: |
+      -14
+      46

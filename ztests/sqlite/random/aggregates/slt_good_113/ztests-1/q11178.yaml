@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q11178.sql | sort > q11178.out
+
+inputs:
+  - name: q11178.sql
+    data: |
+      SELECT - 95 * col1 FROM tab2 WHERE NOT - + CAST ( NULL AS INTEGER ) IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q11178.out
+    data: |
+      -4845
+      -6365
+      -7315

@@ -1,0 +1,16 @@
+script: |
+  super -f text -I q8634.sql | sort > q8634.out
+
+inputs:
+  - name: q8634.sql
+    data: |
+      SELECT DISTINCT - CAST ( + cor1.col1 AS INTEGER ) FROM tab1, tab1 AS cor0, tab0 AS cor1;
+  - name: tab0
+  - name: tab1
+
+outputs:
+  - name: q8634.out
+    data: |
+      -86
+      -91
+      -97

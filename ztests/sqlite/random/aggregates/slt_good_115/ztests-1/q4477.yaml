@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q4477.sql | sort > q4477.out
+
+inputs:
+  - name: q4477.sql
+    data: |
+      SELECT - COUNT ( * ) - - CAST ( COUNT ( * ) AS INTEGER ) * 38 FROM tab1 WHERE NOT ( col2 ) IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q4477.out
+    data: |
+      111

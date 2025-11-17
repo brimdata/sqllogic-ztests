@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q12207.sql | sort > q12207.out
+
+inputs:
+  - name: q12207.sql
+    data: |
+      SELECT DISTINCT * FROM tab2 WHERE NOT - CAST ( + 72 AS INTEGER ) = + col0;
+  - name: tab2
+
+outputs:
+  - name: q12207.out
+    data: |
+      46	51	23
+      64	77	40
+      75	67	58

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q1178.sql | sort > q1178.out
+
+inputs:
+  - name: q1178.sql
+    data: |
+      SELECT ALL * FROM tab2 WHERE - CAST ( - - 16 AS INTEGER ) NOT BETWEEN + col2 AND - col2;
+  - name: tab2
+
+outputs:
+  - name: q1178.out
+    data: |
+      46	51	23
+      64	77	40
+      75	67	58

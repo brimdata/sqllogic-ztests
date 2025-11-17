@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q5142.sql | sort > q5142.out
+
+inputs:
+  - name: q5142.sql
+    data: |
+      SELECT DISTINCT + COUNT ( * ) AS col1, MAX ( ALL + CAST ( NULL AS INTEGER ) ) col2 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q5142.out
+    data: |
+      3	-

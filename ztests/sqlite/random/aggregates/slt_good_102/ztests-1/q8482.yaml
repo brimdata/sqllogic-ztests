@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q8482.sql | sort > q8482.out
+
+inputs:
+  - name: q8482.sql
+    data: |
+      SELECT COUNT ( * ) - - - CAST ( COUNT ( * ) AS INTEGER ) FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q8482.out
+    data: |
+      0

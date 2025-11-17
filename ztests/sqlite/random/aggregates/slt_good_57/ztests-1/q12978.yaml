@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q12978.sql | sort > q12978.out
+
+inputs:
+  - name: q12978.sql
+    data: |
+      SELECT DISTINCT + - col2 + - 12 * col2 * + CAST ( col0 AS INTEGER ) AS col0 FROM tab1 AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q12978.out
+    data: |
+      -58848
+      -60239
+      -74324

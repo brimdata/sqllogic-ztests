@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q11182.sql | sort > q11182.out
+
+inputs:
+  - name: q11182.sql
+    data: |
+      SELECT + CAST ( - SUM ( col0 ) AS INTEGER ) FROM tab2 WHERE NOT ( - col1 + col2 ) IN ( + col0 );
+  - name: tab2
+
+outputs:
+  - name: q11182.out
+    data: |
+      -185

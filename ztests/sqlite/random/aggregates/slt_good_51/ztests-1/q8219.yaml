@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8219.sql | sort > q8219.out
+
+inputs:
+  - name: q8219.sql
+    data: |
+      SELECT DISTINCT * FROM tab2 WHERE NOT + 3 + + col2 IN ( CAST ( 45 AS INTEGER ) * col2 );
+  - name: tab2
+
+outputs:
+  - name: q8219.out
+    data: |
+      46	51	23
+      64	77	40
+      75	67	58

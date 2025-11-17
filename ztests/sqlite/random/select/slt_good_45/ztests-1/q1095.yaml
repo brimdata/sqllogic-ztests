@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q1095.sql | sort > q1095.out
+
+inputs:
+  - name: q1095.sql
+    data: |
+      SELECT CAST ( - ( + col1 ) AS INTEGER ) * col1 + - 74 AS col2 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q1095.out
+    data: |
+      -174
+      -243
+      -750

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q3129.sql | sort > q3129.out
+
+inputs:
+  - name: q3129.sql
+    data: |
+      SELECT ALL * FROM tab2 AS cor0 WHERE 7 NOT BETWEEN + CAST ( col1 AS INTEGER ) AND col2;
+  - name: tab2
+
+outputs:
+  - name: q3129.out
+    data: |
+      46	51	23
+      64	77	40
+      75	67	58

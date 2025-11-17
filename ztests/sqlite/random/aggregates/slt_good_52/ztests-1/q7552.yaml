@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q7552.sql | sort > q7552.out
+
+inputs:
+  - name: q7552.sql
+    data: |
+      SELECT DISTINCT 60 + - CAST ( COUNT ( * ) AS INTEGER ) AS col2 FROM tab1 WHERE - - 24 IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q7552.out
+    data: |
+      57

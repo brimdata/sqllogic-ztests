@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8193.sql | sort > q8193.out
+
+inputs:
+  - name: q8193.sql
+    data: |
+      SELECT DISTINCT + col2 * col2 / + CAST ( ( col2 ) AS INTEGER ) AS col2 FROM tab1 AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q8193.out
+    data: |
+      54
+      57
+      96

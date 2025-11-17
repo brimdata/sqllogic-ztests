@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8100.sql | sort > q8100.out
+
+inputs:
+  - name: q8100.sql
+    data: |
+      SELECT - CAST ( col1 AS INTEGER ) * - tab2.col2 + - col0 * col0 + col2 AS col2 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q8100.out
+    data: |
+      -4524
+      -5557
+      815

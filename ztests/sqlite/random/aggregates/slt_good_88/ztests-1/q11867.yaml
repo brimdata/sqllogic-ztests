@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q11867.sql | sort > q11867.out
+
+inputs:
+  - name: q11867.sql
+    data: |
+      SELECT * FROM tab2 WHERE NOT - CAST ( + 78 AS INTEGER ) BETWEEN - col2 AND - col2 * col0;
+  - name: tab2
+
+outputs:
+  - name: q11867.out
+    data: |
+      46	51	23
+      64	77	40
+      75	67	58

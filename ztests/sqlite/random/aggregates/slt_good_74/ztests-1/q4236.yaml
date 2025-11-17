@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q4236.sql | sort > q4236.out
+
+inputs:
+  - name: q4236.sql
+    data: |
+      SELECT + col1 AS col2 FROM tab1 WHERE 14 <> col1 * ( - ( - CAST ( col0 AS INTEGER ) ) );
+  - name: tab1
+
+outputs:
+  - name: q4236.out
+    data: |
+      14
+      47
+      5

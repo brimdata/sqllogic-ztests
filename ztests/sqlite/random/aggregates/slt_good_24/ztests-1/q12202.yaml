@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q12202.sql | sort > q12202.out
+
+inputs:
+  - name: q12202.sql
+    data: |
+      SELECT CAST ( - col1 AS INTEGER ) FROM tab1 WHERE NOT + col1 IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q12202.out
+    data: |
+      -14
+      -47
+      -5

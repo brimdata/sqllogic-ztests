@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q9074.sql | sort > q9074.out
+
+inputs:
+  - name: q9074.sql
+    data: |
+      SELECT ALL - ( col1 ) + col0 AS col1 FROM tab2 WHERE CAST ( NULL AS INTEGER ) + col1 IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q9074.out
+    data: |
+      -13
+      -5
+      8

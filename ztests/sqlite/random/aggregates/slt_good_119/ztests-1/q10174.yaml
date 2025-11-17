@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q10174.sql | sort > q10174.out
+
+inputs:
+  - name: q10174.sql
+    data: |
+      SELECT - 30 AS col1, + CAST ( - col2 AS INTEGER ) * - ( - col2 ) FROM tab1 cor0;
+  - name: tab1
+
+outputs:
+  - name: q10174.out
+    data: |
+      -30	-3481
+      -30	-4624
+      -30	-9216

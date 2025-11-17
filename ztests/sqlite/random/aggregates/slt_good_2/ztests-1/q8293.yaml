@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8293.sql | sort > q8293.out
+
+inputs:
+  - name: q8293.sql
+    data: |
+      SELECT ALL + CAST ( + - col0 AS INTEGER ) + 50 / + col1, col0 AS col1 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q8293.out
+    data: |
+      -46	46
+      -64	64
+      -75	75

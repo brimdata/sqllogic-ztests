@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q2642.sql | sort > q2642.out
+
+inputs:
+  - name: q2642.sql
+    data: |
+      SELECT DISTINCT - col1 * + col2 * CAST ( - col1 AS REAL ) FROM tab1 AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q2642.out
+    data: |
+      16224
+      36504
+      5700

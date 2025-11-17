@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8539.sql | sort > q8539.out
+
+inputs:
+  - name: q8539.sql
+    data: |
+      SELECT ALL * FROM tab2 WHERE NOT col0 = col0 * - CAST ( - col0 AS INTEGER );
+  - name: tab2
+
+outputs:
+  - name: q8539.out
+    data: |
+      46	51	23
+      64	77	40
+      75	67	58

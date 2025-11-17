@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q11065.sql | sort > q11065.out
+
+inputs:
+  - name: q11065.sql
+    data: |
+      SELECT * FROM tab0 WHERE ( ( col2 ) ) * - 47 NOT IN ( + CAST ( col2 AS INTEGER ) );
+  - name: tab0
+
+outputs:
+  - name: q11065.out
+    data: |
+      15	81	47
+      87	21	10
+      97	1	99

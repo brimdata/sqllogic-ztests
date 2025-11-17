@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q4363.sql | sort > q4363.out
+
+inputs:
+  - name: q4363.sql
+    data: |
+      SELECT + col2 + 28 * + col2 FROM tab1 WHERE NOT CAST ( + 42 AS INTEGER ) NOT BETWEEN 36 AND ( + col0 );
+  - name: tab1
+
+outputs:
+  - name: q4363.out
+    data: |
+      1711
+      1972
+      2784

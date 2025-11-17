@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q10183.sql | sort > q10183.out
+
+inputs:
+  - name: q10183.sql
+    data: |
+      SELECT col0 * - CAST ( - col1 * col0 AS INTEGER ) + + ( col2 ) FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q10183.out
+    data: |
+      106135
+      1546
+      358982

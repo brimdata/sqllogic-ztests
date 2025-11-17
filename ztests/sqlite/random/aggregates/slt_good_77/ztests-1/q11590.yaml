@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q11590.sql | sort > q11590.out
+
+inputs:
+  - name: q11590.sql
+    data: |
+      SELECT * FROM tab0 WHERE + + col1 * + col2 + + CAST ( + col1 AS INTEGER ) + - CAST ( NULL AS INTEGER ) * + - col2 IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q11590.out
+    data: |
+      15	81	47
+      87	21	10
+      97	1	99

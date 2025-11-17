@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8013.sql | sort > q8013.out
+
+inputs:
+  - name: q8013.sql
+    data: |
+      SELECT ALL * FROM tab0 WHERE ( CAST ( - col0 AS INTEGER ) * - 31 IS NOT NULL );
+  - name: tab0
+
+outputs:
+  - name: q8013.out
+    data: |
+      15	81	47
+      87	21	10
+      97	1	99

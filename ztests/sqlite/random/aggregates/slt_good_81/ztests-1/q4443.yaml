@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q4443.sql | sort > q4443.out
+
+inputs:
+  - name: q4443.sql
+    data: |
+      SELECT ALL CAST ( + col0 AS INTEGER ) FROM tab2 WHERE ( - 92 * col0 ) NOT IN ( col0 - + 13 * col2 );
+  - name: tab2
+
+outputs:
+  - name: q4443.out
+    data: |
+      46
+      64
+      75

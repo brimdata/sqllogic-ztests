@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q1305.sql | sort > q1305.out
+
+inputs:
+  - name: q1305.sql
+    data: |
+      SELECT ALL * FROM tab1 WHERE NOT ( - col1 ) > CAST ( + ( 88 ) AS REAL );
+  - name: tab1
+
+outputs:
+  - name: q1305.out
+    data: |
+      51	14	96
+      85	5	59
+      91	47	68

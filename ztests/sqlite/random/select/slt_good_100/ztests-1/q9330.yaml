@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q9330.sql | sort > q9330.out
+
+inputs:
+  - name: q9330.sql
+    data: |
+      SELECT ALL - tab2.col2 * col2 + - CAST ( 42 AS INTEGER ) * - col2 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q9330.out
+    data: |
+      152
+      405
+      416

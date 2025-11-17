@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q2148.sql | sort > q2148.out
+
+inputs:
+  - name: q2148.sql
+    data: |
+      SELECT * FROM tab1 WHERE ( col0 ) NOT IN ( CAST ( + 41 AS INTEGER ) ) OR NOT ( NULL ) > col1;
+  - name: tab1
+
+outputs:
+  - name: q2148.out
+    data: |
+      51	14	96
+      85	5	59
+      91	47	68

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q9472.sql | sort > q9472.out
+
+inputs:
+  - name: q9472.sql
+    data: |
+      SELECT * FROM tab0 AS cor0 WHERE - col1 NOT BETWEEN ( CAST ( col1 AS INTEGER ) ) AND NULL;
+  - name: tab0
+
+outputs:
+  - name: q9472.out
+    data: |
+      15	81	47
+      87	21	10
+      97	1	99

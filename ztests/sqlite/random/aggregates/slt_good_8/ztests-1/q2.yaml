@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q2.sql | sort > q2.out
+
+inputs:
+  - name: q2.sql
+    data: |
+      SELECT DISTINCT - COUNT ( * ) FROM tab1 WHERE NOT - CAST ( - col0 AS INTEGER ) IN ( col2, + col2 );
+  - name: tab1
+
+outputs:
+  - name: q2.out
+    data: |
+      -3

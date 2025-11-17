@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q9086.sql | sort > q9086.out
+
+inputs:
+  - name: q9086.sql
+    data: |
+      SELECT - col1 * ( 15 * col1 + CAST ( - ( - col1 ) AS INTEGER ) ) AS col1 FROM tab0 AS cor0;
+  - name: tab0
+
+outputs:
+  - name: q9086.out
+    data: |
+      -118336
+      -132496
+      -150544

@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q702.sql | sort > q702.out
+
+inputs:
+  - name: q702.sql
+    data: |
+      SELECT DISTINCT COUNT ( * ) AS col2 FROM ( tab0 AS cor0 CROSS JOIN tab1 cor1 );
+  - name: tab0
+  - name: tab1
+
+outputs:
+  - name: q702.out
+    data: |
+      9

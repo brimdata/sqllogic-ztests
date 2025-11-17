@@ -1,0 +1,14 @@
+script: |
+  super -f text -I q10832.sql | sort > q10832.out
+
+inputs:
+  - name: q10832.sql
+    data: |
+      SELECT DISTINCT CAST ( - ( - 38 ) AS INTEGER ) * COUNT ( * ) * 45 * COUNT ( * ) col1 FROM tab1 AS cor0 CROSS JOIN tab0 AS cor1;
+  - name: tab0
+  - name: tab1
+
+outputs:
+  - name: q10832.out
+    data: |
+      138510

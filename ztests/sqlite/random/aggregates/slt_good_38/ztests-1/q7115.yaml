@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q7115.sql | sort > q7115.out
+
+inputs:
+  - name: q7115.sql
+    data: |
+      SELECT * FROM tab1 WHERE NOT + 12 * + CAST ( col2 AS INTEGER ) BETWEEN ( 3 ) AND ( + col2 + - col0 );
+  - name: tab1
+
+outputs:
+  - name: q7115.out
+    data: |
+      51	14	96
+      85	5	59
+      91	47	68

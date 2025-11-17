@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q1880.sql | sort > q1880.out
+
+inputs:
+  - name: q1880.sql
+    data: |
+      SELECT DISTINCT * FROM tab2 cor0 WHERE NOT ( + col2 / + 2 ) > + CAST ( 96 AS REAL );
+  - name: tab2
+
+outputs:
+  - name: q1880.out
+    data: |
+      46	51	23
+      64	77	40
+      75	67	58

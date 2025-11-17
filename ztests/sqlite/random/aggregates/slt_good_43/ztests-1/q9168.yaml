@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q9168.sql | sort > q9168.out
+
+inputs:
+  - name: q9168.sql
+    data: |
+      SELECT * FROM tab0 WHERE NOT - col2 > CAST ( col2 AS INTEGER );
+  - name: tab0
+
+outputs:
+  - name: q9168.out
+    data: |
+      15	81	47
+      87	21	10
+      97	1	99

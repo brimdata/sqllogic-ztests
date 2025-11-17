@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q7045.sql | sort > q7045.out
+
+inputs:
+  - name: q7045.sql
+    data: |
+      SELECT 65 + - col1 - - + ( + CAST ( col0 AS INTEGER ) ) + 18 * - col0 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q7045.out
+    data: |
+      -1100
+      -1277
+      -768

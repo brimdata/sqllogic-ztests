@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q9601.sql | sort > q9601.out
+
+inputs:
+  - name: q9601.sql
+    data: |
+      SELECT - col1 + + CAST ( col1 AS INTEGER ) * col2 + ( col2 ) FROM tab0 AS cor0;
+  - name: tab0
+
+outputs:
+  - name: q9601.out
+    data: |
+      1
+      2785
+      7453

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q7412.sql | sort > q7412.out
+
+inputs:
+  - name: q7412.sql
+    data: |
+      SELECT col2 + - CAST ( - col0 AS REAL ) * col2 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q7412.out
+    data: |
+      216
+      3705
+      7776

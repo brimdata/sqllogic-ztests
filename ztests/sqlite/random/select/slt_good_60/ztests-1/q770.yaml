@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q770.sql | sort > q770.out
+
+inputs:
+  - name: q770.sql
+    data: |
+      SELECT DISTINCT col1 + CAST ( col0 AS INTEGER ) / - col2 AS col1 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q770.out
+    data: |
+      13
+      26
+      9

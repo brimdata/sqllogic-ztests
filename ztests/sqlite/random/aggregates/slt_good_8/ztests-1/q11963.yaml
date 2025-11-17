@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q11963.sql | sort > q11963.out
+
+inputs:
+  - name: q11963.sql
+    data: |
+      SELECT ALL * FROM tab2 WHERE NOT CAST ( + - 74 AS REAL ) > - col2 + + col2;
+  - name: tab2
+
+outputs:
+  - name: q11963.out
+    data: |
+      46	51	23
+      64	77	40
+      75	67	58

@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q4817.sql | sort > q4817.out
+
+inputs:
+  - name: q4817.sql
+    data: |
+      SELECT * FROM tab2 WHERE ( - CAST ( ( - col1 ) AS REAL ) ) IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q4817.out
+    data: |
+      46	51	23
+      64	77	40
+      75	67	58

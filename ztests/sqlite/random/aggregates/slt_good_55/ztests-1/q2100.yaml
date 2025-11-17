@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q2100.sql | sort > q2100.out
+
+inputs:
+  - name: q2100.sql
+    data: |
+      SELECT DISTINCT + CAST ( - col1 AS INTEGER ) AS col1 FROM tab1 WHERE NOT + col1 IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q2100.out
+    data: |
+      -14
+      -47
+      -5

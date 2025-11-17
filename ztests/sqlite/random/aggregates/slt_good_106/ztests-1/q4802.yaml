@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q4802.sql | sort > q4802.out
+
+inputs:
+  - name: q4802.sql
+    data: |
+      SELECT * FROM tab0 WHERE 12 <> CAST ( - + 25 AS INTEGER );
+  - name: tab0
+
+outputs:
+  - name: q4802.out
+    data: |
+      15	81	47
+      87	21	10
+      97	1	99

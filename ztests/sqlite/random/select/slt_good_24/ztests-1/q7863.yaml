@@ -1,0 +1,13 @@
+script: |
+  super -f text -I q7863.sql | sort > q7863.out
+
+inputs:
+  - name: q7863.sql
+    data: |
+      SELECT DISTINCT col2 + col1 + - ( + col2 * - CAST ( NULL AS INTEGER ) ) FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q7863.out
+    data: |
+      -

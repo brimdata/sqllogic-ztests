@@ -1,0 +1,15 @@
+script: |
+  super -f text -I q8439.sql | sort > q8439.out
+
+inputs:
+  - name: q8439.sql
+    data: |
+      SELECT col1 + CAST ( - col2 AS REAL ) * col1 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q8439.out
+    data: |
+      -1475
+      -629
+      -806
