@@ -41,7 +41,7 @@ make TEST=TestSPQ/ztests/sqlite/select[1-5]
 In fact, that last one may prove handy if you want a quick "smoke test" on a
 super branch, since those ~5000 tests run in just a few minutes and provide a
 decent regression suite. Meanwhile, if you run 100% of the available tests
-you'll also get the 1+ million fuzz-style ztests below `sqlite/random/select/`,
+you'll also get the 3+ million fuzz-style ztests below `sqlite/random/select/`,
 which do provide wider coverage but also take hours to complete.
 
 ## Details
@@ -56,3 +56,16 @@ tables. The numeric ztest YAML filenames in each test subdirectory follow the
 order of the test queries (i.e., not DDL statements) as they appeared in the
 corresponding sqllogictest scripts, e.g., `q0.yaml` is the first query,
 `q1.yaml` is the next, etc.
+
+The modifications in [`super.patch`](super.patch) must currently be applied
+to your checkout of the super repo before doing `make build`.
+
+```
+patch -d super -p1 sqllogic-ztests/super.patch
+make -C super build
+```
+
+This is a temporary fix to produce TSV output from `super` that is `diff`-able
+against the expected sqllogictest outputs. Patching will not be necessary once
+[super/5961](https://github.com/brimdata/super/issues/5961) and
+[super/6381](https://github.com/brimdata/super/issues/6381) are addressed.
