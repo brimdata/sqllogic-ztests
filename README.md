@@ -61,7 +61,7 @@ The modifications in [`super.patch`](super.patch) must currently be applied
 to your checkout of the super repo before doing `make build`.
 
 ```
-patch -d super -p1 sqllogic-ztests/super.patch
+patch -d super -p1 < sqllogic-ztests/super.patch
 make -C super build
 ```
 
