@@ -1,0 +1,67 @@
+script: |
+  super -f tsv -I q75.sql | tr '\t' '\n' | sort > q75.out
+
+inputs:
+  - name: q75.sql
+    data: |
+      SELECT a3 FROM t3
+      WHERE (b3=340 OR 913=e3 OR c3=601)
+      OR a3 in (818,959,75,729,376,743,135,788,615,499,836)
+      OR (c3=777 OR 594=a3)
+      UNION
+      SELECT e9 FROM t9
+      WHERE (824=a9 OR a9=318)
+      OR c9 in (327,171,739,587,547,526)
+      OR d9 in (226,679,967,745,55,268,926,790,360,283,759,987,25,909)
+      UNION ALL
+      SELECT c6 FROM t6
+      WHERE (a6=182 AND 737=e6 AND 232=b6 AND c6=265 AND 473=d6);
+  - name: t3
+  - name: t6
+  - name: t9
+
+outputs:
+  - name: q75.out
+    data: |
+      129
+      135
+      265
+      278
+      296
+      306
+      364
+      376
+      388
+      418
+      426
+      499
+      542
+      575
+      594
+      607
+      61
+      611
+      615
+      647
+      687
+      713
+      729
+      743
+      744
+      75
+      750
+      788
+      799
+      801
+      818
+      836
+      837
+      841
+      854
+      868
+      892
+      934
+      936
+      944
+      959
+      965

@@ -71,7 +71,9 @@ jobs:
           cache-dependency-path: |
             super/go.sum
             sqllogic-ztests/go.sum
-      - run: make -C super build
+      - run: |
+          patch -d super -p1 < sqllogic-ztests/super.patch
+          make -C super build
       - name: Run ${{ matrix.test.name }} tests
         run: |
           cd sqllogic-ztests

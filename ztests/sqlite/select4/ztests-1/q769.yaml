@@ -1,0 +1,61 @@
+script: |
+  super -f tsv -I q769.sql | tr '\t' '\n' | sort > q769.out
+
+inputs:
+  - name: q769.sql
+    data: |
+      SELECT c8 FROM t8
+      WHERE (14=e8)
+      OR a8 in (586,72,855,638,359,474,620,453,386,99,113,553,672,963)
+      UNION ALL
+      SELECT a3 FROM t3
+      WHERE (c3=220)
+      UNION
+      SELECT b9 FROM t9
+      WHERE (19=e9 OR 875=a9)
+      OR (e9=873 AND a9=5 AND b9=142 AND 818=d9)
+      OR d9 in (316,495,283,646,347,345,818,161,439,618,694)
+      UNION
+      SELECT b5 FROM t5
+      WHERE (c5=613);
+  - name: t3
+  - name: t5
+  - name: t8
+  - name: t9
+
+outputs:
+  - name: q769.out
+    data: |
+      122
+      125
+      136
+      142
+      170
+      262
+      273
+      291
+      301
+      332
+      354
+      377
+      427
+      447
+      501
+      549
+      578
+      595
+      64
+      668
+      688
+      727
+      730
+      74
+      751
+      77
+      789
+      790
+      858
+      901
+      907
+      961
+      973
