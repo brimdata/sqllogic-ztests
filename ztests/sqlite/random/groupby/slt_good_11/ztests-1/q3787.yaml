@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q3787.sql | sort > q3787.out
+
+inputs:
+  - name: q3787.sql
+    data: |
+      SELECT DISTINCT col1 - + 5 AS col0 FROM tab0 GROUP BY col1;
+  - name: tab0
+
+outputs:
+  - name: q3787.out
+    data: |
+      -5
+      76

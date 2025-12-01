@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q349.sql | sort > q349.out
+
+inputs:
+  - name: q349.sql
+    data: |
+      SELECT + tab2.col2 + 31 * col2 AS col2 FROM tab2 GROUP BY tab2.col2;
+  - name: tab2
+
+outputs:
+  - name: q349.out
+    data: |
+      1856
+      2528
+      2784

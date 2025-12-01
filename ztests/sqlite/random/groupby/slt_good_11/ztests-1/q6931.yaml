@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q6931.sql | sort > q6931.out
+
+inputs:
+  - name: q6931.sql
+    data: |
+      SELECT col0 * + 81 + + col0 FROM tab2 GROUP BY col0, col2;
+  - name: tab2
+
+outputs:
+  - name: q6931.out
+    data: |
+      1230
+      7462
+      7544

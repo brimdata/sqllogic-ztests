@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q2067.sql | sort > q2067.out
+
+inputs:
+  - name: q2067.sql
+    data: |
+      SELECT col0 * - col0 * + col0 + + col0 + - - col0 AS col1 FROM tab2 GROUP BY col0;
+  - name: tab2
+
+outputs:
+  - name: q2067.out
+    data: |
+      -3345
+      -753389
+      -778504

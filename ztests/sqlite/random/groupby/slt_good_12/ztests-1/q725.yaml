@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q725.sql | sort > q725.out
+
+inputs:
+  - name: q725.sql
+    data: |
+      SELECT 8 * col1 * col1 * + col1 AS col0 FROM tab2 GROUP BY col1;
+  - name: tab2
+
+outputs:
+  - name: q725.out
+    data: |
+      1643032
+      1815848
+      551368

@@ -1,0 +1,22 @@
+script: |
+  super -f tsv -I q8705.sql | sort > q8705.out
+
+inputs:
+  - name: q8705.sql
+    data: |
+      SELECT - cor0.col1 + cor1.col0 * cor1.col0 FROM tab1 AS cor0 CROSS JOIN tab0 cor1 GROUP BY cor0.col1, cor1.col0;
+  - name: tab0
+  - name: tab1
+
+outputs:
+  - name: q8705.out
+    data: |
+      1792
+      1805
+      1843
+      619
+      632
+      670
+      6832
+      6845
+      6883

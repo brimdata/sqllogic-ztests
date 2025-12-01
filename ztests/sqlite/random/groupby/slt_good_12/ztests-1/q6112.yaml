@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q6112.sql | sort > q6112.out
+
+inputs:
+  - name: q6112.sql
+    data: |
+      SELECT ALL COALESCE ( 51, + col1 ) / - col2, - col2 FROM tab2 AS cor0 GROUP BY col2, col1 HAVING - COUNT ( * ) <> CAST ( NULL AS INTEGER );
+  - name: tab2
+
+outputs:
+  - name: q6112.out
+    data: |

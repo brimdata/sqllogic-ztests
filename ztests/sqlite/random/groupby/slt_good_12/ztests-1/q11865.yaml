@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q11865.sql | sort > q11865.out
+
+inputs:
+  - name: q11865.sql
+    data: |
+      SELECT ALL cor0.col1 * 10 * cor0.col1 + cor0.col1 FROM tab2 AS cor0 GROUP BY cor0.col2, col1, col0;
+  - name: tab2
+
+outputs:
+  - name: q11865.out
+    data: |
+      16851
+      34869
+      37271

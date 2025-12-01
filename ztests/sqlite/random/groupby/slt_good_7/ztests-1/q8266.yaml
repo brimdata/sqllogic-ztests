@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8266.sql | sort > q8266.out
+
+inputs:
+  - name: q8266.sql
+    data: |
+      SELECT DISTINCT + col1 * tab2.col1 AS col1 FROM tab2 GROUP BY tab2.col1;
+  - name: tab2
+
+outputs:
+  - name: q8266.out
+    data: |
+      1681
+      3481
+      3721

@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q5213.sql | sort > q5213.out
+
+inputs:
+  - name: q5213.sql
+    data: |
+      SELECT ALL tab2.col0 / + tab2.col0 FROM tab2 WHERE NOT ( NULL ) IS NULL GROUP BY tab2.col0;
+  - name: tab2
+
+outputs:
+  - name: q5213.out
+    data: |

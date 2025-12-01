@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q14001.sql | sort > q14001.out
+
+inputs:
+  - name: q14001.sql
+    data: |
+      SELECT + 10, - COUNT ( * ) AS col0 FROM tab2 WHERE NULL IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q14001.out
+    data: |
+      10	-3

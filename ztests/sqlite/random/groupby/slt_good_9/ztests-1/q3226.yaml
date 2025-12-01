@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q3226.sql | sort > q3226.out
+
+inputs:
+  - name: q3226.sql
+    data: |
+      SELECT DISTINCT - col0 FROM tab2 WHERE NOT - col1 * col1 IS NULL GROUP BY col0, col1;
+  - name: tab2
+
+outputs:
+  - name: q3226.out
+    data: |
+      -15
+      -91
+      -92

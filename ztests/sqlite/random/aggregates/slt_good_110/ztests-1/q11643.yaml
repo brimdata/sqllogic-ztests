@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q11643.sql | sort > q11643.out
+
+inputs:
+  - name: q11643.sql
+    data: |
+      SELECT + 77 * + COUNT ( * ), 6 AS col2 FROM tab1 cor0 CROSS JOIN tab2 AS cor1;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q11643.out
+    data: |
+      693	6

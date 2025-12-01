@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q9302.sql | sort > q9302.out
+
+inputs:
+  - name: q9302.sql
+    data: |
+      SELECT 50 AS col2 FROM tab2 WHERE NOT NULL IS NULL GROUP BY col0, col1 HAVING NOT NULL <> NULL;
+  - name: tab2
+
+outputs:
+  - name: q9302.out
+    data: |

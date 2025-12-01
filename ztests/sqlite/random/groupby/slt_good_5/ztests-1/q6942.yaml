@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q6942.sql | sort > q6942.out
+
+inputs:
+  - name: q6942.sql
+    data: |
+      SELECT DISTINCT 7 * 2 + cor0.col1 AS col2 FROM tab1 cor0 GROUP BY cor0.col1;
+  - name: tab1
+
+outputs:
+  - name: q6942.out
+    data: |
+      20
+      58
+      71

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1250.sql | sort > q1250.out
+
+inputs:
+  - name: q1250.sql
+    data: |
+      SELECT tab2.col2 * - CAST ( 16 AS INTEGER ) FROM tab2 GROUP BY tab2.col2;
+  - name: tab2
+
+outputs:
+  - name: q1250.out
+    data: |
+      -1264
+      -1392
+      -928

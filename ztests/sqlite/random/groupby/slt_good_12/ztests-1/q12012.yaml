@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q12012.sql | sort > q12012.out
+
+inputs:
+  - name: q12012.sql
+    data: |
+      SELECT cor0.col1 * + 12 + cor0.col0 AS col0 FROM tab0 cor0 GROUP BY cor0.col1, cor0.col0;
+  - name: tab0
+
+outputs:
+  - name: q12012.out
+    data: |
+      1015
+      26
+      83

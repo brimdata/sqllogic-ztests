@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4303.sql | sort > q4303.out
+
+inputs:
+  - name: q4303.sql
+    data: |
+      SELECT - col2 - + 74 AS col1, CAST ( NULL AS INTEGER ) FROM tab0 AS cor0 WHERE NOT NULL IS NOT NULL GROUP BY col2;
+  - name: tab0
+
+outputs:
+  - name: q4303.out
+    data: |
+      -112	NULL
+      -153	NULL
+      -98	NULL

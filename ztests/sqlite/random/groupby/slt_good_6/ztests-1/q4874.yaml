@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q4874.sql | sort > q4874.out
+
+inputs:
+  - name: q4874.sql
+    data: |
+      SELECT - 29 AS col1 FROM tab1, tab2 AS cor0, tab2 AS cor1 GROUP BY tab1.col1;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q4874.out
+    data: |
+      -29
+      -29
+      -29

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q3120.sql | sort > q3120.out
+
+inputs:
+  - name: q3120.sql
+    data: |
+      SELECT ALL + CAST ( + col2 AS INTEGER ) AS col2 FROM tab2 GROUP BY tab2.col2;
+  - name: tab2
+
+outputs:
+  - name: q3120.out
+    data: |
+      58
+      79
+      87

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q5333.sql | sort > q5333.out
+
+inputs:
+  - name: q5333.sql
+    data: |
+      SELECT DISTINCT 7 * col1 FROM tab1 GROUP BY col1 HAVING CAST ( NULL AS INTEGER ) + 7 IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q5333.out
+    data: |
+      308
+      399
+      42

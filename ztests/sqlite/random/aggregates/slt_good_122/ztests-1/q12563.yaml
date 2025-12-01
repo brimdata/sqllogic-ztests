@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q12563.sql | sort > q12563.out
+
+inputs:
+  - name: q12563.sql
+    data: |
+      SELECT + CAST ( - + CAST ( 60 AS INTEGER ) AS INTEGER ) AS col2, COUNT ( * ) AS col0 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q12563.out
+    data: |
+      -60	3

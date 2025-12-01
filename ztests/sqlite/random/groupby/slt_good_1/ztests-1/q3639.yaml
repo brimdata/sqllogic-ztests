@@ -1,0 +1,21 @@
+script: |
+  super -f tsv -I q3639.sql | sort > q3639.out
+
+inputs:
+  - name: q3639.sql
+    data: |
+      SELECT cor1.col2 + 98 AS col2 FROM tab1 AS cor0 CROSS JOIN tab1 AS cor1 GROUP BY cor1.col0, cor1.col2, cor0.col2;
+  - name: tab1
+
+outputs:
+  - name: q3639.out
+    data: |
+      106
+      106
+      106
+      143
+      143
+      143
+      169
+      169
+      169

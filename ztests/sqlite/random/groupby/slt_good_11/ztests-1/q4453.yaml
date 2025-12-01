@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q4453.sql | sort > q4453.out
+
+inputs:
+  - name: q4453.sql
+    data: |
+      SELECT - col2 FROM tab0 AS cor0 WHERE ( CAST ( col0 AS INTEGER ) / COALESCE ( col2, col1 ) ) IS NULL GROUP BY col2;
+  - name: tab0
+
+outputs:
+  - name: q4453.out
+    data: |

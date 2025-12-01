@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9882.sql | sort > q9882.out
+
+inputs:
+  - name: q9882.sql
+    data: |
+      SELECT cor0.col0 * + cor0.col2 * 3 AS col2 FROM tab1 AS cor0 GROUP BY cor0.col2, cor0.col0;
+  - name: tab1
+
+outputs:
+  - name: q9882.out
+    data: |
+      17466
+      3780
+      528

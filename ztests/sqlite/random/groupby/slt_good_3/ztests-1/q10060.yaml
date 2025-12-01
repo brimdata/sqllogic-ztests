@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q10060.sql | sort > q10060.out
+
+inputs:
+  - name: q10060.sql
+    data: |
+      SELECT ALL COALESCE ( tab1.col0, tab1.col0 / - tab1.col0 ) AS col1 FROM tab1 GROUP BY tab1.col0;
+  - name: tab1
+
+outputs:
+  - name: q10060.out
+    data: |
+      22
+      28
+      82

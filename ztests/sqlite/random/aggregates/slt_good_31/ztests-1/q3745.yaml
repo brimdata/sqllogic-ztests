@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q3745.sql | sort > q3745.out
+
+inputs:
+  - name: q3745.sql
+    data: |
+      SELECT 13 AS col0, - COUNT ( * ), - + ( - + COUNT ( * ) ) AS col2 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q3745.out
+    data: |
+      13	-3	3

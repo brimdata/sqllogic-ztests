@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q7403.sql | sort > q7403.out
+
+inputs:
+  - name: q7403.sql
+    data: |
+      SELECT DISTINCT - cor0.col1 * cor0.col1 * 23 + - cor0.col1 FROM tab1 cor0 GROUP BY cor0.col1;
+  - name: tab1
+
+outputs:
+  - name: q7403.out
+    data: |
+      -44572
+      -74784
+      -834

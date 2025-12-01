@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q480.sql | sort > q480.out
+
+inputs:
+  - name: q480.sql
+    data: |
+      SELECT ( + 68 ) * cor0.col1 AS col0 FROM tab1 AS cor0 GROUP BY cor0.col2, cor0.col1;
+  - name: tab1
+
+outputs:
+  - name: q480.out
+    data: |
+      2992
+      3876
+      408

@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q2725.sql | sort > q2725.out
+
+inputs:
+  - name: q2725.sql
+    data: |
+      SELECT ALL 70 AS col1, COUNT ( CAST ( NULL AS INTEGER ) ) FROM tab2 AS cor0 WHERE NOT NULL IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q2725.out
+    data: |
+      70	0

@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q895.sql | sort > q895.out
+
+inputs:
+  - name: q895.sql
+    data: |
+      SELECT ALL + 91, COUNT ( * ) AS col1 FROM tab1 AS cor0 CROSS JOIN tab1 AS cor1;
+  - name: tab1
+
+outputs:
+  - name: q895.out
+    data: |
+      91	9

@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q8030.sql | sort > q8030.out
+
+inputs:
+  - name: q8030.sql
+    data: |
+      SELECT DISTINCT + CAST ( COUNT ( * ) AS INTEGER ) AS col2, + 42 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q8030.out
+    data: |
+      3	42

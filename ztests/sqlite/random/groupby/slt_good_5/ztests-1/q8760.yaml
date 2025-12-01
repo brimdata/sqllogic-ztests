@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8760.sql | sort > q8760.out
+
+inputs:
+  - name: q8760.sql
+    data: |
+      SELECT ALL + 35 * tab0.col2 FROM tab0 GROUP BY col2;
+  - name: tab0
+
+outputs:
+  - name: q8760.out
+    data: |
+      1330
+      2765
+      840

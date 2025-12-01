@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q5753.sql | sort > q5753.out
+
+inputs:
+  - name: q5753.sql
+    data: |
+      SELECT DISTINCT col2 * 93 AS col1 FROM tab1 GROUP BY col2 HAVING NOT ( NULL ) <= 26;
+  - name: tab1
+
+outputs:
+  - name: q5753.out
+    data: |

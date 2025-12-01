@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q1781.sql | sort > q1781.out
+
+inputs:
+  - name: q1781.sql
+    data: |
+      SELECT + 2 AS col1, - ( + COUNT ( * ) ) + - + COUNT ( * ) AS col0 FROM tab1 AS cor0 CROSS JOIN tab2 cor1;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q1781.out
+    data: |
+      2	-18

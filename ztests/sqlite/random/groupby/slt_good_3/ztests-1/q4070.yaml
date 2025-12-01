@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4070.sql | sort > q4070.out
+
+inputs:
+  - name: q4070.sql
+    data: |
+      SELECT DISTINCT cor0.col2 - COALESCE ( 97, cor0.col2 ) AS col1 FROM tab0 cor0 GROUP BY cor0.col2, cor0.col2;
+  - name: tab0
+
+outputs:
+  - name: q4070.out
+    data: |
+      -18
+      -59
+      -73

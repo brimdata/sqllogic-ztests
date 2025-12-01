@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q6244.sql | sort > q6244.out
+
+inputs:
+  - name: q6244.sql
+    data: |
+      SELECT ALL - 13, + COUNT ( * ) AS col1 FROM tab1 cor0 CROSS JOIN tab2 cor1;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q6244.out
+    data: |
+      -13	9

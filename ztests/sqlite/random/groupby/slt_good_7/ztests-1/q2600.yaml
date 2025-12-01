@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q2600.sql | sort > q2600.out
+
+inputs:
+  - name: q2600.sql
+    data: |
+      SELECT - tab0.col1 * col1 FROM tab0 GROUP BY tab0.col1 HAVING NULL IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q2600.out
+    data: |
+      -6561
+      0

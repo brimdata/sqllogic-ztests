@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q2562.sql | sort > q2562.out
+
+inputs:
+  - name: q2562.sql
+    data: |
+      SELECT - ( - 7 ) AS col1 FROM tab1 cor0 CROSS JOIN tab2 cor1 GROUP BY cor0.col0;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q2562.out
+    data: |
+      7
+      7
+      7

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8855.sql | sort > q8855.out
+
+inputs:
+  - name: q8855.sql
+    data: |
+      SELECT DISTINCT + CAST ( - ( - tab1.col1 ) AS INTEGER ) FROM tab1 GROUP BY tab1.col1;
+  - name: tab1
+
+outputs:
+  - name: q8855.out
+    data: |
+      44
+      57
+      6

@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q12381.sql | sort > q12381.out
+
+inputs:
+  - name: q12381.sql
+    data: |
+      SELECT ALL - 55 FROM tab1, tab2 AS cor0 GROUP BY tab1.col0;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q12381.out
+    data: |
+      -55
+      -55
+      -55

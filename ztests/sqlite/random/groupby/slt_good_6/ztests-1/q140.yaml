@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q140.sql | sort > q140.out
+
+inputs:
+  - name: q140.sql
+    data: |
+      SELECT - tab1.col2 * ( 4 * - tab1.col2 ) FROM tab1 GROUP BY col2;
+  - name: tab1
+
+outputs:
+  - name: q140.out
+    data: |
+      20164
+      256
+      8100

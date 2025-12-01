@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4502.sql | sort > q4502.out
+
+inputs:
+  - name: q4502.sql
+    data: |
+      SELECT + COALESCE ( - - col2, + col1 ) * 20 AS col0 FROM tab1 GROUP BY col2, col1;
+  - name: tab1
+
+outputs:
+  - name: q4502.out
+    data: |
+      1420
+      160
+      900

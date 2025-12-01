@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q958.sql | sort > q958.out
+
+inputs:
+  - name: q958.sql
+    data: |
+      SELECT + 41 * cor0.col1 AS col1 FROM tab1, tab2 AS cor0 GROUP BY cor0.col1;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q958.out
+    data: |
+      1681
+      2419
+      2501

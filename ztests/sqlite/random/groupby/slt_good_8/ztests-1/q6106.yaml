@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q6106.sql | sort > q6106.out
+
+inputs:
+  - name: q6106.sql
+    data: |
+      SELECT DISTINCT + tab2.col0 * tab2.col0 + 99 * tab2.col0 AS col0  FROM tab2 GROUP BY tab2.col0;
+  - name: tab2
+
+outputs:
+  - name: q6106.out
+    data: |
+      1710
+      17290
+      17572

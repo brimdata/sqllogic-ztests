@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q6221.sql | sort > q6221.out
+
+inputs:
+  - name: q6221.sql
+    data: |
+      SELECT DISTINCT ( + 59 + - col1 ) AS col2 FROM tab0 AS cor0 GROUP BY cor0.col1;
+  - name: tab0
+
+outputs:
+  - name: q6221.out
+    data: |
+      -22
+      59

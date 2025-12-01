@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q8861.sql | sort > q8861.out
+
+inputs:
+  - name: q8861.sql
+    data: |
+      SELECT ALL - tab1.col1 + ( + 9 ) * tab1.col1 FROM tab1, tab2 AS cor0 GROUP BY tab1.col1;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q8861.out
+    data: |
+      352
+      456
+      48

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1255.sql | sort > q1255.out
+
+inputs:
+  - name: q1255.sql
+    data: |
+      SELECT - col2, + col2 AS col0 FROM tab2 GROUP BY col1, col2;
+  - name: tab2
+
+outputs:
+  - name: q1255.out
+    data: |
+      -58	58
+      -79	79
+      -87	87

@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q1960.sql | sort > q1960.out
+
+inputs:
+  - name: q1960.sql
+    data: |
+      SELECT - + 9 FROM tab0, tab1 AS cor0, tab2 AS cor1 GROUP BY cor0.col0;
+  - name: tab0
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q1960.out
+    data: |
+      -9
+      -9
+      -9

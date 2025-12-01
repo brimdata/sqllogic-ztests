@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q10909.sql | sort > q10909.out
+
+inputs:
+  - name: q10909.sql
+    data: |
+      SELECT 91 AS col2, - CAST ( NULL AS REAL ) + 3 * COUNT ( * ) FROM tab1 WHERE + - col2 IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q10909.out
+    data: |
+      91	NULL

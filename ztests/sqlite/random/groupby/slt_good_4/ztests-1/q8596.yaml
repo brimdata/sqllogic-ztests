@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8596.sql | sort > q8596.out
+
+inputs:
+  - name: q8596.sql
+    data: |
+      SELECT DISTINCT tab2.col2 * + 10 AS col1 FROM tab2 GROUP BY tab2.col2;
+  - name: tab2
+
+outputs:
+  - name: q8596.out
+    data: |
+      580
+      790
+      870

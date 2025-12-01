@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1995.sql | sort > q1995.out
+
+inputs:
+  - name: q1995.sql
+    data: |
+      SELECT + 10 * col0 - - 1 AS col2 FROM tab1 GROUP BY tab1.col0;
+  - name: tab1
+
+outputs:
+  - name: q1995.out
+    data: |
+      221
+      281
+      821

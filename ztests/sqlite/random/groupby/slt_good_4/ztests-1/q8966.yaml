@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8966.sql | sort > q8966.out
+
+inputs:
+  - name: q8966.sql
+    data: |
+      SELECT COALESCE ( + cor0.col1, - cor0.col2, - cor0.col1 ) * - 37 - - cor0.col2 FROM tab2 AS cor0 GROUP BY cor0.col1, cor0.col2, col2;
+  - name: tab2
+
+outputs:
+  - name: q8966.out
+    data: |
+      -1459
+      -2104
+      -2170

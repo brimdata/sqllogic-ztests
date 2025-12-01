@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4800.sql | sort > q4800.out
+
+inputs:
+  - name: q4800.sql
+    data: |
+      SELECT cor0.col1 * + 21 - cor0.col1 FROM tab2 AS cor0 GROUP BY col1, col0;
+  - name: tab2
+
+outputs:
+  - name: q4800.out
+    data: |
+      1180
+      1220
+      820

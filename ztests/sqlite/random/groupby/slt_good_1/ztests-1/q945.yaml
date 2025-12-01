@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q945.sql | sort > q945.out
+
+inputs:
+  - name: q945.sql
+    data: |
+      SELECT 26 FROM tab1, tab1 AS cor0, tab2 AS cor1 GROUP BY cor0.col1;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q945.out
+    data: |
+      26
+      26
+      26

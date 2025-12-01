@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q5192.sql | sort > q5192.out
+
+inputs:
+  - name: q5192.sql
+    data: |
+      SELECT 12 FROM tab1 AS cor0 CROSS JOIN tab2 AS cor1 GROUP BY cor1.col0;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q5192.out
+    data: |
+      12
+      12
+      12

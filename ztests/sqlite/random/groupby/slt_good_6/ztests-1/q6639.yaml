@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q6639.sql | sort > q6639.out
+
+inputs:
+  - name: q6639.sql
+    data: |
+      SELECT DISTINCT + - 49 + cor0.col0 FROM tab1, tab1 AS cor0, tab2 AS cor1 GROUP BY cor0.col0;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q6639.out
+    data: |
+      -21
+      -27
+      33

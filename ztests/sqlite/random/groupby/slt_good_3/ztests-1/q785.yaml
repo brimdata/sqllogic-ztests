@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q785.sql | sort > q785.out
+
+inputs:
+  - name: q785.sql
+    data: |
+      SELECT ALL + tab2.col1 + - tab2.col1 FROM tab2 GROUP BY tab2.col1 HAVING ( NULL ) IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q785.out
+    data: |
+      0
+      0
+      0

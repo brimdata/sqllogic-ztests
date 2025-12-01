@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q6728.sql | sort > q6728.out
+
+inputs:
+  - name: q6728.sql
+    data: |
+      SELECT cor1.col1 * + ( 10 ) AS col1 FROM tab0 cor0 CROSS JOIN tab2 AS cor1 GROUP BY cor1.col1;
+  - name: tab0
+  - name: tab2
+
+outputs:
+  - name: q6728.out
+    data: |
+      410
+      590
+      610

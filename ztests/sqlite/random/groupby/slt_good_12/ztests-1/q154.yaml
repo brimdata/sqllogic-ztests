@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q154.sql | sort > q154.out
+
+inputs:
+  - name: q154.sql
+    data: |
+      SELECT DISTINCT 65 AS col2 FROM tab0 GROUP BY col1 HAVING NOT NULL BETWEEN + AVG ( 8 ) AND NULL;
+  - name: tab0
+
+outputs:
+  - name: q154.out
+    data: |

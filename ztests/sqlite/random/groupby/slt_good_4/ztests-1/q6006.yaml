@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q6006.sql | sort > q6006.out
+
+inputs:
+  - name: q6006.sql
+    data: |
+      SELECT DISTINCT - COALESCE ( tab0.col2, col2, 86 ) * col2 AS col1 FROM tab0 GROUP BY tab0.col2;
+  - name: tab0
+
+outputs:
+  - name: q6006.out
+    data: |
+      -1444
+      -576
+      -6241

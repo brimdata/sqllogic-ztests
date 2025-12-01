@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q523.sql | sort > q523.out
+
+inputs:
+  - name: q523.sql
+    data: |
+      SELECT DISTINCT tab2.col0 / tab2.col0 FROM tab2 WHERE NULL IN ( - tab2.col1 ) GROUP BY tab2.col0;
+  - name: tab2
+
+outputs:
+  - name: q523.out
+    data: |

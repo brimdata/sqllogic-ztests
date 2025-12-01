@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q449.sql | sort > q449.out
+
+inputs:
+  - name: q449.sql
+    data: |
+      SELECT ALL CAST ( NULL AS REAL ) + 64 AS col1, CAST ( - COUNT ( * ) AS INTEGER ) AS col0 FROM tab2, tab1 AS cor0;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q449.out
+    data: |
+      NULL	-9

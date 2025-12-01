@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q3038.sql | sort > q3038.out
+
+inputs:
+  - name: q3038.sql
+    data: |
+      SELECT ALL col2 / + - 52 + col2 FROM tab1 GROUP BY col2 HAVING NOT NULL IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q3038.out
+    data: |

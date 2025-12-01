@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q5300.sql | sort > q5300.out
+
+inputs:
+  - name: q5300.sql
+    data: |
+      SELECT ALL - tab1.col2 FROM tab1 WHERE NOT ( - tab1.col0 ) BETWEEN - tab1.col2 AND tab1.col0 AND NULL NOT BETWEEN NULL AND ( + tab1.col0 + tab1.col2 ) GROUP BY tab1.col2;
+  - name: tab1
+
+outputs:
+  - name: q5300.out
+    data: |

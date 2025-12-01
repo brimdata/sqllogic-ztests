@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q1657.sql | sort > q1657.out
+
+inputs:
+  - name: q1657.sql
+    data: |
+      SELECT - col1 FROM tab2 WHERE NOT NULL >= ( - col1 ) GROUP BY col1, col1;
+  - name: tab2
+
+outputs:
+  - name: q1657.out
+    data: |

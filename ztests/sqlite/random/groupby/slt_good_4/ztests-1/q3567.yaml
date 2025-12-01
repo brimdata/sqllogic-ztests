@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q3567.sql | sort > q3567.out
+
+inputs:
+  - name: q3567.sql
+    data: |
+      SELECT ALL + col1 + - 47 FROM tab0 GROUP BY tab0.col1;
+  - name: tab0
+
+outputs:
+  - name: q3567.out
+    data: |
+      -47
+      34

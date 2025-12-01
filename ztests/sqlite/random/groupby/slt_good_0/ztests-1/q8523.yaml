@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q8523.sql | sort > q8523.out
+
+inputs:
+  - name: q8523.sql
+    data: |
+      SELECT + cor0.col1 + - 6 FROM tab1, tab2 AS cor0 GROUP BY cor0.col1;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q8523.out
+    data: |
+      35
+      53
+      55

@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q8927.sql | sort > q8927.out
+
+inputs:
+  - name: q8927.sql
+    data: |
+      SELECT + + col0 + - 33 FROM tab1 WHERE NOT NULL IS NULL GROUP BY col1, col0 HAVING ( NOT NULL IS NOT NULL );
+  - name: tab1
+
+outputs:
+  - name: q8927.out
+    data: |

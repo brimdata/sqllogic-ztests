@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q278.sql | sort > q278.out
+
+inputs:
+  - name: q278.sql
+    data: |
+      SELECT 35 + + 30 AS col1 FROM tab1, tab1 AS cor0, tab2 AS cor1 GROUP BY cor0.col1;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q278.out
+    data: |
+      65
+      65
+      65

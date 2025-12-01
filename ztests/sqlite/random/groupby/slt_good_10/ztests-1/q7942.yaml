@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q7942.sql | sort > q7942.out
+
+inputs:
+  - name: q7942.sql
+    data: |
+      SELECT DISTINCT - col2 FROM tab2 GROUP BY col2, col0, col1 HAVING NOT NULL IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q7942.out
+    data: |

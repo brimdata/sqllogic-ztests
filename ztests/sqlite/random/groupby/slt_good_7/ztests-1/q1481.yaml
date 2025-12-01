@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1481.sql | sort > q1481.out
+
+inputs:
+  - name: q1481.sql
+    data: |
+      SELECT DISTINCT - CAST ( + cor0.col1 AS INTEGER ) + - cor0.col1 / - col1 AS col0 FROM tab2 AS cor0 GROUP BY cor0.col1, cor0.col0;
+  - name: tab2
+
+outputs:
+  - name: q1481.out
+    data: |
+      -40
+      -58
+      -60

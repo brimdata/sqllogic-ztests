@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q947.sql | sort > q947.out
+
+inputs:
+  - name: q947.sql
+    data: |
+      SELECT ALL + CASE tab2.col0 WHEN tab2.col0 THEN NULL WHEN - 25 THEN NULL ELSE + col0 END AS col1 FROM tab2 GROUP BY tab2.col0;
+  - name: tab2
+
+outputs:
+  - name: q947.out
+    data: |
+      NULL
+      NULL
+      NULL

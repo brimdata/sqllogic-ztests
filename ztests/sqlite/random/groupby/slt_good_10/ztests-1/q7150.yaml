@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q7150.sql | sort > q7150.out
+
+inputs:
+  - name: q7150.sql
+    data: |
+      SELECT ALL + - col0 FROM tab0 AS cor0 GROUP BY col0 HAVING NOT NULL IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q7150.out
+    data: |

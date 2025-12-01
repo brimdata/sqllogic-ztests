@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4883.sql | sort > q4883.out
+
+inputs:
+  - name: q4883.sql
+    data: |
+      SELECT col1 + - ( col1 + + 22 * col1 ) FROM tab1 GROUP BY col1;
+  - name: tab1
+
+outputs:
+  - name: q4883.out
+    data: |
+      -1254
+      -132
+      -968

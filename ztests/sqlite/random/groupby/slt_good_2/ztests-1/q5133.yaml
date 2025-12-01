@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q5133.sql | sort > q5133.out
+
+inputs:
+  - name: q5133.sql
+    data: |
+      SELECT - tab2.col0 + CASE 96 WHEN tab2.col0 THEN NULL ELSE + col0 END FROM tab2 GROUP BY tab2.col0;
+  - name: tab2
+
+outputs:
+  - name: q5133.out
+    data: |
+      0
+      0
+      0

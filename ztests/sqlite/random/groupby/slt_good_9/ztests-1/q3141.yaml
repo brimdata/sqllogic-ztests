@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q3141.sql | sort > q3141.out
+
+inputs:
+  - name: q3141.sql
+    data: |
+      SELECT DISTINCT - col2 FROM tab0 AS cor0 GROUP BY col2, col1, col2 HAVING NULL IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q3141.out
+    data: |

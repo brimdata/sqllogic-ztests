@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1802.sql | sort > q1802.out
+
+inputs:
+  - name: q1802.sql
+    data: |
+      SELECT DISTINCT 55 + - ( cor0.col1 ) AS col0 FROM tab1 AS cor0 GROUP BY cor0.col1;
+  - name: tab1
+
+outputs:
+  - name: q1802.out
+    data: |
+      -2
+      11
+      49

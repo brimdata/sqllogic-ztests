@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q6085.sql | sort > q6085.out
+
+inputs:
+  - name: q6085.sql
+    data: |
+      SELECT DISTINCT ( cor0.col0 ) / + cor0.col0 - ( cor0.col0 + - cor0.col1 ) FROM tab1 cor0 GROUP BY cor0.col0, cor0.col1;
+  - name: tab1
+
+outputs:
+  - name: q6085.out
+    data: |
+      -15
+      -37
+      30

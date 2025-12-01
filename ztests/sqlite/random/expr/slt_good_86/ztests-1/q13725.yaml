@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q13725.sql | sort > q13725.out
+
+inputs:
+  - name: q13725.sql
+    data: |
+      SELECT - 80 AS col1, + CAST ( COUNT ( * ) AS INTEGER ) * - COUNT ( * ) col2;
+
+outputs:
+  - name: q13725.out
+    data: |
+      -80	-1

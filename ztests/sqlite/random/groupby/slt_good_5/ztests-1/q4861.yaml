@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4861.sql | sort > q4861.out
+
+inputs:
+  - name: q4861.sql
+    data: |
+      SELECT ALL - cor0.col1 * 25 AS col2 FROM tab0 AS cor0 CROSS JOIN tab2 AS cor1 GROUP BY cor0.col1;
+  - name: tab0
+  - name: tab2
+
+outputs:
+  - name: q4861.out
+    data: |
+      -2025
+      0

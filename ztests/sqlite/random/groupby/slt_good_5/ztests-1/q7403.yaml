@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q7403.sql | sort > q7403.out
+
+inputs:
+  - name: q7403.sql
+    data: |
+      SELECT ALL + 56 AS col1 FROM tab2 cor0 CROSS JOIN tab2 cor1 GROUP BY cor1.col0;
+  - name: tab2
+
+outputs:
+  - name: q7403.out
+    data: |
+      56
+      56
+      56

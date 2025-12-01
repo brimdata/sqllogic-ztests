@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q3414.sql | sort > q3414.out
+
+inputs:
+  - name: q3414.sql
+    data: |
+      SELECT DISTINCT - cor1.col0 * 6 FROM tab2, tab1 AS cor0, tab1 AS cor1 GROUP BY cor1.col0;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q3414.out
+    data: |
+      -132
+      -168
+      -492

@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q8128.sql | sort > q8128.out
+
+inputs:
+  - name: q8128.sql
+    data: |
+      SELECT - col1 * - + col1 FROM tab0 AS cor0 WHERE NOT + col1 IS NOT NULL GROUP BY col1;
+  - name: tab0
+
+outputs:
+  - name: q8128.out
+    data: |

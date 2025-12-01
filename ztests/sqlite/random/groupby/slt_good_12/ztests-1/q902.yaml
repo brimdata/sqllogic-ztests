@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q902.sql | sort > q902.out
+
+inputs:
+  - name: q902.sql
+    data: |
+      SELECT + - 60 AS col2 FROM tab2 AS cor0 GROUP BY col1 HAVING NOT NULL IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q902.out
+    data: |
+      -60
+      -60
+      -60

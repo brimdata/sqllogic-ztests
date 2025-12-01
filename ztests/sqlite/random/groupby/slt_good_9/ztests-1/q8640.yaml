@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q8640.sql | sort > q8640.out
+
+inputs:
+  - name: q8640.sql
+    data: |
+      SELECT + col0 AS col2, col0 + - col0 FROM tab1 GROUP BY col0 HAVING NOT NULL = NULL;
+  - name: tab1
+
+outputs:
+  - name: q8640.out
+    data: |

@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q386.sql | sort > q386.out
+
+inputs:
+  - name: q386.sql
+    data: |
+      SELECT ALL + col0 - - col0 - 18 AS col1 FROM tab2 GROUP BY col0 HAVING NOT NULL IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q386.out
+    data: |

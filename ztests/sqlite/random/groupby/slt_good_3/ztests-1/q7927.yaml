@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q7927.sql | sort > q7927.out
+
+inputs:
+  - name: q7927.sql
+    data: |
+      SELECT + CASE cor0.col1 WHEN - cor0.col2 THEN + cor0.col2 WHEN + cor0.col1 THEN - cor0.col2 ELSE NULL END FROM tab2 AS cor0 GROUP BY col2, cor0.col1;
+  - name: tab2
+
+outputs:
+  - name: q7927.out
+    data: |
+      -58
+      -79
+      -87

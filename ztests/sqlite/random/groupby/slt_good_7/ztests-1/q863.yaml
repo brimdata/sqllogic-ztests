@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q863.sql | sort > q863.out
+
+inputs:
+  - name: q863.sql
+    data: |
+      SELECT CAST ( + 34 AS INTEGER ) FROM tab2 AS cor0 CROSS JOIN tab2 AS cor1 GROUP BY cor1.col1;
+  - name: tab2
+
+outputs:
+  - name: q863.out
+    data: |
+      34
+      34
+      34

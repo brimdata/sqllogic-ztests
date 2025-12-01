@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q2988.sql | sort > q2988.out
+
+inputs:
+  - name: q2988.sql
+    data: |
+      SELECT DISTINCT - 99 AS col2 FROM tab1 GROUP BY col1 HAVING NULL IN ( + 32 );
+  - name: tab1
+
+outputs:
+  - name: q2988.out
+    data: |

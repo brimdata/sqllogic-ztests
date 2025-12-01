@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1616.sql | sort > q1616.out
+
+inputs:
+  - name: q1616.sql
+    data: |
+      SELECT ALL tab2.col2 / + 4 + tab2.col2 AS col1 FROM tab2 GROUP BY tab2.col2;
+  - name: tab2
+
+outputs:
+  - name: q1616.out
+    data: |
+      108
+      72
+      98

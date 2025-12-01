@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q4046.sql | sort > q4046.out
+
+inputs:
+  - name: q4046.sql
+    data: |
+      SELECT 42 AS col1, - COUNT ( * ) * 26 AS col0 FROM tab0;
+  - name: tab0
+
+outputs:
+  - name: q4046.out
+    data: |
+      42	-78

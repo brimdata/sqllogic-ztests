@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q11316.sql | sort > q11316.out
+
+inputs:
+  - name: q11316.sql
+    data: |
+      SELECT ALL + CAST ( 6 AS INTEGER ) AS col1, 39 * - COUNT ( * ) AS col2 FROM tab1 AS cor0 CROSS JOIN tab2 AS cor1;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q11316.out
+    data: |
+      6	-351

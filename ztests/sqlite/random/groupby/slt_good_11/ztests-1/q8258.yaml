@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8258.sql | sort > q8258.out
+
+inputs:
+  - name: q8258.sql
+    data: |
+      SELECT - 61 * + COALESCE ( - col2, CAST ( NULL AS INTEGER ), 64 ) AS col1 FROM tab1 AS cor0 GROUP BY col0, col2;
+  - name: tab1
+
+outputs:
+  - name: q8258.out
+    data: |
+      2745
+      4331
+      488

@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q4877.sql | sort > q4877.out
+
+inputs:
+  - name: q4877.sql
+    data: |
+      SELECT 64 FROM tab2 AS cor0 CROSS JOIN tab1 AS cor1 GROUP BY cor0.col2, cor0.col1;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q4877.out
+    data: |
+      64
+      64
+      64

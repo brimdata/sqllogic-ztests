@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q1381.sql | sort > q1381.out
+
+inputs:
+  - name: q1381.sql
+    data: |
+      SELECT - 90 * 0 AS col1 FROM tab1, tab2 AS cor0, tab2 AS cor1 GROUP BY cor1.col2;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q1381.out
+    data: |
+      0
+      0
+      0

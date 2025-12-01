@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q414.sql | sort > q414.out
+
+inputs:
+  - name: q414.sql
+    data: |
+      SELECT ALL + tab2.col2 / + 15 AS col1 FROM tab2 GROUP BY tab2.col2;
+  - name: tab2
+
+outputs:
+  - name: q414.out
+    data: |
+      3
+      5
+      5

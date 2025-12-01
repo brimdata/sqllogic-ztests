@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q4331.sql | sort > q4331.out
+
+inputs:
+  - name: q4331.sql
+    data: |
+      SELECT col2 * col2 + - col2 * col2 FROM tab0 WHERE + COALESCE ( + 50, col2 * 89 ) IS NULL GROUP BY col2, col2;
+  - name: tab0
+
+outputs:
+  - name: q4331.out
+    data: |

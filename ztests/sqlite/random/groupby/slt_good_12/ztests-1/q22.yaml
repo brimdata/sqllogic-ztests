@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q22.sql | sort > q22.out
+
+inputs:
+  - name: q22.sql
+    data: |
+      SELECT - col0 + 19 * col0 FROM tab2 AS cor0 GROUP BY col0 HAVING NOT NULL IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q22.out
+    data: |

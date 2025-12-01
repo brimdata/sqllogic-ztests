@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q435.sql | sort > q435.out
+
+inputs:
+  - name: q435.sql
+    data: |
+      SELECT DISTINCT - col1 FROM tab2 WHERE NOT col1 * col0 IS NULL GROUP BY col1;
+  - name: tab2
+
+outputs:
+  - name: q435.out
+    data: |
+      -41
+      -59
+      -61

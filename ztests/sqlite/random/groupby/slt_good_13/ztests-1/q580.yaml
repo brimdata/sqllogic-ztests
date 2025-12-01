@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q580.sql | sort > q580.out
+
+inputs:
+  - name: q580.sql
+    data: |
+      SELECT ALL 87 * cor0.col0 * CAST ( 10 AS INTEGER ) FROM tab1 AS cor0 GROUP BY cor0.col0;
+  - name: tab1
+
+outputs:
+  - name: q580.out
+    data: |
+      19140
+      24360
+      71340

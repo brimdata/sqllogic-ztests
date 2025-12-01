@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8441.sql | sort > q8441.out
+
+inputs:
+  - name: q8441.sql
+    data: |
+      SELECT DISTINCT cor0.col0 * 28 + 71 * cor0.col0 AS col0 FROM tab1 AS cor0 GROUP BY cor0.col2, cor0.col0;
+  - name: tab1
+
+outputs:
+  - name: q8441.out
+    data: |
+      2178
+      2772
+      8118

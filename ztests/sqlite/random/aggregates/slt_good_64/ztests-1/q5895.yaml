@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q5895.sql | sort > q5895.out
+
+inputs:
+  - name: q5895.sql
+    data: |
+      SELECT 45, + COUNT ( * ) - + ( COUNT ( * ) ) AS col0 FROM tab2 WHERE NULL IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q5895.out
+    data: |
+      45	0

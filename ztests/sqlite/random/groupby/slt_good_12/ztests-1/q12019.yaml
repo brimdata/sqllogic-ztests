@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q12019.sql | sort > q12019.out
+
+inputs:
+  - name: q12019.sql
+    data: |
+      SELECT DISTINCT cor0.col0 + 44 FROM tab1 cor0 GROUP BY cor0.col0, cor0.col0;
+  - name: tab1
+
+outputs:
+  - name: q12019.out
+    data: |
+      126
+      66
+      72

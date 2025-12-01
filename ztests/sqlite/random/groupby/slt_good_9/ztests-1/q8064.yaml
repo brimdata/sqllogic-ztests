@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8064.sql | sort > q8064.out
+
+inputs:
+  - name: q8064.sql
+    data: |
+      SELECT DISTINCT col1 + - + col2 FROM tab0 GROUP BY col1, col2 HAVING NULL IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q8064.out
+    data: |
+      -38
+      -79
+      57

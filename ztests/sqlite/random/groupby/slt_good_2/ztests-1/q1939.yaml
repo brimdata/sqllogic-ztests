@@ -1,0 +1,19 @@
+script: |
+  super -f tsv -I q1939.sql | sort > q1939.out
+
+inputs:
+  - name: q1939.sql
+    data: |
+      SELECT cor0.col2 + ( 29 ) FROM tab1 AS cor0 CROSS JOIN tab0 AS cor1 GROUP BY cor1.col1, cor0.col2;
+  - name: tab0
+  - name: tab1
+
+outputs:
+  - name: q1939.out
+    data: |
+      100
+      100
+      37
+      37
+      74
+      74

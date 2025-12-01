@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q8320.sql | sort > q8320.out
+
+inputs:
+  - name: q8320.sql
+    data: |
+      SELECT + COUNT ( * ) AS col2, - 22 FROM tab1 AS cor0 CROSS JOIN tab0 AS cor1;
+  - name: tab0
+  - name: tab1
+
+outputs:
+  - name: q8320.out
+    data: |
+      9	-22

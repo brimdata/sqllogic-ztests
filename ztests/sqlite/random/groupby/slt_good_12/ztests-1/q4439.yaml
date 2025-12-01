@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q4439.sql | sort > q4439.out
+
+inputs:
+  - name: q4439.sql
+    data: |
+      SELECT DISTINCT CAST ( NULL AS INTEGER ) + col2 FROM tab0 GROUP BY col2, col2 HAVING NULL IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q4439.out
+    data: |

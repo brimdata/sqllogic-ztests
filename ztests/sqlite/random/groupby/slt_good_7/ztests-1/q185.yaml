@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q185.sql | sort > q185.out
+
+inputs:
+  - name: q185.sql
+    data: |
+      SELECT DISTINCT - CAST ( 9 AS INTEGER ) * - cor0.col2 * ( + cor0.col0 ) AS col0 FROM tab2 AS cor0 GROUP BY cor0.col0, cor0.col2;
+  - name: tab2
+
+outputs:
+  - name: q185.out
+    data: |
+      11745
+      48024
+      64701

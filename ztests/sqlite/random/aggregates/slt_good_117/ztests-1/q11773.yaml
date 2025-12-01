@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q11773.sql | sort > q11773.out
+
+inputs:
+  - name: q11773.sql
+    data: |
+      SELECT - + SUM ( + col1 ) * - COUNT ( * ) AS col1, - 32 FROM tab1 AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q11773.out
+    data: |
+      198	-32

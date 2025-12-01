@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1607.sql | sort > q1607.out
+
+inputs:
+  - name: q1607.sql
+    data: |
+      SELECT DISTINCT - col1 * col0 FROM tab2 GROUP BY col1, col0 HAVING NOT NULL IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q1607.out
+    data: |
+      -3772
+      -5369
+      -915

@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q9120.sql | sort > q9120.out
+
+inputs:
+  - name: q9120.sql
+    data: |
+      SELECT DISTINCT - 1 AS col0 FROM tab0 GROUP BY col1, col1 HAVING NOT ( COUNT ( * ) IS NOT NULL );
+  - name: tab0
+
+outputs:
+  - name: q9120.out
+    data: |

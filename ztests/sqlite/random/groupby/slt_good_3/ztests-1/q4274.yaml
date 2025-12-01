@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4274.sql | sort > q4274.out
+
+inputs:
+  - name: q4274.sql
+    data: |
+      SELECT CASE tab2.col1 WHEN tab2.col1 THEN tab2.col1 / - 67 ELSE NULL END FROM tab2 GROUP BY tab2.col1;
+  - name: tab2
+
+outputs:
+  - name: q4274.out
+    data: |
+      0
+      0
+      0

@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q8772.sql | sort > q8772.out
+
+inputs:
+  - name: q8772.sql
+    data: |
+      SELECT - col1 AS col2 FROM tab0 WHERE ( - col1 ) IN ( ( - col0 ) ) GROUP BY col1, col0 HAVING NOT NULL IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q8772.out
+    data: |

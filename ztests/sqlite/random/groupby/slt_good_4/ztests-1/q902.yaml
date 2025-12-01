@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q902.sql | sort > q902.out
+
+inputs:
+  - name: q902.sql
+    data: |
+      SELECT ALL - 40 FROM tab0 AS cor0 CROSS JOIN tab0 AS cor1 GROUP BY cor0.col1;
+  - name: tab0
+
+outputs:
+  - name: q902.out
+    data: |
+      -40
+      -40

@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q6546.sql | sort > q6546.out
+
+inputs:
+  - name: q6546.sql
+    data: |
+      SELECT ALL + 11 + - cor1.col2 * CAST ( NULL AS REAL ) FROM tab1 AS cor0 CROSS JOIN tab0 cor1 GROUP BY cor1.col2;
+  - name: tab0
+  - name: tab1
+
+outputs:
+  - name: q6546.out
+    data: |
+      NULL
+      NULL
+      NULL

@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q4020.sql | sort > q4020.out
+
+inputs:
+  - name: q4020.sql
+    data: |
+      SELECT ALL col1 + - col0 / col0 / - col1 FROM tab0 GROUP BY col0, col1 HAVING NULL IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q4020.out
+    data: |

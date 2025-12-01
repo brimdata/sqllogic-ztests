@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4123.sql | sort > q4123.out
+
+inputs:
+  - name: q4123.sql
+    data: |
+      SELECT DISTINCT col1 * + col1 * - col1 AS col0 FROM tab1 GROUP BY col1 HAVING NOT NULL IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q4123.out
+    data: |
+      -185193
+      -216
+      -85184

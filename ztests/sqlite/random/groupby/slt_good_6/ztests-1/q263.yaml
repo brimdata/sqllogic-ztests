@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q263.sql | sort > q263.out
+
+inputs:
+  - name: q263.sql
+    data: |
+      SELECT + - 23 AS col2 FROM tab2, tab0 AS cor0 GROUP BY tab2.col2;
+  - name: tab0
+  - name: tab2
+
+outputs:
+  - name: q263.out
+    data: |
+      -23
+      -23
+      -23

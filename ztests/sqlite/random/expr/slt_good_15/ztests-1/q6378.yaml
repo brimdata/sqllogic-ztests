@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q6378.sql | sort > q6378.out
+
+inputs:
+  - name: q6378.sql
+    data: |
+      SELECT DISTINCT COUNT ( * ) AS col1, ( - + COALESCE ( - 43, - 72 ) );
+
+outputs:
+  - name: q6378.out
+    data: |
+      1	43

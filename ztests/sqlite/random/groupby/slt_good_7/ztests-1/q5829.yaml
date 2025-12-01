@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q5829.sql | sort > q5829.out
+
+inputs:
+  - name: q5829.sql
+    data: |
+      SELECT ALL col0 * + tab1.col0 AS col1 FROM tab1 WHERE NOT ( - tab1.col2 ) <= NULL GROUP BY col0;
+  - name: tab1
+
+outputs:
+  - name: q5829.out
+    data: |

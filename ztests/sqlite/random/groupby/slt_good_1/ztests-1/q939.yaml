@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q939.sql | sort > q939.out
+
+inputs:
+  - name: q939.sql
+    data: |
+      SELECT ALL - 64 + tab1.col2 FROM tab1, tab2 AS cor0 GROUP BY tab1.col2;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q939.out
+    data: |
+      -19
+      -56
+      7

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q6551.sql | sort > q6551.out
+
+inputs:
+  - name: q6551.sql
+    data: |
+      SELECT DISTINCT col1 * - cor0.col0 AS col0 FROM tab2 AS cor0 GROUP BY cor0.col1, cor0.col0, cor0.col1;
+  - name: tab2
+
+outputs:
+  - name: q6551.out
+    data: |
+      -3772
+      -5369
+      -915

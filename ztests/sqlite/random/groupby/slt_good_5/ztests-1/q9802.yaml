@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9802.sql | sort > q9802.out
+
+inputs:
+  - name: q9802.sql
+    data: |
+      SELECT + col1 * + ( tab2.col1 ) AS col1 FROM tab2 GROUP BY tab2.col1;
+  - name: tab2
+
+outputs:
+  - name: q9802.out
+    data: |
+      1681
+      3481
+      3721

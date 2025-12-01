@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q6285.sql | sort > q6285.out
+
+inputs:
+  - name: q6285.sql
+    data: |
+      SELECT DISTINCT + 21 AS col2, COUNT ( * ) FROM tab1 AS cor0 CROSS JOIN tab2 AS cor1;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q6285.out
+    data: |
+      21	9

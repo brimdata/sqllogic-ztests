@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q2036.sql | sort > q2036.out
+
+inputs:
+  - name: q2036.sql
+    data: |
+      SELECT ALL + 22 AS col1 FROM tab2 GROUP BY col0 HAVING NOT ( NOT NULL IS NULL );
+  - name: tab2
+
+outputs:
+  - name: q2036.out
+    data: |
+      22
+      22
+      22

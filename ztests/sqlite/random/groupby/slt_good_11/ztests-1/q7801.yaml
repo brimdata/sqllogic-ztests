@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q7801.sql | sort > q7801.out
+
+inputs:
+  - name: q7801.sql
+    data: |
+      SELECT DISTINCT 89 - col1 FROM tab2 GROUP BY col1 HAVING NOT NULL IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q7801.out
+    data: |

@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q1097.sql | sort > q1097.out
+
+inputs:
+  - name: q1097.sql
+    data: |
+      SELECT ALL - 42 AS col0 FROM tab1 AS cor0 CROSS JOIN tab2 AS cor1 GROUP BY cor1.col0;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q1097.out
+    data: |
+      -42
+      -42
+      -42

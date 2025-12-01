@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q7513.sql | sort > q7513.out
+
+inputs:
+  - name: q7513.sql
+    data: |
+      SELECT col1 * 90 FROM tab0 WHERE NULL NOT BETWEEN col2 AND 90 GROUP BY col1 HAVING NULL IN ( + COUNT ( * ) );
+  - name: tab0
+
+outputs:
+  - name: q7513.out
+    data: |

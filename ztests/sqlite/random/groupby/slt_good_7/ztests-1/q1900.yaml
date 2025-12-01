@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1900.sql | sort > q1900.out
+
+inputs:
+  - name: q1900.sql
+    data: |
+      SELECT DISTINCT 30 * - cor0.col2 FROM tab2 cor0 GROUP BY col2, cor0.col2;
+  - name: tab2
+
+outputs:
+  - name: q1900.out
+    data: |
+      -1740
+      -2370
+      -2610

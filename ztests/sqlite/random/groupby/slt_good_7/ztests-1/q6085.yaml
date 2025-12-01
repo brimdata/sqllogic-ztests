@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q6085.sql | sort > q6085.out
+
+inputs:
+  - name: q6085.sql
+    data: |
+      SELECT 23 + - col1 FROM tab2 GROUP BY tab2.col1;
+  - name: tab2
+
+outputs:
+  - name: q6085.out
+    data: |
+      -18
+      -36
+      -38

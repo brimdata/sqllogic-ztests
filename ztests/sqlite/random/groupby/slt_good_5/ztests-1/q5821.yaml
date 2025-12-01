@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q5821.sql | sort > q5821.out
+
+inputs:
+  - name: q5821.sql
+    data: |
+      SELECT ALL - cor0.col1 * cor0.col1 + 6 AS col2 FROM tab2 AS cor0 GROUP BY cor0.col1;
+  - name: tab2
+
+outputs:
+  - name: q5821.out
+    data: |
+      -1675
+      -3475
+      -3715

@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q3493.sql | sort > q3493.out
+
+inputs:
+  - name: q3493.sql
+    data: |
+      SELECT tab1.col1 + ( tab1.col1 ) AS col2 FROM tab1, tab2 cor0 GROUP BY tab1.col1;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q3493.out
+    data: |
+      114
+      12
+      88

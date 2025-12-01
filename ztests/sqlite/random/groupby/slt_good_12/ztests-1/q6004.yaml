@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q6004.sql | sort > q6004.out
+
+inputs:
+  - name: q6004.sql
+    data: |
+      SELECT DISTINCT + 40 / col0 FROM tab0 GROUP BY col1, col0 HAVING NULL IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q6004.out
+    data: |

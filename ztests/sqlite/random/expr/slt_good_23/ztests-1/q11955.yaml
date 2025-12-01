@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q11955.sql | sort > q11955.out
+
+inputs:
+  - name: q11955.sql
+    data: |
+      SELECT - + COUNT ( * ) col1, + COALESCE ( 99, - - 42 );
+
+outputs:
+  - name: q11955.out
+    data: |
+      -1	99

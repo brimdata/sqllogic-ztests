@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8240.sql | sort > q8240.out
+
+inputs:
+  - name: q8240.sql
+    data: |
+      SELECT col1 * + col1 AS col0, - col1 FROM tab2 WHERE NULL IS NULL GROUP BY col1, col1;
+  - name: tab2
+
+outputs:
+  - name: q8240.out
+    data: |
+      1681	-41
+      3481	-59
+      3721	-61

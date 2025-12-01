@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1064.sql | sort > q1064.out
+
+inputs:
+  - name: q1064.sql
+    data: |
+      SELECT + col1 + 68 * col1 AS col1 FROM tab1 GROUP BY tab1.col1;
+  - name: tab1
+
+outputs:
+  - name: q1064.out
+    data: |
+      3036
+      3933
+      414

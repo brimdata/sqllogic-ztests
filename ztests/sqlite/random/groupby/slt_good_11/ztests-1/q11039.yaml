@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q11039.sql | sort > q11039.out
+
+inputs:
+  - name: q11039.sql
+    data: |
+      SELECT - col1 - + 11 + - col0 * - - 24 + + col1 AS col2 FROM tab2 GROUP BY col0, col1 HAVING NOT NULL <> NULL;
+  - name: tab2
+
+outputs:
+  - name: q11039.out
+    data: |

@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q200.sql | sort > q200.out
+
+inputs:
+  - name: q200.sql
+    data: |
+      SELECT ALL cor1.col2 + cor1.col2 / 26 AS col2 FROM tab1 cor0 CROSS JOIN tab2 cor1 GROUP BY cor1.col2;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q200.out
+    data: |
+      60
+      82
+      90

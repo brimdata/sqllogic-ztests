@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q4622.sql | sort > q4622.out
+
+inputs:
+  - name: q4622.sql
+    data: |
+      SELECT ALL 20 + + col1 FROM tab0 GROUP BY col1 HAVING NOT NULL IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q4622.out
+    data: |
+      101
+      20

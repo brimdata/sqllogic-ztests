@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q6599.sql | sort > q6599.out
+
+inputs:
+  - name: q6599.sql
+    data: |
+      SELECT ALL CAST ( - 5 AS INTEGER ) AS col2 FROM tab2 GROUP BY tab2.col2;
+  - name: tab2
+
+outputs:
+  - name: q6599.out
+    data: |
+      -5
+      -5
+      -5

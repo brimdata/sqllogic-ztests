@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q5021.sql | sort > q5021.out
+
+inputs:
+  - name: q5021.sql
+    data: |
+      SELECT ALL - CAST ( - tab1.col0 AS INTEGER ) AS col1 FROM tab1, tab2 AS cor0 GROUP BY tab1.col0;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q5021.out
+    data: |
+      22
+      28
+      82

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q11056.sql | sort > q11056.out
+
+inputs:
+  - name: q11056.sql
+    data: |
+      SELECT - + COALESCE ( ( + col1 ), ( - 73 ) ) AS col2 FROM tab2 AS cor0 GROUP BY col0, col1;
+  - name: tab2
+
+outputs:
+  - name: q11056.out
+    data: |
+      -41
+      -59
+      -61

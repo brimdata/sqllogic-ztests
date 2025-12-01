@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q4290.sql | sort > q4290.out
+
+inputs:
+  - name: q4290.sql
+    data: |
+      SELECT 45 AS col1, COUNT ( * ) + - 63 * - SUM ( CAST ( NULL AS REAL ) );
+
+outputs:
+  - name: q4290.out
+    data: |
+      45	NULL

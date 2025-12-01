@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q2667.sql | sort > q2667.out
+
+inputs:
+  - name: q2667.sql
+    data: |
+      SELECT DISTINCT - cor1.col1 * + 32 AS col1 FROM tab2, tab0 cor0, tab1 AS cor1 GROUP BY cor1.col1;
+  - name: tab0
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q2667.out
+    data: |
+      -1408
+      -1824
+      -192

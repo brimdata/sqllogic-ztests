@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q8343.sql | sort > q8343.out
+
+inputs:
+  - name: q8343.sql
+    data: |
+      SELECT ALL - cor1.col2 * 78 FROM tab2 AS cor0 CROSS JOIN tab0 AS cor1 GROUP BY cor1.col2, cor1.col2;
+  - name: tab0
+  - name: tab2
+
+outputs:
+  - name: q8343.out
+    data: |
+      -1872
+      -2964
+      -6162

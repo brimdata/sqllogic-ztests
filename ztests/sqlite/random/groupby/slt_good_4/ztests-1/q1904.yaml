@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q1904.sql | sort > q1904.out
+
+inputs:
+  - name: q1904.sql
+    data: |
+      SELECT ALL cor0.col0 * 22 FROM tab2 AS cor0 CROSS JOIN tab0 AS cor1 GROUP BY cor0.col0, cor0.col1;
+  - name: tab0
+  - name: tab2
+
+outputs:
+  - name: q1904.out
+    data: |
+      2002
+      2024
+      330

@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q5762.sql | sort > q5762.out
+
+inputs:
+  - name: q5762.sql
+    data: |
+      SELECT DISTINCT 27, - MAX ( CAST ( NULL AS INTEGER ) ) AS col1 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q5762.out
+    data: |
+      27	NULL

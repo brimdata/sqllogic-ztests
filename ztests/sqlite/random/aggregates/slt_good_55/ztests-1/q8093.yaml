@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q8093.sql | sort > q8093.out
+
+inputs:
+  - name: q8093.sql
+    data: |
+      SELECT DISTINCT + 33, COUNT ( * ) AS col1 FROM tab2 AS cor0 CROSS JOIN tab1 AS cor1;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q8093.out
+    data: |
+      33	9

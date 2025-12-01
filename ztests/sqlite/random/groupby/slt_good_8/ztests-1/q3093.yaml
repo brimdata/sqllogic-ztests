@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q3093.sql | sort > q3093.out
+
+inputs:
+  - name: q3093.sql
+    data: |
+      SELECT - tab2.col0 + + tab2.col0 * tab2.col0 AS col2 FROM tab2 GROUP BY tab2.col0;
+  - name: tab2
+
+outputs:
+  - name: q3093.out
+    data: |
+      210
+      8190
+      8372

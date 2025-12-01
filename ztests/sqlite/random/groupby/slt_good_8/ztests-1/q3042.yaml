@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q3042.sql | sort > q3042.out
+
+inputs:
+  - name: q3042.sql
+    data: |
+      SELECT DISTINCT - 99 + + cor0.col1 AS col2 FROM tab1 AS cor0 CROSS JOIN tab1 cor1 GROUP BY cor0.col1;
+  - name: tab1
+
+outputs:
+  - name: q3042.out
+    data: |
+      -42
+      -55
+      -93

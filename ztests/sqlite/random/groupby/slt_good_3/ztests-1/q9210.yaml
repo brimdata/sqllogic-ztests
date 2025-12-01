@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9210.sql | sort > q9210.out
+
+inputs:
+  - name: q9210.sql
+    data: |
+      SELECT tab2.col1 * 78 + 26 AS col1 FROM tab2 GROUP BY tab2.col1;
+  - name: tab2
+
+outputs:
+  - name: q9210.out
+    data: |
+      3224
+      4628
+      4784

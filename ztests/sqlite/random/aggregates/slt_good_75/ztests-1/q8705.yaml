@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q8705.sql | sort > q8705.out
+
+inputs:
+  - name: q8705.sql
+    data: |
+      SELECT ALL + 98 AS col1, - CAST ( - COUNT ( * ) AS INTEGER ) AS col2 FROM tab1 AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q8705.out
+    data: |
+      98	3

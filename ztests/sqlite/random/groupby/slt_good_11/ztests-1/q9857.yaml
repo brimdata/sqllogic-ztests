@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q9857.sql | sort > q9857.out
+
+inputs:
+  - name: q9857.sql
+    data: |
+      SELECT col0 * CAST ( - 45 AS INTEGER ) * col0 FROM tab1 AS cor0 GROUP BY col0 HAVING NOT NULL IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q9857.out
+    data: |

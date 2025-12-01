@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4445.sql | sort > q4445.out
+
+inputs:
+  - name: q4445.sql
+    data: |
+      SELECT - CAST ( col0 AS INTEGER ) * 24 FROM tab2 GROUP BY tab2.col0;
+  - name: tab2
+
+outputs:
+  - name: q4445.out
+    data: |
+      -2184
+      -2208
+      -360

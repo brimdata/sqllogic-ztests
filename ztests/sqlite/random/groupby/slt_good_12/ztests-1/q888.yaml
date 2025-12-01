@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q888.sql | sort > q888.out
+
+inputs:
+  - name: q888.sql
+    data: |
+      SELECT ALL col1 / + ( col1 ) + - 49 AS col2, - CAST ( NULL AS INTEGER ) FROM tab0 GROUP BY col1, col2 HAVING NOT + 45 >= NULL;
+  - name: tab0
+
+outputs:
+  - name: q888.out
+    data: |

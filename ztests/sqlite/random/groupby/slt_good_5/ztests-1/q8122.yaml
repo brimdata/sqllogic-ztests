@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8122.sql | sort > q8122.out
+
+inputs:
+  - name: q8122.sql
+    data: |
+      SELECT ALL 20 FROM tab2 AS cor0 CROSS JOIN tab2 AS cor1 GROUP BY cor1.col0, cor1.col2;
+  - name: tab2
+
+outputs:
+  - name: q8122.out
+    data: |
+      20
+      20
+      20

@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q706.sql | sort > q706.out
+
+inputs:
+  - name: q706.sql
+    data: |
+      SELECT ALL 7 FROM tab2, tab1 AS cor0, tab2 AS cor1 GROUP BY cor1.col0;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q706.out
+    data: |
+      7
+      7
+      7

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9618.sql | sort > q9618.out
+
+inputs:
+  - name: q9618.sql
+    data: |
+      SELECT ( - cor0.col1 ) - - 6 AS col1 FROM tab2 AS cor0 GROUP BY cor0.col1;
+  - name: tab2
+
+outputs:
+  - name: q9618.out
+    data: |
+      -35
+      -53
+      -55

@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q1009.sql | sort > q1009.out
+
+inputs:
+  - name: q1009.sql
+    data: |
+      SELECT COUNT ( * ), - 44 AS col2 FROM tab2 cor0 CROSS JOIN tab0 AS cor1;
+  - name: tab0
+  - name: tab2
+
+outputs:
+  - name: q1009.out
+    data: |
+      9	-44

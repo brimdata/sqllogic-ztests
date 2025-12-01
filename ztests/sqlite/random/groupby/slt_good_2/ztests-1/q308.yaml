@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q308.sql | sort > q308.out
+
+inputs:
+  - name: q308.sql
+    data: |
+      SELECT - 68 FROM tab1 AS cor0 CROSS JOIN tab2 AS cor1 GROUP BY cor1.col2;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q308.out
+    data: |
+      -68
+      -68
+      -68

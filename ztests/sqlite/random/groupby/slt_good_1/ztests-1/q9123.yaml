@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q9123.sql | sort > q9123.out
+
+inputs:
+  - name: q9123.sql
+    data: |
+      SELECT - 9 FROM tab1 AS cor0 CROSS JOIN tab2 cor1 GROUP BY cor0.col2;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q9123.out
+    data: |
+      -9
+      -9
+      -9

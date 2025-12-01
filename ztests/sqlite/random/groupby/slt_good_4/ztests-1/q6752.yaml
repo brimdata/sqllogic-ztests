@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q6752.sql | sort > q6752.out
+
+inputs:
+  - name: q6752.sql
+    data: |
+      SELECT tab2.col1 * + tab2.col1 FROM tab2 GROUP BY col1 HAVING NOT NULL IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q6752.out
+    data: |
