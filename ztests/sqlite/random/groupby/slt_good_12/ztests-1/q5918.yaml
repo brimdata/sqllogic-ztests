@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q5918.sql | sort > q5918.out
+
+inputs:
+  - name: q5918.sql
+    data: |
+      SELECT - col0 FROM tab2 WHERE NOT ( 56 * col0 ) NOT BETWEEN NULL AND + 15 GROUP BY col0;
+  - name: tab2
+
+outputs:
+  - name: q5918.out
+    data: |

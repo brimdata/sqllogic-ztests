@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q5096.sql | sort > q5096.out
+
+inputs:
+  - name: q5096.sql
+    data: |
+      SELECT - COUNT ( * ) col2, + CASE WHEN NULL IS NOT NULL THEN 13 ELSE 65 END AS col1;
+
+outputs:
+  - name: q5096.out
+    data: |
+      -1	65

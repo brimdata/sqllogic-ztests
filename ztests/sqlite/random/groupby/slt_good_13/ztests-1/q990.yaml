@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q990.sql | sort > q990.out
+
+inputs:
+  - name: q990.sql
+    data: |
+      SELECT ALL 9 * + 23 * - cor0.col0 AS col0 FROM tab2 AS cor0 GROUP BY cor0.col0;
+  - name: tab2
+
+outputs:
+  - name: q990.out
+    data: |
+      -18837
+      -19044
+      -3105

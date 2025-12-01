@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q11680.sql | sort > q11680.out
+
+inputs:
+  - name: q11680.sql
+    data: |
+      SELECT 27 AS col1, COUNT ( + ( - col2 ) ) FROM tab0 WHERE NOT NULL IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q11680.out
+    data: |
+      27	3

@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q8685.sql | sort > q8685.out
+
+inputs:
+  - name: q8685.sql
+    data: |
+      SELECT + 76 AS col2 FROM tab1, tab2 AS cor0, tab1 AS cor1 GROUP BY tab1.col2;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q8685.out
+    data: |
+      76
+      76
+      76

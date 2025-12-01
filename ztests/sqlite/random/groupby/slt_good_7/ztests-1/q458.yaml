@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q458.sql | sort > q458.out
+
+inputs:
+  - name: q458.sql
+    data: |
+      SELECT - 8 * 20 AS col1 FROM tab2 AS cor0 CROSS JOIN tab1 AS cor1 GROUP BY cor1.col2;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q458.out
+    data: |
+      -160
+      -160
+      -160

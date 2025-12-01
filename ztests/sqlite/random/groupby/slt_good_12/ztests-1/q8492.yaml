@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q8492.sql | sort > q8492.out
+
+inputs:
+  - name: q8492.sql
+    data: |
+      SELECT DISTINCT col0 + + COALESCE ( - col0, - COALESCE ( + 41, col0 ) ) FROM tab0 cor0 GROUP BY col0 HAVING NOT NULL IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q8492.out
+    data: |

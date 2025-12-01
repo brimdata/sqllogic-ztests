@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q5402.sql | sort > q5402.out
+
+inputs:
+  - name: q5402.sql
+    data: |
+      SELECT DISTINCT cor0.col1 - cor0.col1 * 66 FROM tab2 AS cor0 GROUP BY cor0.col1, cor0.col0;
+  - name: tab2
+
+outputs:
+  - name: q5402.out
+    data: |
+      -2665
+      -3835
+      -3965

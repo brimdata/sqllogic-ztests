@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4543.sql | sort > q4543.out
+
+inputs:
+  - name: q4543.sql
+    data: |
+      SELECT - COALESCE ( 89, + cor0.col1 ) AS col1 FROM tab1 AS cor0 GROUP BY cor0.col1;
+  - name: tab1
+
+outputs:
+  - name: q4543.out
+    data: |
+      -89
+      -89
+      -89

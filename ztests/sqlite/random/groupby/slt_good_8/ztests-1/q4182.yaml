@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q4182.sql | sort > q4182.out
+
+inputs:
+  - name: q4182.sql
+    data: |
+      SELECT - cor1.col0 * 35 FROM tab0 cor0 CROSS JOIN tab2 AS cor1 GROUP BY cor1.col0;
+  - name: tab0
+  - name: tab2
+
+outputs:
+  - name: q4182.out
+    data: |
+      -3185
+      -3220
+      -525

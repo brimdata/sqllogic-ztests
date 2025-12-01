@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8690.sql | sort > q8690.out
+
+inputs:
+  - name: q8690.sql
+    data: |
+      SELECT col2 + tab0.col2 AS col2 FROM tab0 WHERE - tab0.col2 NOT IN ( col1 + + tab0.col0 ) GROUP BY tab0.col2;
+  - name: tab0
+
+outputs:
+  - name: q8690.out
+    data: |
+      158
+      48
+      76

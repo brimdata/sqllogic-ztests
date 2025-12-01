@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q8093.sql | sort > q8093.out
+
+inputs:
+  - name: q8093.sql
+    data: |
+      SELECT ALL + - 10 + + 60 * 12 AS col2 FROM tab0 GROUP BY tab0.col1;
+  - name: tab0
+
+outputs:
+  - name: q8093.out
+    data: |
+      710
+      710

@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q7353.sql | sort > q7353.out
+
+inputs:
+  - name: q7353.sql
+    data: |
+      SELECT + 82 AS col0 FROM tab2 GROUP BY col2, col2 HAVING NOT + CAST ( NULL AS INTEGER ) NOT BETWEEN NULL AND COUNT ( * );
+  - name: tab2
+
+outputs:
+  - name: q7353.out
+    data: |

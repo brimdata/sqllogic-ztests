@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q970.sql | sort > q970.out
+
+inputs:
+  - name: q970.sql
+    data: |
+      SELECT - cor0.col2 * - 29 FROM tab2, tab1 AS cor0 GROUP BY cor0.col2;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q970.out
+    data: |
+      1305
+      2059
+      232

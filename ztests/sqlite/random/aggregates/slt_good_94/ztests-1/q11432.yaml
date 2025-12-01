@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q11432.sql | sort > q11432.out
+
+inputs:
+  - name: q11432.sql
+    data: |
+      SELECT MIN ( ALL col1 ), - 20 * 75 AS col2 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q11432.out
+    data: |
+      51	-1500

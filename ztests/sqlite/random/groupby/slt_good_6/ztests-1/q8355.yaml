@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q8355.sql | sort > q8355.out
+
+inputs:
+  - name: q8355.sql
+    data: |
+      SELECT cor0.col2 * - 58 + 10 FROM tab1, tab1 AS cor0, tab0 AS cor1 GROUP BY cor0.col2;
+  - name: tab0
+  - name: tab1
+
+outputs:
+  - name: q8355.out
+    data: |
+      -2600
+      -4108
+      -454

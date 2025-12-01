@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q6433.sql | sort > q6433.out
+
+inputs:
+  - name: q6433.sql
+    data: |
+      SELECT - col1 + 9 + - col1 FROM tab0 AS cor0 GROUP BY col1 HAVING NOT NULL IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q6433.out
+    data: |
+      -153
+      9

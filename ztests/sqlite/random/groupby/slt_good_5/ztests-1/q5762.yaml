@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q5762.sql | sort > q5762.out
+
+inputs:
+  - name: q5762.sql
+    data: |
+      SELECT - col1 AS col2 FROM tab2 GROUP BY tab2.col1 HAVING NULL IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q5762.out
+    data: |
+      -41
+      -59
+      -61

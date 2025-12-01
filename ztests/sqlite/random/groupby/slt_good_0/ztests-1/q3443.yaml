@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q3443.sql | sort > q3443.out
+
+inputs:
+  - name: q3443.sql
+    data: |
+      SELECT cor1.col2 * 92 FROM tab1, tab1 AS cor0, tab1 AS cor1 GROUP BY cor1.col2;
+  - name: tab1
+
+outputs:
+  - name: q3443.out
+    data: |
+      4140
+      6532
+      736

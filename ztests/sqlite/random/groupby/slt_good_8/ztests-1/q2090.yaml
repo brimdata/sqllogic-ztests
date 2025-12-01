@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q2090.sql | sort > q2090.out
+
+inputs:
+  - name: q2090.sql
+    data: |
+      SELECT cor0.col0 * + 22 AS col2 FROM tab2 AS cor0 CROSS JOIN tab2 AS cor1 GROUP BY cor0.col0;
+  - name: tab2
+
+outputs:
+  - name: q2090.out
+    data: |
+      2002
+      2024
+      330

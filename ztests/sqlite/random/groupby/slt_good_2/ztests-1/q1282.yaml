@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1282.sql | sort > q1282.out
+
+inputs:
+  - name: q1282.sql
+    data: |
+      SELECT ( cor0.col1 ) / - 10 + - cor0.col0 FROM tab1 AS cor0 GROUP BY cor0.col1, cor0.col0;
+  - name: tab1
+
+outputs:
+  - name: q1282.out
+    data: |
+      -22
+      -33
+      -86

@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q11142.sql | sort > q11142.out
+
+inputs:
+  - name: q11142.sql
+    data: |
+      SELECT COUNT ( * ) AS col1, + 55 FROM ( tab1 AS cor0 CROSS JOIN tab0 AS cor1 );
+  - name: tab0
+  - name: tab1
+
+outputs:
+  - name: q11142.out
+    data: |
+      9	55

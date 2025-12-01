@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1719.sql | sort > q1719.out
+
+inputs:
+  - name: q1719.sql
+    data: |
+      SELECT ALL tab2.col0 * - tab2.col0 + + tab2.col0 AS col0 FROM tab2 GROUP BY tab2.col0;
+  - name: tab2
+
+outputs:
+  - name: q1719.out
+    data: |
+      -210
+      -8190
+      -8372

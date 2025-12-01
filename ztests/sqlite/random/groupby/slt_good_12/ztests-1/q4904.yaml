@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4904.sql | sort > q4904.out
+
+inputs:
+  - name: q4904.sql
+    data: |
+      SELECT + col0, CAST ( NULL AS REAL ) + - 52 AS col2 FROM tab2 WHERE NOT NULL IS NOT NULL GROUP BY col0;
+  - name: tab2
+
+outputs:
+  - name: q4904.out
+    data: |
+      15	NULL
+      91	NULL
+      92	NULL

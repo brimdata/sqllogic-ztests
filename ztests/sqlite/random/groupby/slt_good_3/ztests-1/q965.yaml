@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q965.sql | sort > q965.out
+
+inputs:
+  - name: q965.sql
+    data: |
+      SELECT + tab1.col1 * ( tab1.col1 ) - + 34 / tab1.col1 FROM tab1 GROUP BY tab1.col1;
+  - name: tab1
+
+outputs:
+  - name: q965.out
+    data: |
+      1936
+      31
+      3249

@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q4746.sql | sort > q4746.out
+
+inputs:
+  - name: q4746.sql
+    data: |
+      SELECT tab2.col2 * tab2.col2 AS col0 FROM tab2 WHERE ( - tab2.col1 + tab2.col0 ) IS NULL GROUP BY tab2.col2;
+  - name: tab2
+
+outputs:
+  - name: q4746.out
+    data: |

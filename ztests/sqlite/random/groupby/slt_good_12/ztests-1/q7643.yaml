@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q7643.sql | sort > q7643.out
+
+inputs:
+  - name: q7643.sql
+    data: |
+      SELECT - col1 * - 40 AS col2, + 55 FROM tab1 GROUP BY col1;
+  - name: tab1
+
+outputs:
+  - name: q7643.out
+    data: |
+      1760	55
+      2280	55
+      240	55

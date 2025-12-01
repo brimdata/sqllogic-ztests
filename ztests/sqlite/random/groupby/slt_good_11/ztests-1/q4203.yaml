@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q4203.sql | sort > q4203.out
+
+inputs:
+  - name: q4203.sql
+    data: |
+      SELECT CAST ( NULL AS INTEGER ) AS col2 FROM tab1 GROUP BY col1, col1 HAVING NOT NULL <> NULL;
+  - name: tab1
+
+outputs:
+  - name: q4203.out
+    data: |

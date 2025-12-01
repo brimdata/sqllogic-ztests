@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1440.sql | sort > q1440.out
+
+inputs:
+  - name: q1440.sql
+    data: |
+      SELECT DISTINCT col2 + + col1 FROM tab0 AS cor0 GROUP BY col1, col2 HAVING ( NULL ) IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q1440.out
+    data: |
+      105
+      38
+      79

@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q2643.sql | sort > q2643.out
+
+inputs:
+  - name: q2643.sql
+    data: |
+      SELECT DISTINCT cor0.col1 / 63 - cor0.col0 FROM tab0 AS cor0 CROSS JOIN tab1 AS cor1 GROUP BY cor0.col0, cor0.col1;
+  - name: tab0
+  - name: tab1
+
+outputs:
+  - name: q2643.out
+    data: |
+      -26
+      -42
+      -83

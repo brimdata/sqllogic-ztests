@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q9254.sql | sort > q9254.out
+
+inputs:
+  - name: q9254.sql
+    data: |
+      SELECT + 90 AS col1 FROM tab2 AS cor0 CROSS JOIN tab1 cor1 GROUP BY cor0.col1;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q9254.out
+    data: |
+      90
+      90
+      90

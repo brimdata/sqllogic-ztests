@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q13142.sql | sort > q13142.out
+
+inputs:
+  - name: q13142.sql
+    data: |
+      SELECT 88, - COUNT ( * ) AS col2 FROM tab1 cor0 CROSS JOIN tab2 AS cor1;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q13142.out
+    data: |
+      88	-9

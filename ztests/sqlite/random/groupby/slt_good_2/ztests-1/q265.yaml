@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q265.sql | sort > q265.out
+
+inputs:
+  - name: q265.sql
+    data: |
+      SELECT ALL - 37 + + cor1.col2 AS col0 FROM tab1 AS cor0 CROSS JOIN tab1 AS cor1 GROUP BY cor1.col2;
+  - name: tab1
+
+outputs:
+  - name: q265.out
+    data: |
+      -29
+      34
+      8

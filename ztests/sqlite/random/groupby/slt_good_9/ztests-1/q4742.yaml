@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4742.sql | sort > q4742.out
+
+inputs:
+  - name: q4742.sql
+    data: |
+      SELECT + col1 * - + col1 AS col0 FROM tab1 GROUP BY col1 HAVING NULL IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q4742.out
+    data: |
+      -1936
+      -3249
+      -36

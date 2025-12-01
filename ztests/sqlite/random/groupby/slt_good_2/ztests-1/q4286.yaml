@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4286.sql | sort > q4286.out
+
+inputs:
+  - name: q4286.sql
+    data: |
+      SELECT DISTINCT col0 + col0 * 43 AS col2 FROM tab2 GROUP BY tab2.col0;
+  - name: tab2
+
+outputs:
+  - name: q4286.out
+    data: |
+      4004
+      4048
+      660

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4530.sql | sort > q4530.out
+
+inputs:
+  - name: q4530.sql
+    data: |
+      SELECT CASE cor0.col1 WHEN - cor0.col1 THEN cor0.col1 WHEN cor0.col1 + - 54 THEN NULL ELSE NULL END AS col0 FROM tab2 cor0 GROUP BY cor0.col1;
+  - name: tab2
+
+outputs:
+  - name: q4530.out
+    data: |
+      NULL
+      NULL
+      NULL

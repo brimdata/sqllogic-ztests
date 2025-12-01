@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q11905.sql | sort > q11905.out
+
+inputs:
+  - name: q11905.sql
+    data: |
+      SELECT ALL CAST ( NULL AS INTEGER ) AS col1, - 32 / + + COUNT ( * ) AS col2 FROM tab1, tab1 AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q11905.out
+    data: |
+      NULL	-3

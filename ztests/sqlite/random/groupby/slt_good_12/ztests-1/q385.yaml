@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q385.sql | sort > q385.out
+
+inputs:
+  - name: q385.sql
+    data: |
+      SELECT ALL - 22 AS col0 FROM tab2 AS cor0 WHERE NOT ( NULL BETWEEN + col0 AND + col1 ) GROUP BY col1;
+  - name: tab2
+
+outputs:
+  - name: q385.out
+    data: |

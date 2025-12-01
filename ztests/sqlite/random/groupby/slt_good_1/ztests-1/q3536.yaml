@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q3536.sql | sort > q3536.out
+
+inputs:
+  - name: q3536.sql
+    data: |
+      SELECT 30 FROM tab1 AS cor0 CROSS JOIN tab1 cor1 GROUP BY cor1.col2;
+  - name: tab1
+
+outputs:
+  - name: q3536.out
+    data: |
+      30
+      30
+      30

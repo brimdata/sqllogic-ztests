@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q8195.sql | sort > q8195.out
+
+inputs:
+  - name: q8195.sql
+    data: |
+      SELECT 43, - col2 FROM tab0 GROUP BY col2 HAVING NOT NULL IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q8195.out
+    data: |

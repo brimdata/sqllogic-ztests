@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q7147.sql | sort > q7147.out
+
+inputs:
+  - name: q7147.sql
+    data: |
+      SELECT 7 + cor0.col2 * ( cor0.col1 + cor0.col2 ) AS col2 FROM tab2 cor0 GROUP BY cor0.col2, cor0.col1;
+  - name: tab2
+
+outputs:
+  - name: q7147.out
+    data: |
+      10909
+      12883
+      5749

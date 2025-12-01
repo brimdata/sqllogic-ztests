@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8517.sql | sort > q8517.out
+
+inputs:
+  - name: q8517.sql
+    data: |
+      SELECT - COALESCE ( tab1.col2, tab1.col2 ) FROM tab1 GROUP BY col2;
+  - name: tab1
+
+outputs:
+  - name: q8517.out
+    data: |
+      -45
+      -71
+      -8

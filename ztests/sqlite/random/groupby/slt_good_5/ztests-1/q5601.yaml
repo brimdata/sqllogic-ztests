@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q5601.sql | sort > q5601.out
+
+inputs:
+  - name: q5601.sql
+    data: |
+      SELECT DISTINCT - 75 * tab1.col1 AS col0 FROM tab1 GROUP BY tab1.col1;
+  - name: tab1
+
+outputs:
+  - name: q5601.out
+    data: |
+      -3300
+      -4275
+      -450

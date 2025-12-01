@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q3347.sql | sort > q3347.out
+
+inputs:
+  - name: q3347.sql
+    data: |
+      SELECT ALL col2 AS col0, + 83 FROM tab2 GROUP BY col2, col2 HAVING NOT CAST ( NULL AS INTEGER ) IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q3347.out
+    data: |

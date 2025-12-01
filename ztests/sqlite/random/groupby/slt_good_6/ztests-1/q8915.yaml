@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q8915.sql | sort > q8915.out
+
+inputs:
+  - name: q8915.sql
+    data: |
+      SELECT ALL + 35 FROM tab1, tab2 AS cor0, tab2 AS cor1 GROUP BY cor1.col0;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q8915.out
+    data: |
+      35
+      35
+      35

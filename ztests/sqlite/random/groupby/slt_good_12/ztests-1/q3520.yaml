@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q3520.sql | sort > q3520.out
+
+inputs:
+  - name: q3520.sql
+    data: |
+      SELECT col0 * + col0 AS col1, - 33 / - col0 FROM tab1 GROUP BY col0 HAVING NOT ( NULL ) IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q3520.out
+    data: |
+      484	1
+      6724	0
+      784	1

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q5714.sql | sort > q5714.out
+
+inputs:
+  - name: q5714.sql
+    data: |
+      SELECT + CASE + 20 WHEN cor0.col2 THEN + ( 55 ) + + cor0.col2 WHEN cor0.col2 THEN NULL ELSE + 50 END * cor0.col2 AS col1 FROM tab2 AS cor0 GROUP BY cor0.col2;
+  - name: tab2
+
+outputs:
+  - name: q5714.out
+    data: |
+      2900
+      3950
+      4350

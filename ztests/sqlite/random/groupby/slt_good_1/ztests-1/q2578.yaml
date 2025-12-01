@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q2578.sql | sort > q2578.out
+
+inputs:
+  - name: q2578.sql
+    data: |
+      SELECT ALL CASE + cor0.col2 WHEN cor0.col2 + cor0.col2 THEN NULL ELSE cor0.col2 END + - 7 FROM tab1 AS cor0 GROUP BY col2;
+  - name: tab1
+
+outputs:
+  - name: q2578.out
+    data: |
+      1
+      38
+      64

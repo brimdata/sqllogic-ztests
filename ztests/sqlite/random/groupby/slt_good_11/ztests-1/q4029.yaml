@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q4029.sql | sort > q4029.out
+
+inputs:
+  - name: q4029.sql
+    data: |
+      SELECT ALL + col1 / - - col1 AS col0 FROM tab1 GROUP BY col1 HAVING NOT - CAST ( - + 0 AS REAL ) IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q4029.out
+    data: |

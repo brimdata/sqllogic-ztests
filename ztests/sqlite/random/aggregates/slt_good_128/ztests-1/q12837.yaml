@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q12837.sql | sort > q12837.out
+
+inputs:
+  - name: q12837.sql
+    data: |
+      SELECT ALL - COUNT ( * ), ( + - 10 ) AS col2 FROM tab2 AS cor0 CROSS JOIN tab2 AS cor1;
+  - name: tab2
+
+outputs:
+  - name: q12837.out
+    data: |
+      -9	-10

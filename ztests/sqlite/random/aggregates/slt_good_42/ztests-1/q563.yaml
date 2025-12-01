@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q563.sql | sort > q563.out
+
+inputs:
+  - name: q563.sql
+    data: |
+      SELECT COUNT ( * ), - 42 AS col0 FROM tab2, tab1 AS cor0;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q563.out
+    data: |
+      9	-42

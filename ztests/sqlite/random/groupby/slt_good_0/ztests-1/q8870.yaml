@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8870.sql | sort > q8870.out
+
+inputs:
+  - name: q8870.sql
+    data: |
+      SELECT cor0.col1 + - cor0.col1 * + col1 AS col0 FROM tab2 AS cor0 GROUP BY cor0.col1;
+  - name: tab2
+
+outputs:
+  - name: q8870.out
+    data: |
+      -1640
+      -3422
+      -3660

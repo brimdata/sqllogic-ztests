@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q5385.sql | sort > q5385.out
+
+inputs:
+  - name: q5385.sql
+    data: |
+      SELECT ALL tab1.col1 + ( 52 ) * tab1.col1 AS col0 FROM tab1 GROUP BY tab1.col1;
+  - name: tab1
+
+outputs:
+  - name: q5385.out
+    data: |
+      2332
+      3021
+      318

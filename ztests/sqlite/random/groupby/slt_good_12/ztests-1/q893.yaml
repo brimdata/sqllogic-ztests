@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q893.sql | sort > q893.out
+
+inputs:
+  - name: q893.sql
+    data: |
+      SELECT ALL col0 + col1 * - - col1 FROM tab2 GROUP BY col0, col1;
+  - name: tab2
+
+outputs:
+  - name: q893.out
+    data: |
+      1773
+      3572
+      3736

@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q3154.sql | sort > q3154.out
+
+inputs:
+  - name: q3154.sql
+    data: |
+      SELECT ALL - + 17 FROM tab0, tab1 AS cor0, tab2 AS cor1 GROUP BY cor1.col1;
+  - name: tab0
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q3154.out
+    data: |
+      -17
+      -17
+      -17

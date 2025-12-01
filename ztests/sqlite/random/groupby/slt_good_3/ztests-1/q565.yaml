@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q565.sql | sort > q565.out
+
+inputs:
+  - name: q565.sql
+    data: |
+      SELECT + CAST ( col2 AS INTEGER ) * + col2 AS col1 FROM tab2 GROUP BY tab2.col2;
+  - name: tab2
+
+outputs:
+  - name: q565.out
+    data: |
+      3364
+      6241
+      7569

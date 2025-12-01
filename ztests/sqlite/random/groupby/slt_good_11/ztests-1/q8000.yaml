@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8000.sql | sort > q8000.out
+
+inputs:
+  - name: q8000.sql
+    data: |
+      SELECT - col1 FROM tab0 WHERE NOT col0 IS NULL GROUP BY col1, col0 HAVING NOT - - 40 IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q8000.out
+    data: |
+      -81
+      0
+      0

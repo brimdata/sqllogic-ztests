@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8930.sql | sort > q8930.out
+
+inputs:
+  - name: q8930.sql
+    data: |
+      SELECT DISTINCT 80 * + tab2.col2 AS col2 FROM tab2 GROUP BY tab2.col2;
+  - name: tab2
+
+outputs:
+  - name: q8930.out
+    data: |
+      4640
+      6320
+      6960

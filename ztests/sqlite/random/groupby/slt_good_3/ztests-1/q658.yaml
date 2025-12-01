@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q658.sql | sort > q658.out
+
+inputs:
+  - name: q658.sql
+    data: |
+      SELECT DISTINCT + 32 * cor0.col1 FROM tab2 AS cor0 GROUP BY cor0.col1;
+  - name: tab2
+
+outputs:
+  - name: q658.out
+    data: |
+      1312
+      1888
+      1952

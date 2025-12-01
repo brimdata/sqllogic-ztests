@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q8.sql | sort > q8.out
+
+inputs:
+  - name: q8.sql
+    data: |
+      SELECT 79 * tab2.col2 + - 76 FROM tab2, tab1 AS cor0 GROUP BY tab2.col2;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q8.out
+    data: |
+      4506
+      6165
+      6797

@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q5863.sql | sort > q5863.out
+
+inputs:
+  - name: q5863.sql
+    data: |
+      SELECT cor1.col1 * cor1.col1 + 13 FROM tab2 AS cor0 CROSS JOIN tab1 AS cor1 GROUP BY cor1.col1;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q5863.out
+    data: |
+      1949
+      3262
+      49

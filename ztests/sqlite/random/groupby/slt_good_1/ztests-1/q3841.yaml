@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q3841.sql | sort > q3841.out
+
+inputs:
+  - name: q3841.sql
+    data: |
+      SELECT DISTINCT cor0.col0 * cor0.col0 AS col0 FROM tab2 cor0 CROSS JOIN tab0 GROUP BY cor0.col0;
+  - name: tab0
+  - name: tab2
+
+outputs:
+  - name: q3841.out
+    data: |
+      225
+      8281
+      8464

@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q8251.sql | sort > q8251.out
+
+inputs:
+  - name: q8251.sql
+    data: |
+      SELECT + 2 AS col0, - COUNT ( * ) FROM tab2 AS cor0 CROSS JOIN tab1 AS cor1;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q8251.out
+    data: |
+      2	-9

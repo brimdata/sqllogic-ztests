@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q7946.sql | sort > q7946.out
+
+inputs:
+  - name: q7946.sql
+    data: |
+      SELECT ALL COUNT ( * ) AS col1, CAST ( NULL AS INTEGER ) FROM tab2 WHERE NOT ( NULL ) IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q7946.out
+    data: |
+      3	NULL

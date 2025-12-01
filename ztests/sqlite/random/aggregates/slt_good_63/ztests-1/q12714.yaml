@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q12714.sql | sort > q12714.out
+
+inputs:
+  - name: q12714.sql
+    data: |
+      SELECT SUM ( col1 ) + - COUNT ( * ) AS col0, - 70 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q12714.out
+    data: |
+      192	-70
