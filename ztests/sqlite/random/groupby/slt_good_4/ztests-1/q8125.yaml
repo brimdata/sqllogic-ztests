@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8125.sql | sort > q8125.out
+
+inputs:
+  - name: q8125.sql
+    data: |
+      SELECT tab2.col1 + - 20 FROM tab2 GROUP BY col1;
+  - name: tab2
+
+outputs:
+  - name: q8125.out
+    data: |
+      21
+      39
+      41

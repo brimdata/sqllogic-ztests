@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q885.sql | sort > q885.out
+
+inputs:
+  - name: q885.sql
+    data: |
+      SELECT ALL + CAST ( cor0.col0 AS INTEGER ) AS col1 FROM tab2 cor0 GROUP BY cor0.col0, cor0.col1;
+  - name: tab2
+
+outputs:
+  - name: q885.out
+    data: |
+      15
+      91
+      92

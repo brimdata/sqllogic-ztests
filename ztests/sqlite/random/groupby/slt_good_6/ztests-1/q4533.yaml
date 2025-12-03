@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q4533.sql | sort > q4533.out
+
+inputs:
+  - name: q4533.sql
+    data: |
+      SELECT ALL + ( + cor0.col1 ) * - cor0.col1 + - CAST ( NULL AS INTEGER ) FROM tab1, tab2 AS cor0 GROUP BY cor0.col1;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q4533.out
+    data: |
+      NULL
+      NULL
+      NULL

@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q6244.sql | sort > q6244.out
+
+inputs:
+  - name: q6244.sql
+    data: |
+      SELECT 15 AS col2 FROM tab2, tab2 AS cor0, tab1 AS cor1 GROUP BY tab2.col2;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q6244.out
+    data: |
+      15
+      15
+      15

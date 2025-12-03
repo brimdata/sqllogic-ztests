@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4606.sql | sort > q4606.out
+
+inputs:
+  - name: q4606.sql
+    data: |
+      SELECT 81 AS col2, CAST ( + 5 AS INTEGER ) FROM tab2 GROUP BY col0;
+  - name: tab2
+
+outputs:
+  - name: q4606.out
+    data: |
+      81	5
+      81	5
+      81	5

@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q7310.sql | sort > q7310.out
+
+inputs:
+  - name: q7310.sql
+    data: |
+      SELECT ALL + tab0.col2 + 20 FROM tab0, tab2 AS cor0 GROUP BY tab0.col2;
+  - name: tab0
+  - name: tab2
+
+outputs:
+  - name: q7310.out
+    data: |
+      44
+      58
+      99

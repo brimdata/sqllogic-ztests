@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q10571.sql | sort > q10571.out
+
+inputs:
+  - name: q10571.sql
+    data: |
+      SELECT - col1 AS col2 FROM tab0 GROUP BY col1 HAVING NOT 8 <> ( NULL );
+  - name: tab0
+
+outputs:
+  - name: q10571.out
+    data: |

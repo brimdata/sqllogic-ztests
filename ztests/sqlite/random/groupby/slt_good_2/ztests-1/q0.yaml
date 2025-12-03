@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q0.sql | sort > q0.out
+
+inputs:
+  - name: q0.sql
+    data: |
+      SELECT ALL - ( 50 ) + tab1.col2 AS col1 FROM tab1 GROUP BY col2;
+  - name: tab1
+
+outputs:
+  - name: q0.out
+    data: |
+      -42
+      -5
+      21

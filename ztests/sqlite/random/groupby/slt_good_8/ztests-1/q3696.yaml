@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q3696.sql | sort > q3696.out
+
+inputs:
+  - name: q3696.sql
+    data: |
+      SELECT - cor1.col2 * - 80 FROM tab2 AS cor0 CROSS JOIN tab2 AS cor1 GROUP BY cor1.col2;
+  - name: tab2
+
+outputs:
+  - name: q3696.out
+    data: |
+      4640
+      6320
+      6960

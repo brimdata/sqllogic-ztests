@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q5059.sql | sort > q5059.out
+
+inputs:
+  - name: q5059.sql
+    data: |
+      SELECT DISTINCT COALESCE ( 95, 6 ), + ( - col0 ) AS col1 FROM tab1 GROUP BY col0;
+  - name: tab1
+
+outputs:
+  - name: q5059.out
+    data: |
+      95	-22
+      95	-28
+      95	-82

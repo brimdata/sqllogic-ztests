@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4421.sql | sort > q4421.out
+
+inputs:
+  - name: q4421.sql
+    data: |
+      SELECT + cor0.col0 * cor0.col0 + - CASE - cor0.col0 WHEN cor0.col0 * cor0.col0 THEN NULL WHEN + cor0.col0 THEN - cor0.col0 WHEN cor0.col0 THEN - col1 ELSE + cor0.col1 END - - col0 FROM tab1 AS cor0 GROUP BY col1, col0;
+  - name: tab1
+
+outputs:
+  - name: q4421.out
+    data: |
+      500
+      6762
+      755

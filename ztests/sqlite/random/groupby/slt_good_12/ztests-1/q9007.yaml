@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9007.sql | sort > q9007.out
+
+inputs:
+  - name: q9007.sql
+    data: |
+      SELECT - col2 FROM tab0 WHERE NOT ( col1 * col0 ) = - ( + 16 ) GROUP BY col2;
+  - name: tab0
+
+outputs:
+  - name: q9007.out
+    data: |
+      -24
+      -38
+      -79

@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q876.sql | sort > q876.out
+
+inputs:
+  - name: q876.sql
+    data: |
+      SELECT DISTINCT - col0 * col0 AS col1 FROM tab2 WHERE ( col1 * - - col2 IS NULL ) GROUP BY col0;
+  - name: tab2
+
+outputs:
+  - name: q876.out
+    data: |

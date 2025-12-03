@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q522.sql | sort > q522.out
+
+inputs:
+  - name: q522.sql
+    data: |
+      SELECT ALL cor0.col1 * COALESCE ( + 65 / cor0.col1, 68 ) FROM tab2 AS cor0 GROUP BY cor0.col1, cor0.col0;
+  - name: tab2
+
+outputs:
+  - name: q522.out
+    data: |
+      41
+      59
+      61

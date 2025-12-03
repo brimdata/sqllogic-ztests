@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q12.sql | sort > q12.out
+
+inputs:
+  - name: q12.sql
+    data: |
+      SELECT + col1 / ( - col1 ) - - col1 FROM tab2 GROUP BY col1, col2, col1;
+  - name: tab2
+
+outputs:
+  - name: q12.out
+    data: |
+      40
+      58
+      60

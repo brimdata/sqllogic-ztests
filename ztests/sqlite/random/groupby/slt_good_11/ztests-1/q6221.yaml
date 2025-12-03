@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q6221.sql | sort > q6221.out
+
+inputs:
+  - name: q6221.sql
+    data: |
+      SELECT CASE CAST ( - col0 AS INTEGER ) WHEN + CAST ( NULL AS INTEGER ) THEN 26 ELSE + col0 + 43 END * 28 FROM tab2 GROUP BY col0;
+  - name: tab2
+
+outputs:
+  - name: q6221.out
+    data: |
+      1624
+      3752
+      3780

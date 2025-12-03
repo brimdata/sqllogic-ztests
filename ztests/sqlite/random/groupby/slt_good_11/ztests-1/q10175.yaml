@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q10175.sql | sort > q10175.out
+
+inputs:
+  - name: q10175.sql
+    data: |
+      SELECT DISTINCT + col0, col0 * + + 57 AS col1 FROM tab1 GROUP BY col0 HAVING ( NOT ( - 25 * - 57 ) IS NULL );
+  - name: tab1
+
+outputs:
+  - name: q10175.out
+    data: |
+      22	1254
+      28	1596
+      82	4674

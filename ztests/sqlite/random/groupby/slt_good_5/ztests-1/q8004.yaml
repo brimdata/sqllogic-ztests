@@ -1,0 +1,21 @@
+script: |
+  super -f tsv -I q8004.sql | sort > q8004.out
+
+inputs:
+  - name: q8004.sql
+    data: |
+      SELECT cor0.col1 + 48 * - cor0.col1 AS col1 FROM tab2 AS cor0 CROSS JOIN tab2 cor1 GROUP BY cor1.col2, cor0.col1;
+  - name: tab2
+
+outputs:
+  - name: q8004.out
+    data: |
+      -1927
+      -1927
+      -1927
+      -2773
+      -2773
+      -2773
+      -2867
+      -2867
+      -2867

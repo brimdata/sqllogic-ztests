@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9333.sql | sort > q9333.out
+
+inputs:
+  - name: q9333.sql
+    data: |
+      SELECT ALL tab2.col2 + + 99 AS col2 FROM tab2 GROUP BY tab2.col2;
+  - name: tab2
+
+outputs:
+  - name: q9333.out
+    data: |
+      157
+      178
+      186

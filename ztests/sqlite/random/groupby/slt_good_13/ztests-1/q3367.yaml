@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q3367.sql | sort > q3367.out
+
+inputs:
+  - name: q3367.sql
+    data: |
+      SELECT COALESCE ( + 30, + 13 ) AS col1 FROM tab0, tab0 AS cor0 GROUP BY cor0.col0;
+  - name: tab0
+
+outputs:
+  - name: q3367.out
+    data: |
+      30
+      30
+      30

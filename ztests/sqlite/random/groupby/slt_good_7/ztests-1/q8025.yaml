@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8025.sql | sort > q8025.out
+
+inputs:
+  - name: q8025.sql
+    data: |
+      SELECT + ( 30 ) + - tab1.col1 * - tab1.col1 AS col2 FROM tab1 GROUP BY col1;
+  - name: tab1
+
+outputs:
+  - name: q8025.out
+    data: |
+      1966
+      3279
+      66

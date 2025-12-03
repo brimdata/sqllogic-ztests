@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4379.sql | sort > q4379.out
+
+inputs:
+  - name: q4379.sql
+    data: |
+      SELECT 80 * + col1 FROM tab2 GROUP BY col1, col1, col2;
+  - name: tab2
+
+outputs:
+  - name: q4379.out
+    data: |
+      3280
+      4720
+      4880

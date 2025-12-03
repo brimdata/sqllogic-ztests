@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q6949.sql | sort > q6949.out
+
+inputs:
+  - name: q6949.sql
+    data: |
+      SELECT - 60 - tab1.col0 * + tab1.col0 FROM tab1 GROUP BY tab1.col0;
+  - name: tab1
+
+outputs:
+  - name: q6949.out
+    data: |
+      -544
+      -6784
+      -844

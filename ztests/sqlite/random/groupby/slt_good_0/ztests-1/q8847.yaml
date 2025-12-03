@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8847.sql | sort > q8847.out
+
+inputs:
+  - name: q8847.sql
+    data: |
+      SELECT ALL + 75 * - cor0.col1 * cor0.col2 AS col1 FROM tab1 AS cor0 GROUP BY cor0.col1, cor0.col2;
+  - name: tab1
+
+outputs:
+  - name: q8847.out
+    data: |
+      -192375
+      -234300
+      -3600

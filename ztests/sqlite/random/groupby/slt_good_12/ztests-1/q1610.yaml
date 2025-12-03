@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1610.sql | sort > q1610.out
+
+inputs:
+  - name: q1610.sql
+    data: |
+      SELECT 16 - - col0 + + ( 15 - col0 ) / 2 FROM tab0 GROUP BY col0 HAVING NULL IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q1610.out
+    data: |
+      37
+      45
+      65

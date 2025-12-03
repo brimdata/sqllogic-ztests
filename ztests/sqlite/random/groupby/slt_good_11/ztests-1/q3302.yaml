@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q3302.sql | sort > q3302.out
+
+inputs:
+  - name: q3302.sql
+    data: |
+      SELECT ALL + col1 * - 81 AS col2 FROM tab2 GROUP BY col1;
+  - name: tab2
+
+outputs:
+  - name: q3302.out
+    data: |
+      -3321
+      -4779
+      -4941

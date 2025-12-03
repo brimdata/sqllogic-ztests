@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q6488.sql | sort > q6488.out
+
+inputs:
+  - name: q6488.sql
+    data: |
+      SELECT col2 * 54 AS col0 FROM tab1 WHERE col1 * CASE WHEN NOT col2 * + 25 < + col1 + + col2 THEN NULL ELSE 43 * + col2 + + 44 END IS NOT NULL GROUP BY col2, col1 HAVING NULL IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q6488.out
+    data: |

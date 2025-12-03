@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q170.sql | sort > q170.out
+
+inputs:
+  - name: q170.sql
+    data: |
+      SELECT DISTINCT - tab2.col1 AS col1 FROM tab2 WHERE ( col2 * - tab2.col2 ) IS NULL GROUP BY tab2.col1;
+  - name: tab2
+
+outputs:
+  - name: q170.out
+    data: |

@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q5940.sql | sort > q5940.out
+
+inputs:
+  - name: q5940.sql
+    data: |
+      SELECT - cor0.col0 * - 48 FROM tab1, tab2 cor0 GROUP BY cor0.col0;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q5940.out
+    data: |
+      4368
+      4416
+      720

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4434.sql | sort > q4434.out
+
+inputs:
+  - name: q4434.sql
+    data: |
+      SELECT DISTINCT - cor1.col0 FROM tab1 AS cor0 CROSS JOIN tab1 AS cor1 GROUP BY cor1.col0, cor1.col2, cor1.col1;
+  - name: tab1
+
+outputs:
+  - name: q4434.out
+    data: |
+      -22
+      -28
+      -82

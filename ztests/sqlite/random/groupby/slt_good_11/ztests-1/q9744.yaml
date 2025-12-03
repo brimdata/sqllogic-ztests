@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9744.sql | sort > q9744.out
+
+inputs:
+  - name: q9744.sql
+    data: |
+      SELECT - 20, + col2 AS col0 FROM tab1 GROUP BY col2, col1;
+  - name: tab1
+
+outputs:
+  - name: q9744.out
+    data: |
+      -20	45
+      -20	71
+      -20	8

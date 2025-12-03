@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4688.sql | sort > q4688.out
+
+inputs:
+  - name: q4688.sql
+    data: |
+      SELECT ( CAST ( - - col2 AS INTEGER ) ) * + 60 FROM tab2 GROUP BY col2 HAVING NOT 90 IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q4688.out
+    data: |
+      3480
+      4740
+      5220

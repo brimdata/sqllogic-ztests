@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q8260.sql | sort > q8260.out
+
+inputs:
+  - name: q8260.sql
+    data: |
+      SELECT - col0 AS col1 FROM tab2 WHERE NOT NULL IS NULL GROUP BY col0;
+  - name: tab2
+
+outputs:
+  - name: q8260.out
+    data: |

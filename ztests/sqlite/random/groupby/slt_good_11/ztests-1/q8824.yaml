@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8824.sql | sort > q8824.out
+
+inputs:
+  - name: q8824.sql
+    data: |
+      SELECT ALL - CAST ( col1 AS INTEGER ) * col1 AS col0 FROM tab2 cor0 GROUP BY col1 HAVING NOT NULL IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q8824.out
+    data: |
+      -1681
+      -3481
+      -3721

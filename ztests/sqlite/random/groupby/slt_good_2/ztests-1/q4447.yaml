@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q4447.sql | sort > q4447.out
+
+inputs:
+  - name: q4447.sql
+    data: |
+      SELECT - 12 AS col1 FROM tab0, tab0 AS cor0 GROUP BY tab0.col1;
+  - name: tab0
+
+outputs:
+  - name: q4447.out
+    data: |
+      -12
+      -12

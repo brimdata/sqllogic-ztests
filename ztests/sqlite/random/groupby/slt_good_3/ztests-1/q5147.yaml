@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q5147.sql | sort > q5147.out
+
+inputs:
+  - name: q5147.sql
+    data: |
+      SELECT + cor0.col0 + - cor0.col2 * 23 AS col1 FROM tab1 AS cor0 GROUP BY cor0.col0, cor0.col2;
+  - name: tab1
+
+outputs:
+  - name: q5147.out
+    data: |
+      -1007
+      -1551
+      -162

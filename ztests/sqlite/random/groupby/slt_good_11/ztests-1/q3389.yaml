@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q3389.sql | sort > q3389.out
+
+inputs:
+  - name: q3389.sql
+    data: |
+      SELECT ALL + 5 FROM tab0 GROUP BY col1 HAVING NOT NULL IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q3389.out
+    data: |

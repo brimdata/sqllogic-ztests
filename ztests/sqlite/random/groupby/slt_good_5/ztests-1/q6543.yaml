@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q6543.sql | sort > q6543.out
+
+inputs:
+  - name: q6543.sql
+    data: |
+      SELECT cor0.col0 + - cor0.col2 / + col2 FROM tab0 cor0 GROUP BY col2, col0;
+  - name: tab0
+
+outputs:
+  - name: q6543.out
+    data: |
+      25
+      42
+      82

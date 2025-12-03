@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8822.sql | sort > q8822.out
+
+inputs:
+  - name: q8822.sql
+    data: |
+      SELECT DISTINCT - col2 + col2 * - 21 FROM tab1 GROUP BY col1, col2;
+  - name: tab1
+
+outputs:
+  - name: q8822.out
+    data: |
+      -1562
+      -176
+      -990

@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q2019.sql | sort > q2019.out
+
+inputs:
+  - name: q2019.sql
+    data: |
+      SELECT DISTINCT + 31 * - cor0.col2 AS col2 FROM tab1, tab2 cor0 GROUP BY cor0.col2;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q2019.out
+    data: |
+      -1798
+      -2449
+      -2697

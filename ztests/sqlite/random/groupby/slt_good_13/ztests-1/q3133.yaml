@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q3133.sql | sort > q3133.out
+
+inputs:
+  - name: q3133.sql
+    data: |
+      SELECT ALL - 16 + + cor1.col2 AS col0 FROM tab1, tab1 AS cor0, tab0 AS cor1 GROUP BY cor1.col2;
+  - name: tab0
+  - name: tab1
+
+outputs:
+  - name: q3133.out
+    data: |
+      22
+      63
+      8

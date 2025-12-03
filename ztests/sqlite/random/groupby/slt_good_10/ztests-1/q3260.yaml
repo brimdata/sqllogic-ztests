@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q3260.sql | sort > q3260.out
+
+inputs:
+  - name: q3260.sql
+    data: |
+      SELECT - col0 FROM tab2 WHERE NOT ( NULL IS NOT NULL ) GROUP BY col0 HAVING NULL IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q3260.out
+    data: |
+      -15
+      -91
+      -92

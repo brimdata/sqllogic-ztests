@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9786.sql | sort > q9786.out
+
+inputs:
+  - name: q9786.sql
+    data: |
+      SELECT cor0.col1 + - CAST ( 79 AS INTEGER ) FROM tab2 AS cor0 GROUP BY cor0.col0, col1;
+  - name: tab2
+
+outputs:
+  - name: q9786.out
+    data: |
+      -18
+      -20
+      -38

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q3033.sql | sort > q3033.out
+
+inputs:
+  - name: q3033.sql
+    data: |
+      SELECT DISTINCT tab2.col2 * tab2.col2 AS col2 FROM tab2 GROUP BY tab2.col2 HAVING NULL IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q3033.out
+    data: |
+      3364
+      6241
+      7569

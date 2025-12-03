@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9409.sql | sort > q9409.out
+
+inputs:
+  - name: q9409.sql
+    data: |
+      SELECT DISTINCT - col1 * + 91 FROM tab2 WHERE NOT col0 IS NULL GROUP BY col1;
+  - name: tab2
+
+outputs:
+  - name: q9409.out
+    data: |
+      -3731
+      -5369
+      -5551

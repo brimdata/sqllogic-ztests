@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q1671.sql | sort > q1671.out
+
+inputs:
+  - name: q1671.sql
+    data: |
+      SELECT ALL + col1 / - col1 FROM tab0 GROUP BY col1 HAVING NOT ( NULL ) BETWEEN NULL AND NULL;
+  - name: tab0
+
+outputs:
+  - name: q1671.out
+    data: |

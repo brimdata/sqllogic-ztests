@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4142.sql | sort > q4142.out
+
+inputs:
+  - name: q4142.sql
+    data: |
+      SELECT - CAST ( cor0.col1 AS INTEGER ) FROM tab2 AS cor0 GROUP BY cor0.col0, cor0.col1;
+  - name: tab2
+
+outputs:
+  - name: q4142.out
+    data: |
+      -41
+      -59
+      -61

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q7170.sql | sort > q7170.out
+
+inputs:
+  - name: q7170.sql
+    data: |
+      SELECT ALL tab1.col2 * - ( 16 + 63 * tab1.col2 ) AS col2 FROM tab1 GROUP BY tab1.col2;
+  - name: tab1
+
+outputs:
+  - name: q7170.out
+    data: |
+      -128295
+      -318719
+      -4160

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q487.sql | sort > q487.out
+
+inputs:
+  - name: q487.sql
+    data: |
+      SELECT - 3 * col2 AS col1 FROM tab1 GROUP BY tab1.col2;
+  - name: tab1
+
+outputs:
+  - name: q487.out
+    data: |
+      -135
+      -213
+      -24

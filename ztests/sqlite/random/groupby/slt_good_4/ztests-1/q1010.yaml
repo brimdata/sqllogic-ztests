@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1010.sql | sort > q1010.out
+
+inputs:
+  - name: q1010.sql
+    data: |
+      SELECT - tab1.col1 + + COALESCE ( 72 + tab1.col1, tab1.col1 ) * tab1.col1 AS col1 FROM tab1 GROUP BY tab1.col1;
+  - name: tab1
+
+outputs:
+  - name: q1010.out
+    data: |
+      462
+      5060
+      7296

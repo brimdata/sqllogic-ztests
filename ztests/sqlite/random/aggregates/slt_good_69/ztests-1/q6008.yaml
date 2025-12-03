@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q6008.sql | sort > q6008.out
+
+inputs:
+  - name: q6008.sql
+    data: |
+      SELECT ALL SUM ( + col1 ), - 15 AS col2 FROM tab1 AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q6008.out
+    data: |
+      66	-15

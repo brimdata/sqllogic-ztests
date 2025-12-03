@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4092.sql | sort > q4092.out
+
+inputs:
+  - name: q4092.sql
+    data: |
+      SELECT ALL + - col2 AS col0 FROM tab2 WHERE col0 * + + 20 + + col0 IS NOT NULL GROUP BY col1, col2;
+  - name: tab2
+
+outputs:
+  - name: q4092.out
+    data: |
+      -58
+      -79
+      -87

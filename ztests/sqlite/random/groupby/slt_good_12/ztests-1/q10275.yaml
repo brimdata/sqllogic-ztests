@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q10275.sql | sort > q10275.out
+
+inputs:
+  - name: q10275.sql
+    data: |
+      SELECT DISTINCT ( + col2 ) / - COALESCE ( - 12, + col2 ) * - CAST ( NULL AS INTEGER ) / + col1 * + 3, col2 AS col0 FROM tab1 GROUP BY col1, col2, col1;
+  - name: tab1
+
+outputs:
+  - name: q10275.out
+    data: |
+      NULL	45
+      NULL	71
+      NULL	8

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1421.sql | sort > q1421.out
+
+inputs:
+  - name: q1421.sql
+    data: |
+      SELECT - ( CASE cor0.col0 WHEN + 31 THEN - cor0.col1 ELSE cor0.col1 * cor0.col0 END ) AS col1 FROM tab2 AS cor0 GROUP BY col0, cor0.col1, cor0.col1;
+  - name: tab2
+
+outputs:
+  - name: q1421.out
+    data: |
+      -3772
+      -5369
+      -915

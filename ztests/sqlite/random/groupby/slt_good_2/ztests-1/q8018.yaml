@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q8018.sql | sort > q8018.out
+
+inputs:
+  - name: q8018.sql
+    data: |
+      SELECT 19 AS col1 FROM tab1 cor0 CROSS JOIN tab2 AS cor1 GROUP BY cor1.col1;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q8018.out
+    data: |
+      19
+      19
+      19

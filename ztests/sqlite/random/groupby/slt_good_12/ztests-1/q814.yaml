@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q814.sql | sort > q814.out
+
+inputs:
+  - name: q814.sql
+    data: |
+      SELECT DISTINCT + 24 * - col1 FROM tab1 WHERE NOT NULL IS NOT NULL GROUP BY col1, col1;
+  - name: tab1
+
+outputs:
+  - name: q814.out
+    data: |
+      -1056
+      -1368
+      -144

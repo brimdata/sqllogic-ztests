@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q612.sql | sort > q612.out
+
+inputs:
+  - name: q612.sql
+    data: |
+      SELECT - col2 AS col1 FROM tab1 WHERE NOT NULL IS NOT NULL OR NULL NOT IN ( col2, - col0 ) GROUP BY col2;
+  - name: tab1
+
+outputs:
+  - name: q612.out
+    data: |
+      -45
+      -71
+      -8

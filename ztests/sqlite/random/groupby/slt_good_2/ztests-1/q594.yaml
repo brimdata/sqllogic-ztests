@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q594.sql | sort > q594.out
+
+inputs:
+  - name: q594.sql
+    data: |
+      SELECT DISTINCT CASE + cor0.col2 WHEN cor0.col2 THEN cor0.col2 ELSE NULL END FROM tab2 cor0 GROUP BY cor0.col2;
+  - name: tab2
+
+outputs:
+  - name: q594.out
+    data: |
+      58
+      79
+      87

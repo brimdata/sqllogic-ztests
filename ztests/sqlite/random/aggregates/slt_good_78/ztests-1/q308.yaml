@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q308.sql | sort > q308.out
+
+inputs:
+  - name: q308.sql
+    data: |
+      SELECT + ( COUNT ( * ) ) AS col1, + 3 AS col0 FROM tab2, tab2 AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q308.out
+    data: |
+      9	3

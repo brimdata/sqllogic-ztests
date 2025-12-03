@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q6608.sql | sort > q6608.out
+
+inputs:
+  - name: q6608.sql
+    data: |
+      SELECT ALL CAST ( + - CAST ( + + 15 AS REAL ) AS INTEGER ) AS col2, COUNT ( * );
+
+outputs:
+  - name: q6608.out
+    data: |
+      -15	1
