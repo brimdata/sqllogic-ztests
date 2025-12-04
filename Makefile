@@ -6,11 +6,11 @@ endif
 
 test-sqllogic:
 	@failed=""; \
-	ZTEST_PATH="$(CURDIR)/../super/dist" go test . -v -timeout 6h -count=1 -run TestSPQ/ztests/sqlite/select[1-5] || failed="$${failed}\nsqlite-select"; \
-	ZTEST_PATH="$(CURDIR)/../super/dist" go test . -v -timeout 6h -count=1 -run TestSPQ/ztests/sqlite/random/aggregates || failed="$${failed}\nsqlite-random-aggregates"; \
-	ZTEST_PATH="$(CURDIR)/../super/dist" go test . -v -timeout 6h -count=1 -run TestSPQ/ztests/sqlite/random/expr || failed="$${failed}\nsqlite-random-expr"; \
-	ZTEST_PATH="$(CURDIR)/../super/dist" go test . -v -timeout 6h -count=1 -run TestSPQ/ztests/sqlite/random/groupby || failed="$${failed}\nsqlite-random-groupby"; \
-	ZTEST_PATH="$(CURDIR)/../super/dist" go test . -v -timeout 6h -count=1 -run TestSPQ/ztests/sqlite/random/select || failed="$${failed}\nsqlite-random-select"; \
+	ZTEST_PATH="$(CURDIR)/../super/dist" go test . -timeout 6h -count=1 -run TestSPQ/ztests/sqlite/select[1-5] || failed="$${failed}\nsqlite-select"; \
+	ZTEST_PATH="$(CURDIR)/../super/dist" go test . -timeout 6h -count=1 -run TestSPQ/ztests/sqlite/random/aggregates || failed="$${failed}\nsqlite-random-aggregates"; \
+	ZTEST_PATH="$(CURDIR)/../super/dist" go test . -timeout 6h -count=1 -run TestSPQ/ztests/sqlite/random/expr || failed="$${failed}\nsqlite-random-expr"; \
+	ZTEST_PATH="$(CURDIR)/../super/dist" go test . -timeout 6h -count=1 -run TestSPQ/ztests/sqlite/random/groupby || failed="$${failed}\nsqlite-random-groupby"; \
+	ZTEST_PATH="$(CURDIR)/../super/dist" go test . -timeout 6h -count=1 -run TestSPQ/ztests/sqlite/random/select || failed="$${failed}\nsqlite-random-select"; \
 	if [ -n "$$failed" ]; then \
 		echo "\nFailed test sets:\n=================$${failed}\n"; \
 		exit 1; \
@@ -19,4 +19,4 @@ test-sqllogic:
 	fi
 
 test-run:
-	@ZTEST_PATH="$(CURDIR)/../super/dist" go test . -v -timeout 6h -count=1 -run $(TEST)
+	@ZTEST_PATH="$(CURDIR)/../super/dist" go test . -timeout 6h -count=1 -run $(TEST)
