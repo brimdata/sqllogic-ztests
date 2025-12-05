@@ -57,6 +57,14 @@ jobs:
             pattern: TestSPQ/ztests/sqlite/random/select
     name: test-${{ matrix.test.name }}
     steps:
+      - name: Remove unneeded tools to free up disk space
+        run: |
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /opt/hostedtoolcache/node
+          sudo rm -rf /opt/hostedtoolcache/Python
+          sudo rm -rf /opt/hostedtoolcache/PyPy
+          sudo rm -rf /opt/hostedtoolcache/Ruby
+          sudo rm -rf /opt/hostedtoolcache/CodeQL
       - uses: actions/checkout@v5
         with:
           repository: brimdata/super
