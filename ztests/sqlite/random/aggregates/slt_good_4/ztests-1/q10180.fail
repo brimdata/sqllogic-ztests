@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q10180.sql | sort > q10180.out
+
+inputs:
+  - name: q10180.sql
+    data: |
+      SELECT DISTINCT SUM ( - col1 ) AS col1 FROM tab2 AS cor0 WHERE NOT NULL IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q10180.out
+    data: |
+      NULL

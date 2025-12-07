@@ -1,0 +1,31 @@
+script: |
+  super -f tsv -I q588.sql | tr '\t' '\n' | sort > q588.out
+
+inputs:
+  - name: q588.sql
+    data: |
+      SELECT d9 FROM t9
+      WHERE (171=b9 AND c9=272 AND d9=464)
+      INTERSECT
+      SELECT e2 FROM t2
+      WHERE NOT (b2 in (818,968,776,501,592,532,546,509,264,313,21,311,985)
+      OR e2 in (945,812,213,16,940,621))
+      UNION
+      SELECT a6 FROM t6
+      WHERE (a6=469)
+      UNION
+      SELECT e7 FROM t7
+      WHERE (a7=894 AND 105=d7 AND b7=996)
+      EXCEPT
+      SELECT b5 FROM t5
+      WHERE NOT (b5 in (971,674,161,587,205)
+      OR (d5=634 OR 740=a5 OR 971=b5)
+      OR b5 in (723,82,772,878,554,934,403,975,665,705));
+  - name: t3
+  - name: t7
+
+outputs:
+  - name: q588.out
+    data: |
+      280
+      469

@@ -1,0 +1,42 @@
+script: |
+  super -f tsv -I q1004.sql | tr '\t' '\n' | sort > q1004.out
+
+inputs:
+  - name: q1004.sql
+    data: |
+      SELECT a5 FROM t5
+      WHERE (b5=772 OR b5=506)
+      OR (d5=814 OR d5=419)
+      OR a5 in (153,667,89,615)
+      INTERSECT
+      SELECT b4 FROM t4
+      WHERE NOT ((c4=82)
+      OR (c4=177))
+      EXCEPT
+      SELECT d2 FROM t2
+      WHERE NOT (b2 in (414,532,264,938,90,527)
+      OR (923=e2 AND c2=137))
+      UNION
+      SELECT d6 FROM t6
+      WHERE d6 in (600,463,578,590,428,855,151,991,66,36,797)
+      OR (946=e6 AND 585=a6 AND c6=308 AND b6=378 AND 901=d6);
+  - name: t3
+  - name: t6
+  - name: t8
+
+outputs:
+  - name: q1004.out
+    data: |
+      151
+      267
+      36
+      428
+      463
+      578
+      590
+      600
+      66
+      797
+      855
+      901
+      991

@@ -1,0 +1,11 @@
+script: |
+  super -f tsv -I q695.sql | sort > q695.out
+
+inputs:
+  - name: q695.sql
+    data: |
+      SELECT COALESCE ( - col1, col2, + col1 ) FROM tab2 GROUP BY col0, col1, col2 HAVING NOT NULL <> ( col0 );
+
+outputs:
+  - name: q695.out
+    data: |

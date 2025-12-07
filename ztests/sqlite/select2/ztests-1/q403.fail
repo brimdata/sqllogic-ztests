@@ -1,0 +1,49 @@
+script: |
+  super -f tsv -I q403.sql | sort > q403.out
+
+inputs:
+  - name: q403.sql
+    data: |
+      SELECT CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END,
+      d-e,
+      a,
+      CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      a-b,
+      abs(a)
+      FROM t1;
+
+outputs:
+  - name: q403.out
+    data: |
+      111	2	245	490	0	-4	245
+      222	-2	191	382	0	-3	191
+      222	-2	216	432	0	-2	216
+      222	-4	142	1430	0	-1	142
+      222	1	138	1390	0	-1	138
+      222	1	220	440	0	-3	220
+      222	2	127	1290	0	-2	127
+      222	NULL	121	1240	0	-3	121
+      333	-1	107	1050	0	2	107
+      333	-1	199	398	0	1	199
+      333	-1	229	458	0	1	229
+      333	-4	188	376	0	2	188
+      333	1	131	1300	0	1	131
+      333	2	213	426	0	2	213
+      333	3	182	364	0	1	182
+      333	3	234	468	0	2	234
+      333	NULL	153	1510	0	2	153
+      333	NULL	159	1580	0	1	159
+      333	NULL	168	1670	0	1	168
+      444	-1	115	NULL	0	NULL	115
+      444	-1	201	402	0	NULL	201
+      444	-2	174	1700	0	4	174
+      444	1	239	2360	0	3	239
+      444	2	163	1600	0	3	163
+      444	4	NULL	1120	0	NULL	NULL
+      444	NULL	104	NULL	0	NULL	104
+      444	NULL	149	1450	0	4	149
+      444	NULL	179	358	0	4	179
+      444	NULL	243	486	0	3	243
+      444	NULL	NULL	NULL	0	NULL	NULL

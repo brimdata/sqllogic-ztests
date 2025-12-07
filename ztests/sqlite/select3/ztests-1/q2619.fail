@@ -1,0 +1,45 @@
+script: |
+  super -f tsv -I q2619.sql | sort > q2619.out
+
+inputs:
+  - name: q2619.sql
+    data: |
+      SELECT a+b*2+c*3,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      a+b*2+c*3+d*4
+      FROM t1
+      ORDER BY 3,1;
+
+outputs:
+  - name: q2619.out
+    data: |
+      1000	11	NULL
+      1030	12	1714
+      1057	13	NULL
+      1096	14	1828
+      1121	15	1861
+      1158	16	1918
+      1180	17	1964
+      1277	19	2125
+      1297	20	2165
+      1338	21	2226
+      1360	22	2264
+      1391	23	2323
+      1455	25	NULL
+      1484	26	2476
+      635	0	1067
+      738	2	1226
+      760	3	1272
+      793	4	1325
+      827	5	1371
+      851	6	1411
+      880	7	NULL
+      905	8	NULL
+      940	9	NULL
+      966	10	1622
+      NULL	0	NULL
+      NULL	0	NULL
+      NULL	0	NULL
+      NULL	1	NULL
+      NULL	18	NULL
+      NULL	24	NULL

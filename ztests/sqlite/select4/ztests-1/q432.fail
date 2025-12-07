@@ -1,0 +1,86 @@
+script: |
+  super -f tsv -I q432.sql | tr '\t' '\n' | sort > q432.out
+
+inputs:
+  - name: q432.sql
+    data: |
+      SELECT d4 FROM t4
+      WHERE (b4=964)
+      OR (a4=778 AND 317=d4 AND b4=587 AND 290=e4)
+      OR (c4=732 OR 825=a4 OR d4=549)
+      EXCEPT
+      SELECT c8 FROM t8
+      WHERE NOT ((b8=454)
+      OR (899=c8 OR 377=c8))
+      EXCEPT
+      SELECT e6 FROM t6
+      WHERE NOT (e6 in (847,14,439,67,225)
+      OR (c6=430 AND a6=386 AND d6=196 AND e6=74 AND 243=b6)
+      OR (799=a6 OR c6=430))
+      UNION ALL
+      SELECT d3 FROM t3
+      WHERE e3 in (221,131,807,593,3)
+      OR (415=d3 OR b3=130)
+      EXCEPT
+      SELECT a7 FROM t7
+      WHERE NOT (d7 in (594,526,142,680,885,418,315,139,278))
+      UNION ALL
+      SELECT e1 FROM t1
+      WHERE d1 in (161,335,96,319,172,187,936,992,492,265)
+      UNION
+      SELECT b9 FROM t9
+      WHERE d9 in (568,744,268,360,554,678,965,305)
+      OR (602=d9)
+      OR a9 in (660,847,764,776,830,215,879,553,435,821,683,485,326,824);
+  - name: t1
+  - name: t4
+  - name: t5
+  - name: t9
+
+outputs:
+  - name: q432.out
+    data: |
+      110
+      113
+      122
+      125
+      135
+      16
+      171
+      19
+      2
+      211
+      214
+      228
+      239
+      26
+      285
+      317
+      326
+      354
+      355
+      363
+      403
+      415
+      444
+      483
+      524
+      525
+      549
+      680
+      717
+      729
+      764
+      777
+      813
+      815
+      821
+      827
+      86
+      864
+      866
+      868
+      880
+      913
+      917
+      981

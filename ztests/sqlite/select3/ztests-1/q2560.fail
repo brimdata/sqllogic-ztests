@@ -1,0 +1,27 @@
+script: |
+  super -f tsv -I q2560.sql | sort > q2560.out
+
+inputs:
+  - name: q2560.sql
+    data: |
+      SELECT a+b*2+c*3,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      (a+b+c+d+e)/5,
+      b-c,
+      c
+      FROM t1
+      WHERE (c<=d-2 OR c>=d+2);
+
+outputs:
+  - name: q2560.out
+    data: |
+      1121	0	187	-1	187
+      1158	0	192	1	193
+      1277	0	212	-3	214
+      1297	0	217	3	215
+      1338	0	222	-1	224
+      1391	0	232	1	231
+      635	0	107	-1	106
+      760	0	127	4	125
+      966	0	162	-1	161
+      NULL	0	NULL	NULL	119

@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q8480.sql | sort > q8480.out
+
+inputs:
+  - name: q8480.sql
+    data: |
+      SELECT ALL COUNT ( * ) AS col1, + MAX ( - col2 ) FROM tab1 WHERE ( - col1 ) IS NOT NULL;
+
+outputs:
+  - name: q8480.out
+    data: |
+      3	-59

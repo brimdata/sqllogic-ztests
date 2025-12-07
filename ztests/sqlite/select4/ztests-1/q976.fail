@@ -1,0 +1,49 @@
+script: |
+  super -f tsv -I q976.sql | tr '\t' '\n' | sort > q976.out
+
+inputs:
+  - name: q976.sql
+    data: |
+      SELECT c6 FROM t6
+      WHERE (d6=197 AND 861=a6)
+      INTERSECT
+      SELECT b1 FROM t1
+      WHERE NOT ((3=c1))
+      INTERSECT
+      SELECT c7 FROM t7
+      WHERE NOT (a7 in (466,869,950,356,773,958,31,703,231,430,288,22,707,433)
+      OR d7 in (278,549,492,988,916)
+      OR (d7=367 AND 832=b7 AND 705=c7 AND a7=500 AND e7=197))
+      UNION ALL
+      SELECT c9 FROM t9
+      WHERE (d9=235 AND c9=811 AND e9=383 AND a9=559 AND 66=b9)
+      OR e9 in (868,657,383,575,947,687,255,418,934,567,995,146)
+      EXCEPT
+      SELECT b2 FROM t2
+      WHERE NOT ((638=e2 AND d2=537)
+      OR (833=d2 AND a2=809 AND 333=c2 AND 811=b2))
+      UNION ALL
+      SELECT d5 FROM t5
+      WHERE (d5=883 OR e5=480 OR 721=c5);
+  - name: t2
+  - name: t8
+
+outputs:
+  - name: q976.out
+    data: |
+      151
+      232
+      309
+      39
+      457
+      526
+      569
+      579
+      601
+      688
+      734
+      739
+      793
+      806
+      811
+      883

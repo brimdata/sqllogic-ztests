@@ -1,0 +1,11 @@
+script: |
+  super -f tsv -I q5192.sql | sort > q5192.out
+
+inputs:
+  - name: q5192.sql
+    data: |
+      SELECT tab1.col1 AS col1 FROM tab1 GROUP BY tab1.col1 HAVING NOT + col1 * - col1 <> tab1.col1;
+
+outputs:
+  - name: q5192.out
+    data: |

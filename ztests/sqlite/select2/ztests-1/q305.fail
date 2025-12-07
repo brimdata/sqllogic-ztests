@@ -1,0 +1,23 @@
+script: |
+  super -f tsv -I q305.sql | sort > q305.out
+
+inputs:
+  - name: q305.sql
+    data: |
+      SELECT a+b*2+c*3,
+      c,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d)
+      FROM t1
+      WHERE EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      AND c BETWEEN b-2 AND d+2
+      AND (c<=d-2 OR c>=d+2);
+
+outputs:
+  - name: q305.out
+    data: |
+      1121	187	15	0
+      1277	214	19	0
+      1338	224	21	0
+      1391	231	23	0
+      966	161	10	0

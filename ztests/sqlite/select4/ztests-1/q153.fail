@@ -1,0 +1,47 @@
+script: |
+  super -f tsv -I q153.sql | tr '\t' '\n' | sort > q153.out
+
+inputs:
+  - name: q153.sql
+    data: |
+      SELECT b8 FROM t8
+      WHERE (e8=918 OR 7=b8)
+      OR a8 in (504,127,359)
+      OR (352=b8 OR 186=b8 OR 15=a8)
+      EXCEPT
+      SELECT c1 FROM t1
+      WHERE NOT ((b1=594)
+      OR (a1=189)
+      OR (838=e1 AND d1=643))
+      EXCEPT
+      SELECT d9 FROM t9
+      WHERE NOT (a9 in (972,413,69,115,251,511,269,56,821,102)
+      OR d9 in (720,111,808))
+      UNION
+      SELECT a6 FROM t6
+      WHERE e6 in (139,747,274,511,707,595);
+  - name: t1
+  - name: t2
+  - name: t3
+  - name: t5
+  - name: t7
+  - name: t9
+
+outputs:
+  - name: q153.out
+    data: |
+      121
+      186
+      205
+      313
+      352
+      45
+      487
+      564
+      62
+      7
+      811
+      85
+      861
+      975
+      981

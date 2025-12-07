@@ -1,0 +1,47 @@
+script: |
+  super -f tsv -I q290.sql | sort > q290.out
+
+inputs:
+  - name: q290.sql
+    data: |
+      SELECT (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      d
+      FROM t1
+      WHERE d>e
+      OR (e>c OR e<d)
+      OR coalesce(a,b,c,d,e)<>0;
+
+outputs:
+  - name: q290.out
+    data: |
+      0	0	101
+      0	0	108
+      0	0	116
+      0	0	203
+      1	0	114
+      10	0	164
+      11	0	NULL
+      12	0	171
+      13	0	NULL
+      14	0	183
+      15	0	185
+      16	0	190
+      17	0	196
+      18	0	207
+      19	0	212
+      2	0	122
+      20	0	217
+      21	0	222
+      22	0	226
+      23	0	233
+      24	0	238
+      25	0	NULL
+      26	0	248
+      3	0	128
+      4	0	133
+      5	0	136
+      6	0	140
+      7	0	NULL
+      8	0	NULL
+      9	0	NULL

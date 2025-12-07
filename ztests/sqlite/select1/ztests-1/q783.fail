@@ -1,0 +1,21 @@
+script: |
+  super -f tsv -I q783.sql > q783.out
+
+inputs:
+  - name: q783.sql
+    data: |
+      SELECT abs(b-c),
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      b-c,
+      a+b*2+c*3+d*4
+      FROM t1
+      WHERE c BETWEEN b-2 AND d+2
+      AND (e>a AND e<b)
+      AND d>e
+      ORDER BY 2,1,4,3;
+
+outputs:
+  - name: q783.out
+    data: |
+      1	24	-1	2226
+      2	29	2	2476

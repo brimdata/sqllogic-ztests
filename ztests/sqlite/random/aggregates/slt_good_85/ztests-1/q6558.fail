@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q6558.sql | sort > q6558.out
+
+inputs:
+  - name: q6558.sql
+    data: |
+      SELECT DISTINCT CAST ( + SUM ( + - col1 ) AS INTEGER ) * - COUNT ( ALL CAST ( NULL AS REAL ) ) AS col2 FROM tab2 AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q6558.out
+    data: |
+      0

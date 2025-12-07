@@ -1,0 +1,28 @@
+script: |
+  super -f tsv -I q895.sql | sort > q895.out
+
+inputs:
+  - name: q895.sql
+    data: |
+      SELECT (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      e,
+      c-d,
+      b,
+      d-e
+      FROM t1
+      WHERE (c<=d-2 OR c>=d+2)
+      ORDER BY 5,2;
+
+outputs:
+  - name: q895.out
+    data: |
+      0	109	-2	105	-1
+      0	117	3	NULL	-1
+      0	126	-3	129	2
+      0	162	-3	160	2
+      0	189	2	186	-4
+      0	192	3	194	-2
+      0	210	2	211	2
+      0	219	-2	218	-2
+      0	221	2	223	1
+      0	230	-2	232	3

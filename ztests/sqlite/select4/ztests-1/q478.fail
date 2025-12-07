@@ -1,0 +1,54 @@
+script: |
+  super -f tsv -I q478.sql | tr '\t' '\n' | sort > q478.out
+
+inputs:
+  - name: q478.sql
+    data: |
+      SELECT d9 FROM t9
+      WHERE a9 in (821,416,907,17,959,662)
+      OR (b9=936 OR 14=a9)
+      OR e9 in (567,868,653,117,965,549,542,195,799,788,737,621)
+      EXCEPT
+      SELECT b7 FROM t7
+      WHERE NOT ((a7=958)
+      OR c7 in (705,529,725,78,12,970,906,467,853,206,435,813,284,302))
+      EXCEPT
+      SELECT c8 FROM t8
+      WHERE NOT ((c8=404 OR 650=a8 OR 98=b8))
+      UNION
+      SELECT e6 FROM t6
+      WHERE (126=b6)
+      OR (646=e6 AND b6=954)
+      OR e6 in (633,360,417,329,90,747,91,631,622,550)
+      EXCEPT
+      SELECT a4 FROM t4
+      WHERE NOT (e4 in (543,491,390)
+      OR (602=a4 OR 794=d4));
+  - name: t3
+  - name: t8
+
+outputs:
+  - name: q478.out
+    data: |
+      164
+      258
+      268
+      329
+      360
+      417
+      550
+      608
+      622
+      631
+      633
+      646
+      681
+      694
+      711
+      744
+      759
+      86
+      90
+      91
+      912
+      959

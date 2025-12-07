@@ -1,0 +1,42 @@
+script: |
+  super -f tsv -I q505.sql | sort > q505.out
+
+inputs:
+  - name: q505.sql
+    data: |
+      SELECT a,
+      c,
+      a-b
+      FROM t1
+      WHERE EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      ORDER BY 3,2;
+
+outputs:
+  - name: q505.out
+    data: |
+      121	123	-3
+      127	125	-2
+      131	134	1
+      138	137	-1
+      142	141	-1
+      149	147	4
+      153	150	2
+      159	155	1
+      163	161	3
+      168	166	1
+      174	172	4
+      179	176	4
+      182	184	1
+      188	187	2
+      191	193	-3
+      199	195	1
+      213	214	2
+      216	215	-2
+      220	224	-3
+      229	225	1
+      234	231	2
+      239	NULL	3
+      243	244	3
+      245	247	-4
+      NULL	113	NULL
+      NULL	208	NULL

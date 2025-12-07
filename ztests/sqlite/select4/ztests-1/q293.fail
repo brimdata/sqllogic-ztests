@@ -1,0 +1,34 @@
+script: |
+  super -f tsv -I q293.sql | tr '\t' '\n' | sort > q293.out
+
+inputs:
+  - name: q293.sql
+    data: |
+      SELECT a6 FROM t6
+      WHERE (413=c6)
+      UNION
+      SELECT e7 FROM t7
+      WHERE a7 in (950,916,863,386,589,452,195)
+      UNION
+      SELECT c9 FROM t9
+      WHERE (982=a9 AND 15=e9)
+      EXCEPT
+      SELECT d2 FROM t2
+      WHERE NOT ((d2=195 AND a2=56 AND 285=b2 AND e2=339));
+  - name: t3
+  - name: t5
+  - name: t8
+
+outputs:
+  - name: q293.out
+    data: |
+      154
+      272
+      301
+      552
+      605
+      764
+      801
+      826
+      89
+      983

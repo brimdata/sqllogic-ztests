@@ -1,0 +1,11 @@
+script: |
+  super -f tsv -I q3448.sql | sort > q3448.out
+
+inputs:
+  - name: q3448.sql
+    data: |
+      SELECT col1 FROM tab2 GROUP BY col0, col1 HAVING NOT NULL BETWEEN NULL AND - + col0;
+
+outputs:
+  - name: q3448.out
+    data: |

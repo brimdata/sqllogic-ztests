@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q365.sql | sort > q365.out
+
+inputs:
+  - name: q365.sql
+    data: |
+      SELECT COALESCE ( - 51, + COUNT ( DISTINCT CAST ( NULL AS INTEGER ) ) ) AS col2;
+
+outputs:
+  - name: q365.out
+    data: |
+      -51

@@ -1,0 +1,59 @@
+script: |
+  super -f tsv -I q359.sql | tr '\t' '\n' | sort > q359.out
+
+inputs:
+  - name: q359.sql
+    data: |
+      SELECT d2 FROM t2
+      WHERE (b2=846)
+      INTERSECT
+      SELECT e7 FROM t7
+      WHERE NOT ((c7=659 AND e7=183 AND 622=a7 AND 178=b7 AND 94=d7)
+      OR (663=e7 OR 948=c7 OR 114=a7)
+      OR e7 in (27,79,900,562))
+      INTERSECT
+      SELECT d9 FROM t9
+      WHERE NOT ((827=b9 OR e9=255))
+      INTERSECT
+      SELECT b5 FROM t5
+      WHERE NOT ((d5=779 OR e5=561))
+      UNION ALL
+      SELECT c4 FROM t4
+      WHERE (b4=323 OR 356=d4)
+      OR d4 in (100,364,973,31,943,44,309,777)
+      EXCEPT
+      SELECT c6 FROM t6
+      WHERE NOT ((942=c6))
+      UNION ALL
+      SELECT a8 FROM t8
+      WHERE (b8=984)
+      OR b8 in (503,466,656,351,725,469,352,162,564,405);
+  - name: t2
+  - name: t4
+  - name: t5
+
+outputs:
+  - name: q359.out
+    data: |
+      127
+      129
+      239
+      299
+      306
+      331
+      366
+      436
+      5
+      579
+      586
+      66
+      660
+      725
+      728
+      783
+      90
+      923
+      948
+      957
+      993
+      996

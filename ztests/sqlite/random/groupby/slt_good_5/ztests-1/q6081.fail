@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q6081.sql | sort > q6081.out
+
+inputs:
+  - name: q6081.sql
+    data: |
+      SELECT DISTINCT NULLIF ( cor0.col2, + cor0.col2 ) AS col2 FROM tab1 AS cor0 GROUP BY cor0.col2;
+
+outputs:
+  - name: q6081.out
+    data: |
+      NULL

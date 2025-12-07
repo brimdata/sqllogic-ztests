@@ -1,0 +1,25 @@
+script: |
+  super -f tsv -I q548.sql | sort > q548.out
+
+inputs:
+  - name: q548.sql
+    data: |
+      SELECT d,
+      c-d,
+      CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END,
+      a+b*2+c*3+d*4,
+      (a+b+c+d+e)/5,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b)
+      FROM t1
+      WHERE c>d
+      AND b IS NOT NULL
+      AND a>b;
+
+outputs:
+  - name: q548.out
+    data: |
+      133	1	1300	1325	132	4
+      171	1	1700	1714	172	12
+      183	1	364	1828	182	14
+      185	2	376	1861	187	15
+      212	2	426	2125	212	19

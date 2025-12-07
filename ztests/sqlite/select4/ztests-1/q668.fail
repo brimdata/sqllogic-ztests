@@ -1,0 +1,38 @@
+script: |
+  super -f tsv -I q668.sql | tr '\t' '\n' | sort > q668.out
+
+inputs:
+  - name: q668.sql
+    data: |
+      SELECT e2 FROM t2
+      WHERE (162=e2 OR b2=60)
+      INTERSECT
+      SELECT b8 FROM t8
+      WHERE NOT ((904=e8 AND 388=a8 AND 862=d8)
+      OR (a8=923))
+      EXCEPT
+      SELECT e7 FROM t7
+      WHERE NOT ((553=e7 OR 925=a7)
+      OR (813=b7 OR 575=d7)
+      OR (d7=805 OR e7=455))
+      EXCEPT
+      SELECT d4 FROM t4
+      WHERE NOT ((a4=922 OR 33=b4 OR 694=c4)
+      OR e4 in (835,147,692,916,854)
+      OR b4 in (577,721,919,802,389,538,260,707,114))
+      UNION
+      SELECT e5 FROM t5
+      WHERE (a5=296 AND 198=c5 AND 906=e5)
+      OR (a5=513 OR b5=321)
+      OR (b5=69 AND a5=190 AND 185=c5);
+  - name: t1
+  - name: t2
+
+outputs:
+  - name: q668.out
+    data: |
+      162
+      727
+      9
+      906
+      995

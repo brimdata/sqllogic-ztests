@@ -1,0 +1,60 @@
+script: |
+  super -f tsv -I q867.sql | tr '\t' '\n' | sort > q867.out
+
+inputs:
+  - name: q867.sql
+    data: |
+      SELECT d6 FROM t6
+      WHERE a6 in (121,604,474,692,540,251,45,270,40,469,818,240,46,255)
+      OR c6 in (807,292,267,123,159,522,308,528,146,673,442,25,242,84)
+      INTERSECT
+      SELECT d9 FROM t9
+      WHERE NOT ((751=b9 OR b9=170 OR 218=e9)
+      OR e9 in (868,954,679,607,117,35,934,965,978,944)
+      OR c9 in (188,811,662,224,767,327))
+      UNION ALL
+      SELECT e3 FROM t3
+      WHERE (d3=913 AND c3=668 AND a3=190 AND 375=e3)
+      EXCEPT
+      SELECT c4 FROM t4
+      WHERE NOT ((b4=982 OR 170=a4 OR 405=e4))
+      UNION
+      SELECT c8 FROM t8
+      WHERE c8 in (501,136,299,521,979,273,821,100,61,544,32)
+      UNION ALL
+      SELECT c5 FROM t5
+      WHERE c5 in (56,545,442,868,551,579,570,250,585,443,625,601,799,351);
+  - name: t4
+  - name: t5
+
+outputs:
+  - name: q867.out
+    data: |
+      100
+      136
+      250
+      273
+      299
+      32
+      351
+      375
+      442
+      443
+      443
+      501
+      521
+      544
+      545
+      551
+      56
+      570
+      579
+      585
+      601
+      61
+      625
+      790
+      799
+      821
+      868
+      979

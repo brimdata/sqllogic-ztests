@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q6125.sql | sort > q6125.out
+
+inputs:
+  - name: q6125.sql
+    data: |
+      SELECT DISTINCT ( + SUM ( DISTINCT col2 ) ) AS col2 FROM tab0 WHERE col1 + + col0 IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q6125.out
+    data: |
+      NULL

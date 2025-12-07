@@ -1,0 +1,25 @@
+script: |
+  super -f tsv -I q581.sql | tr '\t' '\n' | sort > q581.out
+
+inputs:
+  - name: q581.sql
+    data: |
+      SELECT e8 FROM t8
+      WHERE (672=a8 OR 327=a8)
+      OR a8 in (848,254,472)
+      OR (790=c8 OR e8=761)
+      EXCEPT
+      SELECT a7 FROM t7
+      WHERE NOT ((982=a7)
+      OR (981=c7));
+  - name: t4
+  - name: t8
+
+outputs:
+  - name: q581.out
+    data: |
+      149
+      349
+      608
+      635
+      761

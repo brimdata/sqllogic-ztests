@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q8540.sql | sort > q8540.out
+
+inputs:
+  - name: q8540.sql
+    data: |
+      SELECT 17 AS col1, MAX ( ALL CAST ( NULL AS INTEGER ) ) + - COUNT ( * ) AS col2;
+
+outputs:
+  - name: q8540.out
+    data: |
+      17	NULL

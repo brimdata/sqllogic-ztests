@@ -1,0 +1,30 @@
+script: |
+  super -f tsv -I q665.sql > q665.out
+
+inputs:
+  - name: q665.sql
+    data: |
+      SELECT e,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END,
+      c,
+      abs(a),
+      d,
+      d-e
+      FROM t1
+      WHERE b>c
+      AND d>e
+      ORDER BY 1,6,2,4,3,7,5;
+
+outputs:
+  - name: q665.out
+    data: |
+      120	4	222	123	121	122	2
+      126	5	222	125	127	128	2
+      135	7	222	137	138	136	1
+      152	10	333	150	153	154	2
+      165	13	333	166	168	169	4
+      230	26	333	231	234	233	3
+      237	27	444	235	239	238	1
+      246	29	111	247	245	248	2

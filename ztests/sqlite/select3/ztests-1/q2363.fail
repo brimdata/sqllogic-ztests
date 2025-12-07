@@ -1,0 +1,37 @@
+script: |
+  super -f tsv -I q2363.sql | sort > q2363.out
+
+inputs:
+  - name: q2363.sql
+    data: |
+      SELECT (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END,
+      a+b*2+c*3+d*4,
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      d
+      FROM t1
+      WHERE EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      AND a>b
+      ORDER BY 4,5,1,2;
+
+outputs:
+  - name: q2363.out
+    data: |
+      0	333	1325	444	133
+      0	333	1828	333	183
+      0	333	1861	444	185
+      0	333	1964	555	196
+      0	333	2125	222	212
+      0	333	2264	555	226
+      0	333	2323	555	233
+      0	333	NULL	555	NULL
+      0	333	NULL	555	NULL
+      0	333	NULL	555	NULL
+      0	444	1622	333	164
+      0	444	1714	555	171
+      0	444	NULL	222	NULL
+      0	444	NULL	555	238
+      0	444	NULL	555	NULL
+      0	444	NULL	555	NULL

@@ -1,0 +1,66 @@
+script: |
+  super -f tsv -I q84.sql | tr '\t' '\n' | sort > q84.out
+
+inputs:
+  - name: q84.sql
+    data: |
+      SELECT e7 FROM t7
+      WHERE (c7=729 OR e7=302)
+      OR (c7=376 OR b7=832)
+      OR (c7=691 AND 34=d7)
+      UNION ALL
+      SELECT e1 FROM t1
+      WHERE c1 in (379,246,284)
+      OR b1 in (572,420,32,211,853)
+      OR (b1=88 AND e1=90 AND 761=d1)
+      UNION ALL
+      SELECT d4 FROM t4
+      WHERE (319=b4 AND 984=c4 AND e4=792 AND d4=482)
+      OR a4 in (629,919,474,223,107)
+      OR (c4=936 OR a4=234)
+      UNION
+      SELECT d5 FROM t5
+      WHERE b5 in (159,998,230,782,559,306,82,771,321,847,703)
+      OR d5 in (916,132,806)
+      EXCEPT
+      SELECT d6 FROM t6
+      WHERE NOT (d6 in (729,790,489,2)
+      OR d6 in (192,993,366,172,578,73,929,974,852,2,473,778,846,467))
+      EXCEPT
+      SELECT b2 FROM t2
+      WHERE NOT ((a2=775 OR a2=1));
+  - name: t1
+  - name: t2
+
+outputs:
+  - name: q84.out
+    data: |
+      122
+      132
+      144
+      229
+      284
+      302
+      309
+      344
+      372
+      413
+      42
+      432
+      436
+      482
+      52
+      524
+      534
+      595
+      69
+      78
+      806
+      810
+      814
+      841
+      858
+      877
+      907
+      916
+      968

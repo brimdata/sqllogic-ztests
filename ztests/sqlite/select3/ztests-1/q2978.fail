@@ -1,0 +1,32 @@
+script: |
+  super -f tsv -I q2978.sql | sort > q2978.out
+
+inputs:
+  - name: q2978.sql
+    data: |
+      SELECT a+b*2+c*3+d*4+e*5,
+      d-e,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      (a+b+c+d+e)/5,
+      abs(a)
+      FROM t1
+      WHERE c BETWEEN b-2 AND d+2;
+
+outputs:
+  - name: q2978.out
+    data: |
+      1612	-1	0	107	107
+      1985	1	4	132	131
+      2046	1	5	137	138
+      2131	-4	6	142	142
+      2432	2	10	162	163
+      2579	-2	12	172	174
+      2728	3	14	182	182
+      2806	-4	15	187	188
+      3175	2	19	212	213
+      3331	1	21	222	220
+      3473	3	23	232	234
+      3706	2	26	247	245
+      NULL	4	1	NULL	NULL
+      NULL	NULL	18	NULL	NULL
+      NULL	NULL	2	NULL	121

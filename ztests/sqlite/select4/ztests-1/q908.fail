@@ -1,0 +1,88 @@
+script: |
+  super -f tsv -I q908.sql | tr '\t' '\n' | sort > q908.out
+
+inputs:
+  - name: q908.sql
+    data: |
+      SELECT c3 FROM t3
+      WHERE c3 in (40,476,243,863,677,929,490,75)
+      OR a3 in (913,892,145,651,696,997,566,720,699,34,70,581,429)
+      UNION
+      SELECT b7 FROM t7
+      WHERE (785=d7 OR c7=565)
+      OR (916=d7 OR 41=c7)
+      OR (340=b7)
+      EXCEPT
+      SELECT c1 FROM t1
+      WHERE NOT (d1 in (492,701,626,376,750,922,807,175,161,992,25,519,972)
+      OR (207=c1 OR d1=381 OR 446=b1)
+      OR (837=d1))
+      UNION ALL
+      SELECT c9 FROM t9
+      WHERE (e9=477 AND 349=c9 AND 511=a9)
+      OR (d9=668)
+      OR b9 in (819,236,178,789,746)
+      UNION
+      SELECT b5 FROM t5
+      WHERE a5 in (540,335,242,683,544,818,153,721,447,685)
+      OR e5 in (732,150,180,25)
+      OR (a5=960 OR 393=b5 OR 941=c5)
+      UNION
+      SELECT a4 FROM t4
+      WHERE (921=b4 AND c4=660)
+      EXCEPT
+      SELECT c2 FROM t2
+      WHERE NOT ((a2=324 AND b2=585 AND 228=e2 AND 260=d2 AND 344=c2)
+      OR (c2=87 OR b2=276));
+  - name: t3
+  - name: t4
+
+outputs:
+  - name: q908.out
+    data: |
+      134
+      143
+      234
+      243
+      252
+      299
+      306
+      326
+      338
+      340
+      347
+      349
+      380
+      393
+      40
+      455
+      476
+      490
+      495
+      547
+      559
+      587
+      601
+      609
+      612
+      629
+      677
+      695
+      723
+      732
+      75
+      763
+      764
+      800
+      822
+      825
+      84
+      846
+      863
+      897
+      913
+      921
+      929
+      963
+      98
+      986

@@ -1,0 +1,49 @@
+script: |
+  super -f tsv -I q2759.sql | sort > q2759.out
+
+inputs:
+  - name: q2759.sql
+    data: |
+      SELECT b-c,
+      e,
+      d,
+      abs(a),
+      abs(b-c),
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END
+      FROM t1
+      ORDER BY 1,6,5,2,3,7;
+
+outputs:
+  - name: q2759.out
+    data: |
+      -1	109	108	107	1	0	1050
+      -1	110	114	NULL	1	1	1120
+      -1	162	164	163	1	10	1600
+      -1	177	NULL	179	1	13	358
+      -1	189	185	188	1	15	376
+      -1	221	222	220	1	21	440
+      -2	146	NULL	149	2	7	1450
+      -2	173	171	174	2	12	1700
+      -2	NULL	207	NULL	2	18	NULL
+      -3	180	183	182	3	14	364
+      -3	210	212	213	3	19	426
+      -4	132	133	131	4	4	1300
+      -4	NULL	NULL	243	4	25	486
+      1	165	NULL	168	1	11	1670
+      1	192	190	191	1	16	382
+      1	230	233	234	1	23	468
+      1	NULL	122	121	1	2	1240
+      1	NULL	NULL	153	1	8	1510
+      2	135	136	138	2	5	1390
+      2	144	140	142	2	6	1430
+      2	246	248	245	2	26	490
+      3	157	NULL	159	3	9	1580
+      3	197	196	199	3	17	398
+      3	219	217	216	3	20	432
+      3	227	226	229	3	22	458
+      4	126	128	127	4	3	1290
+      NULL	117	116	115	NULL	0	NULL
+      NULL	204	203	201	NULL	0	402
+      NULL	237	238	239	NULL	24	2360
+      NULL	NULL	101	104	NULL	0	NULL

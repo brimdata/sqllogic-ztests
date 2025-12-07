@@ -1,0 +1,31 @@
+script: |
+  super -f tsv -I q345.sql | sort > q345.out
+
+inputs:
+  - name: q345.sql
+    data: |
+      SELECT a,
+      b-c,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      d-e,
+      d
+      FROM t1
+      WHERE e+d BETWEEN a+b-10 AND c+130
+      OR d>e;
+
+outputs:
+  - name: q345.out
+    data: |
+      107	-1	0	0	-1	108
+      127	4	0	3	2	128
+      131	-4	0	4	1	133
+      138	2	0	5	1	136
+      163	-1	0	10	2	164
+      182	-3	0	14	3	183
+      213	-3	0	19	2	212
+      220	-1	0	21	1	222
+      234	1	0	23	3	233
+      239	NULL	0	24	1	238
+      245	2	0	26	2	248
+      NULL	-1	0	1	4	114

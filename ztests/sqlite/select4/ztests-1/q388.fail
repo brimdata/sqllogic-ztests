@@ -1,0 +1,40 @@
+script: |
+  super -f tsv -I q388.sql | tr '\t' '\n' | sort > q388.out
+
+inputs:
+  - name: q388.sql
+    data: |
+      SELECT c5 FROM t5
+      WHERE b5 in (620,674,321,511,412,975,390)
+      OR (476=a5 OR e5=729)
+      OR (a5=153)
+      EXCEPT
+      SELECT a4 FROM t4
+      WHERE NOT (a4 in (948,185,661,598,223,367,72,510,422,574,651,950,792)
+      OR (725=e4)
+      OR (b4=644 AND 82=a4 AND c4=417 AND d4=617))
+      EXCEPT
+      SELECT a9 FROM t9
+      WHERE NOT (c9 in (118,87,323,90,739,347,575,767,547,87,734,688,973,457)
+      OR (a9=335 AND b9=170 AND e9=82))
+      EXCEPT
+      SELECT b6 FROM t6
+      WHERE NOT (c6 in (65,490,534,416,295,84,491,122,864,187)
+      OR d6 in (790,192,488,151,991,197,974,750,469,34,185));
+  - name: t5
+  - name: t7
+
+outputs:
+  - name: q388.out
+    data: |
+      196
+      249
+      443
+      570
+      598
+      668
+      672
+      721
+      799
+      86
+      934

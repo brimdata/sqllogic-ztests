@@ -1,0 +1,79 @@
+script: |
+  super -f tsv -I q868.sql | tr '\t' '\n' | sort > q868.out
+
+inputs:
+  - name: q868.sql
+    data: |
+      SELECT c6 FROM t6
+      WHERE (d6=196)
+      OR (b6=232 OR 974=d6 OR 606=b6)
+      INTERSECT
+      SELECT b5 FROM t5
+      WHERE NOT ((d5=274 AND 352=e5 AND 56=b5)
+      OR (335=a5 AND 747=c5 AND d5=769 AND e5=143))
+      UNION
+      SELECT a1 FROM t1
+      WHERE (87=e1 AND b1=440 AND 955=c1 AND 222=a1)
+      OR (c1=637)
+      OR a1 in (75,32,879,829,499,505,222,281,868,591,866,231,895)
+      UNION ALL
+      SELECT d2 FROM t2
+      WHERE (404=d2 AND 445=a2 AND c2=511 AND 279=b2)
+      EXCEPT
+      SELECT b9 FROM t9
+      WHERE NOT (d9 in (305,679,646,274,681,383,104,25))
+      UNION ALL
+      SELECT c7 FROM t7
+      WHERE (b7=837 OR 356=e7 OR 134=d7)
+      OR a7 in (748,97,130,158,952,869,912,574,452,998)
+      EXCEPT
+      SELECT a8 FROM t8
+      WHERE NOT (c8 in (284,77,74,275,150,354,151))
+      UNION
+      SELECT c4 FROM t4
+      WHERE (a4=60)
+      OR e4 in (1,805,816,63,324,491,381,954,257,916,217,296,212)
+      EXCEPT
+      SELECT e3 FROM t3
+      WHERE NOT ((e3=319 OR a3=30)
+      OR (b3=505 AND a3=42 AND 285=c3));
+  - name: t4
+  - name: t5
+
+outputs:
+  - name: q868.out
+    data: |
+      0
+      102
+      201
+      222
+      262
+      288
+      32
+      404
+      441
+      471
+      499
+      505
+      523
+      581
+      589
+      607
+      635
+      648
+      671
+      675
+      682
+      75
+      791
+      840
+      847
+      866
+      879
+      895
+      92
+      927
+      934
+      94
+      948
+      98

@@ -1,0 +1,28 @@
+script: |
+  super -f tsv -I q3266.sql | sort > q3266.out
+
+inputs:
+  - name: q3266.sql
+    data: |
+      SELECT CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END,
+      c-d,
+      b,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d)
+      FROM t1
+      WHERE d NOT BETWEEN 110 AND 150
+      AND c BETWEEN b-2 AND d+2;
+
+outputs:
+  - name: q3266.out
+    data: |
+      111	-1	249	0
+      222	2	223	0
+      333	-2	105	0
+      333	-2	232	0
+      333	1	181	0
+      333	2	186	0
+      333	2	211	0
+      444	-3	160	0
+      444	1	170	0
+      444	1	206	0

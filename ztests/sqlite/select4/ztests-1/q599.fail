@@ -1,0 +1,63 @@
+script: |
+  super -f tsv -I q599.sql | tr '\t' '\n' | sort > q599.out
+
+inputs:
+  - name: q599.sql
+    data: |
+      SELECT c7 FROM t7
+      WHERE (787=d7)
+      OR a7 in (912,195,706,707,490,31,416,452,952,884,916,452)
+      UNION ALL
+      SELECT a2 FROM t2
+      WHERE (476=d2 OR a2=543)
+      OR e2 in (720,138,923,812,411,781,925,131,445,223)
+      OR (284=d2 AND e2=671)
+      EXCEPT
+      SELECT c4 FROM t4
+      WHERE NOT ((381=e4 OR c4=536 OR 289=b4)
+      OR (b4=276))
+      EXCEPT
+      SELECT d5 FROM t5
+      WHERE NOT ((37=c5 OR e5=586)
+      OR (743=a5 AND c5=934 AND 682=d5)
+      OR (a5=163))
+      EXCEPT
+      SELECT e6 FROM t6
+      WHERE NOT ((6=e6 AND 962=b6 AND c6=287 AND d6=185)
+      OR d6 in (786,36,493,424,911,366,942,469,590,901,428,924))
+      EXCEPT
+      SELECT c8 FROM t8
+      WHERE NOT (d8 in (761,651,894,761,179,197,523,805))
+      UNION ALL
+      SELECT a3 FROM t3
+      WHERE (c3=299 AND e3=829 AND 482=b3)
+      OR (b3=368 OR 651=c3 OR 146=b3);
+  - name: t3
+  - name: t7
+
+outputs:
+  - name: q599.out
+    data: |
+      145
+      146
+      180
+      209
+      22
+      223
+      235
+      288
+      305
+      376
+      378
+      38
+      467
+      543
+      566
+      669
+      709
+      796
+      820
+      931
+      934
+      94
+      987

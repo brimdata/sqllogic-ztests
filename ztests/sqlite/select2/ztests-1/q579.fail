@@ -1,0 +1,48 @@
+script: |
+  super -f tsv -I q579.sql | sort > q579.out
+
+inputs:
+  - name: q579.sql
+    data: |
+      SELECT d,
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END,
+      a,
+      c-d,
+      a-b,
+      (a+b+c+d+e)/5
+      FROM t1
+      WHERE EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      OR a>b
+      OR c BETWEEN b-2 AND d+2;
+
+outputs:
+  - name: q579.out
+    data: |
+      108	333	107	-2	2	107
+      114	444	NULL	-1	NULL	NULL
+      122	222	121	1	-3	NULL
+      128	222	127	-3	-2	127
+      133	333	131	1	1	132
+      136	222	138	1	-1	137
+      140	222	142	1	-1	142
+      164	444	163	-3	3	162
+      171	444	174	1	4	172
+      183	333	182	1	1	182
+      185	333	188	2	2	187
+      190	222	191	3	-3	192
+      196	333	199	-1	1	197
+      207	444	NULL	1	NULL	NULL
+      212	333	213	2	2	212
+      217	222	216	-2	-2	217
+      222	222	220	2	-3	222
+      226	333	229	-1	1	227
+      233	333	234	-2	2	232
+      238	444	239	NULL	3	NULL
+      248	111	245	-1	-4	247
+      NULL	333	153	NULL	2	NULL
+      NULL	333	159	NULL	1	NULL
+      NULL	333	168	NULL	1	NULL
+      NULL	444	149	NULL	4	NULL
+      NULL	444	179	NULL	4	NULL
+      NULL	444	243	NULL	3	NULL

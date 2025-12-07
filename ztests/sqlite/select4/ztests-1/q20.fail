@@ -1,0 +1,50 @@
+script: |
+  super -f tsv -I q20.sql | tr '\t' '\n' | sort > q20.out
+
+inputs:
+  - name: q20.sql
+    data: |
+      SELECT c4 FROM t4
+      WHERE d4 in (481,449,617,989,356,681,136,86,821,968,249,628,889,794)
+      OR a4 in (952,337,373,74,248)
+      UNION
+      SELECT c1 FROM t1
+      WHERE (b1=670)
+      OR (a1=544 OR d1=217 OR d1=807)
+      OR c1 in (230,62,67)
+      EXCEPT
+      SELECT e5 FROM t5
+      WHERE NOT ((a5=476))
+      EXCEPT
+      SELECT e9 FROM t9
+      WHERE NOT ((854=e9 OR 746=b9)
+      OR d9 in (383,258,878,166,678,790,145,679,164,808,759,283,818)
+      OR c9 in (349,402,37,95,487,569,347,232,613,973))
+      EXCEPT
+      SELECT d8 FROM t8
+      WHERE NOT ((e8=586 AND b8=324 AND 231=c8 AND a8=54 AND d8=889));
+  - name: t9
+
+outputs:
+  - name: q20.out
+    data: |
+      204
+      214
+      220
+      230
+      273
+      296
+      345
+      357
+      417
+      489
+      584
+      617
+      62
+      67
+      674
+      712
+      768
+      840
+      898
+      948

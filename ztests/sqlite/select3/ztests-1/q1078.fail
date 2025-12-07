@@ -1,0 +1,45 @@
+script: |
+  super -f tsv -I q1078.sql | sort > q1078.out
+
+inputs:
+  - name: q1078.sql
+    data: |
+      SELECT (a+b+c+d+e)/5,
+      d,
+      abs(b-c)
+      FROM t1
+      WHERE EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      OR (e>c OR e<d)
+      OR a>b;
+
+outputs:
+  - name: q1078.out
+    data: |
+      107	108	1
+      127	128	4
+      132	133	4
+      137	136	2
+      142	140	2
+      162	164	1
+      172	171	2
+      182	183	3
+      187	185	1
+      192	190	1
+      197	196	3
+      212	212	3
+      217	217	3
+      222	222	1
+      227	226	3
+      232	233	1
+      247	248	2
+      NULL	114	1
+      NULL	122	1
+      NULL	203	NULL
+      NULL	207	2
+      NULL	238	NULL
+      NULL	NULL	1
+      NULL	NULL	1
+      NULL	NULL	1
+      NULL	NULL	2
+      NULL	NULL	3
+      NULL	NULL	4

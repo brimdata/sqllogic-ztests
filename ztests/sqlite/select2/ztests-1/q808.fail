@@ -1,0 +1,36 @@
+script: |
+  super -f tsv -I q808.sql | sort > q808.out
+
+inputs:
+  - name: q808.sql
+    data: |
+      SELECT a+b*2+c*3+d*4,
+      a-b,
+      (a+b+c+d+e)/5,
+      CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END,
+      b-c,
+      a,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d)
+      FROM t1
+      WHERE d NOT BETWEEN 110 AND 150;
+
+outputs:
+  - name: q808.out
+    data: |
+      1067	2	107	1050	-1	107	0
+      1622	3	162	1600	-1	163	0
+      1714	4	172	1700	-2	174	0
+      1828	1	182	364	-3	182	0
+      1861	2	187	376	-1	188	0
+      1918	-3	192	382	1	191	0
+      1964	1	197	398	3	199	0
+      2125	2	212	426	-3	213	0
+      2165	-2	217	432	3	216	0
+      2226	-3	222	440	-1	220	0
+      2264	1	227	458	3	229	0
+      2323	2	232	468	1	234	0
+      2476	-4	247	490	2	245	0
+      NULL	3	NULL	2360	NULL	239	0
+      NULL	NULL	NULL	402	NULL	201	0
+      NULL	NULL	NULL	NULL	-2	NULL	0
+      NULL	NULL	NULL	NULL	NULL	104	0

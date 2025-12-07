@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q22.sql | tr '\t' '\n' | sort > q22.out
+
+inputs:
+  - name: q22.sql
+    data: |
+      SELECT e6 FROM t6
+      WHERE (c6=528 AND d6=991)
+      OR d6 in (196,453,931,337,60,667,73,493,66)
+      INTERSECT
+      SELECT d1 FROM t1
+      WHERE NOT ((149=b1 AND a1=776));
+  - name: t9
+
+outputs:
+  - name: q22.out
+    data: |

@@ -1,0 +1,107 @@
+script: |
+  super -f tsv -I q819.sql | tr '\t' '\n' | sort > q819.out
+
+inputs:
+  - name: q819.sql
+    data: |
+      SELECT b4 FROM t4
+      WHERE (a4=151 OR c4=794 OR 575=e4)
+      UNION
+      SELECT b6 FROM t6
+      WHERE (774=b6 OR 251=a6)
+      OR b6 in (850,427,710,662,44,230,300,782)
+      UNION ALL
+      SELECT d9 FROM t9
+      WHERE (457=a9 OR 703=b9 OR d9=345)
+      OR e9 in (239,804,750,107,647,736,672,267,30,197,868,567)
+      UNION ALL
+      SELECT a3 FROM t3
+      WHERE c3 in (898,860,211,368,792,400)
+      UNION ALL
+      SELECT d7 FROM t7
+      WHERE a7 in (167,97,642,452,350,565,325,299,87,982,709,75,361)
+      OR c7 in (575,659,691,98,807,692,441,375,843,364,80,145)
+      OR a7 in (97,490,832,277,707,806,90)
+      EXCEPT
+      SELECT c2 FROM t2
+      WHERE NOT ((217=a2 OR 24=c2))
+      EXCEPT
+      SELECT e8 FROM t8
+      WHERE NOT ((60=d8)
+      OR (359=b8 OR d8=690))
+      UNION
+      SELECT b1 FROM t1
+      WHERE d1 in (25,154,17,992,581,121)
+      OR (733=e1);
+  - name: t3
+  - name: t7
+  - name: t9
+
+outputs:
+  - name: q819.out
+    data: |
+      118
+      128
+      131
+      132
+      135
+      139
+      192
+      224
+      225
+      226
+      230
+      286
+      300
+      306
+      315
+      324
+      332
+      335
+      34
+      341
+      345
+      395
+      399
+      414
+      427
+      436
+      499
+      51
+      515
+      52
+      524
+      527
+      547
+      563
+      565
+      599
+      603
+      606
+      660
+      662
+      665
+      668
+      675
+      684
+      709
+      710
+      720
+      732
+      744
+      765
+      774
+      782
+      788
+      808
+      817
+      828
+      842
+      850
+      860
+      916
+      924
+      938
+      94
+      944
+      982

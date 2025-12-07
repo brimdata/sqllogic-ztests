@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q12532.sql | sort > q12532.out
+
+inputs:
+  - name: q12532.sql
+    data: |
+      SELECT COUNT ( * ) AS col1 FROM tab0 WHERE NOT ( col0 * - col1 ) > NULL;
+
+outputs:
+  - name: q12532.out
+    data: |
+      0

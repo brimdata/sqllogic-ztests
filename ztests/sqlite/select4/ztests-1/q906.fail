@@ -1,0 +1,30 @@
+script: |
+  super -f tsv -I q906.sql | tr '\t' '\n' | sort > q906.out
+
+inputs:
+  - name: q906.sql
+    data: |
+      SELECT c3 FROM t3
+      WHERE (347=a3 AND e3=959)
+      OR e3 in (774,914,600,265,853,318,272,814,578)
+      EXCEPT
+      SELECT d9 FROM t9
+      WHERE NOT ((c9=349 OR 269=a9 OR a9=273)
+      OR (d9=347 OR d9=305));
+  - name: t1
+  - name: t4
+  - name: t7
+
+outputs:
+  - name: q906.out
+    data: |
+      117
+      127
+      146
+      641
+      647
+      711
+      80
+      806
+      845
+      966

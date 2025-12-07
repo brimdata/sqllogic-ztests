@@ -1,0 +1,48 @@
+script: |
+  super -f tsv -I q547.sql | tr '\t' '\n' | sort > q547.out
+
+inputs:
+  - name: q547.sql
+    data: |
+      SELECT d5 FROM t5
+      WHERE (e5=150 AND c5=941 AND 326=b5)
+      OR (436=e5 OR 470=e5)
+      OR (b5=705 AND c5=818)
+      INTERSECT
+      SELECT d3 FROM t3
+      WHERE NOT ((813=e3 OR a3=186)
+      OR (720=d3 AND e3=393 AND c3=10 AND 12=a3)
+      OR (885=c3 AND e3=281 AND a3=218 AND d3=17))
+      UNION
+      SELECT c8 FROM t8
+      WHERE (c8=851 OR 770=b8 OR a8=12)
+      OR (561=e8)
+      UNION
+      SELECT a6 FROM t6
+      WHERE (b6=300 OR b6=834)
+      OR (565=b6 OR 846=d6)
+      OR a6 in (211,870,764,740,436,452,615,270);
+  - name: t1
+  - name: t4
+  - name: t6
+  - name: t7
+  - name: t8
+
+outputs:
+  - name: q547.out
+    data: |
+      211
+      222
+      251
+      270
+      404
+      414
+      436
+      452
+      544
+      615
+      692
+      740
+      764
+      851
+      870

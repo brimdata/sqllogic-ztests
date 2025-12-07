@@ -1,0 +1,35 @@
+script: |
+  super -f tsv -I q3156.sql | sort > q3156.out
+
+inputs:
+  - name: q3156.sql
+    data: |
+      SELECT (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b)
+      FROM t1
+      WHERE (e>c OR e<d)
+      OR e+d BETWEEN a+b-10 AND c+130;
+
+outputs:
+  - name: q3156.out
+    data: |
+      0
+      0
+      1
+      10
+      12
+      13
+      14
+      15
+      17
+      19
+      20
+      21
+      22
+      23
+      24
+      26
+      3
+      4
+      5
+      6
+      9

@@ -1,0 +1,27 @@
+script: |
+  super -f tsv -I q894.sql | sort > q894.out
+
+inputs:
+  - name: q894.sql
+    data: |
+      SELECT (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      e,
+      c-d,
+      b,
+      d-e
+      FROM t1
+      WHERE (c<=d-2 OR c>=d+2);
+
+outputs:
+  - name: q894.out
+    data: |
+      0	109	-2	105	-1
+      0	117	3	NULL	-1
+      0	126	-3	129	2
+      0	162	-3	160	2
+      0	189	2	186	-4
+      0	192	3	194	-2
+      0	210	2	211	2
+      0	219	-2	218	-2
+      0	221	2	223	1
+      0	230	-2	232	3

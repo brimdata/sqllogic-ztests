@@ -1,0 +1,61 @@
+script: |
+  super -f tsv -I q519.sql | tr '\t' '\n' | sort > q519.out
+
+inputs:
+  - name: q519.sql
+    data: |
+      SELECT e8 FROM t8
+      WHERE (c8=119 OR 984=b8 OR 9=b8)
+      OR (c8=534 AND 540=b8 AND a8=869 AND 422=e8)
+      EXCEPT
+      SELECT b4 FROM t4
+      WHERE NOT (c4 in (840,667,536,0,403,274,319)
+      OR (b4=243 OR 958=e4))
+      UNION
+      SELECT e1 FROM t1
+      WHERE (c1=296 OR d1=223)
+      OR e1 in (688,628,254,815,90,763,442,956,313,381)
+      OR a1 in (61,498,579,371,451)
+      UNION ALL
+      SELECT c3 FROM t3
+      WHERE (d3=415 AND e3=163 AND 145=c3 AND 474=b3)
+      EXCEPT
+      SELECT a9 FROM t9
+      WHERE NOT ((e9=653 OR a9=905))
+      UNION ALL
+      SELECT d5 FROM t5
+      WHERE (c5=18 AND d5=24 AND b5=499)
+      OR (747=c5 OR c5=734)
+      OR (a5=180 AND 26=b5 AND 485=c5 AND e5=708 AND d5=33);
+  - name: t1
+  - name: t4
+  - name: t6
+  - name: t9
+
+outputs:
+  - name: q519.out
+    data: |
+      114
+      145
+      146
+      24
+      254
+      300
+      313
+      33
+      381
+      392
+      422
+      442
+      497
+      628
+      688
+      731
+      763
+      769
+      806
+      880
+      90
+      95
+      956
+      997

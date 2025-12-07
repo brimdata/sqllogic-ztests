@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q2005.sql | sort > q2005.out
+
+inputs:
+  - name: q2005.sql
+    data: |
+      SELECT ALL MIN ( ALL - col0 ) / MAX ( col1 ) FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q2005.out
+    data: |
+      -1

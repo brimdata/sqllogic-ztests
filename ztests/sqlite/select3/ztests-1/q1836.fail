@@ -1,0 +1,40 @@
+script: |
+  super -f tsv -I q1836.sql | sort > q1836.out
+
+inputs:
+  - name: q1836.sql
+    data: |
+      SELECT (a+b+c+d+e)/5,
+      a-b
+      FROM t1
+      WHERE EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b);
+
+outputs:
+  - name: q1836.out
+    data: |
+      127	-2
+      132	1
+      137	-1
+      142	-1
+      162	3
+      172	4
+      182	1
+      187	2
+      192	-3
+      197	1
+      212	2
+      217	-2
+      222	-3
+      227	1
+      232	2
+      247	-4
+      NULL	-3
+      NULL	1
+      NULL	1
+      NULL	2
+      NULL	3
+      NULL	3
+      NULL	4
+      NULL	4
+      NULL	NULL
+      NULL	NULL

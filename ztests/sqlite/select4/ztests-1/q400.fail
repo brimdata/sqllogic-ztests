@@ -1,0 +1,54 @@
+script: |
+  super -f tsv -I q400.sql | tr '\t' '\n' | sort > q400.out
+
+inputs:
+  - name: q400.sql
+    data: |
+      SELECT c3 FROM t3
+      WHERE (c3=75)
+      OR (984=e3 OR a3=145 OR 806=c3)
+      OR a3 in (892,303,803,637,353,515,822,525,513,776)
+      INTERSECT
+      SELECT d9 FROM t9
+      WHERE NOT (b9 in (379,262,228,891,326,122,171,858,312,549)
+      OR (e9=845 AND d9=489 AND b9=19 AND c9=613 AND 905=a9)
+      OR (e9=837 AND 218=a9 AND 136=b9))
+      UNION
+      SELECT d4 FROM t4
+      WHERE (c4=451 AND 535=b4 AND d4=979 AND 439=a4 AND 37=e4)
+      OR a4 in (558,825,845,747,746,31,876,261,773,510,72,367,105,990)
+      EXCEPT
+      SELECT b6 FROM t6
+      WHERE NOT (d6 in (600,73,405,822,729,869)
+      OR (622=e6 OR 905=b6 OR 350=b6))
+      UNION
+      SELECT e2 FROM t2
+      WHERE (647=e2 AND 123=c2 AND 590=a2)
+      OR (564=e2)
+      OR (c2=45);
+  - name: t2
+  - name: t3
+
+outputs:
+  - name: q400.out
+    data: |
+      136
+      150
+      185
+      236
+      309
+      328
+      360
+      482
+      564
+      593
+      639
+      647
+      655
+      770
+      777
+      844
+      86
+      943
+      953
+      979

@@ -1,0 +1,51 @@
+script: |
+  super -f tsv -I q744.sql | sort > q744.out
+
+inputs:
+  - name: q744.sql
+    data: |
+      SELECT (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      c,
+      d,
+      b-c,
+      CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END,
+      a+b*2+c*3+d*4
+      FROM t1
+      WHERE d>e
+      OR b IS NOT NULL
+      OR d NOT BETWEEN 110 AND 150;
+
+outputs:
+  - name: q744.out
+    data: |
+      0	111	137	136	2	1390	1371
+      0	111	141	140	2	1430	1411
+      0	222	202	203	NULL	402	NULL
+      0	222	214	212	-3	426	2125
+      0	222	244	NULL	-4	486	NULL
+      0	333	106	108	-1	1050	1067
+      0	333	123	122	1	1240	1226
+      0	333	125	128	4	1290	1272
+      0	333	161	164	-1	1600	1622
+      0	333	184	183	-3	364	1828
+      0	333	215	217	3	432	2165
+      0	444	134	133	-4	1300	1325
+      0	444	187	185	-1	376	1861
+      0	444	193	190	1	382	1918
+      0	444	224	222	-1	440	2226
+      0	444	247	248	2	490	2476
+      0	555	102	101	NULL	NULL	NULL
+      0	555	113	114	-1	1120	NULL
+      0	555	147	NULL	-2	1450	NULL
+      0	555	150	NULL	1	1510	NULL
+      0	555	155	NULL	3	1580	NULL
+      0	555	166	NULL	1	1670	NULL
+      0	555	172	171	-2	1700	1714
+      0	555	176	NULL	-1	358	NULL
+      0	555	195	196	3	398	1964
+      0	555	208	207	-2	NULL	NULL
+      0	555	225	226	3	458	2264
+      0	555	231	233	1	468	2323
+      0	555	NULL	238	NULL	2360	NULL

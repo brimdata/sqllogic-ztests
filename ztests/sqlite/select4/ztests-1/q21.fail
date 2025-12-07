@@ -1,0 +1,34 @@
+script: |
+  super -f tsv -I q21.sql | tr '\t' '\n' | sort > q21.out
+
+inputs:
+  - name: q21.sql
+    data: |
+      SELECT e9 FROM t9
+      WHERE (264=e9)
+      OR (608=d9 AND 245=b9 AND 365=a9)
+      OR d9 in (821,360,686,601,720,744,606,450,818,270,732,111,737)
+      INTERSECT
+      SELECT c1 FROM t1
+      WHERE NOT ((b1=255)
+      OR (544=a1 OR 775=c1 OR 60=b1)
+      OR (523=c1))
+      UNION
+      SELECT e8 FROM t8
+      WHERE (269=b8 AND e8=272)
+      OR (e8=579 OR 729=e8)
+      OR (761=b8 AND e8=179 AND c8=775)
+      EXCEPT
+      SELECT c3 FROM t3
+      WHERE NOT (a3 in (820,101,383,822,594,457,971,818,380,12)
+      OR (964=a3 AND d3=444));
+  - name: t9
+
+outputs:
+  - name: q21.out
+    data: |
+      179
+      579
+      729
+      736
+      788

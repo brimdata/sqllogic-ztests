@@ -1,0 +1,25 @@
+script: |
+  super -f tsv -I q2441.sql | sort > q2441.out
+
+inputs:
+  - name: q2441.sql
+    data: |
+      SELECT abs(a),
+      d,
+      a+b*2+c*3,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      c
+      FROM t1
+      WHERE c BETWEEN b-2 AND d+2
+      AND c>d
+      AND a>b
+      ORDER BY 3,5,1,2,4;
+
+outputs:
+  - name: q2441.out
+    data: |
+      131	133	793	0	134
+      174	171	1030	0	172
+      182	183	1096	0	184
+      188	185	1121	0	187
+      213	212	1277	0	214

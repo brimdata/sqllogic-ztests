@@ -1,0 +1,46 @@
+script: |
+  super -f tsv -I q2231.sql | sort > q2231.out
+
+inputs:
+  - name: q2231.sql
+    data: |
+      SELECT a-b,
+      c,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d)
+      FROM t1
+      ORDER BY 4,2;
+
+outputs:
+  - name: q2231.out
+    data: |
+      -1	137	5	0
+      -1	141	6	0
+      -2	125	3	0
+      -2	215	20	0
+      -3	123	2	0
+      -3	193	16	0
+      -3	224	21	0
+      -4	247	26	0
+      1	134	4	0
+      1	155	9	0
+      1	166	11	0
+      1	184	14	0
+      1	195	17	0
+      1	225	22	0
+      2	106	0	0
+      2	150	8	0
+      2	187	15	0
+      2	214	19	0
+      2	231	23	0
+      3	161	10	0
+      3	244	25	0
+      3	NULL	24	0
+      4	147	7	0
+      4	172	12	0
+      4	176	13	0
+      NULL	102	0	0
+      NULL	113	1	0
+      NULL	119	0	0
+      NULL	202	0	0
+      NULL	208	18	0

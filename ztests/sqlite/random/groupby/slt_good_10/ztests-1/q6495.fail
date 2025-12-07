@@ -1,0 +1,11 @@
+script: |
+  super -f tsv -I q6495.sql | sort > q6495.out
+
+inputs:
+  - name: q6495.sql
+    data: |
+      SELECT ALL - col0 * + AVG ( col0 ) FROM tab2 WHERE NOT NULL IS NULL GROUP BY col0;
+
+outputs:
+  - name: q6495.out
+    data: |

@@ -1,0 +1,107 @@
+script: |
+  super -f tsv -I q835.sql | tr '\t' '\n' | sort > q835.out
+
+inputs:
+  - name: q835.sql
+    data: |
+      SELECT c7 FROM t7
+      WHERE d7 in (324,902,671,134,781,196,328,225,842,673)
+      OR (a7=416 OR c7=843)
+      OR (820=b7 AND 844=e7 AND c7=853 AND a7=386 AND 795=d7)
+      UNION
+      SELECT d4 FROM t4
+      WHERE (0=c4 OR a4=185 OR d4=639)
+      OR (160=a4)
+      OR (c4=712)
+      UNION
+      SELECT c8 FROM t8
+      WHERE (b8=244 OR c8=427)
+      UNION
+      SELECT c6 FROM t6
+      WHERE (a6=518 AND b6=427 AND 40=e6 AND 454=c6 AND 852=d6)
+      OR (366=d6 OR b6=390)
+      OR a6 in (173,128,829,731,405,811,62,585,604,129,877,851)
+      UNION ALL
+      SELECT b5 FROM t5
+      WHERE (667=d5 AND 351=c5 AND e5=522)
+      OR (d5=238 OR e5=155 OR 655=e5)
+      UNION
+      SELECT d1 FROM t1
+      WHERE (c1=788 AND 384=b1 AND d1=161)
+      OR (b1=645)
+      UNION
+      SELECT b2 FROM t2
+      WHERE (d2=651 OR 728=c2 OR e2=841)
+      OR (b2=113)
+      OR (c2=197)
+      EXCEPT
+      SELECT d9 FROM t9
+      WHERE NOT ((b9=178 OR d9=224 OR a9=457)
+      OR (b9=361 OR d9=720 OR d9=694)
+      OR (122=b9 AND 858=e9 AND 601=d9 AND a9=815 AND 935=c9))
+      UNION
+      SELECT c3 FROM t3
+      WHERE b3 in (927,827,464,145,649,273,130,392,57,269,505);
+  - name: t2
+  - name: t7
+
+outputs:
+  - name: q835.out
+    data: |
+      113
+      122
+      136
+      146
+      21
+      220
+      231
+      246
+      275
+      285
+      287
+      295
+      297
+      308
+      333
+      341
+      353
+      376
+      403
+      416
+      427
+      441
+      442
+      454
+      455
+      480
+      482
+      486
+      528
+      584
+      585
+      589
+      592
+      596
+      620
+      629
+      635
+      639
+      65
+      656
+      668
+      677
+      688
+      692
+      709
+      717
+      729
+      820
+      832
+      843
+      853
+      864
+      887
+      930
+      986
+      989
+      992

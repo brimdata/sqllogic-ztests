@@ -1,0 +1,23 @@
+script: |
+  super -f tsv -I q2799.sql | sort > q2799.out
+
+inputs:
+  - name: q2799.sql
+    data: |
+      SELECT (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      a+b*2,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      b-c,
+      a+b*2+c*3+d*4+e*5,
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END
+      FROM t1
+      WHERE (e>a AND e<b)
+      ORDER BY 6,2;
+
+outputs:
+  - name: q2799.out
+    data: |
+      16	579	0	1	2878	444
+      21	666	0	-1	3331	444
+      26	743	0	2	3706	444

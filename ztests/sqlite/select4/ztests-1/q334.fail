@@ -1,0 +1,77 @@
+script: |
+  super -f tsv -I q334.sql | tr '\t' '\n' | sort > q334.out
+
+inputs:
+  - name: q334.sql
+    data: |
+      SELECT b2 FROM t2
+      WHERE b2 in (442,181,640,226,592,113,501,674,148,546,714,796,211,632)
+      UNION
+      SELECT d1 FROM t1
+      WHERE (96=d1 AND a1=189 AND 363=e1 AND 683=c1)
+      OR (e1=693 OR c1=207 OR c1=765)
+      EXCEPT
+      SELECT d4 FROM t4
+      WHERE NOT (c4 in (948,927,671)
+      OR (a4=243))
+      EXCEPT
+      SELECT b6 FROM t6
+      WHERE NOT ((a6=740 AND c6=11 AND 574=e6 AND d6=271 AND 0=b6)
+      OR (128=a6)
+      OR (35=a6 AND 348=b6 AND c6=66 AND 678=e6))
+      UNION
+      SELECT d8 FROM t8
+      WHERE e8 in (592,273,384,809,942,223,919,488,199,105)
+      OR d8 in (534,682,627,637,675,456,845,743,384)
+      OR (667=d8)
+      UNION ALL
+      SELECT d5 FROM t5
+      WHERE (d5=856 OR 721=a5)
+      EXCEPT
+      SELECT d3 FROM t3
+      WHERE NOT (d3 in (81,74,260,118,737,429,553,850,247,913,95,1))
+      EXCEPT
+      SELECT d9 FROM t9
+      WHERE NOT ((a9=905 OR c9=110)
+      OR c9 in (118,894,834,240,975,547,151,252,90)
+      OR a9 in (511,660,488,919,378,982,803,847));
+  - name: t1
+  - name: t2
+  - name: t5
+  - name: t8
+  - name: t9
+
+outputs:
+  - name: q334.out
+    data: |
+      101
+      108
+      113
+      116
+      148
+      181
+      190
+      211
+      330
+      384
+      456
+      459
+      534
+      592
+      627
+      632
+      637
+      640
+      667
+      674
+      675
+      714
+      796
+      845
+      856
+      902
+      93
+      936
+      957
+      96
+      989

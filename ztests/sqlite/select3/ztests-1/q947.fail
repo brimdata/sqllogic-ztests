@@ -1,0 +1,48 @@
+script: |
+  super -f tsv -I q947.sql | sort > q947.out
+
+inputs:
+  - name: q947.sql
+    data: |
+      SELECT e,
+      (a+b+c+d+e)/5,
+      abs(a),
+      c-d,
+      a+b*2+c*3
+      FROM t1
+      WHERE EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      OR d NOT BETWEEN 110 AND 150
+      ORDER BY 3,4,2,5,1;
+
+outputs:
+  - name: q947.out
+    data: |
+      109	107	107	-2	635
+      110	NULL	NULL	-1	NULL
+      126	127	127	-3	760
+      132	132	131	1	793
+      135	137	138	1	827
+      144	142	142	1	851
+      146	NULL	149	NULL	880
+      157	NULL	159	NULL	940
+      162	162	163	-3	966
+      165	NULL	168	NULL	1000
+      173	172	174	1	1030
+      177	NULL	179	NULL	1057
+      180	182	182	1	1096
+      189	187	188	2	1121
+      192	192	191	3	1158
+      197	197	199	-1	1180
+      204	NULL	201	-1	NULL
+      210	212	213	2	1277
+      219	217	216	-2	1297
+      221	222	220	2	1338
+      227	227	229	-1	1360
+      230	232	234	-2	1391
+      237	NULL	239	NULL	NULL
+      246	247	245	-1	1484
+      NULL	NULL	104	1	NULL
+      NULL	NULL	121	1	738
+      NULL	NULL	153	NULL	905
+      NULL	NULL	243	NULL	1455
+      NULL	NULL	NULL	1	NULL

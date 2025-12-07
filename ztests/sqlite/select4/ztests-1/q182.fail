@@ -1,0 +1,35 @@
+script: |
+  super -f tsv -I q182.sql | tr '\t' '\n' | sort > q182.out
+
+inputs:
+  - name: q182.sql
+    data: |
+      SELECT b3 FROM t3
+      WHERE (c3=317 OR b3=350 OR c3=641)
+      INTERSECT
+      SELECT b8 FROM t8
+      WHERE NOT ((e8=421 AND 77=c8)
+      OR (d8=269 AND e8=947 AND 637=a8 AND c8=149 AND b8=228)
+      OR (e8=204))
+      INTERSECT
+      SELECT d7 FROM t7
+      WHERE NOT ((594=d7))
+      EXCEPT
+      SELECT c6 FROM t6
+      WHERE NOT ((a6=764)
+      OR (45=a6 AND d6=667 AND b6=390 AND e6=707))
+      EXCEPT
+      SELECT e9 FROM t9
+      WHERE NOT ((737=e9)
+      OR (365=a9 OR d9=720 OR 804=b9));
+  - name: t1
+  - name: t3
+  - name: t5
+  - name: t6
+  - name: t7
+  - name: t8
+  - name: t9
+
+outputs:
+  - name: q182.out
+    data: |

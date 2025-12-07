@@ -1,0 +1,46 @@
+script: |
+  super -f tsv -I q827.sql | sort > q827.out
+
+inputs:
+  - name: q827.sql
+    data: |
+      SELECT (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END,
+      b
+      FROM t1
+      WHERE coalesce(a,b,c,d,e)<>0
+      OR c>d;
+
+outputs:
+  - name: q827.out
+    data: |
+      0	1050	105
+      0	402	NULL
+      0	NULL	NULL
+      0	NULL	NULL
+      1	1120	112
+      10	1600	160
+      11	1670	167
+      12	1700	170
+      13	358	175
+      14	364	181
+      15	376	186
+      16	382	194
+      17	398	198
+      18	NULL	206
+      19	426	211
+      2	1240	124
+      20	432	218
+      21	440	223
+      22	458	228
+      23	468	232
+      24	2360	236
+      25	486	240
+      26	490	249
+      3	1290	129
+      4	1300	130
+      5	1390	139
+      6	1430	143
+      7	1450	145
+      8	1510	151
+      9	1580	158

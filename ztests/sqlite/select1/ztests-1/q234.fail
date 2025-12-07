@@ -1,0 +1,45 @@
+script: |
+  super -f tsv -I q234.sql > q234.out
+
+inputs:
+  - name: q234.sql
+    data: |
+      SELECT (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      d
+      FROM t1
+      WHERE e+d BETWEEN a+b-10 AND c+130
+      OR d>e
+      OR (e>c OR e<d)
+      ORDER BY 1,2;
+
+outputs:
+  - name: q234.out
+    data: |
+      0	101
+      1	108
+      2	114
+      3	116
+      4	122
+      5	128
+      6	133
+      7	136
+      8	140
+      9	148
+      10	154
+      11	156
+      12	164
+      13	169
+      14	171
+      15	178
+      16	183
+      17	185
+      19	196
+      20	203
+      21	207
+      22	212
+      23	217
+      24	222
+      25	226
+      26	233
+      27	238
+      29	248

@@ -1,0 +1,19 @@
+script: |
+  super -f tsv -I q1096.sql | sort > q1096.out
+
+inputs:
+  - name: q1096.sql
+    data: |
+      SELECT b,
+      b-c,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      c-d,
+      a+b*2+c*3+d*4
+      FROM t1
+      WHERE (a>b-2 AND a<b+2)
+      AND (e>a AND e<b)
+      AND e+d BETWEEN a+b-10 AND c+130;
+
+outputs:
+  - name: q1096.out
+    data: |

@@ -1,0 +1,40 @@
+script: |
+  super -f tsv -I q602.sql | sort > q602.out
+
+inputs:
+  - name: q602.sql
+    data: |
+      SELECT (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      abs(b-c)
+      FROM t1
+      WHERE EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b);
+
+outputs:
+  - name: q602.out
+    data: |
+      0	1
+      0	1
+      0	1
+      0	1
+      0	1
+      0	1
+      0	1
+      0	1
+      0	1
+      0	1
+      0	2
+      0	2
+      0	2
+      0	2
+      0	2
+      0	2
+      0	3
+      0	3
+      0	3
+      0	3
+      0	3
+      0	3
+      0	4
+      0	4
+      0	4
+      0	NULL

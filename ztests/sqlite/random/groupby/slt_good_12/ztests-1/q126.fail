@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q126.sql | sort > q126.out
+
+inputs:
+  - name: q126.sql
+    data: |
+      SELECT + col0 * - col0 + - col0 AS col1, + col0 - col0 AS col1 FROM tab1 GROUP BY col0;
+
+outputs:
+  - name: q126.out
+    data: |
+      -506	0
+      -6806	0
+      -812	0

@@ -1,0 +1,32 @@
+script: |
+  super -f tsv -I q237.sql | sort > q237.out
+
+inputs:
+  - name: q237.sql
+    data: |
+      SELECT (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      a+b*2+c*3+d*4+e*5,
+      abs(b-c),
+      a+b*2,
+      CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END,
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END
+      FROM t1
+      WHERE b>c;
+
+outputs:
+  - name: q237.out
+    data: |
+      11	NULL	1	502	1670	333
+      16	2878	1	579	382	222
+      17	2949	3	595	398	333
+      2	NULL	1	369	1240	222
+      20	3260	3	652	432	222
+      22	3399	3	685	458	333
+      23	3473	1	698	468	333
+      26	3706	2	743	490	111
+      3	1902	4	385	1290	222
+      5	2046	2	416	1390	222
+      6	2131	2	428	1430	222
+      8	NULL	1	455	1510	333
+      9	NULL	3	475	1580	333

@@ -1,0 +1,68 @@
+script: |
+  super -f tsv -I q352.sql | tr '\t' '\n' | sort > q352.out
+
+inputs:
+  - name: q352.sql
+    data: |
+      SELECT a2 FROM t2
+      WHERE (e2=228 OR b2=211 OR d2=546)
+      EXCEPT
+      SELECT d9 FROM t9
+      WHERE NOT (c9 in (955,171,126,98,332,146,90,469)
+      OR (a9=611))
+      UNION ALL
+      SELECT e1 FROM t1
+      WHERE e1 in (125,497,463,313,14,645,779,148,483,568,166,402)
+      OR (523=c1 AND e1=161 AND 147=a1 AND b1=253 AND 432=d1)
+      EXCEPT
+      SELECT a5 FROM t5
+      WHERE NOT ((34=e5)
+      OR b5 in (159,179,731,186,723,91,380,606,69,860))
+      UNION
+      SELECT d8 FROM t8
+      WHERE (d8=499)
+      OR (e8=700 AND a8=841 AND c8=563 AND d8=344 AND 702=b8)
+      OR e8 in (56,272,63,635,106)
+      UNION
+      SELECT e4 FROM t4
+      WHERE d4 in (449,373,617,277,657,349,905,260,943,247)
+      OR (d4=713 AND b4=114 AND 132=e4)
+      EXCEPT
+      SELECT d6 FROM t6
+      WHERE NOT ((d6=822 AND b6=511)
+      OR (752=c6)
+      OR (c6=717 OR 495=e6));
+  - name: t6
+  - name: t8
+
+outputs:
+  - name: q352.out
+    data: |
+      125
+      132
+      14
+      148
+      161
+      166
+      236
+      313
+      324
+      344
+      358
+      390
+      402
+      480
+      482
+      483
+      497
+      499
+      505
+      568
+      645
+      692
+      763
+      779
+      805
+      879
+      945
+      958

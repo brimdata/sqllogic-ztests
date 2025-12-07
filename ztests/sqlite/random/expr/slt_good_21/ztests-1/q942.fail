@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q942.sql | sort > q942.out
+
+inputs:
+  - name: q942.sql
+    data: |
+      SELECT CASE 16 WHEN COUNT ( * ) THEN - 25 WHEN - ( + COUNT ( * ) ) THEN CAST ( NULL AS INTEGER ) END;
+
+outputs:
+  - name: q942.out
+    data: |
+      NULL

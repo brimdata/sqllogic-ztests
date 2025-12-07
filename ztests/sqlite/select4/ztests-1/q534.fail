@@ -1,0 +1,39 @@
+script: |
+  super -f tsv -I q534.sql | tr '\t' '\n' | sort > q534.out
+
+inputs:
+  - name: q534.sql
+    data: |
+      SELECT b6 FROM t6
+      WHERE (e6=585 OR 424=d6)
+      OR e6 in (469,225,574)
+      UNION ALL
+      SELECT a8 FROM t8
+      WHERE (815=d8 AND c8=160 AND e8=431 AND 934=b8)
+      EXCEPT
+      SELECT d3 FROM t3
+      WHERE NOT ((882=b3)
+      OR (b3=339 AND c3=435))
+      EXCEPT
+      SELECT e9 FROM t9
+      WHERE NOT ((c9=751 AND 378=a9)
+      OR (e9=301)
+      OR (c9=240))
+      EXCEPT
+      SELECT e1 FROM t1
+      WHERE NOT ((a1=707 AND 117=e1 AND 880=c1 AND d1=130 AND b1=113)
+      OR e1 in (152,558,546,299,161,695,313,558,268));
+  - name: t1
+  - name: t4
+  - name: t6
+  - name: t7
+  - name: t8
+
+outputs:
+  - name: q534.out
+    data: |
+      0
+      226
+      392
+      406
+      989

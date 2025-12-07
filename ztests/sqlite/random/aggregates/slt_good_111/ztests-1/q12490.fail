@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q12490.sql | sort > q12490.out
+
+inputs:
+  - name: q12490.sql
+    data: |
+      SELECT AVG ( ALL 13 ) / - AVG ( - col1 ) FROM tab1 WHERE NULL NOT BETWEEN col1 AND - 56;
+  - name: tab2
+
+outputs:
+  - name: q12490.out
+    data: |
+      NULL

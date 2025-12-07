@@ -1,0 +1,47 @@
+script: |
+  super -f tsv -I q2538.sql | sort > q2538.out
+
+inputs:
+  - name: q2538.sql
+    data: |
+      SELECT CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END,
+      a+b*2+c*3+d*4+e*5,
+      b,
+      a+b*2+c*3,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      abs(a)
+      FROM t1;
+
+outputs:
+  - name: q2538.out
+    data: |
+      1050	1612	105	635	0	107
+      1120	NULL	112	NULL	1	NULL
+      1240	NULL	124	738	2	121
+      1290	1902	129	760	3	127
+      1300	1985	130	793	4	131
+      1390	2046	139	827	5	138
+      1430	2131	143	851	6	142
+      1450	NULL	145	880	7	149
+      1510	NULL	151	905	8	153
+      1580	NULL	158	940	9	159
+      1600	2432	160	966	10	163
+      1670	NULL	167	1000	11	168
+      1700	2579	170	1030	12	174
+      2360	NULL	236	NULL	24	239
+      358	NULL	175	1057	13	179
+      364	2728	181	1096	14	182
+      376	2806	186	1121	15	188
+      382	2878	194	1158	16	191
+      398	2949	198	1180	17	199
+      402	NULL	NULL	NULL	0	201
+      426	3175	211	1277	19	213
+      432	3260	218	1297	20	216
+      440	3331	223	1338	21	220
+      458	3399	228	1360	22	229
+      468	3473	232	1391	23	234
+      486	NULL	240	1455	25	243
+      490	3706	249	1484	26	245
+      NULL	NULL	206	NULL	18	NULL
+      NULL	NULL	NULL	NULL	0	104
+      NULL	NULL	NULL	NULL	0	115

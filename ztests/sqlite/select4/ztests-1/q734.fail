@@ -1,0 +1,65 @@
+script: |
+  super -f tsv -I q734.sql | tr '\t' '\n' | sort > q734.out
+
+inputs:
+  - name: q734.sql
+    data: |
+      SELECT b1 FROM t1
+      WHERE d1 in (215,0,319,863,254)
+      OR (763=e1 AND 828=b1)
+      UNION
+      SELECT e3 FROM t3
+      WHERE a3 in (697,396,30,41,255,184,784,262,576,899,727,614,560,282)
+      OR (d3=950)
+      OR (e3=425 OR 482=d3 OR b3=927)
+      UNION ALL
+      SELECT b2 FROM t2
+      WHERE (b2=846 AND 779=c2 AND d2=351 AND a2=279)
+      OR (a2=159 AND 414=b2 AND 967=c2 AND d2=19)
+      OR (339=e2)
+      EXCEPT
+      SELECT b5 FROM t5
+      WHERE NOT ((c5=734 OR 971=e5 OR 625=c5)
+      OR a5 in (478,339,696,917,637,867,369,817,429,342,626)
+      OR (e5=157))
+      EXCEPT
+      SELECT c9 FROM t9
+      WHERE NOT ((267=e9 OR 251=e9)
+      OR (289=b9 AND 218=e9))
+      EXCEPT
+      SELECT d6 FROM t6
+      WHERE NOT (b6 in (974,126,421,461,144,461,348,350,782)
+      OR (277=d6));
+  - name: t2
+  - name: t4
+  - name: t5
+  - name: t6
+  - name: t7
+
+outputs:
+  - name: q734.out
+    data: |
+      1
+      108
+      119
+      169
+      249
+      266
+      285
+      310
+      319
+      362
+      4
+      406
+      414
+      425
+      449
+      527
+      556
+      600
+      7
+      814
+      818
+      828
+      914
+      929

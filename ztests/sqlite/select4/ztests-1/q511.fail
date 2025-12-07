@@ -1,0 +1,25 @@
+script: |
+  super -f tsv -I q511.sql | tr '\t' '\n' | sort > q511.out
+
+inputs:
+  - name: q511.sql
+    data: |
+      SELECT d4 FROM t4
+      WHERE b4 in (877,551,635,94,184,319,608)
+      EXCEPT
+      SELECT e3 FROM t3
+      WHERE NOT ((d3=487)
+      OR c3 in (83,826,809,792,885,395,701));
+  - name: t3
+  - name: t8
+
+outputs:
+  - name: q511.out
+    data: |
+      409
+      441
+      482
+      507
+      706
+      881
+      910

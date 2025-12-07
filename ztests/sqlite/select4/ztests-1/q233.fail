@@ -1,0 +1,48 @@
+script: |
+  super -f tsv -I q233.sql | tr '\t' '\n' | sort > q233.out
+
+inputs:
+  - name: q233.sql
+    data: |
+      SELECT e3 FROM t3
+      WHERE (979=a3 OR 890=d3)
+      OR e3 in (120,818,365,724,896)
+      OR (134=d3)
+      UNION
+      SELECT d4 FROM t4
+      WHERE (c4=732 OR b4=847)
+      UNION
+      SELECT b7 FROM t7
+      WHERE (b7=717 AND 885=d7 AND e7=506)
+      OR d7 in (325,885,265,225,709)
+      OR e7 in (456,887,590,793,27,280)
+      EXCEPT
+      SELECT a6 FROM t6
+      WHERE NOT (a6 in (2,821,132,604,643,35)
+      OR c6 in (242,187,522,718,673,491,454,66,961,528)
+      OR (271=d6 OR b6=541));
+  - name: t6
+  - name: t8
+
+outputs:
+  - name: q233.out
+    data: |
+      120
+      30
+      365
+      495
+      600
+      612
+      627
+      702
+      717
+      724
+      735
+      797
+      892
+      896
+      917
+      923
+      929
+      949
+      996

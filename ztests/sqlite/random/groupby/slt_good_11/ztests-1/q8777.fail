@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q8777.sql | sort > q8777.out
+
+inputs:
+  - name: q8777.sql
+    data: |
+      SELECT DISTINCT col2 FROM tab2 WHERE NOT NULL IN ( - 9 ) GROUP BY col2, col2;
+  - name: tab2
+
+outputs:
+  - name: q8777.out
+    data: |

@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q4008.sql | sort > q4008.out
+
+inputs:
+  - name: q4008.sql
+    data: |
+      SELECT 24 AS col1, CASE - 99 WHEN + 39 THEN - CAST ( NULL AS INTEGER ) END;
+
+outputs:
+  - name: q4008.out
+    data: |
+      24	NULL

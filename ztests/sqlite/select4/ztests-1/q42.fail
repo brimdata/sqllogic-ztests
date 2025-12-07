@@ -1,0 +1,56 @@
+script: |
+  super -f tsv -I q42.sql | tr '\t' '\n' | sort > q42.out
+
+inputs:
+  - name: q42.sql
+    data: |
+      SELECT d7 FROM t7
+      WHERE c7 in (174,931,575,441,843,249,857,305,770,260)
+      UNION
+      SELECT b3 FROM t3
+      WHERE (e3=814 AND 336=d3 AND 966=c3)
+      EXCEPT
+      SELECT c9 FROM t9
+      WHERE NOT (a9 in (841,847,218,875,240,14,662,215)
+      OR e9 in (672,621,486,799))
+      EXCEPT
+      SELECT b6 FROM t6
+      WHERE NOT ((a6=128 AND 588=e6 AND c6=480 AND 186=d6 AND 461=b6)
+      OR c6 in (648,942,45,84))
+      EXCEPT
+      SELECT c8 FROM t8
+      WHERE NOT (b8 in (992,184,182,906,702,523,155,975,155,228)
+      OR c8 in (354,266,77)
+      OR (a8=347))
+      UNION
+      SELECT e2 FROM t2
+      WHERE a2 in (505,588,123,785,725,779)
+      EXCEPT
+      SELECT a4 FROM t4
+      WHERE NOT (c4 in (357,513,271,238));
+  - name: t4
+  - name: t5
+  - name: t6
+  - name: t8
+  - name: t9
+
+outputs:
+  - name: q42.out
+    data: |
+      142
+      246
+      28
+      427
+      499
+      56
+      564
+      572
+      590
+      594
+      722
+      785
+      788
+      842
+      886
+      923
+      924

@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q6570.sql | sort > q6570.out
+
+inputs:
+  - name: q6570.sql
+    data: |
+      SELECT + COUNT ( * ) AS col2 FROM tab2 WHERE NOT ( + col2 + col1 ) IS NULL;
+
+outputs:
+  - name: q6570.out
+    data: |
+      3

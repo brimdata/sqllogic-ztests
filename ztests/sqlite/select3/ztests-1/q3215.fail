@@ -1,0 +1,36 @@
+script: |
+  super -f tsv -I q3215.sql | sort > q3215.out
+
+inputs:
+  - name: q3215.sql
+    data: |
+      SELECT abs(b-c),
+      c,
+      b-c,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b)
+      FROM t1
+      WHERE e+d BETWEEN a+b-10 AND c+130
+      OR d NOT BETWEEN 110 AND 150
+      ORDER BY 4,1,2;
+
+outputs:
+  - name: q3215.out
+    data: |
+      1	106	-1	0
+      1	161	-1	10
+      1	187	-1	15
+      1	193	1	16
+      1	224	-1	21
+      1	231	1	23
+      2	172	-2	12
+      2	208	-2	18
+      2	247	2	26
+      3	184	-3	14
+      3	195	3	17
+      3	214	-3	19
+      3	215	3	20
+      3	225	3	22
+      4	125	4	3
+      NULL	102	NULL	0
+      NULL	202	NULL	0
+      NULL	NULL	NULL	24

@@ -1,0 +1,39 @@
+script: |
+  super -f tsv -I q2826.sql | sort > q2826.out
+
+inputs:
+  - name: q2826.sql
+    data: |
+      SELECT CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b)
+      FROM t1
+      WHERE c BETWEEN b-2 AND d+2
+      OR d>e
+      OR d NOT BETWEEN 110 AND 150;
+
+outputs:
+  - name: q2826.out
+    data: |
+      1050	0
+      1120	1
+      1240	2
+      1290	3
+      1300	4
+      1390	5
+      1430	6
+      1600	10
+      1700	12
+      2360	24
+      364	14
+      376	15
+      382	16
+      398	17
+      402	0
+      426	19
+      432	20
+      440	21
+      458	22
+      468	23
+      490	26
+      NULL	0
+      NULL	18

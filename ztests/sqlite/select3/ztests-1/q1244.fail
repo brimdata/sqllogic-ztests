@@ -1,0 +1,30 @@
+script: |
+  super -f tsv -I q1244.sql | sort > q1244.out
+
+inputs:
+  - name: q1244.sql
+    data: |
+      SELECT a+b*2,
+      abs(a),
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END,
+      a-b
+      FROM t1
+      WHERE (c<=d-2 OR c>=d+2);
+
+outputs:
+  - name: q1244.out
+    data: |
+      317	107	0	333	333	2
+      385	127	3	333	222	-2
+      483	163	10	333	444	3
+      560	188	15	444	333	2
+      579	191	16	444	222	-3
+      635	213	19	222	333	2
+      652	216	20	333	222	-2
+      666	220	21	444	222	-3
+      698	234	23	555	333	2
+      NULL	115	0	333	444	NULL

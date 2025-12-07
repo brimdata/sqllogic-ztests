@@ -1,0 +1,41 @@
+script: |
+  super -f tsv -I q274.sql | tr '\t' '\n' | sort > q274.out
+
+inputs:
+  - name: q274.sql
+    data: |
+      SELECT b9 FROM t9
+      WHERE (420=d9 OR b9=342 OR 739=a9)
+      UNION ALL
+      SELECT a3 FROM t3
+      WHERE (692=c3)
+      OR a3 in (255,70,863,379,265,743,349,720,822,777,306,105,551,608)
+      OR (a3=145)
+      EXCEPT
+      SELECT a6 FROM t6
+      WHERE NOT ((511=e6)
+      OR (d6=489 AND a6=537 AND 283=e6));
+  - name: t5
+  - name: t9
+
+outputs:
+  - name: q274.out
+    data: |
+      105
+      145
+      197
+      265
+      306
+      342
+      349
+      379
+      551
+      608
+      70
+      720
+      743
+      777
+      822
+      832
+      863
+      900

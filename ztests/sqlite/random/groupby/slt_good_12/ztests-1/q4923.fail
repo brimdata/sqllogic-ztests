@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q4923.sql | sort > q4923.out
+
+inputs:
+  - name: q4923.sql
+    data: |
+      SELECT ALL + 1 AS col0 FROM tab2 GROUP BY col1, col2 HAVING NOT col2 * 17 IN ( + 32 );
+
+outputs:
+  - name: q4923.out
+    data: |
+      1
+      1
+      1

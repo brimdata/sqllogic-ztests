@@ -1,0 +1,25 @@
+script: |
+  super -f tsv -I q300.sql | sort > q300.out
+
+inputs:
+  - name: q300.sql
+    data: |
+      SELECT (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      a-b
+      FROM t1
+      WHERE d>e;
+
+outputs:
+  - name: q300.out
+    data: |
+      0	-1
+      0	-2
+      0	-3
+      0	-4
+      0	1
+      0	1
+      0	2
+      0	2
+      0	3
+      0	3
+      0	NULL

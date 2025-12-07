@@ -1,0 +1,47 @@
+script: |
+  super -f tsv -I q526.sql | sort > q526.out
+
+inputs:
+  - name: q526.sql
+    data: |
+      SELECT a-b,
+      c,
+      (a+b+c+d+e)/5,
+      b-c,
+      CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END,
+      b
+      FROM t1
+      WHERE EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      OR (c<=d-2 OR c>=d+2);
+
+outputs:
+  - name: q526.out
+    data: |
+      -1	137	137	2	1390	139
+      -1	141	142	2	1430	143
+      -2	125	127	4	1290	129
+      -2	215	217	3	432	218
+      -3	123	NULL	1	1240	124
+      -3	193	192	1	382	194
+      -3	224	222	-1	440	223
+      -4	247	247	2	490	249
+      1	134	132	-4	1300	130
+      1	155	NULL	3	1580	158
+      1	166	NULL	1	1670	167
+      1	184	182	-3	364	181
+      1	195	197	3	398	198
+      1	225	227	3	458	228
+      2	106	107	-1	1050	105
+      2	150	NULL	1	1510	151
+      2	187	187	-1	376	186
+      2	214	212	-3	426	211
+      2	231	232	1	468	232
+      3	161	162	-1	1600	160
+      3	244	NULL	-4	486	240
+      3	NULL	NULL	NULL	2360	236
+      4	147	NULL	-2	1450	145
+      4	172	172	-2	1700	170
+      4	176	NULL	-1	358	175
+      NULL	113	NULL	-1	1120	112
+      NULL	119	NULL	NULL	NULL	NULL
+      NULL	208	NULL	-2	NULL	206

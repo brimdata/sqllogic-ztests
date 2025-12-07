@@ -1,0 +1,27 @@
+script: |
+  super -f tsv -I q716.sql | sort > q716.out
+
+inputs:
+  - name: q716.sql
+    data: |
+      SELECT e,
+      c,
+      abs(b-c),
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      d-e
+      FROM t1
+      WHERE (c<=d-2 OR c>=d+2);
+
+outputs:
+  - name: q716.out
+    data: |
+      109	106	1	0	-1
+      117	119	NULL	0	-1
+      126	125	4	0	2
+      162	161	1	0	2
+      189	187	1	0	-4
+      192	193	1	0	-2
+      210	214	3	0	2
+      219	215	3	0	-2
+      221	224	1	0	1
+      230	231	1	0	3

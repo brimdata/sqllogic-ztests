@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q4303.sql | sort > q4303.out
+
+inputs:
+  - name: q4303.sql
+    data: |
+      SELECT COUNT ( * ) AS col1 FROM tab0 WHERE NOT ( + col2 * 77 * col2 ) IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q4303.out
+    data: |
+      0

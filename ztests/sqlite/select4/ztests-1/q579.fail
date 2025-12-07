@@ -1,0 +1,72 @@
+script: |
+  super -f tsv -I q579.sql | tr '\t' '\n' | sort > q579.out
+
+inputs:
+  - name: q579.sql
+    data: |
+      SELECT e8 FROM t8
+      WHERE (326=d8)
+      OR b8 in (878,7,705,211)
+      UNION ALL
+      SELECT e2 FROM t2
+      WHERE (b2=93)
+      OR (549=b2 AND d2=803 AND 711=c2)
+      OR a2 in (980,944,253,927)
+      UNION
+      SELECT b5 FROM t5
+      WHERE a5 in (319,242,342,349,320,837,749,743)
+      OR (729=b5 OR 772=e5 OR b5=606)
+      OR b5 in (389,292,860,942,321,161,502,484,159,736,847,744,26,511)
+      UNION ALL
+      SELECT a4 FROM t4
+      WHERE d4 in (247,309,985,950,665,681,781,777,943,323)
+      EXCEPT
+      SELECT c1 FROM t1
+      WHERE NOT ((358=a1)
+      OR d1 in (121,234,519,172)
+      OR (c1=230 OR 963=e1))
+      EXCEPT
+      SELECT b6 FROM t6
+      WHERE NOT (b6 in (933,452,463,350)
+      OR (2=d6 OR b6=250 OR 751=a6))
+      EXCEPT
+      SELECT b9 FROM t9
+      WHERE NOT ((e9=239)
+      OR a9 in (435,610,611,811,548,694,485,847,747));
+  - name: t4
+  - name: t8
+
+outputs:
+  - name: q579.out
+    data: |
+      159
+      161
+      292
+      31
+      318
+      321
+      389
+      433
+      473
+      483
+      484
+      502
+      533
+      544
+      547
+      559
+      561
+      589
+      657
+      72
+      729
+      744
+      752
+      822
+      84
+      847
+      860
+      938
+      939
+      942
+      950

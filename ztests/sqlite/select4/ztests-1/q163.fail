@@ -1,0 +1,31 @@
+script: |
+  super -f tsv -I q163.sql | tr '\t' '\n' | sort > q163.out
+
+inputs:
+  - name: q163.sql
+    data: |
+      SELECT e2 FROM t2
+      WHERE (e2=671 OR d2=749 OR a2=217)
+      OR (b2=729 AND 35=a2 AND d2=292)
+      OR (812=b2 OR e2=483)
+      EXCEPT
+      SELECT b1 FROM t1
+      WHERE NOT (a1 in (173,380,678))
+      EXCEPT
+      SELECT d3 FROM t3
+      WHERE NOT ((a3=548))
+      UNION ALL
+      SELECT b5 FROM t5
+      WHERE (c5=678 OR c5=12);
+  - name: t1
+  - name: t5
+
+outputs:
+  - name: q163.out
+    data: |
+      512
+      671
+      673
+      769
+      98
+      998

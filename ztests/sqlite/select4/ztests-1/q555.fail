@@ -1,0 +1,41 @@
+script: |
+  super -f tsv -I q555.sql | tr '\t' '\n' | sort > q555.out
+
+inputs:
+  - name: q555.sql
+    data: |
+      SELECT b2 FROM t2
+      WHERE b2 in (433,504,217,888,418,968,818,681,161,8,501,181,367,226)
+      OR c2 in (449,657,421,141,337,788,773,290)
+      INTERSECT
+      SELECT b8 FROM t8
+      WHERE NOT (b8 in (992,459,259,175,790,615,269,878,351,852,34,253,219,9)
+      OR (548=e8 AND 705=c8 AND a8=591 AND d8=542 AND b8=992)
+      OR (400=a8 AND 6=b8 AND 381=e8 AND 486=c8 AND d8=197))
+      UNION
+      SELECT b9 FROM t9
+      WHERE (836=c9 OR b9=759)
+      UNION ALL
+      SELECT a4 FROM t4
+      WHERE c4 in (201,675,658,403,119)
+      OR (596=e4)
+      OR (e4=132)
+      EXCEPT
+      SELECT a1 FROM t1
+      WHERE NOT ((696=b1 AND d1=717 AND 117=e1 AND c1=639))
+      EXCEPT
+      SELECT c7 FROM t7
+      WHERE NOT ((d7=341 AND 709=a7));
+  - name: t2
+  - name: t3
+  - name: t6
+
+outputs:
+  - name: q555.out
+    data: |
+      450
+      456
+      651
+      759
+      8
+      997

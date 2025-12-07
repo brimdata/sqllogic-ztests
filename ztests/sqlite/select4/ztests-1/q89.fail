@@ -1,0 +1,41 @@
+script: |
+  super -f tsv -I q89.sql | tr '\t' '\n' | sort > q89.out
+
+inputs:
+  - name: q89.sql
+    data: |
+      SELECT c1 FROM t1
+      WHERE (525=a1 AND c1=670)
+      OR (574=d1 OR 255=b1)
+      INTERSECT
+      SELECT c7 FROM t7
+      WHERE NOT (e7 in (156,522,503,215,39,234,782))
+      UNION ALL
+      SELECT c9 FROM t9
+      WHERE (25=d9 OR 759=d9 OR c9=254)
+      OR (245=b9 OR 226=d9 OR 297=a9)
+      UNION
+      SELECT a2 FROM t2
+      WHERE (d2=886 AND a2=785)
+      OR (189=a2 OR 90=b2)
+      OR (223=e2 OR 1=a2)
+      EXCEPT
+      SELECT e4 FROM t4
+      WHERE NOT ((554=e4 AND d4=574)
+      OR (c4=585)
+      OR (847=b4 AND 797=d4 AND 546=e4));
+  - name: t1
+  - name: t2
+
+outputs:
+  - name: q89.out
+    data: |
+      146
+      189
+      254
+      279
+      588
+      734
+      751
+      764
+      785

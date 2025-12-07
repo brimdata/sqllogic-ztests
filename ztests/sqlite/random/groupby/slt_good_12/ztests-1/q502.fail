@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q502.sql | sort > q502.out
+
+inputs:
+  - name: q502.sql
+    data: |
+      SELECT - col2 AS col2 FROM tab1 GROUP BY col0, col2 HAVING col0 <> - 66;
+
+outputs:
+  - name: q502.out
+    data: |
+      -45
+      -71
+      -8

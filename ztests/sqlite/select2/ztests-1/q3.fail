@@ -1,0 +1,18 @@
+script: |
+  super -f tsv -I q3.sql | sort > q3.out
+
+inputs:
+  - name: q3.sql
+    data: |
+      SELECT a,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      a+b*2+c*3+d*4+e*5,
+      d
+      FROM t1
+      WHERE a IS NULL;
+
+outputs:
+  - name: q3.out
+    data: |
+      NULL	1	NULL	114
+      NULL	18	NULL	207

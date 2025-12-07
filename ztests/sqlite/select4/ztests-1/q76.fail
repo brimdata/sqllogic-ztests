@@ -1,0 +1,65 @@
+script: |
+  super -f tsv -I q76.sql | tr '\t' '\n' | sort > q76.out
+
+inputs:
+  - name: q76.sql
+    data: |
+      SELECT b2 FROM t2
+      WHERE (b2=897 OR e2=223 OR b2=820)
+      OR (813=d2)
+      UNION ALL
+      SELECT c9 FROM t9
+      WHERE (b9=228 OR b9=858)
+      OR d9 in (763,959,23,388,965,86,744,161,602,164)
+      OR b9 in (5,789,595,26,348,496,285)
+      UNION
+      SELECT e4 FROM t4
+      WHERE (286=b4 AND 575=e4)
+      OR (d4=498 AND 765=b4 AND a4=51 AND e4=350)
+      OR (c4=860)
+      EXCEPT
+      SELECT e3 FROM t3
+      WHERE NOT (c3 in (792,265,516,490,122,600,845,299,220,127,83,452,986)
+      OR (b3=113)
+      OR (457=b3 AND a3=368 AND c3=175 AND e3=728 AND 220=d3))
+      UNION
+      SELECT d7 FROM t7
+      WHERE (e7=971 AND 973=b7)
+      OR (b7=634 OR a7=442 OR a7=490)
+      EXCEPT
+      SELECT e1 FROM t1
+      WHERE NOT ((b1=432)
+      OR e1 in (89,56,696))
+      EXCEPT
+      SELECT b8 FROM t8
+      WHERE NOT ((592=e8 AND 454=b8)
+      OR (d8=610 AND 242=e8 AND 487=b8)
+      OR (a8=150));
+  - name: t3
+  - name: t6
+  - name: t9
+
+outputs:
+  - name: q76.out
+    data: |
+      101
+      126
+      151
+      224
+      252
+      257
+      332
+      35
+      350
+      509
+      515
+      549
+      569
+      575
+      587
+      60
+      634
+      820
+      843
+      905
+      982

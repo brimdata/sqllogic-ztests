@@ -1,0 +1,44 @@
+script: |
+  super -f tsv -I q573.sql | sort > q573.out
+
+inputs:
+  - name: q573.sql
+    data: |
+      SELECT CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END,
+      b,
+      CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END,
+      c,
+      (a+b+c+d+e)/5
+      FROM t1
+      WHERE EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b);
+
+outputs:
+  - name: q573.out
+    data: |
+      111	249	490	247	247
+      222	124	1240	123	NULL
+      222	129	1290	125	127
+      222	139	1390	137	137
+      222	143	1430	141	142
+      222	194	382	193	192
+      222	218	432	215	217
+      222	223	440	224	222
+      333	130	1300	134	132
+      333	151	1510	150	NULL
+      333	158	1580	155	NULL
+      333	167	1670	166	NULL
+      333	181	364	184	182
+      333	186	376	187	187
+      333	198	398	195	197
+      333	211	426	214	212
+      333	228	458	225	227
+      333	232	468	231	232
+      444	112	1120	113	NULL
+      444	145	1450	147	NULL
+      444	160	1600	161	162
+      444	170	1700	172	172
+      444	175	358	176	NULL
+      444	206	NULL	208	NULL
+      444	236	2360	NULL	NULL
+      444	240	486	244	NULL

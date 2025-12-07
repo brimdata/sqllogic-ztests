@@ -1,0 +1,34 @@
+script: |
+  super -f tsv -I q945.sql | tr '\t' '\n' | sort > q945.out
+
+inputs:
+  - name: q945.sql
+    data: |
+      SELECT a4 FROM t4
+      WHERE d4 in (25,628,821,323,713)
+      OR (e4=237 OR b4=860 OR d4=907)
+      OR (412=a4 AND 39=c4)
+      UNION
+      SELECT c2 FROM t2
+      WHERE (292=b2 OR a2=98)
+      EXCEPT
+      SELECT b3 FROM t3
+      WHERE NOT (d3 in (109,149,170)
+      OR (e3=459 AND 360=c3 AND 560=d3 AND 776=a3 AND b3=534)
+      OR a3 in (892,101,935,697,349,364,396,275,696));
+  - name: t6
+  - name: t8
+
+outputs:
+  - name: q945.out
+    data: |
+      151
+      16
+      275
+      412
+      451
+      473
+      629
+      661
+      921
+      996

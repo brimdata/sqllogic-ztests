@@ -1,0 +1,11 @@
+script: |
+  super -f tsv -I q7481.sql | sort > q7481.out
+
+inputs:
+  - name: q7481.sql
+    data: |
+      SELECT + col0 FROM tab2 GROUP BY col1, col0 HAVING ( - col0 ) BETWEEN NULL AND col0 * - col1;
+
+outputs:
+  - name: q7481.out
+    data: |

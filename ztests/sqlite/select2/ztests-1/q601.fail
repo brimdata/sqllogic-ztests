@@ -1,0 +1,24 @@
+script: |
+  super -f tsv -I q601.sql | sort > q601.out
+
+inputs:
+  - name: q601.sql
+    data: |
+      SELECT b
+      FROM t1
+      WHERE c BETWEEN b-2 AND d+2
+      AND d>e
+      AND EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b);
+
+outputs:
+  - name: q601.out
+    data: |
+      112
+      130
+      139
+      160
+      181
+      211
+      223
+      232
+      249

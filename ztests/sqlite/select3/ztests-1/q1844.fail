@@ -1,0 +1,46 @@
+script: |
+  super -f tsv -I q1844.sql | sort > q1844.out
+
+inputs:
+  - name: q1844.sql
+    data: |
+      SELECT (a+b+c+d+e)/5,
+      a+b*2+c*3+d*4+e*5,
+      a+b*2+c*3,
+      CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      abs(b-c)
+      FROM t1
+      WHERE (e>c OR e<d)
+      OR c>d
+      OR e+d BETWEEN a+b-10 AND c+130;
+
+outputs:
+  - name: q1844.out
+    data: |
+      107	1612	635	1050	0	1
+      127	1902	760	1290	0	4
+      132	1985	793	1300	0	4
+      137	2046	827	1390	0	2
+      142	2131	851	1430	0	2
+      162	2432	966	1600	0	1
+      172	2579	1030	1700	0	2
+      182	2728	1096	364	0	3
+      187	2806	1121	376	0	1
+      192	2878	1158	382	0	1
+      197	2949	1180	398	0	3
+      212	3175	1277	426	0	3
+      217	3260	1297	432	0	3
+      222	3331	1338	440	0	1
+      227	3399	1360	458	0	3
+      232	3473	1391	468	0	1
+      247	3706	1484	490	0	2
+      NULL	NULL	1057	358	0	1
+      NULL	NULL	738	1240	0	1
+      NULL	NULL	940	1580	0	3
+      NULL	NULL	NULL	1120	0	1
+      NULL	NULL	NULL	2360	0	NULL
+      NULL	NULL	NULL	402	0	NULL
+      NULL	NULL	NULL	NULL	0	2
+      NULL	NULL	NULL	NULL	0	NULL
+      NULL	NULL	NULL	NULL	0	NULL

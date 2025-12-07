@@ -1,0 +1,43 @@
+script: |
+  super -f tsv -I q2672.sql | sort > q2672.out
+
+inputs:
+  - name: q2672.sql
+    data: |
+      SELECT a+b*2+c*3+d*4+e*5,
+      CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END,
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b)
+      FROM t1
+      WHERE d>e
+      OR b>c
+      OR c BETWEEN b-2 AND d+2;
+
+outputs:
+  - name: q2672.out
+    data: |
+      1612	1050	333	0
+      1902	1290	333	3
+      1985	1300	444	4
+      2046	1390	111	5
+      2131	1430	111	6
+      2432	1600	333	10
+      2579	1700	555	12
+      2728	364	333	14
+      2806	376	444	15
+      2878	382	444	16
+      2949	398	555	17
+      3175	426	222	19
+      3260	432	333	20
+      3331	440	444	21
+      3399	458	555	22
+      3473	468	555	23
+      3706	490	444	26
+      NULL	1120	555	1
+      NULL	1240	333	2
+      NULL	1510	555	8
+      NULL	1580	555	9
+      NULL	1670	555	11
+      NULL	2360	555	24
+      NULL	NULL	555	18

@@ -1,0 +1,50 @@
+script: |
+  super -f tsv -I q168.sql | tr '\t' '\n' | sort > q168.out
+
+inputs:
+  - name: q168.sql
+    data: |
+      SELECT d4 FROM t4
+      WHERE (d4=498)
+      OR (c4=904)
+      INTERSECT
+      SELECT b7 FROM t7
+      WHERE NOT (b7 in (273,804,178,426,392,896,495,460,202,374)
+      OR (b7=517))
+      UNION
+      SELECT b8 FROM t8
+      WHERE (391=d8 AND 883=a8 AND e8=416)
+      OR b8 in (186,244,975,773,386,287,7,269,397,564,454,542,469)
+      OR e8 in (881,105,463,586,956,392)
+      UNION ALL
+      SELECT c2 FROM t2
+      WHERE (23=d2 OR e2=148 OR 537=d2);
+  - name: t1
+  - name: t5
+
+outputs:
+  - name: q168.out
+    data: |
+      186
+      244
+      269
+      283
+      287
+      290
+      300
+      324
+      386
+      397
+      454
+      469
+      52
+      523
+      542
+      564
+      615
+      624
+      7
+      773
+      819
+      9
+      975

@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q11816.sql | sort > q11816.out
+
+inputs:
+  - name: q11816.sql
+    data: |
+      SELECT ALL CAST ( NULL AS REAL ) / - COUNT ( * ) AS col1 FROM tab0 WHERE col2 NOT IN ( col1 * col2 );
+
+outputs:
+  - name: q11816.out
+    data: |
+      NULL

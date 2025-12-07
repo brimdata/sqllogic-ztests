@@ -1,0 +1,11 @@
+script: |
+  super -f tsv -I q3289.sql | sort > q3289.out
+
+inputs:
+  - name: q3289.sql
+    data: |
+      SELECT DISTINCT + 39 AS col2 FROM tab2 GROUP BY col1, col2 HAVING NOT + col2 / col1 >= NULL;
+
+outputs:
+  - name: q3289.out
+    data: |

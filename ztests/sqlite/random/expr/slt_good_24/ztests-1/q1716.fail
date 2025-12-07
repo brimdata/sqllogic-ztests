@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q1716.sql | sort > q1716.out
+
+inputs:
+  - name: q1716.sql
+    data: |
+      SELECT NULLIF ( CAST ( + 31 AS INTEGER ), + COALESCE ( - COUNT ( * ), + 50 ) ) AS col2;
+
+outputs:
+  - name: q1716.out
+    data: |
+      31

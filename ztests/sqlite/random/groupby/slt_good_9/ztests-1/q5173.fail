@@ -1,0 +1,11 @@
+script: |
+  super -f tsv -I q5173.sql | sort > q5173.out
+
+inputs:
+  - name: q5173.sql
+    data: |
+      SELECT col1 FROM tab2 GROUP BY col1, col0, col0 HAVING col0 BETWEEN ( - col1 * - col0 ) AND NULL;
+
+outputs:
+  - name: q5173.out
+    data: |

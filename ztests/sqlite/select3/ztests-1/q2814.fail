@@ -1,0 +1,31 @@
+script: |
+  super -f tsv -I q2814.sql | sort > q2814.out
+
+inputs:
+  - name: q2814.sql
+    data: |
+      SELECT abs(a),
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END,
+      (a+b+c+d+e)/5,
+      a+b*2+c*3+d*4,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b)
+      FROM t1
+      WHERE c>d;
+
+outputs:
+  - name: q2814.out
+    data: |
+      104	444	NULL	NULL	0
+      115	444	NULL	NULL	0
+      121	222	NULL	1226	2
+      131	333	132	1325	4
+      138	222	137	1371	5
+      142	222	142	1411	6
+      174	444	172	1714	12
+      182	333	182	1828	14
+      188	333	187	1861	15
+      191	222	192	1918	16
+      213	333	212	2125	19
+      220	222	222	2226	21
+      NULL	444	NULL	NULL	18

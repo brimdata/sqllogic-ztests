@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q120.sql | sort > q120.out
+
+inputs:
+  - name: q120.sql
+    data: |
+      SELECT ALL + COUNT ( * ) AS col1 FROM tab1 AS cor0 WHERE col1 * col2 / col0 NOT IN ( col2, - ( - 99 ) );
+
+outputs:
+  - name: q120.out
+    data: |
+      3

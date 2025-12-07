@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q13715.sql | sort > q13715.out
+
+inputs:
+  - name: q13715.sql
+    data: |
+      SELECT ALL * FROM tab1 WHERE - 3 * CAST ( NULL AS INTEGER ) NOT IN ( col2 * 8 );
+  - name: tab1
+
+outputs:
+  - name: q13715.out
+    data: |

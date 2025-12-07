@@ -1,0 +1,19 @@
+script: |
+  super -f tsv -I q267.sql | tr '\t' '\n' | sort > q267.out
+
+inputs:
+  - name: q267.sql
+    data: |
+      SELECT b8 FROM t8
+      WHERE (769=b8 AND c8=907 AND a8=586 AND e8=874 AND d8=141)
+      EXCEPT
+      SELECT a7 FROM t7
+      WHERE NOT (a7 in (433,945,865,912,936,998,9,452,6)
+      OR (c7=659 AND 183=e7));
+  - name: t5
+  - name: t9
+
+outputs:
+  - name: q267.out
+    data: |
+      769

@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q6579.sql | sort > q6579.out
+
+inputs:
+  - name: q6579.sql
+    data: |
+      SELECT + COUNT ( * ) AS col2 FROM tab2 WHERE ( NOT NULL IS NULL );
+  - name: tab2
+
+outputs:
+  - name: q6579.out
+    data: |
+      0

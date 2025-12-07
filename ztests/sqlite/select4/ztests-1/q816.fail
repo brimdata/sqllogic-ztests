@@ -1,0 +1,28 @@
+script: |
+  super -f tsv -I q816.sql | tr '\t' '\n' | sort > q816.out
+
+inputs:
+  - name: q816.sql
+    data: |
+      SELECT a6 FROM t6
+      WHERE (761=e6 AND 21=d6 AND 320=c6 AND 610=a6 AND b6=825)
+      OR (376=d6 AND 359=a6 AND e6=798 AND 942=c6 AND 0=b6)
+      OR (233=a6 OR b6=882)
+      INTERSECT
+      SELECT b7 FROM t7
+      WHERE NOT ((364=d7 OR 508=c7 OR a7=500)
+      OR (c7=94)
+      OR (627=b7))
+      INTERSECT
+      SELECT b8 FROM t8
+      WHERE NOT ((117=c8 AND a8=256 AND b8=870 AND 305=e8 AND d8=192))
+      INTERSECT
+      SELECT a3 FROM t3
+      WHERE NOT (a3 in (763,515,822,41));
+  - name: t3
+  - name: t7
+  - name: t9
+
+outputs:
+  - name: q816.out
+    data: |

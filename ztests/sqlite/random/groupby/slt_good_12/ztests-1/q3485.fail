@@ -1,0 +1,11 @@
+script: |
+  super -f tsv -I q3485.sql | sort > q3485.out
+
+inputs:
+  - name: q3485.sql
+    data: |
+      SELECT - col0 FROM tab2 GROUP BY col0 HAVING NOT col0 / 13 + - + CAST ( NULL AS INTEGER ) IS NULL;
+
+outputs:
+  - name: q3485.out
+    data: |

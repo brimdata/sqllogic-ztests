@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q8916.sql | sort > q8916.out
+
+inputs:
+  - name: q8916.sql
+    data: |
+      SELECT ALL * FROM tab0 WHERE NOT NULL IN ( + col1, - col0, - CAST ( NULL AS INTEGER ), - 25, + - 12 * col1, 1 );
+  - name: tab0
+
+outputs:
+  - name: q8916.out
+    data: |

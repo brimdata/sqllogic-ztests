@@ -1,0 +1,27 @@
+script: |
+  super -f tsv -I q337.sql | sort > q337.out
+
+inputs:
+  - name: q337.sql
+    data: |
+      SELECT CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      a+b*2+c*3,
+      a+b*2+c*3+d*4,
+      c-d
+      FROM t1
+      WHERE (a>b-2 AND a<b+2)
+      AND EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      ORDER BY 3,1,4,2;
+
+outputs:
+  - name: q337.out
+    data: |
+      111	827	1371	1
+      111	851	1411	1
+      333	1096	1828	1
+      444	793	1325	1
+      555	1000	NULL	NULL
+      555	1180	1964	-1
+      555	1360	2264	-1
+      555	940	NULL	NULL

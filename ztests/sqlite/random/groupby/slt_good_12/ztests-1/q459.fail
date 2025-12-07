@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q459.sql | sort > q459.out
+
+inputs:
+  - name: q459.sql
+    data: |
+      SELECT DISTINCT 8 * + col1 + - ( - col1 ) * + 27 AS col1, - col1 FROM tab1 GROUP BY col1;
+
+outputs:
+  - name: q459.out
+    data: |
+      1540	-44
+      1995	-57
+      210	-6

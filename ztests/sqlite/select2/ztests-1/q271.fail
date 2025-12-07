@@ -1,0 +1,46 @@
+script: |
+  super -f tsv -I q271.sql | sort > q271.out
+
+inputs:
+  - name: q271.sql
+    data: |
+      SELECT b,
+      a+b*2,
+      c-d,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END,
+      abs(a)
+      FROM t1
+      WHERE b>c
+      OR (c<=d-2 OR c>=d+2)
+      OR d NOT BETWEEN 110 AND 150;
+
+outputs:
+  - name: q271.out
+    data: |
+      105	317	-2	0	333	107
+      124	369	1	0	222	121
+      129	385	-3	0	222	127
+      139	416	1	0	222	138
+      143	428	1	0	222	142
+      151	455	NULL	0	333	153
+      158	475	NULL	0	333	159
+      160	483	-3	0	444	163
+      167	502	NULL	0	333	168
+      170	514	1	0	444	174
+      181	544	1	0	333	182
+      186	560	2	0	333	188
+      194	579	3	0	222	191
+      198	595	-1	0	333	199
+      206	NULL	1	0	444	NULL
+      211	635	2	0	333	213
+      218	652	-2	0	222	216
+      223	666	2	0	222	220
+      228	685	-1	0	333	229
+      232	698	-2	0	333	234
+      236	711	NULL	0	444	239
+      249	743	-1	0	111	245
+      NULL	NULL	-1	0	444	201
+      NULL	NULL	1	0	444	104
+      NULL	NULL	3	0	444	115

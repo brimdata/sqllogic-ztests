@@ -1,0 +1,33 @@
+script: |
+  super -f tsv -I q955.sql > q955.out
+
+inputs:
+  - name: q955.sql
+    data: |
+      SELECT e,
+      CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END,
+      b,
+      a+b*2+c*3+d*4+e*5,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      a
+      FROM t1
+      WHERE d NOT BETWEEN 110 AND 150
+      AND (c<=d-2 OR c>=d+2)
+      ORDER BY 4,2,1,6,5,3;
+
+outputs:
+  - name: q955.out
+    data: |
+      109	1050	105	1612	1	107
+      152	1510	151	2281	10	153
+      162	1600	160	2432	12	163
+      165	1670	167	2501	13	168
+      177	358	175	2654	15	179
+      189	376	186	2806	17	188
+      192	382	194	2878	18	191
+      210	426	211	3175	22	213
+      219	432	218	3260	23	216
+      221	440	223	3331	24	220
+      230	468	232	3473	26	234
+      237	478	236	3553	27	239
+      242	486	240	3629	28	243

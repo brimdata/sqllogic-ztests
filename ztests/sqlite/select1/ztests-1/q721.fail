@@ -1,0 +1,45 @@
+script: |
+  super -f tsv -I q721.sql > q721.out
+
+inputs:
+  - name: q721.sql
+    data: |
+      SELECT CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END,
+      a-b
+      FROM t1
+      WHERE EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      OR d>e
+      ORDER BY 1,2;
+
+outputs:
+  - name: q721.out
+    data: |
+      358	4
+      364	1
+      376	2
+      382	-3
+      398	1
+      402	1
+      410	-1
+      426	2
+      432	-2
+      440	-3
+      458	1
+      468	2
+      478	3
+      486	3
+      490	-4
+      1050	2
+      1120	-1
+      1180	-3
+      1240	-3
+      1290	-2
+      1300	1
+      1390	-1
+      1430	-1
+      1450	4
+      1510	2
+      1580	1
+      1600	3
+      1670	1
+      1700	4

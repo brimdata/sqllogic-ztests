@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q13825.sql | sort > q13825.out
+
+inputs:
+  - name: q13825.sql
+    data: |
+      SELECT ALL + COUNT ( * ) + COUNT ( - col0 ) FROM tab0 WHERE NOT NULL IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q13825.out
+    data: |
+      0

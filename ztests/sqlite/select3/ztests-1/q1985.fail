@@ -1,0 +1,22 @@
+script: |
+  super -f tsv -I q1985.sql | sort > q1985.out
+
+inputs:
+  - name: q1985.sql
+    data: |
+      SELECT (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b)
+      FROM t1
+      WHERE (a>b-2 AND a<b+2)
+      ORDER BY 1;
+
+outputs:
+  - name: q1985.out
+    data: |
+      11
+      14
+      17
+      22
+      4
+      5
+      6
+      9

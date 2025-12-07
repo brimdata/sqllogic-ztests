@@ -1,0 +1,82 @@
+script: |
+  super -f tsv -I q468.sql | tr '\t' '\n' | sort > q468.out
+
+inputs:
+  - name: q468.sql
+    data: |
+      SELECT a3 FROM t3
+      WHERE (887=c3 AND a3=865)
+      OR c3 in (75,869,641)
+      OR (961=c3 OR c3=966)
+      UNION ALL
+      SELECT b7 FROM t7
+      WHERE (b7=973)
+      OR (d7=164 OR 250=b7)
+      OR e7 in (663,290,689,92,319,456,841,562,154)
+      UNION
+      SELECT d2 FROM t2
+      WHERE (d2=555 OR b2=545)
+      OR c2 in (894,988,220,449,560,344,773,964,779)
+      OR a2 in (139,522,262,652,185,315,279)
+      EXCEPT
+      SELECT a4 FROM t4
+      WHERE NOT ((b4=40 OR 486=e4))
+      UNION
+      SELECT d5 FROM t5
+      WHERE (e5=621 AND a5=683)
+      OR (a5=349 OR 894=e5 OR 556=a5)
+      OR e5 in (708,758,342,13,68,225,34,232,902,586,587);
+  - name: t4
+  - name: t6
+
+outputs:
+  - name: q468.out
+    data: |
+      1
+      120
+      152
+      233
+      250
+      263
+      265
+      269
+      276
+      306
+      310
+      33
+      351
+      362
+      419
+      426
+      462
+      480
+      488
+      495
+      553
+      555
+      565
+      577
+      581
+      602
+      615
+      627
+      634
+      643
+      67
+      682
+      69
+      726
+      731
+      750
+      753
+      784
+      836
+      843
+      844
+      865
+      938
+      963
+      965
+      971
+      973
+      992

@@ -1,0 +1,37 @@
+script: |
+  super -f tsv -I q622.sql | tr '\t' '\n' | sort > q622.out
+
+inputs:
+  - name: q622.sql
+    data: |
+      SELECT a5 FROM t5
+      WHERE a5 in (597,988,9,69)
+      OR e5 in (725,656,729,25)
+      EXCEPT
+      SELECT d2 FROM t2
+      WHERE NOT (d2 in (292,198,753,525,351,137,46,373,892,362,351,241,887))
+      EXCEPT
+      SELECT e3 FROM t3
+      WHERE NOT ((890=c3 AND a3=380 AND 364=d3 AND b3=932)
+      OR b3 in (103,445,76,874,381,266,584,124,73))
+      EXCEPT
+      SELECT b1 FROM t1
+      WHERE NOT ((828=b1)
+      OR (e1=299)
+      OR d1 in (972,481,407,618))
+      EXCEPT
+      SELECT b7 FROM t7
+      WHERE NOT ((995=a7 OR a7=665 OR 340=b7)
+      OR (705=c7 AND 832=b7 AND 197=e7));
+  - name: t3
+  - name: t7
+
+outputs:
+  - name: q622.out
+    data: |
+      174
+      34
+      597
+      69
+      9
+      988

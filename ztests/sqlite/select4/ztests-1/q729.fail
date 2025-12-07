@@ -1,0 +1,28 @@
+script: |
+  super -f tsv -I q729.sql | tr '\t' '\n' | sort > q729.out
+
+inputs:
+  - name: q729.sql
+    data: |
+      SELECT d2 FROM t2
+      WHERE (326=b2 AND d2=23 AND 283=c2 AND a2=2)
+      INTERSECT
+      SELECT a8 FROM t8
+      WHERE NOT ((150=a8)
+      OR (d8=269))
+      EXCEPT
+      SELECT d6 FROM t6
+      WHERE NOT ((e6=847))
+      UNION
+      SELECT b3 FROM t3
+      WHERE (701=b3 AND a3=979 AND 7=c3 AND e3=702);
+  - name: t2
+  - name: t4
+  - name: t5
+  - name: t6
+  - name: t7
+
+outputs:
+  - name: q729.out
+    data: |
+      701

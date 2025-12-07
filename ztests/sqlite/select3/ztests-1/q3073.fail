@@ -1,0 +1,24 @@
+script: |
+  super -f tsv -I q3073.sql | sort > q3073.out
+
+inputs:
+  - name: q3073.sql
+    data: |
+      SELECT abs(a),
+      a+b*2,
+      a-b
+      FROM t1
+      WHERE EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      AND a>b
+      AND (a>b-2 AND a<b+2)
+      ORDER BY 1,2;
+
+outputs:
+  - name: q3073.out
+    data: |
+      131	391	1
+      159	475	1
+      168	502	1
+      182	544	1
+      199	595	1
+      229	685	1

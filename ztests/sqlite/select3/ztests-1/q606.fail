@@ -1,0 +1,29 @@
+script: |
+  super -f tsv -I q606.sql | sort > q606.out
+
+inputs:
+  - name: q606.sql
+    data: |
+      SELECT (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      abs(a)
+      FROM t1
+      WHERE c BETWEEN b-2 AND d+2;
+
+outputs:
+  - name: q606.out
+    data: |
+      0	107
+      0	121
+      0	131
+      0	138
+      0	142
+      0	163
+      0	174
+      0	182
+      0	188
+      0	213
+      0	220
+      0	234
+      0	245
+      0	NULL
+      0	NULL

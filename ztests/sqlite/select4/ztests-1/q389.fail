@@ -1,0 +1,61 @@
+script: |
+  super -f tsv -I q389.sql | tr '\t' '\n' | sort > q389.out
+
+inputs:
+  - name: q389.sql
+    data: |
+      SELECT c8 FROM t8
+      WHERE (108=d8)
+      OR (e8=561 OR 431=e8)
+      INTERSECT
+      SELECT a2 FROM t2
+      WHERE NOT ((a2=262 OR a2=223)
+      OR (61=c2)
+      OR d2 in (790,209,405,126,292,46))
+      UNION
+      SELECT b3 FROM t3
+      WHERE (869=c3 AND b3=832 AND e3=155)
+      UNION
+      SELECT a6 FROM t6
+      WHERE d6 in (376,196,852,129,2,500,613,458,924)
+      OR (367=d6 AND 876=b6 AND 237=e6 AND 293=a6 AND 522=c6)
+      OR c6 in (769,258,415,480,411,187,637,416,910,749,270,572,287,297)
+      EXCEPT
+      SELECT b5 FROM t5
+      WHERE NOT ((13=e5 OR d5=856 OR a5=757))
+      UNION
+      SELECT c7 FROM t7
+      WHERE (b7=120 OR d7=684 OR 572=d7);
+  - name: t5
+  - name: t7
+
+outputs:
+  - name: q389.out
+    data: |
+      104
+      128
+      211
+      260
+      293
+      359
+      374
+      386
+      40
+      414
+      436
+      452
+      478
+      518
+      564
+      604
+      653
+      672
+      683
+      725
+      801
+      811
+      832
+      85
+      851
+      973
+      98

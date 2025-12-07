@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q818.sql | sort > q818.out
+
+inputs:
+  - name: q818.sql
+    data: |
+      SELECT - SUM ( DISTINCT + col2 ) AS col1 FROM tab1 AS cor0 WHERE NOT CAST ( NULL AS REAL ) IS NULL;
+
+outputs:
+  - name: q818.out
+    data: |
+      NULL

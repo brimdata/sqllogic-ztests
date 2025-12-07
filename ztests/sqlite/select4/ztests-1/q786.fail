@@ -1,0 +1,74 @@
+script: |
+  super -f tsv -I q786.sql | tr '\t' '\n' | sort > q786.out
+
+inputs:
+  - name: q786.sql
+    data: |
+      SELECT e6 FROM t6
+      WHERE (646=e6 OR b6=882 OR 286=d6)
+      INTERSECT
+      SELECT c7 FROM t7
+      WHERE NOT (b7 in (510,495,66,263,973,841,913,892,949,868)
+      OR (302=e7 OR 744=c7 OR 988=e7))
+      UNION
+      SELECT d5 FROM t5
+      WHERE b5 in (695,79,412,820,26,661,744,705,657)
+      EXCEPT
+      SELECT e1 FROM t1
+      WHERE NOT (e1 in (695,872,667,284,956,628,228,693,222,14,468))
+      UNION ALL
+      SELECT d3 FROM t3
+      WHERE (a3=190 AND 57=b3)
+      OR (602=e3 AND c3=486 AND b3=827 AND 368=d3 AND 777=a3)
+      UNION ALL
+      SELECT b2 FROM t2
+      WHERE a2 in (669,805,954,817,796,123,543,916,760,769,664,660,35)
+      OR c2 in (907,625,967,127,123,312)
+      OR (a2=266 AND 137=d2 AND 572=e2 AND c2=729)
+      UNION ALL
+      SELECT d4 FROM t4
+      WHERE (901=b4 AND 585=c4 AND a4=598 AND 879=e4)
+      OR (835=e4 AND 409=d4);
+  - name: t1
+  - name: t2
+  - name: t6
+  - name: t9
+
+outputs:
+  - name: q786.out
+    data: |
+      145
+      148
+      168
+      260
+      264
+      270
+      276
+      276
+      33
+      353
+      368
+      4
+      409
+      414
+      462
+      521
+      527
+      557
+      570
+      585
+      592
+      674
+      706
+      72
+      729
+      796
+      8
+      818
+      819
+      820
+      903
+      913
+      937
+      957
+      98

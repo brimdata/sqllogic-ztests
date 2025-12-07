@@ -1,0 +1,32 @@
+script: |
+  super -f tsv -I q854.sql > q854.out
+
+inputs:
+  - name: q854.sql
+    data: |
+      SELECT a+b*2+c*3,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      b,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d)
+      FROM t1
+      WHERE (c<=d-2 OR c>=d+2)
+      ORDER BY 3,4,1,2;
+
+outputs:
+  - name: q854.out
+    data: |
+      635	1	105	0
+      708	3	118	0
+      760	5	129	0
+      905	10	151	0
+      966	12	160	0
+      1000	13	167	0
+      1057	15	175	0
+      1121	17	186	0
+      1158	18	194	0
+      1277	22	211	0
+      1297	23	218	0
+      1338	24	223	0
+      1391	26	232	0
+      1416	27	236	0
+      1455	28	240	0

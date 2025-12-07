@@ -1,0 +1,25 @@
+script: |
+  super -f tsv -I q1490.sql | sort > q1490.out
+
+inputs:
+  - name: q1490.sql
+    data: |
+      SELECT (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      abs(a)
+      FROM t1
+      WHERE d>e;
+
+outputs:
+  - name: q1490.out
+    data: |
+      1	NULL
+      10	163
+      14	182
+      19	213
+      21	220
+      23	234
+      24	239
+      26	245
+      3	127
+      4	131
+      5	138

@@ -1,0 +1,40 @@
+script: |
+  super -f tsv -I q327.sql | sort > q327.out
+
+inputs:
+  - name: q327.sql
+    data: |
+      SELECT d,
+      d-e,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END
+      FROM t1
+      WHERE b>c
+      OR c BETWEEN b-2 AND d+2;
+
+outputs:
+  - name: q327.out
+    data: |
+      108	-1	0	1050
+      114	4	0	1120
+      122	NULL	0	1240
+      128	2	0	1290
+      133	1	0	1300
+      136	1	0	1390
+      140	-4	0	1430
+      164	2	0	1600
+      171	-2	0	1700
+      183	3	0	364
+      185	-4	0	376
+      190	-2	0	382
+      196	-1	0	398
+      207	NULL	0	NULL
+      212	2	0	426
+      217	-2	0	432
+      222	1	0	440
+      226	-1	0	458
+      233	3	0	468
+      248	2	0	490
+      NULL	NULL	0	1510
+      NULL	NULL	0	1580
+      NULL	NULL	0	1670

@@ -1,0 +1,40 @@
+script: |
+  super -f tsv -I q318.sql | sort > q318.out
+
+inputs:
+  - name: q318.sql
+    data: |
+      SELECT e,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      abs(a),
+      a+b*2+c*3,
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END
+      FROM t1
+      WHERE c>d
+      OR e+d BETWEEN a+b-10 AND c+130
+      OR d>e;
+
+outputs:
+  - name: q318.out
+    data: |
+      109	0	107	635	333
+      110	0	NULL	NULL	555
+      117	0	115	NULL	333
+      126	0	127	760	333
+      132	0	131	793	444
+      135	0	138	827	111
+      144	0	142	851	111
+      162	0	163	966	333
+      173	0	174	1030	555
+      180	0	182	1096	333
+      189	0	188	1121	444
+      192	0	191	1158	444
+      210	0	213	1277	222
+      221	0	220	1338	444
+      230	0	234	1391	555
+      237	0	239	NULL	555
+      246	0	245	1484	444
+      NULL	0	104	NULL	555
+      NULL	0	121	738	333
+      NULL	0	NULL	NULL	555

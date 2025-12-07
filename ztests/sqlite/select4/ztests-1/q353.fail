@@ -1,0 +1,40 @@
+script: |
+  super -f tsv -I q353.sql | tr '\t' '\n' | sort > q353.out
+
+inputs:
+  - name: q353.sql
+    data: |
+      SELECT c2 FROM t2
+      WHERE (692=e2)
+      OR (e2=777 OR 177=c2)
+      UNION ALL
+      SELECT c1 FROM t1
+      WHERE a1 in (231,76,280,967,536,754,406,918,936)
+      OR (572=b1 AND 122=e1 AND 314=a1 AND 12=c1 AND 335=d1)
+      EXCEPT
+      SELECT a6 FROM t6
+      WHERE NOT ((971=a6 AND b6=710 AND 241=e6 AND 561=c6 AND 463=d6))
+      EXCEPT
+      SELECT c9 FROM t9
+      WHERE NOT (a9 in (559,215,11,14,548,378,218,683,416,905,104,919))
+      EXCEPT
+      SELECT a5 FROM t5
+      WHERE NOT ((602=c5 OR 53=a5 OR b5=665)
+      OR (e5=437 AND d5=282 AND a5=878 AND b5=774));
+  - name: t6
+  - name: t8
+
+outputs:
+  - name: q353.out
+    data: |
+      12
+      150
+      152
+      177
+      200
+      202
+      379
+      417
+      420
+      865
+      97

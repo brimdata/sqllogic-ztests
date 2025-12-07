@@ -1,0 +1,73 @@
+script: |
+  super -f tsv -I q997.sql | tr '\t' '\n' | sort > q997.out
+
+inputs:
+  - name: q997.sql
+    data: |
+      SELECT e5 FROM t5
+      WHERE e5 in (327,225,661,594,150,929)
+      OR e5 in (390,437,104,352,621,661,640,702)
+      OR b5 in (390,559,159,771,606,695,326,820,878)
+      EXCEPT
+      SELECT c8 FROM t8
+      WHERE NOT ((e8=199 OR 459=b8 OR 952=a8))
+      EXCEPT
+      SELECT d6 FROM t6
+      WHERE NOT ((d6=256 AND a6=240 AND e6=523 AND c6=282 AND b6=158))
+      UNION
+      SELECT b9 FROM t9
+      WHERE a9 in (488,215,584,318,905,17,685,356,811,830,553,240,115,78)
+      UNION ALL
+      SELECT b1 FROM t1
+      WHERE (825=a1 OR 537=c1)
+      UNION ALL
+      SELECT e3 FROM t3
+      WHERE (b3=788 AND 548=d3 AND c3=265 AND 386=a3 AND 136=e3)
+      UNION ALL
+      SELECT a4 FROM t4
+      WHERE (105=d4);
+  - name: t3
+  - name: t6
+  - name: t8
+
+outputs:
+  - name: q997.out
+    data: |
+      104
+      125
+      127
+      128
+      136
+      141
+      149
+      15
+      157
+      178
+      184
+      19
+      2
+      211
+      239
+      247
+      327
+      352
+      390
+      436
+      437
+      442
+      446
+      5
+      522
+      524
+      594
+      595
+      621
+      63
+      64
+      640
+      661
+      68
+      688
+      702
+      802
+      827

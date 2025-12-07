@@ -1,0 +1,59 @@
+script: |
+  super -f tsv -I q536.sql | tr '\t' '\n' | sort > q536.out
+
+inputs:
+  - name: q536.sql
+    data: |
+      SELECT d8 FROM t8
+      WHERE (b8=405 AND 5=a8)
+      OR a8 in (855,210,417,848,514,388,250,327)
+      OR (397=b8 OR 656=c8)
+      UNION ALL
+      SELECT c5 FROM t5
+      WHERE (b5=143 AND d5=769)
+      OR d5 in (369,883,361,412,855,685,738,910)
+      OR (e5=697 OR a5=485 OR b5=506)
+      UNION ALL
+      SELECT a7 FROM t7
+      WHERE (b7=996 AND 280=e7 AND a7=894)
+      OR (232=c7 OR 720=b7 OR d7=397)
+      EXCEPT
+      SELECT a3 FROM t3
+      WHERE NOT (c3 in (592,53,317,10,887));
+  - name: t1
+  - name: t4
+  - name: t6
+  - name: t7
+  - name: t8
+
+outputs:
+  - name: q536.out
+    data: |
+      130
+      185
+      250
+      267
+      293
+      299
+      330
+      339
+      422
+      446
+      482
+      512
+      544
+      565
+      58
+      585
+      649
+      683
+      734
+      738
+      747
+      761
+      835
+      862
+      894
+      925
+      936
+      989

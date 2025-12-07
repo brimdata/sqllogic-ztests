@@ -1,0 +1,42 @@
+script: |
+  super -f tsv -I q913.sql | tr '\t' '\n' | sort > q913.out
+
+inputs:
+  - name: q913.sql
+    data: |
+      SELECT e8 FROM t8
+      WHERE (677=b8 AND 297=c8 AND 822=a8 AND d8=422)
+      OR (d8=706 AND e8=579)
+      OR (14=d8)
+      UNION
+      SELECT e6 FROM t6
+      WHERE (615=a6 AND 395=e6)
+      EXCEPT
+      SELECT b9 FROM t9
+      WHERE NOT ((c9=863 AND e9=133)
+      OR (525=d9 AND 575=e9 AND 103=b9 AND 295=a9 AND c9=739)
+      OR (e9=19))
+      EXCEPT
+      SELECT a5 FROM t5
+      WHERE NOT ((743=a5)
+      OR (a5=9)
+      OR (a5=339 OR d5=59 OR 769=d5))
+      EXCEPT
+      SELECT c3 FROM t3
+      WHERE NOT ((429=d3 AND a3=499 AND c3=459 AND e3=651 AND b3=665))
+      EXCEPT
+      SELECT e7 FROM t7
+      WHERE NOT ((102=c7)
+      OR (156=e7 AND b7=192 AND c7=377 AND a7=945 AND 364=d7)
+      OR (813=b7 OR 409=b7 OR 364=c7))
+      EXCEPT
+      SELECT e4 FROM t4
+      WHERE NOT (d4 in (653,323,777));
+  - name: t3
+  - name: t4
+
+outputs:
+  - name: q913.out
+    data: |
+      186
+      579

@@ -1,0 +1,39 @@
+script: |
+  super -f tsv -I q202.sql | sort > q202.out
+
+inputs:
+  - name: q202.sql
+    data: |
+      SELECT b-c
+      FROM t1
+      WHERE EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b);
+
+outputs:
+  - name: q202.out
+    data: |
+      -1
+      -1
+      -1
+      -1
+      -1
+      -2
+      -2
+      -2
+      -3
+      -3
+      -4
+      -4
+      1
+      1
+      1
+      1
+      1
+      2
+      2
+      2
+      3
+      3
+      3
+      3
+      4
+      NULL

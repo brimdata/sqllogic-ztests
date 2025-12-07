@@ -1,0 +1,22 @@
+script: |
+  super -f tsv -I q634.sql | tr '\t' '\n' | sort > q634.out
+
+inputs:
+  - name: q634.sql
+    data: |
+      SELECT c3 FROM t3
+      WHERE a3 in (727,129,383,637,727,829,697,105,490,763,929,275,913,265)
+      INTERSECT
+      SELECT e8 FROM t8
+      WHERE NOT ((250=c8))
+      INTERSECT
+      SELECT c9 FROM t9
+      WHERE NOT (b9 in (821,848,251,19,26,855,170)
+      OR e9 in (799,15,845,841,968,868,335,418,291,383,750,197,647)
+      OR a9 in (78,240,463,378,468,413,149));
+  - name: t4
+  - name: t8
+
+outputs:
+  - name: q634.out
+    data: |

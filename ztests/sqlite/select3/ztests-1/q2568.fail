@@ -1,0 +1,47 @@
+script: |
+  super -f tsv -I q2568.sql | sort > q2568.out
+
+inputs:
+  - name: q2568.sql
+    data: |
+      SELECT b,
+      a+b*2+c*3+d*4+e*5,
+      a,
+      CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END,
+      a-b
+      FROM t1
+      WHERE d NOT BETWEEN 110 AND 150
+      OR EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b);
+
+outputs:
+  - name: q2568.out
+    data: |
+      105	1612	107	1050	2
+      112	NULL	NULL	1120	NULL
+      124	NULL	121	1240	-3
+      129	1902	127	1290	-2
+      130	1985	131	1300	1
+      139	2046	138	1390	-1
+      143	2131	142	1430	-1
+      145	NULL	149	1450	4
+      151	NULL	153	1510	2
+      158	NULL	159	1580	1
+      160	2432	163	1600	3
+      167	NULL	168	1670	1
+      170	2579	174	1700	4
+      175	NULL	179	358	4
+      181	2728	182	364	1
+      186	2806	188	376	2
+      194	2878	191	382	-3
+      198	2949	199	398	1
+      206	NULL	NULL	NULL	NULL
+      211	3175	213	426	2
+      218	3260	216	432	-2
+      223	3331	220	440	-3
+      228	3399	229	458	1
+      232	3473	234	468	2
+      236	NULL	239	2360	3
+      240	NULL	243	486	3
+      249	3706	245	490	-4
+      NULL	NULL	104	NULL	NULL
+      NULL	NULL	201	402	NULL

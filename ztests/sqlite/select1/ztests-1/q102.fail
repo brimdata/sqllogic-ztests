@@ -1,0 +1,35 @@
+script: |
+  super -f tsv -I q102.sql > q102.out
+
+inputs:
+  - name: q102.sql
+    data: |
+      SELECT a+b*2,
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      c-d,
+      a+b*2+c*3
+      FROM t1
+      WHERE d>e
+      ORDER BY 4,2,1,5,3;
+
+outputs:
+  - name: q102.out
+    data: |
+      455	333	0	-4	905
+      385	222	0	-3	760
+      502	333	0	-3	1000
+      483	444	0	-3	966
+      711	444	0	-3	1416
+      698	333	0	-2	1391
+      529	444	0	-2	1057
+      743	111	0	-1	1484
+      335	222	0	-1	674
+      439	444	0	-1	880
+      369	222	0	1	738
+      416	222	0	1	827
+      391	333	0	1	793
+      544	333	0	1	1096
+      666	222	0	2	1338
+      635	333	0	2	1277

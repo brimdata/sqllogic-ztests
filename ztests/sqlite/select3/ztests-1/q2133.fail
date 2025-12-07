@@ -1,0 +1,43 @@
+script: |
+  super -f tsv -I q2133.sql | sort > q2133.out
+
+inputs:
+  - name: q2133.sql
+    data: |
+      SELECT c,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      d
+      FROM t1
+      WHERE d NOT BETWEEN 110 AND 150
+      OR a>b
+      OR e+d BETWEEN a+b-10 AND c+130
+      ORDER BY 2,3,1;
+
+outputs:
+  - name: q2133.out
+    data: |
+      102	0	101
+      106	0	108
+      125	3	128
+      134	4	133
+      147	7	NULL
+      150	8	NULL
+      155	9	NULL
+      161	10	164
+      166	11	NULL
+      172	12	171
+      176	13	NULL
+      184	14	183
+      187	15	185
+      193	16	190
+      195	17	196
+      202	0	203
+      208	18	207
+      214	19	212
+      215	20	217
+      224	21	222
+      225	22	226
+      231	23	233
+      244	25	NULL
+      247	26	248
+      NULL	24	238

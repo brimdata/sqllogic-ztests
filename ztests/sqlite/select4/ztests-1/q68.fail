@@ -1,0 +1,39 @@
+script: |
+  super -f tsv -I q68.sql | tr '\t' '\n' | sort > q68.out
+
+inputs:
+  - name: q68.sql
+    data: |
+      SELECT b7 FROM t7
+      WHERE (b7=360 AND 439=a7 AND c7=948)
+      OR b7 in (495,514,221,321,861,506,360,280,488,660,83)
+      EXCEPT
+      SELECT c1 FROM t1
+      WHERE NOT ((e1=683))
+      EXCEPT
+      SELECT a2 FROM t2
+      WHERE NOT ((a2=898 AND 501=b2))
+      EXCEPT
+      SELECT b9 FROM t9
+      WHERE NOT (a9 in (685,69,215,251,269)
+      OR a9 in (959,830,56,964,295,776,335,297,458,413,847))
+      EXCEPT
+      SELECT d4 FROM t4
+      WHERE NOT ((919=a4)
+      OR b4 in (331,137,469,94,294,892));
+  - name: t4
+  - name: t6
+  - name: t7
+  - name: t9
+
+outputs:
+  - name: q68.out
+    data: |
+      221
+      280
+      321
+      360
+      488
+      514
+      83
+      861

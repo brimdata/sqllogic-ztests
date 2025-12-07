@@ -1,0 +1,48 @@
+script: |
+  super -f tsv -I q2085.sql | sort > q2085.out
+
+inputs:
+  - name: q2085.sql
+    data: |
+      SELECT a+b*2+c*3+d*4,
+      c,
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      d
+      FROM t1
+      ORDER BY 3,1,5,4;
+
+outputs:
+  - name: q2085.out
+    data: |
+      1067	106	333	0	108
+      1226	123	333	2	122
+      1272	125	333	3	128
+      1325	134	444	4	133
+      1371	137	111	5	136
+      1411	141	111	6	140
+      1622	161	333	10	164
+      1714	172	555	12	171
+      1828	184	333	14	183
+      1861	187	444	15	185
+      1918	193	444	16	190
+      1964	195	555	17	196
+      2125	214	222	19	212
+      2165	215	333	20	217
+      2226	224	444	21	222
+      2264	225	555	22	226
+      2323	231	555	23	233
+      2476	247	444	26	248
+      NULL	102	555	0	101
+      NULL	113	555	1	114
+      NULL	119	333	0	116
+      NULL	147	555	7	NULL
+      NULL	150	555	8	NULL
+      NULL	155	555	9	NULL
+      NULL	166	555	11	NULL
+      NULL	176	555	13	NULL
+      NULL	202	222	0	203
+      NULL	208	555	18	207
+      NULL	244	222	25	NULL
+      NULL	NULL	555	24	238

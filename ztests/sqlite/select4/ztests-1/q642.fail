@@ -1,0 +1,24 @@
+script: |
+  super -f tsv -I q642.sql | tr '\t' '\n' | sort > q642.out
+
+inputs:
+  - name: q642.sql
+    data: |
+      SELECT b2 FROM t2
+      WHERE (c2=337 OR e2=125 OR b2=819)
+      OR (c2=312 AND 264=b2)
+      OR e2 in (647,213,386,720,483,781,556,445,220,114,808,138,433,427)
+      INTERSECT
+      SELECT d5 FROM t5
+      WHERE NOT ((234=b5 AND d5=361 AND c5=585 AND 339=a5)
+      OR (b5=695 OR a5=174 OR e5=587));
+  - name: t1
+  - name: t4
+  - name: t5
+  - name: t9
+
+outputs:
+  - name: q642.out
+    data: |
+      818
+      938

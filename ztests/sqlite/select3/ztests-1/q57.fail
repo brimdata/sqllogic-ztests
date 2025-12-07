@@ -1,0 +1,30 @@
+script: |
+  super -f tsv -I q57.sql | sort > q57.out
+
+inputs:
+  - name: q57.sql
+    data: |
+      SELECT (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      a+b*2+c*3,
+      b-c,
+      b,
+      abs(a),
+      a-b
+      FROM t1
+      WHERE EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      AND d NOT BETWEEN 110 AND 150
+      AND a>b
+      ORDER BY 5,1,3,4,2,6;
+
+outputs:
+  - name: q57.out
+    data: |
+      10	966	-1	160	163	3
+      12	1030	-2	170	174	4
+      14	1096	-3	181	182	1
+      15	1121	-1	186	188	2
+      17	1180	3	198	199	1
+      19	1277	-3	211	213	2
+      22	1360	3	228	229	1
+      23	1391	1	232	234	2
+      24	NULL	NULL	236	239	3

@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q13787.sql | sort > q13787.out
+
+inputs:
+  - name: q13787.sql
+    data: |
+      SELECT ALL - NULLIF ( COALESCE ( + 48, ( - 32 ) ), COUNT ( * ) ) AS col2;
+
+outputs:
+  - name: q13787.out
+    data: |
+      -48

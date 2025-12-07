@@ -1,0 +1,24 @@
+script: |
+  super -f tsv -I q223.sql | sort > q223.out
+
+inputs:
+  - name: q223.sql
+    data: |
+      SELECT (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      a,
+      a+b*2+c*3
+      FROM t1
+      WHERE (a>b-2 AND a<b+2)
+      ORDER BY 2,3;
+
+outputs:
+  - name: q223.out
+    data: |
+      11	168	1000
+      14	182	1096
+      17	199	1180
+      22	229	1360
+      4	131	793
+      5	138	827
+      6	142	851
+      9	159	940

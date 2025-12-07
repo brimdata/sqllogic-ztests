@@ -1,0 +1,44 @@
+script: |
+  super -f tsv -I q481.sql | sort > q481.out
+
+inputs:
+  - name: q481.sql
+    data: |
+      SELECT a+b*2,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      e
+      FROM t1;
+
+outputs:
+  - name: q481.out
+    data: |
+      317	0	109
+      369	2	NULL
+      385	3	126
+      391	4	132
+      416	5	135
+      428	6	144
+      439	7	146
+      455	8	NULL
+      475	9	157
+      483	10	162
+      502	11	165
+      514	12	173
+      529	13	177
+      544	14	180
+      560	15	189
+      579	16	192
+      595	17	197
+      635	19	210
+      652	20	219
+      666	21	221
+      685	22	227
+      698	23	230
+      711	24	237
+      723	25	NULL
+      743	26	246
+      NULL	0	117
+      NULL	0	204
+      NULL	0	NULL
+      NULL	1	110
+      NULL	18	NULL

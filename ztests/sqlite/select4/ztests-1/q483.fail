@@ -1,0 +1,45 @@
+script: |
+  super -f tsv -I q483.sql | tr '\t' '\n' | sort > q483.out
+
+inputs:
+  - name: q483.sql
+    data: |
+      SELECT d1 FROM t1
+      WHERE (d1=900 AND c1=626)
+      OR (62=c1)
+      OR b1 in (91,75,1)
+      EXCEPT
+      SELECT c8 FROM t8
+      WHERE NOT ((384=d8 OR 364=b8)
+      OR b8 in (769,397,741,647,796,184,394,975,790,958,984)
+      OR (821=c8 AND 624=b8 AND 956=e8 AND a8=864))
+      EXCEPT
+      SELECT e6 FROM t6
+      WHERE NOT ((b6=933 OR 295=c6 OR 297=c6)
+      OR (369=c6 OR c6=490)
+      OR (b6=461 OR 537=b6))
+      UNION ALL
+      SELECT b5 FROM t5
+      WHERE (991=d5 AND c5=441)
+      EXCEPT
+      SELECT b4 FROM t4
+      WHERE NOT (c4 in (214,927,188,513,319,993,723,873,675)
+      OR a4 in (271,408,933,752,662,451,337,139,629,579)
+      OR (c4=483 AND 491=d4 AND 810=b4 AND a4=271 AND 12=e4))
+      EXCEPT
+      SELECT c9 FROM t9
+      WHERE NOT (c9 in (232,126,75,37,278,252,224,252)
+      OR (254=c9 AND a9=28 AND 959=d9 AND e9=195)
+      OR d9 in (549,967,679,660,258,55,463,959,274,399,646));
+  - name: t3
+  - name: t8
+
+outputs:
+  - name: q483.out
+    data: |
+      18
+      193
+      215
+      47
+      900
+      96

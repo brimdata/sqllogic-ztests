@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q5120.sql | sort > q5120.out
+
+inputs:
+  - name: q5120.sql
+    data: |
+      SELECT DISTINCT * FROM tab0, tab2 AS cor0 WHERE NULL NOT IN ( - CAST ( NULL AS INTEGER ) );
+  - name: tab0
+  - name: tab2
+
+outputs:
+  - name: q5120.out
+    data: |

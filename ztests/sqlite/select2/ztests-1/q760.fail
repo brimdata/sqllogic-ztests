@@ -1,0 +1,35 @@
+script: |
+  super -f tsv -I q760.sql | sort > q760.out
+
+inputs:
+  - name: q760.sql
+    data: |
+      SELECT a+b*2,
+      a-b,
+      a+b*2+c*3+d*4,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b)
+      FROM t1
+      WHERE e+d BETWEEN a+b-10 AND c+130
+      OR d NOT BETWEEN 110 AND 150;
+
+outputs:
+  - name: q760.out
+    data: |
+      317	2	1067	0
+      385	-2	1272	3
+      483	3	1622	10
+      514	4	1714	12
+      544	1	1828	14
+      560	2	1861	15
+      579	-3	1918	16
+      595	1	1964	17
+      635	2	2125	19
+      652	-2	2165	20
+      666	-3	2226	21
+      685	1	2264	22
+      698	2	2323	23
+      711	3	NULL	24
+      743	-4	2476	26
+      NULL	NULL	NULL	0
+      NULL	NULL	NULL	0
+      NULL	NULL	NULL	18

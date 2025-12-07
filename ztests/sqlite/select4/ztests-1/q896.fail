@@ -1,0 +1,98 @@
+script: |
+  super -f tsv -I q896.sql | tr '\t' '\n' | sort > q896.out
+
+inputs:
+  - name: q896.sql
+    data: |
+      SELECT a8 FROM t8
+      WHERE d8 in (525,690,835,534,767,474,511,711,101,743)
+      UNION
+      SELECT a9 FROM t9
+      WHERE (845=e9)
+      EXCEPT
+      SELECT a7 FROM t7
+      WHERE NOT (d7 in (397,94,684,724))
+      UNION
+      SELECT c1 FROM t1
+      WHERE (e1=539 OR a1=544 OR d1=922)
+      OR (526=c1 AND 310=d1)
+      UNION ALL
+      SELECT b3 FROM t3
+      WHERE (607=c3 AND 424=e3 AND d3=538)
+      OR (542=b3 OR b3=847 OR 318=b3)
+      OR (651=c3 OR 344=a3 OR 860=b3)
+      UNION ALL
+      SELECT b4 FROM t4
+      WHERE c4 in (998,840,455,221,732,536,585)
+      UNION ALL
+      SELECT e2 FROM t2
+      WHERE d2 in (315,790,265,216,723,547,2,977,310,749,541,803,682)
+      OR (c2=773 AND e2=547 AND b2=433 AND d2=310)
+      OR (939=e2 OR 554=b2)
+      UNION
+      SELECT e5 FROM t5
+      WHERE (502=b5)
+      OR a5 in (335,796,586,917,478,878,18,696,743,330,832,921);
+  - name: t3
+  - name: t7
+
+outputs:
+  - name: q896.out
+    data: |
+      130
+      143
+      147
+      183
+      214
+      241
+      302
+      318
+      33
+      331
+      343
+      364
+      434
+      437
+      445
+      446
+      472
+      511
+      526
+      531
+      532
+      542
+      547
+      558
+      56
+      563
+      564
+      578
+      585
+      589
+      608
+      617
+      671
+      673
+      697
+      702
+      707
+      749
+      76
+      772
+      783
+      802
+      816
+      847
+      852
+      860
+      877
+      899
+      901
+      902
+      905
+      913
+      920
+      923
+      939
+      963
+      965

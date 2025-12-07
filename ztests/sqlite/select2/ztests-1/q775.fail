@@ -1,0 +1,21 @@
+script: |
+  super -f tsv -I q775.sql | sort > q775.out
+
+inputs:
+  - name: q775.sql
+    data: |
+      SELECT (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      a+b*2+c*3,
+      a+b*2,
+      a,
+      a-b,
+      b,
+      e
+      FROM t1
+      WHERE e+d BETWEEN a+b-10 AND c+130;
+
+outputs:
+  - name: q775.out
+    data: |
+      0	635	317	107	2	105	109
+      3	760	385	127	-2	129	126

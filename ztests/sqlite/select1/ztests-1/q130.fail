@@ -1,0 +1,22 @@
+script: |
+  super -f tsv -I q130.sql > q130.out
+
+inputs:
+  - name: q130.sql
+    data: |
+      SELECT a+b*2+c*3,
+      d,
+      b-c,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      a-b
+      FROM t1
+      WHERE (a>b-2 AND a<b+2)
+      AND b>c
+      AND c>d
+      ORDER BY 3,5,1,4,2;
+
+outputs:
+  - name: q130.out
+    data: |
+      827	136	2	7	-1
+      851	140	2	8	-1

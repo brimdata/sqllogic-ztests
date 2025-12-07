@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q12823.sql | sort > q12823.out
+
+inputs:
+  - name: q12823.sql
+    data: |
+      SELECT + ( COUNT ( ALL - col2 ) ) + COUNT ( * ) FROM tab1 WHERE NOT ( NULL ) >= 66;
+
+outputs:
+  - name: q12823.out
+    data: |
+      0

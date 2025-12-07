@@ -1,0 +1,37 @@
+script: |
+  super -f tsv -I q973.sql > q973.out
+
+inputs:
+  - name: q973.sql
+    data: |
+      SELECT b-c,
+      a+b*2+c*3+d*4
+      FROM t1
+      WHERE c BETWEEN b-2 AND d+2
+      AND EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      ORDER BY 2,1;
+
+outputs:
+  - name: q973.out
+    data: |
+      -1	1067
+      -1	1130
+      1	1226
+      -4	1325
+      2	1371
+      2	1411
+      -2	1472
+      1	1521
+      -1	1622
+      1	1676
+      -2	1714
+      -1	1769
+      -3	1828
+      -1	1861
+      -2	2019
+      -2	2069
+      -3	2125
+      -1	2226
+      1	2323
+      1	2368
+      2	2476

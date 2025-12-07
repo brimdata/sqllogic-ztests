@@ -1,0 +1,40 @@
+script: |
+  super -f tsv -I q859.sql | sort > q859.out
+
+inputs:
+  - name: q859.sql
+    data: |
+      SELECT c-d,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      (a+b+c+d+e)/5,
+      CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END,
+      c,
+      a,
+      a+b*2+c*3+d*4+e*5
+      FROM t1
+      WHERE (e>a AND e<b)
+      OR b>c
+      OR (c<=d-2 OR c>=d+2);
+
+outputs:
+  - name: q859.out
+    data: |
+      -1	17	197	398	195	199	2949
+      -1	22	227	458	225	229	3399
+      -1	26	247	490	247	245	3706
+      -2	0	107	1050	106	107	1612
+      -2	20	217	432	215	216	3260
+      -2	23	232	468	231	234	3473
+      -3	10	162	1600	161	163	2432
+      -3	3	127	1290	125	127	1902
+      1	2	NULL	1240	123	121	NULL
+      1	5	137	1390	137	138	2046
+      1	6	142	1430	141	142	2131
+      2	15	187	376	187	188	2806
+      2	19	212	426	214	213	3175
+      2	21	222	440	224	220	3331
+      3	0	NULL	NULL	119	115	NULL
+      3	16	192	382	193	191	2878
+      NULL	11	NULL	1670	166	168	NULL
+      NULL	8	NULL	1510	150	153	NULL
+      NULL	9	NULL	1580	155	159	NULL

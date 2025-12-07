@@ -1,0 +1,73 @@
+script: |
+  super -f tsv -I q917.sql | tr '\t' '\n' | sort > q917.out
+
+inputs:
+  - name: q917.sql
+    data: |
+      SELECT b4 FROM t4
+      WHERE (d4=268 AND 33=b4 AND c4=221)
+      OR (b4=331 OR 473=a4 OR 631=c4)
+      OR c4 in (84,586,948,127,157,0)
+      EXCEPT
+      SELECT d9 FROM t9
+      WHERE NOT ((c9=253 AND d9=808 AND e9=647))
+      UNION
+      SELECT d6 FROM t6
+      WHERE d6 in (2,467,66,428,36,924,489,560,561,911,729,473,869)
+      OR (b6=606 OR 653=a6)
+      UNION ALL
+      SELECT c7 FROM t7
+      WHERE (a7=136 AND 841=b7 AND 549=d7 AND c7=966 AND 970=e7)
+      OR (e7=561)
+      UNION
+      SELECT b2 FROM t2
+      WHERE (916=a2 OR 554=b2 OR 902=c2)
+      OR (b2=90 AND 886=d2 AND 785=a2 AND e2=788)
+      OR (e2=322 OR 318=c2)
+      UNION ALL
+      SELECT b3 FROM t3
+      WHERE b3 in (152,811,234)
+      OR (c3=733);
+  - name: t6
+  - name: t9
+
+outputs:
+  - name: q917.out
+    data: |
+      129
+      152
+      2
+      220
+      224
+      234
+      261
+      271
+      33
+      331
+      36
+      387
+      428
+      467
+      473
+      489
+      554
+      560
+      561
+      585
+      624
+      66
+      709
+      729
+      799
+      811
+      860
+      869
+      884
+      90
+      911
+      924
+      941
+      956
+      966
+      974
+      982

@@ -1,0 +1,32 @@
+script: |
+  super -f tsv -I q841.sql | sort > q841.out
+
+inputs:
+  - name: q841.sql
+    data: |
+      SELECT a+b*2+c*3,
+      d,
+      b-c,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b)
+      FROM t1
+      WHERE c BETWEEN b-2 AND d+2
+      ORDER BY 4,3,1,2;
+
+outputs:
+  - name: q841.out
+    data: |
+      1030	171	-2	12
+      1096	183	-3	14
+      1121	185	-1	15
+      1277	212	-3	19
+      1338	222	-1	21
+      1391	233	1	23
+      1484	248	2	26
+      635	108	-1	0
+      738	122	1	2
+      793	133	-4	4
+      827	136	2	5
+      851	140	2	6
+      966	164	-1	10
+      NULL	114	-1	1
+      NULL	207	-2	18

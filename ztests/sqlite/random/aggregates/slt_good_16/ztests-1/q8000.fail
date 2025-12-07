@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q8000.sql | sort > q8000.out
+
+inputs:
+  - name: q8000.sql
+    data: |
+      SELECT * FROM tab2 AS cor0 WHERE NULL NOT IN ( col2, col0 );
+  - name: tab2
+
+outputs:
+  - name: q8000.out
+    data: |

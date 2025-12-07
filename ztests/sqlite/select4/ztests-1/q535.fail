@@ -1,0 +1,70 @@
+script: |
+  super -f tsv -I q535.sql | tr '\t' '\n' | sort > q535.out
+
+inputs:
+  - name: q535.sql
+    data: |
+      SELECT c8 FROM t8
+      WHERE (283=c8 AND 961=a8)
+      OR (730=c8 AND e8=296 AND a8=963 AND 525=d8)
+      INTERSECT
+      SELECT a5 FROM t5
+      WHERE NOT ((634=d5 OR b5=784 OR 117=d5)
+      OR (c5=250))
+      UNION ALL
+      SELECT a1 FROM t1
+      WHERE c1 in (776,636,272,390,955,765,230,259,208,915,309,880)
+      OR (879=a1 AND 553=c1 AND d1=519 AND 254=e1 AND b1=37)
+      OR (207=c1 AND b1=862)
+      UNION
+      SELECT a4 FROM t4
+      WHERE a4 in (412,210,281,747,540,948,260,450)
+      OR (e4=879 AND b4=901 AND 598=a4 AND 260=d4 AND 585=c4)
+      OR e4 in (592,48,575,554,954,237,324,381,184,931,486)
+      EXCEPT
+      SELECT d7 FROM t7
+      WHERE NOT (a7 in (89,439,592,433,277,925,706,267,325,950,894)
+      OR (e7=929 OR d7=212)
+      OR (a7=709));
+  - name: t1
+  - name: t4
+  - name: t6
+  - name: t7
+  - name: t8
+
+outputs:
+  - name: q535.out
+    data: |
+      107
+      145
+      16
+      210
+      222
+      260
+      281
+      29
+      355
+      412
+      433
+      438
+      445
+      450
+      460
+      505
+      540
+      591
+      598
+      606
+      61
+      707
+      730
+      747
+      820
+      841
+      862
+      876
+      879
+      933
+      948
+      953
+      997

@@ -1,0 +1,40 @@
+script: |
+  super -f tsv -I q208.sql | tr '\t' '\n' | sort > q208.out
+
+inputs:
+  - name: q208.sql
+    data: |
+      SELECT b9 FROM t9
+      WHERE (d9=878)
+      OR c9 in (534,146,923,62,323,332)
+      OR d9 in (770,618,439)
+      EXCEPT
+      SELECT c1 FROM t1
+      WHERE NOT ((c1=654 OR e1=483)
+      OR (738=b1 OR 980=c1 OR 837=d1))
+      EXCEPT
+      SELECT b5 FROM t5
+      WHERE NOT (d5 in (118,916,919,4,553,309,238,32,413,810,521,171,649,616))
+      EXCEPT
+      SELECT d3 FROM t3
+      WHERE NOT (e3 in (266,586,807,145,821,665,526))
+      UNION ALL
+      SELECT a6 FROM t6
+      WHERE (905=b6 AND 104=a6 AND e6=634)
+      OR (e6=816 OR 104=a6);
+  - name: t8
+  - name: t9
+
+outputs:
+  - name: q208.out
+    data: |
+      104
+      173
+      211
+      239
+      269
+      285
+      447
+      64
+      848
+      912

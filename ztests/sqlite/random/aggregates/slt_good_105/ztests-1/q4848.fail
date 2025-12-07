@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q4848.sql | sort > q4848.out
+
+inputs:
+  - name: q4848.sql
+    data: |
+      SELECT MIN ( CAST ( NULL AS INTEGER ) ) FROM tab2 WHERE NOT NULL IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q4848.out
+    data: |
+      NULL

@@ -1,0 +1,44 @@
+script: |
+  super -f tsv -I q990.sql | sort > q990.out
+
+inputs:
+  - name: q990.sql
+    data: |
+      SELECT a+b*2+c*3+d*4+e*5
+      FROM t1
+      WHERE (a>b-2 AND a<b+2)
+      OR d NOT BETWEEN 110 AND 150
+      OR EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b);
+
+outputs:
+  - name: q990.out
+    data: |
+      1612
+      1902
+      1985
+      2046
+      2131
+      2432
+      2579
+      2728
+      2806
+      2878
+      2949
+      3175
+      3260
+      3331
+      3399
+      3473
+      3706
+      NULL
+      NULL
+      NULL
+      NULL
+      NULL
+      NULL
+      NULL
+      NULL
+      NULL
+      NULL
+      NULL
+      NULL

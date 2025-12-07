@@ -1,0 +1,61 @@
+script: |
+  super -f tsv -I q794.sql | tr '\t' '\n' | sort > q794.out
+
+inputs:
+  - name: q794.sql
+    data: |
+      SELECT c4 FROM t4
+      WHERE d4 in (979,31,680,44,264,376,86,549,491,794)
+      EXCEPT
+      SELECT e1 FROM t1
+      WHERE NOT ((c1=976 OR 481=d1)
+      OR d1 in (17,0,75,416,35))
+      UNION ALL
+      SELECT e8 FROM t8
+      WHERE a8 in (242,127,47,359,514,46,855,474)
+      OR e8 in (105,548,381,944,533,510,512,579,776,223,455,175,411,918)
+      OR (b8=244);
+  - name: t1
+  - name: t2
+  - name: t6
+  - name: t9
+
+outputs:
+  - name: q794.out
+    data: |
+      105
+      175
+      180
+      199
+      204
+      223
+      233
+      242
+      293
+      345
+      381
+      392
+      411
+      451
+      455
+      488
+      497
+      510
+      512
+      533
+      548
+      579
+      579
+      579
+      63
+      646
+      723
+      725
+      752
+      776
+      804
+      811
+      881
+      918
+      944
+      993

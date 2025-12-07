@@ -1,0 +1,38 @@
+script: |
+  super -f tsv -I q240.sql | tr '\t' '\n' | sort > q240.out
+
+inputs:
+  - name: q240.sql
+    data: |
+      SELECT b3 FROM t3
+      WHERE (a3=992 OR 710=a3)
+      OR (305=c3)
+      OR (e3=814 AND 246=b3)
+      EXCEPT
+      SELECT c8 FROM t8
+      WHERE NOT ((272=e8))
+      UNION ALL
+      SELECT d6 FROM t6
+      WHERE e6 in (345,761,631,847,634,241,893,633,237,489,798,682,654);
+  - name: t6
+  - name: t8
+
+outputs:
+  - name: q240.out
+    data: |
+      172
+      2
+      202
+      21
+      234
+      246
+      337
+      34
+      367
+      376
+      405
+      463
+      689
+      729
+      911
+      974

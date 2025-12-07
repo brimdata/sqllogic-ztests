@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q8988.sql | sort > q8988.out
+
+inputs:
+  - name: q8988.sql
+    data: |
+      SELECT + 50, COUNT ( * ) AS col2 FROM tab2 WHERE - col2 IS NULL;
+
+outputs:
+  - name: q8988.out
+    data: |
+      50	0

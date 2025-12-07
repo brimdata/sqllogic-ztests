@@ -1,0 +1,11 @@
+script: |
+  super -f tsv -I q1662.sql | sort > q1662.out
+
+inputs:
+  - name: q1662.sql
+    data: |
+      SELECT DISTINCT - col1 FROM tab2 GROUP BY col1 HAVING NOT NULL IS NULL AND COALESCE ( 5, - + NULLIF ( + 8, + + col1 ) ) IS NOT NULL;
+
+outputs:
+  - name: q1662.out
+    data: |

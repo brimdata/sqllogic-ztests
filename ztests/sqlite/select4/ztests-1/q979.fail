@@ -1,0 +1,73 @@
+script: |
+  super -f tsv -I q979.sql | tr '\t' '\n' | sort > q979.out
+
+inputs:
+  - name: q979.sql
+    data: |
+      SELECT b6 FROM t6
+      WHERE (c6=620 AND e6=972)
+      OR d6 in (869,34,489,852,277,956,488,376)
+      EXCEPT
+      SELECT b9 FROM t9
+      WHERE NOT ((919=a9 AND e9=19 AND b9=751)
+      OR a9 in (148,102,251)
+      OR (549=e9 OR 878=d9 OR 445=e9))
+      EXCEPT
+      SELECT c8 FROM t8
+      WHERE NOT (b8 in (394,466,308,564,352,889,677,287,155,790)
+      OR (141=d8 AND 586=a8))
+      UNION
+      SELECT b7 FROM t7
+      WHERE (547=d7)
+      OR a7 in (945,995,854,167,982)
+      OR b7 in (409,562,42,30,276,266)
+      UNION ALL
+      SELECT a1 FROM t1
+      WHERE (241=a1 AND e1=313 AND 729=b1)
+      EXCEPT
+      SELECT b5 FROM t5
+      WHERE NOT (b5 in (695,530,193,161,321,605,609,934,179)
+      OR (540=a5 AND 380=b5 AND e5=104))
+      UNION ALL
+      SELECT d3 FROM t3
+      WHERE c3 in (555,692,733,459,211,844,372,467,777,898,81,555,863)
+      EXCEPT
+      SELECT b4 FROM t4
+      WHERE NOT ((47=c4 AND 234=a4 AND 858=e4 AND 68=b4 AND 877=d4)
+      OR (c4=584));
+  - name: t2
+  - name: t3
+  - name: t6
+
+outputs:
+  - name: q979.out
+    data: |
+      0
+      102
+      105
+      192
+      241
+      266
+      30
+      340
+      355
+      363
+      409
+      42
+      429
+      510
+      515
+      541
+      562
+      583
+      683
+      701
+      729
+      825
+      850
+      871
+      923
+      95
+      954
+      984
+      988

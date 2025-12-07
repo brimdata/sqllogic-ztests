@@ -1,0 +1,45 @@
+script: |
+  super -f tsv -I q496.sql | sort > q496.out
+
+inputs:
+  - name: q496.sql
+    data: |
+      SELECT a+b*2+c*3+d*4+e*5,
+      e,
+      a+b*2,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d)
+      FROM t1;
+
+outputs:
+  - name: q496.out
+    data: |
+      1612	109	317	0
+      1902	126	385	0
+      1985	132	391	0
+      2046	135	416	0
+      2131	144	428	0
+      2432	162	483	0
+      2579	173	514	0
+      2728	180	544	0
+      2806	189	560	0
+      2878	192	579	0
+      2949	197	595	0
+      3175	210	635	0
+      3260	219	652	0
+      3331	221	666	0
+      3399	227	685	0
+      3473	230	698	0
+      3706	246	743	0
+      NULL	110	NULL	0
+      NULL	117	NULL	0
+      NULL	146	439	0
+      NULL	157	475	0
+      NULL	165	502	0
+      NULL	177	529	0
+      NULL	204	NULL	0
+      NULL	237	711	0
+      NULL	NULL	369	0
+      NULL	NULL	455	0
+      NULL	NULL	723	0
+      NULL	NULL	NULL	0
+      NULL	NULL	NULL	0

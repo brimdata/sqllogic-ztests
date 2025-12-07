@@ -1,0 +1,39 @@
+script: |
+  super -f tsv -I q939.sql | tr '\t' '\n' | sort > q939.out
+
+inputs:
+  - name: q939.sql
+    data: |
+      SELECT b8 FROM t8
+      WHERE d8 in (615,580,833,542,651,811,781,466,715,101,48,192)
+      INTERSECT
+      SELECT e2 FROM t2
+      WHERE NOT (c2 in (575,625,24,137,374,27,202,411)
+      OR b2 in (489,784,72,545,161,181,903,93,605,367,326,433,820,139)
+      OR (e2=162 OR 750=d2))
+      INTERSECT
+      SELECT e7 FROM t7
+      WHERE NOT (d7 in (939,177,982,772,399,785,225,620,539))
+      INTERSECT
+      SELECT c4 FROM t4
+      WHERE NOT (e4 in (480,543,179,141,296,977,1,465,184,405,511,552,103)
+      OR (b4=469 OR 723=c4 OR 961=b4))
+      EXCEPT
+      SELECT d1 FROM t1
+      WHERE NOT ((c1=864 AND 461=a1 AND 652=b1 AND 750=d1)
+      OR (c1=39 AND a1=194)
+      OR (315=c1 AND 52=a1 AND d1=25))
+      UNION ALL
+      SELECT c3 FROM t3
+      WHERE (b3=302 AND c3=73)
+      OR (642=d3 AND b3=595 AND a3=727);
+  - name: t1
+  - name: t3
+  - name: t8
+  - name: t9
+
+outputs:
+  - name: q939.out
+    data: |
+      102
+      73

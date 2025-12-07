@@ -1,0 +1,26 @@
+script: |
+  super -f tsv -I q459.sql | sort > q459.out
+
+inputs:
+  - name: q459.sql
+    data: |
+      SELECT (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      a+b*2+c*3+d*4+e*5,
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END
+      FROM t1
+      WHERE d>e
+      AND (e>c OR e<d)
+      AND d NOT BETWEEN 110 AND 150
+      ORDER BY 2,1;
+
+outputs:
+  - name: q459.out
+    data: |
+      10	2432	444
+      14	2728	333
+      19	3175	333
+      21	3331	222
+      23	3473	333
+      24	NULL	444
+      26	3706	111

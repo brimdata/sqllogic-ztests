@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q74.sql | sort > q74.out
+
+inputs:
+  - name: q74.sql
+    data: |
+      SELECT DISTINCT + col1 FROM tab2 GROUP BY col1, col2 HAVING NOT - col1 BETWEEN ( NULL ) AND ( - AVG ( + col0 ) );
+
+outputs:
+  - name: q74.out
+    data: |
+      41
+      59

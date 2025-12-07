@@ -1,0 +1,79 @@
+script: |
+  super -f tsv -I q595.sql | tr '\t' '\n' | sort > q595.out
+
+inputs:
+  - name: q595.sql
+    data: |
+      SELECT d2 FROM t2
+      WHERE a2 in (279,652,851,268)
+      OR (223=a2 AND c2=964 AND 138=e2 AND 211=b2 AND d2=844)
+      EXCEPT
+      SELECT c8 FROM t8
+      WHERE NOT ((249=c8 OR a8=561 OR b8=466)
+      OR a8 in (564,127,920))
+      EXCEPT
+      SELECT b1 FROM t1
+      WHERE NOT (c1 in (175,136,683,585,636,537,419)
+      OR e1 in (483,268,522,87,298,442,956,795))
+      UNION ALL
+      SELECT e3 FROM t3
+      WHERE (986=c3 AND 560=a3 AND 134=d3 AND b3=882)
+      OR (155=e3 AND c3=869 AND b3=832 AND a3=581 AND d3=60)
+      OR (a3=186 OR c3=826 OR 677=b3)
+      EXCEPT
+      SELECT d6 FROM t6
+      WHERE NOT ((62=a6)
+      OR (b6=144 OR 469=a6 OR d6=376))
+      EXCEPT
+      SELECT c9 FROM t9
+      WHERE NOT (c9 in (601,278,171,323,87,739,87,732,60,973,751)
+      OR (694=d9)
+      OR (e9=699 OR b9=136))
+      UNION ALL
+      SELECT b4 FROM t4
+      WHERE (c4=417 OR 114=b4)
+      OR d4 in (166,441,511,929,229,681,989,498,968)
+      EXCEPT
+      SELECT e7 FROM t7
+      WHERE NOT ((c7=333)
+      OR (d7=139 AND b7=306))
+      UNION
+      SELECT c5 FROM t5
+      WHERE (812=e5 OR a5=544 OR 782=b5)
+      OR c5 in (734,527,149,443,923,797,570,86,261,31,155,602,915,774);
+  - name: t3
+  - name: t7
+
+outputs:
+  - name: q595.out
+    data: |
+      114
+      149
+      155
+      2
+      261
+      266
+      289
+      31
+      323
+      379
+      425
+      44
+      443
+      527
+      570
+      602
+      634
+      644
+      678
+      704
+      734
+      765
+      774
+      797
+      824
+      86
+      877
+      915
+      919
+      923

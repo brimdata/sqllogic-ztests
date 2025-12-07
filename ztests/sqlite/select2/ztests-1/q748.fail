@@ -1,0 +1,28 @@
+script: |
+  super -f tsv -I q748.sql | sort > q748.out
+
+inputs:
+  - name: q748.sql
+    data: |
+      SELECT b-c,
+      b,
+      a+b*2,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      c,
+      d-e
+      FROM t1
+      WHERE (c<=d-2 OR c>=d+2);
+
+outputs:
+  - name: q748.out
+    data: |
+      -1	105	317	0	106	-1
+      -1	160	483	10	161	2
+      -1	186	560	15	187	-4
+      -1	223	666	21	224	1
+      -3	211	635	19	214	2
+      1	194	579	16	193	-2
+      1	232	698	23	231	3
+      3	218	652	20	215	-2
+      4	129	385	3	125	2
+      NULL	NULL	NULL	0	119	-1

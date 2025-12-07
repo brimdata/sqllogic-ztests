@@ -1,0 +1,45 @@
+script: |
+  super -f tsv -I q1028.sql | sort > q1028.out
+
+inputs:
+  - name: q1028.sql
+    data: |
+      SELECT CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END,
+      e,
+      b,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d)
+      FROM t1
+      WHERE c BETWEEN b-2 AND d+2
+      OR (e>c OR e<d)
+      OR c>d;
+
+outputs:
+  - name: q1028.out
+    data: |
+      111	246	249	0
+      222	126	129	0
+      222	135	139	0
+      222	144	143	0
+      222	192	194	0
+      222	219	218	0
+      222	221	223	0
+      222	NULL	124	0
+      333	109	105	0
+      333	132	130	0
+      333	157	158	0
+      333	180	181	0
+      333	189	186	0
+      333	197	198	0
+      333	210	211	0
+      333	227	228	0
+      333	230	232	0
+      444	110	112	0
+      444	117	NULL	0
+      444	162	160	0
+      444	173	170	0
+      444	177	175	0
+      444	204	NULL	0
+      444	237	236	0
+      444	NULL	206	0
+      444	NULL	NULL	0

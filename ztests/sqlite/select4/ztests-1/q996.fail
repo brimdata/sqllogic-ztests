@@ -1,0 +1,86 @@
+script: |
+  super -f tsv -I q996.sql | tr '\t' '\n' | sort > q996.out
+
+inputs:
+  - name: q996.sql
+    data: |
+      SELECT e9 FROM t9
+      WHERE d9 in (235,104,332,818,763,111,960,525,495,95,681,554)
+      OR (50=b9 AND 853=c9 AND e9=699 AND d9=145 AND a9=924)
+      OR d9 in (554,965,495,744,86,922,628,967,759,770,608,332)
+      UNION ALL
+      SELECT a4 FROM t4
+      WHERE d4 in (639,481,549,229,223,25,658,929,593,988,680,968,249)
+      OR (c4=433 AND e4=631 AND 524=d4 AND 700=b4)
+      UNION
+      SELECT a1 FROM t1
+      WHERE a1 in (324,898,231)
+      OR (e1=288 OR 870=c1)
+      EXCEPT
+      SELECT e5 FROM t5
+      WHERE NOT (c5 in (729,544,672,613,56,625,18,598,809)
+      OR c5 in (696,628,819,678,545))
+      UNION ALL
+      SELECT c3 FROM t3
+      WHERE (e3=266 AND b3=927 AND c3=688 AND 599=d3 AND 186=a3)
+      OR (549=a3 AND d3=149)
+      UNION
+      SELECT e6 FROM t6
+      WHERE (6=b6 AND 439=e6 AND 910=c6)
+      EXCEPT
+      SELECT b2 FROM t2
+      WHERE NOT ((e2=965)
+      OR (c2=160 OR 414=b2 OR 389=d2))
+      EXCEPT
+      SELECT b8 FROM t8
+      WHERE NOT (b8 in (690,647,182,503,162,951,155,397,891,145,370,704,394))
+      UNION ALL
+      SELECT a7 FROM t7
+      WHERE (552=e7 AND 916=a7);
+  - name: t3
+  - name: t6
+  - name: t8
+
+outputs:
+  - name: q996.out
+    data: |
+      19
+      218
+      231
+      243
+      261
+      267
+      281
+      337
+      383
+      439
+      451
+      474
+      486
+      513
+      525
+      567
+      575
+      607
+      61
+      619
+      657
+      672
+      687
+      688
+      699
+      704
+      74
+      756
+      841
+      860
+      873
+      898
+      916
+      919
+      929
+      947
+      965
+      982
+      987
+      990

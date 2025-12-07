@@ -1,0 +1,40 @@
+script: |
+  super -f tsv -I q343.sql | tr '\t' '\n' | sort > q343.out
+
+inputs:
+  - name: q343.sql
+    data: |
+      SELECT d9 FROM t9
+      WHERE e9 in (954,943,995,264,978,868,647,19,445,621,736,418)
+      OR (150=e9)
+      OR (c9=800)
+      INTERSECT
+      SELECT b3 FROM t3
+      WHERE NOT ((231=d3 OR b3=41 OR e3=333))
+      INTERSECT
+      SELECT d5 FROM t5
+      WHERE NOT ((d5=479 AND b5=526 AND c5=56 AND e5=725))
+      UNION
+      SELECT c2 FROM t2
+      WHERE (333=c2 OR a2=56 OR 179=c2)
+      OR e2 in (706,40,815,148,579,564)
+      OR (c2=560 OR d2=216 OR 843=d2);
+  - name: t3
+  - name: t9
+
+outputs:
+  - name: q343.out
+    data: |
+      103
+      179
+      268
+      282
+      333
+      411
+      560
+      582
+      722
+      756
+      793
+      819
+      992

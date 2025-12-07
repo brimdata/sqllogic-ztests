@@ -1,0 +1,31 @@
+script: |
+  super -f tsv -I q617.sql | sort > q617.out
+
+inputs:
+  - name: q617.sql
+    data: |
+      SELECT (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      a+b*2+c*3+d*4+e*5,
+      b,
+      (a+b+c+d+e)/5
+      FROM t1
+      WHERE (e>c OR e<d)
+      AND c BETWEEN b-2 AND d+2
+      ORDER BY 4,1,2;
+
+outputs:
+  - name: q617.out
+    data: |
+      0	1612	105	107
+      0	1985	130	132
+      0	2046	139	137
+      0	2131	143	142
+      0	2432	160	162
+      0	2579	170	172
+      0	2728	181	182
+      0	2806	186	187
+      0	3175	211	212
+      0	3331	223	222
+      0	3473	232	232
+      0	3706	249	247
+      0	NULL	112	NULL

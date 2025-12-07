@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q870.sql | sort > q870.out
+
+inputs:
+  - name: q870.sql
+    data: |
+      SELECT + MIN ( DISTINCT col2 ) * - COUNT ( * ) + COUNT ( * ) * - - 87 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q870.out
+    data: |
+      192

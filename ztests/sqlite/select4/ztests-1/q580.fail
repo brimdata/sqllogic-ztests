@@ -1,0 +1,45 @@
+script: |
+  super -f tsv -I q580.sql | tr '\t' '\n' | sort > q580.out
+
+inputs:
+  - name: q580.sql
+    data: |
+      SELECT e4 FROM t4
+      WHERE a4 in (327,474,423,72,502,968,505,589,952,981,747)
+      OR (23=b4)
+      EXCEPT
+      SELECT e7 FROM t7
+      WHERE NOT ((996=b7 AND 280=e7))
+      UNION ALL
+      SELECT a1 FROM t1
+      WHERE (272=c1 OR b1=414 OR a1=194)
+      OR b1 in (132,584,570,88)
+      EXCEPT
+      SELECT b6 FROM t6
+      WHERE NOT ((931=d6 AND 90=e6 AND b6=350)
+      OR (c6=292 OR d6=664 OR c6=242)
+      OR e6 in (731,5,668,274,958,489,738))
+      EXCEPT
+      SELECT b5 FROM t5
+      WHERE NOT ((287=e5 OR b5=412));
+  - name: t4
+  - name: t8
+
+outputs:
+  - name: q580.out
+    data: |
+      163
+      188
+      194
+      330
+      382
+      482
+      52
+      546
+      596
+      619
+      778
+      835
+      862
+      868
+      958

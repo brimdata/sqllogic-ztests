@@ -1,0 +1,47 @@
+script: |
+  super -f tsv -I q1119.sql | sort > q1119.out
+
+inputs:
+  - name: q1119.sql
+    data: |
+      SELECT CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END,
+      d,
+      a+b*2+c*3+d*4+e*5
+      FROM t1
+      WHERE EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      OR b>c
+      OR (e>c OR e<d)
+      ORDER BY 2,1;
+
+outputs:
+  - name: q1119.out
+    data: |
+      111	248	3706
+      222	122	NULL
+      222	128	1902
+      222	136	2046
+      222	140	2131
+      222	190	2878
+      222	217	3260
+      222	222	3331
+      333	108	1612
+      333	133	1985
+      333	183	2728
+      333	185	2806
+      333	196	2949
+      333	212	3175
+      333	226	3399
+      333	233	3473
+      333	NULL	NULL
+      333	NULL	NULL
+      333	NULL	NULL
+      444	114	NULL
+      444	164	2432
+      444	171	2579
+      444	203	NULL
+      444	207	NULL
+      444	238	NULL
+      444	NULL	NULL
+      444	NULL	NULL
+      444	NULL	NULL

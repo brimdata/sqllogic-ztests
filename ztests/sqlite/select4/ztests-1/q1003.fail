@@ -1,0 +1,63 @@
+script: |
+  super -f tsv -I q1003.sql | tr '\t' '\n' | sort > q1003.out
+
+inputs:
+  - name: q1003.sql
+    data: |
+      SELECT e7 FROM t7
+      WHERE (a7=869 AND b7=868 AND c7=523 AND 979=e7)
+      OR b7 in (655,305,514,861,813,813,24,424)
+      OR (549=d7 AND c7=103 AND 973=b7)
+      EXCEPT
+      SELECT a8 FROM t8
+      WHERE NOT ((205=b8 OR c8=866)
+      OR (155=b8 OR d8=738)
+      OR (b8=952 AND 484=d8))
+      UNION
+      SELECT e6 FROM t6
+      WHERE (449=b6)
+      OR (989=b6)
+      OR (e6=395)
+      UNION
+      SELECT a1 FROM t1
+      WHERE (b1=857 AND c1=379 AND d1=942)
+      OR b1 in (227,420,956,853,115,569,269,42,278,944,255,674)
+      OR b1 in (850,670,762,440,914,589);
+  - name: t3
+  - name: t6
+  - name: t8
+
+outputs:
+  - name: q1003.out
+    data: |
+      170
+      215
+      222
+      231
+      281
+      338
+      356
+      358
+      380
+      395
+      469
+      498
+      517
+      536
+      553
+      554
+      587
+      622
+      732
+      738
+      821
+      829
+      860
+      862
+      89
+      903
+      936
+      971
+      976
+      979
+      981

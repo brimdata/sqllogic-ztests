@@ -1,0 +1,21 @@
+script: |
+  super -f tsv -I q872.sql | sort > q872.out
+
+inputs:
+  - name: q872.sql
+    data: |
+      SELECT b-c,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      c,
+      a+b*2,
+      d-e,
+      a+b*2+c*3+d*4,
+      c-d
+      FROM t1
+      WHERE a IS NULL
+      AND c>d;
+
+outputs:
+  - name: q872.out
+    data: |
+      -2	18	208	NULL	NULL	NULL	1

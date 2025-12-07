@@ -1,0 +1,48 @@
+script: |
+  super -f tsv -I q1339.sql | sort > q1339.out
+
+inputs:
+  - name: q1339.sql
+    data: |
+      SELECT a+b*2+c*3+d*4,
+      d-e,
+      c-d,
+      CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END,
+      a
+      FROM t1
+      WHERE d NOT BETWEEN 110 AND 150
+      OR EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      ORDER BY 2,3,5;
+
+outputs:
+  - name: q1339.out
+    data: |
+      1067	-1	-2	1050	107
+      1226	NULL	1	1240	121
+      1272	2	-3	1290	127
+      1325	1	1	1300	131
+      1371	1	1	1390	138
+      1411	-4	1	1430	142
+      1622	2	-3	1600	163
+      1714	-2	1	1700	174
+      1828	3	1	364	182
+      1861	-4	2	376	188
+      1918	-2	3	382	191
+      1964	-1	-1	398	199
+      2125	2	2	426	213
+      2165	-2	-2	432	216
+      2226	1	2	440	220
+      2264	-1	-1	458	229
+      2323	3	-2	468	234
+      2476	2	-1	490	245
+      NULL	-1	-1	402	201
+      NULL	1	NULL	2360	239
+      NULL	4	-1	1120	NULL
+      NULL	NULL	1	NULL	104
+      NULL	NULL	1	NULL	NULL
+      NULL	NULL	NULL	1450	149
+      NULL	NULL	NULL	1510	153
+      NULL	NULL	NULL	1580	159
+      NULL	NULL	NULL	1670	168
+      NULL	NULL	NULL	358	179
+      NULL	NULL	NULL	486	243

@@ -1,0 +1,27 @@
+script: |
+  super -f tsv -I q643.sql | sort > q643.out
+
+inputs:
+  - name: q643.sql
+    data: |
+      SELECT e,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      a,
+      (a+b+c+d+e)/5
+      FROM t1
+      WHERE d>e;
+
+outputs:
+  - name: q643.out
+    data: |
+      110	0	NULL	NULL
+      126	0	127	127
+      132	0	131	132
+      135	0	138	137
+      162	0	163	162
+      180	0	182	182
+      210	0	213	212
+      221	0	220	222
+      230	0	234	232
+      237	0	239	NULL
+      246	0	245	247

@@ -1,0 +1,24 @@
+script: |
+  super -f tsv -I q206.sql | tr '\t' '\n' | sort > q206.out
+
+inputs:
+  - name: q206.sql
+    data: |
+      SELECT c4 FROM t4
+      WHERE b4 in (966,961,260,286,319,802,294,389,563,635,721)
+      INTERSECT
+      SELECT a5 FROM t5
+      WHERE NOT ((c5=766 OR d5=117 OR c5=250)
+      OR (e5=851 AND a5=9 AND 998=b5 AND 841=d5 AND c5=12)
+      OR (661=b5 AND 586=e5))
+      INTERSECT
+      SELECT a6 FROM t6
+      WHERE NOT ((329=e6)
+      OR e6 in (230,816,154,850,766)
+      OR (d6=885 OR b6=232 OR c6=749));
+  - name: t8
+  - name: t9
+
+outputs:
+  - name: q206.out
+    data: |

@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q13619.sql | sort > q13619.out
+
+inputs:
+  - name: q13619.sql
+    data: |
+      SELECT COUNT ( * ) * + NULLIF ( - COUNT ( * ), - 2 ) AS col1, 63;
+
+outputs:
+  - name: q13619.out
+    data: |
+      -1	63

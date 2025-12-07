@@ -1,0 +1,37 @@
+script: |
+  super -f tsv -I q623.sql | sort > q623.out
+
+inputs:
+  - name: q623.sql
+    data: |
+      SELECT a+b*2+c*3+d*4,
+      a+b*2,
+      b,
+      b-c,
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      a-b
+      FROM t1
+      WHERE d NOT BETWEEN 110 AND 150;
+
+outputs:
+  - name: q623.out
+    data: |
+      1067	317	105	-1	333	0	2
+      1622	483	160	-1	444	10	3
+      1714	514	170	-2	444	12	4
+      1828	544	181	-3	333	14	1
+      1861	560	186	-1	333	15	2
+      1918	579	194	1	222	16	-3
+      1964	595	198	3	333	17	1
+      2125	635	211	-3	333	19	2
+      2165	652	218	3	222	20	-2
+      2226	666	223	-1	222	21	-3
+      2264	685	228	3	333	22	1
+      2323	698	232	1	333	23	2
+      2476	743	249	2	111	26	-4
+      NULL	711	236	NULL	444	24	3
+      NULL	NULL	206	-2	444	18	NULL
+      NULL	NULL	NULL	NULL	444	0	NULL
+      NULL	NULL	NULL	NULL	444	0	NULL

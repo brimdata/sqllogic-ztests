@@ -1,0 +1,87 @@
+script: |
+  super -f tsv -I q701.sql | tr '\t' '\n' | sort > q701.out
+
+inputs:
+  - name: q701.sql
+    data: |
+      SELECT b8 FROM t8
+      WHERE (b8=369 AND a8=248)
+      OR a8 in (289,359,250,70,671,504,894,651,5)
+      OR a8 in (661,402,314,628,331,728,443)
+      UNION ALL
+      SELECT e3 FROM t3
+      WHERE (e3=235 AND d3=896 AND 234=a3 AND c3=305 AND b3=234)
+      OR (b3=166 AND 134=c3)
+      OR (b3=835 OR d3=599 OR 7=c3)
+      UNION ALL
+      SELECT e9 FROM t9
+      WHERE (312=b9 OR 51=d9)
+      OR (807=c9)
+      OR (a9=463 AND b9=26 AND c9=87 AND 602=d9 AND e9=263)
+      UNION ALL
+      SELECT a4 FROM t4
+      WHERE (423=a4 AND 635=b4 AND 835=e4)
+      OR (d4=626 AND 188=e4 AND c4=536)
+      UNION
+      SELECT e7 FROM t7
+      WHERE (42=b7 AND 522=e7 AND d7=278)
+      OR (636=b7)
+      EXCEPT
+      SELECT d2 FROM t2
+      WHERE NOT (b2 in (228,805,799,72,275,605,903,380,168,73,414,784)
+      OR e2 in (899,505,981,788,698,812,162,548,366,688)
+      OR d2 in (310,537,328,806,198,663))
+      EXCEPT
+      SELECT a6 FROM t6
+      WHERE NOT (c6 in (146,769,161,122,768,528,411,648,25,4,28)
+      OR (b6=905 OR 386=a6)
+      OR (161=d6 OR 901=d6))
+      UNION
+      SELECT e5 FROM t5
+      WHERE d5 in (780,271,779,847,738,682,479,855,69,685)
+      OR (b5=971 AND 522=a5 AND e5=640 AND 797=c5);
+  - name: t1
+  - name: t7
+
+outputs:
+  - name: q701.out
+    data: |
+      104
+      105
+      145
+      193
+      201
+      205
+      235
+      258
+      263
+      266
+      311
+      364
+      369
+      423
+      441
+      446
+      461
+      486
+      487
+      493
+      502
+      503
+      523
+      542
+      587
+      592
+      640
+      642
+      647
+      672
+      696
+      7
+      702
+      725
+      761
+      885
+      952
+      984
+      997

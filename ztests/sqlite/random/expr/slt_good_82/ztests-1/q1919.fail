@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q1919.sql | sort > q1919.out
+
+inputs:
+  - name: q1919.sql
+    data: |
+      SELECT + NULLIF ( CAST ( NULL AS INTEGER ), + MAX ( ALL + - CAST ( NULL AS INTEGER ) ) ) AS col1;
+
+outputs:
+  - name: q1919.out
+    data: |
+      NULL

@@ -1,0 +1,23 @@
+script: |
+  super -f tsv -I q344.sql | sort > q344.out
+
+inputs:
+  - name: q344.sql
+    data: |
+      SELECT (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      a+b*2+c*3,
+      a+b*2+c*3+d*4+e*5,
+      abs(a),
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      c-d,
+      (a+b+c+d+e)/5
+      FROM t1
+      WHERE (e>a AND e<b)
+      AND b>c;
+
+outputs:
+  - name: q344.out
+    data: |
+      16	1158	2878	191	444	3	192
+      26	1484	3706	245	444	-1	247

@@ -1,0 +1,37 @@
+script: |
+  super -f tsv -I q2988.sql | sort > q2988.out
+
+inputs:
+  - name: q2988.sql
+    data: |
+      SELECT (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      d-e
+      FROM t1
+      WHERE (e>c OR e<d)
+      OR (e>a AND e<b);
+
+outputs:
+  - name: q2988.out
+    data: |
+      0	-1
+      0	-1
+      0	-1
+      0	-1
+      0	-2
+      0	-2
+      0	-2
+      0	-4
+      0	-4
+      0	1
+      0	1
+      0	1
+      0	1
+      0	2
+      0	2
+      0	2
+      0	2
+      0	3
+      0	3
+      0	4
+      0	NULL
+      0	NULL

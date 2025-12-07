@@ -1,0 +1,56 @@
+script: |
+  super -f tsv -I q88.sql | tr '\t' '\n' | sort > q88.out
+
+inputs:
+  - name: q88.sql
+    data: |
+      SELECT c4 FROM t4
+      WHERE e4 in (236,184,543,835)
+      UNION ALL
+      SELECT a8 FROM t8
+      WHERE (c8=431)
+      OR (312=a8 AND d8=738)
+      OR (c8=117 OR 93=c8 OR d8=610)
+      EXCEPT
+      SELECT a9 FROM t9
+      WHERE NOT ((254=c9 AND 28=a9 AND b9=348 AND 195=e9 AND d9=959))
+      EXCEPT
+      SELECT c6 FROM t6
+      WHERE NOT ((376=d6 OR 271=d6))
+      EXCEPT
+      SELECT e2 FROM t2
+      WHERE NOT ((878=c2 AND 709=a2 AND e2=781)
+      OR a2 in (186,691,987,327,445,588,80,769,980))
+      UNION ALL
+      SELECT a1 FROM t1
+      WHERE (418=d1 OR 130=d1)
+      OR d1 in (215,519,154,349,172)
+      UNION ALL
+      SELECT c7 FROM t7
+      WHERE (781=c7 OR d7=575)
+      OR (921=b7)
+      EXCEPT
+      SELECT e3 FROM t3
+      WHERE NOT ((b3=214 OR e3=914 OR a3=720));
+  - name: t1
+  - name: t2
+
+outputs:
+  - name: q88.out
+    data: |
+      179
+      256
+      312
+      359
+      508
+      591
+      622
+      707
+      732
+      767
+      781
+      879
+      894
+      954
+      988
+      992

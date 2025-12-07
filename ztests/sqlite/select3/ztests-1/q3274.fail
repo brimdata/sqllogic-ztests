@@ -1,0 +1,18 @@
+script: |
+  super -f tsv -I q3274.sql | sort > q3274.out
+
+inputs:
+  - name: q3274.sql
+    data: |
+      SELECT c-d,
+      b-c,
+      a,
+      a+b*2+c*3
+      FROM t1
+      WHERE EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      AND c>d
+      AND e+d BETWEEN a+b-10 AND c+130;
+
+outputs:
+  - name: q3274.out
+    data: |

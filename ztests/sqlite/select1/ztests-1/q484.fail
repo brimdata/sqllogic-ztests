@@ -1,0 +1,27 @@
+script: |
+  super -f tsv -I q484.sql > q484.out
+
+inputs:
+  - name: q484.sql
+    data: |
+      SELECT e,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      a+b*2+c*3+d*4+e*5,
+      b,
+      d-e,
+      c
+      FROM t1
+      WHERE c>d
+      AND d>e
+      AND EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      ORDER BY 2,4,1,5,3,6;
+
+outputs:
+  - name: q484.out
+    data: |
+      120	0	1826	124	2	123
+      132	0	1985	130	1	134
+      135	0	2046	139	1	137
+      180	0	2728	181	3	184
+      210	0	3175	211	2	214
+      221	0	3331	223	1	224

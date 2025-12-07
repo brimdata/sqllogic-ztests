@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q8370.sql | sort > q8370.out
+
+inputs:
+  - name: q8370.sql
+    data: |
+      SELECT + CAST ( MIN ( DISTINCT col1 ) AS INTEGER ) FROM tab2 WHERE - col1 * 49 IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q8370.out
+    data: |
+      NULL

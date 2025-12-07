@@ -1,0 +1,49 @@
+script: |
+  super -f tsv -I q171.sql | sort > q171.out
+
+inputs:
+  - name: q171.sql
+    data: |
+      SELECT a+b*2+c*3+d*4,
+      abs(b-c),
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      a+b*2+c*3,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END
+      FROM t1
+      WHERE (e>c OR e<d)
+      OR b IS NOT NULL;
+
+outputs:
+  - name: q171.out
+    data: |
+      1067	1	333	0	635	0	1050
+      1226	1	333	0	738	2	1240
+      1272	4	333	0	760	3	1290
+      1325	4	444	0	793	4	1300
+      1371	2	111	0	827	5	1390
+      1411	2	111	0	851	6	1430
+      1622	1	333	0	966	10	1600
+      1714	2	555	0	1030	12	1700
+      1828	3	333	0	1096	14	364
+      1861	1	444	0	1121	15	376
+      1918	1	444	0	1158	16	382
+      1964	3	555	0	1180	17	398
+      2125	3	222	0	1277	19	426
+      2165	3	333	0	1297	20	432
+      2226	1	444	0	1338	21	440
+      2264	3	555	0	1360	22	458
+      2323	1	555	0	1391	23	468
+      2476	2	444	0	1484	26	490
+      NULL	1	555	0	1000	11	1670
+      NULL	1	555	0	1057	13	358
+      NULL	1	555	0	905	8	1510
+      NULL	1	555	0	NULL	1	1120
+      NULL	2	555	0	880	7	1450
+      NULL	2	555	0	NULL	18	NULL
+      NULL	3	555	0	940	9	1580
+      NULL	4	222	0	1455	25	486
+      NULL	NULL	222	0	NULL	0	402
+      NULL	NULL	555	0	NULL	24	2360

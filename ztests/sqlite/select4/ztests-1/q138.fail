@@ -1,0 +1,70 @@
+script: |
+  super -f tsv -I q138.sql | tr '\t' '\n' | sort > q138.out
+
+inputs:
+  - name: q138.sql
+    data: |
+      SELECT c5 FROM t5
+      WHERE (159=b5 AND 556=a5 AND 756=c5 AND d5=269 AND e5=436)
+      UNION
+      SELECT c2 FROM t2
+      WHERE (e2=114)
+      OR b2 in (170,489,35,351,532)
+      OR (488=d2)
+      EXCEPT
+      SELECT e8 FROM t8
+      WHERE NOT (c8 in (136,394,691,899,77))
+      EXCEPT
+      SELECT a1 FROM t1
+      WHERE NOT ((652=b1 OR 829=a1 OR d1=35)
+      OR b1 in (226,556,432,802,894,652,736,572,525,422,115)
+      OR (a1=551 AND 976=c1 AND b1=662 AND 558=e1))
+      EXCEPT
+      SELECT c9 FROM t9
+      WHERE NOT ((694=d9 OR a9=962)
+      OR (a9=468 OR c9=534))
+      EXCEPT
+      SELECT a4 FROM t4
+      WHERE NOT ((247=d4 AND c4=215)
+      OR (752=a4 AND 0=c4)
+      OR (a4=574))
+      UNION ALL
+      SELECT e7 FROM t7
+      WHERE a7 in (386,208,97,651,490,757)
+      OR (c7=705 AND 197=e7 AND b7=832)
+      UNION
+      SELECT d6 FROM t6
+      WHERE e6 in (24,211,469,523,958,766,90,969,595,40,654,503,668,883)
+      EXCEPT
+      SELECT b3 FROM t3
+      WHERE NOT ((809=c3 OR 683=d3));
+  - name: t1
+  - name: t7
+
+outputs:
+  - name: q138.out
+    data: |
+      147
+      197
+      201
+      256
+      31
+      36
+      408
+      428
+      444
+      446
+      469
+      553
+      581
+      60
+      613
+      725
+      729
+      767
+      844
+      852
+      885
+      887
+      902
+      931

@@ -1,0 +1,25 @@
+script: |
+  super -f tsv -I q803.sql | sort > q803.out
+
+inputs:
+  - name: q803.sql
+    data: |
+      SELECT (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      c-d,
+      (a+b+c+d+e)/5,
+      abs(a)
+      FROM t1
+      WHERE b IS NOT NULL
+      AND (a>b-2 AND a<b+2);
+
+outputs:
+  - name: q803.out
+    data: |
+      11	NULL	NULL	168
+      14	1	182	182
+      17	-1	197	199
+      22	-1	227	229
+      4	1	132	131
+      5	1	137	138
+      6	1	142	142
+      9	NULL	NULL	159

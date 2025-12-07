@@ -1,0 +1,56 @@
+script: |
+  super -f tsv -I q345.sql | tr '\t' '\n' | sort > q345.out
+
+inputs:
+  - name: q345.sql
+    data: |
+      SELECT c1 FROM t1
+      WHERE (594=b1)
+      OR e1 in (87,113,858,646,158,546,299,166)
+      OR e1 in (117,717,795,695)
+      INTERSECT
+      SELECT b9 FROM t9
+      WHERE NOT (e9 in (486,987,687,788,575,944,704)
+      OR (662=c9 AND 612=b9 AND a9=803 AND e9=452)
+      OR (56=a9 AND e9=107 AND b9=171))
+      EXCEPT
+      SELECT b6 FROM t6
+      WHERE NOT ((345=e6)
+      OR e6 in (523,850,711,211,90,237,175))
+      EXCEPT
+      SELECT c7 FROM t7
+      WHERE NOT ((b7=660 AND 918=e7 AND 954=c7 AND a7=356)
+      OR (356=e7 AND b7=305 AND 879=a7)
+      OR (364=c7 AND 709=d7 AND 27=a7))
+      UNION
+      SELECT d5 FROM t5
+      WHERE (958=a5)
+      UNION ALL
+      SELECT b4 FROM t4
+      WHERE (184=e4 AND 841=a4 AND b4=76 AND 917=d4 AND c4=732)
+      OR (e4=692 AND 82=a4 AND c4=417 AND 644=b4 AND 617=d4)
+      UNION ALL
+      SELECT c8 FROM t8
+      WHERE e8 in (421,495,972,533,416,329,981,260,476,242,874,41,175);
+  - name: t3
+  - name: t9
+
+outputs:
+  - name: q345.out
+    data: |
+      250
+      283
+      298
+      321
+      381
+      427
+      508
+      521
+      644
+      648
+      690
+      720
+      76
+      77
+      907
+      919

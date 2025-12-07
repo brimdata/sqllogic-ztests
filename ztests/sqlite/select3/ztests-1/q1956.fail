@@ -1,0 +1,25 @@
+script: |
+  super -f tsv -I q1956.sql | sort > q1956.out
+
+inputs:
+  - name: q1956.sql
+    data: |
+      SELECT b-c,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      a,
+      d-e,
+      a+b*2+c*3
+      FROM t1
+      WHERE (a>b-2 AND a<b+2);
+
+outputs:
+  - name: q1956.out
+    data: |
+      -3	14	182	3	1096
+      -4	4	131	1	793
+      1	11	168	NULL	1000
+      2	5	138	1	827
+      2	6	142	-4	851
+      3	17	199	-1	1180
+      3	22	229	-1	1360
+      3	9	159	NULL	940

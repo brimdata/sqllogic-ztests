@@ -1,0 +1,48 @@
+script: |
+  super -f tsv -I q133.sql | tr '\t' '\n' | sort > q133.out
+
+inputs:
+  - name: q133.sql
+    data: |
+      SELECT e7 FROM t7
+      WHERE d7 in (787,828,599,974)
+      OR a7 in (950,665,744,288,452,642,869,982,87,114,982,995,452,865)
+      UNION
+      SELECT a6 FROM t6
+      WHERE c6 in (942,620,963,992,480,54,938,561,441,287)
+      EXCEPT
+      SELECT d1 FROM t1
+      WHERE NOT ((e1=695 OR 12=e1 OR 667=e1)
+      OR (468=b1 OR b1=345))
+      EXCEPT
+      SELECT d3 FROM t3
+      WHERE NOT ((b3=17 AND d3=307 AND a3=347));
+  - name: t2
+  - name: t7
+
+outputs:
+  - name: q133.out
+    data: |
+      127
+      128
+      248
+      272
+      302
+      344
+      359
+      45
+      48
+      6
+      604
+      605
+      663
+      706
+      815
+      829
+      839
+      860
+      862
+      89
+      963
+      971
+      979

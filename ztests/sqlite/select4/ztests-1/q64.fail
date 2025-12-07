@@ -1,0 +1,78 @@
+script: |
+  super -f tsv -I q64.sql | tr '\t' '\n' | sort > q64.out
+
+inputs:
+  - name: q64.sql
+    data: |
+      SELECT e6 FROM t6
+      WHERE b6 in (507,229,967,421,716,989,92,974,512,834,511)
+      OR (6=b6 OR 296=b6)
+      UNION ALL
+      SELECT a1 FROM t1
+      WHERE (787=c1 AND 406=a1 AND 955=d1 AND b1=266 AND e1=695)
+      OR b1 in (896,75,346,570,48,26,462,414,447,5,620,211,132,523)
+      OR (62=c1 AND 747=e1)
+      EXCEPT
+      SELECT c8 FROM t8
+      WHERE NOT ((c8=154 OR 352=b8 OR c8=375)
+      OR (693=c8))
+      UNION
+      SELECT d7 FROM t7
+      WHERE (e7=462 OR 979=b7)
+      OR (583=b7 AND a7=324)
+      OR c7 in (691,257,853,12,672,523,142,397,341,857,954,280,103)
+      EXCEPT
+      SELECT b3 FROM t3
+      WHERE NOT ((913=d3 AND 57=b3 AND 375=e3))
+      EXCEPT
+      SELECT e4 FROM t4
+      WHERE NOT (e4 in (37,438,1,296,163,372,554,141)
+      OR (469=b4 OR b4=551))
+      EXCEPT
+      SELECT c5 FROM t5
+      WHERE NOT ((b5=33)
+      OR (d5=965 AND 678=c5));
+  - name: t4
+  - name: t6
+  - name: t7
+  - name: t9
+
+outputs:
+  - name: q64.out
+    data: |
+      118
+      134
+      172
+      173
+      177
+      337
+      34
+      341
+      345
+      406
+      418
+      439
+      469
+      477
+      492
+      52
+      526
+      550
+      666
+      671
+      673
+      674
+      678
+      682
+      724
+      772
+      795
+      801
+      840
+      864
+      883
+      891
+      91
+      95
+      972
+      974

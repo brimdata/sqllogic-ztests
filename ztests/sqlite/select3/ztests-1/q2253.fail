@@ -1,0 +1,38 @@
+script: |
+  super -f tsv -I q2253.sql | sort > q2253.out
+
+inputs:
+  - name: q2253.sql
+    data: |
+      SELECT a+b*2+c*3,
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      a+b*2+c*3+d*4+e*5,
+      a-b,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      d
+      FROM t1
+      WHERE d NOT BETWEEN 110 AND 150
+      OR (e>a AND e<b)
+      ORDER BY 1,5,4,3,6,2;
+
+outputs:
+  - name: q2253.out
+    data: |
+      1030	555	2579	4	0	171
+      1096	333	2728	1	0	183
+      1121	444	2806	2	0	185
+      1158	444	2878	-3	0	190
+      1180	555	2949	1	0	196
+      1277	222	3175	2	0	212
+      1297	333	3260	-2	0	217
+      1338	444	3331	-3	0	222
+      1360	555	3399	1	0	226
+      1391	555	3473	2	0	233
+      1484	444	3706	-4	0	248
+      635	333	1612	2	0	108
+      966	333	2432	3	0	164
+      NULL	222	NULL	NULL	0	203
+      NULL	555	NULL	3	0	238
+      NULL	555	NULL	NULL	0	101
+      NULL	555	NULL	NULL	0	207

@@ -1,0 +1,32 @@
+script: |
+  super -f tsv -I q662.sql | sort > q662.out
+
+inputs:
+  - name: q662.sql
+    data: |
+      SELECT a,
+      a+b*2+c*3,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b)
+      FROM t1
+      WHERE a>b;
+
+outputs:
+  - name: q662.out
+    data: |
+      107	635	0
+      131	793	4
+      149	880	7
+      153	905	8
+      159	940	9
+      163	966	10
+      168	1000	11
+      174	1030	12
+      179	1057	13
+      182	1096	14
+      188	1121	15
+      199	1180	17
+      213	1277	19
+      229	1360	22
+      234	1391	23
+      239	NULL	24
+      243	1455	25

@@ -1,0 +1,45 @@
+script: |
+  super -f tsv -I q1990.sql | sort > q1990.out
+
+inputs:
+  - name: q1990.sql
+    data: |
+      SELECT a+b*2+c*3+d*4,
+      e,
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END,
+      a-b,
+      d
+      FROM t1
+      WHERE (a>b-2 AND a<b+2)
+      OR EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b);
+
+outputs:
+  - name: q1990.out
+    data: |
+      1226	NULL	222	-3	122
+      1272	126	222	-2	128
+      1325	132	333	1	133
+      1371	135	222	-1	136
+      1411	144	222	-1	140
+      1622	162	444	3	164
+      1714	173	444	4	171
+      1828	180	333	1	183
+      1861	189	333	2	185
+      1918	192	222	-3	190
+      1964	197	333	1	196
+      2125	210	333	2	212
+      2165	219	222	-2	217
+      2226	221	222	-3	222
+      2264	227	333	1	226
+      2323	230	333	2	233
+      2476	246	111	-4	248
+      NULL	110	444	NULL	114
+      NULL	146	444	4	NULL
+      NULL	157	333	1	NULL
+      NULL	165	333	1	NULL
+      NULL	177	444	4	NULL
+      NULL	237	444	3	238
+      NULL	NULL	333	2	NULL
+      NULL	NULL	444	3	NULL
+      NULL	NULL	444	NULL	207

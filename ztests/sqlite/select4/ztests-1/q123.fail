@@ -1,0 +1,35 @@
+script: |
+  super -f tsv -I q123.sql | tr '\t' '\n' | sort > q123.out
+
+inputs:
+  - name: q123.sql
+    data: |
+      SELECT e9 FROM t9
+      WHERE (c9=75 AND a9=847 AND 129=d9 AND 19=b9 AND e9=549)
+      EXCEPT
+      SELECT d3 FROM t3
+      WHERE NOT ((386=b3 AND 696=a3))
+      EXCEPT
+      SELECT e6 FROM t6
+      WHERE NOT ((95=e6 AND b6=512 AND 366=d6 AND 442=c6))
+      UNION
+      SELECT b4 FROM t4
+      WHERE (660=c4)
+      OR (739=e4 OR 948=a4)
+      UNION
+      SELECT d8 FROM t8
+      WHERE d8 in (14,108,108,192,384);
+  - name: t2
+  - name: t7
+
+outputs:
+  - name: q123.out
+    data: |
+      108
+      14
+      192
+      384
+      538
+      549
+      888
+      921

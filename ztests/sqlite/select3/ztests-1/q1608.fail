@@ -1,0 +1,49 @@
+script: |
+  super -f tsv -I q1608.sql | sort > q1608.out
+
+inputs:
+  - name: q1608.sql
+    data: |
+      SELECT b,
+      c-d,
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END,
+      (a+b+c+d+e)/5,
+      CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      abs(a)
+      FROM t1;
+
+outputs:
+  - name: q1608.out
+    data: |
+      105	-2	333	107	1050	0	107
+      112	-1	444	NULL	1120	1	NULL
+      124	1	222	NULL	1240	2	121
+      129	-3	222	127	1290	3	127
+      130	1	333	132	1300	4	131
+      139	1	222	137	1390	5	138
+      143	1	222	142	1430	6	142
+      145	NULL	444	NULL	1450	7	149
+      151	NULL	333	NULL	1510	8	153
+      158	NULL	333	NULL	1580	9	159
+      160	-3	444	162	1600	10	163
+      167	NULL	333	NULL	1670	11	168
+      170	1	444	172	1700	12	174
+      175	NULL	444	NULL	358	13	179
+      181	1	333	182	364	14	182
+      186	2	333	187	376	15	188
+      194	3	222	192	382	16	191
+      198	-1	333	197	398	17	199
+      206	1	444	NULL	NULL	18	NULL
+      211	2	333	212	426	19	213
+      218	-2	222	217	432	20	216
+      223	2	222	222	440	21	220
+      228	-1	333	227	458	22	229
+      232	-2	333	232	468	23	234
+      236	NULL	444	NULL	2360	24	239
+      240	NULL	444	NULL	486	25	243
+      249	-1	111	247	490	26	245
+      NULL	-1	444	NULL	402	0	201
+      NULL	1	444	NULL	NULL	0	104
+      NULL	3	444	NULL	NULL	0	115

@@ -1,0 +1,30 @@
+script: |
+  super -f tsv -I q266.sql | sort > q266.out
+
+inputs:
+  - name: q266.sql
+    data: |
+      SELECT CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      a-b,
+      a+b*2,
+      d-e,
+      b
+      FROM t1
+      WHERE d>e
+      AND EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b);
+
+outputs:
+  - name: q266.out
+    data: |
+      111	-1	416	1	139
+      222	2	635	2	211
+      333	-2	385	2	129
+      333	1	544	3	181
+      333	3	483	2	160
+      444	-3	666	1	223
+      444	-4	743	2	249
+      444	1	391	1	130
+      555	2	698	3	232
+      555	3	711	1	236
+      555	NULL	NULL	4	112

@@ -1,0 +1,20 @@
+script: |
+  super -f tsv -I q764.sql | sort > q764.out
+
+inputs:
+  - name: q764.sql
+    data: |
+      SELECT CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END,
+      abs(b-c),
+      abs(a)
+      FROM t1
+      WHERE (e>a AND e<b)
+      AND EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b);
+
+outputs:
+  - name: q764.out
+    data: |
+      111	2	245
+      222	1	191
+      222	1	220

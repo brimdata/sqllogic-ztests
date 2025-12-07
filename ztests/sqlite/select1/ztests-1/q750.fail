@@ -1,0 +1,29 @@
+script: |
+  super -f tsv -I q750.sql > q750.out
+
+inputs:
+  - name: q750.sql
+    data: |
+      SELECT abs(a),
+      e,
+      c-d,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END
+      FROM t1
+      WHERE c BETWEEN b-2 AND d+2
+      AND b>c
+      ORDER BY 5,3,6,1,4,2;
+
+outputs:
+  - name: q750.out
+    data: |
+      153	152	-4	10	0	333
+      168	165	-3	13	0	333
+      239	237	-3	27	0	444
+      234	230	-2	26	0	333
+      245	246	-1	29	0	111
+      121	120	1	4	0	222
+      138	135	1	7	0	222
+      142	144	1	8	0	222

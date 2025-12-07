@@ -1,0 +1,42 @@
+script: |
+  super -f tsv -I q384.sql | sort > q384.out
+
+inputs:
+  - name: q384.sql
+    data: |
+      SELECT c-d,
+      a+b*2+c*3+d*4
+      FROM t1
+      WHERE d>e
+      OR a IS NULL
+      OR EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b);
+
+outputs:
+  - name: q384.out
+    data: |
+      -1	1964
+      -1	2264
+      -1	2476
+      -1	NULL
+      -2	2165
+      -2	2323
+      -3	1272
+      -3	1622
+      1	1226
+      1	1325
+      1	1371
+      1	1411
+      1	1714
+      1	1828
+      1	NULL
+      2	1861
+      2	2125
+      2	2226
+      3	1918
+      NULL	NULL
+      NULL	NULL
+      NULL	NULL
+      NULL	NULL
+      NULL	NULL
+      NULL	NULL
+      NULL	NULL

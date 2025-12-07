@@ -1,0 +1,47 @@
+script: |
+  super -f tsv -I q2120.sql | sort > q2120.out
+
+inputs:
+  - name: q2120.sql
+    data: |
+      SELECT e,
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END,
+      b-c,
+      (a+b+c+d+e)/5,
+      a+b*2
+      FROM t1
+      WHERE EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      OR e+d BETWEEN a+b-10 AND c+130
+      OR b>c;
+
+outputs:
+  - name: q2120.out
+    data: |
+      109	333	-1	107	317
+      110	444	-1	NULL	NULL
+      126	222	4	127	385
+      132	333	-4	132	391
+      135	222	2	137	416
+      144	222	2	142	428
+      146	444	-2	NULL	439
+      157	333	3	NULL	475
+      162	444	-1	162	483
+      165	333	1	NULL	502
+      173	444	-2	172	514
+      177	444	-1	NULL	529
+      180	333	-3	182	544
+      189	333	-1	187	560
+      192	222	1	192	579
+      197	333	3	197	595
+      210	333	-3	212	635
+      219	222	3	217	652
+      221	222	-1	222	666
+      227	333	3	227	685
+      230	333	1	232	698
+      237	444	NULL	NULL	711
+      246	111	2	247	743
+      NULL	222	1	NULL	369
+      NULL	333	1	NULL	455
+      NULL	444	-2	NULL	NULL
+      NULL	444	-4	NULL	723

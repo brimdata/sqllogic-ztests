@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q9799.sql | sort > q9799.out
+
+inputs:
+  - name: q9799.sql
+    data: |
+      SELECT col1 + - COUNT ( * ) AS col2 FROM tab1 GROUP BY col1;
+
+outputs:
+  - name: q9799.out
+    data: |
+      43
+      5
+      56

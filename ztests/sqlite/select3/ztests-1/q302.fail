@@ -1,0 +1,22 @@
+script: |
+  super -f tsv -I q302.sql | sort > q302.out
+
+inputs:
+  - name: q302.sql
+    data: |
+      SELECT c-d,
+      a+b*2+c*3+d*4+e*5,
+      b-c,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      c,
+      d-e,
+      abs(a)
+      FROM t1
+      WHERE (e>a AND e<b);
+
+outputs:
+  - name: q302.out
+    data: |
+      -1	3706	2	0	247	2	245
+      2	3331	-1	0	224	1	220
+      3	2878	1	0	193	-2	191

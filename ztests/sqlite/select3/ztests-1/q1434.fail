@@ -1,0 +1,20 @@
+script: |
+  super -f tsv -I q1434.sql | sort > q1434.out
+
+inputs:
+  - name: q1434.sql
+    data: |
+      SELECT c,
+      a-b,
+      b-c,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d)
+      FROM t1
+      WHERE (e>a AND e<b)
+      AND c BETWEEN b-2 AND d+2
+      AND d>e;
+
+outputs:
+  - name: q1434.out
+    data: |
+      224	-3	-1	0
+      247	-4	2	0

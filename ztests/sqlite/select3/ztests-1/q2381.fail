@@ -1,0 +1,28 @@
+script: |
+  super -f tsv -I q2381.sql | sort > q2381.out
+
+inputs:
+  - name: q2381.sql
+    data: |
+      SELECT (a+b+c+d+e)/5,
+      a,
+      b-c,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END
+      FROM t1
+      WHERE (e>c OR e<d)
+      AND c>d
+      ORDER BY 3,2,4;
+
+outputs:
+  - name: q2381.out
+    data: |
+      132	131	-4	4	333
+      137	138	2	5	222
+      142	142	2	6	222
+      172	174	-2	12	444
+      182	182	-3	14	333
+      187	188	-1	15	333
+      212	213	-3	19	333
+      222	220	-1	21	222

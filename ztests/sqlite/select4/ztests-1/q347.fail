@@ -1,0 +1,59 @@
+script: |
+  super -f tsv -I q347.sql | tr '\t' '\n' | sort > q347.out
+
+inputs:
+  - name: q347.sql
+    data: |
+      SELECT d6 FROM t6
+      WHERE (d6=613 OR e6=24)
+      OR (b6=906 OR 604=a6)
+      INTERSECT
+      SELECT b9 FROM t9
+      WHERE NOT ((b9=819 AND a9=389))
+      UNION
+      SELECT c4 FROM t4
+      WHERE (a4=31)
+      OR (e4=698)
+      OR c4 in (422,581,403,273,674,971)
+      UNION ALL
+      SELECT b8 FROM t8
+      WHERE (792=e8 AND a8=445 AND c8=418 AND d8=327 AND b8=325)
+      OR (675=d8 AND c8=119 AND e8=497 AND b8=792 AND a8=46)
+      UNION
+      SELECT a2 FROM t2
+      WHERE (b2=985 OR 2=d2 OR e2=125)
+      UNION
+      SELECT e5 FROM t5
+      WHERE (a5=667 AND b5=320)
+      EXCEPT
+      SELECT c7 FROM t7
+      WHERE NOT (e7 in (970,356,624,860,851,462,976,561,971,436,827)
+      OR (795=c7))
+      UNION ALL
+      SELECT a3 FROM t3
+      WHERE (363=d3 AND 677=b3 AND 975=e3 AND a3=341 AND c3=555)
+      OR (b3=790 OR 477=c3 OR 584=b3)
+      OR (193=e3);
+  - name: t3
+  - name: t9
+
+outputs:
+  - name: q347.out
+    data: |
+      123
+      273
+      299
+      325
+      341
+      403
+      422
+      581
+      674
+      697
+      710
+      751
+      792
+      865
+      874
+      936
+      971

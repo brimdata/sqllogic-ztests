@@ -1,0 +1,62 @@
+script: |
+  super -f tsv -I q859.sql | tr '\t' '\n' | sort > q859.out
+
+inputs:
+  - name: q859.sql
+    data: |
+      SELECT b8 FROM t8
+      WHERE (e8=7 OR 442=e8)
+      OR (5=c8 OR a8=591 OR d8=2)
+      OR d8 in (108,737,269,889,474,683,330,484,631,811,862,116,731)
+      UNION
+      SELECT b2 FROM t2
+      WHERE c2 in (141,810,830,449,160,244,24,894,346,823,141,511,344)
+      OR e2 in (228,564,925,463)
+      OR (131=e2 OR 86=d2 OR a2=735)
+      EXCEPT
+      SELECT a7 FROM t7
+      WHERE NOT (a7 in (277,267,130,158,416,231,500,114,48,684,6,75,896,158))
+      EXCEPT
+      SELECT a9 FROM t9
+      WHERE NOT ((378=a9 AND 13=b9 AND 744=e9 AND c9=751 AND d9=25)
+      OR (270=d9))
+      EXCEPT
+      SELECT e3 FROM t3
+      WHERE NOT (b3 in (445,874,814,57,159,202,983,41,542));
+  - name: t4
+  - name: t5
+
+outputs:
+  - name: q859.out
+    data: |
+      1
+      161
+      170
+      173
+      175
+      182
+      186
+      21
+      228
+      244
+      264
+      279
+      311
+      364
+      397
+      405
+      418
+      454
+      532
+      585
+      599
+      674
+      725
+      73
+      754
+      755
+      770
+      820
+      857
+      938
+      992

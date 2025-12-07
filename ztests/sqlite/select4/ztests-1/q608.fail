@@ -1,0 +1,61 @@
+script: |
+  super -f tsv -I q608.sql | tr '\t' '\n' | sort > q608.out
+
+inputs:
+  - name: q608.sql
+    data: |
+      SELECT e1 FROM t1
+      WHERE (c1=416 AND 981=a1)
+      OR (b1=645 AND d1=820 AND c1=966 AND 497=e1 AND a1=702)
+      UNION
+      SELECT e8 FROM t8
+      WHERE (a8=129 AND e8=320)
+      OR (d8=439 OR 242=a8 OR 795=a8)
+      OR (d8=835 AND 375=c8 AND 349=e8 AND 472=a8 AND 397=b8)
+      UNION ALL
+      SELECT c4 FROM t4
+      WHERE (c4=297 OR e4=212)
+      UNION
+      SELECT c2 FROM t2
+      WHERE (838=d2)
+      OR (522=a2 AND 640=b2 AND d2=577 AND 679=e2)
+      UNION ALL
+      SELECT d9 FROM t9
+      WHERE (905=a9 OR 486=e9)
+      EXCEPT
+      SELECT e6 FROM t6
+      WHERE NOT ((d6=34)
+      OR e6 in (225,738,261,634,798,972,283,531,958,766,840,737,585,794)
+      OR c6 in (287,513,751,424))
+      UNION
+      SELECT a7 FROM t7
+      WHERE (166=b7)
+      EXCEPT
+      SELECT d3 FROM t3
+      WHERE NOT ((524=d3)
+      OR (929=c3 OR 60=d3 OR b3=566)
+      OR (d3=866 OR 624=d3))
+      UNION
+      SELECT a5 FROM t5
+      WHERE (661=b5);
+  - name: t3
+  - name: t7
+
+outputs:
+  - name: q608.out
+    data: |
+      103
+      180
+      221
+      297
+      320
+      331
+      349
+      489
+      497
+      51
+      512
+      599
+      628
+      684
+      690

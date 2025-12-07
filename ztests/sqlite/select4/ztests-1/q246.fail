@@ -1,0 +1,67 @@
+script: |
+  super -f tsv -I q246.sql | tr '\t' '\n' | sort > q246.out
+
+inputs:
+  - name: q246.sql
+    data: |
+      SELECT d7 FROM t7
+      WHERE (130=a7)
+      OR c7 in (249,682,397,482,672,781,725,770,317,692,661,635,206)
+      OR (495=b7)
+      EXCEPT
+      SELECT b8 FROM t8
+      WHERE NOT (c8 in (775,901,149,935,230,298,117,332,93,273))
+      EXCEPT
+      SELECT a9 FROM t9
+      WHERE NOT ((122=b9 OR e9=873)
+      OR (a9=240 AND 713=e9 AND 476=c9 AND b9=149 AND 987=d9)
+      OR (a9=365))
+      UNION
+      SELECT b5 FROM t5
+      WHERE (140=c5 OR d5=480)
+      OR (960=c5 OR e5=586)
+      EXCEPT
+      SELECT e6 FROM t6
+      WHERE NOT ((560=d6 OR c6=11 OR 4=c6)
+      OR (c6=399 AND 321=d6 AND 650=b6 AND 148=a6 AND e6=24)
+      OR a6 in (839,740,787,537))
+      UNION
+      SELECT d2 FROM t2
+      WHERE (b2=173)
+      OR (819=b2 OR 161=b2)
+      OR (d2=750 OR d2=833)
+      UNION ALL
+      SELECT e3 FROM t3
+      WHERE (b3=113 AND e3=192)
+      UNION
+      SELECT b1 FROM t1
+      WHERE (c1=805 AND 141=d1 AND 280=b1 AND 737=e1);
+  - name: t6
+  - name: t8
+
+outputs:
+  - name: q246.out
+    data: |
+      142
+      192
+      205
+      280
+      306
+      328
+      341
+      345
+      547
+      590
+      661
+      675
+      709
+      716
+      750
+      782
+      785
+      79
+      831
+      833
+      84
+      873
+      902

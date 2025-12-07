@@ -1,0 +1,40 @@
+script: |
+  super -f tsv -I q924.sql | sort > q924.out
+
+inputs:
+  - name: q924.sql
+    data: |
+      SELECT abs(a),
+      b,
+      CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END,
+      a-b,
+      e,
+      c-d,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d)
+      FROM t1
+      WHERE a>b
+      OR (e>a AND e<b);
+
+outputs:
+  - name: q924.out
+    data: |
+      107	105	1050	2	109	-2	0
+      131	130	1300	1	132	1	0
+      149	145	1450	4	146	NULL	0
+      153	151	1510	2	NULL	NULL	0
+      159	158	1580	1	157	NULL	0
+      163	160	1600	3	162	-3	0
+      168	167	1670	1	165	NULL	0
+      174	170	1700	4	173	1	0
+      179	175	358	4	177	NULL	0
+      182	181	364	1	180	1	0
+      188	186	376	2	189	2	0
+      191	194	382	-3	192	3	0
+      199	198	398	1	197	-1	0
+      213	211	426	2	210	2	0
+      220	223	440	-3	221	2	0
+      229	228	458	1	227	-1	0
+      234	232	468	2	230	-2	0
+      239	236	2360	3	237	NULL	0
+      243	240	486	3	NULL	NULL	0
+      245	249	490	-4	246	-1	0

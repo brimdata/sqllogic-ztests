@@ -1,0 +1,43 @@
+script: |
+  super -f tsv -I q372.sql | sort > q372.out
+
+inputs:
+  - name: q372.sql
+    data: |
+      SELECT CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      (a+b+c+d+e)/5,
+      a
+      FROM t1
+      WHERE d NOT BETWEEN 110 AND 150
+      OR d>e
+      OR (a>b-2 AND a<b+2);
+
+outputs:
+  - name: q372.out
+    data: |
+      111	0	247	245
+      222	0	127	127
+      222	0	137	138
+      222	0	142	142
+      222	0	192	191
+      222	0	217	216
+      222	0	222	220
+      333	0	107	107
+      333	0	132	131
+      333	0	182	182
+      333	0	187	188
+      333	0	197	199
+      333	0	212	213
+      333	0	227	229
+      333	0	232	234
+      333	0	NULL	159
+      333	0	NULL	168
+      444	0	162	163
+      444	0	172	174
+      444	0	NULL	104
+      444	0	NULL	201
+      444	0	NULL	239
+      444	0	NULL	NULL
+      444	0	NULL	NULL

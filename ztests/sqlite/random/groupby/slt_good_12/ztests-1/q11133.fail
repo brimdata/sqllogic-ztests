@@ -1,0 +1,11 @@
+script: |
+  super -f tsv -I q11133.sql | sort > q11133.out
+
+inputs:
+  - name: q11133.sql
+    data: |
+      SELECT COUNT ( * ) FROM tab1 AS cor0 GROUP BY col1, col1 HAVING NOT NULL BETWEEN - ( - ( - + COUNT ( * ) ) ) * 90 AND + col1;
+
+outputs:
+  - name: q11133.out
+    data: |

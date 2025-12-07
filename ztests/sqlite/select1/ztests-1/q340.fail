@@ -1,0 +1,49 @@
+script: |
+  super -f tsv -I q340.sql > q340.out
+
+inputs:
+  - name: q340.sql
+    data: |
+      SELECT c-d,
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      a+b*2+c*3+d*4
+      FROM t1
+      WHERE d NOT BETWEEN 110 AND 150
+      OR c BETWEEN b-2 AND d+2
+      OR EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      ORDER BY 2,1,3;
+
+outputs:
+  - name: q340.out
+    data: |
+      -1	111	1130
+      1	111	1371
+      1	111	1411
+      1	111	2069
+      -1	222	2019
+      2	222	2125
+      3	222	2419
+      -4	333	1521
+      -3	333	1272
+      -3	333	1622
+      -3	333	1676
+      -2	333	1067
+      -2	333	2165
+      1	333	1226
+      1	333	1828
+      3	333	1172
+      -1	444	2476
+      1	444	1325
+      2	444	1861
+      2	444	2226
+      3	444	1918
+      -3	555	2368
+      -2	555	1769
+      -2	555	2323
+      -1	555	1472
+      -1	555	1564
+      -1	555	1964
+      -1	555	2264
+      1	555	1014
+      1	555	1714

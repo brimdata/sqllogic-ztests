@@ -1,0 +1,32 @@
+script: |
+  super -f tsv -I q891.sql > q891.out
+
+inputs:
+  - name: q891.sql
+    data: |
+      SELECT e,
+      (a+b+c+d+e)/5,
+      a+b*2,
+      a,
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      abs(b-c),
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b)
+      FROM t1
+      WHERE (a>b-2 AND a<b+2)
+      ORDER BY 6,7,3,4,5,2,1;
+
+outputs:
+  - name: q891.out
+    data: |
+      110	112	335	111	111	1	2
+      165	167	502	168	333	1	13
+      135	137	416	138	111	2	7
+      144	142	428	142	111	2	8
+      204	202	601	201	222	2	20
+      209	207	617	205	111	2	21
+      157	157	475	159	555	3	11
+      180	182	544	182	333	3	16
+      197	197	595	199	555	3	19
+      227	227	685	229	555	3	25
+      132	132	391	131	444	4	6

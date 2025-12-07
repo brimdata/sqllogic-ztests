@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q4120.sql | sort > q4120.out
+
+inputs:
+  - name: q4120.sql
+    data: |
+      SELECT DISTINCT SUM ( ALL - col1 ) AS col1 FROM tab1 WHERE NOT - col1 IS NULL;
+
+outputs:
+  - name: q4120.out
+    data: |
+      -66

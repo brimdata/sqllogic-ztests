@@ -1,0 +1,45 @@
+script: |
+  super -f tsv -I q202.sql | tr '\t' '\n' | sort > q202.out
+
+inputs:
+  - name: q202.sql
+    data: |
+      SELECT d4 FROM t4
+      WHERE d4 in (728,86,317,491,661,907,105,950,658,901,166,136)
+      INTERSECT
+      SELECT a2 FROM t2
+      WHERE NOT ((b2=90 OR c2=337 OR 803=d2)
+      OR (933=c2))
+      UNION ALL
+      SELECT a3 FROM t3
+      WHERE (615=a3 OR 162=a3)
+      UNION ALL
+      SELECT d8 FROM t8
+      WHERE (421=c8 AND b8=615 AND 105=e8 AND d8=190 AND 210=a8)
+      OR (933=e8 OR 349=e8 OR e8=179)
+      OR b8 in (313,673,564)
+      EXCEPT
+      SELECT e9 FROM t9
+      WHERE NOT ((360=d9 AND 827=b9)
+      OR (a9=611)
+      OR b9 in (211,171,285,680))
+      EXCEPT
+      SELECT c5 FROM t5
+      WHERE NOT (b5 in (424,389,860,193,26,640,433,716,79,930,858))
+      EXCEPT
+      SELECT c6 FROM t6
+      WHERE NOT ((b6=681 OR a6=251 OR b6=210)
+      OR b6 in (923,421,296,490,243,202,575,267,739));
+  - name: t8
+  - name: t9
+
+outputs:
+  - name: q202.out
+    data: |
+      112
+      162
+      179
+      190
+      339
+      835
+      901

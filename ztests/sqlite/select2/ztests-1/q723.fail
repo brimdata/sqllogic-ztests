@@ -1,0 +1,38 @@
+script: |
+  super -f tsv -I q723.sql | sort > q723.out
+
+inputs:
+  - name: q723.sql
+    data: |
+      SELECT abs(a),
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      a
+      FROM t1
+      WHERE (e>a AND e<b)
+      OR (e>c OR e<d);
+
+outputs:
+  - name: q723.out
+    data: |
+      107	0	107
+      127	3	127
+      131	4	131
+      138	5	138
+      142	6	142
+      159	9	159
+      163	10	163
+      174	12	174
+      179	13	179
+      182	14	182
+      188	15	188
+      191	16	191
+      199	17	199
+      201	0	201
+      213	19	213
+      216	20	216
+      220	21	220
+      229	22	229
+      234	23	234
+      239	24	239
+      245	26	245
+      NULL	1	NULL

@@ -1,0 +1,60 @@
+script: |
+  super -f tsv -I q98.sql | tr '\t' '\n' | sort > q98.out
+
+inputs:
+  - name: q98.sql
+    data: |
+      SELECT c6 FROM t6
+      WHERE (270=c6 AND d6=151)
+      OR (84=c6)
+      OR e6 in (737,847,353,91,329)
+      UNION
+      SELECT c1 FROM t1
+      WHERE (828=b1 AND 788=c1 AND e1=763 AND 584=a1)
+      UNION ALL
+      SELECT c9 FROM t9
+      WHERE (d9=759 OR e9=860 OR 647=e9)
+      UNION
+      SELECT a3 FROM t3
+      WHERE (947=a3 AND c3=494)
+      OR a3 in (784,872,992,611,892,75,500,763,788,396)
+      OR c3 in (459,73,549,986,592,565)
+      EXCEPT
+      SELECT d5 FROM t5
+      WHERE NOT (a5 in (757,319,297,740,9,335,637,853,602)
+      OR (e5=943 OR 309=d5)
+      OR d5 in (811,1,542,667,991,171,280,413))
+      EXCEPT
+      SELECT b8 FROM t8
+      WHERE NOT ((c8=775 AND d8=339 AND 761=b8)
+      OR e8 in (578,422,186,349,333,106,310,296,533)
+      OR c8 in (74,979,196,374,77,151,998,187,100,907));
+  - name: t7
+  - name: t8
+
+outputs:
+  - name: q98.out
+    data: |
+      257
+      262
+      265
+      270
+      296
+      327
+      396
+      499
+      500
+      560
+      611
+      65
+      75
+      763
+      764
+      784
+      788
+      84
+      872
+      892
+      913
+      929
+      947

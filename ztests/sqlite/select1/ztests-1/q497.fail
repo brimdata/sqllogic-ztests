@@ -1,0 +1,46 @@
+script: |
+  super -f tsv -I q497.sql > q497.out
+
+inputs:
+  - name: q497.sql
+    data: |
+      SELECT abs(b-c),
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      d-e,
+      a-b
+      FROM t1
+      ORDER BY 1,3,4,2;
+
+outputs:
+  - name: q497.out
+    data: |
+      1	0	-4	2
+      1	0	-2	-3
+      1	0	-1	-3
+      1	0	-1	2
+      1	0	1	-3
+      1	0	1	3
+      1	0	1	4
+      1	0	2	-3
+      1	0	2	2
+      1	0	2	3
+      1	0	3	2
+      1	0	4	-1
+      1	0	4	1
+      2	0	-4	-1
+      2	0	-2	-1
+      2	0	-2	4
+      2	0	-2	4
+      2	0	-1	1
+      2	0	1	-1
+      2	0	2	-4
+      2	0	2	4
+      3	0	-2	-2
+      3	0	-1	1
+      3	0	-1	1
+      3	0	-1	1
+      3	0	2	2
+      3	0	3	1
+      4	0	-1	3
+      4	0	1	1
+      4	0	2	-2

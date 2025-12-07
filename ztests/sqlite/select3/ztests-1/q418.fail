@@ -1,0 +1,30 @@
+script: |
+  super -f tsv -I q418.sql | sort > q418.out
+
+inputs:
+  - name: q418.sql
+    data: |
+      SELECT abs(a),
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      d,
+      (a+b+c+d+e)/5,
+      abs(b-c)
+      FROM t1
+      WHERE c>d;
+
+outputs:
+  - name: q418.out
+    data: |
+      104	0	101	NULL	NULL
+      115	0	116	NULL	NULL
+      121	2	122	NULL	1
+      131	4	133	132	4
+      138	5	136	137	2
+      142	6	140	142	2
+      174	12	171	172	2
+      182	14	183	182	3
+      188	15	185	187	1
+      191	16	190	192	1
+      213	19	212	212	3
+      220	21	222	222	1
+      NULL	18	207	NULL	2

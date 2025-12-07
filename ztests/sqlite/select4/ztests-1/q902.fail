@@ -1,0 +1,27 @@
+script: |
+  super -f tsv -I q902.sql | tr '\t' '\n' | sort > q902.out
+
+inputs:
+  - name: q902.sql
+    data: |
+      SELECT e3 FROM t3
+      WHERE c3 in (792,986,439,175,887,467,477,887)
+      EXCEPT
+      SELECT e4 FROM t4
+      WHERE NOT ((436=c4));
+  - name: t3
+  - name: t7
+
+outputs:
+  - name: q902.out
+    data: |
+      119
+      25
+      333
+      457
+      665
+      728
+      765
+      844
+      929
+      972

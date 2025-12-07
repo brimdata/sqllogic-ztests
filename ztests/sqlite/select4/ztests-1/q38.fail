@@ -1,0 +1,85 @@
+script: |
+  super -f tsv -I q38.sql | tr '\t' '\n' | sort > q38.out
+
+inputs:
+  - name: q38.sql
+    data: |
+      SELECT a2 FROM t2
+      WHERE b2 in (329,674,509)
+      OR (a2=916 AND d2=86)
+      UNION ALL
+      SELECT b7 FROM t7
+      WHERE (860=e7 AND 306=d7 AND c7=508)
+      OR a7 in (22,158,950,267,699,9,208)
+      UNION
+      SELECT c5 FROM t5
+      WHERE (921=a5 OR 104=e5 OR a5=958)
+      OR c5 in (978,855,130,348,729,923,599,934,689,210,544,196,551,668)
+      UNION
+      SELECT a6 FROM t6
+      WHERE (d6=729 OR a6=568)
+      OR b6 in (716,230,629,583,905,232,781,92,392,993,601,54,662,882)
+      OR (929=d6 AND 77=e6 AND a6=129 AND b6=350)
+      EXCEPT
+      SELECT a1 FROM t1
+      WHERE NOT ((b1=346 AND 89=e1 AND a1=674)
+      OR d1 in (655,619,798,232,298,492,418,519))
+      UNION ALL
+      SELECT c8 FROM t8
+      WHERE (a8=586 AND 141=d8 AND e8=874 AND 769=b8 AND 907=c8);
+  - name: t4
+  - name: t5
+  - name: t6
+  - name: t8
+  - name: t9
+
+outputs:
+  - name: q38.out
+    data: |
+      1
+      104
+      116
+      121
+      129
+      130
+      132
+      182
+      196
+      210
+      245
+      336
+      348
+      366
+      384
+      414
+      42
+      489
+      506
+      531
+      540
+      568
+      572
+      599
+      636
+      680
+      683
+      689
+      723
+      729
+      731
+      811
+      813
+      837
+      855
+      861
+      877
+      894
+      907
+      916
+      923
+      934
+      949
+      960
+      970
+      978
+      979

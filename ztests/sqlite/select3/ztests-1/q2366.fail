@@ -1,0 +1,38 @@
+script: |
+  super -f tsv -I q2366.sql | sort > q2366.out
+
+inputs:
+  - name: q2366.sql
+    data: |
+      SELECT (a+b+c+d+e)/5,
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      b-c,
+      abs(a)
+      FROM t1
+      WHERE c>d
+      OR d>e;
+
+outputs:
+  - name: q2366.out
+    data: |
+      127	333	0	4	127
+      132	444	0	-4	131
+      137	111	0	2	138
+      142	111	0	2	142
+      162	333	0	-1	163
+      172	555	0	-2	174
+      182	333	0	-3	182
+      187	444	0	-1	188
+      192	444	0	1	191
+      212	222	0	-3	213
+      222	444	0	-1	220
+      232	555	0	1	234
+      247	444	0	2	245
+      NULL	333	0	1	121
+      NULL	333	0	NULL	115
+      NULL	555	0	-1	NULL
+      NULL	555	0	-2	NULL
+      NULL	555	0	NULL	104
+      NULL	555	0	NULL	239

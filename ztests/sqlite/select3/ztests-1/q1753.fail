@@ -1,0 +1,48 @@
+script: |
+  super -f tsv -I q1753.sql | sort > q1753.out
+
+inputs:
+  - name: q1753.sql
+    data: |
+      SELECT c,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      abs(a),
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      a+b*2+c*3+d*4,
+      a+b*2+c*3
+      FROM t1
+      ORDER BY 5,1,2,3;
+
+outputs:
+  - name: q1753.out
+    data: |
+      102	0	104	0	NULL	NULL
+      106	0	107	0	1067	635
+      113	0	NULL	1	NULL	NULL
+      119	0	115	0	NULL	NULL
+      123	0	121	2	1226	738
+      125	0	127	3	1272	760
+      134	0	131	4	1325	793
+      137	0	138	5	1371	827
+      141	0	142	6	1411	851
+      147	0	149	7	NULL	880
+      150	0	153	8	NULL	905
+      155	0	159	9	NULL	940
+      161	0	163	10	1622	966
+      166	0	168	11	NULL	1000
+      172	0	174	12	1714	1030
+      176	0	179	13	NULL	1057
+      184	0	182	14	1828	1096
+      187	0	188	15	1861	1121
+      193	0	191	16	1918	1158
+      195	0	199	17	1964	1180
+      202	0	201	0	NULL	NULL
+      208	0	NULL	18	NULL	NULL
+      214	0	213	19	2125	1277
+      215	0	216	20	2165	1297
+      224	0	220	21	2226	1338
+      225	0	229	22	2264	1360
+      231	0	234	23	2323	1391
+      244	0	243	25	NULL	1455
+      247	0	245	26	2476	1484
+      NULL	0	239	24	NULL	NULL

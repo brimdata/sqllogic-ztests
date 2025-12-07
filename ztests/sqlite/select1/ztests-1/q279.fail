@@ -1,0 +1,26 @@
+script: |
+  super -f tsv -I q279.sql > q279.out
+
+inputs:
+  - name: q279.sql
+    data: |
+      SELECT c-d,
+      (a+b+c+d+e)/5,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      d,
+      b-c
+      FROM t1
+      WHERE c>d
+      AND EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      AND a>b
+      ORDER BY 2,4,3,5,1;
+
+outputs:
+  - name: q279.out
+    data: |
+      1	132	6	133	-4
+      1	172	14	171	-2
+      1	182	16	183	-3
+      2	187	17	185	-1
+      2	212	22	212	-3
+      3	242	28	241	-4

@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q11650.sql | sort > q11650.out
+
+inputs:
+  - name: q11650.sql
+    data: |
+      SELECT + CAST ( SUM ( col1 ) AS INTEGER ) * + 63 AS col2 FROM tab0 WHERE - col2 IS NULL;
+
+outputs:
+  - name: q11650.out
+    data: |
+      NULL

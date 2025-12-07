@@ -1,0 +1,50 @@
+script: |
+  super -f tsv -I q5.sql | sort > q5.out
+
+inputs:
+  - name: q5.sql
+    data: |
+      SELECT a+b*2+c*3,
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      b,
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      a+b*2+c*3+d*4+e*5
+      FROM t1
+      WHERE d NOT BETWEEN 110 AND 150
+      OR b IS NOT NULL;
+
+outputs:
+  - name: q5.out
+    data: |
+      1000	333	11	167	555	NULL
+      1030	444	12	170	555	2579
+      1057	444	13	175	555	NULL
+      1096	333	14	181	333	2728
+      1121	333	15	186	444	2806
+      1158	222	16	194	444	2878
+      1180	333	17	198	555	2949
+      1277	333	19	211	222	3175
+      1297	222	20	218	333	3260
+      1338	222	21	223	444	3331
+      1360	333	22	228	555	3399
+      1391	333	23	232	555	3473
+      1455	444	25	240	222	NULL
+      1484	111	26	249	444	3706
+      635	333	0	105	333	1612
+      738	222	2	124	333	NULL
+      760	222	3	129	333	1902
+      793	333	4	130	444	1985
+      827	222	5	139	111	2046
+      851	222	6	143	111	2131
+      880	444	7	145	555	NULL
+      905	333	8	151	555	NULL
+      940	333	9	158	555	NULL
+      966	444	10	160	333	2432
+      NULL	444	0	NULL	222	NULL
+      NULL	444	0	NULL	555	NULL
+      NULL	444	1	112	555	NULL
+      NULL	444	18	206	555	NULL
+      NULL	444	24	236	555	NULL

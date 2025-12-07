@@ -1,0 +1,44 @@
+script: |
+  super -f tsv -I q508.sql | sort > q508.out
+
+inputs:
+  - name: q508.sql
+    data: |
+      SELECT c,
+      a+b*2+c*3,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d)
+      FROM t1;
+
+outputs:
+  - name: q508.out
+    data: |
+      102	NULL	0
+      106	635	0
+      113	NULL	0
+      119	NULL	0
+      123	738	0
+      125	760	0
+      134	793	0
+      137	827	0
+      141	851	0
+      147	880	0
+      150	905	0
+      155	940	0
+      161	966	0
+      166	1000	0
+      172	1030	0
+      176	1057	0
+      184	1096	0
+      187	1121	0
+      193	1158	0
+      195	1180	0
+      202	NULL	0
+      208	NULL	0
+      214	1277	0
+      215	1297	0
+      224	1338	0
+      225	1360	0
+      231	1391	0
+      244	1455	0
+      247	1484	0
+      NULL	NULL	0

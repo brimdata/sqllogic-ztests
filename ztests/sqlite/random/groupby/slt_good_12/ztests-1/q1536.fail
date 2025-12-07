@@ -1,0 +1,11 @@
+script: |
+  super -f tsv -I q1536.sql | sort > q1536.out
+
+inputs:
+  - name: q1536.sql
+    data: |
+      SELECT + col0 FROM tab2 GROUP BY col0, col1 HAVING NOT + col1 + - col0 IS NOT NULL;
+
+outputs:
+  - name: q1536.out
+    data: |

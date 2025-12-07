@@ -1,0 +1,20 @@
+script: |
+  super -f tsv -I q747.sql | tr '\t' '\n' | sort > q747.out
+
+inputs:
+  - name: q747.sql
+    data: |
+      SELECT d2 FROM t2
+      WHERE (278=b2 AND c2=193 AND 317=d2 AND 10=a2 AND e2=282)
+      OR (445=e2 OR c2=202)
+      INTERSECT
+      SELECT d1 FROM t1
+      WHERE NOT ((299=e1 OR 442=e1)
+      OR c1 in (346,36,548,289,246));
+  - name: t3
+  - name: t5
+  - name: t9
+
+outputs:
+  - name: q747.out
+    data: |

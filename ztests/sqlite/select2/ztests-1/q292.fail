@@ -1,0 +1,43 @@
+script: |
+  super -f tsv -I q292.sql | sort > q292.out
+
+inputs:
+  - name: q292.sql
+    data: |
+      SELECT a-b,
+      (a+b+c+d+e)/5,
+      a,
+      a+b*2,
+      e
+      FROM t1
+      WHERE EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b);
+
+outputs:
+  - name: q292.out
+    data: |
+      -1	137	138	416	135
+      -1	142	142	428	144
+      -2	127	127	385	126
+      -2	217	216	652	219
+      -3	192	191	579	192
+      -3	222	220	666	221
+      -3	NULL	121	369	NULL
+      -4	247	245	743	246
+      1	132	131	391	132
+      1	182	182	544	180
+      1	197	199	595	197
+      1	227	229	685	227
+      1	NULL	159	475	157
+      1	NULL	168	502	165
+      2	187	188	560	189
+      2	212	213	635	210
+      2	232	234	698	230
+      2	NULL	153	455	NULL
+      3	162	163	483	162
+      3	NULL	239	711	237
+      3	NULL	243	723	NULL
+      4	172	174	514	173
+      4	NULL	149	439	146
+      4	NULL	179	529	177
+      NULL	NULL	NULL	NULL	110
+      NULL	NULL	NULL	NULL	NULL

@@ -1,0 +1,65 @@
+script: |
+  super -f tsv -I q129.sql | tr '\t' '\n' | sort > q129.out
+
+inputs:
+  - name: q129.sql
+    data: |
+      SELECT e2 FROM t2
+      WHERE b2 in (592,985,635)
+      OR e2 in (564,521,307,322,118,386,217,572)
+      OR e2 in (777,220,521,579,434,463,698,655,638,812,706,707)
+      EXCEPT
+      SELECT b7 FROM t7
+      WHERE NOT (d7 in (547,680,782)
+      OR (183=e7 AND d7=956 AND a7=706))
+      EXCEPT
+      SELECT b6 FROM t6
+      WHERE NOT ((d6=453 OR 161=d6 OR e6=283)
+      OR (b6=300 AND d6=561 AND 677=c6 AND 360=e6 AND 692=a6)
+      OR (d6=271 AND 11=c6 AND a6=740))
+      UNION
+      SELECT b8 FROM t8
+      WHERE (150=c8 AND 933=e8)
+      OR d8 in (472,484,482,326,190,541,523,14,96,366,899,715,690)
+      OR (705=b8 AND 561=e8 AND d8=326 AND 259=a8)
+      EXCEPT
+      SELECT e3 FROM t3
+      WHERE NOT (b3 in (103,211,159,779,224,57,302,888,790,710)
+      OR (360=b3 OR 690=e3)
+      OR d3 in (988,238,135,399,683,368,386))
+      EXCEPT
+      SELECT e5 FROM t5
+      WHERE NOT (b5 in (306,729,433,159,530,186,951,975)
+      OR (b5=858 OR a5=342)
+      OR (a5=153 AND c5=443 AND b5=587 AND e5=98 AND d5=691));
+  - name: t2
+  - name: t7
+
+outputs:
+  - name: q129.out
+    data: |
+      118
+      242
+      269
+      307
+      308
+      322
+      428
+      434
+      493
+      521
+      540
+      563
+      564
+      572
+      609
+      615
+      638
+      698
+      705
+      706
+      707
+      777
+      878
+      922
+      952

@@ -1,0 +1,53 @@
+script: |
+  super -f tsv -I q780.sql | tr '\t' '\n' | sort > q780.out
+
+inputs:
+  - name: q780.sql
+    data: |
+      SELECT e2 FROM t2
+      WHERE a2 in (308,789,245,262,588,64,916,185,691,495,898)
+      EXCEPT
+      SELECT e4 FROM t4
+      WHERE NOT ((489=c4 OR e4=820)
+      OR c4 in (690,667,675,271,299,971,215)
+      OR (486=e4 OR 854=e4))
+      EXCEPT
+      SELECT a1 FROM t1
+      WHERE NOT ((a1=213)
+      OR (a1=895 AND d1=643))
+      UNION
+      SELECT e7 FROM t7
+      WHERE (e7=624 AND 466=a7)
+      OR (a7=158 OR e7=154)
+      OR (976=e7 AND 655=b7 AND d7=590 AND 249=c7 AND 876=a7)
+      UNION ALL
+      SELECT a6 FROM t6
+      WHERE (77=e6 OR a6=799 OR 158=b6)
+      EXCEPT
+      SELECT d8 FROM t8
+      WHERE NOT ((241=a8 AND d8=767 AND c8=647 AND e8=455)
+      OR (e8=561)
+      OR (445=a8));
+  - name: t1
+  - name: t2
+  - name: t6
+  - name: t9
+
+outputs:
+  - name: q780.out
+    data: |
+      115
+      129
+      131
+      140
+      154
+      213
+      220
+      240
+      655
+      73
+      782
+      799
+      851
+      923
+      976

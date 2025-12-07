@@ -1,0 +1,59 @@
+script: |
+  super -f tsv -I q158.sql | tr '\t' '\n' | sort > q158.out
+
+inputs:
+  - name: q158.sql
+    data: |
+      SELECT e7 FROM t7
+      WHERE (288=a7 AND 142=d7 AND e7=815)
+      UNION ALL
+      SELECT e3 FROM t3
+      WHERE (844=e3 AND 871=d3)
+      OR (d3=645)
+      OR d3 in (170,944,520,386,115,336,95,522,599,826)
+      EXCEPT
+      SELECT c9 FROM t9
+      WHERE NOT ((d9=360 OR 660=a9))
+      UNION
+      SELECT a1 FROM t1
+      WHERE e1 in (166,997,181,298,113,779,117,858,56,158,616,693,468)
+      UNION ALL
+      SELECT d2 FROM t2
+      WHERE (b2=634 AND c2=653)
+      UNION ALL
+      SELECT c4 FROM t4
+      WHERE (d4=639 AND a4=261 AND c4=422 AND 892=b4 AND 820=e4);
+  - name: t1
+  - name: t5
+
+outputs:
+  - name: q158.out
+    data: |
+      20
+      237
+      25
+      266
+      303
+      401
+      422
+      438
+      467
+      470
+      498
+      553
+      609
+      622
+      637
+      707
+      731
+      746
+      776
+      810
+      813
+      814
+      815
+      818
+      844
+      853
+      931
+      977

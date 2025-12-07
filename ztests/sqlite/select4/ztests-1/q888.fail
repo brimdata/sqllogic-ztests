@@ -1,0 +1,49 @@
+script: |
+  super -f tsv -I q888.sql | tr '\t' '\n' | sort > q888.out
+
+inputs:
+  - name: q888.sql
+    data: |
+      SELECT e7 FROM t7
+      WHERE (971=e7 OR 460=e7 OR d7=666)
+      OR (682=c7)
+      UNION
+      SELECT d9 FROM t9
+      WHERE (a9=365 AND 734=c9 AND e9=567 AND 245=b9 AND d9=608)
+      OR c9 in (711,696,257,87,188,118,955,146,272,224)
+      OR b9 in (549,361,152,926,239,447,858,136,578)
+      EXCEPT
+      SELECT d8 FROM t8
+      WHERE NOT ((e8=221)
+      OR a8 in (402,210,474,957,864,171,553,259,72)
+      OR (e8=204))
+      EXCEPT
+      SELECT a6 FROM t6
+      WHERE NOT ((d6=197));
+  - name: t3
+  - name: t9
+
+outputs:
+  - name: q888.out
+    data: |
+      215
+      383
+      399
+      420
+      460
+      464
+      467
+      597
+      602
+      608
+      618
+      646
+      668
+      67
+      720
+      732
+      744
+      745
+      770
+      795
+      86

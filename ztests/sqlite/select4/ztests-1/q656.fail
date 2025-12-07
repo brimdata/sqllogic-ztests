@@ -1,0 +1,65 @@
+script: |
+  super -f tsv -I q656.sql | tr '\t' '\n' | sort > q656.out
+
+inputs:
+  - name: q656.sql
+    data: |
+      SELECT e6 FROM t6
+      WHERE (293=a6 OR a6=270 OR a6=1)
+      OR (c6=717 AND e6=816 AND 173=a6)
+      OR b6 in (0,158,461,549,0,974)
+      EXCEPT
+      SELECT d8 FROM t8
+      WHERE NOT ((c8=88 OR d8=916 OR 354=c8)
+      OR c8 in (377,541,404,693,961))
+      UNION ALL
+      SELECT a7 FROM t7
+      WHERE (a7=982 OR 879=a7 OR 575=d7)
+      OR (b7=693 OR 260=c7)
+      UNION ALL
+      SELECT e3 FROM t3
+      WHERE (266=b3 OR 970=c3 OR c3=492)
+      OR (641=c3 AND 365=e3 AND 122=b3 AND d3=133 AND 105=a3)
+      UNION ALL
+      SELECT e5 FROM t5
+      WHERE c5 in (855,747,158,384,210,471,628,18,923)
+      OR (511=e5 OR 569=b5 OR 511=e5)
+      OR e5 in (386,436,225,41,232)
+      EXCEPT
+      SELECT a9 FROM t9
+      WHERE NOT ((a9=907 AND d9=164 AND 245=e9 AND 60=c9)
+      OR (e9=854));
+  - name: t1
+  - name: t2
+
+outputs:
+  - name: q656.out
+    data: |
+      100
+      130
+      131
+      143
+      209
+      225
+      232
+      237
+      287
+      324
+      386
+      436
+      437
+      531
+      547
+      574
+      588
+      633
+      718
+      744
+      798
+      806
+      816
+      874
+      876
+      894
+      937
+      958

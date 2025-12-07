@@ -1,0 +1,29 @@
+script: |
+  super -f tsv -I q1629.sql | sort > q1629.out
+
+inputs:
+  - name: q1629.sql
+    data: |
+      SELECT a-b,
+      (a+b+c+d+e)/5,
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      abs(b-c),
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      a+b*2,
+      b
+      FROM t1
+      WHERE (a>b-2 AND a<b+2)
+      ORDER BY 4,3,6,1;
+
+outputs:
+  - name: q1629.out
+    data: |
+      -1	137	111	2	0	416	139
+      -1	142	111	2	0	428	143
+      1	132	444	4	0	391	130
+      1	182	333	3	0	544	181
+      1	197	555	3	0	595	198
+      1	227	555	3	0	685	228
+      1	NULL	555	1	0	502	167
+      1	NULL	555	3	0	475	158

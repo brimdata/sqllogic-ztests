@@ -1,0 +1,47 @@
+script: |
+  super -f tsv -I q937.sql | sort > q937.out
+
+inputs:
+  - name: q937.sql
+    data: |
+      SELECT a+b*2+c*3+d*4+e*5,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      d-e,
+      abs(a),
+      b
+      FROM t1
+      ORDER BY 4,1,3,2,5;
+
+outputs:
+  - name: q937.out
+    data: |
+      1612	0	-1	107	105
+      1902	3	2	127	129
+      1985	4	1	131	130
+      2046	5	1	138	139
+      2131	6	-4	142	143
+      2432	10	2	163	160
+      2579	12	-2	174	170
+      2728	14	3	182	181
+      2806	15	-4	188	186
+      2878	16	-2	191	194
+      2949	17	-1	199	198
+      3175	19	2	213	211
+      3260	20	-2	216	218
+      3331	21	1	220	223
+      3399	22	-1	229	228
+      3473	23	3	234	232
+      3706	26	2	245	249
+      NULL	0	-1	115	NULL
+      NULL	0	-1	201	NULL
+      NULL	0	NULL	104	NULL
+      NULL	1	4	NULL	112
+      NULL	11	NULL	168	167
+      NULL	13	NULL	179	175
+      NULL	18	NULL	NULL	206
+      NULL	2	NULL	121	124
+      NULL	24	1	239	236
+      NULL	25	NULL	243	240
+      NULL	7	NULL	149	145
+      NULL	8	NULL	153	151
+      NULL	9	NULL	159	158

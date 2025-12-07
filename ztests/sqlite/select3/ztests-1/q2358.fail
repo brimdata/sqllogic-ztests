@@ -1,0 +1,41 @@
+script: |
+  super -f tsv -I q2358.sql | sort > q2358.out
+
+inputs:
+  - name: q2358.sql
+    data: |
+      SELECT a,
+      a+b*2,
+      abs(b-c)
+      FROM t1
+      WHERE EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b);
+
+outputs:
+  - name: q2358.out
+    data: |
+      121	369	1
+      127	385	4
+      131	391	4
+      138	416	2
+      142	428	2
+      149	439	2
+      153	455	1
+      159	475	3
+      163	483	1
+      168	502	1
+      174	514	2
+      179	529	1
+      182	544	3
+      188	560	1
+      191	579	1
+      199	595	3
+      213	635	3
+      216	652	3
+      220	666	1
+      229	685	3
+      234	698	1
+      239	711	NULL
+      243	723	4
+      245	743	2
+      NULL	NULL	1
+      NULL	NULL	2

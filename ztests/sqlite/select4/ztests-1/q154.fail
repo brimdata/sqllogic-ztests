@@ -1,0 +1,89 @@
+script: |
+  super -f tsv -I q154.sql | tr '\t' '\n' | sort > q154.out
+
+inputs:
+  - name: q154.sql
+    data: |
+      SELECT d4 FROM t4
+      WHERE (661=d4)
+      OR (799=c4 AND 546=e4)
+      OR (b4=901 OR 768=c4)
+      UNION
+      SELECT b2 FROM t2
+      WHERE d2 in (216,836,546,838)
+      OR (b2=90)
+      OR (415=a2 AND 819=c2 AND e2=148 AND b2=546 AND d2=332)
+      EXCEPT
+      SELECT c9 FROM t9
+      WHERE NOT ((a9=757))
+      UNION
+      SELECT c6 FROM t6
+      WHERE a6 in (64,825,683,121,540,706,740,233,643,392,731,657)
+      UNION
+      SELECT c7 FROM t7
+      WHERE (b7=362)
+      OR d7 in (134,226,442,296,164,801,837,526,325,671,364,886,108,177)
+      OR b7 in (392,562,340,868,808,426,867,859,514)
+      UNION ALL
+      SELECT d5 FROM t5
+      WHERE (79=b5 AND 923=c5 AND 826=a5)
+      EXCEPT
+      SELECT c1 FROM t1
+      WHERE NOT (a1 in (283,746,988,179,477,607,866,524,395));
+  - name: t1
+  - name: t2
+  - name: t3
+  - name: t5
+  - name: t7
+  - name: t9
+
+outputs:
+  - name: q154.out
+    data: |
+      11
+      117
+      145
+      146
+      260
+      28
+      292
+      301
+      305
+      341
+      369
+      377
+      38
+      389
+      397
+      41
+      435
+      442
+      446
+      467
+      481
+      491
+      500
+      501
+      546
+      557
+      572
+      575
+      589
+      609
+      648
+      661
+      691
+      729
+      752
+      780
+      795
+      797
+      816
+      857
+      888
+      931
+      938
+      94
+      948
+      970
+      985

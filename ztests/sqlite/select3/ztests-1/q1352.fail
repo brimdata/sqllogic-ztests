@@ -1,0 +1,21 @@
+script: |
+  super -f tsv -I q1352.sql | sort > q1352.out
+
+inputs:
+  - name: q1352.sql
+    data: |
+      SELECT abs(b-c),
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      d,
+      b-c,
+      CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END
+      FROM t1
+      WHERE (e>a AND e<b)
+      AND d NOT BETWEEN 110 AND 150;
+
+outputs:
+  - name: q1352.out
+    data: |
+      1	16	190	1	382
+      1	21	222	-1	440
+      2	26	248	2	490

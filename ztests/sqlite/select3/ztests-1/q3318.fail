@@ -1,0 +1,29 @@
+script: |
+  super -f tsv -I q3318.sql | sort > q3318.out
+
+inputs:
+  - name: q3318.sql
+    data: |
+      SELECT CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d)
+      FROM t1
+      WHERE a>b
+      AND (e>c OR e<d);
+
+outputs:
+  - name: q3318.out
+    data: |
+      222	0
+      333	0
+      333	0
+      333	0
+      444	0
+      444	0
+      555	0
+      555	0
+      555	0
+      555	0
+      555	0
+      555	0
+      555	0

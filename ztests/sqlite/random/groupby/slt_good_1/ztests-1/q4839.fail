@@ -1,0 +1,11 @@
+script: |
+  super -f tsv -I q4839.sql | sort > q4839.out
+
+inputs:
+  - name: q4839.sql
+    data: |
+      SELECT - cor0.col1 AS col2 FROM tab2 AS cor0 GROUP BY cor0.col1 HAVING NOT ( NULL ) IN ( cor0.col1 );
+
+outputs:
+  - name: q4839.out
+    data: |

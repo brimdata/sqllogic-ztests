@@ -1,0 +1,48 @@
+script: |
+  super -f tsv -I q1215.sql | sort > q1215.out
+
+inputs:
+  - name: q1215.sql
+    data: |
+      SELECT (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      e,
+      c-d,
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END,
+      d
+      FROM t1
+      WHERE EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      OR (e>c OR e<d)
+      ORDER BY 5,4,3;
+
+outputs:
+  - name: q1215.out
+    data: |
+      0	109	-2	333	108
+      0	110	-1	444	114
+      0	126	-3	222	128
+      0	132	1	333	133
+      0	135	1	222	136
+      0	144	1	222	140
+      0	146	NULL	444	NULL
+      0	157	NULL	333	NULL
+      0	162	-3	444	164
+      0	165	NULL	333	NULL
+      0	173	1	444	171
+      0	177	NULL	444	NULL
+      0	180	1	333	183
+      0	189	2	333	185
+      0	192	3	222	190
+      0	197	-1	333	196
+      0	204	-1	444	203
+      0	210	2	333	212
+      0	219	-2	222	217
+      0	221	2	222	222
+      0	227	-1	333	226
+      0	230	-2	333	233
+      0	237	NULL	444	238
+      0	246	-1	111	248
+      0	NULL	1	222	122
+      0	NULL	1	444	207
+      0	NULL	NULL	333	NULL
+      0	NULL	NULL	444	NULL

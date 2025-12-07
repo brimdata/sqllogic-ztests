@@ -1,0 +1,63 @@
+script: |
+  super -f tsv -I q857.sql | tr '\t' '\n' | sort > q857.out
+
+inputs:
+  - name: q857.sql
+    data: |
+      SELECT c9 FROM t9
+      WHERE a9 in (72,815,474,18,972,416,318,924,685,953)
+      UNION
+      SELECT b7 FROM t7
+      WHERE (934=c7 OR 419=c7)
+      EXCEPT
+      SELECT a8 FROM t8
+      WHERE NOT ((113=c8 AND 600=e8 AND a8=417 AND b8=755))
+      EXCEPT
+      SELECT b4 FROM t4
+      WHERE NOT (b4 in (286,532,260,593,387,635,660,94,608,372,137,402)
+      OR (b4=107 AND 792=a4 AND d4=100 AND 738=e4 AND c4=996))
+      UNION
+      SELECT d1 FROM t1
+      WHERE (194=a1 OR e1=254 OR b1=766)
+      OR (440=b1)
+      OR (a1=637 OR 617=c1 OR 14=e1)
+      EXCEPT
+      SELECT b3 FROM t3
+      WHERE NOT ((886=d3 AND 341=e3 AND 472=c3))
+      UNION
+      SELECT d5 FROM t5
+      WHERE (342=e5 AND a5=626 AND 545=c5 AND d5=553 AND b5=183)
+      UNION ALL
+      SELECT e2 FROM t2
+      WHERE c2 in (346,220,87)
+      EXCEPT
+      SELECT a6 FROM t6
+      WHERE NOT (a6 in (683,436,518,692,672,801,751,764,222,132,973,851,128));
+  - name: t4
+  - name: t5
+
+outputs:
+  - name: q857.out
+    data: |
+      151
+      187
+      191
+      223
+      24
+      252
+      278
+      370
+      411
+      519
+      55
+      553
+      560
+      602
+      767
+      783
+      807
+      853
+      905
+      935
+      951
+      992

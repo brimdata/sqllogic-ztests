@@ -1,0 +1,11 @@
+script: |
+  super -f tsv -I q5585.sql | sort > q5585.out
+
+inputs:
+  - name: q5585.sql
+    data: |
+      SELECT DISTINCT ( + ( col1 ) ) + col1 FROM tab2 AS cor0 GROUP BY col1 HAVING ( + CAST ( col1 AS INTEGER ) ) IS NULL;
+
+outputs:
+  - name: q5585.out
+    data: |

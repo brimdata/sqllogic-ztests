@@ -1,0 +1,47 @@
+script: |
+  super -f tsv -I q746.sql | sort > q746.out
+
+inputs:
+  - name: q746.sql
+    data: |
+      SELECT (a+b+c+d+e)/5,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      a+b*2,
+      b
+      FROM t1
+      WHERE coalesce(a,b,c,d,e)<>0
+      OR b IS NOT NULL;
+
+outputs:
+  - name: q746.out
+    data: |
+      107	0	317	105
+      127	3	385	129
+      132	4	391	130
+      137	5	416	139
+      142	6	428	143
+      162	10	483	160
+      172	12	514	170
+      182	14	544	181
+      187	15	560	186
+      192	16	579	194
+      197	17	595	198
+      212	19	635	211
+      217	20	652	218
+      222	21	666	223
+      227	22	685	228
+      232	23	698	232
+      247	26	743	249
+      NULL	0	NULL	NULL
+      NULL	0	NULL	NULL
+      NULL	0	NULL	NULL
+      NULL	1	NULL	112
+      NULL	11	502	167
+      NULL	13	529	175
+      NULL	18	NULL	206
+      NULL	2	369	124
+      NULL	24	711	236
+      NULL	25	723	240
+      NULL	7	439	145
+      NULL	8	455	151
+      NULL	9	475	158

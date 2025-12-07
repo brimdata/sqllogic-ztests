@@ -1,0 +1,33 @@
+script: |
+  super -f tsv -I q1833.sql | sort > q1833.out
+
+inputs:
+  - name: q1833.sql
+    data: |
+      SELECT c,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END,
+      b-c,
+      a+b*2,
+      a,
+      (a+b+c+d+e)/5
+      FROM t1
+      WHERE b>c
+      ORDER BY 1,4,2,6,7,3,5;
+
+outputs:
+  - name: q1833.out
+    data: |
+      123	2	1240	1	369	121	NULL
+      125	3	1290	4	385	127	127
+      137	5	1390	2	416	138	137
+      141	6	1430	2	428	142	142
+      150	8	1510	1	455	153	NULL
+      155	9	1580	3	475	159	NULL
+      166	11	1670	1	502	168	NULL
+      193	16	382	1	579	191	192
+      195	17	398	3	595	199	197
+      215	20	432	3	652	216	217
+      225	22	458	3	685	229	227
+      231	23	468	1	698	234	232
+      247	26	490	2	743	245	247

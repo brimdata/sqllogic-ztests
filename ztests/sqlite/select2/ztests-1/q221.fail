@@ -1,0 +1,19 @@
+script: |
+  super -f tsv -I q221.sql | sort > q221.out
+
+inputs:
+  - name: q221.sql
+    data: |
+      SELECT c-d,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      a,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END
+      FROM t1
+      WHERE a IS NULL;
+
+outputs:
+  - name: q221.out
+    data: |
+      -1	1	NULL	0	1120
+      1	18	NULL	0	NULL

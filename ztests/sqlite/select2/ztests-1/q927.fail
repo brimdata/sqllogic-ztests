@@ -1,0 +1,21 @@
+script: |
+  super -f tsv -I q927.sql | sort > q927.out
+
+inputs:
+  - name: q927.sql
+    data: |
+      SELECT (a+b+c+d+e)/5,
+      CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END
+      FROM t1
+      WHERE EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      AND d>e
+      AND c>d;
+
+outputs:
+  - name: q927.out
+    data: |
+      132	1300
+      137	1390
+      182	364
+      212	426
+      222	440

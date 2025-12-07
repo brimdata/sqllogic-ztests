@@ -1,0 +1,32 @@
+script: |
+  super -f tsv -I q77.sql > q77.out
+
+inputs:
+  - name: q77.sql
+    data: |
+      SELECT a+b*2+c*3+d*4,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      c-d,
+      a+b*2
+      FROM t1
+      WHERE EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      AND b>c
+      ORDER BY 2,4,3,1;
+
+outputs:
+  - name: q77.out
+    data: |
+      1226	4	1	369
+      1272	5	-3	385
+      1371	7	1	416
+      1411	8	1	428
+      1521	10	-4	455
+      1564	11	-1	475
+      1676	13	-3	502
+      1918	18	3	579
+      1964	19	-1	595
+      2165	23	-2	652
+      2264	25	-1	685
+      2323	26	-2	698
+      2368	27	-3	711
+      2476	29	-1	743

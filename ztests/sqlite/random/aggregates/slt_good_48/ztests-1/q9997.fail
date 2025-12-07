@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q9997.sql | sort > q9997.out
+
+inputs:
+  - name: q9997.sql
+    data: |
+      SELECT ALL SUM ( DISTINCT - col1 ) + COUNT ( * ) * MAX ( + col2 ) AS col2 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q9997.out
+    data: |
+      222

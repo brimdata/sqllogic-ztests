@@ -1,0 +1,75 @@
+script: |
+  super -f tsv -I q117.sql | tr '\t' '\n' | sort > q117.out
+
+inputs:
+  - name: q117.sql
+    data: |
+      SELECT e8 FROM t8
+      WHERE (a8=127 OR 844=c8 OR 683=c8)
+      OR e8 in (485,199,411,260,592,221,440)
+      OR (253=b8)
+      EXCEPT
+      SELECT d1 FROM t1
+      WHERE NOT ((993=b1))
+      UNION ALL
+      SELECT d6 FROM t6
+      WHERE (a6=825)
+      OR d6 in (991,711,376,458,196,729,581,35,664,337,72,797)
+      UNION
+      SELECT c4 FROM t4
+      WHERE (312=e4 OR 223=e4 OR a4=136)
+      EXCEPT
+      SELECT c2 FROM t2
+      WHERE NOT (b2 in (846,765,38,784,546,812,857,818,297,966,161))
+      EXCEPT
+      SELECT a5 FROM t5
+      WHERE NOT ((734=c5 AND b5=623)
+      OR (964=d5))
+      UNION ALL
+      SELECT b9 FROM t9
+      WHERE (a9=365)
+      OR (819=e9 AND 595=b9 AND 161=d9 AND 488=a9 AND 101=c9)
+      OR (947=e9)
+      EXCEPT
+      SELECT d7 FROM t7
+      WHERE NOT ((455=e7 AND c7=206)
+      OR (562=b7))
+      UNION ALL
+      SELECT e3 FROM t3
+      WHERE (615=a3)
+      OR c3 in (845,601,146,647,296,80);
+  - name: t1
+  - name: t9
+
+outputs:
+  - name: q117.out
+    data: |
+      245
+      260
+      271
+      272
+      35
+      376
+      424
+      440
+      458
+      552
+      578
+      581
+      584
+      592
+      595
+      600
+      646
+      664
+      72
+      74
+      797
+      833
+      853
+      866
+      87
+      881
+      913
+      991
+      993

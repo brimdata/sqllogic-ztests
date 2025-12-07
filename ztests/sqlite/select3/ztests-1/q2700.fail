@@ -1,0 +1,47 @@
+script: |
+  super -f tsv -I q2700.sql | sort > q2700.out
+
+inputs:
+  - name: q2700.sql
+    data: |
+      SELECT CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      a+b*2+c*3+d*4+e*5,
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END,
+      (a+b+c+d+e)/5
+      FROM t1;
+
+outputs:
+  - name: q2700.out
+    data: |
+      1050	0	1612	333	107
+      1120	1	NULL	444	NULL
+      1240	2	NULL	222	NULL
+      1290	3	1902	222	127
+      1300	4	1985	333	132
+      1390	5	2046	222	137
+      1430	6	2131	222	142
+      1450	7	NULL	444	NULL
+      1510	8	NULL	333	NULL
+      1580	9	NULL	333	NULL
+      1600	10	2432	444	162
+      1670	11	NULL	333	NULL
+      1700	12	2579	444	172
+      2360	24	NULL	444	NULL
+      358	13	NULL	444	NULL
+      364	14	2728	333	182
+      376	15	2806	333	187
+      382	16	2878	222	192
+      398	17	2949	333	197
+      402	0	NULL	444	NULL
+      426	19	3175	333	212
+      432	20	3260	222	217
+      440	21	3331	222	222
+      458	22	3399	333	227
+      468	23	3473	333	232
+      486	25	NULL	444	NULL
+      490	26	3706	111	247
+      NULL	0	NULL	444	NULL
+      NULL	0	NULL	444	NULL
+      NULL	18	NULL	444	NULL

@@ -1,0 +1,43 @@
+script: |
+  super -f tsv -I q314.sql | sort > q314.out
+
+inputs:
+  - name: q314.sql
+    data: |
+      SELECT a,
+      e,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      abs(b-c)
+      FROM t1
+      WHERE EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      OR (e>a AND e<b);
+
+outputs:
+  - name: q314.out
+    data: |
+      121	NULL	2	1
+      127	126	3	4
+      131	132	4	4
+      138	135	5	2
+      142	144	6	2
+      149	146	7	2
+      153	NULL	8	1
+      159	157	9	3
+      163	162	10	1
+      168	165	11	1
+      174	173	12	2
+      179	177	13	1
+      182	180	14	3
+      188	189	15	1
+      191	192	16	1
+      199	197	17	3
+      213	210	19	3
+      216	219	20	3
+      220	221	21	1
+      229	227	22	3
+      234	230	23	1
+      239	237	24	NULL
+      243	NULL	25	4
+      245	246	26	2
+      NULL	110	1	1
+      NULL	NULL	18	2

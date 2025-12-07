@@ -1,0 +1,42 @@
+script: |
+  super -f tsv -I q508.sql | tr '\t' '\n' | sort > q508.out
+
+inputs:
+  - name: q508.sql
+    data: |
+      SELECT c6 FROM t6
+      WHERE (287=c6 AND 962=b6 AND 185=d6 AND a6=604)
+      OR (761=e6 AND 21=d6)
+      OR (297=c6)
+      EXCEPT
+      SELECT a9 FROM t9
+      WHERE NOT ((678=d9 OR 936=c9 OR e9=263)
+      OR (240=a9)
+      OR (b9=783 OR 783=b9 OR 258=a9))
+      UNION
+      SELECT c7 FROM t7
+      WHERE d7 in (139,620,114,367,324,364)
+      UNION
+      SELECT c5 FROM t5
+      WHERE (e5=708 OR d5=557)
+      OR (554=e5 AND 492=d5 AND 332=a5 AND b5=161 AND 756=c5)
+      OR (b5=391 OR e5=586);
+  - name: t3
+  - name: t8
+
+outputs:
+  - name: q508.out
+    data: |
+      238
+      287
+      320
+      377
+      485
+      489
+      498
+      596
+      657
+      705
+      756
+      894
+      981

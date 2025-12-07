@@ -1,0 +1,20 @@
+script: |
+  super -f tsv -I q1315.sql | sort > q1315.out
+
+inputs:
+  - name: q1315.sql
+    data: |
+      SELECT CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      (a+b+c+d+e)/5
+      FROM t1
+      WHERE EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      AND (e>a AND e<b)
+      ORDER BY 1,2;
+
+outputs:
+  - name: q1315.out
+    data: |
+      444	192
+      444	222
+      444	247

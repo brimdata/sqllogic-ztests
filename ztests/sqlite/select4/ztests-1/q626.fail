@@ -1,0 +1,45 @@
+script: |
+  super -f tsv -I q626.sql | tr '\t' '\n' | sort > q626.out
+
+inputs:
+  - name: q626.sql
+    data: |
+      SELECT c2 FROM t2
+      WHERE d2 in (806,265,488,332)
+      OR (640=b2 OR 725=c2 OR 35=a2)
+      EXCEPT
+      SELECT b7 FROM t7
+      WHERE NOT ((a7=267 OR 180=c7))
+      EXCEPT
+      SELECT c5 FROM t5
+      WHERE NOT ((155=d5 AND 326=b5)
+      OR c5 in (634,485,668,72,545,697,351,101,601,551,249,625)
+      OR (934=c5 AND e5=446 AND a5=743))
+      EXCEPT
+      SELECT e9 FROM t9
+      WHERE NOT ((e9=230)
+      OR d9 in (23,744,938,264,270,226,258,111,145)
+      OR (b9=74 AND d9=495))
+      EXCEPT
+      SELECT d3 FROM t3
+      WHERE NOT ((b3=70 AND 683=d3 AND c3=885 AND a3=396 AND 527=e3)
+      OR (a3=105))
+      UNION
+      SELECT b6 FROM t6
+      WHERE (674=d6 AND 541=b6 AND a6=255 AND 154=e6)
+      OR (24=e6 OR 613=d6 OR c6=832)
+      OR (a6=270 OR a6=436);
+  - name: t2
+  - name: t4
+  - name: t8
+
+outputs:
+  - name: q626.out
+    data: |
+      350
+      541
+      650
+      681
+      725
+      880
+      992

@@ -1,0 +1,31 @@
+script: |
+  super -f tsv -I q1250.sql | sort > q1250.out
+
+inputs:
+  - name: q1250.sql
+    data: |
+      SELECT (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      a+b*2,
+      d,
+      abs(b-c)
+      FROM t1
+      WHERE EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      AND d NOT BETWEEN 110 AND 150;
+
+outputs:
+  - name: q1250.out
+    data: |
+      10	483	164	1
+      12	514	171	2
+      14	544	183	3
+      15	560	185	1
+      16	579	190	1
+      17	595	196	3
+      18	NULL	207	2
+      19	635	212	3
+      20	652	217	3
+      21	666	222	1
+      22	685	226	3
+      23	698	233	1
+      24	711	238	NULL
+      26	743	248	2

@@ -1,0 +1,26 @@
+script: |
+  super -f tsv -I q679.sql | tr '\t' '\n' | sort > q679.out
+
+inputs:
+  - name: q679.sql
+    data: |
+      SELECT d6 FROM t6
+      WHERE c6 in (729,441,258,45)
+      OR (c6=267)
+      OR (c6=751 OR b6=933 OR d6=151)
+      INTERSECT
+      SELECT d1 FROM t1
+      WHERE NOT ((a1=337)
+      OR (c1=402))
+      UNION
+      SELECT d8 FROM t8
+      WHERE (e8=981);
+  - name: t2
+  - name: t5
+
+outputs:
+  - name: q679.out
+    data: |
+      223
+      35
+      81

@@ -1,0 +1,89 @@
+script: |
+  super -f tsv -I q103.sql | tr '\t' '\n' | sort > q103.out
+
+inputs:
+  - name: q103.sql
+    data: |
+      SELECT a7 FROM t7
+      WHERE (285=a7 AND c7=564 AND 250=b7 AND 841=e7 AND 500=d7)
+      OR (397=c7 OR a7=722)
+      UNION ALL
+      SELECT d1 FROM t1
+      WHERE (a1=195)
+      UNION
+      SELECT d5 FROM t5
+      WHERE e5 in (188,437,34,68)
+      OR c5 in (599,299,130,18,734,634,222,249,72,3,941)
+      UNION ALL
+      SELECT b2 FROM t2
+      WHERE (e2=783)
+      OR (d2=448 AND c2=878)
+      UNION ALL
+      SELECT c9 FROM t9
+      WHERE (e9=987 AND 681=d9)
+      OR (d9=694 OR 245=e9)
+      OR (b9=19 AND c9=75 AND 129=d9 AND a9=847 AND e9=549)
+      UNION ALL
+      SELECT b6 FROM t6
+      WHERE (223=b6 OR 146=c6)
+      OR b6 in (452,427,229,463)
+      EXCEPT
+      SELECT b4 FROM t4
+      WHERE NOT ((a4=489 OR 82=c4))
+      UNION ALL
+      SELECT c8 FROM t8
+      WHERE (298=c8)
+      OR (642=b8 OR 431=e8 OR 841=a8)
+      OR (979=c8 OR 554=d8)
+      UNION ALL
+      SELECT b3 FROM t3
+      WHERE (616=b3 AND c3=601 AND 552=e3 AND a3=892 AND d3=554)
+      OR (826=c3);
+  - name: t6
+  - name: t8
+
+outputs:
+  - name: q103.out
+    data: |
+      155
+      160
+      161
+      165
+      171
+      196
+      223
+      229
+      24
+      273
+      282
+      285
+      298
+      313
+      343
+      369
+      412
+      427
+      452
+      463
+      54
+      563
+      565
+      599
+      60
+      602
+      605
+      616
+      616
+      722
+      731
+      742
+      745
+      75
+      806
+      818
+      857
+      860
+      940
+      963
+      979
+      979

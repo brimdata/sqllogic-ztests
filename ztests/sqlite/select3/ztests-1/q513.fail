@@ -1,0 +1,45 @@
+script: |
+  super -f tsv -I q513.sql | sort > q513.out
+
+inputs:
+  - name: q513.sql
+    data: |
+      SELECT e,
+      b-c,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b)
+      FROM t1
+      ORDER BY 1,2;
+
+outputs:
+  - name: q513.out
+    data: |
+      109	-1	0
+      110	-1	1
+      117	NULL	0
+      126	4	3
+      132	-4	4
+      135	2	5
+      144	2	6
+      146	-2	7
+      157	3	9
+      162	-1	10
+      165	1	11
+      173	-2	12
+      177	-1	13
+      180	-3	14
+      189	-1	15
+      192	1	16
+      197	3	17
+      204	NULL	0
+      210	-3	19
+      219	3	20
+      221	-1	21
+      227	3	22
+      230	1	23
+      237	NULL	24
+      246	2	26
+      NULL	-2	18
+      NULL	-4	25
+      NULL	1	2
+      NULL	1	8
+      NULL	NULL	0

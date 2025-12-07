@@ -1,0 +1,47 @@
+script: |
+  super -f tsv -I q2786.sql | sort > q2786.out
+
+inputs:
+  - name: q2786.sql
+    data: |
+      SELECT d,
+      a+b*2+c*3+d*4,
+      e,
+      (a+b+c+d+e)/5,
+      d-e,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d)
+      FROM t1;
+
+outputs:
+  - name: q2786.out
+    data: |
+      101	NULL	NULL	NULL	NULL	0
+      108	1067	109	107	-1	0
+      114	NULL	110	NULL	4	0
+      116	NULL	117	NULL	-1	0
+      122	1226	NULL	NULL	NULL	0
+      128	1272	126	127	2	0
+      133	1325	132	132	1	0
+      136	1371	135	137	1	0
+      140	1411	144	142	-4	0
+      164	1622	162	162	2	0
+      171	1714	173	172	-2	0
+      183	1828	180	182	3	0
+      185	1861	189	187	-4	0
+      190	1918	192	192	-2	0
+      196	1964	197	197	-1	0
+      203	NULL	204	NULL	-1	0
+      207	NULL	NULL	NULL	NULL	0
+      212	2125	210	212	2	0
+      217	2165	219	217	-2	0
+      222	2226	221	222	1	0
+      226	2264	227	227	-1	0
+      233	2323	230	232	3	0
+      238	NULL	237	NULL	1	0
+      248	2476	246	247	2	0
+      NULL	NULL	146	NULL	NULL	0
+      NULL	NULL	157	NULL	NULL	0
+      NULL	NULL	165	NULL	NULL	0
+      NULL	NULL	177	NULL	NULL	0
+      NULL	NULL	NULL	NULL	NULL	0
+      NULL	NULL	NULL	NULL	NULL	0

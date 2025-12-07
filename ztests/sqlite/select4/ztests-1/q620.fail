@@ -1,0 +1,54 @@
+script: |
+  super -f tsv -I q620.sql | tr '\t' '\n' | sort > q620.out
+
+inputs:
+  - name: q620.sql
+    data: |
+      SELECT d4 FROM t4
+      WHERE (d4=665 AND e4=85 AND 271=b4 AND 752=a4 AND 0=c4)
+      OR b4 in (589,826,184,114,810,357,372,607)
+      INTERSECT
+      SELECT b1 FROM t1
+      WHERE NOT (c1 in (253,776,368,152,402,629,172,441,864,716,623)
+      OR (558=e1)
+      OR (c1=419))
+      UNION ALL
+      SELECT a2 FROM t2
+      WHERE c2 in (900,854,819,123,137,729,988,292)
+      OR b2 in (418,113,220,811)
+      OR (c2=725)
+      UNION ALL
+      SELECT d8 FROM t8
+      WHERE a8 in (651,961,5,248,328,453,54,994)
+      OR (e8=761);
+  - name: t3
+  - name: t7
+
+outputs:
+  - name: q620.out
+    data: |
+      123
+      185
+      266
+      283
+      330
+      384
+      415
+      522
+      544
+      55
+      588
+      590
+      593
+      669
+      683
+      743
+      809
+      81
+      845
+      889
+      899
+      910
+      944
+      953
+      989

@@ -1,0 +1,49 @@
+script: |
+  super -f tsv -I q435.sql | tr '\t' '\n' | sort > q435.out
+
+inputs:
+  - name: q435.sql
+    data: |
+      SELECT b5 FROM t5
+      WHERE (c5=443)
+      OR a5 in (99,332,976,867,341,339,730,320,421)
+      OR (832=a5 OR d5=729)
+      UNION ALL
+      SELECT c1 FROM t1
+      WHERE (683=c1 AND 863=d1 AND 170=a1 AND e1=11 AND 914=b1)
+      UNION
+      SELECT d9 FROM t9
+      WHERE (b9=122)
+      OR (922=d9 OR 55=d9 OR 118=b9)
+      OR b9 in (285,63,703,122,122,245)
+      EXCEPT
+      SELECT d8 FROM t8
+      WHERE NOT ((e8=203 AND a8=920 AND 803=b8 AND 79=c8 AND d8=511)
+      OR (223=d8 AND 394=b8 AND e8=729)
+      OR (375=c8 AND 397=b8))
+      EXCEPT
+      SELECT c4 FROM t4
+      WHERE NOT ((220=b4)
+      OR c4 in (471,768,345,804,393,417));
+  - name: t2
+  - name: t4
+
+outputs:
+  - name: q435.out
+    data: |
+      186
+      23
+      234
+      321
+      380
+      55
+      569
+      587
+      601
+      646
+      662
+      759
+      770
+      861
+      922
+      938

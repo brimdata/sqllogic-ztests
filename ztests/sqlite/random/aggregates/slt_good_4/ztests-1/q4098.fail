@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q4098.sql | sort > q4098.out
+
+inputs:
+  - name: q4098.sql
+    data: |
+      SELECT DISTINCT COUNT ( * ) / ( CAST ( NULL AS INTEGER ) ) AS col1 FROM tab1 WHERE - col1 * 34 IS NULL;
+
+outputs:
+  - name: q4098.out
+    data: |
+      NULL

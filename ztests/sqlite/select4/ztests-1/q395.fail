@@ -1,0 +1,39 @@
+script: |
+  super -f tsv -I q395.sql | tr '\t' '\n' | sort > q395.out
+
+inputs:
+  - name: q395.sql
+    data: |
+      SELECT c6 FROM t6
+      WHERE (d6=277 AND 34=c6 AND 267=b6 AND 300=a6 AND 95=e6)
+      OR (e6=24 AND 399=c6 AND d6=321 AND b6=650)
+      OR (b6=461 AND c6=480 AND 128=a6 AND d6=186)
+      INTERSECT
+      SELECT e3 FROM t3
+      WHERE NOT (e3 in (177,547,913,876,163,914,862,218,846,871,592,600,848,853))
+      UNION ALL
+      SELECT d7 FROM t7
+      WHERE e7 in (503,197,31,455,918,887,372,156,976,460,282,127);
+  - name: t5
+  - name: t7
+
+outputs:
+  - name: q395.out
+    data: |
+      212
+      324
+      364
+      367
+      391
+      485
+      526
+      527
+      547
+      575
+      590
+      620
+      675
+      687
+      709
+      916
+      988

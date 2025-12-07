@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q10054.sql | sort > q10054.out
+
+inputs:
+  - name: q10054.sql
+    data: |
+      SELECT ALL SUM ( DISTINCT CAST ( NULL AS INTEGER ) ) * + COUNT ( * ) AS col2 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q10054.out
+    data: |
+      NULL

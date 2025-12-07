@@ -1,0 +1,28 @@
+script: |
+  super -f tsv -I q204.sql | tr '\t' '\n' | sort > q204.out
+
+inputs:
+  - name: q204.sql
+    data: |
+      SELECT b5 FROM t5
+      WHERE (e5=727)
+      INTERSECT
+      SELECT e6 FROM t6
+      WHERE NOT (e6 in (230,915,622,395,175))
+      INTERSECT
+      SELECT a9 FROM t9
+      WHERE NOT ((d9=463 OR b9=818 OR 841=e9))
+      UNION
+      SELECT d4 FROM t4
+      WHERE (376=d4 AND c4=752 AND b4=35)
+      EXCEPT
+      SELECT e7 FROM t7
+      WHERE NOT (c7 in (589,855,103,970,705,853,377,103,78,948,364)
+      OR (134=a7 AND 435=c7 AND e7=988 AND 804=b7));
+  - name: t8
+  - name: t9
+
+outputs:
+  - name: q204.out
+    data: |
+      376

@@ -1,0 +1,27 @@
+script: |
+  super -f tsv -I q3024.sql | sort > q3024.out
+
+inputs:
+  - name: q3024.sql
+    data: |
+      SELECT a+b*2+c*3+d*4,
+      a-b,
+      a,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      c-d,
+      b-c
+      FROM t1
+      WHERE (c<=d-2 OR c>=d+2)
+      AND c BETWEEN b-2 AND d+2;
+
+outputs:
+  - name: q3024.out
+    data: |
+      1067	2	107	0	333	-2	-1
+      1622	3	163	0	333	-3	-1
+      1861	2	188	0	444	2	-1
+      2125	2	213	0	222	2	-3
+      2226	-3	220	0	444	2	-1
+      2323	2	234	0	555	-2	1

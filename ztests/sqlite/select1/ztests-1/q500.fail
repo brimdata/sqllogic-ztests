@@ -1,0 +1,32 @@
+script: |
+  super -f tsv -I q500.sql > q500.out
+
+inputs:
+  - name: q500.sql
+    data: |
+      SELECT abs(a),
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END
+      FROM t1
+      WHERE (c<=d-2 OR c>=d+2)
+      ORDER BY 3,1,2;
+
+outputs:
+  - name: q500.out
+    data: |
+      115	3	222
+      127	5	222
+      191	18	222
+      216	23	222
+      220	24	222
+      107	1	333
+      153	10	333
+      168	13	333
+      188	17	333
+      213	22	333
+      234	26	333
+      163	12	444
+      179	15	444
+      239	27	444
+      243	28	444

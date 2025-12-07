@@ -1,0 +1,20 @@
+script: |
+  super -f tsv -I q693.sql | sort > q693.out
+
+inputs:
+  - name: q693.sql
+    data: |
+      SELECT (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      c,
+      c-d,
+      a+b*2+c*3,
+      abs(b-c)
+      FROM t1
+      WHERE (e>a AND e<b);
+
+outputs:
+  - name: q693.out
+    data: |
+      16	193	3	1158	1
+      21	224	2	1338	1
+      26	247	-1	1484	2

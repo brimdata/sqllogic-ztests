@@ -1,0 +1,49 @@
+script: |
+  super -f tsv -I q924.sql | sort > q924.out
+
+inputs:
+  - name: q924.sql
+    data: |
+      SELECT a+b*2+c*3+d*4+e*5,
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      b-c,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      e,
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END
+      FROM t1;
+
+outputs:
+  - name: q924.out
+    data: |
+      1612	333	-1	0	109	333
+      1902	333	4	3	126	222
+      1985	444	-4	4	132	333
+      2046	111	2	5	135	222
+      2131	111	2	6	144	222
+      2432	333	-1	10	162	444
+      2579	555	-2	12	173	444
+      2728	333	-3	14	180	333
+      2806	444	-1	15	189	333
+      2878	444	1	16	192	222
+      2949	555	3	17	197	333
+      3175	222	-3	19	210	333
+      3260	333	3	20	219	222
+      3331	444	-1	21	221	222
+      3399	555	3	22	227	333
+      3473	555	1	23	230	333
+      3706	444	2	26	246	111
+      NULL	222	-4	25	NULL	444
+      NULL	222	NULL	0	204	444
+      NULL	333	1	2	NULL	222
+      NULL	333	NULL	0	117	444
+      NULL	555	-1	1	110	444
+      NULL	555	-1	13	177	444
+      NULL	555	-2	18	NULL	444
+      NULL	555	-2	7	146	444
+      NULL	555	1	11	165	333
+      NULL	555	1	8	NULL	333
+      NULL	555	3	9	157	333
+      NULL	555	NULL	0	NULL	444
+      NULL	555	NULL	24	237	444

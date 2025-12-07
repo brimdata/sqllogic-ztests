@@ -1,0 +1,29 @@
+script: |
+  super -f tsv -I q217.sql > q217.out
+
+inputs:
+  - name: q217.sql
+    data: |
+      SELECT (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      abs(a),
+      d,
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      a,
+      a+b*2
+      FROM t1
+      WHERE d NOT BETWEEN 110 AND 150
+      AND (a>b-2 AND a<b+2)
+      ORDER BY 5,6,3,1,2,4,7;
+
+outputs:
+  - name: q217.out
+    data: |
+      0	21	205	207	111	205	617
+      0	20	201	203	222	201	601
+      0	13	168	169	333	168	502
+      0	16	182	183	333	182	544
+      0	11	159	156	555	159	475
+      0	19	199	196	555	199	595
+      0	25	229	226	555	229	685

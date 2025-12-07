@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q1024.sql | sort > q1024.out
+
+inputs:
+  - name: q1024.sql
+    data: |
+      SELECT (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      abs(a),
+      abs(b-c)
+      FROM t1
+      WHERE e+d BETWEEN a+b-10 AND c+130
+      AND b>c;
+
+outputs:
+  - name: q1024.out
+    data: |
+      0	127	4

@@ -1,0 +1,28 @@
+script: |
+  super -f tsv -I q210.sql | sort > q210.out
+
+inputs:
+  - name: q210.sql
+    data: |
+      SELECT b-c,
+      c-d,
+      d,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END,
+      a+b*2+c*3+d*4
+      FROM t1
+      WHERE (c<=d-2 OR c>=d+2);
+
+outputs:
+  - name: q210.out
+    data: |
+      -1	-2	108	0	1050	1067
+      -1	-3	164	0	1600	1622
+      -1	2	185	0	376	1861
+      -1	2	222	0	440	2226
+      -3	2	212	0	426	2125
+      1	-2	233	0	468	2323
+      1	3	190	0	382	1918
+      3	-2	217	0	432	2165
+      4	-3	128	0	1290	1272
+      NULL	3	116	0	NULL	NULL

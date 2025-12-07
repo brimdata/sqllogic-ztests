@@ -1,0 +1,11 @@
+script: |
+  super -f tsv -I q8765.sql | sort > q8765.out
+
+inputs:
+  - name: q8765.sql
+    data: |
+      SELECT ALL ( + col2 ) * - ( - col2 ) * + 45 + - COUNT ( * ) * - col1 * + col2 AS col0 FROM tab1 GROUP BY col1, col2 HAVING NOT COUNT ( * ) IS NOT NULL;
+
+outputs:
+  - name: q8765.out
+    data: |

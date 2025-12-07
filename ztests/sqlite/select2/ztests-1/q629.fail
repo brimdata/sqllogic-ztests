@@ -1,0 +1,43 @@
+script: |
+  super -f tsv -I q629.sql | sort > q629.out
+
+inputs:
+  - name: q629.sql
+    data: |
+      SELECT d-e,
+      e,
+      b-c,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d)
+      FROM t1
+      WHERE (a>b-2 AND a<b+2)
+      OR EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b);
+
+outputs:
+  - name: q629.out
+    data: |
+      -1	197	3	0
+      -1	227	3	0
+      -2	173	-2	0
+      -2	192	1	0
+      -2	219	3	0
+      -4	144	2	0
+      -4	189	-1	0
+      1	132	-4	0
+      1	135	2	0
+      1	221	-1	0
+      1	237	NULL	0
+      2	126	4	0
+      2	162	-1	0
+      2	210	-3	0
+      2	246	2	0
+      3	180	-3	0
+      3	230	1	0
+      4	110	-1	0
+      NULL	146	-2	0
+      NULL	157	3	0
+      NULL	165	1	0
+      NULL	177	-1	0
+      NULL	NULL	-2	0
+      NULL	NULL	-4	0
+      NULL	NULL	1	0
+      NULL	NULL	1	0

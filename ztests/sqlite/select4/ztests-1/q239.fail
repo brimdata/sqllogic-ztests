@@ -1,0 +1,28 @@
+script: |
+  super -f tsv -I q239.sql | tr '\t' '\n' | sort > q239.out
+
+inputs:
+  - name: q239.sql
+    data: |
+      SELECT b2 FROM t2
+      WHERE e2 in (556,434,140)
+      OR (131=e2)
+      EXCEPT
+      SELECT e3 FROM t3
+      WHERE NOT (d3 in (895,541,647)
+      OR c3 in (777,792,887,607,305))
+      UNION ALL
+      SELECT e4 FROM t4
+      WHERE (768=c4 OR c4=482);
+  - name: t6
+  - name: t8
+
+outputs:
+  - name: q239.out
+    data: |
+      297
+      38
+      643
+      681
+      71
+      812

@@ -1,0 +1,48 @@
+script: |
+  super -f tsv -I q186.sql | sort > q186.out
+
+inputs:
+  - name: q186.sql
+    data: |
+      SELECT b,
+      a+b*2+c*3+d*4,
+      c-d,
+      a,
+      b-c,
+      a+b*2,
+      d-e
+      FROM t1
+      WHERE (e>a AND e<b)
+      OR b IS NOT NULL
+      OR EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b);
+
+outputs:
+  - name: q186.out
+    data: |
+      105	1067	-2	107	-1	317	-1
+      112	NULL	-1	NULL	-1	NULL	4
+      124	1226	1	121	1	369	NULL
+      129	1272	-3	127	4	385	2
+      130	1325	1	131	-4	391	1
+      139	1371	1	138	2	416	1
+      143	1411	1	142	2	428	-4
+      145	NULL	NULL	149	-2	439	NULL
+      151	NULL	NULL	153	1	455	NULL
+      158	NULL	NULL	159	3	475	NULL
+      160	1622	-3	163	-1	483	2
+      167	NULL	NULL	168	1	502	NULL
+      170	1714	1	174	-2	514	-2
+      175	NULL	NULL	179	-1	529	NULL
+      181	1828	1	182	-3	544	3
+      186	1861	2	188	-1	560	-4
+      194	1918	3	191	1	579	-2
+      198	1964	-1	199	3	595	-1
+      206	NULL	1	NULL	-2	NULL	NULL
+      211	2125	2	213	-3	635	2
+      218	2165	-2	216	3	652	-2
+      223	2226	2	220	-1	666	1
+      228	2264	-1	229	3	685	-1
+      232	2323	-2	234	1	698	3
+      236	NULL	NULL	239	NULL	711	1
+      240	NULL	NULL	243	-4	723	NULL
+      249	2476	-1	245	2	743	2

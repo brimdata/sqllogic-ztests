@@ -1,0 +1,33 @@
+script: |
+  super -f tsv -I q987.sql | tr '\t' '\n' | sort > q987.out
+
+inputs:
+  - name: q987.sql
+    data: |
+      SELECT e6 FROM t6
+      WHERE (276=b6 AND d6=911 AND 807=c6 AND e6=847)
+      INTERSECT
+      SELECT a7 FROM t7
+      WHERE NOT ((e7=422)
+      OR (c7=174 AND e7=288 AND b7=764 AND a7=35 AND d7=594))
+      UNION
+      SELECT a3 FROM t3
+      WHERE a3 in (186,644,197,995,296,895,275,379,818,429,727);
+  - name: t2
+  - name: t3
+  - name: t6
+
+outputs:
+  - name: q987.out
+    data: |
+      186
+      197
+      275
+      296
+      379
+      429
+      644
+      727
+      818
+      895
+      995

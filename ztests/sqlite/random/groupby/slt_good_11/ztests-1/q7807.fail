@@ -1,0 +1,11 @@
+script: |
+  super -f tsv -I q7807.sql | sort > q7807.out
+
+inputs:
+  - name: q7807.sql
+    data: |
+      SELECT col1 AS col1 FROM tab1 GROUP BY col1, col0 HAVING ( - - col1 * - col0 ) > + col1;
+
+outputs:
+  - name: q7807.out
+    data: |

@@ -1,0 +1,64 @@
+script: |
+  super -f tsv -I q431.sql | tr '\t' '\n' | sort > q431.out
+
+inputs:
+  - name: q431.sql
+    data: |
+      SELECT e9 FROM t9
+      WHERE (a9=115 OR 811=c9)
+      UNION ALL
+      SELECT a7 FROM t7
+      WHERE (e7=827)
+      OR (b7=495 AND c7=364 AND d7=709)
+      OR e7 in (624,887,92,127,900,79,39,455,156)
+      UNION ALL
+      SELECT d2 FROM t2
+      WHERE (564=e2 OR 337=c2)
+      OR (148=b2 OR e2=433 OR e2=579)
+      UNION ALL
+      SELECT c3 FROM t3
+      WHERE d3 in (428,520,923,982,487,967,503,358,743,149)
+      EXCEPT
+      SELECT b8 FROM t8
+      WHERE NOT ((a8=46)
+      OR (a8=957))
+      UNION ALL
+      SELECT c6 FROM t6
+      WHERE (c6=442);
+  - name: t1
+  - name: t4
+  - name: t5
+  - name: t9
+
+outputs:
+  - name: q431.out
+    data: |
+      137
+      158
+      22
+      233
+      265
+      267
+      27
+      299
+      383
+      40
+      430
+      435
+      442
+      516
+      621
+      641
+      651
+      720
+      792
+      81
+      83
+      832
+      838
+      865
+      887
+      925
+      929
+      945
+      998

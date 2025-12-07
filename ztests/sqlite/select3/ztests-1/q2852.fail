@@ -1,0 +1,39 @@
+script: |
+  super -f tsv -I q2852.sql | sort > q2852.out
+
+inputs:
+  - name: q2852.sql
+    data: |
+      SELECT (a+b+c+d+e)/5,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b)
+      FROM t1
+      WHERE (a>b-2 AND a<b+2)
+      OR (e>c OR e<d)
+      OR (e>a AND e<b);
+
+outputs:
+  - name: q2852.out
+    data: |
+      107	0
+      127	3
+      132	4
+      137	5
+      142	6
+      162	10
+      172	12
+      182	14
+      187	15
+      192	16
+      197	17
+      212	19
+      217	20
+      222	21
+      227	22
+      232	23
+      247	26
+      NULL	0
+      NULL	1
+      NULL	11
+      NULL	13
+      NULL	24
+      NULL	9

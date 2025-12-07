@@ -1,0 +1,47 @@
+script: |
+  super -f tsv -I q985.sql | sort > q985.out
+
+inputs:
+  - name: q985.sql
+    data: |
+      SELECT a+b*2+c*3+d*4,
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      a+b*2+c*3,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d)
+      FROM t1
+      ORDER BY 4,2,3;
+
+outputs:
+  - name: q985.out
+    data: |
+      1067	333	635	0
+      1226	333	738	0
+      1272	333	760	0
+      1325	444	793	0
+      1371	111	827	0
+      1411	111	851	0
+      1622	333	966	0
+      1714	555	1030	0
+      1828	333	1096	0
+      1861	444	1121	0
+      1918	444	1158	0
+      1964	555	1180	0
+      2125	222	1277	0
+      2165	333	1297	0
+      2226	444	1338	0
+      2264	555	1360	0
+      2323	555	1391	0
+      2476	444	1484	0
+      NULL	222	1455	0
+      NULL	222	NULL	0
+      NULL	333	NULL	0
+      NULL	555	1000	0
+      NULL	555	1057	0
+      NULL	555	880	0
+      NULL	555	905	0
+      NULL	555	940	0
+      NULL	555	NULL	0
+      NULL	555	NULL	0
+      NULL	555	NULL	0
+      NULL	555	NULL	0

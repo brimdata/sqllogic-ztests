@@ -1,0 +1,45 @@
+script: |
+  super -f tsv -I q215.sql | sort > q215.out
+
+inputs:
+  - name: q215.sql
+    data: |
+      SELECT (a+b+c+d+e)/5,
+      abs(a),
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      a+b*2+c*3+d*4+e*5
+      FROM t1;
+
+outputs:
+  - name: q215.out
+    data: |
+      107	107	0	1612
+      127	127	0	1902
+      132	131	0	1985
+      137	138	0	2046
+      142	142	0	2131
+      162	163	0	2432
+      172	174	0	2579
+      182	182	0	2728
+      187	188	0	2806
+      192	191	0	2878
+      197	199	0	2949
+      212	213	0	3175
+      217	216	0	3260
+      222	220	0	3331
+      227	229	0	3399
+      232	234	0	3473
+      247	245	0	3706
+      NULL	104	0	NULL
+      NULL	115	0	NULL
+      NULL	121	0	NULL
+      NULL	149	0	NULL
+      NULL	153	0	NULL
+      NULL	159	0	NULL
+      NULL	168	0	NULL
+      NULL	179	0	NULL
+      NULL	201	0	NULL
+      NULL	239	0	NULL
+      NULL	243	0	NULL
+      NULL	NULL	0	NULL
+      NULL	NULL	0	NULL

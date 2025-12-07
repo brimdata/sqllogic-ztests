@@ -1,0 +1,60 @@
+script: |
+  super -f tsv -I q480.sql | tr '\t' '\n' | sort > q480.out
+
+inputs:
+  - name: q480.sql
+    data: |
+      SELECT b7 FROM t7
+      WHERE (744=c7 AND a7=9 AND 522=e7 AND b7=42)
+      OR (249=c7 OR a7=707 OR 896=a7)
+      INTERSECT
+      SELECT b6 FROM t6
+      WHERE NOT ((716=b6)
+      OR e6 in (634,417,617)
+      OR (6=b6))
+      INTERSECT
+      SELECT d4 FROM t4
+      WHERE NOT ((29=a4 AND b4=480 AND c4=971 AND 366=d4)
+      OR e4 in (81,237,312,415,12,188,617)
+      OR b4 in (271,901,721))
+      UNION ALL
+      SELECT a5 FROM t5
+      WHERE (98=e5 OR 152=d5)
+      OR e5 in (104,68,13,764,558,436,894,437,225)
+      OR (e5=727 AND 190=a5 AND 910=d5)
+      UNION
+      SELECT c1 FROM t1
+      WHERE b1 in (850,738,914,435,662,486)
+      UNION ALL
+      SELECT a8 FROM t8
+      WHERE (a8=597 OR e8=495);
+  - name: t3
+  - name: t8
+
+outputs:
+  - name: q480.out
+    data: |
+      148
+      153
+      190
+      200
+      235
+      242
+      267
+      311
+      349
+      421
+      536
+      540
+      556
+      570
+      597
+      602
+      654
+      683
+      685
+      837
+      878
+      882
+      976
+      994

@@ -1,0 +1,44 @@
+script: |
+  super -f tsv -I q993.sql | sort > q993.out
+
+inputs:
+  - name: q993.sql
+    data: |
+      SELECT a-b,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      a
+      FROM t1;
+
+outputs:
+  - name: q993.out
+    data: |
+      -1	5	138
+      -1	6	142
+      -2	20	216
+      -2	3	127
+      -3	16	191
+      -3	2	121
+      -3	21	220
+      -4	26	245
+      1	11	168
+      1	14	182
+      1	17	199
+      1	22	229
+      1	4	131
+      1	9	159
+      2	0	107
+      2	15	188
+      2	19	213
+      2	23	234
+      2	8	153
+      3	10	163
+      3	24	239
+      3	25	243
+      4	12	174
+      4	13	179
+      4	7	149
+      NULL	0	104
+      NULL	0	115
+      NULL	0	201
+      NULL	1	NULL
+      NULL	18	NULL

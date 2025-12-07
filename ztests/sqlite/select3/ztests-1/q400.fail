@@ -1,0 +1,32 @@
+script: |
+  super -f tsv -I q400.sql | sort > q400.out
+
+inputs:
+  - name: q400.sql
+    data: |
+      SELECT a+b*2,
+      d,
+      abs(b-c),
+      abs(a),
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      a-b,
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END
+      FROM t1
+      WHERE (e>a AND e<b)
+      OR (c<=d-2 OR c>=d+2);
+
+outputs:
+  - name: q400.out
+    data: |
+      317	108	1	107	0	2	333
+      385	128	4	127	0	-2	333
+      483	164	1	163	0	3	333
+      560	185	1	188	0	2	444
+      579	190	1	191	0	-3	444
+      635	212	3	213	0	2	222
+      652	217	3	216	0	-2	333
+      666	222	1	220	0	-3	444
+      698	233	1	234	0	2	555
+      743	248	2	245	0	-4	444
+      NULL	116	NULL	115	0	NULL	333

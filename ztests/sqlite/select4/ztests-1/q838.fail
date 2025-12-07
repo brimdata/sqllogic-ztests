@@ -1,0 +1,57 @@
+script: |
+  super -f tsv -I q838.sql | tr '\t' '\n' | sort > q838.out
+
+inputs:
+  - name: q838.sql
+    data: |
+      SELECT d5 FROM t5
+      WHERE (513=a5 OR 537=d5)
+      OR b5 in (531,971,506)
+      UNION
+      SELECT c6 FROM t6
+      WHERE e6 in (230,503,5)
+      UNION
+      SELECT d7 FROM t7
+      WHERE (982=a7 OR 636=b7 OR c7=585)
+      EXCEPT
+      SELECT e9 FROM t9
+      WHERE NOT ((b9=178))
+      EXCEPT
+      SELECT d8 FROM t8
+      WHERE NOT ((422=d8 AND e8=186))
+      UNION ALL
+      SELECT a3 FROM t3
+      WHERE (975=e3 AND 555=c3)
+      OR (b3=407)
+      OR (e3=119 AND d3=428 AND 792=c3)
+      UNION ALL
+      SELECT d1 FROM t1
+      WHERE (376=d1 OR a1=637 OR 371=a1)
+      EXCEPT
+      SELECT d2 FROM t2
+      WHERE NOT (a2 in (769,966,564,223,457,315,901,371,809,10,1,9,442,123)
+      OR a2 in (279,253,471,564,297,874,327,93,775,262)
+      OR b2 in (754,353,674,811))
+      EXCEPT
+      SELECT b4 FROM t4
+      WHERE NOT (a4 in (637,502,82,152,589,139,31,408,450,602,922));
+  - name: t1
+  - name: t7
+
+outputs:
+  - name: q838.out
+    data: |
+      196
+      25
+      275
+      282
+      337
+      341
+      376
+      412
+      514
+      520
+      54
+      782
+      828
+      874

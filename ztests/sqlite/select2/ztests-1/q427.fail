@@ -1,0 +1,47 @@
+script: |
+  super -f tsv -I q427.sql | sort > q427.out
+
+inputs:
+  - name: q427.sql
+    data: |
+      SELECT b-c,
+      c,
+      a-b,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      c-d,
+      abs(a)
+      FROM t1;
+
+outputs:
+  - name: q427.out
+    data: |
+      -1	106	2	0	-2	107
+      -1	113	NULL	0	-1	NULL
+      -1	161	3	0	-3	163
+      -1	176	4	0	NULL	179
+      -1	187	2	0	2	188
+      -1	224	-3	0	2	220
+      -2	147	4	0	NULL	149
+      -2	172	4	0	1	174
+      -2	208	NULL	0	1	NULL
+      -3	184	1	0	1	182
+      -3	214	2	0	2	213
+      -4	134	1	0	1	131
+      -4	244	3	0	NULL	243
+      1	123	-3	0	1	121
+      1	150	2	0	NULL	153
+      1	166	1	0	NULL	168
+      1	193	-3	0	3	191
+      1	231	2	0	-2	234
+      2	137	-1	0	1	138
+      2	141	-1	0	1	142
+      2	247	-4	0	-1	245
+      3	155	1	0	NULL	159
+      3	195	1	0	-1	199
+      3	215	-2	0	-2	216
+      3	225	1	0	-1	229
+      4	125	-2	0	-3	127
+      NULL	102	NULL	0	1	104
+      NULL	119	NULL	0	3	115
+      NULL	202	NULL	0	-1	201
+      NULL	NULL	3	0	NULL	239

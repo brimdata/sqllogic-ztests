@@ -1,0 +1,47 @@
+script: |
+  super -f tsv -I q998.sql | tr '\t' '\n' | sort > q998.out
+
+inputs:
+  - name: q998.sql
+    data: |
+      SELECT c8 FROM t8
+      WHERE (945=d8 AND 56=e8 AND 321=c8 AND 862=b8 AND 312=a8)
+      OR c8 in (998,656,136,93)
+      OR c8 in (298,844,965,111,5,979)
+      INTERSECT
+      SELECT a7 FROM t7
+      WHERE NOT ((d7=684 AND b7=266 AND 688=e7 AND 478=c7 AND a7=325))
+      INTERSECT
+      SELECT d5 FROM t5
+      WHERE NOT ((445=a5 AND e5=386 AND c5=809)
+      OR (855=d5 AND e5=258 AND 250=c5 AND b5=609 AND 685=a5)
+      OR b5 in (847,822,605,506,820,231))
+      EXCEPT
+      SELECT a6 FROM t6
+      WHERE NOT ((c6=749)
+      OR (a6=436))
+      UNION ALL
+      SELECT e9 FROM t9
+      WHERE (d9=763 AND e9=841 AND a9=11 AND c9=587 AND b9=803)
+      OR (878=d9 OR c9=90)
+      EXCEPT
+      SELECT c1 FROM t1
+      WHERE NOT ((815=e1 OR 25=d1 OR e1=255))
+      UNION
+      SELECT c3 FROM t3
+      WHERE (a3=499)
+      EXCEPT
+      SELECT a4 FROM t4
+      WHERE NOT ((e4=372 OR a4=450)
+      OR (a4=513));
+  - name: t3
+  - name: t6
+  - name: t8
+
+outputs:
+  - name: q998.out
+    data: |
+      150
+      211
+      255
+      459

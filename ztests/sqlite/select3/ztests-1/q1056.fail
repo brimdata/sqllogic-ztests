@@ -1,0 +1,44 @@
+script: |
+  super -f tsv -I q1056.sql | sort > q1056.out
+
+inputs:
+  - name: q1056.sql
+    data: |
+      SELECT abs(b-c),
+      CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      abs(a),
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END,
+      d
+      FROM t1
+      WHERE d NOT BETWEEN 110 AND 150
+      OR e+d BETWEEN a+b-10 AND c+130
+      OR c BETWEEN b-2 AND d+2;
+
+outputs:
+  - name: q1056.out
+    data: |
+      1	1050	0	107	333	108
+      1	1120	0	NULL	444	114
+      1	1240	0	121	222	122
+      1	1600	0	163	444	164
+      1	376	0	188	333	185
+      1	382	0	191	222	190
+      1	440	0	220	222	222
+      1	468	0	234	333	233
+      2	1390	0	138	222	136
+      2	1430	0	142	222	140
+      2	1700	0	174	444	171
+      2	490	0	245	111	248
+      2	NULL	0	NULL	444	207
+      3	364	0	182	333	183
+      3	398	0	199	333	196
+      3	426	0	213	333	212
+      3	432	0	216	222	217
+      3	458	0	229	333	226
+      4	1290	0	127	222	128
+      4	1300	0	131	333	133
+      NULL	2360	0	239	444	238
+      NULL	402	0	201	444	203
+      NULL	NULL	0	104	444	101

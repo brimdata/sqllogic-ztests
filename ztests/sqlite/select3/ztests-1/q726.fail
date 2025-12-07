@@ -1,0 +1,43 @@
+script: |
+  super -f tsv -I q726.sql | sort > q726.out
+
+inputs:
+  - name: q726.sql
+    data: |
+      SELECT abs(b-c),
+      b
+      FROM t1
+      WHERE c BETWEEN b-2 AND d+2
+      OR (a>b-2 AND a<b+2)
+      OR EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b);
+
+outputs:
+  - name: q726.out
+    data: |
+      1	105
+      1	112
+      1	124
+      1	151
+      1	160
+      1	167
+      1	175
+      1	186
+      1	194
+      1	223
+      1	232
+      2	139
+      2	143
+      2	145
+      2	170
+      2	206
+      2	249
+      3	158
+      3	181
+      3	198
+      3	211
+      3	218
+      3	228
+      4	129
+      4	130
+      4	240
+      NULL	236

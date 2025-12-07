@@ -1,0 +1,78 @@
+script: |
+  super -f tsv -I q118.sql | tr '\t' '\n' | sort > q118.out
+
+inputs:
+  - name: q118.sql
+    data: |
+      SELECT d6 FROM t6
+      WHERE (449=b6 OR d6=647 OR b6=512)
+      UNION
+      SELECT d9 FROM t9
+      WHERE (26=b9)
+      EXCEPT
+      SELECT b5 FROM t5
+      WHERE NOT ((403=b5 OR b5=665 OR 447=a5)
+      OR (796=a5 OR 807=e5)
+      OR a5 in (476,867,319,357,69,34,235,917,615,301,296,958,522))
+      EXCEPT
+      SELECT b3 FROM t3
+      WHERE NOT (c3 in (375,353,688,86,800))
+      EXCEPT
+      SELECT b8 FROM t8
+      WHERE NOT ((511=d8 OR 665=b8)
+      OR c8 in (183,394,404,998)
+      OR (b8=615))
+      UNION ALL
+      SELECT d7 FROM t7
+      WHERE (c7=906 OR 6=a7 OR c7=589)
+      OR e7 in (587,439,79,508,456)
+      EXCEPT
+      SELECT e4 FROM t4
+      WHERE NOT ((389=b4 AND 901=a4 AND 74=c4)
+      OR (e4=565))
+      UNION ALL
+      SELECT b2 FROM t2
+      WHERE (450=c2 AND a2=954 AND 386=e2)
+      OR (b2=278 OR 844=d2)
+      OR a2 in (327,901,916,10,944,691,505,993,222,336,652)
+      UNION
+      SELECT b1 FROM t1
+      WHERE (d1=412)
+      OR (a1=637 AND 125=e1)
+      OR c1 in (441,208,379,608);
+  - name: t1
+  - name: t9
+
+outputs:
+  - name: q118.out
+    data: |
+      134
+      211
+      226
+      264
+      278
+      303
+      380
+      404
+      414
+      426
+      442
+      48
+      509
+      527
+      543
+      549
+      585
+      602
+      643
+      722
+      726
+      734
+      772
+      857
+      888
+      892
+      902
+      903
+      925
+      93

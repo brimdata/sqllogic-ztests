@@ -1,0 +1,44 @@
+script: |
+  super -f tsv -I q123.sql | sort > q123.out
+
+inputs:
+  - name: q123.sql
+    data: |
+      SELECT a+b*2+c*3+d*4,
+      b,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      d-e
+      FROM t1
+      WHERE (c<=d-2 OR c>=d+2)
+      OR (e>c OR e<d)
+      OR c>d;
+
+outputs:
+  - name: q123.out
+    data: |
+      1067	105	0	-1
+      1226	124	0	NULL
+      1272	129	0	2
+      1325	130	0	1
+      1371	139	0	1
+      1411	143	0	-4
+      1622	160	0	2
+      1714	170	0	-2
+      1828	181	0	3
+      1861	186	0	-4
+      1918	194	0	-2
+      1964	198	0	-1
+      2125	211	0	2
+      2165	218	0	-2
+      2226	223	0	1
+      2264	228	0	-1
+      2323	232	0	3
+      2476	249	0	2
+      NULL	112	0	4
+      NULL	158	0	NULL
+      NULL	175	0	NULL
+      NULL	206	0	NULL
+      NULL	236	0	1
+      NULL	NULL	0	-1
+      NULL	NULL	0	-1
+      NULL	NULL	0	NULL

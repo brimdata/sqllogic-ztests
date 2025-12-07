@@ -1,0 +1,44 @@
+script: |
+  super -f tsv -I q984.sql | tr '\t' '\n' | sort > q984.out
+
+inputs:
+  - name: q984.sql
+    data: |
+      SELECT d2 FROM t2
+      WHERE (e2=535 AND 543=a2)
+      OR (161=c2 OR 548=e2 OR 516=d2)
+      OR (311=b2 AND a2=863 AND c2=810)
+      EXCEPT
+      SELECT e5 FROM t5
+      WHERE NOT ((e5=655)
+      OR b5 in (161,951,605,193,609,234,759,193,526,26,897,784))
+      EXCEPT
+      SELECT c4 FROM t4
+      WHERE NOT ((c4=417 OR 469=a4 OR d4=449))
+      EXCEPT
+      SELECT c6 FROM t6
+      WHERE NOT (c6 in (961,768,399)
+      OR (d6=223)
+      OR (974=b6))
+      EXCEPT
+      SELECT b7 FROM t7
+      WHERE NOT (a7 in (350,952,120,542,894,325,709,865,386,589))
+      EXCEPT
+      SELECT b8 FROM t8
+      WHERE NOT ((953=d8 OR 314=a8))
+      EXCEPT
+      SELECT b9 FROM t9
+      WHERE NOT (d9 in (912,316,601,270,660,439,688,142)
+      OR (a9=11 OR 218=a9 OR 239=b9));
+  - name: t2
+  - name: t3
+  - name: t6
+
+outputs:
+  - name: q984.out
+    data: |
+      367
+      516
+      654
+      743
+      833

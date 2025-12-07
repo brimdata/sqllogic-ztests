@@ -1,0 +1,43 @@
+script: |
+  super -f tsv -I q873.sql | tr '\t' '\n' | sort > q873.out
+
+inputs:
+  - name: q873.sql
+    data: |
+      SELECT e6 FROM t6
+      WHERE (852=d6)
+      OR (e6=353 OR b6=606 OR d6=186)
+      OR (929=d6 AND 129=a6)
+      EXCEPT
+      SELECT a1 FROM t1
+      WHERE NOT ((a1=992 AND 1=b1 AND d1=215 AND 346=c1 AND e1=763)
+      OR (602=d1 OR c1=772)
+      OR (d1=232 OR 589=b1))
+      UNION ALL
+      SELECT d7 FROM t7
+      WHERE (c7=14 AND 717=b7 AND d7=885)
+      OR (12=c7)
+      OR (323=b7)
+      UNION ALL
+      SELECT e5 FROM t5
+      WHERE (c5=734 OR 319=a5)
+      OR (a5=882 OR 897=b5);
+  - name: t4
+  - name: t5
+
+outputs:
+  - name: q873.out
+    data: |
+      134
+      225
+      353
+      40
+      480
+      492
+      588
+      589
+      697
+      702
+      758
+      77
+      885

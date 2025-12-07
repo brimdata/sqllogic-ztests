@@ -1,0 +1,40 @@
+script: |
+  super -f tsv -I q992.sql | sort > q992.out
+
+inputs:
+  - name: q992.sql
+    data: |
+      SELECT CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END
+      FROM t1
+      WHERE EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b);
+
+outputs:
+  - name: q992.out
+    data: |
+      111
+      111
+      222
+      222
+      333
+      333
+      333
+      333
+      333
+      444
+      444
+      444
+      444
+      444
+      555
+      555
+      555
+      555
+      555
+      555
+      555
+      555
+      555
+      555
+      555
+      555

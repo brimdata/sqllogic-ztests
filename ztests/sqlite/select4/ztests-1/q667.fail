@@ -1,0 +1,55 @@
+script: |
+  super -f tsv -I q667.sql | tr '\t' '\n' | sort > q667.out
+
+inputs:
+  - name: q667.sql
+    data: |
+      SELECT c6 FROM t6
+      WHERE (c6=561 AND a6=971 AND b6=710)
+      OR (458=d6 AND 262=b6 AND c6=961 AND a6=33 AND 67=e6)
+      OR (446=c6 OR 692=a6 OR 617=e6)
+      INTERSECT
+      SELECT b1 FROM t1
+      WHERE NOT (d1 in (662,323,874,35,163,726,459,571,161,949,481,770))
+      UNION
+      SELECT e2 FROM t2
+      WHERE (997=e2)
+      OR (837=c2 OR 46=c2 OR a2=304)
+      OR (e2=441 OR c2=810 OR c2=779)
+      EXCEPT
+      SELECT b7 FROM t7
+      WHERE NOT ((936=a7 AND 929=e7 AND b7=827 AND 585=c7)
+      OR (795=a7))
+      UNION ALL
+      SELECT c4 FROM t4
+      WHERE a4 in (473,723,159,502,92,378,509)
+      OR (e4=552 OR 804=a4)
+      OR a4 in (160,447,982,876);
+  - name: t1
+  - name: t2
+
+outputs:
+  - name: q667.out
+    data: |
+      127
+      140
+      162
+      177
+      223
+      238
+      358
+      424
+      428
+      441
+      536
+      581
+      638
+      671
+      703
+      725
+      768
+      873
+      899
+      927
+      961
+      997

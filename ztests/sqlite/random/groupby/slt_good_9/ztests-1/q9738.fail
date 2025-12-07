@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q9738.sql | sort > q9738.out
+
+inputs:
+  - name: q9738.sql
+    data: |
+      SELECT col1, col1 + col1 + - col2 FROM tab0 GROUP BY col1, col2;
+
+outputs:
+  - name: q9738.out
+    data: |
+      0	-38
+      0	-79
+      81	138

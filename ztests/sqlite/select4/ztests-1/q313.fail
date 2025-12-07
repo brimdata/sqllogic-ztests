@@ -1,0 +1,81 @@
+script: |
+  super -f tsv -I q313.sql | tr '\t' '\n' | sort > q313.out
+
+inputs:
+  - name: q313.sql
+    data: |
+      SELECT d6 FROM t6
+      WHERE (e6=738)
+      OR b6 in (449,158,54,583,601,392,662,427,223)
+      OR a6 in (66,35,706,366,85,764,718,414,293)
+      UNION
+      SELECT b9 FROM t9
+      WHERE e9 in (845,542,942,230,657,245,934,251,239,801,737,486)
+      OR (c9=734 AND 245=b9 AND a9=365 AND d9=608)
+      OR (e9=653 OR b9=880 OR a9=535)
+      UNION ALL
+      SELECT d5 FROM t5
+      WHERE (a5=54 OR 360=d5 OR 174=a5)
+      OR (34=a5)
+      OR (e5=436 OR 495=d5 OR c5=989)
+      UNION ALL
+      SELECT d2 FROM t2
+      WHERE (e2=548 OR 153=d2)
+      OR b2 in (857,968,725,755,418,805,181,811,554,546)
+      EXCEPT
+      SELECT d1 FROM t1
+      WHERE NOT (e1 in (732,484,997,497,268,313,402,747,504,87,695,737,816,523))
+      EXCEPT
+      SELECT b7 FROM t7
+      WHERE NOT ((d7=575)
+      OR b7 in (510,970,323,892,120,280,271,306,257,541,506,374,266)
+      OR (d7=777 AND 419=c7 AND 191=b7 AND a7=114 AND e7=344))
+      EXCEPT
+      SELECT d3 FROM t3
+      WHERE NOT (b3 in (788,224,437,28,713,58,677,236,368));
+  - name: t1
+  - name: t2
+
+outputs:
+  - name: q313.out
+    data: |
+      10
+      122
+      147
+      153
+      19
+      245
+      251
+      256
+      262
+      269
+      286
+      309
+      312
+      332
+      36
+      365
+      367
+      446
+      479
+      496
+      513
+      547
+      590
+      664
+      734
+      772
+      783
+      821
+      833
+      838
+      846
+      847
+      848
+      852
+      864
+      869
+      880
+      887
+      912
+      926

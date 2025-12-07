@@ -1,0 +1,47 @@
+script: |
+  super -f tsv -I q827.sql > q827.out
+
+inputs:
+  - name: q827.sql
+    data: |
+      SELECT e,
+      c-d
+      FROM t1
+      WHERE c BETWEEN b-2 AND d+2
+      OR EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      OR a>b
+      ORDER BY 2,1;
+
+outputs:
+  - name: q827.out
+    data: |
+      152	-4
+      126	-3
+      162	-3
+      165	-3
+      237	-3
+      109	-2
+      177	-2
+      219	-2
+      230	-2
+      110	-1
+      146	-1
+      157	-1
+      197	-1
+      204	-1
+      227	-1
+      246	-1
+      103	1
+      120	1
+      132	1
+      135	1
+      144	1
+      173	1
+      180	1
+      209	1
+      189	2
+      210	2
+      221	2
+      117	3
+      192	3
+      242	3

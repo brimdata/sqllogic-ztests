@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q4848.sql | sort > q4848.out
+
+inputs:
+  - name: q4848.sql
+    data: |
+      SELECT ALL COUNT ( * ) AS col1 FROM tab2 WHERE NULL <> ( - col0 / + col2 );
+  - name: tab2
+
+outputs:
+  - name: q4848.out
+    data: |
+      0

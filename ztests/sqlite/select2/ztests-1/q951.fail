@@ -1,0 +1,48 @@
+script: |
+  super -f tsv -I q951.sql | sort > q951.out
+
+inputs:
+  - name: q951.sql
+    data: |
+      SELECT c-d,
+      abs(a),
+      a,
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      b
+      FROM t1
+      WHERE EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      OR b>c
+      OR c>d;
+
+outputs:
+  - name: q951.out
+    data: |
+      -1	199	199	555	198
+      -1	229	229	555	228
+      -1	245	245	444	249
+      -1	NULL	NULL	555	112
+      -2	216	216	333	218
+      -2	234	234	555	232
+      -3	127	127	333	129
+      -3	163	163	333	160
+      1	104	104	555	NULL
+      1	121	121	333	124
+      1	131	131	444	130
+      1	138	138	111	139
+      1	142	142	111	143
+      1	174	174	555	170
+      1	182	182	333	181
+      1	NULL	NULL	555	206
+      2	188	188	444	186
+      2	213	213	222	211
+      2	220	220	444	223
+      3	115	115	333	NULL
+      3	191	191	444	194
+      NULL	149	149	555	145
+      NULL	153	153	555	151
+      NULL	159	159	555	158
+      NULL	168	168	555	167
+      NULL	179	179	555	175
+      NULL	239	239	555	236
+      NULL	243	243	222	240

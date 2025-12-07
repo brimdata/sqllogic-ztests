@@ -1,0 +1,50 @@
+script: |
+  super -f tsv -I q395.sql | sort > q395.out
+
+inputs:
+  - name: q395.sql
+    data: |
+      SELECT b,
+      a+b*2+c*3+d*4,
+      a+b*2,
+      d-e,
+      abs(a),
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      d
+      FROM t1
+      WHERE c>d
+      OR (c<=d-2 OR c>=d+2)
+      OR EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b);
+
+outputs:
+  - name: q395.out
+    data: |
+      105	1067	317	-1	107	0	108
+      112	NULL	NULL	4	NULL	0	114
+      124	1226	369	NULL	121	0	122
+      129	1272	385	2	127	0	128
+      130	1325	391	1	131	0	133
+      139	1371	416	1	138	0	136
+      143	1411	428	-4	142	0	140
+      145	NULL	439	NULL	149	0	NULL
+      151	NULL	455	NULL	153	0	NULL
+      158	NULL	475	NULL	159	0	NULL
+      160	1622	483	2	163	0	164
+      167	NULL	502	NULL	168	0	NULL
+      170	1714	514	-2	174	0	171
+      175	NULL	529	NULL	179	0	NULL
+      181	1828	544	3	182	0	183
+      186	1861	560	-4	188	0	185
+      194	1918	579	-2	191	0	190
+      198	1964	595	-1	199	0	196
+      206	NULL	NULL	NULL	NULL	0	207
+      211	2125	635	2	213	0	212
+      218	2165	652	-2	216	0	217
+      223	2226	666	1	220	0	222
+      228	2264	685	-1	229	0	226
+      232	2323	698	3	234	0	233
+      236	NULL	711	1	239	0	238
+      240	NULL	723	NULL	243	0	NULL
+      249	2476	743	2	245	0	248
+      NULL	NULL	NULL	-1	115	0	116
+      NULL	NULL	NULL	NULL	104	0	101

@@ -1,0 +1,41 @@
+script: |
+  super -f tsv -I q621.sql | sort > q621.out
+
+inputs:
+  - name: q621.sql
+    data: |
+      SELECT a+b*2+c*3+d*4,
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END
+      FROM t1
+      WHERE EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b);
+
+outputs:
+  - name: q621.out
+    data: |
+      1226	222
+      1272	222
+      1325	333
+      1371	222
+      1411	222
+      1622	444
+      1714	444
+      1828	333
+      1861	333
+      1918	222
+      1964	333
+      2125	333
+      2165	222
+      2226	222
+      2264	333
+      2323	333
+      2476	111
+      NULL	333
+      NULL	333
+      NULL	333
+      NULL	444
+      NULL	444
+      NULL	444
+      NULL	444
+      NULL	444
+      NULL	444

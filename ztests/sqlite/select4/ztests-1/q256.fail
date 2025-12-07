@@ -1,0 +1,21 @@
+script: |
+  super -f tsv -I q256.sql | tr '\t' '\n' | sort > q256.out
+
+inputs:
+  - name: q256.sql
+    data: |
+      SELECT b4 FROM t4
+      WHERE d4 in (979,794,929,626,409,770,364,574,593,777,349,736)
+      OR (e4=677 AND 513=a4 AND b4=634 AND c4=319 AND d4=929)
+      OR (889=d4 AND 916=e4)
+      INTERSECT
+      SELECT d1 FROM t1
+      WHERE NOT (a1 in (61,552,76,825,109,276,785,732,579,147,479)
+      OR (c1=4 OR 852=c1 OR d1=105)
+      OR (d1=154));
+  - name: t6
+  - name: t8
+
+outputs:
+  - name: q256.out
+    data: |

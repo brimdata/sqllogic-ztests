@@ -1,0 +1,49 @@
+script: |
+  super -f tsv -I q362.sql | tr '\t' '\n' | sort > q362.out
+
+inputs:
+  - name: q362.sql
+    data: |
+      SELECT a2 FROM t2
+      WHERE (310=d2 OR 360=c2)
+      OR (d2=80 OR 812=b2 OR b2=799)
+      EXCEPT
+      SELECT d4 FROM t4
+      WHERE NOT ((678=b4 OR 565=e4 OR a4=922)
+      OR (e4=296)
+      OR (698=e4 AND d4=31))
+      EXCEPT
+      SELECT e5 FROM t5
+      WHERE NOT ((b5=729 OR 929=e5 OR 219=d5)
+      OR (18=e5))
+      UNION
+      SELECT c8 FROM t8
+      WHERE (347=a8 OR b8=365 OR 310=e8)
+      OR (899=c8 OR 105=b8)
+      UNION ALL
+      SELECT e7 FROM t7
+      WHERE (78=c7)
+      OR (135=c7 OR 243=c7 OR e7=562)
+      OR (e7=7 AND 59=b7 AND c7=12);
+  - name: t2
+  - name: t4
+  - name: t5
+
+outputs:
+  - name: q362.out
+    data: |
+      139
+      230
+      234
+      235
+      27
+      354
+      562
+      656
+      7
+      730
+      74
+      760
+      816
+      899
+      980

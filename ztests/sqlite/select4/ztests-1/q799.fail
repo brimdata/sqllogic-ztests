@@ -1,0 +1,47 @@
+script: |
+  super -f tsv -I q799.sql | tr '\t' '\n' | sort > q799.out
+
+inputs:
+  - name: q799.sql
+    data: |
+      SELECT c3 FROM t3
+      WHERE (e3=871)
+      OR (b3=998 OR d3=665)
+      UNION ALL
+      SELECT b9 FROM t9
+      WHERE d9 in (268,808,646)
+      OR b9 in (936,19,578,122)
+      EXCEPT
+      SELECT c6 FROM t6
+      WHERE NOT ((e6=489 AND 629=b6 AND 84=c6 AND 34=d6)
+      OR c6 in (910,66,718,242,434,11,424,938,768)
+      OR (c6=928 AND 384=a6))
+      UNION ALL
+      SELECT a8 FROM t8
+      WHERE (e8=918 AND 166=c8)
+      OR (c8=260 AND 15=a8)
+      EXCEPT
+      SELECT a5 FROM t5
+      WHERE NOT (e5 in (586,440,655)
+      OR c5 in (3,941,442)
+      OR e5 in (342,696,558,141))
+      EXCEPT
+      SELECT e7 FROM t7
+      WHERE NOT (b7 in (720,323,266,480,276)
+      OR c7 in (934,970,174,691,488,853,596,305)
+      OR (430=a7 OR a7=22 OR 541=b7));
+  - name: t4
+  - name: t8
+
+outputs:
+  - name: q799.out
+    data: |
+      15
+      19
+      29
+      502
+      578
+      711
+      868
+      880
+      936

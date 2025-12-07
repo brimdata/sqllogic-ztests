@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q6366.sql | sort > q6366.out
+
+inputs:
+  - name: q6366.sql
+    data: |
+      SELECT DISTINCT + tab2.col1 AS col1 FROM tab2 WHERE ( NULL ) NOT IN ( tab2.col1 / tab2.col2 ) GROUP BY tab2.col1;
+  - name: tab2
+
+outputs:
+  - name: q6366.out
+    data: |

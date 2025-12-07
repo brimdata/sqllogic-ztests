@@ -1,0 +1,31 @@
+script: |
+  super -f tsv -I q396.sql | sort > q396.out
+
+inputs:
+  - name: q396.sql
+    data: |
+      SELECT b,
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      a+b*2+c*3+d*4,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      a+b*2+c*3,
+      a
+      FROM t1
+      WHERE (e>c OR e<d)
+      AND d>e;
+
+outputs:
+  - name: q396.out
+    data: |
+      112	555	NULL	1	NULL	NULL
+      129	333	1272	3	760	127
+      130	444	1325	4	793	131
+      139	111	1371	5	827	138
+      160	333	1622	10	966	163
+      181	333	1828	14	1096	182
+      211	222	2125	19	1277	213
+      223	444	2226	21	1338	220
+      232	555	2323	23	1391	234
+      236	555	NULL	24	NULL	239
+      249	444	2476	26	1484	245

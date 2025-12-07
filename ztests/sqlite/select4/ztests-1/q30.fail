@@ -1,0 +1,49 @@
+script: |
+  super -f tsv -I q30.sql | tr '\t' '\n' | sort > q30.out
+
+inputs:
+  - name: q30.sql
+    data: |
+      SELECT e8 FROM t8
+      WHERE c8 in (501,74,979,692,907)
+      OR (325=b8 AND 792=e8 AND c8=418)
+      UNION
+      SELECT e5 FROM t5
+      WHERE (a5=242 OR d5=309 OR 362=a5)
+      EXCEPT
+      SELECT a1 FROM t1
+      WHERE NOT (d1 in (294,221,678,717)
+      OR (865=c1 AND 808=b1 AND e1=313 AND a1=754 AND d1=972)
+      OR (187=d1 AND 416=c1 AND 981=a1 AND 440=b1))
+      EXCEPT
+      SELECT e4 FROM t4
+      WHERE NOT ((b4=372 AND e4=212)
+      OR (b4=784 OR b4=86 OR 38=e4))
+      UNION ALL
+      SELECT d2 FROM t2
+      WHERE (282=e2 OR 476=d2)
+      EXCEPT
+      SELECT c7 FROM t7
+      WHERE NOT ((135=c7 AND e7=27 AND d7=996 AND 958=a7));
+  - name: t1
+  - name: t2
+  - name: t3
+  - name: t4
+  - name: t5
+  - name: t6
+  - name: t7
+  - name: t8
+  - name: t9
+
+outputs:
+  - name: q30.out
+    data: |
+      149
+      327
+      392
+      463
+      476
+      68
+      812
+      874
+      980

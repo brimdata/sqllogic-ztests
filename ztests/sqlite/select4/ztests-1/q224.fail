@@ -1,0 +1,40 @@
+script: |
+  super -f tsv -I q224.sql | tr '\t' '\n' | sort > q224.out
+
+inputs:
+  - name: q224.sql
+    data: |
+      SELECT c9 FROM t9
+      WHERE (239=e9 OR c9=767)
+      OR (41=a9 AND b9=262 AND 495=d9)
+      OR (a9=811)
+      INTERSECT
+      SELECT d8 FROM t8
+      WHERE NOT ((952=a8)
+      OR (e8=423 AND 196=c8)
+      OR (a8=869 OR 544=c8))
+      UNION
+      SELECT b6 FROM t6
+      WHERE (550=e6 OR 441=c6 OR 847=e6)
+      UNION
+      SELECT c1 FROM t1
+      WHERE (736=a1 OR 266=b1)
+      UNION
+      SELECT b2 FROM t2
+      WHERE (b2=605)
+      OR (860=d2 OR c2=346);
+  - name: t1
+  - name: t5
+
+outputs:
+  - name: q224.out
+    data: |
+      175
+      276
+      296
+      329
+      490
+      605
+      767
+      787
+      932

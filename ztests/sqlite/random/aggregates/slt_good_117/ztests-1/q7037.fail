@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q7037.sql | sort > q7037.out
+
+inputs:
+  - name: q7037.sql
+    data: |
+      SELECT ALL * FROM tab2 WHERE col1 + 16 NOT IN ( - CAST ( NULL AS INTEGER ) * col1 );
+  - name: tab2
+
+outputs:
+  - name: q7037.out
+    data: |

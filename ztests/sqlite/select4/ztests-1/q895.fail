@@ -1,0 +1,40 @@
+script: |
+  super -f tsv -I q895.sql | tr '\t' '\n' | sort > q895.out
+
+inputs:
+  - name: q895.sql
+    data: |
+      SELECT d5 FROM t5
+      WHERE (335=a5 OR 235=a5 OR d5=555)
+      OR (609=b5)
+      OR (98=b5 AND 621=e5 AND a5=683 AND c5=678 AND d5=965)
+      UNION ALL
+      SELECT a7 FROM t7
+      WHERE (d7=828 AND e7=48 AND a7=982 AND 432=c7 AND b7=510)
+      EXCEPT
+      SELECT c2 FROM t2
+      WHERE NOT (b2 in (311,605,754,148,546)
+      OR (e2=463 OR 857=b2 OR 711=c2)
+      OR (c2=83 OR 676=b2 OR c2=27))
+      EXCEPT
+      SELECT a6 FROM t6
+      WHERE NOT ((b6=906 AND 197=d6 AND e6=274)
+      OR (e6=439 OR b6=606 OR d6=931))
+      EXCEPT
+      SELECT e1 FROM t1
+      WHERE NOT (c1 in (570,871,204,639,465,366,534,530,846,57,246)
+      OR (e1=148 AND a1=179 AND 246=c1)
+      OR (668=a1 AND e1=51 AND d1=412));
+  - name: t3
+  - name: t7
+
+outputs:
+  - name: q895.out
+    data: |
+      343
+      555
+      769
+      855
+      856
+      965
+      982

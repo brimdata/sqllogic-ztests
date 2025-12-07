@@ -1,0 +1,39 @@
+script: |
+  super -f tsv -I q647.sql | tr '\t' '\n' | sort > q647.out
+
+inputs:
+  - name: q647.sql
+    data: |
+      SELECT b4 FROM t4
+      WHERE (653=d4 AND 707=b4 AND 301=c4 AND 737=e4 AND 260=a4)
+      OR a4 in (621,804,505,579,662,723,281,589,261,637)
+      OR (d4=819)
+      UNION
+      SELECT a1 FROM t1
+      WHERE (e1=855)
+      EXCEPT
+      SELECT e5 FROM t5
+      WHERE NOT ((c5=734))
+      UNION
+      SELECT a9 FROM t9
+      WHERE (104=d9);
+  - name: t1
+  - name: t2
+
+outputs:
+  - name: q647.out
+    data: |
+      288
+      349
+      357
+      492
+      538
+      660
+      707
+      748
+      847
+      884
+      892
+      907
+      961
+      979

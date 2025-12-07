@@ -1,0 +1,47 @@
+script: |
+  super -f tsv -I q1717.sql | sort > q1717.out
+
+inputs:
+  - name: q1717.sql
+    data: |
+      SELECT e,
+      abs(a),
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      b-c,
+      CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END,
+      a+b*2+c*3+d*4+e*5
+      FROM t1
+      WHERE (e>c OR e<d)
+      OR b>c
+      OR (e>a AND e<b)
+      ORDER BY 1,4,6,2,3,5;
+
+outputs:
+  - name: q1717.out
+    data: |
+      109	107	0	0	-1	1050	1612
+      110	NULL	1	0	-1	1120	NULL
+      126	127	3	0	4	1290	1902
+      132	131	4	0	-4	1300	1985
+      135	138	5	0	2	1390	2046
+      144	142	6	0	2	1430	2131
+      157	159	9	0	3	1580	NULL
+      162	163	10	0	-1	1600	2432
+      165	168	11	0	1	1670	NULL
+      173	174	12	0	-2	1700	2579
+      177	179	13	0	-1	358	NULL
+      180	182	14	0	-3	364	2728
+      189	188	15	0	-1	376	2806
+      192	191	16	0	1	382	2878
+      197	199	17	0	3	398	2949
+      204	201	0	0	NULL	402	NULL
+      210	213	19	0	-3	426	3175
+      219	216	20	0	3	432	3260
+      221	220	21	0	-1	440	3331
+      227	229	22	0	3	458	3399
+      230	234	23	0	1	468	3473
+      237	239	24	0	NULL	2360	NULL
+      246	245	26	0	2	490	3706
+      NULL	121	2	0	1	1240	NULL
+      NULL	153	8	0	1	1510	NULL

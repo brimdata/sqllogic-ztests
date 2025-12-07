@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q15043.sql | sort > q15043.out
+
+inputs:
+  - name: q15043.sql
+    data: |
+      SELECT + 18 AS col1, COUNT ( * ) * + - NULLIF ( CAST ( NULL AS INTEGER ), - 18 );
+
+outputs:
+  - name: q15043.out
+    data: |
+      18	NULL

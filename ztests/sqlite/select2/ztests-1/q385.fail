@@ -1,0 +1,24 @@
+script: |
+  super -f tsv -I q385.sql | sort > q385.out
+
+inputs:
+  - name: q385.sql
+    data: |
+      SELECT e,
+      d,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      (a+b+c+d+e)/5,
+      a+b*2+c*3+d*4+e*5
+      FROM t1
+      WHERE b>c
+      AND d>e
+      AND EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b);
+
+outputs:
+  - name: q385.out
+    data: |
+      126	128	0	3	127	1902
+      135	136	0	5	137	2046
+      230	233	0	23	232	3473
+      246	248	0	26	247	3706

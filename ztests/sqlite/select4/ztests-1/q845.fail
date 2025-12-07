@@ -1,0 +1,71 @@
+script: |
+  super -f tsv -I q845.sql | tr '\t' '\n' | sort > q845.out
+
+inputs:
+  - name: q845.sql
+    data: |
+      SELECT c8 FROM t8
+      WHERE (d8=682 OR 541=d8 OR c8=692)
+      OR (b8=287 AND 859=e8 AND 332=c8)
+      UNION
+      SELECT b5 FROM t5
+      WHERE (540=a5 AND 104=e5 AND b5=380)
+      UNION ALL
+      SELECT b2 FROM t2
+      WHERE e2 in (512,428,560,815,115,242,788,463,629,483,564)
+      UNION ALL
+      SELECT c3 FROM t3
+      WHERE c3 in (247,692,900,668)
+      OR (c3=826 AND 376=a3)
+      OR (615=d3 OR 178=c3 OR c3=324)
+      UNION ALL
+      SELECT c1 FROM t1
+      WHERE (d1=130)
+      EXCEPT
+      SELECT c6 FROM t6
+      WHERE NOT ((e6=737))
+      EXCEPT
+      SELECT a7 FROM t7
+      WHERE NOT (d7 in (457,787,506)
+      OR (e7=120 OR 291=e7))
+      UNION ALL
+      SELECT b4 FROM t4
+      WHERE (b4=434 OR c4=581)
+      OR d4 in (929,597,247,583,481,223);
+  - name: t4
+  - name: t5
+
+outputs:
+  - name: q845.out
+    data: |
+      139
+      178
+      217
+      226
+      247
+      264
+      286
+      311
+      332
+      38
+      380
+      434
+      469
+      532
+      541
+      60
+      627
+      634
+      635
+      668
+      674
+      692
+      826
+      857
+      88
+      880
+      900
+      925
+      932
+      982
+      985

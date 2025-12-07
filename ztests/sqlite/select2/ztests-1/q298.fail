@@ -1,0 +1,45 @@
+script: |
+  super -f tsv -I q298.sql | sort > q298.out
+
+inputs:
+  - name: q298.sql
+    data: |
+      SELECT (a+b+c+d+e)/5,
+      CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END,
+      a+b*2+c*3,
+      d
+      FROM t1
+      WHERE (e>a AND e<b)
+      OR EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      OR a>b;
+
+outputs:
+  - name: q298.out
+    data: |
+      107	1050	635	108
+      127	1290	760	128
+      132	1300	793	133
+      137	1390	827	136
+      142	1430	851	140
+      162	1600	966	164
+      172	1700	1030	171
+      182	364	1096	183
+      187	376	1121	185
+      192	382	1158	190
+      197	398	1180	196
+      212	426	1277	212
+      217	432	1297	217
+      222	440	1338	222
+      227	458	1360	226
+      232	468	1391	233
+      247	490	1484	248
+      NULL	1120	NULL	114
+      NULL	1240	738	122
+      NULL	1450	880	NULL
+      NULL	1510	905	NULL
+      NULL	1580	940	NULL
+      NULL	1670	1000	NULL
+      NULL	2360	NULL	238
+      NULL	358	1057	NULL
+      NULL	486	1455	NULL
+      NULL	NULL	NULL	207

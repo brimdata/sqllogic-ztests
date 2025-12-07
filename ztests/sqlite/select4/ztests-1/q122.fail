@@ -1,0 +1,51 @@
+script: |
+  super -f tsv -I q122.sql | tr '\t' '\n' | sort > q122.out
+
+inputs:
+  - name: q122.sql
+    data: |
+      SELECT b3 FROM t3
+      WHERE (a3=499 AND 651=e3 AND b3=665)
+      INTERSECT
+      SELECT e6 FROM t6
+      WHERE NOT ((d6=355 OR a6=251)
+      OR b6 in (54,989,915,954,390,267,230,296,511))
+      EXCEPT
+      SELECT d4 FROM t4
+      WHERE NOT ((e4=300)
+      OR d4 in (950,681,498,736,777,522,349,366,409,150,507,511,229,509))
+      EXCEPT
+      SELECT e7 FROM t7
+      WHERE NOT ((787=d7 OR d7=939 OR b7=202)
+      OR d7 in (539,590,212))
+      UNION ALL
+      SELECT a8 FROM t8
+      WHERE c8 in (486,196,111,233,943)
+      UNION ALL
+      SELECT e2 FROM t2
+      WHERE (c2=61)
+      OR (d2=743 OR b2=326)
+      UNION
+      SELECT b5 FROM t5
+      WHERE (549=e5 OR 261=c5 OR 613=c5)
+      OR (a5=514 OR e5=440 OR 551=c5);
+  - name: t2
+  - name: t7
+
+outputs:
+  - name: q122.out
+    data: |
+      231
+      26
+      273
+      366
+      388
+      400
+      428
+      561
+      696
+      736
+      784
+      838
+      855
+      900

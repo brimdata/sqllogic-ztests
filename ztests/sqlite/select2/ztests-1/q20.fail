@@ -1,0 +1,30 @@
+script: |
+  super -f tsv -I q20.sql | sort > q20.out
+
+inputs:
+  - name: q20.sql
+    data: |
+      SELECT e,
+      a,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d)
+      FROM t1
+      WHERE EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      AND d NOT BETWEEN 110 AND 150;
+
+outputs:
+  - name: q20.out
+    data: |
+      162	163	0
+      173	174	0
+      180	182	0
+      189	188	0
+      192	191	0
+      197	199	0
+      210	213	0
+      219	216	0
+      221	220	0
+      227	229	0
+      230	234	0
+      237	239	0
+      246	245	0
+      NULL	NULL	0

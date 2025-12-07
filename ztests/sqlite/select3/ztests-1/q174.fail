@@ -1,0 +1,21 @@
+script: |
+  super -f tsv -I q174.sql | sort > q174.out
+
+inputs:
+  - name: q174.sql
+    data: |
+      SELECT c-d,
+      d-e,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END,
+      abs(b-c),
+      abs(a)
+      FROM t1
+      WHERE (c<=d-2 OR c>=d+2)
+      AND e+d BETWEEN a+b-10 AND c+130;
+
+outputs:
+  - name: q174.out
+    data: |
+      -2	-1	0	1050	1	107
+      -3	2	3	1290	4	127

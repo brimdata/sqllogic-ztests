@@ -1,0 +1,50 @@
+script: |
+  super -f tsv -I q1000.sql | tr '\t' '\n' | sort > q1000.out
+
+inputs:
+  - name: q1000.sql
+    data: |
+      SELECT d6 FROM t6
+      WHERE e6 in (750,1,466,654,225,74,969,798,395)
+      OR e6 in (257,588,329)
+      OR (604=a6)
+      UNION ALL
+      SELECT c9 FROM t9
+      WHERE (b9=361 AND a9=14 AND e9=934 AND c9=526)
+      UNION ALL
+      SELECT d1 FROM t1
+      WHERE (c1=870 AND b1=711)
+      OR b1 in (91,696,280,75,362,652,266,233,26,807,808)
+      EXCEPT
+      SELECT e2 FROM t2
+      WHERE NOT (e2 in (512,925,524,673,654,963));
+  - name: t3
+  - name: t6
+  - name: t8
+
+outputs:
+  - name: q1000.out
+    data: |
+      0
+      141
+      185
+      186
+      196
+      35
+      376
+      405
+      424
+      47
+      493
+      526
+      55
+      590
+      712
+      717
+      750
+      767
+      803
+      96
+      970
+      972
+      993

@@ -1,0 +1,52 @@
+script: |
+  super -f tsv -I q754.sql | tr '\t' '\n' | sort > q754.out
+
+inputs:
+  - name: q754.sql
+    data: |
+      SELECT e4 FROM t4
+      WHERE (a4=337 AND c4=220 AND 658=d4 AND 837=e4 AND 917=b4)
+      OR (442=b4)
+      UNION ALL
+      SELECT e9 FROM t9
+      WHERE (a9=413 AND 450=d9)
+      OR d9 in (744,646,554,347,818,909,821,662,808,602)
+      OR a9 in (549,905,747,959,815,28,263,18,610,972)
+      EXCEPT
+      SELECT c6 FROM t6
+      WHERE NOT ((175=e6)
+      OR (c6=35))
+      EXCEPT
+      SELECT b2 FROM t2
+      WHERE NOT (e2 in (147,411,777,223,955,953,629,213,73,706,386,554))
+      EXCEPT
+      SELECT c7 FROM t7
+      WHERE NOT ((a7=430 OR d7=192 OR 11=a7)
+      OR (167=a7 AND e7=168 AND 436=d7)
+      OR c7 in (232,557,341,954,635,432,103,375))
+      EXCEPT
+      SELECT b5 FROM t5
+      WHERE NOT ((a5=297)
+      OR (976=a5));
+  - name: t3
+  - name: t5
+  - name: t9
+
+outputs:
+  - name: q754.out
+    data: |
+      19
+      195
+      251
+      263
+      291
+      426
+      465
+      61
+      647
+      788
+      837
+      844
+      845
+      868
+      873

@@ -1,0 +1,46 @@
+script: |
+  super -f tsv -I q737.sql | tr '\t' '\n' | sort > q737.out
+
+inputs:
+  - name: q737.sql
+    data: |
+      SELECT d4 FROM t4
+      WHERE c4 in (752,703,854,667,513,221,238,188)
+      OR b4 in (480,635,408,319,892,660,765,76)
+      OR (366=d4 OR b4=961 OR 723=a4)
+      UNION
+      SELECT e3 FROM t3
+      WHERE (832=b3 OR b3=73)
+      OR (494=c3)
+      OR (a3=971 OR a3=282)
+      EXCEPT
+      SELECT c9 FROM t9
+      WHERE NOT ((d9=922 OR 142=b9));
+  - name: t2
+  - name: t5
+  - name: t9
+
+outputs:
+  - name: q737.out
+    data: |
+      105
+      119
+      155
+      236
+      265
+      268
+      366
+      373
+      376
+      409
+      449
+      482
+      498
+      549
+      568
+      586
+      605
+      794
+      821
+      917
+      983

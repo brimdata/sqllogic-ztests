@@ -1,0 +1,93 @@
+script: |
+  super -f tsv -I q748.sql | tr '\t' '\n' | sort > q748.out
+
+inputs:
+  - name: q748.sql
+    data: |
+      SELECT c6 FROM t6
+      WHERE (84=c6)
+      OR (a6=148 AND c6=399 AND 24=e6 AND d6=321 AND 650=b6)
+      INTERSECT
+      SELECT a2 FROM t2
+      WHERE NOT ((c2=161 OR e2=16 OR c2=136)
+      OR (a2=159))
+      UNION
+      SELECT a4 FROM t4
+      WHERE (221=c4 OR 777=d4)
+      OR (243=b4 OR 407=b4)
+      OR e4 in (312,71,482,185,103,349,1,123,188,677)
+      EXCEPT
+      SELECT a7 FROM t7
+      WHERE NOT (c7 in (103,548,38,857)
+      OR (832=b7)
+      OR b7 in (305,867,808,220,726,636,234,612,396,271))
+      UNION
+      SELECT b9 FROM t9
+      WHERE e9 in (82,383,197,15,127,653,837,291)
+      OR (457=c9 AND a9=273)
+      UNION ALL
+      SELECT d8 FROM t8
+      WHERE d8 in (116,945,637,636,894,916,484,14,525,715,141,541)
+      UNION ALL
+      SELECT a3 FROM t3
+      WHERE (e3=494 OR 665=b3 OR e3=4)
+      OR c3 in (991,885,477,777,555,81,929,326,375,580,133)
+      OR (80=c3 OR 971=a3 OR b3=577)
+      EXCEPT
+      SELECT b5 FROM t5
+      WHERE NOT ((e5=894 AND d5=480 AND c5=187));
+  - name: t3
+  - name: t5
+  - name: t9
+
+outputs:
+  - name: q748.out
+    data: |
+      116
+      118
+      136
+      139
+      14
+      141
+      170
+      181
+      184
+      210
+      214
+      218
+      243
+      255
+      275
+      341
+      364
+      367
+      396
+      490
+      500
+      509
+      513
+      525
+      540
+      541
+      549
+      576
+      580
+      636
+      637
+      66
+      667
+      710
+      715
+      75
+      751
+      783
+      804
+      81
+      825
+      829
+      879
+      891
+      894
+      916
+      945
+      981

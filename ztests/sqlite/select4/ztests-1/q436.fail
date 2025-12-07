@@ -1,0 +1,81 @@
+script: |
+  super -f tsv -I q436.sql | tr '\t' '\n' | sort > q436.out
+
+inputs:
+  - name: q436.sql
+    data: |
+      SELECT b3 FROM t3
+      WHERE a3 in (964,560,784,559,788)
+      OR e3 in (211,272,375,138,913,989,232,586,136,765,959,83,876)
+      OR c3 in (887,692,669,885,360,467,592,947,651,542)
+      UNION ALL
+      SELECT a1 FROM t1
+      WHERE (629=a1 AND c1=253 AND 695=e1 AND b1=584 AND 504=d1)
+      OR c1 in (309,346,902)
+      UNION ALL
+      SELECT a7 FROM t7
+      WHERE (651=a7 OR 572=d7 OR b7=938)
+      EXCEPT
+      SELECT b4 FROM t4
+      WHERE NOT ((d4=988)
+      OR (535=b4 AND 439=a4 AND d4=979 AND c4=451))
+      UNION
+      SELECT d9 FROM t9
+      WHERE (a9=365 AND e9=567 AND b9=245)
+      OR b9 in (426,926,178,524)
+      OR (621=e9)
+      UNION ALL
+      SELECT d5 FROM t5
+      WHERE (e5=561 AND c5=261 AND a5=853)
+      OR e5 in (470,887,511,184,470,180);
+  - name: t2
+  - name: t4
+
+outputs:
+  - name: q436.out
+    data: |
+      127
+      130
+      17
+      171
+      211
+      214
+      246
+      270
+      273
+      313
+      318
+      32
+      334
+      361
+      369
+      392
+      439
+      445
+      479
+      534
+      542
+      55
+      57
+      584
+      592
+      608
+      629
+      649
+      651
+      665
+      682
+      70
+      701
+      716
+      73
+      744
+      779
+      788
+      810
+      811
+      820
+      876
+      98
+      983
+      992

@@ -1,0 +1,45 @@
+script: |
+  super -f tsv -I q2224.sql | sort > q2224.out
+
+inputs:
+  - name: q2224.sql
+    data: |
+      SELECT (a+b+c+d+e)/5,
+      abs(a),
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      a,
+      c-d,
+      a+b*2
+      FROM t1
+      WHERE EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      OR d>e;
+
+outputs:
+  - name: q2224.out
+    data: |
+      127	127	0	127	-3	385
+      132	131	0	131	1	391
+      137	138	0	138	1	416
+      142	142	0	142	1	428
+      162	163	0	163	-3	483
+      172	174	0	174	1	514
+      182	182	0	182	1	544
+      187	188	0	188	2	560
+      192	191	0	191	3	579
+      197	199	0	199	-1	595
+      212	213	0	213	2	635
+      217	216	0	216	-2	652
+      222	220	0	220	2	666
+      227	229	0	229	-1	685
+      232	234	0	234	-2	698
+      247	245	0	245	-1	743
+      NULL	121	0	121	1	369
+      NULL	149	0	149	NULL	439
+      NULL	153	0	153	NULL	455
+      NULL	159	0	159	NULL	475
+      NULL	168	0	168	NULL	502
+      NULL	179	0	179	NULL	529
+      NULL	239	0	239	NULL	711
+      NULL	243	0	243	NULL	723
+      NULL	NULL	0	NULL	-1	NULL
+      NULL	NULL	0	NULL	1	NULL

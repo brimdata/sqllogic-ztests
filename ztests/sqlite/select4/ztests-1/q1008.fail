@@ -1,0 +1,65 @@
+script: |
+  super -f tsv -I q1008.sql | tr '\t' '\n' | sort > q1008.out
+
+inputs:
+  - name: q1008.sql
+    data: |
+      SELECT e6 FROM t6
+      WHERE (e6=673 OR 211=a6)
+      EXCEPT
+      SELECT d2 FROM t2
+      WHERE NOT ((898=a2)
+      OR (e2=441 AND b2=170 AND 555=d2 AND c2=160)
+      OR c2 in (141,966,981,346,746,729,625))
+      EXCEPT
+      SELECT b5 FROM t5
+      WHERE NOT ((b5=84 OR 391=b5)
+      OR (b5=874 AND a5=235 AND 764=e5))
+      EXCEPT
+      SELECT d4 FROM t4
+      WHERE NOT ((b4=286 OR 286=b4 OR 389=b4))
+      UNION
+      SELECT b1 FROM t1
+      WHERE (b1=853 OR 766=b1)
+      UNION
+      SELECT a7 FROM t7
+      WHERE a7 in (240,452,806,31,925,165,386,691,114,876,665,97)
+      OR a7 in (651,350,593,386,982,27,97,500,233,795)
+      UNION ALL
+      SELECT c3 FROM t3
+      WHERE (c3=472 AND 886=d3)
+      EXCEPT
+      SELECT e8 FROM t8
+      WHERE NOT ((761=d8)
+      OR (640=b8 AND d8=682 AND 942=e8 AND 541=c8)
+      OR e8 in (463,859,476,646,221));
+  - name: t3
+  - name: t6
+  - name: t8
+
+outputs:
+  - name: q1008.out
+    data: |
+      114
+      165
+      240
+      27
+      31
+      350
+      386
+      452
+      472
+      500
+      593
+      651
+      665
+      67
+      673
+      691
+      766
+      795
+      853
+      876
+      925
+      97
+      982

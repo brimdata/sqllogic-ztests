@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q3840.sql | sort > q3840.out
+
+inputs:
+  - name: q3840.sql
+    data: |
+      SELECT col1 FROM tab1 WHERE NOT NULL IN ( 15 * col1 + - col2 );
+  - name: tab1
+
+outputs:
+  - name: q3840.out
+    data: |

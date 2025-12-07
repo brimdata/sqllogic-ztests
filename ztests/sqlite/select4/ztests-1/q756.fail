@@ -1,0 +1,30 @@
+script: |
+  super -f tsv -I q756.sql | tr '\t' '\n' | sort > q756.out
+
+inputs:
+  - name: q756.sql
+    data: |
+      SELECT c9 FROM t9
+      WHERE b9 in (74,578,759,285,211,210,751,855,893,77,525)
+      EXCEPT
+      SELECT a6 FROM t6
+      WHERE NOT (c6 in (963,65,910,287,430)
+      OR b6 in (276,629,54,549,541,262,974,962,875,774,601,232,0));
+  - name: t3
+  - name: t5
+  - name: t9
+
+outputs:
+  - name: q756.out
+    data: |
+      171
+      257
+      351
+      370
+      391
+      402
+      639
+      739
+      793
+      807
+      884

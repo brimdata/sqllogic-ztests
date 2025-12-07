@@ -1,0 +1,46 @@
+script: |
+  super -f tsv -I q194.sql | sort > q194.out
+
+inputs:
+  - name: q194.sql
+    data: |
+      SELECT abs(b-c),
+      e,
+      b,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END,
+      a+b*2+c*3+d*4
+      FROM t1
+      WHERE a>b
+      OR e+d BETWEEN a+b-10 AND c+130
+      OR d NOT BETWEEN 110 AND 150;
+
+outputs:
+  - name: q194.out
+    data: |
+      1	109	105	0	333	1067
+      1	162	160	10	444	1622
+      1	165	167	11	333	NULL
+      1	177	175	13	444	NULL
+      1	189	186	15	333	1861
+      1	192	194	16	222	1918
+      1	221	223	21	222	2226
+      1	230	232	23	333	2323
+      1	NULL	151	8	333	NULL
+      2	146	145	7	444	NULL
+      2	173	170	12	444	1714
+      2	246	249	26	111	2476
+      2	NULL	206	18	444	NULL
+      3	157	158	9	333	NULL
+      3	180	181	14	333	1828
+      3	197	198	17	333	1964
+      3	210	211	19	333	2125
+      3	219	218	20	222	2165
+      3	227	228	22	333	2264
+      4	126	129	3	222	1272
+      4	132	130	4	333	1325
+      4	NULL	240	25	444	NULL
+      NULL	204	NULL	0	444	NULL
+      NULL	237	236	24	444	NULL
+      NULL	NULL	NULL	0	444	NULL

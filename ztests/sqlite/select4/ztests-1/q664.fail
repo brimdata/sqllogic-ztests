@@ -1,0 +1,61 @@
+script: |
+  super -f tsv -I q664.sql | tr '\t' '\n' | sort > q664.out
+
+inputs:
+  - name: q664.sql
+    data: |
+      SELECT c2 FROM t2
+      WHERE d2 in (152,351,195,643,19,23,669,209,663)
+      INTERSECT
+      SELECT e7 FROM t7
+      WHERE NOT (d7 in (886,500,549,549,391,506)
+      OR e7 in (624,290,7,499,436,302,663,79,918,319,506)
+      OR e7 in (827,851,197,782,816,439,201,460,31,561))
+      UNION ALL
+      SELECT a3 FROM t3
+      WHERE d3 in (314,217,981,826,719,782,582,283,711)
+      UNION
+      SELECT b4 FROM t4
+      WHERE (c4=208)
+      EXCEPT
+      SELECT b1 FROM t1
+      WHERE NOT (c1 in (343,683,4,876,177)
+      OR b1 in (584,253,307,75,594))
+      EXCEPT
+      SELECT a9 FROM t9
+      WHERE NOT ((b9=880 AND c9=253 AND e9=647)
+      OR a9 in (72,160,712,297,172,683,764,905,458))
+      EXCEPT
+      SELECT c5 FROM t5
+      WHERE NOT ((c5=147 AND 599=a5 AND 661=b5)
+      OR (321=d5)
+      OR c5 in (185,941,756,818,809))
+      UNION ALL
+      SELECT e6 FROM t6
+      WHERE e6 in (585,523,283,816,850,737,31,883)
+      OR (d6=734)
+      EXCEPT
+      SELECT a8 FROM t8
+      WHERE NOT ((e8=833));
+  - name: t1
+  - name: t2
+
+outputs:
+  - name: q664.out
+    data: |
+      143
+      244
+      283
+      31
+      40
+      523
+      554
+      566
+      585
+      688
+      727
+      737
+      743
+      816
+      850
+      979

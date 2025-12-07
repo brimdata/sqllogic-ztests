@@ -1,0 +1,53 @@
+script: |
+  super -f tsv -I q164.sql | tr '\t' '\n' | sort > q164.out
+
+inputs:
+  - name: q164.sql
+    data: |
+      SELECT b9 FROM t9
+      WHERE (e9=621)
+      INTERSECT
+      SELECT c7 FROM t7
+      WHERE NOT ((948=c7 OR c7=548 OR b7=813))
+      UNION
+      SELECT a5 FROM t5
+      WHERE (642=a5 OR 594=e5)
+      EXCEPT
+      SELECT d8 FROM t8
+      WHERE NOT ((466=b8)
+      OR d8 in (463,683,482)
+      OR (642=b8 OR 715=d8))
+      EXCEPT
+      SELECT e4 FROM t4
+      WHERE NOT ((e4=415 OR e4=312 OR 469=a4)
+      OR (968=a4)
+      OR b4 in (288,816,982,941,76,917,606,847,849,276,982,826))
+      UNION
+      SELECT a3 FROM t3
+      WHERE (a3=368)
+      OR (690=e3 OR d3=102)
+      OR (823=e3 AND 662=d3 AND a3=788 AND 243=c3 AND 334=b3)
+      UNION
+      SELECT b2 FROM t2
+      WHERE (a2=775 AND d2=750 AND b2=545 AND c2=46)
+      UNION
+      SELECT d1 FROM t1
+      WHERE (e1=558)
+      OR (440=b1 AND c1=955 AND e1=87 AND a1=222 AND d1=602);
+  - name: t1
+  - name: t5
+
+outputs:
+  - name: q164.out
+    data: |
+      197
+      341
+      368
+      381
+      457
+      545
+      566
+      602
+      642
+      788
+      799

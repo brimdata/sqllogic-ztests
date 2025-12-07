@@ -1,0 +1,19 @@
+script: |
+  super -f tsv -I q286.sql > q286.out
+
+inputs:
+  - name: q286.sql
+    data: |
+      SELECT a,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b)
+      FROM t1
+      WHERE (e>a AND e<b)
+      ORDER BY 2,1;
+
+outputs:
+  - name: q286.out
+    data: |
+      115	3
+      191	18
+      220	24
+      245	29

@@ -1,0 +1,43 @@
+script: |
+  super -f tsv -I q577.sql | tr '\t' '\n' | sort > q577.out
+
+inputs:
+  - name: q577.sql
+    data: |
+      SELECT c3 FROM t3
+      WHERE d3 in (797,729,782,624,231)
+      OR (d3=336 AND 784=a3 AND e3=814 AND c3=966 AND 246=b3)
+      EXCEPT
+      SELECT c6 FROM t6
+      WHERE NOT ((c6=490 AND 799=a6)
+      OR (b6=300 AND a6=692 AND d6=561)
+      OR (e6=175 OR 321=d6 OR d6=931))
+      EXCEPT
+      SELECT d4 FROM t4
+      WHERE NOT ((35=e4 OR c4=177)
+      OR c4 in (293,993,220,221,484,301,201,690,508,904,586,6)
+      OR d4 in (105,985,18,306,819,277,364))
+      EXCEPT
+      SELECT b2 FROM t2
+      WHERE NOT (a2 in (457,35,222,594)
+      OR e2 in (671,556,118,213,679,428,564,434,721,753,131,547,242,654)
+      OR (796=b2))
+      EXCEPT
+      SELECT d8 FROM t8
+      WHERE NOT ((a8=314 AND 175=e8 AND c8=720))
+      UNION ALL
+      SELECT a5 FROM t5
+      WHERE (c5=689 OR 55=a5);
+  - name: t4
+  - name: t8
+
+outputs:
+  - name: q577.out
+    data: |
+      270
+      467
+      55
+      555
+      669
+      697
+      7

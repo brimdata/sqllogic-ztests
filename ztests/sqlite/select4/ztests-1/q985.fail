@@ -1,0 +1,52 @@
+script: |
+  super -f tsv -I q985.sql | tr '\t' '\n' | sort > q985.out
+
+inputs:
+  - name: q985.sql
+    data: |
+      SELECT c8 FROM t8
+      WHERE (c8=979 AND 124=d8)
+      INTERSECT
+      SELECT b7 FROM t7
+      WHERE NOT ((827=e7)
+      OR d7 in (547,442,492,292,709,956,436,777,507,712,795,925,192,549))
+      INTERSECT
+      SELECT c9 FROM t9
+      WHERE NOT ((240=a9 AND 149=b9 AND d9=987 AND e9=713 AND 476=c9)
+      OR c9 in (739,894,834,64,278,60,711))
+      INTERSECT
+      SELECT b1 FROM t1
+      WHERE NOT ((902=d1 OR 571=d1))
+      UNION ALL
+      SELECT a5 FROM t5
+      WHERE (695=b5 OR c5=797)
+      OR (d5=963)
+      OR (276=d5)
+      UNION
+      SELECT b4 FROM t4
+      WHERE (e4=792 OR d4=821 OR 6=e4)
+      EXCEPT
+      SELECT c2 FROM t2
+      WHERE NOT ((549=b2 OR 242=e2)
+      OR (a2=283 OR e2=548))
+      EXCEPT
+      SELECT c3 FROM t3
+      WHERE NOT (e3 in (365,823,449,83,526,876,837)
+      OR (224=b3 OR c3=549))
+      EXCEPT
+      SELECT b6 FROM t6
+      WHERE NOT ((463=d6 AND a6=971)
+      OR b6 in (967,6,232,276,202,993,350,601,511,0,214,583,876,716));
+  - name: t2
+  - name: t3
+  - name: t6
+
+outputs:
+  - name: q985.out
+    data: |
+      319
+      522
+      667
+      675
+      721
+      765

@@ -1,0 +1,19 @@
+script: |
+  super -f tsv -I q2526.sql | sort > q2526.out
+
+inputs:
+  - name: q2526.sql
+    data: |
+      SELECT d,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      c
+      FROM t1
+      WHERE EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      AND (e>c OR e<d)
+      AND (e>a AND e<b);
+
+outputs:
+  - name: q2526.out
+    data: |
+      222	0	224
+      248	0	247

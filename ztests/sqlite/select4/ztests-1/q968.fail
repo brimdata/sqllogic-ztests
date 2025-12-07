@@ -1,0 +1,73 @@
+script: |
+  super -f tsv -I q968.sql | tr '\t' '\n' | sort > q968.out
+
+inputs:
+  - name: q968.sql
+    data: |
+      SELECT e9 FROM t9
+      WHERE e9 in (942,418,445,267,291,799,35,388)
+      UNION
+      SELECT e4 FROM t4
+      WHERE (44=d4)
+      UNION
+      SELECT c1 FROM t1
+      WHERE (c1=765 OR a1=222)
+      EXCEPT
+      SELECT d6 FROM t6
+      WHERE NOT (e6 in (747,466,6,668,67))
+      UNION
+      SELECT a5 FROM t5
+      WHERE a5 in (242,586,851,626,536,270,826,267)
+      OR (306=b5 AND c5=672 AND a5=153 AND d5=858 AND 25=e5)
+      EXCEPT
+      SELECT e8 FROM t8
+      WHERE NOT (c8 in (461,979,93,250,196,275,149,965,762,88,231,692)
+      OR b8 in (211,862,609,878,803,369))
+      UNION
+      SELECT a2 FROM t2
+      WHERE a2 in (543,785,874,751,283,159,809)
+      OR (c2=360 OR d2=448 OR 898=a2)
+      OR d2 in (19,79,790,750,260,790,235,873)
+      EXCEPT
+      SELECT e3 FROM t3
+      WHERE NOT ((d3=729)
+      OR c3 in (299,7,360,265,860,459,645,845,84,885)
+      OR c3 in (455,966,887,954,40,339,792,656,53,175,669,494,863))
+      UNION ALL
+      SELECT e7 FROM t7
+      WHERE (e7=4);
+  - name: t2
+  - name: t8
+
+outputs:
+  - name: q968.out
+    data: |
+      153
+      159
+      222
+      267
+      270
+      283
+      291
+      312
+      324
+      327
+      388
+      4
+      418
+      445
+      543
+      626
+      669
+      709
+      735
+      751
+      760
+      775
+      785
+      799
+      809
+      826
+      851
+      874
+      898

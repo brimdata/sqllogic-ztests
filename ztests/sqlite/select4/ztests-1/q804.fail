@@ -1,0 +1,77 @@
+script: |
+  super -f tsv -I q804.sql | tr '\t' '\n' | sort > q804.out
+
+inputs:
+  - name: q804.sql
+    data: |
+      SELECT d4 FROM t4
+      WHERE d4 in (44,929,889,25,728,617,246,376)
+      UNION
+      SELECT b3 FROM t3
+      WHERE (d3=889 OR 304=e3 OR 275=e3)
+      OR e3 in (765,459,271,221,814,303,848)
+      OR b3 in (405,236,549,686,70,368,761,27,665,701)
+      EXCEPT
+      SELECT e8 FROM t8
+      WHERE NOT ((a8=638 OR e8=488 OR a8=913))
+      EXCEPT
+      SELECT d1 FROM t1
+      WHERE NOT (d1 in (416,691,571,661,818,414,254,990,798,947,655))
+      EXCEPT
+      SELECT c2 FROM t2
+      WHERE NOT (b2 in (796,278,554,139,820,799,864,527,279,545,649,145,275,414))
+      EXCEPT
+      SELECT b7 FROM t7
+      WHERE NOT ((344=c7 AND 430=a7 AND e7=456 AND d7=892)
+      OR (518=c7 AND 205=d7 AND a7=85 AND 67=b7)
+      OR c7 in (103,887,931))
+      EXCEPT
+      SELECT e9 FROM t9
+      WHERE NOT (d9 in (549,678,383,235,316,86,628,51,161,388,608,878,164)
+      OR (c9=347 OR 152=b9))
+      UNION
+      SELECT a6 FROM t6
+      WHERE (522=a6)
+      OR (975=c6)
+      OR a6 in (392,572,182,971,116)
+      UNION ALL
+      SELECT d5 FROM t5
+      WHERE a5 in (89,958,69,267,826,81,683,174,330,332)
+      OR (d5=269);
+  - name: t4
+  - name: t8
+
+outputs:
+  - name: q804.out
+    data: |
+      116
+      117
+      182
+      211
+      236
+      246
+      255
+      269
+      368
+      369
+      386
+      392
+      405
+      413
+      419
+      479
+      492
+      522
+      534
+      555
+      566
+      572
+      665
+      686
+      70
+      806
+      889
+      919
+      929
+      965
+      971

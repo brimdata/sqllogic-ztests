@@ -1,0 +1,42 @@
+script: |
+  super -f tsv -I q2884.sql | sort > q2884.out
+
+inputs:
+  - name: q2884.sql
+    data: |
+      SELECT (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      c,
+      b
+      FROM t1
+      WHERE d>e
+      OR EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b);
+
+outputs:
+  - name: q2884.out
+    data: |
+      0	113	112
+      0	123	124
+      0	125	129
+      0	134	130
+      0	137	139
+      0	141	143
+      0	147	145
+      0	150	151
+      0	155	158
+      0	161	160
+      0	166	167
+      0	172	170
+      0	176	175
+      0	184	181
+      0	187	186
+      0	193	194
+      0	195	198
+      0	208	206
+      0	214	211
+      0	215	218
+      0	224	223
+      0	225	228
+      0	231	232
+      0	244	240
+      0	247	249
+      0	NULL	236

@@ -1,0 +1,41 @@
+script: |
+  super -f tsv -I q1269.sql | sort > q1269.out
+
+inputs:
+  - name: q1269.sql
+    data: |
+      SELECT (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      d-e,
+      (a+b+c+d+e)/5,
+      c-d,
+      a+b*2+c*3,
+      CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END,
+      c
+      FROM t1
+      WHERE (e>c OR e<d)
+      ORDER BY 4,5,6;
+
+outputs:
+  - name: q1269.out
+    data: |
+      0	-1	107	-2	635	1050	106
+      0	-1	197	-1	1180	398	195
+      0	-1	227	-1	1360	458	225
+      0	-1	NULL	-1	NULL	402	202
+      0	-2	172	1	1030	1700	172
+      0	-2	217	-2	1297	432	215
+      0	-4	142	1	851	1430	141
+      0	-4	187	2	1121	376	187
+      0	1	132	1	793	1300	134
+      0	1	137	1	827	1390	137
+      0	1	222	2	1338	440	224
+      0	1	NULL	NULL	NULL	2360	NULL
+      0	2	127	-3	760	1290	125
+      0	2	162	-3	966	1600	161
+      0	2	212	2	1277	426	214
+      0	2	247	-1	1484	490	247
+      0	3	182	1	1096	364	184
+      0	3	232	-2	1391	468	231
+      0	4	NULL	-1	NULL	1120	113
+      0	NULL	NULL	NULL	1057	358	176
+      0	NULL	NULL	NULL	940	1580	155

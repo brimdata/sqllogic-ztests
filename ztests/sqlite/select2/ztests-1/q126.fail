@@ -1,0 +1,30 @@
+script: |
+  super -f tsv -I q126.sql | sort > q126.out
+
+inputs:
+  - name: q126.sql
+    data: |
+      SELECT d,
+      b-c,
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      a+b*2+c*3+d*4,
+      c,
+      a
+      FROM t1
+      WHERE (c<=d-2 OR c>=d+2);
+
+outputs:
+  - name: q126.out
+    data: |
+      108	-1	333	0	1067	106	107
+      116	NULL	333	0	NULL	119	115
+      128	4	333	3	1272	125	127
+      164	-1	333	10	1622	161	163
+      185	-1	444	15	1861	187	188
+      190	1	444	16	1918	193	191
+      212	-3	222	19	2125	214	213
+      217	3	333	20	2165	215	216
+      222	-1	444	21	2226	224	220
+      233	1	555	23	2323	231	234

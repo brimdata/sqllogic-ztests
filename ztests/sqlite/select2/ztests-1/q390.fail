@@ -1,0 +1,23 @@
+script: |
+  super -f tsv -I q390.sql | sort > q390.out
+
+inputs:
+  - name: q390.sql
+    data: |
+      SELECT (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      abs(b-c),
+      c,
+      b,
+      a-b
+      FROM t1
+      WHERE (c<=d-2 OR c>=d+2)
+      AND c BETWEEN b-2 AND d+2
+      AND d>e;
+
+outputs:
+  - name: q390.out
+    data: |
+      10	1	161	160	3
+      19	3	214	211	2
+      21	1	224	223	-3
+      23	1	231	232	2

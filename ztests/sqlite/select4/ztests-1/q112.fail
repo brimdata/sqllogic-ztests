@@ -1,0 +1,50 @@
+script: |
+  super -f tsv -I q112.sql | tr '\t' '\n' | sort > q112.out
+
+inputs:
+  - name: q112.sql
+    data: |
+      SELECT e8 FROM t8
+      WHERE e8 in (806,179,864,463,223,981)
+      UNION
+      SELECT c9 FROM t9
+      WHERE b9 in (832,421,848,122,170,301,936,210,789,818,262,525,456)
+      OR a9 in (378,435,685,14,567,739,548,389,662,215,962,416,824)
+      EXCEPT
+      SELECT c4 FROM t4
+      WHERE NOT (b4 in (372,289,608,593,357,538,888,402,849,802)
+      OR (408=a4 OR b4=603)
+      OR (b4=678))
+      EXCEPT
+      SELECT c7 FROM t7
+      WHERE NOT ((d7=500 AND a7=285 AND b7=250 AND 564=c7))
+      EXCEPT
+      SELECT e1 FROM t1
+      WHERE NOT ((128=b1 AND 581=d1 AND 967=a1 AND 921=e1 AND c1=585)
+      OR (b1=303));
+  - name: t1
+  - name: t9
+
+outputs:
+  - name: q112.out
+    data: |
+      118
+      151
+      179
+      187
+      223
+      240
+      252
+      272
+      469
+      526
+      639
+      711
+      751
+      800
+      836
+      864
+      884
+      894
+      935
+      992

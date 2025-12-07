@@ -1,0 +1,44 @@
+script: |
+  super -f tsv -I q569.sql | sort > q569.out
+
+inputs:
+  - name: q569.sql
+    data: |
+      SELECT (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      a+b*2+c*3+d*4
+      FROM t1
+      WHERE coalesce(a,b,c,d,e)<>0;
+
+outputs:
+  - name: q569.out
+    data: |
+      0	1067
+      0	1226
+      0	1272
+      0	1325
+      0	1371
+      0	1411
+      0	1622
+      0	1714
+      0	1828
+      0	1861
+      0	1918
+      0	1964
+      0	2125
+      0	2165
+      0	2226
+      0	2264
+      0	2323
+      0	2476
+      0	NULL
+      0	NULL
+      0	NULL
+      0	NULL
+      0	NULL
+      0	NULL
+      0	NULL
+      0	NULL
+      0	NULL
+      0	NULL
+      0	NULL
+      0	NULL

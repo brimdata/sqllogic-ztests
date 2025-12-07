@@ -1,0 +1,27 @@
+script: |
+  super -f tsv -I q733.sql | sort > q733.out
+
+inputs:
+  - name: q733.sql
+    data: |
+      SELECT e,
+      a+b*2+c*3+d*4+e*5,
+      (a+b+c+d+e)/5,
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      a,
+      b-c
+      FROM t1
+      WHERE a>b
+      AND EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      AND d>e;
+
+outputs:
+  - name: q733.out
+    data: |
+      132	1985	132	444	131	-4
+      162	2432	162	333	163	-1
+      180	2728	182	333	182	-3
+      210	3175	212	222	213	-3
+      230	3473	232	555	234	1
+      237	NULL	NULL	555	239	NULL

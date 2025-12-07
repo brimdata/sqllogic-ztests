@@ -1,0 +1,46 @@
+script: |
+  super -f tsv -I q352.sql | sort > q352.out
+
+inputs:
+  - name: q352.sql
+    data: |
+      SELECT d-e,
+      e,
+      a-b,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      d
+      FROM t1;
+
+outputs:
+  - name: q352.out
+    data: |
+      -1	109	2	0	108
+      -1	117	NULL	0	116
+      -1	197	1	17	196
+      -1	204	NULL	0	203
+      -1	227	1	22	226
+      -2	173	4	12	171
+      -2	192	-3	16	190
+      -2	219	-2	20	217
+      -4	144	-1	6	140
+      -4	189	2	15	185
+      1	132	1	4	133
+      1	135	-1	5	136
+      1	221	-3	21	222
+      1	237	3	24	238
+      2	126	-2	3	128
+      2	162	3	10	164
+      2	210	2	19	212
+      2	246	-4	26	248
+      3	180	1	14	183
+      3	230	2	23	233
+      4	110	NULL	1	114
+      NULL	146	4	7	NULL
+      NULL	157	1	9	NULL
+      NULL	165	1	11	NULL
+      NULL	177	4	13	NULL
+      NULL	NULL	-3	2	122
+      NULL	NULL	2	8	NULL
+      NULL	NULL	3	25	NULL
+      NULL	NULL	NULL	0	101
+      NULL	NULL	NULL	18	207

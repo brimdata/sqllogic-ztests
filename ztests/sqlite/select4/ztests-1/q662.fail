@@ -1,0 +1,76 @@
+script: |
+  super -f tsv -I q662.sql | tr '\t' '\n' | sort > q662.out
+
+inputs:
+  - name: q662.sql
+    data: |
+      SELECT d5 FROM t5
+      WHERE (e5=592)
+      INTERSECT
+      SELECT e7 FROM t7
+      WHERE NOT (a7 in (854,748,894)
+      OR (266=b7 AND d7=684)
+      OR (a7=31 OR b7=120 OR 439=e7))
+      UNION
+      SELECT a9 FROM t9
+      WHERE b9 in (171,74,568,549,66,214,900,64,95)
+      EXCEPT
+      SELECT e3 FROM t3
+      WHERE NOT ((149=c3)
+      OR e3 in (862,975,913,914,552,145,807,853,765,249,844))
+      EXCEPT
+      SELECT a2 FROM t2
+      WHERE NOT ((c2=788 OR 457=a2 OR d2=249))
+      UNION ALL
+      SELECT e8 FROM t8
+      WHERE d8 in (391,210,494,93,608,484,950,894,141,580,953,542)
+      EXCEPT
+      SELECT c4 FROM t4
+      WHERE NOT ((105=d4 OR d4=901)
+      OR (105=a4 AND 206=e4 AND d4=844 AND 784=b4 AND 484=c4)
+      OR (e4=816 AND 597=d4 AND c4=671 AND a4=92 AND 469=b4))
+      UNION ALL
+      SELECT a1 FROM t1
+      WHERE c1 in (526,530,253,393,980,482,299,776,585)
+      OR c1 in (284,775,670,955,683);
+  - name: t1
+  - name: t2
+
+outputs:
+  - name: q662.out
+    data: |
+      115
+      170
+      172
+      189
+      222
+      295
+      416
+      421
+      435
+      450
+      463
+      488
+      498
+      499
+      525
+      548
+      559
+      579
+      61
+      629
+      678
+      682
+      736
+      739
+      75
+      764
+      824
+      829
+      853
+      874
+      898
+      918
+      919
+      950
+      967

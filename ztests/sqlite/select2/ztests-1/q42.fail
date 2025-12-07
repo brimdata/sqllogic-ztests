@@ -1,0 +1,51 @@
+script: |
+  super -f tsv -I q42.sql | sort > q42.out
+
+inputs:
+  - name: q42.sql
+    data: |
+      SELECT CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END,
+      a+b*2+c*3+d*4,
+      abs(b-c),
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      c-d,
+      a+b*2,
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END
+      FROM t1
+      WHERE e+d BETWEEN a+b-10 AND c+130
+      OR coalesce(a,b,c,d,e)<>0;
+
+outputs:
+  - name: q42.out
+    data: |
+      1050	1067	1	0	-2	317	333
+      1120	NULL	1	1	-1	NULL	444
+      1240	1226	1	2	1	369	222
+      1290	1272	4	3	-3	385	222
+      1300	1325	4	4	1	391	333
+      1390	1371	2	5	1	416	222
+      1430	1411	2	6	1	428	222
+      1450	NULL	2	7	NULL	439	444
+      1510	NULL	1	8	NULL	455	333
+      1580	NULL	3	9	NULL	475	333
+      1600	1622	1	10	-3	483	444
+      1670	NULL	1	11	NULL	502	333
+      1700	1714	2	12	1	514	444
+      2360	NULL	NULL	24	NULL	711	444
+      358	NULL	1	13	NULL	529	444
+      364	1828	3	14	1	544	333
+      376	1861	1	15	2	560	333
+      382	1918	1	16	3	579	222
+      398	1964	3	17	-1	595	333
+      402	NULL	NULL	0	-1	NULL	444
+      426	2125	3	19	2	635	333
+      432	2165	3	20	-2	652	222
+      440	2226	1	21	2	666	222
+      458	2264	3	22	-1	685	333
+      468	2323	1	23	-2	698	333
+      486	NULL	4	25	NULL	723	444
+      490	2476	2	26	-1	743	111
+      NULL	NULL	2	18	1	NULL	444
+      NULL	NULL	NULL	0	1	NULL	444
+      NULL	NULL	NULL	0	3	NULL	444

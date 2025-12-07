@@ -1,0 +1,47 @@
+script: |
+  super -f tsv -I q264.sql | tr '\t' '\n' | sort > q264.out
+
+inputs:
+  - name: q264.sql
+    data: |
+      SELECT a3 FROM t3
+      WHERE (e3=87)
+      OR (b3=616)
+      OR (806=c3 AND a3=244 AND e3=774 AND b3=376)
+      UNION
+      SELECT b6 FROM t6
+      WHERE a6 in (64,518,238,173,963,270,128,672,132,129,829,870)
+      OR (147=d6 OR e6=808)
+      OR e6 in (761,738,31,100,531)
+      EXCEPT
+      SELECT b9 FROM t9
+      WHERE NOT ((b9=16 AND 591=d9 AND 133=e9 AND 863=c9 AND a9=683))
+      EXCEPT
+      SELECT b1 FROM t1
+      WHERE NOT (d1 in (432,571,662,678,75,298,217,294,922,121)
+      OR (b1=556 OR a1=299)
+      OR b1 in (253,836,60,956,113,440,446,579,270,226,115,569,1,440));
+  - name: t5
+  - name: t9
+
+outputs:
+  - name: q264.out
+    data: |
+      217
+      244
+      250
+      296
+      427
+      461
+      537
+      575
+      604
+      606
+      615
+      699
+      825
+      892
+      905
+      923
+      974
+      989

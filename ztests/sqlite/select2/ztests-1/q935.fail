@@ -1,0 +1,40 @@
+script: |
+  super -f tsv -I q935.sql | sort > q935.out
+
+inputs:
+  - name: q935.sql
+    data: |
+      SELECT c,
+      a+b*2+c*3,
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END,
+      b-c,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      a-b,
+      d
+      FROM t1
+      WHERE (c<=d-2 OR c>=d+2)
+      OR d NOT BETWEEN 110 AND 150;
+
+outputs:
+  - name: q935.out
+    data: |
+      102	NULL	444	NULL	0	NULL	101
+      106	635	333	-1	0	2	108
+      119	NULL	444	NULL	0	NULL	116
+      125	760	222	4	0	-2	128
+      161	966	444	-1	0	3	164
+      172	1030	444	-2	0	4	171
+      184	1096	333	-3	0	1	183
+      187	1121	333	-1	0	2	185
+      193	1158	222	1	0	-3	190
+      195	1180	333	3	0	1	196
+      202	NULL	444	NULL	0	NULL	203
+      208	NULL	444	-2	0	NULL	207
+      214	1277	333	-3	0	2	212
+      215	1297	222	3	0	-2	217
+      224	1338	222	-1	0	-3	222
+      225	1360	333	3	0	1	226
+      231	1391	333	1	0	2	233
+      247	1484	111	2	0	-4	248
+      NULL	NULL	444	NULL	0	3	238

@@ -1,0 +1,46 @@
+script: |
+  super -f tsv -I q943.sql | sort > q943.out
+
+inputs:
+  - name: q943.sql
+    data: |
+      SELECT a+b*2,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      abs(b-c),
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END
+      FROM t1;
+
+outputs:
+  - name: q943.out
+    data: |
+      317	0	1	333
+      369	2	1	333
+      385	3	4	333
+      391	4	4	444
+      416	5	2	111
+      428	6	2	111
+      439	7	2	555
+      455	8	1	555
+      475	9	3	555
+      483	10	1	333
+      502	11	1	555
+      514	12	2	555
+      529	13	1	555
+      544	14	3	333
+      560	15	1	444
+      579	16	1	444
+      595	17	3	555
+      635	19	3	222
+      652	20	3	333
+      666	21	1	444
+      685	22	3	555
+      698	23	1	555
+      711	24	NULL	555
+      723	25	4	222
+      743	26	2	444
+      NULL	0	NULL	222
+      NULL	0	NULL	333
+      NULL	0	NULL	555
+      NULL	1	1	555
+      NULL	18	2	555

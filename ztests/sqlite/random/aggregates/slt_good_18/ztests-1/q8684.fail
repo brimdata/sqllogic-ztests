@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q8684.sql | sort > q8684.out
+
+inputs:
+  - name: q8684.sql
+    data: |
+      SELECT ALL + - CAST ( + MIN ( DISTINCT ( + col0 ) ) AS INTEGER ) FROM tab1 AS cor0 WHERE NOT NULL <= col2;
+
+outputs:
+  - name: q8684.out
+    data: |
+      NULL

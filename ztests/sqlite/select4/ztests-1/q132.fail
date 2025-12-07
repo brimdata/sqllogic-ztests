@@ -1,0 +1,57 @@
+script: |
+  super -f tsv -I q132.sql | tr '\t' '\n' | sort > q132.out
+
+inputs:
+  - name: q132.sql
+    data: |
+      SELECT e1 FROM t1
+      WHERE (955=c1 AND 222=a1 AND e1=87 AND b1=440)
+      INTERSECT
+      SELECT c9 FROM t9
+      WHERE NOT ((b9=667 OR d9=967)
+      OR (e9=965 AND d9=759 AND 819=b9 AND 764=c9))
+      EXCEPT
+      SELECT e2 FROM t2
+      WHERE NOT (c2 in (509,140,807,374,729,337,773,981,360,967,676,274)
+      OR e2 in (781,366,629,445))
+      EXCEPT
+      SELECT a8 FROM t8
+      WHERE NOT ((485=e8 OR e8=632 OR e8=63)
+      OR c8 in (656,404,486,448))
+      UNION
+      SELECT a4 FROM t4
+      WHERE d4 in (268,549,31,844,349,728,309,197,409,449,522,247,249,306)
+      OR (a4=574 AND 33=b4 AND 311=e4 AND 268=d4 AND 221=c4)
+      UNION ALL
+      SELECT b5 FROM t5
+      WHERE a5 in (851,235,34,369,18)
+      OR (41=e5 AND 530=b5)
+      OR (e5=157 AND 695=b5 AND 957=d5 AND a5=721 AND 27=c5);
+  - name: t2
+  - name: t7
+
+outputs:
+  - name: q132.out
+    data: |
+      105
+      170
+      281
+      318
+      338
+      355
+      403
+      422
+      423
+      448
+      509
+      530
+      574
+      695
+      72
+      723
+      756
+      782
+      82
+      87
+      874
+      952

@@ -1,0 +1,87 @@
+script: |
+  super -f tsv -I q1012.sql | tr '\t' '\n' | sort > q1012.out
+
+inputs:
+  - name: q1012.sql
+    data: |
+      SELECT b9 FROM t9
+      WHERE d9 in (332,161,439,23,601,960,389,608,399)
+      UNION ALL
+      SELECT e8 FROM t8
+      WHERE e8 in (22,260,476,904,981,383,349,955,578)
+      UNION
+      SELECT b1 FROM t1
+      WHERE c1 in (955,775,670,230,534,852,805,481,168,175,315,980,482)
+      OR e1 in (931,772,949,210,956,222,161,96,300,228,355,95,209,522)
+      OR (949=e1 AND 505=a1 AND 736=b1 AND 550=d1)
+      EXCEPT
+      SELECT b2 FROM t2
+      WHERE NOT ((a2=691))
+      EXCEPT
+      SELECT d4 FROM t4
+      WHERE NOT (c4 in (357,767,703,667,536)
+      OR b4 in (476,964,442))
+      EXCEPT
+      SELECT e5 FROM t5
+      WHERE NOT ((271=e5 OR 521=d5))
+      UNION
+      SELECT a7 FROM t7
+      WHERE c7 in (529,78,142,488,661,906)
+      OR (6=e7 AND a7=665 AND 921=b7 AND c7=249)
+      UNION ALL
+      SELECT e3 FROM t3
+      WHERE (4=e3 AND a3=576)
+      OR (826=d3 AND a3=143 AND 656=c3 AND 145=b3 AND 977=e3)
+      EXCEPT
+      SELECT b6 FROM t6
+      WHERE NOT ((e6=431)
+      OR d6 in (974,337,467)
+      OR (b6=974 AND 564=a6));
+  - name: t3
+  - name: t6
+  - name: t8
+
+outputs:
+  - name: q1012.out
+    data: |
+      122
+      132
+      242
+      245
+      253
+      254
+      26
+      280
+      282
+      310
+      324
+      355
+      361
+      362
+      383
+      387
+      4
+      422
+      476
+      486
+      5
+      556
+      570
+      578
+      579
+      595
+      64
+      665
+      682
+      738
+      75
+      759
+      773
+      795
+      854
+      896
+      904
+      95
+      955
+      977
+      981

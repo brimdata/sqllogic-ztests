@@ -1,0 +1,69 @@
+script: |
+  super -f tsv -I q220.sql | tr '\t' '\n' | sort > q220.out
+
+inputs:
+  - name: q220.sql
+    data: |
+      SELECT c1 FROM t1
+      WHERE c1 in (548,788,685,272,681,48,636,62,284)
+      OR (b1=766 AND e1=731 AND d1=807 AND 294=a1)
+      OR d1 in (716,626,761,863,717,951)
+      INTERSECT
+      SELECT e6 FROM t6
+      WHERE NOT (d6 in (613,2,34))
+      INTERSECT
+      SELECT e8 FROM t8
+      WHERE NOT ((b8=466 AND a8=129))
+      EXCEPT
+      SELECT a2 FROM t2
+      WHERE NOT (b2 in (714,264,380,796,8,985,73,489,818,353,351,376,509)
+      OR (505=a2 OR 315=a2)
+      OR (404=d2 AND 582=c2))
+      UNION
+      SELECT a3 FROM t3
+      WHERE (964=a3 OR 765=e3 OR 456=b3)
+      OR (720=d3)
+      UNION ALL
+      SELECT e5 FROM t5
+      WHERE (e5=902 AND 18=a5 AND c5=824 AND b5=782 AND 938=d5)
+      OR (d5=555)
+      UNION ALL
+      SELECT a9 FROM t9
+      WHERE c9 in (613,240,526,923,332,126,807)
+      OR (318=a9 OR 681=d9)
+      OR (d9=568)
+      EXCEPT
+      SELECT d7 FROM t7
+      WHERE NOT (d7 in (199,105,680,148,500,276,139,142,436,891,787))
+      UNION ALL
+      SELECT b4 FROM t4
+      WHERE a4 in (271,337,451,708,778,136,606);
+  - name: t5
+  - name: t6
+  - name: t9
+
+outputs:
+  - name: q220.out
+    data: |
+      12
+      14
+      160
+      167
+      17
+      318
+      379
+      416
+      532
+      535
+      587
+      608
+      662
+      735
+      78
+      810
+      875
+      895
+      899
+      905
+      917
+      964

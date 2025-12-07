@@ -1,0 +1,43 @@
+script: |
+  super -f tsv -I q815.sql | sort > q815.out
+
+inputs:
+  - name: q815.sql
+    data: |
+      SELECT b-c
+      FROM t1
+      WHERE c>d
+      OR d>e
+      OR EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b);
+
+outputs:
+  - name: q815.out
+    data: |
+      -1
+      -1
+      -1
+      -1
+      -1
+      -2
+      -2
+      -2
+      -3
+      -3
+      -4
+      -4
+      1
+      1
+      1
+      1
+      1
+      2
+      2
+      2
+      3
+      3
+      3
+      3
+      4
+      NULL
+      NULL
+      NULL

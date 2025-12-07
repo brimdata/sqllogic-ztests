@@ -1,0 +1,48 @@
+script: |
+  super -f tsv -I q307.sql | sort > q307.out
+
+inputs:
+  - name: q307.sql
+    data: |
+      SELECT c-d,
+      a+b*2+c*3,
+      d-e,
+      a+b*2+c*3+d*4,
+      b-c,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d)
+      FROM t1
+      WHERE b IS NOT NULL
+      OR (e>a AND e<b)
+      OR (e>c OR e<d);
+
+outputs:
+  - name: q307.out
+    data: |
+      -1	1180	-1	1964	3	0
+      -1	1360	-1	2264	3	0
+      -1	1484	2	2476	2	0
+      -1	NULL	-1	NULL	NULL	0
+      -1	NULL	4	NULL	-1	0
+      -2	1297	-2	2165	3	0
+      -2	1391	3	2323	1	0
+      -2	635	-1	1067	-1	0
+      -3	760	2	1272	4	0
+      -3	966	2	1622	-1	0
+      1	1030	-2	1714	-2	0
+      1	1096	3	1828	-3	0
+      1	738	NULL	1226	1	0
+      1	793	1	1325	-4	0
+      1	827	1	1371	2	0
+      1	851	-4	1411	2	0
+      1	NULL	NULL	NULL	-2	0
+      2	1121	-4	1861	-1	0
+      2	1277	2	2125	-3	0
+      2	1338	1	2226	-1	0
+      3	1158	-2	1918	1	0
+      NULL	1000	NULL	NULL	1	0
+      NULL	1057	NULL	NULL	-1	0
+      NULL	1455	NULL	NULL	-4	0
+      NULL	880	NULL	NULL	-2	0
+      NULL	905	NULL	NULL	1	0
+      NULL	940	NULL	NULL	3	0
+      NULL	NULL	1	NULL	NULL	0

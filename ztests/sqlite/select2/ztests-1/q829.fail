@@ -1,0 +1,32 @@
+script: |
+  super -f tsv -I q829.sql | sort > q829.out
+
+inputs:
+  - name: q829.sql
+    data: |
+      SELECT CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      a+b*2+c*3,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      (a+b+c+d+e)/5,
+      a+b*2+c*3+d*4+e*5,
+      b
+      FROM t1
+      WHERE c>d;
+
+outputs:
+  - name: q829.out
+    data: |
+      111	827	0	137	2046	139
+      111	851	0	142	2131	143
+      222	1277	0	212	3175	211
+      333	1096	0	182	2728	181
+      333	738	0	NULL	NULL	124
+      333	NULL	0	NULL	NULL	NULL
+      444	1121	0	187	2806	186
+      444	1158	0	192	2878	194
+      444	1338	0	222	3331	223
+      444	793	0	132	1985	130
+      555	1030	0	172	2579	170
+      555	NULL	0	NULL	NULL	206
+      555	NULL	0	NULL	NULL	NULL

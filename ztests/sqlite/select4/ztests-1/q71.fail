@@ -1,0 +1,45 @@
+script: |
+  super -f tsv -I q71.sql | tr '\t' '\n' | sort > q71.out
+
+inputs:
+  - name: q71.sql
+    data: |
+      SELECT b7 FROM t7
+      WHERE (b7=129)
+      UNION ALL
+      SELECT e1 FROM t1
+      WHERE d1 in (662,529,75,349,571,947,427,717,381,618)
+      OR (c1=570 OR e1=731)
+      OR (161=a1 OR a1=521 OR c1=537)
+      UNION ALL
+      SELECT b2 FROM t2
+      WHERE d2 in (873,334,833,416,158,892)
+      EXCEPT
+      SELECT c3 FROM t3
+      WHERE NOT ((360=c3 AND 534=b3)
+      OR (720=b3)
+      OR a3 in (145,383,186));
+  - name: t2
+  - name: t7
+
+outputs:
+  - name: q71.out
+    data: |
+      129
+      161
+      221
+      222
+      228
+      367
+      402
+      504
+      522
+      539
+      558
+      60
+      628
+      671
+      731
+      754
+      811
+      956

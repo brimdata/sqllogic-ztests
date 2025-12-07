@@ -1,0 +1,23 @@
+script: |
+  super -f tsv -I q798.sql | sort > q798.out
+
+inputs:
+  - name: q798.sql
+    data: |
+      SELECT e,
+      c-d,
+      (a+b+c+d+e)/5,
+      a+b*2,
+      b,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      c
+      FROM t1
+      WHERE d NOT BETWEEN 110 AND 150
+      AND (a>b-2 AND a<b+2);
+
+outputs:
+  - name: q798.out
+    data: |
+      180	1	182	544	181	0	184
+      197	-1	197	595	198	0	195
+      227	-1	227	685	228	0	225

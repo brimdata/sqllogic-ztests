@@ -1,0 +1,50 @@
+script: |
+  super -f tsv -I q298.sql | tr '\t' '\n' | sort > q298.out
+
+inputs:
+  - name: q298.sql
+    data: |
+      SELECT c7 FROM t7
+      WHERE (c7=565)
+      OR e7 in (851,983,27,590,248,31,689,900,31,302,422)
+      OR (b7=129 AND 884=a7 AND 254=e7 AND 108=d7 AND 780=c7)
+      UNION ALL
+      SELECT d6 FROM t6
+      WHERE e6 in (673,738,617,798,847,915,840,750,74,531,237,595,417)
+      OR (b6=511 OR d6=161)
+      EXCEPT
+      SELECT e4 FROM t4
+      WHERE NOT ((b4=660 OR e4=531 OR 916=e4)
+      OR (d4=100 AND 107=b4 AND 996=c4)
+      OR c4 in (936,996,768,723,675,712,82,927,749,948,783));
+  - name: t3
+  - name: t5
+  - name: t8
+
+outputs:
+  - name: q298.out
+    data: |
+      102
+      129
+      135
+      161
+      192
+      196
+      262
+      280
+      286
+      333
+      344
+      367
+      375
+      60
+      607
+      66
+      711
+      73
+      780
+      822
+      855
+      911
+      98
+      993

@@ -1,0 +1,48 @@
+script: |
+  super -f tsv -I q678.sql | sort > q678.out
+
+inputs:
+  - name: q678.sql
+    data: |
+      SELECT a-b,
+      a+b*2+c*3,
+      c-d,
+      a+b*2+c*3+d*4,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      c
+      FROM t1;
+
+outputs:
+  - name: q678.out
+    data: |
+      -1	827	1	1371	0	5	137
+      -1	851	1	1411	0	6	141
+      -2	1297	-2	2165	0	20	215
+      -2	760	-3	1272	0	3	125
+      -3	1158	3	1918	0	16	193
+      -3	1338	2	2226	0	21	224
+      -3	738	1	1226	0	2	123
+      -4	1484	-1	2476	0	26	247
+      1	1000	NULL	NULL	0	11	166
+      1	1096	1	1828	0	14	184
+      1	1180	-1	1964	0	17	195
+      1	1360	-1	2264	0	22	225
+      1	793	1	1325	0	4	134
+      1	940	NULL	NULL	0	9	155
+      2	1121	2	1861	0	15	187
+      2	1277	2	2125	0	19	214
+      2	1391	-2	2323	0	23	231
+      2	635	-2	1067	0	0	106
+      2	905	NULL	NULL	0	8	150
+      3	1455	NULL	NULL	0	25	244
+      3	966	-3	1622	0	10	161
+      3	NULL	NULL	NULL	0	24	NULL
+      4	1030	1	1714	0	12	172
+      4	1057	NULL	NULL	0	13	176
+      4	880	NULL	NULL	0	7	147
+      NULL	NULL	-1	NULL	0	0	202
+      NULL	NULL	-1	NULL	0	1	113
+      NULL	NULL	1	NULL	0	0	102
+      NULL	NULL	1	NULL	0	18	208
+      NULL	NULL	3	NULL	0	0	119

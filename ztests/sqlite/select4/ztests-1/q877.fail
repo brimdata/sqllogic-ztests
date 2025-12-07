@@ -1,0 +1,74 @@
+script: |
+  super -f tsv -I q877.sql | tr '\t' '\n' | sort > q877.out
+
+inputs:
+  - name: q877.sql
+    data: |
+      SELECT b4 FROM t4
+      WHERE e4 in (179,554,273,958,738,85,6,132,763,486)
+      OR (557=e4 OR d4=728 OR 543=e4)
+      OR (577=b4 OR 436=c4)
+      EXCEPT
+      SELECT d9 FROM t9
+      WHERE NOT ((c9=64 AND e9=653)
+      OR (c9=843 AND d9=388 AND a9=149 AND e9=723))
+      EXCEPT
+      SELECT d3 FROM t3
+      WHERE NOT ((c3=668))
+      EXCEPT
+      SELECT e8 FROM t8
+      WHERE NOT (a8 in (417,129,127,638,913))
+      UNION ALL
+      SELECT a7 FROM t7
+      WHERE (b7=234 OR 983=e7)
+      UNION ALL
+      SELECT c5 FROM t5
+      WHERE a5 in (476,320,18,796,332,34,485,602,642,826,413)
+      OR (a5=586 OR c5=545 OR d5=792)
+      EXCEPT
+      SELECT d1 FROM t1
+      WHERE NOT ((e1=582)
+      OR b1 in (60,1,43,280,696,422,283,944)
+      OR (d1=922))
+      EXCEPT
+      SELECT a6 FROM t6
+      WHERE NOT ((214=b6 AND 637=c6 AND e6=511))
+      UNION ALL
+      SELECT b2 FROM t2
+      WHERE c2 in (900,992,374,177,107);
+  - name: t1
+  - name: t2
+  - name: t3
+  - name: t6
+  - name: t7
+  - name: t8
+  - name: t9
+
+outputs:
+  - name: q877.out
+    data: |
+      107
+      114
+      271
+      297
+      379
+      408
+      442
+      489
+      527
+      532
+      532
+      545
+      589
+      681
+      721
+      756
+      765
+      784
+      824
+      844
+      855
+      868
+      912
+      923
+      94

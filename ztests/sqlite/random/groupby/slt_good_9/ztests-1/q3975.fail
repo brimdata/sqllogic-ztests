@@ -1,0 +1,11 @@
+script: |
+  super -f tsv -I q3975.sql | sort > q3975.out
+
+inputs:
+  - name: q3975.sql
+    data: |
+      SELECT - col0 / col1 FROM tab1 GROUP BY col1, col0 HAVING NOT ( col0 <> NULL );
+
+outputs:
+  - name: q3975.out
+    data: |

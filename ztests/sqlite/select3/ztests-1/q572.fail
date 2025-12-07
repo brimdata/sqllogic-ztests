@@ -1,0 +1,19 @@
+script: |
+  super -f tsv -I q572.sql | sort > q572.out
+
+inputs:
+  - name: q572.sql
+    data: |
+      SELECT b-c,
+      e,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d)
+      FROM t1
+      WHERE (a>b-2 AND a<b+2)
+      AND c BETWEEN b-2 AND d+2
+      AND a>b;
+
+outputs:
+  - name: q572.out
+    data: |
+      -3	180	0
+      -4	132	0

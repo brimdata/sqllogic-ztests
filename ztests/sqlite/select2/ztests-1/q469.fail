@@ -1,0 +1,48 @@
+script: |
+  super -f tsv -I q469.sql | sort > q469.out
+
+inputs:
+  - name: q469.sql
+    data: |
+      SELECT CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      d-e,
+      a+b*2,
+      CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d)
+      FROM t1;
+
+outputs:
+  - name: q469.out
+    data: |
+      111	26	2	743	490	0
+      222	16	-2	579	382	0
+      222	2	NULL	369	1240	0
+      222	20	-2	652	432	0
+      222	21	1	666	440	0
+      222	3	2	385	1290	0
+      222	5	1	416	1390	0
+      222	6	-4	428	1430	0
+      333	0	-1	317	1050	0
+      333	11	NULL	502	1670	0
+      333	14	3	544	364	0
+      333	15	-4	560	376	0
+      333	17	-1	595	398	0
+      333	19	2	635	426	0
+      333	22	-1	685	458	0
+      333	23	3	698	468	0
+      333	4	1	391	1300	0
+      333	8	NULL	455	1510	0
+      333	9	NULL	475	1580	0
+      444	0	-1	NULL	402	0
+      444	0	-1	NULL	NULL	0
+      444	0	NULL	NULL	NULL	0
+      444	1	4	NULL	1120	0
+      444	10	2	483	1600	0
+      444	12	-2	514	1700	0
+      444	13	NULL	529	358	0
+      444	18	NULL	NULL	NULL	0
+      444	24	1	711	2360	0
+      444	25	NULL	723	486	0
+      444	7	NULL	439	1450	0

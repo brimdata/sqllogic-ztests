@@ -1,0 +1,59 @@
+script: |
+  super -f tsv -I q247.sql | tr '\t' '\n' | sort > q247.out
+
+inputs:
+  - name: q247.sql
+    data: |
+      SELECT e1 FROM t1
+      WHERE e1 in (221,683,904,858,139,763,688,921,602,367)
+      OR (979=c1 OR d1=504)
+      OR e1 in (671,838,328,313,747,125,717,628,896,949,483)
+      INTERSECT
+      SELECT e8 FROM t8
+      WHERE NOT ((762=c8 OR 54=a8 OR 111=c8))
+      INTERSECT
+      SELECT e5 FROM t5
+      WHERE NOT (c5 in (3,598,747,825,681,824,18,163,155,628))
+      INTERSECT
+      SELECT a2 FROM t2
+      WHERE NOT (d2 in (953,153,539,843)
+      OR (499=e2 AND 598=d2)
+      OR e2 in (114,505,783,692,521,433,441,147,428))
+      INTERSECT
+      SELECT d3 FROM t3
+      WHERE NOT ((c3=549)
+      OR b3 in (70,340,202,17,405,813,407))
+      INTERSECT
+      SELECT e9 FROM t9
+      WHERE NOT ((c9=834))
+      UNION
+      SELECT c4 FROM t4
+      WHERE b4 in (288,35,884,607,286,271,94,379,634,476,888,407,372)
+      OR c4 in (39,293,758)
+      OR (d4=653 OR b4=882)
+      UNION ALL
+      SELECT d6 FROM t6
+      WHERE (647=d6);
+  - name: t6
+  - name: t8
+
+outputs:
+  - name: q247.out
+    data: |
+      0
+      293
+      301
+      319
+      39
+      403
+      482
+      521
+      584
+      586
+      647
+      690
+      694
+      752
+      758
+      873
+      904

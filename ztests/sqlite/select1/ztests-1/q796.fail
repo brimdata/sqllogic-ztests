@@ -1,0 +1,43 @@
+script: |
+  super -f tsv -I q796.sql > q796.out
+
+inputs:
+  - name: q796.sql
+    data: |
+      SELECT a+b*2
+      FROM t1
+      WHERE EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      ORDER BY 1;
+
+outputs:
+  - name: q796.out
+    data: |
+      317
+      335
+      351
+      369
+      385
+      391
+      416
+      428
+      439
+      455
+      475
+      483
+      502
+      514
+      529
+      544
+      560
+      579
+      595
+      601
+      617
+      635
+      652
+      666
+      685
+      698
+      711
+      723
+      743

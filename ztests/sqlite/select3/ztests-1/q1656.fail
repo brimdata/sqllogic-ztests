@@ -1,0 +1,20 @@
+script: |
+  super -f tsv -I q1656.sql | sort > q1656.out
+
+inputs:
+  - name: q1656.sql
+    data: |
+      SELECT (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d)
+      FROM t1
+      WHERE a>b
+      AND (c<=d-2 OR c>=d+2);
+
+outputs:
+  - name: q1656.out
+    data: |
+      0	0
+      10	0
+      15	0
+      19	0
+      23	0

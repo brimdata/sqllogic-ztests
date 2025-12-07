@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q8575.sql | sort > q8575.out
+
+inputs:
+  - name: q8575.sql
+    data: |
+      SELECT DISTINCT tab1.col0 * tab1.col0 + - tab1.col0 FROM tab1 GROUP BY tab1.col0 HAVING ( - tab1.col0 ) IS NOT NULL OR NULL IS NULL;
+
+outputs:
+  - name: q8575.out
+    data: |
+      462
+      6642
+      756

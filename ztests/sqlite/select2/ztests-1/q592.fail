@@ -1,0 +1,40 @@
+script: |
+  super -f tsv -I q592.sql | sort > q592.out
+
+inputs:
+  - name: q592.sql
+    data: |
+      SELECT e,
+      abs(a),
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END,
+      a,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END
+      FROM t1
+      WHERE c BETWEEN b-2 AND d+2
+      OR (c<=d-2 OR c>=d+2);
+
+outputs:
+  - name: q592.out
+    data: |
+      109	107	0	1050	107	0	333
+      110	NULL	1	1120	NULL	0	444
+      117	115	0	NULL	115	0	444
+      126	127	3	1290	127	0	222
+      132	131	4	1300	131	0	333
+      135	138	5	1390	138	0	222
+      144	142	6	1430	142	0	222
+      162	163	10	1600	163	0	444
+      173	174	12	1700	174	0	444
+      180	182	14	364	182	0	333
+      189	188	15	376	188	0	333
+      192	191	16	382	191	0	222
+      210	213	19	426	213	0	333
+      219	216	20	432	216	0	222
+      221	220	21	440	220	0	222
+      230	234	23	468	234	0	333
+      246	245	26	490	245	0	111
+      NULL	121	2	1240	121	0	222
+      NULL	NULL	18	NULL	NULL	0	444

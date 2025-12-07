@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q13082.sql | sort > q13082.out
+
+inputs:
+  - name: q13082.sql
+    data: |
+      SELECT - COUNT ( * ) * SUM ( ALL col1 ) FROM tab0 WHERE NOT NULL IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q13082.out
+    data: |
+      NULL

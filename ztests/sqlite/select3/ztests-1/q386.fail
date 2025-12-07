@@ -1,0 +1,42 @@
+script: |
+  super -f tsv -I q386.sql | sort > q386.out
+
+inputs:
+  - name: q386.sql
+    data: |
+      SELECT a+b*2+c*3+d*4,
+      a+b*2+c*3,
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      e,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      b,
+      b-c
+      FROM t1
+      WHERE (c<=d-2 OR c>=d+2)
+      OR c BETWEEN b-2 AND d+2
+      OR d>e;
+
+outputs:
+  - name: q386.out
+    data: |
+      1067	635	333	109	0	105	-1
+      1226	738	333	NULL	2	124	1
+      1272	760	333	126	3	129	4
+      1325	793	444	132	4	130	-4
+      1371	827	111	135	5	139	2
+      1411	851	111	144	6	143	2
+      1622	966	333	162	10	160	-1
+      1714	1030	555	173	12	170	-2
+      1828	1096	333	180	14	181	-3
+      1861	1121	444	189	15	186	-1
+      1918	1158	444	192	16	194	1
+      2125	1277	222	210	19	211	-3
+      2165	1297	333	219	20	218	3
+      2226	1338	444	221	21	223	-1
+      2323	1391	555	230	23	232	1
+      2476	1484	444	246	26	249	2
+      NULL	NULL	333	117	0	NULL	NULL
+      NULL	NULL	555	110	1	112	-1
+      NULL	NULL	555	237	24	236	NULL
+      NULL	NULL	555	NULL	18	206	-2
