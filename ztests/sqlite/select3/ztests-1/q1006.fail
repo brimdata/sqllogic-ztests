@@ -1,0 +1,44 @@
+script: |
+  super -f tsv -I q1006.sql | sort > q1006.out
+
+inputs:
+  - name: q1006.sql
+    data: |
+      SELECT b-c,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      d-e,
+      abs(a),
+      a-b,
+      e
+      FROM t1
+      WHERE b>c
+      OR e+d BETWEEN a+b-10 AND c+130
+      OR d NOT BETWEEN 110 AND 150;
+
+outputs:
+  - name: q1006.out
+    data: |
+      -1	0	-1	107	2	109
+      -1	10	2	163	3	162
+      -1	15	-4	188	2	189
+      -1	21	1	220	-3	221
+      -2	12	-2	174	4	173
+      -2	18	NULL	NULL	NULL	NULL
+      -3	14	3	182	1	180
+      -3	19	2	213	2	210
+      1	11	NULL	168	1	165
+      1	16	-2	191	-3	192
+      1	2	NULL	121	-3	NULL
+      1	23	3	234	2	230
+      1	8	NULL	153	2	NULL
+      2	26	2	245	-4	246
+      2	5	1	138	-1	135
+      2	6	-4	142	-1	144
+      3	17	-1	199	1	197
+      3	20	-2	216	-2	219
+      3	22	-1	229	1	227
+      3	9	NULL	159	1	157
+      4	3	2	127	-2	126
+      NULL	0	-1	201	NULL	204
+      NULL	0	NULL	104	NULL	NULL
+      NULL	24	1	239	3	237

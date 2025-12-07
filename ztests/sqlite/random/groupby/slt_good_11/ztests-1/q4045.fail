@@ -1,0 +1,11 @@
+script: |
+  super -f tsv -I q4045.sql | sort > q4045.out
+
+inputs:
+  - name: q4045.sql
+    data: |
+      SELECT + 46 * col0 FROM tab1 GROUP BY col0 HAVING NOT NULL NOT IN ( col0 );
+
+outputs:
+  - name: q4045.out
+    data: |

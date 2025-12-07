@@ -1,0 +1,54 @@
+script: |
+  super -f tsv -I q621.sql | tr '\t' '\n' | sort > q621.out
+
+inputs:
+  - name: q621.sql
+    data: |
+      SELECT b2 FROM t2
+      WHERE (275=b2)
+      UNION
+      SELECT a3 FROM t3
+      WHERE (c3=806 OR 66=d3 OR 224=b3)
+      UNION ALL
+      SELECT a4 FROM t4
+      WHERE (554=e4)
+      UNION ALL
+      SELECT e8 FROM t8
+      WHERE (952=a8 AND 448=c8 AND 269=b8)
+      OR e8 in (455,533,617,806,64,463,296,579)
+      OR b8 in (761,690,493)
+      EXCEPT
+      SELECT a1 FROM t1
+      WHERE NOT ((d1=154 AND c1=246)
+      OR (738=a1))
+      EXCEPT
+      SELECT c6 FROM t6
+      WHERE NOT ((993=d6)
+      OR (e6=840 OR c6=620))
+      UNION ALL
+      SELECT d9 FROM t9
+      WHERE (e9=150)
+      OR (d9=668);
+  - name: t3
+  - name: t7
+
+outputs:
+  - name: q621.out
+    data: |
+      147
+      179
+      244
+      272
+      275
+      296
+      455
+      463
+      5
+      533
+      578
+      606
+      617
+      64
+      668
+      806
+      919

@@ -1,0 +1,21 @@
+script: |
+  super -f tsv -I q767.sql | sort > q767.out
+
+inputs:
+  - name: q767.sql
+    data: |
+      SELECT CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END,
+      abs(b-c),
+      abs(a)
+      FROM t1
+      WHERE EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      AND (e>a AND e<b)
+      ORDER BY 3,1;
+
+outputs:
+  - name: q767.out
+    data: |
+      111	2	245
+      222	1	191
+      222	1	220

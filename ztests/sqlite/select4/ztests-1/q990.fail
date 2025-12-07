@@ -1,0 +1,94 @@
+script: |
+  super -f tsv -I q990.sql | tr '\t' '\n' | sort > q990.out
+
+inputs:
+  - name: q990.sql
+    data: |
+      SELECT b3 FROM t3
+      WHERE (b3=816 AND a3=245)
+      UNION
+      SELECT d8 FROM t8
+      WHERE a8 in (957,150,838,701,239,241)
+      OR (388=a8 AND 943=c8 AND b8=175 AND 862=d8)
+      UNION ALL
+      SELECT e9 FROM t9
+      WHERE (188=c9 OR 488=a9 OR 967=d9)
+      OR (316=d9)
+      OR (672=e9 AND 807=c9)
+      UNION ALL
+      SELECT e2 FROM t2
+      WHERE a2 in (789,308,718,495,709,123,691,760,189,725)
+      UNION ALL
+      SELECT e4 FROM t4
+      WHERE (a4=60 AND b4=802 AND 725=e4)
+      UNION ALL
+      SELECT a6 FROM t6
+      WHERE (a6=870)
+      OR (300=a6 AND e6=95 AND 267=b6)
+      OR (a6=811)
+      EXCEPT
+      SELECT c1 FROM t1
+      WHERE NOT ((a1=395 AND 674=b1))
+      EXCEPT
+      SELECT a5 FROM t5
+      WHERE NOT ((313=c5)
+      OR (d5=479 AND e5=725))
+      UNION
+      SELECT c7 FROM t7
+      WHERE d7 in (526,891,594,142,134,785,781,442,114,675,722,795)
+      OR b7 in (191,867,396,636,693,813,30,396,374,808,480);
+  - name: t2
+  - name: t3
+  - name: t6
+
+outputs:
+  - name: q990.out
+    data: |
+      108
+      115
+      116
+      131
+      140
+      174
+      220
+      249
+      280
+      300
+      317
+      419
+      435
+      441
+      456
+      477
+      482
+      498
+      499
+      505
+      510
+      554
+      56
+      564
+      589
+      596
+      626
+      672
+      687
+      692
+      709
+      725
+      729
+      767
+      770
+      781
+      811
+      813
+      816
+      819
+      853
+      857
+      860
+      862
+      931
+      94
+      944
+      953

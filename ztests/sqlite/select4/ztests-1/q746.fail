@@ -1,0 +1,43 @@
+script: |
+  super -f tsv -I q746.sql | tr '\t' '\n' | sort > q746.out
+
+inputs:
+  - name: q746.sql
+    data: |
+      SELECT b6 FROM t6
+      WHERE (a6=211 OR 646=e6)
+      OR (b6=541 AND 975=c6 AND a6=255 AND 154=e6)
+      OR (6=e6)
+      UNION
+      SELECT a3 FROM t3
+      WHERE e3 in (365,178,605,846,829,951)
+      UNION ALL
+      SELECT d5 FROM t5
+      WHERE (e5=894 OR 963=d5)
+      OR (716=b5 AND d5=520 AND a5=513)
+      EXCEPT
+      SELECT a1 FROM t1
+      WHERE NOT (a1 in (584,591,776,330,895,194,294,324,477,237,438)
+      OR (b1=55)
+      OR a1 in (194,23,406,536,109))
+      EXCEPT
+      SELECT b2 FROM t2
+      WHERE NOT (b2 in (285,811,275,113,605,635,367,357));
+  - name: t3
+  - name: t5
+  - name: t9
+
+outputs:
+  - name: q746.out
+    data: |
+      105
+      30
+      419
+      463
+      480
+      520
+      541
+      743
+      947
+      954
+      962

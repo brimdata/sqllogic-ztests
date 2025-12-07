@@ -1,0 +1,31 @@
+script: |
+  super -f tsv -I q850.sql | tr '\t' '\n' | sort > q850.out
+
+inputs:
+  - name: q850.sql
+    data: |
+      SELECT b7 FROM t7
+      WHERE (490=a7 OR 826=e7)
+      UNION ALL
+      SELECT a3 FROM t3
+      WHERE (243=c3 AND 788=a3 AND e3=823)
+      OR (592=c3 OR 983=b3)
+      EXCEPT
+      SELECT e4 FROM t4
+      WHERE NOT ((e4=122)
+      OR (a4=952 OR d4=373 OR 860=c4))
+      EXCEPT
+      SELECT b5 FROM t5
+      WHERE NOT (b5 in (56,336,391,321,193,874,159,623));
+  - name: t4
+  - name: t5
+
+outputs:
+  - name: q850.out
+    data: |
+      101
+      321
+      364
+      519
+      788
+      808

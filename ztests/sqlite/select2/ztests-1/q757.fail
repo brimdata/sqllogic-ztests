@@ -1,0 +1,36 @@
+script: |
+  super -f tsv -I q757.sql | sort > q757.out
+
+inputs:
+  - name: q757.sql
+    data: |
+      SELECT (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      a+b*2+c*3+d*4,
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      (a+b+c+d+e)/5,
+      abs(b-c),
+      a+b*2
+      FROM t1
+      WHERE a>b;
+
+outputs:
+  - name: q757.out
+    data: |
+      0	1067	333	107	1	317
+      0	1325	444	132	4	391
+      0	1622	333	162	1	483
+      0	1714	555	172	2	514
+      0	1828	333	182	3	544
+      0	1861	444	187	1	560
+      0	1964	555	197	3	595
+      0	2125	222	212	3	635
+      0	2264	555	227	3	685
+      0	2323	555	232	1	698
+      0	NULL	222	NULL	4	723
+      0	NULL	555	NULL	1	455
+      0	NULL	555	NULL	1	502
+      0	NULL	555	NULL	1	529
+      0	NULL	555	NULL	2	439
+      0	NULL	555	NULL	3	475
+      0	NULL	555	NULL	NULL	711

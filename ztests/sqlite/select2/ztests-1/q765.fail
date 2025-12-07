@@ -1,0 +1,33 @@
+script: |
+  super -f tsv -I q765.sql | sort > q765.out
+
+inputs:
+  - name: q765.sql
+    data: |
+      SELECT (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      a+b*2,
+      a,
+      b,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      d-e
+      FROM t1
+      WHERE b>c
+      OR (e>a AND e<b);
+
+outputs:
+  - name: q765.out
+    data: |
+      11	502	168	167	0	NULL
+      16	579	191	194	0	-2
+      17	595	199	198	0	-1
+      2	369	121	124	0	NULL
+      20	652	216	218	0	-2
+      21	666	220	223	0	1
+      22	685	229	228	0	-1
+      23	698	234	232	0	3
+      26	743	245	249	0	2
+      3	385	127	129	0	2
+      5	416	138	139	0	1
+      6	428	142	143	0	-4
+      8	455	153	151	0	NULL
+      9	475	159	158	0	NULL

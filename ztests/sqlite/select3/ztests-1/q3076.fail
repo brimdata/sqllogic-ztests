@@ -1,0 +1,35 @@
+script: |
+  super -f tsv -I q3076.sql | sort > q3076.out
+
+inputs:
+  - name: q3076.sql
+    data: |
+      SELECT d,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      e,
+      a+b*2
+      FROM t1
+      WHERE c BETWEEN b-2 AND d+2
+      OR c>d;
+
+outputs:
+  - name: q3076.out
+    data: |
+      101	0	NULL	NULL
+      108	0	109	317
+      114	0	110	NULL
+      116	0	117	NULL
+      122	0	NULL	369
+      133	0	132	391
+      136	0	135	416
+      140	0	144	428
+      164	0	162	483
+      171	0	173	514
+      183	0	180	544
+      185	0	189	560
+      190	0	192	579
+      207	0	NULL	NULL
+      212	0	210	635
+      222	0	221	666
+      233	0	230	698
+      248	0	246	743

@@ -1,0 +1,43 @@
+script: |
+  super -f tsv -I q2449.sql | sort > q2449.out
+
+inputs:
+  - name: q2449.sql
+    data: |
+      SELECT a+b*2+c*3+d*4,
+      a+b*2+c*3
+      FROM t1
+      WHERE a>b
+      OR EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      ORDER BY 2,1;
+
+outputs:
+  - name: q2449.out
+    data: |
+      1067	635
+      1226	738
+      1272	760
+      1325	793
+      1371	827
+      1411	851
+      1622	966
+      1714	1030
+      1828	1096
+      1861	1121
+      1918	1158
+      1964	1180
+      2125	1277
+      2165	1297
+      2226	1338
+      2264	1360
+      2323	1391
+      2476	1484
+      NULL	1000
+      NULL	1057
+      NULL	1455
+      NULL	880
+      NULL	905
+      NULL	940
+      NULL	NULL
+      NULL	NULL
+      NULL	NULL

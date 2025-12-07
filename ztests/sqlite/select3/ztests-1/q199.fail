@@ -1,0 +1,47 @@
+script: |
+  super -f tsv -I q199.sql | sort > q199.out
+
+inputs:
+  - name: q199.sql
+    data: |
+      SELECT a+b*2+c*3+d*4,
+      a-b,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      a+b*2+c*3,
+      abs(b-c),
+      d
+      FROM t1
+      WHERE d>e
+      OR d NOT BETWEEN 110 AND 150
+      OR b>c
+      ORDER BY 1,2,3;
+
+outputs:
+  - name: q199.out
+    data: |
+      1067	2	0	635	1	108
+      1226	-3	2	738	1	122
+      1272	-2	3	760	4	128
+      1325	1	4	793	4	133
+      1371	-1	5	827	2	136
+      1411	-1	6	851	2	140
+      1622	3	10	966	1	164
+      1714	4	12	1030	2	171
+      1828	1	14	1096	3	183
+      1861	2	15	1121	1	185
+      1918	-3	16	1158	1	190
+      1964	1	17	1180	3	196
+      2125	2	19	1277	3	212
+      2165	-2	20	1297	3	217
+      2226	-3	21	1338	1	222
+      2264	1	22	1360	3	226
+      2323	2	23	1391	1	233
+      2476	-4	26	1484	2	248
+      NULL	1	11	1000	1	NULL
+      NULL	1	9	940	3	NULL
+      NULL	2	8	905	1	NULL
+      NULL	3	24	NULL	NULL	238
+      NULL	NULL	0	NULL	NULL	101
+      NULL	NULL	0	NULL	NULL	203
+      NULL	NULL	1	NULL	1	114
+      NULL	NULL	18	NULL	2	207

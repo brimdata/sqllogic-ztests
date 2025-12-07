@@ -1,0 +1,21 @@
+script: |
+  super -f tsv -I q3185.sql | sort > q3185.out
+
+inputs:
+  - name: q3185.sql
+    data: |
+      SELECT CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END,
+      b,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      abs(b-c),
+      a-b,
+      b-c
+      FROM t1
+      WHERE (c<=d-2 OR c>=d+2)
+      AND (a>b-2 AND a<b+2)
+      AND d>e
+      ORDER BY 5,6;
+
+outputs:
+  - name: q3185.out
+    data: |

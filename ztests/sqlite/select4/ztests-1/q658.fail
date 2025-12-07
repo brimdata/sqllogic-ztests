@@ -1,0 +1,49 @@
+script: |
+  super -f tsv -I q658.sql | tr '\t' '\n' | sort > q658.out
+
+inputs:
+  - name: q658.sql
+    data: |
+      SELECT a5 FROM t5
+      WHERE a5 in (958,683,297)
+      OR b5 in (665,389,56,403,606,26,554,858,942,559,934,640,390)
+      OR (958=a5)
+      INTERSECT
+      SELECT d7 FROM t7
+      WHERE NOT ((a7=240 AND 884=e7 AND 164=d7 AND b7=488 AND c7=970)
+      OR e7 in (827,456,344,827,455,976,234,67))
+      UNION
+      SELECT e9 FROM t9
+      WHERE (665=d9 AND a9=830 AND 804=e9)
+      OR (285=b9 OR 240=c9 OR 469=c9)
+      OR (a9=160 OR e9=383 OR a9=263)
+      UNION
+      SELECT e6 FROM t6
+      WHERE d6 in (73,929,974,185)
+      OR (928=c6 OR e6=14 OR 867=d6)
+      OR (b6=967 OR d6=974)
+      EXCEPT
+      SELECT c1 FROM t1
+      WHERE NOT ((c1=585 AND 128=b1 AND a1=967))
+      EXCEPT
+      SELECT e8 FROM t8
+      WHERE NOT ((d8=494));
+  - name: t1
+  - name: t2
+
+outputs:
+  - name: q658.out
+    data: |
+      31
+      6
+      61
+      634
+      77
+      804
+      817
+      840
+      854
+      860
+      883
+      943
+      988

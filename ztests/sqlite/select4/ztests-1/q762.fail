@@ -1,0 +1,63 @@
+script: |
+  super -f tsv -I q762.sql | tr '\t' '\n' | sort > q762.out
+
+inputs:
+  - name: q762.sql
+    data: |
+      SELECT a3 FROM t3
+      WHERE (e3=975 OR e3=281)
+      OR (2=d3)
+      UNION
+      SELECT d2 FROM t2
+      WHERE (e2=223 AND 779=c2 AND 279=a2 AND b2=846 AND d2=351)
+      EXCEPT
+      SELECT b6 FROM t6
+      WHERE NOT ((265=c6)
+      OR (366=d6 AND 512=b6)
+      OR (d6=366))
+      UNION ALL
+      SELECT b1 FROM t1
+      WHERE (297=d1 AND 89=e1 AND 674=a1 AND c1=774)
+      OR c1 in (441,4,765,15)
+      OR (874=d1)
+      UNION ALL
+      SELECT a5 FROM t5
+      WHERE (c5=924 OR 41=e5 OR 557=d5)
+      OR b5 in (606,774,234,858,629,69,91)
+      UNION
+      SELECT b8 FROM t8
+      WHERE (273=e8 AND 503=b8 AND 394=c8 AND 331=a8)
+      EXCEPT
+      SELECT b9 FROM t9
+      WHERE NOT ((678=d9 AND 110=c9)
+      OR (458=a9)
+      OR b9 in (783,312,289,171,251,827,524));
+  - name: t2
+  - name: t3
+  - name: t4
+  - name: t5
+  - name: t7
+  - name: t8
+
+outputs:
+  - name: q762.out
+    data: |
+      179
+      190
+      196
+      218
+      254
+      270
+      282
+      339
+      341
+      346
+      392
+      429
+      503
+      754
+      851
+      878
+      921
+      935
+      995

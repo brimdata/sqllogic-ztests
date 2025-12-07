@@ -1,0 +1,32 @@
+script: |
+  super -f tsv -I q112.sql | sort > q112.out
+
+inputs:
+  - name: q112.sql
+    data: |
+      SELECT abs(a),
+      abs(b-c),
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b)
+      FROM t1
+      WHERE d NOT BETWEEN 110 AND 150;
+
+outputs:
+  - name: q112.out
+    data: |
+      104	NULL	0
+      107	1	0
+      163	1	10
+      174	2	12
+      182	3	14
+      188	1	15
+      191	1	16
+      199	3	17
+      201	NULL	0
+      213	3	19
+      216	3	20
+      220	1	21
+      229	3	22
+      234	1	23
+      239	NULL	24
+      245	2	26
+      NULL	2	18

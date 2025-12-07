@@ -1,0 +1,46 @@
+script: |
+  super -f tsv -I q248.sql > q248.out
+
+inputs:
+  - name: q248.sql
+    data: |
+      SELECT (a+b+c+d+e)/5
+      FROM t1
+      WHERE e+d BETWEEN a+b-10 AND c+130
+      OR (c<=d-2 OR c>=d+2)
+      OR EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      ORDER BY 1;
+
+outputs:
+  - name: q248.out
+    data: |
+      102
+      107
+      112
+      117
+      122
+      127
+      132
+      137
+      142
+      147
+      152
+      157
+      162
+      167
+      172
+      177
+      182
+      187
+      192
+      197
+      202
+      207
+      212
+      217
+      222
+      227
+      232
+      237
+      242
+      247

@@ -1,0 +1,28 @@
+script: |
+  super -f tsv -I q180.sql | tr '\t' '\n' | sort > q180.out
+
+inputs:
+  - name: q180.sql
+    data: |
+      SELECT c3 FROM t3
+      WHERE (499=a3)
+      EXCEPT
+      SELECT e7 FROM t7
+      WHERE NOT ((b7=257 AND c7=375 AND e7=422 AND 315=d7)
+      OR (d7=620 AND a7=231 AND 981=c7 AND e7=503))
+      EXCEPT
+      SELECT a2 FROM t2
+      WHERE NOT ((d2=886));
+  - name: t1
+  - name: t3
+  - name: t5
+  - name: t6
+  - name: t7
+  - name: t8
+  - name: t9
+
+outputs:
+  - name: q180.out
+    data: |
+      211
+      459

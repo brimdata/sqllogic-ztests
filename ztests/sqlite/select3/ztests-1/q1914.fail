@@ -1,0 +1,18 @@
+script: |
+  super -f tsv -I q1914.sql | sort > q1914.out
+
+inputs:
+  - name: q1914.sql
+    data: |
+      SELECT e,
+      d,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d)
+      FROM t1
+      WHERE (e>a AND e<b);
+
+outputs:
+  - name: q1914.out
+    data: |
+      192	190	0
+      221	222	0
+      246	248	0

@@ -1,0 +1,40 @@
+script: |
+  super -f tsv -I q1438.sql | sort > q1438.out
+
+inputs:
+  - name: q1438.sql
+    data: |
+      SELECT a+b*2+c*3,
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      (a+b+c+d+e)/5
+      FROM t1
+      WHERE (c<=d-2 OR c>=d+2)
+      OR c>d
+      OR d>e;
+
+outputs:
+  - name: q1438.out
+    data: |
+      1030	555	0	172
+      1096	333	0	182
+      1121	444	0	187
+      1158	444	0	192
+      1277	222	0	212
+      1297	333	0	217
+      1338	444	0	222
+      1391	555	0	232
+      1484	444	0	247
+      635	333	0	107
+      738	333	0	NULL
+      760	333	0	127
+      793	444	0	132
+      827	111	0	137
+      851	111	0	142
+      966	333	0	162
+      NULL	333	0	NULL
+      NULL	555	0	NULL
+      NULL	555	0	NULL
+      NULL	555	0	NULL
+      NULL	555	0	NULL

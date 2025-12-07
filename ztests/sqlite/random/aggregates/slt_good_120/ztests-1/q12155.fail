@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q12155.sql | sort > q12155.out
+
+inputs:
+  - name: q12155.sql
+    data: |
+      SELECT ALL MAX ( ALL + col1 ) AS col1 FROM tab1 WHERE - col1 IS NULL;
+
+outputs:
+  - name: q12155.out
+    data: |
+      NULL

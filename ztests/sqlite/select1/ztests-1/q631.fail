@@ -1,0 +1,25 @@
+script: |
+  super -f tsv -I q631.sql > q631.out
+
+inputs:
+  - name: q631.sql
+    data: |
+      SELECT b-c,
+      a+b*2+c*3+d*4+e*5,
+      d
+      FROM t1
+      WHERE a>b
+      AND (a>b-2 AND a<b+2)
+      AND EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      ORDER BY 3,2,1;
+
+outputs:
+  - name: q631.out
+    data: |
+      -4	1985	133
+      3	2349	156
+      1	2501	169
+      -3	2728	183
+      3	2949	196
+      -2	3039	203
+      3	3399	226

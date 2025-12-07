@@ -1,0 +1,56 @@
+script: |
+  super -f tsv -I q25.sql | tr '\t' '\n' | sort > q25.out
+
+inputs:
+  - name: q25.sql
+    data: |
+      SELECT a5 FROM t5
+      WHERE b5 in (878,391,640,320,609,998,858,495,306)
+      UNION
+      SELECT b2 FROM t2
+      WHERE (823=b2 OR 213=e2 OR 374=a2)
+      OR a2 in (725,327,669,185)
+      EXCEPT
+      SELECT a9 FROM t9
+      WHERE NOT ((b9=667 OR 621=e9)
+      OR (962=a9 OR 253=c9))
+      UNION ALL
+      SELECT d4 FROM t4
+      WHERE a4 in (105,228,210)
+      UNION
+      SELECT e8 FROM t8
+      WHERE (384=e8 AND 461=c8 AND a8=5 AND b8=405 AND d8=330)
+      OR (d8=384 AND a8=994 AND 370=b8 AND e8=495)
+      UNION ALL
+      SELECT c3 FROM t3
+      WHERE (913=e3)
+      EXCEPT
+      SELECT e1 FROM t1
+      WHERE NOT (c1 in (762,765,379,246,617,531,299,846,787,979,62,776)
+      OR (a1=109 AND d1=678 AND 295=b1 AND 312=e1))
+      EXCEPT
+      SELECT a7 FROM t7
+      WHERE NOT (a7 in (884,998,356,854,848,592,982,622,565,879));
+  - name: t9
+
+outputs:
+  - name: q25.out
+    data: |
+      153
+      199
+      220
+      301
+      342
+      376
+      384
+      482
+      495
+      544
+      565
+      60
+      677
+      796
+      818
+      823
+      844
+      857

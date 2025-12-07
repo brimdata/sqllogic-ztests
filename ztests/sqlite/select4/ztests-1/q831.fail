@@ -1,0 +1,57 @@
+script: |
+  super -f tsv -I q831.sql | tr '\t' '\n' | sort > q831.out
+
+inputs:
+  - name: q831.sql
+    data: |
+      SELECT d4 FROM t4
+      WHERE d4 in (985,105,491,820,597,844,31)
+      OR (a4=968)
+      OR (b4=76 AND c4=732 AND d4=917)
+      INTERSECT
+      SELECT b7 FROM t7
+      WHERE NOT ((301=c7 OR 324=d7 OR b7=881)
+      OR (e7=971 AND 973=b7))
+      INTERSECT
+      SELECT b9 FROM t9
+      WHERE NOT ((975=c9 AND b9=891 AND d9=686 AND 127=e9 AND 148=a9))
+      UNION ALL
+      SELECT c2 FROM t2
+      WHERE (900=c2 OR b2=968)
+      OR (b2=812 AND 802=a2 AND 541=d2 AND c2=27)
+      OR (769=e2 AND 35=a2 AND c2=197)
+      UNION ALL
+      SELECT a6 FROM t6
+      WHERE (b6=281 OR 798=e6)
+      OR (d6=72 AND 963=a6)
+      OR (b6=229 OR c6=308 OR b6=267)
+      UNION ALL
+      SELECT a1 FROM t1
+      WHERE (426=b1)
+      OR (345=b1)
+      OR (d1=818 OR a1=299 OR 953=a1)
+      EXCEPT
+      SELECT a5 FROM t5
+      WHERE NOT (d5 in (806,752,789,841,731,792,542,916,963,553,4,59)
+      OR (c5=820));
+  - name: t2
+  - name: t7
+
+outputs:
+  - name: q831.out
+    data: |
+      145
+      197
+      23
+      233
+      27
+      299
+      300
+      359
+      474
+      524
+      585
+      61
+      900
+      953
+      963

@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q9291.sql | sort > q9291.out
+
+inputs:
+  - name: q9291.sql
+    data: |
+      SELECT DISTINCT 50 AS col1, - ( + col1 ) AS col1 FROM tab0 AS cor0;
+
+outputs:
+  - name: q9291.out
+    data: |
+      50	-1
+      50	-21
+      50	-81

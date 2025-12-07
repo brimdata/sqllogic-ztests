@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q6091.sql | sort > q6091.out
+
+inputs:
+  - name: q6091.sql
+    data: |
+      SELECT MIN ( DISTINCT CAST ( col2 AS INTEGER ) ) FROM tab2 WHERE NULL <> NULL;
+  - name: tab2
+
+outputs:
+  - name: q6091.out
+    data: |
+      NULL

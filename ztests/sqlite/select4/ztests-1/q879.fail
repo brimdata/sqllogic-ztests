@@ -1,0 +1,47 @@
+script: |
+  super -f tsv -I q879.sql | tr '\t' '\n' | sort > q879.out
+
+inputs:
+  - name: q879.sql
+    data: |
+      SELECT e9 FROM t9
+      WHERE (942=e9 AND 467=d9 AND c9=146 AND 297=a9 AND 848=b9)
+      OR (811=a9 AND 178=b9)
+      INTERSECT
+      SELECT c7 FROM t7
+      WHERE NOT ((b7=813 AND 649=a7 AND 944=c7 AND d7=765))
+      EXCEPT
+      SELECT b4 FROM t4
+      WHERE NOT ((a4=621)
+      OR (979=b4 AND d4=781 AND 296=e4 AND 201=c4)
+      OR e4 in (835,543,217,677,257,543,438,376,511,951,163,617))
+      UNION
+      SELECT a2 FROM t2
+      WHERE a2 in (209,588,1,910,374)
+      OR (547=d2 AND e2=671 AND c2=830 AND 418=b2 AND 910=a2)
+      EXCEPT
+      SELECT e1 FROM t1
+      WHERE NOT (b1 in (37,711,670,132,633,435)
+      OR (e1=683 AND 807=b1 AND 230=c1))
+      EXCEPT
+      SELECT d6 FROM t6
+      WHERE NOT ((b6=54 AND 146=c6)
+      OR (c6=187 AND 974=d6 AND 905=b6))
+      EXCEPT
+      SELECT a8 FROM t8
+      WHERE NOT (b8 in (705,647,145,365,615,219,364,287));
+  - name: t1
+  - name: t2
+  - name: t3
+  - name: t6
+  - name: t7
+  - name: t8
+  - name: t9
+
+outputs:
+  - name: q879.out
+    data: |
+      1
+      374
+      588
+      910

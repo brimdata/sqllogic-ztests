@@ -1,0 +1,92 @@
+script: |
+  super -f tsv -I q200.sql | tr '\t' '\n' | sort > q200.out
+
+inputs:
+  - name: q200.sql
+    data: |
+      SELECT b1 FROM t1
+      WHERE (761=d1 AND 330=a1)
+      OR (988=a1 AND 130=d1 AND e1=962 AND 88=c1)
+      OR (226=b1 OR 32=b1)
+      INTERSECT
+      SELECT b2 FROM t2
+      WHERE NOT (b2 in (545,796,985,173,818,351,546,211))
+      UNION ALL
+      SELECT e6 FROM t6
+      WHERE d6 in (500,822,151,446,473)
+      OR a6 in (610,392,116,861,818,35,683,615,811,643,128,452)
+      OR (629=b6 OR 689=d6)
+      EXCEPT
+      SELECT d4 FROM t4
+      WHERE NOT (c4 in (584,84,768,674,791,993,422)
+      OR d4 in (665,583,247,657))
+      UNION ALL
+      SELECT a8 FROM t8
+      WHERE e8 in (833,944,881,729,487,384,533)
+      OR a8 in (127,672,855,129,957,620,171,946,963,578,248,826)
+      UNION ALL
+      SELECT e9 FROM t9
+      WHERE (b9=348 AND d9=959)
+      OR e9 in (737,161,30,117,15,301)
+      UNION
+      SELECT d7 FROM t7
+      WHERE c7 in (333,585,238,944,853,781,508,672,488,934,887,575)
+      OR (a7=936 AND 827=b7);
+  - name: t8
+  - name: t9
+
+outputs:
+  - name: q200.out
+    data: |
+      113
+      117
+      127
+      129
+      139
+      15
+      161
+      171
+      192
+      195
+      196
+      225
+      226
+      248
+      274
+      30
+      301
+      306
+      341
+      395
+      417
+      489
+      5
+      578
+      585
+      588
+      595
+      599
+      620
+      622
+      654
+      666
+      67
+      671
+      672
+      673
+      678
+      711
+      731
+      737
+      761
+      765
+      795
+      809
+      826
+      855
+      893
+      924
+      946
+      957
+      958
+      963

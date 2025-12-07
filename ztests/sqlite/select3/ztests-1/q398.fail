@@ -1,0 +1,40 @@
+script: |
+  super -f tsv -I q398.sql | sort > q398.out
+
+inputs:
+  - name: q398.sql
+    data: |
+      SELECT d
+      FROM t1
+      WHERE EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      OR b>c;
+
+outputs:
+  - name: q398.out
+    data: |
+      114
+      122
+      128
+      133
+      136
+      140
+      164
+      171
+      183
+      185
+      190
+      196
+      207
+      212
+      217
+      222
+      226
+      233
+      238
+      248
+      NULL
+      NULL
+      NULL
+      NULL
+      NULL
+      NULL

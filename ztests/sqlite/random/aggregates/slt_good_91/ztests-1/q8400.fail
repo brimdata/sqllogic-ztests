@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q8400.sql | sort > q8400.out
+
+inputs:
+  - name: q8400.sql
+    data: |
+      SELECT ALL + MAX ( DISTINCT col1 ) * COUNT ( * ) AS col0 FROM tab0 WHERE NOT NULL IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q8400.out
+    data: |
+      243

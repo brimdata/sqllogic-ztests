@@ -1,0 +1,37 @@
+script: |
+  super -f tsv -I q848.sql > q848.out
+
+inputs:
+  - name: q848.sql
+    data: |
+      SELECT a+b*2,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      (a+b+c+d+e)/5,
+      CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END
+      FROM t1
+      WHERE (a>b-2 AND a<b+2)
+      OR b>c
+      ORDER BY 3,1,2,4;
+
+outputs:
+  - name: q848.out
+    data: |
+      335	2	112	1120
+      369	4	122	1240
+      385	5	127	1290
+      391	6	132	1300
+      416	7	137	1390
+      428	8	142	1430
+      455	10	152	1510
+      475	11	157	1580
+      502	13	167	1670
+      544	16	182	364
+      579	18	192	382
+      595	19	197	398
+      601	20	202	402
+      617	21	207	410
+      652	23	217	432
+      685	25	227	458
+      698	26	232	468
+      711	27	237	478
+      743	29	247	490

@@ -1,0 +1,42 @@
+script: |
+  super -f tsv -I q2313.sql | sort > q2313.out
+
+inputs:
+  - name: q2313.sql
+    data: |
+      SELECT a-b,
+      c
+      FROM t1
+      WHERE EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      OR (a>b-2 AND a<b+2)
+      ORDER BY 1,2;
+
+outputs:
+  - name: q2313.out
+    data: |
+      -1	137
+      -1	141
+      -2	125
+      -2	215
+      -3	123
+      -3	193
+      -3	224
+      -4	247
+      1	134
+      1	155
+      1	166
+      1	184
+      1	195
+      1	225
+      2	150
+      2	187
+      2	214
+      2	231
+      3	161
+      3	244
+      3	NULL
+      4	147
+      4	172
+      4	176
+      NULL	113
+      NULL	208

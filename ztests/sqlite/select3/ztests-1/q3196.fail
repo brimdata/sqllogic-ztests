@@ -1,0 +1,28 @@
+script: |
+  super -f tsv -I q3196.sql | sort > q3196.out
+
+inputs:
+  - name: q3196.sql
+    data: |
+      SELECT a+b*2+c*3+d*4+e*5,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      b,
+      abs(a),
+      a+b*2+c*3+d*4
+      FROM t1
+      WHERE d>e;
+
+outputs:
+  - name: q3196.out
+    data: |
+      1902	0	129	127	1272
+      1985	0	130	131	1325
+      2046	0	139	138	1371
+      2432	0	160	163	1622
+      2728	0	181	182	1828
+      3175	0	211	213	2125
+      3331	0	223	220	2226
+      3473	0	232	234	2323
+      3706	0	249	245	2476
+      NULL	0	112	NULL	NULL
+      NULL	0	236	239	NULL

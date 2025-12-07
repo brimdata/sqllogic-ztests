@@ -1,0 +1,66 @@
+script: |
+  super -f tsv -I q327.sql | tr '\t' '\n' | sort > q327.out
+
+inputs:
+  - name: q327.sql
+    data: |
+      SELECT a2 FROM t2
+      WHERE (c2=981)
+      OR e2 in (788,706,428,123,936,37)
+      EXCEPT
+      SELECT c5 FROM t5
+      WHERE NOT (d5 in (769,309,369,542,98,117,132,772,745,282)
+      OR (965=d5 OR e5=885 OR 72=e5))
+      EXCEPT
+      SELECT b9 FROM t9
+      WHERE NOT ((413=a9 AND e9=788 AND d9=450 AND 379=b9 AND c9=62)
+      OR (913=b9 AND 947=e9))
+      UNION
+      SELECT b3 FROM t3
+      WHERE c3 in (600,961,656,220,763,711,102,40,127,580,887)
+      OR (792=c3)
+      OR c3 in (845,285,339,494,697,338,970,651,844,84,826,777,455)
+      EXCEPT
+      SELECT c6 FROM t6
+      WHERE NOT ((c6=11 AND d6=271 AND a6=740 AND e6=574 AND b6=0)
+      OR (d6=271 OR 21=d6 OR 35=a6))
+      EXCEPT
+      SELECT e7 FROM t7
+      WHERE NOT ((575=d7 OR e7=970 OR 916=d7))
+      EXCEPT
+      SELECT e1 FROM t1
+      WHERE NOT (d1 in (457,55,416,130,25,508,319,4))
+      EXCEPT
+      SELECT c4 FROM t4
+      WHERE NOT (d4 in (706,277,917,728,568,549)
+      OR (661=d4 AND e4=739));
+  - name: t1
+  - name: t2
+  - name: t3
+  - name: t9
+
+outputs:
+  - name: q327.out
+    data: |
+      145
+      17
+      186
+      198
+      214
+      296
+      327
+      368
+      371
+      405
+      505
+      57
+      632
+      664
+      713
+      761
+      785
+      80
+      835
+      837
+      863
+      888

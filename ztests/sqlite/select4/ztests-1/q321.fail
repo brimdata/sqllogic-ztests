@@ -1,0 +1,30 @@
+script: |
+  super -f tsv -I q321.sql | tr '\t' '\n' | sort > q321.out
+
+inputs:
+  - name: q321.sql
+    data: |
+      SELECT a3 FROM t3
+      WHERE (134=c3 OR 727=a3 OR a3=929)
+      OR (a3=754)
+      UNION
+      SELECT d1 FROM t1
+      WHERE (d1=163)
+      EXCEPT
+      SELECT b7 FROM t7
+      WHERE NOT (a7 in (894,75,757,806,158,324,439,299,195)
+      OR e7 in (356,120,971)
+      OR (114=a7 AND b7=191 AND 419=c7 AND d7=777));
+  - name: t1
+  - name: t2
+  - name: t3
+  - name: t9
+
+outputs:
+  - name: q321.out
+    data: |
+      163
+      34
+      727
+      754
+      929

@@ -1,0 +1,45 @@
+script: |
+  super -f tsv -I q1088.sql | sort > q1088.out
+
+inputs:
+  - name: q1088.sql
+    data: |
+      SELECT abs(a),
+      d,
+      (a+b+c+d+e)/5,
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      a+b*2+c*3+d*4,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b)
+      FROM t1
+      WHERE (a>b-2 AND a<b+2)
+      OR a>b
+      OR b>c;
+
+outputs:
+  - name: q1088.out
+    data: |
+      107	108	107	333	1067	0
+      121	122	NULL	333	1226	2
+      127	128	127	333	1272	3
+      131	133	132	444	1325	4
+      138	136	137	111	1371	5
+      142	140	142	111	1411	6
+      149	NULL	NULL	555	NULL	7
+      153	NULL	NULL	555	NULL	8
+      159	NULL	NULL	555	NULL	9
+      163	164	162	333	1622	10
+      168	NULL	NULL	555	NULL	11
+      174	171	172	555	1714	12
+      179	NULL	NULL	555	NULL	13
+      182	183	182	333	1828	14
+      188	185	187	444	1861	15
+      191	190	192	444	1918	16
+      199	196	197	555	1964	17
+      213	212	212	222	2125	19
+      216	217	217	333	2165	20
+      229	226	227	555	2264	22
+      234	233	232	555	2323	23
+      239	238	NULL	555	NULL	24
+      243	NULL	NULL	222	NULL	25
+      245	248	247	444	2476	26

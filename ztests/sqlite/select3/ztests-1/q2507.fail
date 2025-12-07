@@ -1,0 +1,45 @@
+script: |
+  super -f tsv -I q2507.sql | sort > q2507.out
+
+inputs:
+  - name: q2507.sql
+    data: |
+      SELECT a+b*2,
+      d,
+      a+b*2+c*3+d*4+e*5,
+      e
+      FROM t1
+      WHERE c BETWEEN b-2 AND d+2
+      OR EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      ORDER BY 3,2;
+
+outputs:
+  - name: q2507.out
+    data: |
+      317	108	1612	109
+      369	122	NULL	NULL
+      385	128	1902	126
+      391	133	1985	132
+      416	136	2046	135
+      428	140	2131	144
+      439	NULL	NULL	146
+      455	NULL	NULL	NULL
+      475	NULL	NULL	157
+      483	164	2432	162
+      502	NULL	NULL	165
+      514	171	2579	173
+      529	NULL	NULL	177
+      544	183	2728	180
+      560	185	2806	189
+      579	190	2878	192
+      595	196	2949	197
+      635	212	3175	210
+      652	217	3260	219
+      666	222	3331	221
+      685	226	3399	227
+      698	233	3473	230
+      711	238	NULL	237
+      723	NULL	NULL	NULL
+      743	248	3706	246
+      NULL	114	NULL	110
+      NULL	207	NULL	NULL

@@ -1,0 +1,55 @@
+script: |
+  super -f tsv -I q32.sql | tr '\t' '\n' | sort > q32.out
+
+inputs:
+  - name: q32.sql
+    data: |
+      SELECT e5 FROM t5
+      WHERE (c5=471 OR 642=a5 OR e5=888)
+      OR (818=c5)
+      OR a5 in (683,602,392,297,740,522,362,421)
+      UNION
+      SELECT a3 FROM t3
+      WHERE (632=b3 OR a3=198)
+      OR (a3=591 OR d3=354 OR e3=932)
+      OR d3 in (217,66,809,890,607,428)
+      EXCEPT
+      SELECT a1 FROM t1
+      WHERE NOT ((d1=18 AND 747=e1 AND a1=678 AND 62=c1)
+      OR b1 in (345,404,726,556,788,762,115)
+      OR d1 in (939,818,949,972,35,418))
+      EXCEPT
+      SELECT c6 FROM t6
+      WHERE NOT ((348=b6 AND 35=a6)
+      OR (822=d6 OR d6=355));
+  - name: t1
+  - name: t2
+  - name: t3
+  - name: t4
+  - name: t5
+  - name: t6
+  - name: t7
+  - name: t8
+  - name: t9
+
+outputs:
+  - name: q32.out
+    data: |
+      101
+      104
+      184
+      198
+      296
+      390
+      41
+      621
+      697
+      699
+      737
+      758
+      812
+      888
+      923
+      929
+      965
+      995

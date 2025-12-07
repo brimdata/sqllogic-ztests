@@ -1,0 +1,36 @@
+script: |
+  super -f tsv -I q915.sql > q915.out
+
+inputs:
+  - name: q915.sql
+    data: |
+      SELECT a+b*2+c*3,
+      (a+b+c+d+e)/5
+      FROM t1
+      WHERE d NOT BETWEEN 110 AND 150
+      AND EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      AND (e>c OR e<d)
+      ORDER BY 2,1;
+
+outputs:
+  - name: q915.out
+    data: |
+      635	107
+      905	152
+      940	157
+      966	162
+      1000	167
+      1030	172
+      1057	177
+      1096	182
+      1121	187
+      1180	197
+      1207	202
+      1241	207
+      1277	212
+      1297	217
+      1338	222
+      1360	227
+      1391	232
+      1416	237
+      1484	247

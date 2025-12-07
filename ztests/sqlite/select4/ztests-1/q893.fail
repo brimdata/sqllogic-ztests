@@ -1,0 +1,36 @@
+script: |
+  super -f tsv -I q893.sql | tr '\t' '\n' | sort > q893.out
+
+inputs:
+  - name: q893.sql
+    data: |
+      SELECT a3 FROM t3
+      WHERE d3 in (81,423,825,482,913,889,958,782)
+      INTERSECT
+      SELECT c8 FROM t8
+      WHERE NOT ((d8=482)
+      OR b8 in (105,564,219,792,704,642,696,997,975,269,803))
+      INTERSECT
+      SELECT d1 FROM t1
+      WHERE NOT ((b1=836))
+      EXCEPT
+      SELECT d2 FROM t2
+      WHERE NOT (c2 in (810,275,653,450,830,988,148,45,967,444,756,729,136)
+      OR (e2=781 AND a2=709 AND d2=448 AND 605=b2))
+      EXCEPT
+      SELECT b7 FROM t7
+      WHERE NOT ((183=d7)
+      OR a7 in (147,430,433,208,452,158,757,324,240,299,27,62,758,958)
+      OR (d7=367 OR c7=238 OR b7=506))
+      EXCEPT
+      SELECT d6 FROM t6
+      WHERE NOT (b6 in (984,243,507,6,696,716,882,461,825,214,427,210)
+      OR c6 in (297,424,34,292,648,430,975,146,938,942)
+      OR (33=a6 AND 262=b6 AND c6=961));
+  - name: t3
+  - name: t9
+
+outputs:
+  - name: q893.out
+    data: |
+      899

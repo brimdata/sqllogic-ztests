@@ -1,0 +1,35 @@
+script: |
+  super -f tsv -I q570.sql | tr '\t' '\n' | sort > q570.out
+
+inputs:
+  - name: q570.sql
+    data: |
+      SELECT e6 FROM t6
+      WHERE (654=e6 OR b6=850 OR e6=255)
+      OR (751=a6)
+      INTERSECT
+      SELECT a5 FROM t5
+      WHERE NOT ((e5=902 OR e5=971 OR 422=c5)
+      OR b5 in (306,705,380,620,26,544,878,820,744,186,484,530)
+      OR (757=d5 AND a5=976 AND 209=e5 AND 569=b5 AND c5=313))
+      EXCEPT
+      SELECT e8 FROM t8
+      WHERE NOT ((774=a8 AND e8=442 AND 366=d8 AND c8=230)
+      OR a8 in (923,289,563,99,672,869,864,564,882,900,952,5,838,957)
+      OR a8 in (628,638,672,923,807))
+      EXCEPT
+      SELECT d2 FROM t2
+      WHERE NOT ((806=c2)
+      OR (e2=604)
+      OR (d2=367))
+      EXCEPT
+      SELECT c4 FROM t4
+      WHERE NOT ((b4=379 OR e4=543)
+      OR d4 in (231,728,449,86,819,910,797));
+  - name: t2
+  - name: t7
+
+outputs:
+  - name: q570.out
+    data: |
+      958

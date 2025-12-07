@@ -1,0 +1,27 @@
+script: |
+  super -f tsv -I q1907.sql | sort > q1907.out
+
+inputs:
+  - name: q1907.sql
+    data: |
+      SELECT c,
+      CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      d-e,
+      a
+      FROM t1
+      WHERE d NOT BETWEEN 110 AND 150
+      AND EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      AND (c<=d-2 OR c>=d+2)
+      ORDER BY 3,4,1;
+
+outputs:
+  - name: q1907.out
+    data: |
+      161	1600	0	2	163
+      187	376	0	-4	188
+      193	382	0	-2	191
+      214	426	0	2	213
+      215	432	0	-2	216
+      224	440	0	1	220
+      231	468	0	3	234

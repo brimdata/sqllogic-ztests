@@ -1,0 +1,44 @@
+script: |
+  super -f tsv -I q2760.sql | sort > q2760.out
+
+inputs:
+  - name: q2760.sql
+    data: |
+      SELECT a,
+      (a+b+c+d+e)/5,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      abs(b-c),
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END
+      FROM t1
+      WHERE EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b);
+
+outputs:
+  - name: q2760.out
+    data: |
+      121	NULL	2	1	333
+      127	127	3	4	333
+      131	132	4	4	444
+      138	137	5	2	111
+      142	142	6	2	111
+      149	NULL	7	2	555
+      153	NULL	8	1	555
+      159	NULL	9	3	555
+      163	162	10	1	333
+      168	NULL	11	1	555
+      174	172	12	2	555
+      179	NULL	13	1	555
+      182	182	14	3	333
+      188	187	15	1	444
+      191	192	16	1	444
+      199	197	17	3	555
+      213	212	19	3	222
+      216	217	20	3	333
+      220	222	21	1	444
+      229	227	22	3	555
+      234	232	23	1	555
+      239	NULL	24	NULL	555
+      243	NULL	25	4	222
+      245	247	26	2	444
+      NULL	NULL	1	1	555
+      NULL	NULL	18	2	555

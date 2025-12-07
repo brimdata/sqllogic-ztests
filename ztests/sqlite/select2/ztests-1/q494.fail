@@ -1,0 +1,33 @@
+script: |
+  super -f tsv -I q494.sql | sort > q494.out
+
+inputs:
+  - name: q494.sql
+    data: |
+      SELECT (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END,
+      b
+      FROM t1
+      WHERE coalesce(a,b,c,d,e)<>0
+      AND d NOT BETWEEN 110 AND 150;
+
+outputs:
+  - name: q494.out
+    data: |
+      0	1050	105
+      0	1600	160
+      0	1700	170
+      0	2360	236
+      0	364	181
+      0	376	186
+      0	382	194
+      0	398	198
+      0	402	NULL
+      0	426	211
+      0	432	218
+      0	440	223
+      0	458	228
+      0	468	232
+      0	490	249
+      0	NULL	206
+      0	NULL	NULL

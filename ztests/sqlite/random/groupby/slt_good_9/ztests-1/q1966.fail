@@ -1,0 +1,11 @@
+script: |
+  super -f tsv -I q1966.sql | sort > q1966.out
+
+inputs:
+  - name: q1966.sql
+    data: |
+      SELECT - col0, + col0 FROM tab2 AS cor0 GROUP BY col0 HAVING AVG ( ALL + col1 ) < NULL;
+
+outputs:
+  - name: q1966.out
+    data: |

@@ -1,0 +1,33 @@
+script: |
+  super -f tsv -I q250.sql | tr '\t' '\n' | sort > q250.out
+
+inputs:
+  - name: q250.sql
+    data: |
+      SELECT a7 FROM t7
+      WHERE (e7=436)
+      OR (606=c7 AND 996=b7 AND 894=a7)
+      OR (d7=572 AND 938=b7 AND 744=a7 AND 260=c7)
+      EXCEPT
+      SELECT b5 FROM t5
+      WHERE NOT ((98=e5 AND 691=d5 AND 153=a5 AND 443=c5))
+      EXCEPT
+      SELECT b2 FROM t2
+      WHERE NOT ((e2=463 AND 914=d2 AND 680=a2 AND b2=674 AND c2=127)
+      OR (c2=807)
+      OR (d2=351 AND c2=688 AND 544=a2 AND b2=113 AND 983=e2))
+      EXCEPT
+      SELECT d3 FROM t3
+      WHERE NOT ((b3=783 OR 701=b3)
+      OR (986=c3 AND d3=983 AND 844=e3 AND a3=929 AND b3=269))
+      EXCEPT
+      SELECT a1 FROM t1
+      WHERE NOT ((168=c1 AND b1=729 AND 241=a1 AND d1=574)
+      OR (255=b1));
+  - name: t6
+  - name: t8
+
+outputs:
+  - name: q250.out
+    data: |
+      894

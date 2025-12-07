@@ -1,0 +1,31 @@
+script: |
+  super -f tsv -I q67.sql | sort > q67.out
+
+inputs:
+  - name: q67.sql
+    data: |
+      SELECT a+b*2+c*3+d*4+e*5,
+      abs(b-c),
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      b-c,
+      a+b*2+c*3,
+      a+b*2+c*3+d*4
+      FROM t1
+      WHERE c>d;
+
+outputs:
+  - name: q67.out
+    data: |
+      1985	4	0	-4	793	1325
+      2046	2	0	2	827	1371
+      2131	2	0	2	851	1411
+      2579	2	0	-2	1030	1714
+      2728	3	0	-3	1096	1828
+      2806	1	0	-1	1121	1861
+      2878	1	0	1	1158	1918
+      3175	3	0	-3	1277	2125
+      3331	1	0	-1	1338	2226
+      NULL	1	0	1	738	1226
+      NULL	2	0	-2	NULL	NULL
+      NULL	NULL	0	NULL	NULL	NULL
+      NULL	NULL	0	NULL	NULL	NULL

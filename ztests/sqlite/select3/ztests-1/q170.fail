@@ -1,0 +1,29 @@
+script: |
+  super -f tsv -I q170.sql | sort > q170.out
+
+inputs:
+  - name: q170.sql
+    data: |
+      SELECT abs(a),
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      a+b*2+c*3+d*4,
+      c-d,
+      a+b*2+c*3+d*4+e*5,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      b
+      FROM t1
+      WHERE (c<=d-2 OR c>=d+2)
+      AND EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b);
+
+outputs:
+  - name: q170.out
+    data: |
+      127	333	1272	-3	1902	0	129
+      163	333	1622	-3	2432	0	160
+      188	444	1861	2	2806	0	186
+      191	444	1918	3	2878	0	194
+      213	222	2125	2	3175	0	211
+      216	333	2165	-2	3260	0	218
+      220	444	2226	2	3331	0	223
+      234	555	2323	-2	3473	0	232

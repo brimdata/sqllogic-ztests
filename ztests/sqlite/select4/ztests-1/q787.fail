@@ -1,0 +1,38 @@
+script: |
+  super -f tsv -I q787.sql | tr '\t' '\n' | sort > q787.out
+
+inputs:
+  - name: q787.sql
+    data: |
+      SELECT d2 FROM t2
+      WHERE d2 in (860,86,351,723,836,790,209,854)
+      OR (b2=784)
+      INTERSECT
+      SELECT d3 FROM t3
+      WHERE NOT ((565=c3)
+      OR (434=d3 OR 386=a3))
+      EXCEPT
+      SELECT a6 FROM t6
+      WHERE NOT ((911=d6)
+      OR (537=a6 AND e6=283 AND d6=489 AND 984=b6 AND c6=729))
+      UNION ALL
+      SELECT c1 FROM t1
+      WHERE d1 in (87,298,432,105,187,806)
+      OR (b1=362 AND 0=d1)
+      OR (b1=736);
+  - name: t1
+  - name: t2
+  - name: t6
+  - name: t9
+
+outputs:
+  - name: q787.out
+    data: |
+      289
+      368
+      416
+      458
+      523
+      636
+      776
+      885

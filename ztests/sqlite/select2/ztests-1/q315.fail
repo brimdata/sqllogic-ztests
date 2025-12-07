@@ -1,0 +1,26 @@
+script: |
+  super -f tsv -I q315.sql | sort > q315.out
+
+inputs:
+  - name: q315.sql
+    data: |
+      SELECT d-e,
+      c,
+      (a+b+c+d+e)/5,
+      a+b*2+c*3+d*4+e*5,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d)
+      FROM t1
+      WHERE EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      AND (c<=d-2 OR c>=d+2);
+
+outputs:
+  - name: q315.out
+    data: |
+      -2	193	192	2878	0
+      -2	215	217	3260	0
+      -4	187	187	2806	0
+      1	224	222	3331	0
+      2	125	127	1902	0
+      2	161	162	2432	0
+      2	214	212	3175	0
+      3	231	232	3473	0

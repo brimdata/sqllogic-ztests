@@ -1,0 +1,51 @@
+script: |
+  super -f tsv -I q700.sql | tr '\t' '\n' | sort > q700.out
+
+inputs:
+  - name: q700.sql
+    data: |
+      SELECT d7 FROM t7
+      WHERE e7 in (971,422,428,144,408,290,506,183,970)
+      OR (b7=938 AND 260=c7 AND e7=663 AND 744=a7 AND d7=572)
+      OR (945=a7 OR 455=e7 OR a7=706)
+      UNION ALL
+      SELECT d8 FROM t8
+      WHERE c8 in (690,196,961,705,448,229,508,973,275,979,61)
+      OR (984=b8 AND d8=499 AND c8=183 AND a8=728 AND e8=469)
+      EXCEPT
+      SELECT b4 FROM t4
+      WHERE NOT ((723=c4)
+      OR a4 in (473,747,621,574)
+      OR d4 in (665,55,356,989,25))
+      EXCEPT
+      SELECT e5 FROM t5
+      WHERE NOT ((681=c5 OR c5=818 OR e5=732)
+      OR (b5=674 AND c5=570 AND e5=975))
+      UNION ALL
+      SELECT c9 FROM t9
+      WHERE (127=b9);
+  - name: t1
+  - name: t7
+
+outputs:
+  - name: q700.out
+    data: |
+      124
+      14
+      20
+      288
+      315
+      399
+      512
+      526
+      534
+      542
+      547
+      572
+      60
+      615
+      631
+      845
+      91
+      956
+      96

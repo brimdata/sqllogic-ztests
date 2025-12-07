@@ -1,0 +1,28 @@
+script: |
+  super -f tsv -I q2014.sql | sort > q2014.out
+
+inputs:
+  - name: q2014.sql
+    data: |
+      SELECT a,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      abs(b-c),
+      a+b*2+c*3+d*4
+      FROM t1
+      WHERE EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      AND c>d;
+
+outputs:
+  - name: q2014.out
+    data: |
+      121	0	1	1226
+      131	0	4	1325
+      138	0	2	1371
+      142	0	2	1411
+      174	0	2	1714
+      182	0	3	1828
+      188	0	1	1861
+      191	0	1	1918
+      213	0	3	2125
+      220	0	1	2226
+      NULL	0	2	NULL

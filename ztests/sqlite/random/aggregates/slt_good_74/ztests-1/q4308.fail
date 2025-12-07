@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q4308.sql | sort > q4308.out
+
+inputs:
+  - name: q4308.sql
+    data: |
+      SELECT DISTINCT COUNT ( 83 ) FROM tab2 WHERE NOT ( NOT col2 IN ( col1 ) );
+  - name: tab2
+
+outputs:
+  - name: q4308.out
+    data: |
+      0

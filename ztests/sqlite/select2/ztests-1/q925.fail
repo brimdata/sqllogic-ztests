@@ -1,0 +1,23 @@
+script: |
+  super -f tsv -I q925.sql | sort > q925.out
+
+inputs:
+  - name: q925.sql
+    data: |
+      SELECT a,
+      a+b*2+c*3+d*4,
+      c,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b)
+      FROM t1
+      WHERE a>b
+      AND c>d
+      AND b IS NOT NULL;
+
+outputs:
+  - name: q925.out
+    data: |
+      131	1325	134	4
+      174	1714	172	12
+      182	1828	184	14
+      188	1861	187	15
+      213	2125	214	19

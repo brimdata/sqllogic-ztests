@@ -1,0 +1,47 @@
+script: |
+  super -f tsv -I q80.sql | tr '\t' '\n' | sort > q80.out
+
+inputs:
+  - name: q80.sql
+    data: |
+      SELECT b4 FROM t4
+      WHERE (29=e4 OR 719=e4)
+      OR (220=b4 OR b4=357)
+      OR (894=a4 OR 486=e4 OR 708=a4)
+      UNION
+      SELECT c6 FROM t6
+      WHERE (b6=565 AND e6=91)
+      OR (a6=293 AND 237=e6 AND 367=d6)
+      OR (963=a6 OR a6=85 OR 269=d6)
+      EXCEPT
+      SELECT c2 FROM t2
+      WHERE NOT ((b2=897))
+      UNION
+      SELECT d1 FROM t1
+      WHERE (67=c1 AND 483=e1 AND 414=b1 AND d1=992 AND a1=382)
+      OR c1 in (870,57,537,683,3,787,774);
+  - name: t1
+  - name: t2
+
+outputs:
+  - name: q80.out
+    data: |
+      167
+      223
+      243
+      28
+      297
+      35
+      357
+      38
+      407
+      408
+      522
+      637
+      662
+      673
+      863
+      955
+      96
+      963
+      992

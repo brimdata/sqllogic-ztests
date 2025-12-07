@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q917.sql | sort > q917.out
+
+inputs:
+  - name: q917.sql
+    data: |
+      SELECT ALL + - COUNT ( * ) - + - MIN ( ALL 97 ) AS col2 FROM tab1 WHERE CAST ( NULL AS INTEGER ) IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q917.out
+    data: |
+      94

@@ -1,0 +1,55 @@
+script: |
+  super -f tsv -I q818.sql | tr '\t' '\n' | sort > q818.out
+
+inputs:
+  - name: q818.sql
+    data: |
+      SELECT c6 FROM t6
+      WHERE (e6=439)
+      OR e6 in (511,585,850,95,503,588)
+      EXCEPT
+      SELECT a9 FROM t9
+      WHERE NOT ((d9=345 OR b9=122))
+      UNION ALL
+      SELECT b1 FROM t1
+      WHERE (693=e1 AND 459=d1)
+      OR (b1=149 AND 776=a1 AND 217=d1 AND e1=181)
+      EXCEPT
+      SELECT d5 FROM t5
+      WHERE NOT ((e5=696 AND d5=780 AND 270=a5 AND 113=b5 AND c5=825)
+      OR (235=a5 OR c5=147))
+      UNION ALL
+      SELECT d4 FROM t4
+      WHERE (973=d4)
+      OR c4 in (927,513,221,483,674,208,319,403,436)
+      EXCEPT
+      SELECT e7 FROM t7
+      WHERE NOT ((288=e7 OR e7=48)
+      OR (966=c7)
+      OR (983=e7))
+      EXCEPT
+      SELECT c2 FROM t2
+      WHERE NOT ((c2=722 AND d2=843 AND b2=823)
+      OR (a2=664 OR 806=d2 OR a2=268)
+      OR (a2=279 AND b2=846 AND 223=e2));
+  - name: t3
+  - name: t7
+  - name: t9
+
+outputs:
+  - name: q818.out
+    data: |
+      149
+      150
+      223
+      25
+      34
+      442
+      491
+      55
+      568
+      628
+      637
+      950
+      953
+      973

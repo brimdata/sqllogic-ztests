@@ -1,0 +1,49 @@
+script: |
+  super -f tsv -I q1246.sql | sort > q1246.out
+
+inputs:
+  - name: q1246.sql
+    data: |
+      SELECT c-d,
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END,
+      a+b*2+c*3+d*4,
+      b,
+      a-b,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      d-e
+      FROM t1;
+
+outputs:
+  - name: q1246.out
+    data: |
+      -1	111	2476	249	-4	26	2
+      -1	333	1964	198	1	17	-1
+      -1	333	2264	228	1	22	-1
+      -1	444	NULL	112	NULL	1	4
+      -1	444	NULL	NULL	NULL	0	-1
+      -2	222	2165	218	-2	20	-2
+      -2	333	1067	105	2	0	-1
+      -2	333	2323	232	2	23	3
+      -3	222	1272	129	-2	3	2
+      -3	444	1622	160	3	10	2
+      1	222	1226	124	-3	2	NULL
+      1	222	1371	139	-1	5	1
+      1	222	1411	143	-1	6	-4
+      1	333	1325	130	1	4	1
+      1	333	1828	181	1	14	3
+      1	444	1714	170	4	12	-2
+      1	444	NULL	206	NULL	18	NULL
+      1	444	NULL	NULL	NULL	0	NULL
+      2	222	2226	223	-3	21	1
+      2	333	1861	186	2	15	-4
+      2	333	2125	211	2	19	2
+      3	222	1918	194	-3	16	-2
+      3	444	NULL	NULL	NULL	0	-1
+      NULL	333	NULL	151	2	8	NULL
+      NULL	333	NULL	158	1	9	NULL
+      NULL	333	NULL	167	1	11	NULL
+      NULL	444	NULL	145	4	7	NULL
+      NULL	444	NULL	175	4	13	NULL
+      NULL	444	NULL	236	3	24	1
+      NULL	444	NULL	240	3	25	NULL

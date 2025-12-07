@@ -1,0 +1,39 @@
+script: |
+  super -f tsv -I q365.sql | tr '\t' '\n' | sort > q365.out
+
+inputs:
+  - name: q365.sql
+    data: |
+      SELECT d6 FROM t6
+      WHERE (633=e6 AND 351=b6 AND a6=1 AND c6=424 AND 729=d6)
+      OR (798=e6 OR c6=424 OR e6=531)
+      INTERSECT
+      SELECT b1 FROM t1
+      WHERE NOT (c1 in (402,15,553,230,885,608,200,775,498,626,979,765,379,639)
+      OR (90=e1))
+      INTERSECT
+      SELECT d7 FROM t7
+      WHERE NOT ((442=d7)
+      OR d7 in (842,52,781,183,500,148,265,539,886,196,324)
+      OR (a7=97 OR 122=e7))
+      UNION ALL
+      SELECT a2 FROM t2
+      WHERE (535=e2 OR a2=993)
+      OR (a2=805 AND c2=87)
+      OR (466=c2)
+      UNION ALL
+      SELECT c5 FROM t5
+      WHERE (d5=1 AND a5=319)
+      OR (d5=616 AND 188=e5);
+  - name: t1
+  - name: t5
+
+outputs:
+  - name: q365.out
+    data: |
+      101
+      147
+      209
+      543
+      805
+      993

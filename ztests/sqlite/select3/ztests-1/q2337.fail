@@ -1,0 +1,26 @@
+script: |
+  super -f tsv -I q2337.sql | sort > q2337.out
+
+inputs:
+  - name: q2337.sql
+    data: |
+      SELECT CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END,
+      a+b*2,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      d,
+      (a+b+c+d+e)/5
+      FROM t1
+      WHERE d>e
+      AND c BETWEEN b-2 AND d+2
+      AND (c<=d-2 OR c>=d+2)
+      ORDER BY 5,4;
+
+outputs:
+  - name: q2337.out
+    data: |
+      222	426	635	0	212	212
+      333	1600	483	0	164	162
+      444	440	666	0	222	222
+      555	468	698	0	233	232

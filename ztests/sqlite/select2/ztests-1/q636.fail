@@ -1,0 +1,29 @@
+script: |
+  super -f tsv -I q636.sql | sort > q636.out
+
+inputs:
+  - name: q636.sql
+    data: |
+      SELECT (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      a+b*2+c*3
+      FROM t1
+      WHERE a IS NULL
+      OR (c<=d-2 OR c>=d+2)
+      OR (e>a AND e<b);
+
+outputs:
+  - name: q636.out
+    data: |
+      0	1121
+      0	1158
+      0	1277
+      0	1297
+      0	1338
+      0	1391
+      0	1484
+      0	635
+      0	760
+      0	966
+      0	NULL
+      0	NULL
+      0	NULL

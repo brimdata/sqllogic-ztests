@@ -1,0 +1,33 @@
+script: |
+  super -f tsv -I q2775.sql | sort > q2775.out
+
+inputs:
+  - name: q2775.sql
+    data: |
+      SELECT a,
+      (a+b+c+d+e)/5,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b)
+      FROM t1
+      WHERE a>b
+      AND EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      ORDER BY 2,1;
+
+outputs:
+  - name: q2775.out
+    data: |
+      131	132	4
+      149	NULL	7
+      153	NULL	8
+      159	NULL	9
+      163	162	10
+      168	NULL	11
+      174	172	12
+      179	NULL	13
+      182	182	14
+      188	187	15
+      199	197	17
+      213	212	19
+      229	227	22
+      234	232	23
+      239	NULL	24
+      243	NULL	25

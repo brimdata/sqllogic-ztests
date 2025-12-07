@@ -1,0 +1,53 @@
+script: |
+  super -f tsv -I q791.sql | tr '\t' '\n' | sort > q791.out
+
+inputs:
+  - name: q791.sql
+    data: |
+      SELECT b6 FROM t6
+      WHERE (488=d6 AND e6=678)
+      OR (654=e6 AND 490=b6 AND 441=c6)
+      UNION
+      SELECT e2 FROM t2
+      WHERE (e2=307)
+      OR (c2=823)
+      UNION
+      SELECT a5 FROM t5
+      WHERE (a5=743)
+      OR (147=c5 OR a5=342 OR 117=d5)
+      EXCEPT
+      SELECT a9 FROM t9
+      WHERE NOT ((c9=257 AND d9=770 AND 285=b9 AND 860=e9 AND 879=a9))
+      UNION
+      SELECT d7 FROM t7
+      WHERE (934=c7 OR e7=201 OR 682=c7)
+      OR (921=a7)
+      OR b7 in (514,804,266,579,67,583,66,973);
+  - name: t1
+  - name: t2
+  - name: t6
+  - name: t9
+
+outputs:
+  - name: q791.out
+    data: |
+      205
+      307
+      342
+      348
+      442
+      490
+      527
+      549
+      599
+      604
+      620
+      666
+      684
+      743
+      782
+      79
+      826
+      904
+      924
+      974

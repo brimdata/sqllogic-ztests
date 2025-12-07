@@ -1,0 +1,28 @@
+script: |
+  super -f tsv -I q2951.sql | sort > q2951.out
+
+inputs:
+  - name: q2951.sql
+    data: |
+      SELECT (a+b+c+d+e)/5,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b)
+      FROM t1
+      WHERE b>c
+      ORDER BY 1,2;
+
+outputs:
+  - name: q2951.out
+    data: |
+      127	3
+      137	5
+      142	6
+      192	16
+      197	17
+      217	20
+      227	22
+      232	23
+      247	26
+      NULL	11
+      NULL	2
+      NULL	8
+      NULL	9

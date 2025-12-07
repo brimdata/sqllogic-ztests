@@ -1,0 +1,46 @@
+script: |
+  super -f tsv -I q2268.sql | sort > q2268.out
+
+inputs:
+  - name: q2268.sql
+    data: |
+      SELECT (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      a,
+      a+b*2+c*3,
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END
+      FROM t1;
+
+outputs:
+  - name: q2268.out
+    data: |
+      0	104	NULL	555
+      0	107	635	333
+      0	115	NULL	333
+      0	121	738	333
+      0	127	760	333
+      0	131	793	444
+      0	138	827	111
+      0	142	851	111
+      0	149	880	555
+      0	153	905	555
+      0	159	940	555
+      0	163	966	333
+      0	168	1000	555
+      0	174	1030	555
+      0	179	1057	555
+      0	182	1096	333
+      0	188	1121	444
+      0	191	1158	444
+      0	199	1180	555
+      0	201	NULL	222
+      0	213	1277	222
+      0	216	1297	333
+      0	220	1338	444
+      0	229	1360	555
+      0	234	1391	555
+      0	239	NULL	555
+      0	243	1455	222
+      0	245	1484	444
+      0	NULL	NULL	555
+      0	NULL	NULL	555

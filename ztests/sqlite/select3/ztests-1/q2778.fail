@@ -1,0 +1,47 @@
+script: |
+  super -f tsv -I q2778.sql | sort > q2778.out
+
+inputs:
+  - name: q2778.sql
+    data: |
+      SELECT a-b,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      a+b*2+c*3,
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END,
+      a+b*2+c*3+d*4+e*5
+      FROM t1;
+
+outputs:
+  - name: q2778.out
+    data: |
+      -1	0	827	222	2046
+      -1	0	851	222	2131
+      -2	0	1297	222	3260
+      -2	0	760	222	1902
+      -3	0	1158	222	2878
+      -3	0	1338	222	3331
+      -3	0	738	222	NULL
+      -4	0	1484	111	3706
+      1	0	1000	333	NULL
+      1	0	1096	333	2728
+      1	0	1180	333	2949
+      1	0	1360	333	3399
+      1	0	793	333	1985
+      1	0	940	333	NULL
+      2	0	1121	333	2806
+      2	0	1277	333	3175
+      2	0	1391	333	3473
+      2	0	635	333	1612
+      2	0	905	333	NULL
+      3	0	1455	444	NULL
+      3	0	966	444	2432
+      3	0	NULL	444	NULL
+      4	0	1030	444	2579
+      4	0	1057	444	NULL
+      4	0	880	444	NULL
+      NULL	0	NULL	444	NULL
+      NULL	0	NULL	444	NULL
+      NULL	0	NULL	444	NULL
+      NULL	0	NULL	444	NULL
+      NULL	0	NULL	444	NULL

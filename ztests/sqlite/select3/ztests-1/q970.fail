@@ -1,0 +1,35 @@
+script: |
+  super -f tsv -I q970.sql | sort > q970.out
+
+inputs:
+  - name: q970.sql
+    data: |
+      SELECT a-b,
+      abs(a),
+      e,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      d-e,
+      c
+      FROM t1
+      WHERE d NOT BETWEEN 110 AND 150;
+
+outputs:
+  - name: q970.out
+    data: |
+      -2	216	219	20	-2	215
+      -3	191	192	16	-2	193
+      -3	220	221	21	1	224
+      -4	245	246	26	2	247
+      1	182	180	14	3	184
+      1	199	197	17	-1	195
+      1	229	227	22	-1	225
+      2	107	109	0	-1	106
+      2	188	189	15	-4	187
+      2	213	210	19	2	214
+      2	234	230	23	3	231
+      3	163	162	10	2	161
+      3	239	237	24	1	NULL
+      4	174	173	12	-2	172
+      NULL	104	NULL	0	NULL	102
+      NULL	201	204	0	-1	202
+      NULL	NULL	NULL	18	NULL	208

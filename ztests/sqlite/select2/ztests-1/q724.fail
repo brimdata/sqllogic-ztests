@@ -1,0 +1,40 @@
+script: |
+  super -f tsv -I q724.sql | sort > q724.out
+
+inputs:
+  - name: q724.sql
+    data: |
+      SELECT d,
+      b,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END,
+      a-b,
+      (a+b+c+d+e)/5
+      FROM t1
+      WHERE b>c
+      OR d>e;
+
+outputs:
+  - name: q724.out
+    data: |
+      114	112	1	444	NULL	NULL
+      122	124	2	222	-3	NULL
+      128	129	3	222	-2	127
+      133	130	4	333	1	132
+      136	139	5	222	-1	137
+      140	143	6	222	-1	142
+      164	160	10	444	3	162
+      183	181	14	333	1	182
+      190	194	16	222	-3	192
+      196	198	17	333	1	197
+      212	211	19	333	2	212
+      217	218	20	222	-2	217
+      222	223	21	222	-3	222
+      226	228	22	333	1	227
+      233	232	23	333	2	232
+      238	236	24	444	3	NULL
+      248	249	26	111	-4	247
+      NULL	151	8	333	2	NULL
+      NULL	158	9	333	1	NULL
+      NULL	167	11	333	1	NULL

@@ -1,0 +1,43 @@
+script: |
+  super -f tsv -I q483.sql | sort > q483.out
+
+inputs:
+  - name: q483.sql
+    data: |
+      SELECT abs(b-c),
+      abs(a),
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      a+b*2
+      FROM t1
+      WHERE EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      ORDER BY 1,4,2;
+
+outputs:
+  - name: q483.out
+    data: |
+      1	121	0	369
+      1	153	0	455
+      1	163	0	483
+      1	168	0	502
+      1	179	0	529
+      1	188	0	560
+      1	191	0	579
+      1	220	0	666
+      1	234	0	698
+      1	NULL	0	NULL
+      2	138	0	416
+      2	142	0	428
+      2	149	0	439
+      2	174	0	514
+      2	245	0	743
+      2	NULL	0	NULL
+      3	159	0	475
+      3	182	0	544
+      3	199	0	595
+      3	213	0	635
+      3	216	0	652
+      3	229	0	685
+      4	127	0	385
+      4	131	0	391
+      4	243	0	723
+      NULL	239	0	711

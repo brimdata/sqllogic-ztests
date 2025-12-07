@@ -1,0 +1,42 @@
+script: |
+  super -f tsv -I q364.sql | tr '\t' '\n' | sort > q364.out
+
+inputs:
+  - name: q364.sql
+    data: |
+      SELECT d2 FROM t2
+      WHERE (696=e2 AND b2=968 AND d2=10 AND c2=61)
+      OR a2 in (223,853,98)
+      INTERSECT
+      SELECT e4 FROM t4
+      WHERE NOT ((b4=387 AND 147=e4 AND a4=933)
+      OR (979=b4 AND d4=781 AND 589=a4 AND c4=201)
+      OR (e4=596 OR 318=a4 OR 903=b4))
+      UNION
+      SELECT b8 FROM t8
+      WHERE (112=d8 OR b8=984)
+      OR b8 in (807,511,219,997,503,287)
+      OR d8 in (833,60,512,223,781,141,472,511,48,989);
+  - name: t1
+  - name: t5
+
+outputs:
+  - name: q364.out
+    data: |
+      219
+      287
+      369
+      394
+      503
+      511
+      603
+      609
+      642
+      673
+      704
+      769
+      803
+      807
+      964
+      984
+      997

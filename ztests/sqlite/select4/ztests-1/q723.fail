@@ -1,0 +1,42 @@
+script: |
+  super -f tsv -I q723.sql | tr '\t' '\n' | sort > q723.out
+
+inputs:
+  - name: q723.sql
+    data: |
+      SELECT b9 FROM t9
+      WHERE e9 in (799,383,418,944,19)
+      UNION ALL
+      SELECT c1 FROM t1
+      WHERE (382=a1 AND 619=d1 AND c1=882)
+      UNION ALL
+      SELECT e7 FROM t7
+      WHERE (97=a7 OR 813=c7)
+      OR (a7=158 AND 506=d7 AND 506=b7 AND e7=851 AND 102=c7)
+      EXCEPT
+      SELECT b2 FROM t2
+      WHERE NOT (a2 in (802,185,262,910,415,91,495,735)
+      OR (499=e2 AND 123=a2 AND 592=b2)
+      OR c2 in (337,807,793,290,933));
+  - name: t2
+  - name: t4
+  - name: t5
+  - name: t6
+  - name: t7
+
+outputs:
+  - name: q723.out
+    data: |
+      214
+      301
+      31
+      408
+      63
+      66
+      667
+      688
+      751
+      851
+      868
+      882
+      936

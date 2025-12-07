@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q1166.sql | sort > q1166.out
+
+inputs:
+  - name: q1166.sql
+    data: |
+      SELECT ALL MIN ( DISTINCT - col2 ) + ( COUNT ( * ) ) FROM tab1 WHERE CAST ( - 16 AS INTEGER ) NOT BETWEEN NULL AND NULL;
+  - name: tab0
+
+outputs:
+  - name: q1166.out
+    data: |
+      NULL

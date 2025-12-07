@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q4062.sql | sort > q4062.out
+
+inputs:
+  - name: q4062.sql
+    data: |
+      SELECT ALL COUNT ( DISTINCT col1 ) + COUNT ( * ) FROM tab0 WHERE NOT col2 >= 30 - + col0;
+  - name: tab2
+
+outputs:
+  - name: q4062.out
+    data: |
+      0

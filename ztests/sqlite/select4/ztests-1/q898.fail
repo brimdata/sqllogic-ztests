@@ -1,0 +1,60 @@
+script: |
+  super -f tsv -I q898.sql | tr '\t' '\n' | sort > q898.out
+
+inputs:
+  - name: q898.sql
+    data: |
+      SELECT b5 FROM t5
+      WHERE (a5=586)
+      OR c5 in (140,766,723,824,818)
+      OR e5 in (22,586,311,708,812,558)
+      UNION
+      SELECT d4 FROM t4
+      WHERE (a4=662 OR b4=982)
+      OR (389=b4 AND e4=223 AND c4=74)
+      EXCEPT
+      SELECT c6 FROM t6
+      WHERE NOT (d6 in (489,223,931,60,674,186,463,885,974,355,613,786,750,185)
+      OR e6 in (255,40,682,816)
+      OR d6 in (60,393,467,993,321))
+      UNION ALL
+      SELECT a9 FROM t9
+      WHERE (b9=864)
+      UNION ALL
+      SELECT a2 FROM t2
+      WHERE d2 in (414,345,256,772,10,897,704,953,209)
+      UNION
+      SELECT c7 FROM t7
+      WHERE (b7=129 AND a7=884 AND e7=254)
+      EXCEPT
+      SELECT e3 FROM t3
+      WHERE NOT ((c3=711 AND 914=e3 AND d3=399 AND 997=a3 AND 998=b3));
+  - name: t3
+  - name: t7
+
+outputs:
+  - name: q898.out
+    data: |
+      1
+      186
+      217
+      26
+      268
+      364
+      380
+      429
+      433
+      535
+      546
+      583
+      661
+      664
+      705
+      716
+      759
+      780
+      782
+      820
+      922
+      93
+      930

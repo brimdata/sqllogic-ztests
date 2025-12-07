@@ -1,0 +1,57 @@
+script: |
+  super -f tsv -I q135.sql | tr '\t' '\n' | sort > q135.out
+
+inputs:
+  - name: q135.sql
+    data: |
+      SELECT a2 FROM t2
+      WHERE b2 in (357,8,414,549,888,857,820,285,846,784,93,938,649)
+      OR (d2=351 AND e2=223 AND c2=779)
+      INTERSECT
+      SELECT c1 FROM t1
+      WHERE NOT ((463=e1)
+      OR e1 in (402,763,772)
+      OR (616=e1))
+      INTERSECT
+      SELECT b7 FROM t7
+      WHERE NOT ((702=d7 AND 916=a7 AND c7=180)
+      OR d7 in (192,956,172,485,996,974,315,91,886))
+      EXCEPT
+      SELECT a6 FROM t6
+      WHERE NOT (d6 in (974,822,931,2)
+      OR b6 in (449,217,144,696,232,267,290,427,290,512)
+      OR a6 in (173,683,522,851,366,825,469,355,392,452,121))
+      EXCEPT
+      SELECT a4 FROM t4
+      WHERE NOT (a4 in (235,968,513,793,72,990,31,51,107,605,327,625)
+      OR b4 in (713,563,802,961))
+      UNION
+      SELECT d5 FROM t5
+      WHERE a5 in (153,556,519,180,685,730,320,341,330,69,89,832,976,826)
+      OR (c5=922 OR 915=c5 OR d5=321)
+      OR (c5=941 AND 723=b5 AND d5=313 AND e5=470);
+  - name: t2
+  - name: t7
+
+outputs:
+  - name: q135.out
+    data: |
+      114
+      117
+      152
+      219
+      269
+      313
+      321
+      33
+      413
+      470
+      555
+      667
+      69
+      691
+      738
+      757
+      806
+      855
+      858

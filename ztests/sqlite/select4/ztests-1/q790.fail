@@ -1,0 +1,65 @@
+script: |
+  super -f tsv -I q790.sql | tr '\t' '\n' | sort > q790.out
+
+inputs:
+  - name: q790.sql
+    data: |
+      SELECT a8 FROM t8
+      WHERE b8 in (308,922,459,511,52,8,469,705,397,313,640)
+      OR d8 in (627,525,889,370,192,101,767,936,756)
+      OR (961=c8 AND 359=a8)
+      UNION ALL
+      SELECT b3 FROM t3
+      WHERE (a3=935)
+      OR e3 in (147,552,854,87,602,310,536,466,25,578,975)
+      EXCEPT
+      SELECT c4 FROM t4
+      WHERE NOT ((546=d4 OR c4=215 OR d4=86)
+      OR (953=d4))
+      EXCEPT
+      SELECT b2 FROM t2
+      WHERE NOT ((344=c2 AND 324=a2 AND 228=e2 AND 260=d2 AND 585=b2)
+      OR b2 in (532,888,864,177,228,90,139,846,592,217,859))
+      EXCEPT
+      SELECT a9 FROM t9
+      WHERE NOT ((d9=720 OR e9=978));
+  - name: t1
+  - name: t2
+  - name: t6
+  - name: t9
+
+outputs:
+  - name: q790.out
+    data: |
+      103
+      15
+      159
+      184
+      198
+      200
+      241
+      256
+      259
+      312
+      314
+      327
+      328
+      331
+      355
+      359
+      467
+      472
+      54
+      579
+      58
+      616
+      677
+      713
+      790
+      814
+      827
+      876
+      883
+      957
+      961
+      963

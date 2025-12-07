@@ -1,0 +1,73 @@
+script: |
+  super -f tsv -I q370.sql | tr '\t' '\n' | sort > q370.out
+
+inputs:
+  - name: q370.sql
+    data: |
+      SELECT a7 FROM t7
+      WHERE (843=c7 AND d7=842 AND 945=e7 AND a7=684)
+      OR (552=e7 AND 702=d7)
+      OR (b7=83)
+      EXCEPT
+      SELECT c4 FROM t4
+      WHERE NOT ((d4=166 AND 274=c4)
+      OR (e4=617 OR b4=721))
+      EXCEPT
+      SELECT b6 FROM t6
+      WHERE NOT ((237=e6 OR a6=474)
+      OR a6 in (132,764,64,531,129,129,610,116))
+      EXCEPT
+      SELECT d2 FROM t2
+      WHERE NOT ((328=d2 AND a2=751)
+      OR (c2=511 AND b2=279))
+      EXCEPT
+      SELECT e8 FROM t8
+      WHERE NOT ((188=c8 OR d8=845))
+      UNION ALL
+      SELECT b9 FROM t9
+      WHERE (c9=323 AND b9=912 AND 912=d9 AND a9=611 AND e9=737)
+      OR b9 in (228,936,342,410,16,214,819,227,821,818,122,680,122)
+      OR (584=a9 AND c9=110 AND d9=678 AND b9=2)
+      UNION ALL
+      SELECT b3 FROM t3
+      WHERE (581=a3 OR d3=662)
+      OR (407=b3 AND 337=a3 AND 860=c3 AND 467=e3)
+      EXCEPT
+      SELECT e1 FROM t1
+      WHERE NOT ((936=d1 OR 96=e1))
+      UNION ALL
+      SELECT a5 FROM t5
+      WHERE d5 in (752,957,855,282,24)
+      OR (937=d5 AND e5=187 AND a5=342 AND c5=50)
+      OR (a5=53 AND 856=d5 AND 196=c5);
+  - name: t1
+  - name: t5
+
+outputs:
+  - name: q370.out
+    data: |
+      16
+      2
+      214
+      227
+      334
+      342
+      342
+      407
+      410
+      413
+      445
+      53
+      680
+      684
+      685
+      721
+      800
+      818
+      819
+      821
+      832
+      878
+      912
+      916
+      936

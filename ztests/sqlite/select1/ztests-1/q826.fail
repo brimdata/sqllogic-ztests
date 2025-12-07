@@ -1,0 +1,30 @@
+script: |
+  super -f tsv -I q826.sql > q826.out
+
+inputs:
+  - name: q826.sql
+    data: |
+      SELECT CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      d-e,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      a+b*2+c*3,
+      a+b*2+c*3+d*4+e*5
+      FROM t1
+      WHERE (c<=d-2 OR c>=d+2)
+      AND a>b
+      AND (e>c OR e<d)
+      ORDER BY 2,5,3,4,1;
+
+outputs:
+  - name: q826.out
+    data: |
+      444	-4	0	1121	2806
+      333	-1	0	635	1612
+      555	1	0	1057	2654
+      555	1	0	1416	3553
+      333	2	0	905	2281
+      333	2	0	966	2432
+      222	2	0	1277	3175
+      555	3	0	1391	3473
+      333	4	0	1000	2501

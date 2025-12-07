@@ -1,0 +1,31 @@
+script: |
+  super -f tsv -I q2649.sql | sort > q2649.out
+
+inputs:
+  - name: q2649.sql
+    data: |
+      SELECT (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      c,
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END,
+      a,
+      a+b*2+c*3+d*4,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      abs(a)
+      FROM t1
+      WHERE (c<=d-2 OR c>=d+2)
+      ORDER BY 4,1,5,2,6,3;
+
+outputs:
+  - name: q2649.out
+    data: |
+      0	106	333	107	1067	0	107
+      0	119	444	115	NULL	0	115
+      10	161	444	163	1622	0	163
+      15	187	333	188	1861	0	188
+      16	193	222	191	1918	0	191
+      19	214	333	213	2125	0	213
+      20	215	222	216	2165	0	216
+      21	224	222	220	2226	0	220
+      23	231	333	234	2323	0	234
+      3	125	222	127	1272	0	127

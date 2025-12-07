@@ -1,0 +1,35 @@
+script: |
+  super -f tsv -I q3208.sql | sort > q3208.out
+
+inputs:
+  - name: q3208.sql
+    data: |
+      SELECT d,
+      c-d,
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      e,
+      b,
+      (a+b+c+d+e)/5
+      FROM t1
+      WHERE c BETWEEN b-2 AND d+2;
+
+outputs:
+  - name: q3208.out
+    data: |
+      108	-2	333	0	109	105	107
+      114	-1	444	1	110	112	NULL
+      122	1	222	2	NULL	124	NULL
+      133	1	333	4	132	130	132
+      136	1	222	5	135	139	137
+      140	1	222	6	144	143	142
+      164	-3	444	10	162	160	162
+      171	1	444	12	173	170	172
+      183	1	333	14	180	181	182
+      185	2	333	15	189	186	187
+      207	1	444	18	NULL	206	NULL
+      212	2	333	19	210	211	212
+      222	2	222	21	221	223	222
+      233	-2	333	23	230	232	232
+      248	-1	111	26	246	249	247

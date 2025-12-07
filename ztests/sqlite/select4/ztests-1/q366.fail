@@ -1,0 +1,31 @@
+script: |
+  super -f tsv -I q366.sql | tr '\t' '\n' | sort > q366.out
+
+inputs:
+  - name: q366.sql
+    data: |
+      SELECT a2 FROM t2
+      WHERE (548=e2 OR e2=777 OR 307=e2)
+      INTERSECT
+      SELECT b1 FROM t1
+      WHERE NOT ((c1=772 AND e1=210 AND a1=868)
+      OR a1 in (88,668,338,231,330,23)
+      OR (e1=52))
+      UNION
+      SELECT e8 FROM t8
+      WHERE (806=e8 OR e8=455)
+      UNION ALL
+      SELECT b3 FROM t3
+      WHERE e3 in (235,265,401);
+  - name: t1
+  - name: t5
+
+outputs:
+  - name: q366.out
+    data: |
+      234
+      236
+      455
+      549
+      806
+      853

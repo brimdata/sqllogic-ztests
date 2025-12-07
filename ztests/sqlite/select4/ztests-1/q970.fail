@@ -1,0 +1,43 @@
+script: |
+  super -f tsv -I q970.sql | tr '\t' '\n' | sort > q970.out
+
+inputs:
+  - name: q970.sql
+    data: |
+      SELECT d4 FROM t4
+      WHERE (296=e4 AND 201=c4 AND 781=d4 AND a4=589 AND 979=b4)
+      OR a4 in (558,105,625,139,159,621,469,804,509)
+      OR (82=a4 AND b4=644 AND c4=417)
+      UNION
+      SELECT d7 FROM t7
+      WHERE (816=c7 OR 79=e7 OR a7=452)
+      OR (d7=397)
+      OR (234=b7 AND 215=e7 AND 912=a7)
+      EXCEPT
+      SELECT b3 FROM t3
+      WHERE NOT (b3 in (832,411,392,558,296,266,445,977,224,686,166,73,73,58)
+      OR (a3=265 AND d3=913 AND b3=302)
+      OR c3 in (651,792,963,455,711,647,339,247,701,490));
+  - name: t2
+  - name: t8
+
+outputs:
+  - name: q970.out
+    data: |
+      131
+      136
+      31
+      391
+      397
+      44
+      481
+      52
+      568
+      599
+      661
+      722
+      781
+      79
+      844
+      881
+      987

@@ -1,0 +1,44 @@
+script: |
+  super -f tsv -I q444.sql | tr '\t' '\n' | sort > q444.out
+
+inputs:
+  - name: q444.sql
+    data: |
+      SELECT d7 FROM t7
+      WHERE c7 in (781,375,661,257)
+      OR (199=d7 AND 319=e7)
+      OR e7 in (782,816,248)
+      UNION ALL
+      SELECT b2 FROM t2
+      WHERE (643=b2 AND a2=691 AND e2=140 AND 351=d2)
+      OR (c2=902)
+      OR (a2=954 OR 592=b2)
+      EXCEPT
+      SELECT d9 FROM t9
+      WHERE NOT ((968=e9 AND 264=d9)
+      OR (222=c9 AND 873=e9 AND 142=b9)
+      OR (e9=161))
+      EXCEPT
+      SELECT a1 FROM t1
+      WHERE NOT (d1 in (798,265,885,947,407,955)
+      OR (a1=668 OR e1=615)
+      OR (847=a1 AND e1=534 AND 572=b1 AND d1=4));
+  - name: t2
+  - name: t4
+
+outputs:
+  - name: q444.out
+    data: |
+      192
+      199
+      225
+      265
+      315
+      325
+      418
+      457
+      527
+      592
+      805
+      817
+      966

@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q10603.sql | sort > q10603.out
+
+inputs:
+  - name: q10603.sql
+    data: |
+      SELECT AVG ( DISTINCT col1 ) FROM tab2 WHERE ( ( NULL ) <= - col0 + col1 );
+  - name: tab2
+
+outputs:
+  - name: q10603.out
+    data: |
+      NULL

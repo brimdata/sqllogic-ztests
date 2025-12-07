@@ -1,0 +1,33 @@
+script: |
+  super -f tsv -I q819.sql | sort > q819.out
+
+inputs:
+  - name: q819.sql
+    data: |
+      SELECT a-b,
+      a+b*2+c*3,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      a+b*2+c*3+d*4,
+      abs(a)
+      FROM t1
+      WHERE c BETWEEN b-2 AND d+2
+      ORDER BY 5,2,4;
+
+outputs:
+  - name: q819.out
+    data: |
+      -1	827	0	1371	138
+      -1	851	0	1411	142
+      -3	1338	0	2226	220
+      -3	738	0	1226	121
+      -4	1484	0	2476	245
+      1	1096	0	1828	182
+      1	793	0	1325	131
+      2	1121	0	1861	188
+      2	1277	0	2125	213
+      2	1391	0	2323	234
+      2	635	0	1067	107
+      3	966	0	1622	163
+      4	1030	0	1714	174
+      NULL	NULL	0	NULL	NULL
+      NULL	NULL	0	NULL	NULL

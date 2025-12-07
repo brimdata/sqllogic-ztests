@@ -1,0 +1,67 @@
+script: |
+  super -f tsv -I q553.sql | tr '\t' '\n' | sort > q553.out
+
+inputs:
+  - name: q553.sql
+    data: |
+      SELECT d6 FROM t6
+      WHERE (461=b6 OR 646=e6)
+      UNION ALL
+      SELECT d4 FROM t4
+      WHERE e4 in (738,835,885)
+      UNION ALL
+      SELECT d9 FROM t9
+      WHERE c9 in (935,391,187,457)
+      OR (c9=273)
+      UNION ALL
+      SELECT b1 FROM t1
+      WHERE (b1=645 AND 966=c1 AND d1=820)
+      OR (c1=204)
+      UNION ALL
+      SELECT d8 FROM t8
+      WHERE d8 in (627,953,48,484,525,466,96,542,541,580,50)
+      OR (e8=761)
+      EXCEPT
+      SELECT e2 FROM t2
+      WHERE NOT ((b2=755 OR e2=16 OR 508=a2)
+      OR (c2=27 AND 802=a2 AND 434=e2)
+      OR b2 in (819,353,857,181))
+      EXCEPT
+      SELECT e5 FROM t5
+      WHERE NOT ((149=c5))
+      EXCEPT
+      SELECT b3 FROM t3
+      WHERE NOT ((733=c3)
+      OR (b3=127 AND d3=361 AND 232=e3 AND 86=c3)
+      OR b3 in (551,166,321,632,350,41,272,827,340))
+      EXCEPT
+      SELECT d7 FROM t7
+      WHERE NOT ((462=e7 AND a7=433)
+      OR c7 in (887,855,626,145,606));
+  - name: t2
+  - name: t3
+  - name: t6
+
+outputs:
+  - name: q553.out
+    data: |
+      100
+      186
+      347
+      409
+      466
+      48
+      484
+      50
+      525
+      541
+      580
+      601
+      627
+      645
+      646
+      670
+      681
+      683
+      711
+      96

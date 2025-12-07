@@ -1,0 +1,42 @@
+script: |
+  super -f tsv -I q722.sql | sort > q722.out
+
+inputs:
+  - name: q722.sql
+    data: |
+      SELECT (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      a,
+      (a+b+c+d+e)/5,
+      a+b*2+c*3+d*4+e*5,
+      a-b
+      FROM t1
+      WHERE a>b
+      OR d NOT BETWEEN 110 AND 150;
+
+outputs:
+  - name: q722.out
+    data: |
+      0	104	NULL	NULL	NULL
+      0	107	107	1612	2
+      0	201	NULL	NULL	NULL
+      10	163	162	2432	3
+      11	168	NULL	NULL	1
+      12	174	172	2579	4
+      13	179	NULL	NULL	4
+      14	182	182	2728	1
+      15	188	187	2806	2
+      16	191	192	2878	-3
+      17	199	197	2949	1
+      18	NULL	NULL	NULL	NULL
+      19	213	212	3175	2
+      20	216	217	3260	-2
+      21	220	222	3331	-3
+      22	229	227	3399	1
+      23	234	232	3473	2
+      24	239	NULL	NULL	3
+      25	243	NULL	NULL	3
+      26	245	247	3706	-4
+      4	131	132	1985	1
+      7	149	NULL	NULL	4
+      8	153	NULL	NULL	2
+      9	159	NULL	NULL	1

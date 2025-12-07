@@ -1,0 +1,11 @@
+script: |
+  super -f tsv -I q5506.sql | sort > q5506.out
+
+inputs:
+  - name: q5506.sql
+    data: |
+      SELECT ALL + SUM ( - + col1 ) * COUNT ( ALL - CAST ( NULL AS REAL ) ) + col1 AS col0 FROM tab0 WHERE NOT col0 > NULL GROUP BY col1;
+
+outputs:
+  - name: q5506.out
+    data: |

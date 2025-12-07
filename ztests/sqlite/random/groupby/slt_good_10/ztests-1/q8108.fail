@@ -1,0 +1,11 @@
+script: |
+  super -f tsv -I q8108.sql | sort > q8108.out
+
+inputs:
+  - name: q8108.sql
+    data: |
+      SELECT DISTINCT + AVG ( + col1 ) FROM tab2 GROUP BY col1 HAVING col1 <= NULL;
+
+outputs:
+  - name: q8108.out
+    data: |

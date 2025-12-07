@@ -1,0 +1,52 @@
+script: |
+  super -f tsv -I q77.sql | tr '\t' '\n' | sort > q77.out
+
+inputs:
+  - name: q77.sql
+    data: |
+      SELECT a8 FROM t8
+      WHERE c8 in (231,250,693,501,117,394,225,935,691)
+      OR c8 in (374,799,899,321,136,851,119)
+      UNION ALL
+      SELECT c2 FROM t2
+      WHERE (723=d2)
+      EXCEPT
+      SELECT c1 FROM t1
+      WHERE NOT ((b1=253 AND 523=c1 AND a1=147)
+      OR (355=e1 AND 492=d1 AND 309=c1 AND a1=820 AND b1=242))
+      UNION ALL
+      SELECT e6 FROM t6
+      WHERE (a6=66 AND 123=c6 AND 734=d6 AND b6=449)
+      OR b6 in (223,696,825,876,250,226);
+  - name: t3
+  - name: t6
+  - name: t9
+
+outputs:
+  - name: q77.out
+    data: |
+      127
+      137
+      183
+      237
+      248
+      256
+      286
+      312
+      328
+      331
+      341
+      444
+      46
+      474
+      54
+      554
+      585
+      650
+      747
+      761
+      795
+      816
+      838
+      946
+      954

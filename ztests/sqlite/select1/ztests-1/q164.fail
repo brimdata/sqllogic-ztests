@@ -1,0 +1,29 @@
+script: |
+  super -f tsv -I q164.sql > q164.out
+
+inputs:
+  - name: q164.sql
+    data: |
+      SELECT a,
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      a+b*2+c*3+d*4+e*5,
+      d,
+      a+b*2+c*3
+      FROM t1
+      WHERE b>c
+      AND (c<=d-2 OR c>=d+2)
+      AND EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      ORDER BY 2,3,1,6,4,5;
+
+outputs:
+  - name: q164.out
+    data: |
+      127	333	0	1902	128	760
+      153	333	0	2281	154	905
+      168	333	0	2501	169	1000
+      216	333	0	3260	217	1297
+      191	444	0	2878	190	1158
+      234	555	0	3473	233	1391
+      239	555	0	3553	238	1416

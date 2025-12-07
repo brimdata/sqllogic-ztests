@@ -1,0 +1,35 @@
+script: |
+  super -f tsv -I q479.sql | sort > q479.out
+
+inputs:
+  - name: q479.sql
+    data: |
+      SELECT (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END
+      FROM t1
+      WHERE c BETWEEN b-2 AND d+2
+      OR a IS NULL
+      OR (c<=d-2 OR c>=d+2);
+
+outputs:
+  - name: q479.out
+    data: |
+      0	1050
+      0	NULL
+      1	1120
+      10	1600
+      12	1700
+      14	364
+      15	376
+      16	382
+      18	NULL
+      19	426
+      2	1240
+      20	432
+      21	440
+      23	468
+      26	490
+      3	1290
+      4	1300
+      5	1390
+      6	1430

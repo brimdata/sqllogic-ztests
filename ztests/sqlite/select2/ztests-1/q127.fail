@@ -1,0 +1,47 @@
+script: |
+  super -f tsv -I q127.sql | sort > q127.out
+
+inputs:
+  - name: q127.sql
+    data: |
+      SELECT (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END,
+      a+b*2+c*3+d*4+e*5,
+      a+b*2+c*3,
+      b-c,
+      e
+      FROM t1;
+
+outputs:
+  - name: q127.out
+    data: |
+      0	1050	1612	635	-1	109
+      0	402	NULL	NULL	NULL	204
+      0	NULL	NULL	NULL	NULL	117
+      0	NULL	NULL	NULL	NULL	NULL
+      1	1120	NULL	NULL	-1	110
+      10	1600	2432	966	-1	162
+      11	1670	NULL	1000	1	165
+      12	1700	2579	1030	-2	173
+      13	358	NULL	1057	-1	177
+      14	364	2728	1096	-3	180
+      15	376	2806	1121	-1	189
+      16	382	2878	1158	1	192
+      17	398	2949	1180	3	197
+      18	NULL	NULL	NULL	-2	NULL
+      19	426	3175	1277	-3	210
+      2	1240	NULL	738	1	NULL
+      20	432	3260	1297	3	219
+      21	440	3331	1338	-1	221
+      22	458	3399	1360	3	227
+      23	468	3473	1391	1	230
+      24	2360	NULL	NULL	NULL	237
+      25	486	NULL	1455	-4	NULL
+      26	490	3706	1484	2	246
+      3	1290	1902	760	4	126
+      4	1300	1985	793	-4	132
+      5	1390	2046	827	2	135
+      6	1430	2131	851	2	144
+      7	1450	NULL	880	-2	146
+      8	1510	NULL	905	1	NULL
+      9	1580	NULL	940	3	157

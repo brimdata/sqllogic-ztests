@@ -1,0 +1,52 @@
+script: |
+  super -f tsv -I q795.sql | tr '\t' '\n' | sort > q795.out
+
+inputs:
+  - name: q795.sql
+    data: |
+      SELECT a8 FROM t8
+      WHERE (631=d8 OR 254=a8 OR d8=989)
+      OR c8 in (486,513,230,965,908)
+      UNION ALL
+      SELECT d7 FROM t7
+      WHERE a7 in (916,896,442,589,290,665,565,709,416,277,722)
+      OR b7 in (750,59,627,804,263,178,396,859,422)
+      OR (364=c7 AND d7=709)
+      EXCEPT
+      SELECT b5 FROM t5
+      WHERE NOT ((a5=373 OR b5=685)
+      OR e5 in (18,888,206,558,587));
+  - name: t1
+  - name: t2
+  - name: t6
+  - name: t9
+
+outputs:
+  - name: q795.out
+    data: |
+      192
+      226
+      248
+      254
+      315
+      341
+      346
+      399
+      400
+      442
+      492
+      564
+      603
+      628
+      653
+      702
+      709
+      785
+      787
+      805
+      891
+      892
+      913
+      925
+      94
+      957

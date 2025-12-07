@@ -1,0 +1,58 @@
+script: |
+  super -f tsv -I q278.sql | tr '\t' '\n' | sort > q278.out
+
+inputs:
+  - name: q278.sql
+    data: |
+      SELECT b1 FROM t1
+      WHERE (a1=109 OR 951=d1)
+      OR (d1=618 OR 346=d1)
+      EXCEPT
+      SELECT c5 FROM t5
+      WHERE NOT ((478=a5)
+      OR (a5=544 AND c5=31 AND d5=779))
+      UNION
+      SELECT a3 FROM t3
+      WHERE (d3=501 OR a3=476)
+      OR (836=a3)
+      OR (697=a3)
+      UNION
+      SELECT d4 FROM t4
+      WHERE (197=d4)
+      OR (a4=579 OR 768=c4 OR 989=d4)
+      EXCEPT
+      SELECT b8 FROM t8
+      WHERE NOT ((a8=848 OR e8=440)
+      OR (400=a8 OR 397=b8))
+      UNION
+      SELECT d9 FROM t9
+      WHERE c9 in (188,569,857,487,905,811,75,257,955,370,151,688,515);
+  - name: t5
+  - name: t9
+
+outputs:
+  - name: q278.out
+    data: |
+      129
+      161
+      166
+      197
+      23
+      235
+      295
+      305
+      399
+      476
+      481
+      525
+      568
+      694
+      697
+      738
+      770
+      794
+      836
+      899
+      965
+      967
+      989

@@ -1,0 +1,26 @@
+script: |
+  super -f tsv -I q731.sql | tr '\t' '\n' | sort > q731.out
+
+inputs:
+  - name: q731.sql
+    data: |
+      SELECT e3 FROM t3
+      WHERE (376=b3 AND c3=806 AND 244=a3)
+      UNION
+      SELECT b5 FROM t5
+      WHERE (b5=231)
+      EXCEPT
+      SELECT d7 FROM t7
+      WHERE NOT (b7 in (720,996,868,679,308,422,579,426)
+      OR (e7=929 AND d7=196 AND 827=b7 AND 585=c7));
+  - name: t2
+  - name: t4
+  - name: t5
+  - name: t6
+  - name: t7
+
+outputs:
+  - name: q731.out
+    data: |
+      231
+      774

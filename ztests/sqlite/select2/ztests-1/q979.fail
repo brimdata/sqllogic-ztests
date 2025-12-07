@@ -1,0 +1,37 @@
+script: |
+  super -f tsv -I q979.sql | sort > q979.out
+
+inputs:
+  - name: q979.sql
+    data: |
+      SELECT a+b*2+c*3+d*4,
+      a+b*2+c*3+d*4+e*5,
+      CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      (a+b+c+d+e)/5
+      FROM t1
+      WHERE a>b
+      OR (a>b-2 AND a<b+2);
+
+outputs:
+  - name: q979.out
+    data: |
+      1067	1612	1050	0	107
+      1325	1985	1300	0	132
+      1371	2046	1390	0	137
+      1411	2131	1430	0	142
+      1622	2432	1600	0	162
+      1714	2579	1700	0	172
+      1828	2728	364	0	182
+      1861	2806	376	0	187
+      1964	2949	398	0	197
+      2125	3175	426	0	212
+      2264	3399	458	0	227
+      2323	3473	468	0	232
+      NULL	NULL	1450	0	NULL
+      NULL	NULL	1510	0	NULL
+      NULL	NULL	1580	0	NULL
+      NULL	NULL	1670	0	NULL
+      NULL	NULL	2360	0	NULL
+      NULL	NULL	358	0	NULL
+      NULL	NULL	486	0	NULL

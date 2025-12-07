@@ -1,0 +1,64 @@
+script: |
+  super -f tsv -I q805.sql | tr '\t' '\n' | sort > q805.out
+
+inputs:
+  - name: q805.sql
+    data: |
+      SELECT d2 FROM t2
+      WHERE (d2=555)
+      OR (e2=777 OR c2=551)
+      OR (c2=83)
+      UNION ALL
+      SELECT c6 FROM t6
+      WHERE (c6=328 AND b6=906 AND e6=274)
+      UNION
+      SELECT d5 FROM t5
+      WHERE e5 in (68,937,708,206,737,554,729,610,640,41,440)
+      OR (384=c5)
+      EXCEPT
+      SELECT a3 FROM t3
+      WHERE NOT ((b3=272 OR 376=a3))
+      UNION ALL
+      SELECT e8 FROM t8
+      WHERE c8 in (273,283,692,908)
+      OR (b8=704)
+      OR (e8=904 OR d8=494)
+      UNION ALL
+      SELECT b4 FROM t4
+      WHERE (b4=634 OR 163=e4 OR d4=306)
+      UNION ALL
+      SELECT c9 FROM t9
+      WHERE (413=a9 OR d9=568 OR 269=a9)
+      EXCEPT
+      SELECT e1 FROM t1
+      WHERE NOT (a1 in (445,23,461,918,552,640,294,499));
+  - name: t4
+  - name: t8
+
+outputs:
+  - name: q805.out
+    data: |
+      118
+      132
+      149
+      263
+      267
+      295
+      309
+      33
+      369
+      411
+      46
+      492
+      555
+      60
+      603
+      62
+      634
+      792
+      806
+      854
+      864
+      883
+      955
+      981

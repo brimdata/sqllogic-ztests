@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q13008.sql | sort > q13008.out
+
+inputs:
+  - name: q13008.sql
+    data: |
+      SELECT CAST ( 42 AS INTEGER ) - SUM ( ( - col0 ) ) AS col1 FROM tab1 WHERE NOT ( - col1 ) IN ( + col0 );
+
+outputs:
+  - name: q13008.out
+    data: |
+      269

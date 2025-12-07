@@ -1,0 +1,60 @@
+script: |
+  super -f tsv -I q426.sql | tr '\t' '\n' | sort > q426.out
+
+inputs:
+  - name: q426.sql
+    data: |
+      SELECT b2 FROM t2
+      WHERE c2 in (807,575,268,136,653,711,45,141,318,233,823,337,560)
+      UNION ALL
+      SELECT e7 FROM t7
+      WHERE c7 in (288,813,206,626)
+      UNION
+      SELECT a6 FROM t6
+      WHERE (a6=240 OR 146=c6)
+      OR (146=c6)
+      OR c6 in (177,430,45,807,543,292,258)
+      UNION ALL
+      SELECT d5 FROM t5
+      WHERE (782=d5 AND 297=a5)
+      OR (915=c5 AND d5=152 AND 421=a5)
+      OR (d5=806)
+      EXCEPT
+      SELECT e9 FROM t9
+      WHERE NOT ((c9=643 AND 171=b9 AND 660=d9 AND a9=56 AND 107=e9)
+      OR (d9=912 OR 841=a9)
+      OR (d9=967 AND e9=687 AND c9=688));
+  - name: t1
+  - name: t4
+  - name: t5
+  - name: t9
+
+outputs:
+  - name: q426.out
+    data: |
+      152
+      21
+      217
+      240
+      272
+      38
+      386
+      408
+      455
+      474
+      504
+      522
+      554
+      62
+      628
+      634
+      643
+      649
+      676
+      696
+      731
+      754
+      782
+      806
+      90
+      966

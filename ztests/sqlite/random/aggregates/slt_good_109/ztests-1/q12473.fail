@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q12473.sql | sort > q12473.out
+
+inputs:
+  - name: q12473.sql
+    data: |
+      SELECT DISTINCT CAST ( MIN ( ALL - - col2 ) AS INTEGER ) AS col0 FROM tab1 WHERE NOT NULL NOT BETWEEN ( + col0 ) AND NULL;
+
+outputs:
+  - name: q12473.out
+    data: |
+      NULL

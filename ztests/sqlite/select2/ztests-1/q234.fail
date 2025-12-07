@@ -1,0 +1,22 @@
+script: |
+  super -f tsv -I q234.sql | sort > q234.out
+
+inputs:
+  - name: q234.sql
+    data: |
+      SELECT c
+      FROM t1
+      WHERE EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      AND (c<=d-2 OR c>=d+2)
+      AND (e>c OR e<d);
+
+outputs:
+  - name: q234.out
+    data: |
+      125
+      161
+      187
+      214
+      215
+      224
+      231

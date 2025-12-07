@@ -1,0 +1,48 @@
+script: |
+  super -f tsv -I q664.sql | sort > q664.out
+
+inputs:
+  - name: q664.sql
+    data: |
+      SELECT d-e,
+      (a+b+c+d+e)/5,
+      b,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      abs(a),
+      a+b*2+c*3+d*4,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d)
+      FROM t1;
+
+outputs:
+  - name: q664.out
+    data: |
+      -1	107	105	0	107	1067	0
+      -1	197	198	17	199	1964	0
+      -1	227	228	22	229	2264	0
+      -1	NULL	NULL	0	115	NULL	0
+      -1	NULL	NULL	0	201	NULL	0
+      -2	172	170	12	174	1714	0
+      -2	192	194	16	191	1918	0
+      -2	217	218	20	216	2165	0
+      -4	142	143	6	142	1411	0
+      -4	187	186	15	188	1861	0
+      1	132	130	4	131	1325	0
+      1	137	139	5	138	1371	0
+      1	222	223	21	220	2226	0
+      1	NULL	236	24	239	NULL	0
+      2	127	129	3	127	1272	0
+      2	162	160	10	163	1622	0
+      2	212	211	19	213	2125	0
+      2	247	249	26	245	2476	0
+      3	182	181	14	182	1828	0
+      3	232	232	23	234	2323	0
+      4	NULL	112	1	NULL	NULL	0
+      NULL	NULL	124	2	121	1226	0
+      NULL	NULL	145	7	149	NULL	0
+      NULL	NULL	151	8	153	NULL	0
+      NULL	NULL	158	9	159	NULL	0
+      NULL	NULL	167	11	168	NULL	0
+      NULL	NULL	175	13	179	NULL	0
+      NULL	NULL	206	18	NULL	NULL	0
+      NULL	NULL	240	25	243	NULL	0
+      NULL	NULL	NULL	0	104	NULL	0

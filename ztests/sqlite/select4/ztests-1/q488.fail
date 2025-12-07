@@ -1,0 +1,84 @@
+script: |
+  super -f tsv -I q488.sql | tr '\t' '\n' | sort > q488.out
+
+inputs:
+  - name: q488.sql
+    data: |
+      SELECT b5 FROM t5
+      WHERE (b5=703 OR 685=a5)
+      UNION
+      SELECT c3 FROM t3
+      WHERE (e3=951 OR 406=e3 OR 863=a3)
+      OR (c3=692 AND 273=b3 AND e3=239 AND 102=d3)
+      OR d3 in (133,711,482,944,102,913)
+      EXCEPT
+      SELECT c4 FROM t4
+      WHERE NOT (d4 in (979,905,60,617,511,819)
+      OR (584=c4 AND b4=379 AND 136=a4 AND e4=543))
+      UNION ALL
+      SELECT e8 FROM t8
+      WHERE c8 in (907,979,544,486,298,501,187,119,32)
+      OR (b8=155)
+      OR (d8=482)
+      EXCEPT
+      SELECT c7 FROM t7
+      WHERE NOT ((c7=585)
+      OR (c7=375)
+      OR (455=b7 OR 284=c7))
+      UNION
+      SELECT a1 FROM t1
+      WHERE a1 in (829,505,492,746,604,32,538)
+      UNION ALL
+      SELECT b9 FROM t9
+      WHERE (c9=843)
+      OR e9 in (713,146,968,788,477,944,954,841,368,947,245,845,230,353);
+  - name: t3
+  - name: t8
+
+outputs:
+  - name: q488.out
+    data: |
+      125
+      149
+      171
+      19
+      2
+      214
+      214
+      236
+      251
+      310
+      32
+      379
+      381
+      383
+      392
+      395
+      410
+      421
+      423
+      463
+      492
+      495
+      496
+      497
+      505
+      538
+      549
+      568
+      579
+      604
+      641
+      668
+      73
+      746
+      750
+      761
+      776
+      803
+      809
+      829
+      874
+      913
+      936
+      980

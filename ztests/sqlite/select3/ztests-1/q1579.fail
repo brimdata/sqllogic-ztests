@@ -1,0 +1,48 @@
+script: |
+  super -f tsv -I q1579.sql | sort > q1579.out
+
+inputs:
+  - name: q1579.sql
+    data: |
+      SELECT (a+b+c+d+e)/5,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      abs(b-c),
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      b-c
+      FROM t1
+      ORDER BY 2,3,1,5;
+
+outputs:
+  - name: q1579.out
+    data: |
+      107	0	1	333	-1
+      127	0	4	333	4
+      132	0	4	444	-4
+      137	0	2	111	2
+      142	0	2	111	2
+      162	0	1	333	-1
+      172	0	2	555	-2
+      182	0	3	333	-3
+      187	0	1	444	-1
+      192	0	1	444	1
+      197	0	3	555	3
+      212	0	3	222	-3
+      217	0	3	333	3
+      222	0	1	444	-1
+      227	0	3	555	3
+      232	0	1	555	1
+      247	0	2	444	2
+      NULL	0	1	333	1
+      NULL	0	1	555	-1
+      NULL	0	1	555	-1
+      NULL	0	1	555	1
+      NULL	0	1	555	1
+      NULL	0	2	555	-2
+      NULL	0	2	555	-2
+      NULL	0	3	555	3
+      NULL	0	4	222	-4
+      NULL	0	NULL	222	NULL
+      NULL	0	NULL	333	NULL
+      NULL	0	NULL	555	NULL
+      NULL	0	NULL	555	NULL

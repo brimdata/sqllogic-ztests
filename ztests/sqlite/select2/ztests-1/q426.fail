@@ -1,0 +1,19 @@
+script: |
+  super -f tsv -I q426.sql | sort > q426.out
+
+inputs:
+  - name: q426.sql
+    data: |
+      SELECT a+b*2,
+      d-e,
+      d,
+      abs(a),
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b)
+      FROM t1
+      WHERE e+d BETWEEN a+b-10 AND c+130;
+
+outputs:
+  - name: q426.out
+    data: |
+      317	-1	108	107	0
+      385	2	128	127	3

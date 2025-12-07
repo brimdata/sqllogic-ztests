@@ -1,0 +1,48 @@
+script: |
+  super -f tsv -I q1102.sql | sort > q1102.out
+
+inputs:
+  - name: q1102.sql
+    data: |
+      SELECT d-e,
+      abs(a),
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      (a+b+c+d+e)/5,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      a+b*2+c*3+d*4
+      FROM t1;
+
+outputs:
+  - name: q1102.out
+    data: |
+      -1	107	333	107	0	1067
+      -1	115	333	NULL	0	NULL
+      -1	199	555	197	17	1964
+      -1	201	222	NULL	0	NULL
+      -1	229	555	227	22	2264
+      -2	174	555	172	12	1714
+      -2	191	444	192	16	1918
+      -2	216	333	217	20	2165
+      -4	142	111	142	6	1411
+      -4	188	444	187	15	1861
+      1	131	444	132	4	1325
+      1	138	111	137	5	1371
+      1	220	444	222	21	2226
+      1	239	555	NULL	24	NULL
+      2	127	333	127	3	1272
+      2	163	333	162	10	1622
+      2	213	222	212	19	2125
+      2	245	444	247	26	2476
+      3	182	333	182	14	1828
+      3	234	555	232	23	2323
+      4	NULL	555	NULL	1	NULL
+      NULL	104	555	NULL	0	NULL
+      NULL	121	333	NULL	2	1226
+      NULL	149	555	NULL	7	NULL
+      NULL	153	555	NULL	8	NULL
+      NULL	159	555	NULL	9	NULL
+      NULL	168	555	NULL	11	NULL
+      NULL	179	555	NULL	13	NULL
+      NULL	243	222	NULL	25	NULL
+      NULL	NULL	555	NULL	18	NULL

@@ -1,0 +1,23 @@
+script: |
+  super -f tsv -I q456.sql | tr '\t' '\n' | sort > q456.out
+
+inputs:
+  - name: q456.sql
+    data: |
+      SELECT c6 FROM t6
+      WHERE a6 in (104,396,821,657,839,40,522,300,877)
+      INTERSECT
+      SELECT a4 FROM t4
+      WHERE NOT ((901=d4 AND a4=60 AND b4=802 AND c4=471))
+      UNION
+      SELECT c1 FROM t1
+      WHERE (c1=204);
+  - name: t5
+  - name: t7
+
+outputs:
+  - name: q456.out
+    data: |
+      159
+      204
+      442

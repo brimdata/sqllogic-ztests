@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q1280.sql | sort > q1280.out
+
+inputs:
+  - name: q1280.sql
+    data: |
+      SELECT ALL - NULLIF ( 39, - MAX ( DISTINCT CAST ( NULL AS INTEGER ) ) ) - 24 AS col1;
+
+outputs:
+  - name: q1280.out
+    data: |
+      -63

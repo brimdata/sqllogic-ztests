@@ -1,0 +1,75 @@
+script: |
+  super -f tsv -I q114.sql | tr '\t' '\n' | sort > q114.out
+
+inputs:
+  - name: q114.sql
+    data: |
+      SELECT c5 FROM t5
+      WHERE (e5=72 AND b5=412 AND c5=598)
+      OR b5 in (609,186,321,393,424,951)
+      UNION ALL
+      SELECT d4 FROM t4
+      WHERE (e4=790 OR 376=d4)
+      OR (748=b4 AND 88=c4)
+      UNION ALL
+      SELECT b2 FROM t2
+      WHERE b2 in (285,859,220,211,173,148,501,519)
+      OR (543=b2)
+      OR (339=e2 AND a2=56 AND 195=d2 AND 282=c2 AND b2=285)
+      UNION
+      SELECT e3 FROM t3
+      WHERE (986=c3 OR 272=c3)
+      OR (b3=339 AND 435=c3 AND d3=358)
+      EXCEPT
+      SELECT e1 FROM t1
+      WHERE NOT ((268=a1 OR 247=b1 OR e1=442)
+      OR b1 in (213,426,149,729,346,788,307,556,569,556,282,766)
+      OR e1 in (221,534,12,747,731,463,616))
+      UNION
+      SELECT b6 FROM t6
+      WHERE b6 in (583,774,0,427,537,351,601,565,350,923,507,575,629,390)
+      OR (121=a6 AND e6=139 AND b6=662 AND c6=491 AND 750=d6)
+      OR (411=c6 AND d6=2 AND a6=672 AND 604=b6);
+  - name: t1
+  - name: t9
+
+outputs:
+  - name: q114.out
+    data: |
+      0
+      173
+      211
+      220
+      250
+      285
+      350
+      351
+      376
+      390
+      425
+      427
+      457
+      501
+      507
+      514
+      519
+      537
+      543
+      565
+      575
+      583
+      598
+      601
+      604
+      629
+      662
+      690
+      734
+      774
+      799
+      819
+      844
+      859
+      868
+      923
+      929

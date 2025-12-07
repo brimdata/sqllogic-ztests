@@ -1,0 +1,25 @@
+script: |
+  super -f tsv -I q1481.sql | sort > q1481.out
+
+inputs:
+  - name: q1481.sql
+    data: |
+      SELECT a-b,
+      a+b*2+c*3+d*4,
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END,
+      b,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      d-e
+      FROM t1
+      WHERE a>b
+      AND d>e
+      AND c>d
+      ORDER BY 5,1,4,6,3,2;
+
+outputs:
+  - name: q1481.out
+    data: |
+      1	1325	333	130	4	1
+      1	1828	333	181	14	3
+      2	2125	333	211	19	2

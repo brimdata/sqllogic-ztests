@@ -1,0 +1,11 @@
+script: |
+  super -f tsv -I q1368.sql | sort > q1368.out
+
+inputs:
+  - name: q1368.sql
+    data: |
+      SELECT DISTINCT - col0 AS col0 FROM tab2 GROUP BY col0, col1 HAVING NOT - + col0 * - + col0 * + - col1 IS NOT NULL;
+
+outputs:
+  - name: q1368.out
+    data: |

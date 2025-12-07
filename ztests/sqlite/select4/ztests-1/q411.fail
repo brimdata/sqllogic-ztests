@@ -1,0 +1,101 @@
+script: |
+  super -f tsv -I q411.sql | tr '\t' '\n' | sort > q411.out
+
+inputs:
+  - name: q411.sql
+    data: |
+      SELECT b4 FROM t4
+      WHERE e4 in (739,486,217,1,237,300)
+      OR (901=b4 AND 879=e4 AND 598=a4)
+      OR e4 in (223,760,546)
+      UNION ALL
+      SELECT a9 FROM t9
+      WHERE (495=d9)
+      OR (b9=804 AND 419=c9)
+      OR (a9=429 AND b9=667 AND d9=95 AND c9=601)
+      UNION
+      SELECT e1 FROM t1
+      WHERE d1 in (265,655,105,87,972,874,942,467,96,412)
+      OR (e1=148 AND 154=d1 AND c1=246)
+      OR (b1=850)
+      UNION
+      SELECT e6 FROM t6
+      WHERE (e6=175)
+      OR c6 in (534,159,216,528,807)
+      UNION
+      SELECT d5 FROM t5
+      WHERE e5 in (470,184,511,888,554,737,697,610,180,730)
+      OR (e5=13 OR 335=a5 OR e5=9)
+      OR (511=e5)
+      EXCEPT
+      SELECT c2 FROM t2
+      WHERE NOT ((256=d2 OR c2=688 OR 264=b2)
+      OR (c2=127))
+      UNION
+      SELECT b8 FROM t8
+      WHERE d8 in (96,20,899,835,989,326,161,737,101,761,631,108,494,610);
+  - name: t1
+  - name: t4
+  - name: t9
+
+outputs:
+  - name: q411.out
+    data: |
+      114
+      145
+      155
+      158
+      171
+      175
+      184
+      244
+      259
+      286
+      313
+      343
+      361
+      363
+      369
+      389
+      397
+      408
+      41
+      429
+      454
+      458
+      469
+      470
+      487
+      492
+      503
+      51
+      52
+      523
+      531
+      538
+      55
+      616
+      656
+      696
+      705
+      712
+      721
+      749
+      766
+      769
+      770
+      792
+      806
+      814
+      815
+      816
+      847
+      860
+      883
+      89
+      901
+      919
+      922
+      961
+      963
+      975

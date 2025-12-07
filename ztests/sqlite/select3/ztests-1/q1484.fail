@@ -1,0 +1,46 @@
+script: |
+  super -f tsv -I q1484.sql | sort > q1484.out
+
+inputs:
+  - name: q1484.sql
+    data: |
+      SELECT c-d,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END,
+      d
+      FROM t1;
+
+outputs:
+  - name: q1484.out
+    data: |
+      -1	0	111	248
+      -1	0	333	196
+      -1	0	333	226
+      -1	0	444	114
+      -1	0	444	203
+      -2	0	222	217
+      -2	0	333	108
+      -2	0	333	233
+      -3	0	222	128
+      -3	0	444	164
+      1	0	222	122
+      1	0	222	136
+      1	0	222	140
+      1	0	333	133
+      1	0	333	183
+      1	0	444	101
+      1	0	444	171
+      1	0	444	207
+      2	0	222	222
+      2	0	333	185
+      2	0	333	212
+      3	0	222	190
+      3	0	444	116
+      NULL	0	333	NULL
+      NULL	0	333	NULL
+      NULL	0	333	NULL
+      NULL	0	444	238
+      NULL	0	444	NULL
+      NULL	0	444	NULL
+      NULL	0	444	NULL

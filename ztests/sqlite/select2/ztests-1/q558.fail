@@ -1,0 +1,27 @@
+script: |
+  super -f tsv -I q558.sql | sort > q558.out
+
+inputs:
+  - name: q558.sql
+    data: |
+      SELECT CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END,
+      d-e,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d)
+      FROM t1
+      WHERE d>e;
+
+outputs:
+  - name: q558.out
+    data: |
+      111	2	0
+      222	1	0
+      222	1	0
+      222	2	0
+      333	1	0
+      333	2	0
+      333	3	0
+      333	3	0
+      444	1	0
+      444	2	0
+      444	4	0

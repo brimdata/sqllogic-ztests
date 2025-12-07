@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q9020.sql | sort > q9020.out
+
+inputs:
+  - name: q9020.sql
+    data: |
+      SELECT col1 FROM tab2 WHERE NULL NOT IN ( col1 * + col0 );
+  - name: tab2
+
+outputs:
+  - name: q9020.out
+    data: |

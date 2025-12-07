@@ -1,0 +1,44 @@
+script: |
+  super -f tsv -I q65.sql | sort > q65.out
+
+inputs:
+  - name: q65.sql
+    data: |
+      SELECT (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      (a+b+c+d+e)/5,
+      b-c
+      FROM t1;
+
+outputs:
+  - name: q65.out
+    data: |
+      0	107	-1
+      0	127	4
+      0	132	-4
+      0	137	2
+      0	142	2
+      0	162	-1
+      0	172	-2
+      0	182	-3
+      0	187	-1
+      0	192	1
+      0	197	3
+      0	212	-3
+      0	217	3
+      0	222	-1
+      0	227	3
+      0	232	1
+      0	247	2
+      0	NULL	-1
+      0	NULL	-1
+      0	NULL	-2
+      0	NULL	-2
+      0	NULL	-4
+      0	NULL	1
+      0	NULL	1
+      0	NULL	1
+      0	NULL	3
+      0	NULL	NULL
+      0	NULL	NULL
+      0	NULL	NULL
+      0	NULL	NULL

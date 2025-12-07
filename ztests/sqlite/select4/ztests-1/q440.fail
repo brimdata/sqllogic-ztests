@@ -1,0 +1,36 @@
+script: |
+  super -f tsv -I q440.sql | tr '\t' '\n' | sort > q440.out
+
+inputs:
+  - name: q440.sql
+    data: |
+      SELECT a6 FROM t6
+      WHERE e6 in (574,617,737,257,286,431,24,261)
+      OR (c6=637 OR e6=324 OR a6=121)
+      UNION ALL
+      SELECT c3 FROM t3
+      WHERE (d3=554)
+      OR (393=e3 OR b3=321 OR c3=565)
+      EXCEPT
+      SELECT a9 FROM t9
+      WHERE NOT ((51=d9 AND 128=b9 AND a9=905 AND 327=c9 AND 647=e9)
+      OR (947=e9 AND 569=c9));
+  - name: t2
+  - name: t4
+
+outputs:
+  - name: q440.out
+    data: |
+      10
+      121
+      129
+      182
+      270
+      436
+      540
+      565
+      594
+      601
+      731
+      740
+      85

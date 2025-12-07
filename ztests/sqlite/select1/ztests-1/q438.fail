@@ -1,0 +1,49 @@
+script: |
+  super -f tsv -I q438.sql > q438.out
+
+inputs:
+  - name: q438.sql
+    data: |
+      SELECT CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      c-d
+      FROM t1
+      WHERE (e>c OR e<d)
+      OR EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      OR (e>a AND e<b)
+      ORDER BY 2,1,3;
+
+outputs:
+  - name: q438.out
+    data: |
+      444	0	1
+      333	1	-2
+      222	2	-1
+      222	3	3
+      222	4	1
+      222	5	-3
+      333	6	1
+      222	7	1
+      222	8	1
+      444	9	-1
+      333	10	-4
+      333	11	-1
+      444	12	-3
+      333	13	-3
+      444	14	1
+      444	15	-2
+      333	16	1
+      333	17	2
+      222	18	3
+      333	19	-1
+      333	20	-1
+      222	21	1
+      333	22	2
+      222	23	-2
+      222	24	2
+      333	25	-1
+      333	26	-2
+      444	27	-3
+      444	28	3
+      111	29	-1

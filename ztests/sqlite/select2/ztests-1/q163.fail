@@ -1,0 +1,46 @@
+script: |
+  super -f tsv -I q163.sql | sort > q163.out
+
+inputs:
+  - name: q163.sql
+    data: |
+      SELECT abs(b-c),
+      b-c,
+      a+b*2,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      abs(a)
+      FROM t1;
+
+outputs:
+  - name: q163.out
+    data: |
+      1	-1	317	0	107
+      1	-1	483	0	163
+      1	-1	529	0	179
+      1	-1	560	0	188
+      1	-1	666	0	220
+      1	-1	NULL	0	NULL
+      1	1	369	0	121
+      1	1	455	0	153
+      1	1	502	0	168
+      1	1	579	0	191
+      1	1	698	0	234
+      2	-2	439	0	149
+      2	-2	514	0	174
+      2	-2	NULL	0	NULL
+      2	2	416	0	138
+      2	2	428	0	142
+      2	2	743	0	245
+      3	-3	544	0	182
+      3	-3	635	0	213
+      3	3	475	0	159
+      3	3	595	0	199
+      3	3	652	0	216
+      3	3	685	0	229
+      4	-4	391	0	131
+      4	-4	723	0	243
+      4	4	385	0	127
+      NULL	NULL	711	0	239
+      NULL	NULL	NULL	0	104
+      NULL	NULL	NULL	0	115
+      NULL	NULL	NULL	0	201

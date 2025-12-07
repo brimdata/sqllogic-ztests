@@ -1,0 +1,46 @@
+script: |
+  super -f tsv -I q957.sql | sort > q957.out
+
+inputs:
+  - name: q957.sql
+    data: |
+      SELECT c,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END,
+      a+b*2+c*3+d*4
+      FROM t1
+      WHERE b>c
+      OR d NOT BETWEEN 110 AND 150
+      OR (e>c OR e<d)
+      ORDER BY 2,1;
+
+outputs:
+  - name: q957.out
+    data: |
+      102	0	NULL	NULL
+      106	0	1050	1067
+      113	0	1120	NULL
+      123	0	1240	1226
+      125	0	1290	1272
+      134	0	1300	1325
+      137	0	1390	1371
+      141	0	1430	1411
+      150	0	1510	NULL
+      155	0	1580	NULL
+      161	0	1600	1622
+      166	0	1670	NULL
+      172	0	1700	1714
+      176	0	358	NULL
+      184	0	364	1828
+      187	0	376	1861
+      193	0	382	1918
+      195	0	398	1964
+      202	0	402	NULL
+      208	0	NULL	NULL
+      214	0	426	2125
+      215	0	432	2165
+      224	0	440	2226
+      225	0	458	2264
+      231	0	468	2323
+      247	0	490	2476
+      NULL	0	2360	NULL

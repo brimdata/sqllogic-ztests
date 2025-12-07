@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q462.sql | sort > q462.out
+
+inputs:
+  - name: q462.sql
+    data: |
+      SELECT ALL COUNT ( * ) - CAST ( NULL AS INTEGER ) / - ( - COUNT ( * ) ) AS col2 FROM tab1 WHERE col2 + - col2 * + col1 IS NOT NULL;
+
+outputs:
+  - name: q462.out
+    data: |
+      NULL

@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q11229.sql | sort > q11229.out
+
+inputs:
+  - name: q11229.sql
+    data: |
+      SELECT DISTINCT - 55 AS col2 FROM tab0 AS cor0 GROUP BY col0 HAVING NOT COUNT ( DISTINCT col2 ) IS NULL;
+
+outputs:
+  - name: q11229.out
+    data: |
+      -55

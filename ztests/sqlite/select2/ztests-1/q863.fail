@@ -1,0 +1,43 @@
+script: |
+  super -f tsv -I q863.sql | sort > q863.out
+
+inputs:
+  - name: q863.sql
+    data: |
+      SELECT CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END
+      FROM t1
+      WHERE c>d
+      OR EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      OR (a>b-2 AND a<b+2);
+
+outputs:
+  - name: q863.out
+    data: |
+      1120
+      1240
+      1290
+      1300
+      1390
+      1430
+      1450
+      1510
+      1580
+      1600
+      1670
+      1700
+      2360
+      358
+      364
+      376
+      382
+      398
+      426
+      432
+      440
+      458
+      468
+      486
+      490
+      NULL
+      NULL
+      NULL

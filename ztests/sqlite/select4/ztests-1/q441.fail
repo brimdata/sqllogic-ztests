@@ -1,0 +1,48 @@
+script: |
+  super -f tsv -I q441.sql | tr '\t' '\n' | sort > q441.out
+
+inputs:
+  - name: q441.sql
+    data: |
+      SELECT a3 FROM t3
+      WHERE (363=d3 AND b3=677)
+      OR (765=e3 OR 821=e3)
+      EXCEPT
+      SELECT a5 FROM t5
+      WHERE NOT ((e5=206 AND 951=b5)
+      OR (930=b5)
+      OR (b5=695 OR e5=98))
+      EXCEPT
+      SELECT e7 FROM t7
+      WHERE NOT ((118=d7 OR 758=a7)
+      OR (192=b7)
+      OR (79=d7 OR a7=130 OR b7=308))
+      UNION ALL
+      SELECT c1 FROM t1
+      WHERE (670=b1)
+      OR (281=b1 AND 375=c1 AND 221=d1)
+      EXCEPT
+      SELECT b6 FROM t6
+      WHERE NOT ((405=d6 AND e6=654 AND 490=b6 AND c6=441 AND 818=a6)
+      OR (121=a6 OR c6=161 OR 905=b6))
+      EXCEPT
+      SELECT b8 FROM t8
+      WHERE NOT ((c8=299)
+      OR d8 in (631,96,849,456,630,814)
+      OR a8 in (883,653,961,388,848,289,153,553,47,794))
+      UNION
+      SELECT d9 FROM t9
+      WHERE (264=d9)
+      OR (2=b9 AND e9=353 AND 678=d9);
+  - name: t2
+  - name: t4
+
+outputs:
+  - name: q441.out
+    data: |
+      204
+      264
+      375
+      551
+      608
+      678

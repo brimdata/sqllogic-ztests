@@ -1,0 +1,32 @@
+script: |
+  super -f tsv -I q131.sql | tr '\t' '\n' | sort > q131.out
+
+inputs:
+  - name: q131.sql
+    data: |
+      SELECT c8 FROM t8
+      WHERE (7=b8 AND e8=955 AND c8=998 AND 876=d8)
+      OR (862=b8 AND a8=312)
+      OR c8 in (730,907,648,230,418,647,508,943,229,168,799,5)
+      INTERSECT
+      SELECT b3 FROM t3
+      WHERE NOT ((728=e3 OR 272=e3 OR b3=474))
+      UNION
+      SELECT b5 FROM t5
+      WHERE (d5=492 OR e5=894)
+      OR (436=e5)
+      EXCEPT
+      SELECT b2 FROM t2
+      WHERE NOT ((d2=750 AND 775=a2 AND c2=46 AND b2=545))
+      EXCEPT
+      SELECT b7 FROM t7
+      WHERE NOT ((514=b7));
+  - name: t2
+  - name: t7
+
+outputs:
+  - name: q131.out
+    data: |
+      665
+      84
+      998

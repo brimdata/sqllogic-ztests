@@ -1,0 +1,30 @@
+script: |
+  super -f tsv -I q135.sql > q135.out
+
+inputs:
+  - name: q135.sql
+    data: |
+      SELECT b,
+      d,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d)
+      FROM t1
+      WHERE b>c
+      ORDER BY 1,2,3;
+
+outputs:
+  - name: q135.out
+    data: |
+      124	122	0
+      129	128	0
+      139	136	0
+      143	140	0
+      151	154	0
+      158	156	0
+      167	169	0
+      194	190	0
+      198	196	0
+      218	217	0
+      228	226	0
+      232	233	0
+      236	238	0
+      249	248	0

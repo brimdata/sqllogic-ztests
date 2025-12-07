@@ -1,0 +1,40 @@
+script: |
+  super -f tsv -I q897.sql | sort > q897.out
+
+inputs:
+  - name: q897.sql
+    data: |
+      SELECT (a+b+c+d+e)/5,
+      d-e,
+      a+b*2+c*3+d*4,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END
+      FROM t1
+      WHERE (a>b-2 AND a<b+2)
+      OR d>e
+      OR b>c;
+
+outputs:
+  - name: q897.out
+    data: |
+      127	2	1272	0	222
+      132	1	1325	0	333
+      137	1	1371	0	222
+      142	-4	1411	0	222
+      162	2	1622	0	444
+      182	3	1828	0	333
+      192	-2	1918	0	222
+      197	-1	1964	0	333
+      212	2	2125	0	333
+      217	-2	2165	0	222
+      222	1	2226	0	222
+      227	-1	2264	0	333
+      232	3	2323	0	333
+      247	2	2476	0	111
+      NULL	1	NULL	0	444
+      NULL	4	NULL	0	444
+      NULL	NULL	1226	0	222
+      NULL	NULL	NULL	0	333
+      NULL	NULL	NULL	0	333
+      NULL	NULL	NULL	0	333

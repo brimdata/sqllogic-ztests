@@ -1,0 +1,37 @@
+script: |
+  super -f tsv -I q41.sql | tr '\t' '\n' | sort > q41.out
+
+inputs:
+  - name: q41.sql
+    data: |
+      SELECT d1 FROM t1
+      WHERE (731=e1)
+      INTERSECT
+      SELECT b4 FROM t4
+      WHERE NOT ((e4=29 AND 35=b4))
+      EXCEPT
+      SELECT c5 FROM t5
+      WHERE NOT (a5 in (447,637,297,878,341,311,960,362,921,740,867,429,800)
+      OR a5 in (270,976,904,878,330,476,335,757,821,447,50,180,818,153)
+      OR c5 in (140,155,149,3,545,579,657,978,86,855,485))
+      UNION
+      SELECT a9 FROM t9
+      WHERE b9 in (152,74,136,891,19,149,759,15);
+  - name: t4
+  - name: t5
+  - name: t6
+  - name: t8
+  - name: t9
+
+outputs:
+  - name: q41.out
+    data: |
+      148
+      218
+      240
+      356
+      457
+      662
+      712
+      847
+      905

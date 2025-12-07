@@ -1,0 +1,47 @@
+script: |
+  super -f tsv -I q120.sql > q120.out
+
+inputs:
+  - name: q120.sql
+    data: |
+      SELECT b,
+      abs(a)
+      FROM t1
+      WHERE (e>a AND e<b)
+      OR c BETWEEN b-2 AND d+2
+      OR EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      ORDER BY 2,1;
+
+outputs:
+  - name: q120.out
+    data: |
+      100	104
+      105	107
+      112	111
+      118	115
+      124	121
+      129	127
+      130	131
+      139	138
+      143	142
+      145	149
+      151	153
+      158	159
+      160	163
+      167	168
+      170	174
+      175	179
+      181	182
+      186	188
+      194	191
+      198	199
+      200	201
+      206	205
+      211	213
+      218	216
+      223	220
+      228	229
+      232	234
+      236	239
+      240	243
+      249	245

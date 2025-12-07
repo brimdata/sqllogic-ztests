@@ -1,0 +1,19 @@
+script: |
+  super -f tsv -I q858.sql | sort > q858.out
+
+inputs:
+  - name: q858.sql
+    data: |
+      SELECT e,
+      a+b*2+c*3,
+      abs(a),
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END
+      FROM t1
+      WHERE EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      AND a>b
+      AND e+d BETWEEN a+b-10 AND c+130;
+
+outputs:
+  - name: q858.out
+    data: |

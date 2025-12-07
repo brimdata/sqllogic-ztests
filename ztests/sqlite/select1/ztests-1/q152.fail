@@ -1,0 +1,26 @@
+script: |
+  super -f tsv -I q152.sql > q152.out
+
+inputs:
+  - name: q152.sql
+    data: |
+      SELECT d-e,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d)
+      FROM t1
+      WHERE (a>b-2 AND a<b+2)
+      ORDER BY 1,2;
+
+outputs:
+  - name: q152.out
+    data: |
+      -4	0
+      -2	0
+      -1	0
+      -1	0
+      -1	0
+      -1	0
+      1	0
+      1	0
+      3	0
+      4	0
+      4	0

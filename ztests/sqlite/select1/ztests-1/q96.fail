@@ -1,0 +1,32 @@
+script: |
+  super -f tsv -I q96.sql > q96.out
+
+inputs:
+  - name: q96.sql
+    data: |
+      SELECT CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END,
+      d,
+      e,
+      c-d,
+      a+b*2+c*3+d*4,
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END
+      FROM t1
+      WHERE c BETWEEN b-2 AND d+2
+      AND c>d
+      AND EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      ORDER BY 1,4,3,2,5,6;
+
+outputs:
+  - name: q96.out
+    data: |
+      364	183	180	1	1828	333
+      376	185	189	2	1861	444
+      410	207	209	1	2069	111
+      426	212	210	2	2125	222
+      440	222	221	2	2226	444
+      1240	122	120	1	1226	333
+      1300	133	132	1	1325	444
+      1390	136	135	1	1371	111
+      1430	140	144	1	1411	111
+      1700	171	173	1	1714	555

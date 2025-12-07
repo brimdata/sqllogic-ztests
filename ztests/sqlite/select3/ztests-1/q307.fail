@@ -1,0 +1,50 @@
+script: |
+  super -f tsv -I q307.sql | sort > q307.out
+
+inputs:
+  - name: q307.sql
+    data: |
+      SELECT (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      a,
+      abs(b-c),
+      d,
+      abs(a),
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      d-e
+      FROM t1
+      ORDER BY 3,1,5,6,4;
+
+outputs:
+  - name: q307.out
+    data: |
+      0	104	NULL	101	104	555	NULL
+      0	107	1	108	107	333	-1
+      0	115	NULL	116	115	333	-1
+      0	121	1	122	121	333	NULL
+      0	127	4	128	127	333	2
+      0	131	4	133	131	444	1
+      0	138	2	136	138	111	1
+      0	142	2	140	142	111	-4
+      0	149	2	NULL	149	555	NULL
+      0	153	1	NULL	153	555	NULL
+      0	159	3	NULL	159	555	NULL
+      0	163	1	164	163	333	2
+      0	168	1	NULL	168	555	NULL
+      0	174	2	171	174	555	-2
+      0	179	1	NULL	179	555	NULL
+      0	182	3	183	182	333	3
+      0	188	1	185	188	444	-4
+      0	191	1	190	191	444	-2
+      0	199	3	196	199	555	-1
+      0	201	NULL	203	201	222	-1
+      0	213	3	212	213	222	2
+      0	216	3	217	216	333	-2
+      0	220	1	222	220	444	1
+      0	229	3	226	229	555	-1
+      0	234	1	233	234	555	3
+      0	239	NULL	238	239	555	1
+      0	243	4	NULL	243	222	NULL
+      0	245	2	248	245	444	2
+      0	NULL	1	114	NULL	555	4
+      0	NULL	2	207	NULL	555	NULL

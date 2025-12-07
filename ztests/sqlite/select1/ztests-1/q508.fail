@@ -1,0 +1,34 @@
+script: |
+  super -f tsv -I q508.sql > q508.out
+
+inputs:
+  - name: q508.sql
+    data: |
+      SELECT a+b*2+c*3+d*4+e*5,
+      a,
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      e,
+      d
+      FROM t1
+      WHERE b>c
+      ORDER BY 6,2,5,4,3,1;
+
+outputs:
+  - name: q508.out
+    data: |
+      1826	121	222	0	120	122
+      1902	127	222	0	126	128
+      2046	138	222	0	135	136
+      2131	142	222	0	144	140
+      2281	153	333	0	152	154
+      2349	159	333	0	157	156
+      2501	168	333	0	165	169
+      2878	191	222	0	192	190
+      2949	199	333	0	197	196
+      3260	216	222	0	219	217
+      3399	229	333	0	227	226
+      3473	234	333	0	230	233
+      3553	239	444	0	237	238
+      3706	245	111	0	246	248

@@ -1,0 +1,85 @@
+script: |
+  super -f tsv -I q72.sql | tr '\t' '\n' | sort > q72.out
+
+inputs:
+  - name: q72.sql
+    data: |
+      SELECT d1 FROM t1
+      WHERE (e1=288 OR 733=e1)
+      UNION
+      SELECT d3 FROM t3
+      WHERE (a3=644 AND d3=482 AND b3=740 AND 395=c3)
+      UNION
+      SELECT d8 FROM t8
+      WHERE b8 in (487,609,300,792,366,677)
+      OR b8 in (52,370,870,958,259,665,182,696)
+      EXCEPT
+      SELECT e2 FROM t2
+      WHERE NOT (e2 in (781,815,386,217,753,512,706,381))
+      UNION ALL
+      SELECT b5 FROM t5
+      WHERE a5 in (89,675,369,301,319,586,335,270,826,976,5,55,544)
+      OR a5 in (929,832,9,341,960,785,757,667,362,50,445,342)
+      EXCEPT
+      SELECT a4 FROM t4
+      WHERE NOT (e4 in (415,596,376,184,661,237,217,290,631,350,600,163))
+      UNION
+      SELECT b9 FROM t9
+      WHERE (a9=891 AND 90=c9 AND e9=150)
+      UNION
+      SELECT b7 FROM t7
+      WHERE d7 in (292,139,364,831,974,296,902,324)
+      OR (344=e7 AND c7=419 AND 777=d7 AND a7=114);
+  - name: t2
+  - name: t7
+
+outputs:
+  - name: q72.out
+    data: |
+      113
+      143
+      186
+      191
+      192
+      193
+      221
+      230
+      273
+      306
+      315
+      320
+      33
+      384
+      391
+      403
+      421
+      424
+      472
+      482
+      494
+      52
+      544
+      569
+      571
+      610
+      640
+      674
+      675
+      685
+      693
+      705
+      716
+      744
+      761
+      79
+      813
+      846
+      858
+      878
+      897
+      93
+      930
+      934
+      951
+      979
+      998

@@ -1,0 +1,32 @@
+script: |
+  super -f tsv -I q1711.sql | sort > q1711.out
+
+inputs:
+  - name: q1711.sql
+    data: |
+      SELECT (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      b-c,
+      a+b*2+c*3+d*4,
+      abs(a),
+      a-b
+      FROM t1
+      WHERE EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      AND b>c
+      ORDER BY 3,2,1,5,4;
+
+outputs:
+  - name: q1711.out
+    data: |
+      11	1	NULL	168	1
+      16	1	1918	191	-3
+      17	3	1964	199	1
+      2	1	1226	121	-3
+      20	3	2165	216	-2
+      22	3	2264	229	1
+      23	1	2323	234	2
+      26	2	2476	245	-4
+      3	4	1272	127	-2
+      5	2	1371	138	-1
+      6	2	1411	142	-1
+      8	1	NULL	153	2
+      9	3	NULL	159	1

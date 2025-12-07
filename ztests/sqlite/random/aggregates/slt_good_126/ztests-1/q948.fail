@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q948.sql | sort > q948.out
+
+inputs:
+  - name: q948.sql
+    data: |
+      SELECT + ( - AVG ( DISTINCT + col0 ) ) + COUNT ( * ) AS col0 FROM tab2 WHERE NOT ( NULL <> - col2 );
+
+outputs:
+  - name: q948.out
+    data: |
+      NULL

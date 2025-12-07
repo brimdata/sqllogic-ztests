@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q8844.sql | sort > q8844.out
+
+inputs:
+  - name: q8844.sql
+    data: |
+      SELECT ( - COUNT ( * ) ) AS col2, + 26 AS col1 FROM tab2 WHERE NULL IN ( + col2 );
+
+outputs:
+  - name: q8844.out
+    data: |
+      0	26

@@ -1,0 +1,47 @@
+script: |
+  super -f tsv -I q698.sql | sort > q698.out
+
+inputs:
+  - name: q698.sql
+    data: |
+      SELECT d-e,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      a-b,
+      CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END,
+      b,
+      a+b*2+c*3+d*4+e*5
+      FROM t1
+      WHERE a>b
+      OR b>c
+      OR c BETWEEN b-2 AND d+2;
+
+outputs:
+  - name: q698.out
+    data: |
+      -1	0	2	1050	105	1612
+      -1	17	1	398	198	2949
+      -1	22	1	458	228	3399
+      -2	12	4	1700	170	2579
+      -2	16	-3	382	194	2878
+      -2	20	-2	432	218	3260
+      -4	15	2	376	186	2806
+      -4	6	-1	1430	143	2131
+      1	21	-3	440	223	3331
+      1	24	3	2360	236	NULL
+      1	4	1	1300	130	1985
+      1	5	-1	1390	139	2046
+      2	10	3	1600	160	2432
+      2	19	2	426	211	3175
+      2	26	-4	490	249	3706
+      2	3	-2	1290	129	1902
+      3	14	1	364	181	2728
+      3	23	2	468	232	3473
+      4	1	NULL	1120	112	NULL
+      NULL	11	1	1670	167	NULL
+      NULL	13	4	358	175	NULL
+      NULL	18	NULL	NULL	206	NULL
+      NULL	2	-3	1240	124	NULL
+      NULL	25	3	486	240	NULL
+      NULL	7	4	1450	145	NULL
+      NULL	8	2	1510	151	NULL
+      NULL	9	1	1580	158	NULL

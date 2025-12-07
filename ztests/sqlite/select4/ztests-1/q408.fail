@@ -1,0 +1,81 @@
+script: |
+  super -f tsv -I q408.sql | tr '\t' '\n' | sort > q408.out
+
+inputs:
+  - name: q408.sql
+    data: |
+      SELECT e1 FROM t1
+      WHERE b1 in (226,211,307,736,242,88,956)
+      UNION ALL
+      SELECT c5 FROM t5
+      WHERE c5 in (441,249,613,198,721,149,689,936,668,158,756,855,756)
+      OR d5 in (309,957,118,4,274,806,321,964,553,691,919,282,360)
+      UNION ALL
+      SELECT e3 FROM t3
+      WHERE (656=c3 OR c3=360)
+      OR e3 in (929,145,211)
+      OR (724=e3 OR 175=c3 OR d3=645)
+      EXCEPT
+      SELECT a2 FROM t2
+      WHERE NOT (c2 in (312,22,179,374,688)
+      OR c2 in (819,202,449,509,878)
+      OR (d2=847))
+      UNION ALL
+      SELECT b6 FROM t6
+      WHERE (c6=490 AND a6=799 AND 933=b6 AND 794=e6 AND 778=d6)
+      OR (452=c6 OR 90=e6 OR 35=d6)
+      OR (c6=561 OR 337=d6 OR 811=a6)
+      EXCEPT
+      SELECT d9 FROM t9
+      WHERE NOT (b9 in (312,827,864,891,66,926,214,228,269,361,446,171,496))
+      UNION
+      SELECT c8 FROM t8
+      WHERE (841=a8 AND 702=b8)
+      OR (b8=975 AND c8=225)
+      OR (416=e8 AND a8=883 AND d8=391 AND 52=b8 AND 381=c8);
+  - name: t1
+  - name: t4
+  - name: t9
+
+outputs:
+  - name: q408.out
+    data: |
+      148
+      149
+      158
+      198
+      211
+      225
+      249
+      27
+      284
+      348
+      350
+      355
+      381
+      384
+      401
+      441
+      443
+      459
+      507
+      563
+      613
+      629
+      689
+      710
+      716
+      717
+      721
+      724
+      728
+      734
+      756
+      819
+      90
+      929
+      933
+      949
+      963
+      977
+      997

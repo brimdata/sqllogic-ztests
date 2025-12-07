@@ -1,0 +1,72 @@
+script: |
+  super -f tsv -I q809.sql | tr '\t' '\n' | sort > q809.out
+
+inputs:
+  - name: q809.sql
+    data: |
+      SELECT c7 FROM t7
+      WHERE (d7=902 OR 524=d7 OR 35=a7)
+      UNION
+      SELECT c1 FROM t1
+      WHERE (313=e1 OR c1=788)
+      OR (c1=36 AND e1=667 AND b1=255 AND a1=380)
+      OR (829=a1 AND d1=163 AND 589=b1 AND 139=e1 AND c1=980)
+      EXCEPT
+      SELECT a4 FROM t4
+      WHERE NOT ((c4=749 AND 706=d4 AND 608=b4 AND 349=e4)
+      OR (c4=455 AND b4=877 AND 372=e4)
+      OR (188=c4 OR 767=c4 OR 37=e4))
+      EXCEPT
+      SELECT c3 FROM t3
+      WHERE NOT (d3 in (982,403,423,415,607,958,984,983,896,871,635,599,642,645))
+      EXCEPT
+      SELECT b9 FROM t9
+      WHERE NOT (d9 in (694,679,332,608,818,111,662,316,25,283,235,86)
+      OR (347=c9 AND 218=a9 AND e9=388))
+      EXCEPT
+      SELECT a2 FROM t2
+      WHERE NOT (b2 in (285,799,859,278,90,818,21,90,729)
+      OR (671=e2 OR a2=222))
+      UNION ALL
+      SELECT c5 FROM t5
+      WHERE (54=a5 OR e5=812)
+      OR b5 in (665,657,640,336,56,186,998,193,971,548,874,569)
+      OR c5 in (649,774,922,819,941,734,249,210,855,443);
+  - name: t2
+  - name: t5
+
+outputs:
+  - name: q809.out
+    data: |
+      12
+      147
+      168
+      174
+      210
+      249
+      313
+      36
+      422
+      44
+      441
+      443
+      443
+      482
+      601
+      628
+      649
+      734
+      734
+      764
+      774
+      788
+      797
+      805
+      819
+      855
+      855
+      865
+      894
+      922
+      941
+      941

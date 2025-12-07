@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q410.sql | sort > q410.out
+
+inputs:
+  - name: q410.sql
+    data: |
+      SELECT SUM ( - col2 ) / AVG ( ALL + col2 ) FROM tab1 WHERE NOT NULL IS NULL;
+
+outputs:
+  - name: q410.out
+    data: |
+      NULL

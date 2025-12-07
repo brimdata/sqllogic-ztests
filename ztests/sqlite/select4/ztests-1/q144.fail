@@ -1,0 +1,111 @@
+script: |
+  super -f tsv -I q144.sql | tr '\t' '\n' | sort > q144.out
+
+inputs:
+  - name: q144.sql
+    data: |
+      SELECT b2 FROM t2
+      WHERE a2 in (304,123,135,691,262,954,495,863,336,93,442,922)
+      OR b2 in (527,264,805,228,519,297,226,311,776)
+      OR c2 in (869,65,318,148,653,746,582,4,902,854)
+      EXCEPT
+      SELECT b9 FROM t9
+      WHERE NOT ((935=c9 OR b9=122))
+      UNION
+      SELECT b8 FROM t8
+      WHERE (394=c8 OR 456=d8)
+      OR b8 in (862,806,155,405,98,870)
+      EXCEPT
+      SELECT e6 FROM t6
+      WHERE NOT ((b6=63 AND a6=40 AND 808=e6)
+      OR (e6=646 OR 376=d6 OR 286=e6)
+      OR (a6=85 OR 832=c6 OR e6=682))
+      EXCEPT
+      SELECT a4 FROM t4
+      WHERE NOT (c4 in (508,424,783,927,271,214,301,489,749,948))
+      UNION
+      SELECT e5 FROM t5
+      WHERE (e5=352)
+      OR d5 in (343,111,24,553,117)
+      UNION ALL
+      SELECT a1 FROM t1
+      WHERE e1 in (312,117,645,921,858,737,997,484,855,813,546,181,539)
+      OR (209=e1 AND 508=d1 AND 445=a1 AND 765=c1)
+      OR b1 in (55,639,894,681)
+      UNION ALL
+      SELECT a3 FROM t3
+      WHERE (102=d3 AND 239=e3 AND 273=b3)
+      OR (c3=243 AND b3=334 AND 662=d3)
+      OR (647=c3 AND 81=d3 AND 779=b3)
+      UNION ALL
+      SELECT b7 FROM t7
+      WHERE c7 in (41,243,887,843,467)
+      OR (c7=729 AND a7=48)
+      OR (166=b7 AND 945=e7 AND c7=843);
+  - name: t4
+  - name: t6
+
+outputs:
+  - name: q144.out
+    data: |
+      109
+      155
+      166
+      177
+      197
+      20
+      213
+      226
+      253
+      264
+      287
+      297
+      303
+      311
+      313
+      338
+      342
+      352
+      362
+      363
+      380
+      405
+      422
+      445
+      492
+      498
+      519
+      524
+      527
+      543
+      589
+      592
+      609
+      612
+      628
+      643
+      643
+      706
+      707
+      732
+      765
+      767
+      776
+      776
+      781
+      785
+      788
+      805
+      806
+      810
+      823
+      862
+      867
+      870
+      898
+      918
+      937
+      966
+      967
+      98
+      988

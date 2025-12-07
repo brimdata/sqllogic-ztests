@@ -1,0 +1,68 @@
+script: |
+  super -f tsv -I q437.sql | tr '\t' '\n' | sort > q437.out
+
+inputs:
+  - name: q437.sql
+    data: |
+      SELECT c5 FROM t5
+      WHERE (d5=602)
+      OR c5 in (602,443,855,734,696,668,489,514,422,628,147,797,797)
+      OR (e5=558 AND c5=729 AND 837=a5 AND 433=b5 AND 787=d5)
+      INTERSECT
+      SELECT e7 FROM t7
+      WHERE NOT ((a7=945)
+      OR (c7=432 AND 982=a7 AND 510=b7)
+      OR c7 in (94,257,441))
+      UNION
+      SELECT d8 FROM t8
+      WHERE (869=a8 OR 325=b8)
+      OR (b8=324)
+      OR (883=a8 OR 46=a8 OR 291=c8)
+      UNION
+      SELECT a3 FROM t3
+      WHERE (b3=146 OR 375=e3)
+      OR a3 in (379,181,349,651,499)
+      EXCEPT
+      SELECT a4 FROM t4
+      WHERE NOT (a4 in (602,423,621,804,469))
+      UNION ALL
+      SELECT d9 FROM t9
+      WHERE (a9=811)
+      OR (b9=379)
+      UNION ALL
+      SELECT d2 FROM t2
+      WHERE a2 in (652,189,64,779,760,442,135,308,382,874,785)
+      OR (796=a2)
+      EXCEPT
+      SELECT a1 FROM t1
+      WHERE NOT (a1 in (972,981,189,75,338)
+      OR (e1=89 OR 432=d1 OR c1=690));
+  - name: t2
+  - name: t4
+
+outputs:
+  - name: q437.out
+    data: |
+      126
+      158
+      181
+      190
+      306
+      349
+      379
+      391
+      416
+      446
+      450
+      454
+      523
+      55
+      555
+      566
+      60
+      675
+      836
+      86
+      886
+      889
+      892

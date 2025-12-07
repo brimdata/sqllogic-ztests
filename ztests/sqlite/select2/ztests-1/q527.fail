@@ -1,0 +1,43 @@
+script: |
+  super -f tsv -I q527.sql | sort > q527.out
+
+inputs:
+  - name: q527.sql
+    data: |
+      SELECT (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      c,
+      d,
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END,
+      a+b*2,
+      c-d,
+      a+b*2+c*3+d*4+e*5
+      FROM t1
+      WHERE a>b
+      OR d>e;
+
+outputs:
+  - name: q527.out
+    data: |
+      0	106	108	333	317	-2	1612
+      1	113	114	444	NULL	-1	NULL
+      10	161	164	444	483	-3	2432
+      11	166	NULL	333	502	NULL	NULL
+      12	172	171	444	514	1	2579
+      13	176	NULL	444	529	NULL	NULL
+      14	184	183	333	544	1	2728
+      15	187	185	333	560	2	2806
+      17	195	196	333	595	-1	2949
+      19	214	212	333	635	2	3175
+      21	224	222	222	666	2	3331
+      22	225	226	333	685	-1	3399
+      23	231	233	333	698	-2	3473
+      24	NULL	238	444	711	NULL	NULL
+      25	244	NULL	444	723	NULL	NULL
+      26	247	248	111	743	-1	3706
+      3	125	128	222	385	-3	1902
+      4	134	133	333	391	1	1985
+      5	137	136	222	416	1	2046
+      7	147	NULL	444	439	NULL	NULL
+      8	150	NULL	333	455	NULL	NULL
+      9	155	NULL	333	475	NULL	NULL

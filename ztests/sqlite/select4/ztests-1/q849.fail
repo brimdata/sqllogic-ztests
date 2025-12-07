@@ -1,0 +1,47 @@
+script: |
+  super -f tsv -I q849.sql | tr '\t' '\n' | sort > q849.out
+
+inputs:
+  - name: q849.sql
+    data: |
+      SELECT a1 FROM t1
+      WHERE e1 in (748,222,558,247,113,696,254,443,367,117,896,288,695)
+      OR (a1=609)
+      EXCEPT
+      SELECT a7 FROM t7
+      WHERE NOT ((820=b7 AND c7=853 AND a7=386 AND 844=e7 AND d7=795)
+      OR a7 in (869,452,622,158,795,894,48,9,136)
+      OR (689=e7 AND c7=98))
+      EXCEPT
+      SELECT b8 FROM t8
+      WHERE NOT ((d8=344 AND 700=e8)
+      OR (852=b8 AND d8=446 AND 291=c8 AND 63=e8 AND a8=855))
+      EXCEPT
+      SELECT c9 FROM t9
+      WHERE NOT ((739=a9))
+      EXCEPT
+      SELECT e4 FROM t4
+      WHERE NOT ((402=b4)
+      OR (c4=703)
+      OR e4 in (592,692,300,885,739,37,349,543,179))
+      EXCEPT
+      SELECT d6 FROM t6
+      WHERE NOT (c6 in (265,504,615));
+  - name: t4
+  - name: t5
+
+outputs:
+  - name: q849.out
+    data: |
+      20
+      23
+      406
+      525
+      551
+      604
+      622
+      629
+      785
+      821
+      88
+      972

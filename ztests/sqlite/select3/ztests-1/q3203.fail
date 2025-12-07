@@ -1,0 +1,38 @@
+script: |
+  super -f tsv -I q3203.sql | sort > q3203.out
+
+inputs:
+  - name: q3203.sql
+    data: |
+      SELECT c-d,
+      e,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      a-b,
+      a+b*2+c*3,
+      d,
+      CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END
+      FROM t1
+      WHERE b>c
+      OR (a>b-2 AND a<b+2)
+      OR (e>a AND e<b)
+      ORDER BY 5,1,7,4,6,2,3;
+
+outputs:
+  - name: q3203.out
+    data: |
+      -1	197	0	1	1180	196	398
+      -1	227	0	1	1360	226	458
+      -1	246	0	-4	1484	248	490
+      -2	219	0	-2	1297	217	432
+      -2	230	0	2	1391	233	468
+      -3	126	0	-2	760	128	1290
+      1	132	0	1	793	133	1300
+      1	135	0	-1	827	136	1390
+      1	144	0	-1	851	140	1430
+      1	180	0	1	1096	183	364
+      1	NULL	0	-3	738	122	1240
+      2	221	0	-3	1338	222	440
+      3	192	0	-3	1158	190	382
+      NULL	157	0	1	940	NULL	1580
+      NULL	165	0	1	1000	NULL	1670
+      NULL	NULL	0	2	905	NULL	1510

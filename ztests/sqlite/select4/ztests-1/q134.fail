@@ -1,0 +1,46 @@
+script: |
+  super -f tsv -I q134.sql | tr '\t' '\n' | sort > q134.out
+
+inputs:
+  - name: q134.sql
+    data: |
+      SELECT e9 FROM t9
+      WHERE d9 in (678,55,145,987,790,383,360,389,224,682,258)
+      OR (a9=240 OR b9=595 OR e9=723)
+      OR (458=a9)
+      UNION
+      SELECT b5 FROM t5
+      WHERE (185=c5 OR 718=e5)
+      OR (787=d5)
+      EXCEPT
+      SELECT d8 FROM t8
+      WHERE NOT (e8 in (14,411,947,980,678,63,579,918,488,296,635)
+      OR a8 in (47,586,327,671,306,838,347,359,954,514)
+      OR (c8=866))
+      UNION
+      SELECT c3 FROM t3
+      WHERE (480=b3 OR a3=135)
+      OR (b3=720);
+  - name: t2
+  - name: t7
+
+outputs:
+  - name: q134.out
+    data: |
+      30
+      301
+      353
+      368
+      418
+      433
+      524
+      679
+      69
+      699
+      713
+      723
+      801
+      819
+      845
+      847
+      944

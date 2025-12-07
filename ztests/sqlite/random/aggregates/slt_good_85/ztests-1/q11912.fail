@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q11912.sql | sort > q11912.out
+
+inputs:
+  - name: q11912.sql
+    data: |
+      SELECT COUNT ( * ) + ( COUNT ( ALL - 99 ) ) AS col2 FROM tab1 WHERE NOT - col1 * col1 <= NULL;
+
+outputs:
+  - name: q11912.out
+    data: |
+      0

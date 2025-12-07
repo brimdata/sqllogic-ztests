@@ -1,0 +1,37 @@
+script: |
+  super -f tsv -I q35.sql | sort > q35.out
+
+inputs:
+  - name: q35.sql
+    data: |
+      SELECT abs(a),
+      (a+b+c+d+e)/5,
+      a+b*2+c*3+d*4,
+      c,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      a+b*2+c*3,
+      a-b
+      FROM t1
+      WHERE a>b
+      ORDER BY 7,3,5,1,6;
+
+outputs:
+  - name: q35.out
+    data: |
+      107	107	1067	106	0	635	2
+      131	132	1325	134	4	793	1
+      149	NULL	NULL	147	7	880	4
+      153	NULL	NULL	150	8	905	2
+      159	NULL	NULL	155	9	940	1
+      163	162	1622	161	10	966	3
+      168	NULL	NULL	166	11	1000	1
+      174	172	1714	172	12	1030	4
+      179	NULL	NULL	176	13	1057	4
+      182	182	1828	184	14	1096	1
+      188	187	1861	187	15	1121	2
+      199	197	1964	195	17	1180	1
+      213	212	2125	214	19	1277	2
+      229	227	2264	225	22	1360	1
+      234	232	2323	231	23	1391	2
+      239	NULL	NULL	NULL	24	NULL	3
+      243	NULL	NULL	244	25	1455	3

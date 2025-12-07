@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q4604.sql | sort > q4604.out
+
+inputs:
+  - name: q4604.sql
+    data: |
+      SELECT * FROM tab2 AS cor0 WHERE NULL NOT IN ( 43 + 10, CAST ( NULL AS INTEGER ), - 63 * - col1 );
+  - name: tab2
+
+outputs:
+  - name: q4604.out
+    data: |

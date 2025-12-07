@@ -1,0 +1,69 @@
+script: |
+  super -f tsv -I q706.sql | tr '\t' '\n' | sort > q706.out
+
+inputs:
+  - name: q706.sql
+    data: |
+      SELECT b8 FROM t8
+      WHERE a8 in (882,946,553,259,913,728,637,150,402,445,795)
+      OR (b8=461 AND 743=d8 AND 38=e8)
+      UNION ALL
+      SELECT d6 FROM t6
+      WHERE (a6=129 OR 595=e6)
+      OR b6 in (276,210,63,214,461,421,962,699,461)
+      OR (a6=585 AND c6=308 AND 378=b6)
+      EXCEPT
+      SELECT a9 FROM t9
+      WHERE NOT ((c9=863 AND b9=16 AND d9=591 AND e9=133)
+      OR (c9=688 OR 747=a9)
+      OR b9 in (12,819,900,122,128,926,19,312,549,818,66))
+      EXCEPT
+      SELECT c7 FROM t7
+      WHERE NOT (e7 in (816,282,929,248,499,432)
+      OR c7 in (142,135,606,981,249,948,488,280,375,635,596))
+      EXCEPT
+      SELECT e5 FROM t5
+      WHERE NOT ((132=a5 AND 118=d5 AND e5=874 AND 384=c5 AND b5=942))
+      UNION
+      SELECT b4 FROM t4
+      WHERE b4 in (678,765,921,802,167,243,408,389,563,708)
+      OR (b4=624);
+  - name: t1
+  - name: t7
+
+outputs:
+  - name: q706.out
+    data: |
+      151
+      167
+      182
+      185
+      186
+      219
+      228
+      243
+      286
+      325
+      389
+      408
+      428
+      461
+      542
+      560
+      563
+      60
+      609
+      624
+      673
+      678
+      708
+      711
+      765
+      790
+      802
+      901
+      911
+      921
+      951
+      984
+      991

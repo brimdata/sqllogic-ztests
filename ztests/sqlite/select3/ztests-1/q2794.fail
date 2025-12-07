@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q2794.sql | sort > q2794.out
+
+inputs:
+  - name: q2794.sql
+    data: |
+      SELECT a+b*2+c*3+d*4
+      FROM t1
+      WHERE e+d BETWEEN a+b-10 AND c+130
+      AND EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b);
+
+outputs:
+  - name: q2794.out
+    data: |
+      1272

@@ -1,0 +1,45 @@
+script: |
+  super -f tsv -I q545.sql | sort > q545.out
+
+inputs:
+  - name: q545.sql
+    data: |
+      SELECT a+b*2+c*3+d*4,
+      a+b*2+c*3,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      abs(b-c),
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END
+      FROM t1
+      WHERE b IS NOT NULL;
+
+outputs:
+  - name: q545.out
+    data: |
+      1067	635	0	1	333
+      1226	738	0	1	222
+      1272	760	0	4	222
+      1325	793	0	4	333
+      1371	827	0	2	222
+      1411	851	0	2	222
+      1622	966	0	1	444
+      1714	1030	0	2	444
+      1828	1096	0	3	333
+      1861	1121	0	1	333
+      1918	1158	0	1	222
+      1964	1180	0	3	333
+      2125	1277	0	3	333
+      2165	1297	0	3	222
+      2226	1338	0	1	222
+      2264	1360	0	3	333
+      2323	1391	0	1	333
+      2476	1484	0	2	111
+      NULL	1000	0	1	333
+      NULL	1057	0	1	444
+      NULL	1455	0	4	444
+      NULL	880	0	2	444
+      NULL	905	0	1	333
+      NULL	940	0	3	333
+      NULL	NULL	0	1	444
+      NULL	NULL	0	2	444
+      NULL	NULL	0	NULL	444

@@ -1,0 +1,24 @@
+script: |
+  super -f tsv -I q11.sql | sort > q11.out
+
+inputs:
+  - name: q11.sql
+    data: |
+      SELECT (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      a+b*2+c*3,
+      a-b,
+      d-e
+      FROM t1
+      WHERE d NOT BETWEEN 110 AND 150
+      AND c>d
+      AND c BETWEEN b-2 AND d+2;
+
+outputs:
+  - name: q11.out
+    data: |
+      0	1030	4	-2
+      0	1096	1	3
+      0	1121	2	-4
+      0	1277	2	2
+      0	1338	-3	1
+      0	NULL	NULL	NULL

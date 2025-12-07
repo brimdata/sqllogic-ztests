@@ -1,0 +1,34 @@
+script: |
+  super -f tsv -I q1163.sql | sort > q1163.out
+
+inputs:
+  - name: q1163.sql
+    data: |
+      SELECT abs(b-c),
+      CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END,
+      abs(a),
+      a+b*2+c*3+d*4+e*5,
+      b,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d)
+      FROM t1
+      WHERE e+d BETWEEN a+b-10 AND c+130
+      OR d>e
+      OR (e>a AND e<b)
+      ORDER BY 1,6,5;
+
+outputs:
+  - name: q1163.out
+    data: |
+      1	1050	107	1612	105	0
+      1	1120	NULL	NULL	112	0
+      1	1600	163	2432	160	0
+      1	382	191	2878	194	0
+      1	440	220	3331	223	0
+      1	468	234	3473	232	0
+      2	1390	138	2046	139	0
+      2	490	245	3706	249	0
+      3	364	182	2728	181	0
+      3	426	213	3175	211	0
+      4	1290	127	1902	129	0
+      4	1300	131	1985	130	0
+      NULL	2360	239	NULL	236	0

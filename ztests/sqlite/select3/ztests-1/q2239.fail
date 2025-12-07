@@ -1,0 +1,28 @@
+script: |
+  super -f tsv -I q2239.sql | sort > q2239.out
+
+inputs:
+  - name: q2239.sql
+    data: |
+      SELECT a+b*2+c*3+d*4,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      c-d,
+      CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END,
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      abs(a)
+      FROM t1
+      WHERE (a>b-2 AND a<b+2)
+      ORDER BY 2,3;
+
+outputs:
+  - name: q2239.out
+    data: |
+      1325	0	1	1300	444	131
+      1371	0	1	1390	111	138
+      1411	0	1	1430	111	142
+      1828	0	1	364	333	182
+      1964	0	-1	398	555	199
+      2264	0	-1	458	555	229
+      NULL	0	NULL	1580	555	159
+      NULL	0	NULL	1670	555	168

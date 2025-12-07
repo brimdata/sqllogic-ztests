@@ -1,0 +1,47 @@
+script: |
+  super -f tsv -I q2323.sql | sort > q2323.out
+
+inputs:
+  - name: q2323.sql
+    data: |
+      SELECT (a+b+c+d+e)/5,
+      b,
+      abs(b-c),
+      c,
+      CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END
+      FROM t1
+      WHERE b>c
+      OR EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      OR c BETWEEN b-2 AND d+2
+      ORDER BY 5,4,3;
+
+outputs:
+  - name: q2323.out
+    data: |
+      107	105	1	106	1050
+      127	129	4	125	1290
+      132	130	4	134	1300
+      137	139	2	137	1390
+      142	143	2	141	1430
+      162	160	1	161	1600
+      172	170	2	172	1700
+      182	181	3	184	364
+      187	186	1	187	376
+      192	194	1	193	382
+      197	198	3	195	398
+      212	211	3	214	426
+      217	218	3	215	432
+      222	223	1	224	440
+      227	228	3	225	458
+      232	232	1	231	468
+      247	249	2	247	490
+      NULL	112	1	113	1120
+      NULL	124	1	123	1240
+      NULL	145	2	147	1450
+      NULL	151	1	150	1510
+      NULL	158	3	155	1580
+      NULL	167	1	166	1670
+      NULL	175	1	176	358
+      NULL	206	2	208	NULL
+      NULL	236	NULL	NULL	2360
+      NULL	240	4	244	486

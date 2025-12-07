@@ -1,0 +1,23 @@
+script: |
+  super -f tsv -I q78.sql > q78.out
+
+inputs:
+  - name: q78.sql
+    data: |
+      SELECT b,
+      abs(b-c)
+      FROM t1
+      WHERE c>d
+      AND a>b
+      AND EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      ORDER BY 2,1;
+
+outputs:
+  - name: q78.out
+    data: |
+      186	1
+      170	2
+      181	3
+      211	3
+      130	4
+      240	4

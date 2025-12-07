@@ -1,0 +1,42 @@
+script: |
+  super -f tsv -I q823.sql | sort > q823.out
+
+inputs:
+  - name: q823.sql
+    data: |
+      SELECT a+b*2,
+      d-e,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END
+      FROM t1
+      WHERE b>c
+      OR c BETWEEN b-2 AND d+2
+      ORDER BY 1,2,3,4;
+
+outputs:
+  - name: q823.out
+    data: |
+      317	-1	0	333
+      369	NULL	0	222
+      385	2	0	222
+      391	1	0	333
+      416	1	0	222
+      428	-4	0	222
+      455	NULL	0	333
+      475	NULL	0	333
+      483	2	0	444
+      502	NULL	0	333
+      514	-2	0	444
+      544	3	0	333
+      560	-4	0	333
+      579	-2	0	222
+      595	-1	0	333
+      635	2	0	333
+      652	-2	0	222
+      666	1	0	222
+      685	-1	0	333
+      698	3	0	333
+      743	2	0	111
+      NULL	4	0	444
+      NULL	NULL	0	444

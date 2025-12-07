@@ -1,0 +1,34 @@
+script: |
+  super -f tsv -I q885.sql | tr '\t' '\n' | sort > q885.out
+
+inputs:
+  - name: q885.sql
+    data: |
+      SELECT d8 FROM t8
+      WHERE (e8=423)
+      OR c8 in (188,656,149)
+      OR (761=e8 AND b8=386 AND 848=a8)
+      EXCEPT
+      SELECT d1 FROM t1
+      WHERE NOT (b1 in (914,362,619,282,270,420,295,355,440,961,857,446)
+      OR c1 in (636,481,534,387,230,366,204))
+      EXCEPT
+      SELECT e5 FROM t5
+      WHERE NOT (b5 in (569,605,789,874,731,548,878,91,273)
+      OR (480=e5 OR 260=b5)
+      OR (e5=68 OR 198=c5 OR 147=c5))
+      EXCEPT
+      SELECT d4 FROM t4
+      WHERE NOT (c4 in (854,936,752,238,44,948,609,482)
+      OR (825=a4));
+  - name: t1
+  - name: t3
+  - name: t7
+  - name: t9
+
+outputs:
+  - name: q885.out
+    data: |
+      269
+      623
+      683

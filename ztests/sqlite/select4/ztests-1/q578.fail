@@ -1,0 +1,71 @@
+script: |
+  super -f tsv -I q578.sql | tr '\t' '\n' | sort > q578.out
+
+inputs:
+  - name: q578.sql
+    data: |
+      SELECT a2 FROM t2
+      WHERE (c2=360)
+      OR (d2=235)
+      EXCEPT
+      SELECT c5 FROM t5
+      WHERE NOT ((a5=24)
+      OR (b5=771 AND 810=d5))
+      EXCEPT
+      SELECT c4 FROM t4
+      WHERE NOT ((146=d4 OR 137=b4 OR 903=b4)
+      OR b4 in (907,289,810,849,379,707,964,765))
+      UNION
+      SELECT a9 FROM t9
+      WHERE (680=b9 OR a9=304)
+      OR (e9=218)
+      UNION
+      SELECT c1 FROM t1
+      WHERE (b1=42 OR 128=b1 OR 902=d1)
+      EXCEPT
+      SELECT b3 FROM t3
+      WHERE NOT ((e3=602 AND d3=368 AND c3=486 AND 777=a3 AND b3=827))
+      UNION ALL
+      SELECT b6 FROM t6
+      WHERE (a6=128 OR 424=c6 OR a6=293)
+      OR c6 in (135,161,718,187,416,513,12,177,258,287,11,441)
+      EXCEPT
+      SELECT e7 FROM t7
+      WHERE NOT ((d7=837 AND a7=950 AND 605=e7))
+      UNION
+      SELECT e8 FROM t8
+      WHERE e8 in (463,972,919)
+      OR (b8=9 OR 564=b8);
+  - name: t4
+  - name: t8
+
+outputs:
+  - name: q578.out
+    data: |
+      0
+      104
+      202
+      235
+      304
+      351
+      392
+      452
+      461
+      463
+      490
+      511
+      575
+      583
+      585
+      760
+      765
+      776
+      875
+      876
+      880
+      881
+      905
+      915
+      919
+      962
+      972

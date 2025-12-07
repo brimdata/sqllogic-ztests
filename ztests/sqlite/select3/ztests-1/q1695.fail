@@ -1,0 +1,46 @@
+script: |
+  super -f tsv -I q1695.sql | sort > q1695.out
+
+inputs:
+  - name: q1695.sql
+    data: |
+      SELECT a-b,
+      c-d,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      a+b*2+c*3
+      FROM t1
+      ORDER BY 4,1,3;
+
+outputs:
+  - name: q1695.out
+    data: |
+      -1	1	5	827
+      -1	1	6	851
+      -2	-2	20	1297
+      -2	-3	3	760
+      -3	1	2	738
+      -3	2	21	1338
+      -3	3	16	1158
+      -4	-1	26	1484
+      1	-1	17	1180
+      1	-1	22	1360
+      1	1	14	1096
+      1	1	4	793
+      1	NULL	11	1000
+      1	NULL	9	940
+      2	-2	0	635
+      2	-2	23	1391
+      2	2	15	1121
+      2	2	19	1277
+      2	NULL	8	905
+      3	-3	10	966
+      3	NULL	24	NULL
+      3	NULL	25	1455
+      4	1	12	1030
+      4	NULL	13	1057
+      4	NULL	7	880
+      NULL	-1	0	NULL
+      NULL	-1	1	NULL
+      NULL	1	0	NULL
+      NULL	1	18	NULL
+      NULL	3	0	NULL

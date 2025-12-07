@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q1342.sql | sort > q1342.out
+
+inputs:
+  - name: q1342.sql
+    data: |
+      SELECT ALL - + COUNT ( * ), COUNT ( * ) / + COUNT ( * ) AS col2 FROM tab1 WHERE NOT col2 <= - ( ( + col2 ) );
+
+outputs:
+  - name: q1342.out
+    data: |
+      -3	1

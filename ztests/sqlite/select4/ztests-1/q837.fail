@@ -1,0 +1,48 @@
+script: |
+  super -f tsv -I q837.sql | tr '\t' '\n' | sort > q837.out
+
+inputs:
+  - name: q837.sql
+    data: |
+      SELECT d3 FROM t3
+      WHERE (c3=542 AND d3=658 AND a3=349)
+      OR (d3=2)
+      INTERSECT
+      SELECT b5 FROM t5
+      WHERE NOT (c5 in (756,3,734,927,250,422,797,696,855,613,441,723)
+      OR (271=d5 OR e5=874 OR b5=544)
+      OR (4=d5 OR a5=50))
+      UNION
+      SELECT e1 FROM t1
+      WHERE (b1=995)
+      UNION ALL
+      SELECT a8 FROM t8
+      WHERE d8 in (811,624,756,456,880,683,512,20,805,636,781,446,391,627)
+      OR (a8=553 OR 859=e8)
+      OR (a8=210 AND e8=105)
+      EXCEPT
+      SELECT a2 FROM t2
+      WHERE NOT (d2 in (416,813,806,541,10,315));
+  - name: t1
+  - name: t7
+
+outputs:
+  - name: q837.out
+    data: |
+      210
+      443
+      467
+      514
+      553
+      579
+      638
+      671
+      70
+      701
+      72
+      826
+      848
+      855
+      883
+      946
+      957

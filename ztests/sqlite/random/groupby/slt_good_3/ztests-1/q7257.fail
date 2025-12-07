@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q7257.sql | sort > q7257.out
+
+inputs:
+  - name: q7257.sql
+    data: |
+      SELECT DISTINCT NULLIF ( + tab1.col2, tab1.col2 ) * 18 FROM tab1 GROUP BY tab1.col2;
+
+outputs:
+  - name: q7257.out
+    data: |
+      NULL

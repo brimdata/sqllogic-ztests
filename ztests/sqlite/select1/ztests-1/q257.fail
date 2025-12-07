@@ -1,0 +1,36 @@
+script: |
+  super -f tsv -I q257.sql > q257.out
+
+inputs:
+  - name: q257.sql
+    data: |
+      SELECT d,
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      a,
+      d-e,
+      a+b*2+c*3+d*4+e*5
+      FROM t1
+      WHERE d>e
+      AND EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      ORDER BY 4,3,5,1,2;
+
+outputs:
+  - name: q257.out
+    data: |
+      133	444	131	1	1985
+      136	111	138	1	2046
+      178	555	179	1	2654
+      222	444	220	1	3331
+      238	555	239	1	3553
+      122	333	121	2	1826
+      128	333	127	2	1902
+      148	555	149	2	2202
+      154	333	153	2	2281
+      164	333	163	2	2432
+      212	222	213	2	3175
+      248	444	245	2	3706
+      183	333	182	3	2728
+      233	555	234	3	3473
+      114	111	111	4	1680
+      169	333	168	4	2501

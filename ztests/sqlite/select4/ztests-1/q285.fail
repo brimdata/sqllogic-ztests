@@ -1,0 +1,22 @@
+script: |
+  super -f tsv -I q285.sql | tr '\t' '\n' | sort > q285.out
+
+inputs:
+  - name: q285.sql
+    data: |
+      SELECT d3 FROM t3
+      WHERE (b3=203 OR 333=e3 OR 437=b3)
+      OR (986=c3 AND e3=929 AND 882=b3 AND a3=560)
+      EXCEPT
+      SELECT a1 FROM t1
+      WHERE NOT ((584=b1 OR c1=168));
+  - name: t5
+  - name: t9
+
+outputs:
+  - name: q285.out
+    data: |
+      118
+      134
+      425
+      720

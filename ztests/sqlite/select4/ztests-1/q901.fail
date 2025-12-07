@@ -1,0 +1,43 @@
+script: |
+  super -f tsv -I q901.sql | tr '\t' '\n' | sort > q901.out
+
+inputs:
+  - name: q901.sql
+    data: |
+      SELECT a1 FROM t1
+      WHERE (11=e1 AND c1=683 AND 914=b1 AND 170=a1 AND d1=863)
+      OR e1 in (210,733,113,254,904,602,72,731,696,815,12,122,110)
+      OR (e1=904 AND c1=623)
+      INTERSECT
+      SELECT c9 FROM t9
+      WHERE NOT ((d9=439 OR 263=a9)
+      OR (549=b9)
+      OR (759=b9))
+      EXCEPT
+      SELECT b8 FROM t8
+      WHERE NOT ((377=e8))
+      EXCEPT
+      SELECT e2 FROM t2
+      WHERE NOT ((c2=4 OR a2=718 OR 547=e2)
+      OR (123=a2 OR a2=415))
+      UNION ALL
+      SELECT c4 FROM t4
+      WHERE b4 in (68,644,986,607,713,243,849,379,829,323)
+      EXCEPT
+      SELECT d6 FROM t6
+      WHERE NOT ((e6=230 AND 54=c6 AND a6=839));
+  - name: t3
+  - name: t7
+
+outputs:
+  - name: q901.out
+    data: |
+      398
+      417
+      47
+      513
+      584
+      619
+      728
+      904
+      936

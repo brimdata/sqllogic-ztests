@@ -1,0 +1,35 @@
+script: |
+  super -f tsv -I q636.sql | tr '\t' '\n' | sort > q636.out
+
+inputs:
+  - name: q636.sql
+    data: |
+      SELECT e7 FROM t7
+      WHERE a7 in (736,6,433,958)
+      OR (523=c7 AND 979=e7 AND 177=d7)
+      OR (e7=302 OR 851=e7 OR d7=346)
+      EXCEPT
+      SELECT a9 FROM t9
+      WHERE NOT ((e9=264 AND 535=a9 AND b9=864 AND 568=d9 AND c9=955))
+      EXCEPT
+      SELECT d4 FROM t4
+      WHERE NOT ((e4=596 AND b4=23))
+      UNION
+      SELECT a2 FROM t2
+      WHERE (245=a2);
+  - name: t1
+  - name: t4
+  - name: t5
+  - name: t9
+
+outputs:
+  - name: q636.out
+    data: |
+      245
+      27
+      302
+      462
+      506
+      638
+      851
+      971

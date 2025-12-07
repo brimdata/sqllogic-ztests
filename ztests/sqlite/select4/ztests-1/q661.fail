@@ -1,0 +1,57 @@
+script: |
+  super -f tsv -I q661.sql | tr '\t' '\n' | sort > q661.out
+
+inputs:
+  - name: q661.sql
+    data: |
+      SELECT e3 FROM t3
+      WHERE (a3=75 AND b3=272 AND e3=119 AND 375=c3)
+      OR (d3=487 AND 984=e3 AND b3=28 AND 40=c3 AND 16=a3)
+      OR (c3=175 OR b3=677 OR 532=a3)
+      UNION
+      SELECT a2 FROM t2
+      WHERE (351=d2 AND 279=a2 AND 223=e2 AND 779=c2)
+      EXCEPT
+      SELECT a5 FROM t5
+      WHERE NOT ((311=e5)
+      OR (749=e5 OR 558=e5)
+      OR b5 in (526,860,234,179,705))
+      EXCEPT
+      SELECT d9 FROM t9
+      WHERE NOT (c9 in (764,751,349,75))
+      UNION
+      SELECT e4 FROM t4
+      WHERE (212=d4 OR a4=793)
+      UNION ALL
+      SELECT e8 FROM t8
+      WHERE (a8=331 OR 474=a8 OR 66=a8)
+      OR (221=e8 OR b8=366)
+      UNION
+      SELECT a7 FROM t7
+      WHERE (d7=892 AND 627=b7 AND c7=344)
+      EXCEPT
+      SELECT a1 FROM t1
+      WHERE NOT ((e1=288)
+      OR (681=b1 OR 314=a1))
+      EXCEPT
+      SELECT c6 FROM t6
+      WHERE NOT ((1=e6 AND b6=144 AND 543=c6 AND d6=970));
+  - name: t1
+  - name: t2
+
+outputs:
+  - name: q661.out
+    data: |
+      119
+      185
+      199
+      221
+      273
+      279
+      392
+      488
+      512
+      728
+      790
+      984
+      989

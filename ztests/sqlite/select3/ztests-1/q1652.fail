@@ -1,0 +1,46 @@
+script: |
+  super -f tsv -I q1652.sql | sort > q1652.out
+
+inputs:
+  - name: q1652.sql
+    data: |
+      SELECT a+b*2,
+      CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      d-e,
+      (a+b+c+d+e)/5
+      FROM t1;
+
+outputs:
+  - name: q1652.out
+    data: |
+      317	1050	0	-1	107
+      369	1240	0	NULL	NULL
+      385	1290	0	2	127
+      391	1300	0	1	132
+      416	1390	0	1	137
+      428	1430	0	-4	142
+      439	1450	0	NULL	NULL
+      455	1510	0	NULL	NULL
+      475	1580	0	NULL	NULL
+      483	1600	0	2	162
+      502	1670	0	NULL	NULL
+      514	1700	0	-2	172
+      529	358	0	NULL	NULL
+      544	364	0	3	182
+      560	376	0	-4	187
+      579	382	0	-2	192
+      595	398	0	-1	197
+      635	426	0	2	212
+      652	432	0	-2	217
+      666	440	0	1	222
+      685	458	0	-1	227
+      698	468	0	3	232
+      711	2360	0	1	NULL
+      723	486	0	NULL	NULL
+      743	490	0	2	247
+      NULL	1120	0	4	NULL
+      NULL	402	0	-1	NULL
+      NULL	NULL	0	-1	NULL
+      NULL	NULL	0	NULL	NULL
+      NULL	NULL	0	NULL	NULL

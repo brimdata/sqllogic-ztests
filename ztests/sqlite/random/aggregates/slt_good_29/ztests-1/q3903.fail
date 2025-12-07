@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q3903.sql | sort > q3903.out
+
+inputs:
+  - name: q3903.sql
+    data: |
+      SELECT 76 + SUM ( DISTINCT col2 ) + - COUNT ( * ) * - COUNT ( * ) FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q3903.out
+    data: |
+      206

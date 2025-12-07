@@ -1,0 +1,31 @@
+script: |
+  super -f tsv -I q2932.sql | sort > q2932.out
+
+inputs:
+  - name: q2932.sql
+    data: |
+      SELECT d,
+      a+b*2+c*3+d*4,
+      c,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b)
+      FROM t1
+      WHERE (e>a AND e<b)
+      OR e+d BETWEEN a+b-10 AND c+130
+      OR (a>b-2 AND a<b+2);
+
+outputs:
+  - name: q2932.out
+    data: |
+      108	1067	106	0
+      128	1272	125	3
+      133	1325	134	4
+      136	1371	137	5
+      140	1411	141	6
+      183	1828	184	14
+      190	1918	193	16
+      196	1964	195	17
+      222	2226	224	21
+      226	2264	225	22
+      248	2476	247	26
+      NULL	NULL	155	9
+      NULL	NULL	166	11

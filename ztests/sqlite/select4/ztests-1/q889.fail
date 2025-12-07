@@ -1,0 +1,46 @@
+script: |
+  super -f tsv -I q889.sql | tr '\t' '\n' | sort > q889.out
+
+inputs:
+  - name: q889.sql
+    data: |
+      SELECT c8 FROM t8
+      WHERE (579=e8 OR 310=e8 OR 919=e8)
+      OR (c8=691 AND 946=a8 AND e8=510 AND 951=b8 AND d8=811)
+      OR (541=c8 OR b8=615 OR a8=72)
+      EXCEPT
+      SELECT b5 FROM t5
+      WHERE NOT ((a5=929))
+      EXCEPT
+      SELECT d4 FROM t4
+      WHERE NOT (d4 in (328,60,680,985,917,229,86))
+      UNION ALL
+      SELECT e7 FROM t7
+      WHERE c7 in (364,553,232)
+      OR (257=b7)
+      OR c7 in (816,280,180,970,857,564);
+  - name: t3
+  - name: t9
+
+outputs:
+  - name: q889.out
+    data: |
+      154
+      233
+      282
+      32
+      421
+      422
+      439
+      455
+      460
+      5
+      541
+      552
+      656
+      668
+      691
+      841
+      884
+      887
+      983

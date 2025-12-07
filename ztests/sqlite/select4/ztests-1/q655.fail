@@ -1,0 +1,43 @@
+script: |
+  super -f tsv -I q655.sql | tr '\t' '\n' | sort > q655.out
+
+inputs:
+  - name: q655.sql
+    data: |
+      SELECT b6 FROM t6
+      WHERE b6 in (915,490,781,250,984,601,290,262,461,351,463,290,92)
+      OR c6 in (295,513,864,441,12,543)
+      INTERSECT
+      SELECT a7 FROM t7
+      WHERE NOT (b7 in (129,178,374,276,827,396,234)
+      OR (b7=129))
+      EXCEPT
+      SELECT e5 FROM t5
+      WHERE NOT ((319=a5 AND d5=745)
+      OR e5 in (764,887,561,737)
+      OR (d5=841 AND a5=9 AND c5=12 AND 851=e5))
+      UNION ALL
+      SELECT e2 FROM t2
+      WHERE (769=a2 AND b2=168 AND d2=806 AND e2=777)
+      EXCEPT
+      SELECT c8 FROM t8
+      WHERE NOT ((b8=656))
+      UNION
+      SELECT b9 FROM t9
+      WHERE d9 in (166,489,25,111,129)
+      EXCEPT
+      SELECT c3 FROM t3
+      WHERE NOT ((d3=624 AND a3=863 AND 467=c3 AND 592=b3 AND 665=e3)
+      OR e3 in (821,466,854,401,536,169));
+  - name: t1
+  - name: t2
+
+outputs:
+  - name: q655.out
+    data: |
+      13
+      19
+      289
+      290
+      350
+      496

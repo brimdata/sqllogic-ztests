@@ -1,0 +1,32 @@
+script: |
+  super -f tsv -I q386.sql | tr '\t' '\n' | sort > q386.out
+
+inputs:
+  - name: q386.sql
+    data: |
+      SELECT b7 FROM t7
+      WHERE (773=a7 AND 798=b7 AND e7=462 AND c7=906 AND 772=d7)
+      UNION ALL
+      SELECT a9 FROM t9
+      WHERE (477=e9 OR d9=305 OR 17=a9)
+      OR (b9=864 AND 535=a9 AND 955=c9 AND d9=568)
+      OR (944=e9)
+      EXCEPT
+      SELECT b8 FROM t8
+      WHERE NOT (d8 in (811,805,494,731,815,472,58,456,624,945,81)
+      OR (c8=431 AND 116=d8)
+      OR c8 in (119,690,74,88,513,160,273,394,229,691,693,419,720,354));
+  - name: t5
+  - name: t7
+
+outputs:
+  - name: q386.out
+    data: |
+      17
+      215
+      258
+      511
+      535
+      549
+      798
+      824

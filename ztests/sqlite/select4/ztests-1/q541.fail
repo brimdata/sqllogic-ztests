@@ -1,0 +1,82 @@
+script: |
+  super -f tsv -I q541.sql | tr '\t' '\n' | sort > q541.out
+
+inputs:
+  - name: q541.sql
+    data: |
+      SELECT d7 FROM t7
+      WHERE (b7=426 OR 954=c7)
+      OR (a7=452 AND e7=89 AND 599=d7 AND b7=24)
+      UNION ALL
+      SELECT d6 FROM t6
+      WHERE (590=d6 AND 601=b6)
+      EXCEPT
+      SELECT c5 FROM t5
+      WHERE NOT ((e5=188 OR c5=422)
+      OR d5 in (282,280,634,858,401))
+      UNION
+      SELECT a1 FROM t1
+      WHERE d1 in (18,221,315,972,86,504,407,550)
+      OR a1 in (195,637,678)
+      OR e1 in (696,763,904,52,442,685)
+      UNION
+      SELECT e4 FROM t4
+      WHERE (b4=635)
+      OR (d4=680)
+      UNION ALL
+      SELECT a2 FROM t2
+      WHERE e2 in (953,535,118,965,655,242,671)
+      OR (e2=554 AND d2=152 AND a2=564)
+      OR (220=c2 AND 306=d2 AND b2=819 AND a2=796)
+      EXCEPT
+      SELECT e8 FROM t8
+      WHERE NOT ((656=c8)
+      OR c8 in (299,599,513,534,427,908,354,321,901,61,851,32)
+      OR (e8=392))
+      UNION ALL
+      SELECT d3 FROM t3
+      WHERE (c3=701 AND e3=892 AND 935=a3 AND b3=58)
+      OR (e3=807);
+  - name: t1
+  - name: t4
+  - name: t6
+  - name: t7
+  - name: t8
+
+outputs:
+  - name: q541.out
+    data: |
+      123
+      159
+      173
+      195
+      2
+      23
+      235
+      262
+      330
+      337
+      395
+      403
+      479
+      505
+      508
+      521
+      525
+      543
+      564
+      575
+      584
+      590
+      594
+      629
+      637
+      754
+      760
+      796
+      835
+      91
+      910
+      936
+      974
+      992

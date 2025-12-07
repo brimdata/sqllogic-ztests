@@ -1,0 +1,73 @@
+script: |
+  super -f tsv -I q24.sql | tr '\t' '\n' | sort > q24.out
+
+inputs:
+  - name: q24.sql
+    data: |
+      SELECT b7 FROM t7
+      WHERE c7 in (375,672,280,853,145,729,518,206,301,238,257)
+      OR c7 in (467,80,364)
+      OR (939=d7 OR e7=27 OR c7=970)
+      EXCEPT
+      SELECT c2 FROM t2
+      WHERE NOT (d2 in (682,158,317))
+      EXCEPT
+      SELECT c4 FROM t4
+      WHERE NOT ((132=e4 AND c4=119)
+      OR (c4=984 OR 748=b4 OR 252=e4)
+      OR c4 in (398,214,178))
+      UNION
+      SELECT d3 FROM t3
+      WHERE (134=d3 OR 600=c3)
+      EXCEPT
+      SELECT c8 FROM t8
+      WHERE NOT ((333=e8 OR d8=112 OR 984=b8))
+      UNION ALL
+      SELECT d6 FROM t6
+      WHERE (44=b6)
+      OR (d6=664 AND a6=731 AND b6=54)
+      OR (901=d6 AND 378=b6 AND 946=e6 AND 308=c6)
+      EXCEPT
+      SELECT c1 FROM t1
+      WHERE NOT (d1 in (712,298,550,837,412,274,818,807,187,900,654)
+      OR (626=d1 AND 579=a1 AND 299=c1 AND 300=e1))
+      UNION ALL
+      SELECT c9 FROM t9
+      WHERE (274=d9 OR a9=964 OR 712=a9)
+      OR (e9=750 AND d9=668 AND 547=c9 AND 457=a9)
+      OR (a9=747 AND 226=d9 AND 426=e9 AND c9=252)
+      UNION
+      SELECT c5 FROM t5
+      WHERE (12=c5 OR 971=b5 OR e5=470);
+  - name: t9
+
+outputs:
+  - name: q24.out
+    data: |
+      105
+      12
+      134
+      252
+      257
+      306
+      362
+      396
+      402
+      488
+      495
+      547
+      562
+      64
+      664
+      679
+      72
+      797
+      820
+      855
+      867
+      892
+      901
+      923
+      924
+      941
+      970

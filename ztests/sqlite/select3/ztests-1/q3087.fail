@@ -1,0 +1,26 @@
+script: |
+  super -f tsv -I q3087.sql | sort > q3087.out
+
+inputs:
+  - name: q3087.sql
+    data: |
+      SELECT (a+b+c+d+e)/5,
+      e,
+      abs(a),
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      a+b*2+c*3,
+      b-c
+      FROM t1
+      WHERE c>d
+      AND (e>c OR e<d)
+      AND (c<=d-2 OR c>=d+2)
+      ORDER BY 6,1,2;
+
+outputs:
+  - name: q3087.out
+    data: |
+      187	189	188	444	15	1121	-1
+      212	210	213	222	19	1277	-3
+      222	221	220	444	21	1338	-1

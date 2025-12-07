@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q4837.sql | sort > q4837.out
+
+inputs:
+  - name: q4837.sql
+    data: |
+      SELECT ALL + SUM ( DISTINCT col1 ) FROM tab1 WHERE NULL > ( col1 );
+  - name: tab2
+
+outputs:
+  - name: q4837.out
+    data: |
+      NULL

@@ -1,0 +1,35 @@
+script: |
+  super -f tsv -I q848.sql | tr '\t' '\n' | sort > q848.out
+
+inputs:
+  - name: q848.sql
+    data: |
+      SELECT d5 FROM t5
+      WHERE (250=c5 AND 855=d5 AND 609=b5 AND 685=a5)
+      UNION ALL
+      SELECT d3 FROM t3
+      WHERE e3 in (169,981,913,807,192,821,829)
+      OR (d3=726 AND a3=198 AND e3=871 AND c3=29)
+      OR (a3=551 AND d3=641 AND 516=c3 AND 821=e3 AND b3=813)
+      EXCEPT
+      SELECT a1 FROM t1
+      WHERE NOT ((d1=457 AND 963=a1 AND 558=e1 AND c1=69)
+      OR (a1=237))
+      EXCEPT
+      SELECT b4 FROM t4
+      WHERE NOT ((598=a4)
+      OR (208=c4));
+  - name: t4
+  - name: t5
+
+outputs:
+  - name: q848.out
+    data: |
+      270
+      403
+      641
+      642
+      66
+      726
+      743
+      855

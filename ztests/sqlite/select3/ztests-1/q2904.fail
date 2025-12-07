@@ -1,0 +1,26 @@
+script: |
+  super -f tsv -I q2904.sql | sort > q2904.out
+
+inputs:
+  - name: q2904.sql
+    data: |
+      SELECT a+b*2+c*3+d*4,
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END,
+      CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      c-d
+      FROM t1
+      WHERE d>e
+      AND d NOT BETWEEN 110 AND 150;
+
+outputs:
+  - name: q2904.out
+    data: |
+      1622	444	1600	10	-3
+      1828	333	364	14	1
+      2125	333	426	19	2
+      2226	222	440	21	2
+      2323	333	468	23	-2
+      2476	111	490	26	-1
+      NULL	444	2360	24	NULL

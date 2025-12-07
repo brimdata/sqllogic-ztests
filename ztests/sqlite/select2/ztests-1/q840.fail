@@ -1,0 +1,45 @@
+script: |
+  super -f tsv -I q840.sql | sort > q840.out
+
+inputs:
+  - name: q840.sql
+    data: |
+      SELECT d,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d)
+      FROM t1
+      WHERE c BETWEEN b-2 AND d+2
+      OR coalesce(a,b,c,d,e)<>0;
+
+outputs:
+  - name: q840.out
+    data: |
+      101	0
+      108	0
+      114	0
+      116	0
+      122	0
+      128	0
+      133	0
+      136	0
+      140	0
+      164	0
+      171	0
+      183	0
+      185	0
+      190	0
+      196	0
+      203	0
+      207	0
+      212	0
+      217	0
+      222	0
+      226	0
+      233	0
+      238	0
+      248	0
+      NULL	0
+      NULL	0
+      NULL	0
+      NULL	0
+      NULL	0
+      NULL	0

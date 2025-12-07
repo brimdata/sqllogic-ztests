@@ -1,0 +1,23 @@
+script: |
+  super -f tsv -I q938.sql | sort > q938.out
+
+inputs:
+  - name: q938.sql
+    data: |
+      SELECT a+b*2+c*3+d*4,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      (a+b+c+d+e)/5,
+      e
+      FROM t1
+      WHERE (a>b-2 AND a<b+2)
+      AND b>c;
+
+outputs:
+  - name: q938.out
+    data: |
+      1371	5	137	135
+      1411	6	142	144
+      1964	17	197	197
+      2264	22	227	227
+      NULL	11	NULL	165
+      NULL	9	NULL	157

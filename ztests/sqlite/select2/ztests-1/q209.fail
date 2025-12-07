@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q209.sql | sort > q209.out
+
+inputs:
+  - name: q209.sql
+    data: |
+      SELECT d,
+      abs(a),
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b)
+      FROM t1
+      WHERE a IS NULL
+      AND a>b;
+
+outputs:
+  - name: q209.out
+    data: |

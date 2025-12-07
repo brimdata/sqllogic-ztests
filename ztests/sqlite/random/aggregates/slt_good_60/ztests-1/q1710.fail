@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q1710.sql | sort > q1710.out
+
+inputs:
+  - name: q1710.sql
+    data: |
+      SELECT MAX ( col1 ) / - MIN ( DISTINCT col2 ) FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q1710.out
+    data: |
+      0

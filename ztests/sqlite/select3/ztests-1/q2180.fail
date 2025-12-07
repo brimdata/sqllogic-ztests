@@ -1,0 +1,40 @@
+script: |
+  super -f tsv -I q2180.sql | sort > q2180.out
+
+inputs:
+  - name: q2180.sql
+    data: |
+      SELECT c,
+      a+b*2,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END,
+      abs(b-c)
+      FROM t1
+      WHERE (e>c OR e<d)
+      OR (a>b-2 AND a<b+2);
+
+outputs:
+  - name: q2180.out
+    data: |
+      106	317	0	1050	1
+      113	NULL	0	1120	1
+      125	385	0	1290	4
+      134	391	0	1300	4
+      137	416	0	1390	2
+      141	428	0	1430	2
+      155	475	0	1580	3
+      161	483	0	1600	1
+      166	502	0	1670	1
+      172	514	0	1700	2
+      176	529	0	358	1
+      184	544	0	364	3
+      187	560	0	376	1
+      195	595	0	398	3
+      202	NULL	0	402	NULL
+      214	635	0	426	3
+      215	652	0	432	3
+      224	666	0	440	1
+      225	685	0	458	3
+      231	698	0	468	1
+      247	743	0	490	2
+      NULL	711	0	2360	NULL

@@ -1,0 +1,24 @@
+script: |
+  super -f tsv -I q457.sql | tr '\t' '\n' | sort > q457.out
+
+inputs:
+  - name: q457.sql
+    data: |
+      SELECT a3 FROM t3
+      WHERE (e3=406 OR a3=105 OR a3=364)
+      INTERSECT
+      SELECT a1 FROM t1
+      WHERE NOT (e1 in (221,963,522,12,299,815,402,72,667,732,110)
+      OR (420=c1 OR a1=352 OR 247=b1)
+      OR (89=e1))
+      INTERSECT
+      SELECT e5 FROM t5
+      WHERE NOT (b5 in (855,620,716,336,530,847)
+      OR a5 in (556,929,24,602,196,637,180)
+      OR (445=a5));
+  - name: t5
+  - name: t7
+
+outputs:
+  - name: q457.out
+    data: |

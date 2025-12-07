@@ -1,0 +1,49 @@
+script: |
+  super -f tsv -I q604.sql | tr '\t' '\n' | sort > q604.out
+
+inputs:
+  - name: q604.sql
+    data: |
+      SELECT a3 FROM t3
+      WHERE (847=b3)
+      EXCEPT
+      SELECT c9 FROM t9
+      WHERE NOT ((e9=944 AND 98=c9 AND a9=824 AND b9=214 AND d9=688)
+      OR (e9=841))
+      UNION ALL
+      SELECT d5 FROM t5
+      WHERE (471=c5 AND a5=429 AND 132=d5)
+      UNION
+      SELECT a7 FROM t7
+      WHERE (d7=91)
+      OR (575=c7 AND e7=553)
+      OR (195=a7)
+      UNION ALL
+      SELECT c1 FROM t1
+      WHERE (49=b1 AND 371=a1 AND 871=c1)
+      OR (558=e1 AND 457=d1 AND c1=69 AND a1=963 AND 879=b1)
+      OR (350=b1 OR a1=821 OR b1=862)
+      UNION
+      SELECT c6 FROM t6
+      WHERE (b6=875)
+      EXCEPT
+      SELECT d8 FROM t8
+      WHERE NOT ((e8=221))
+      EXCEPT
+      SELECT d2 FROM t2
+      WHERE NOT ((996=c2 OR 765=b2 OR 733=a2));
+  - name: t3
+  - name: t7
+
+outputs:
+  - name: q604.out
+    data: |
+      132
+      165
+      175
+      207
+      465
+      69
+      757
+      871
+      959

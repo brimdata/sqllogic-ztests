@@ -1,0 +1,45 @@
+script: |
+  super -f tsv -I q270.sql | tr '\t' '\n' | sort > q270.out
+
+inputs:
+  - name: q270.sql
+    data: |
+      SELECT e1 FROM t1
+      WHERE (a1=742 AND b1=836)
+      OR (b1=619)
+      OR (267=a1)
+      EXCEPT
+      SELECT d2 FROM t2
+      WHERE NOT ((c2=823 AND e2=604))
+      EXCEPT
+      SELECT c4 FROM t4
+      WHERE NOT ((185=a4 OR a4=921 OR 74=c4)
+      OR (e4=151 AND 653=b4 AND d4=983 AND c4=703 AND a4=447)
+      OR (372=b4 AND 212=e4 AND a4=990))
+      UNION ALL
+      SELECT b8 FROM t8
+      WHERE a8 in (250,445,254,113)
+      OR (878=b8 OR 349=e8)
+      EXCEPT
+      SELECT c9 FROM t9
+      WHERE NOT (e9 in (943,954,245,819))
+      EXCEPT
+      SELECT a5 FROM t5
+      WHERE NOT ((e5=522)
+      OR (642=a5 OR c5=934 OR 443=c5)
+      OR e5 in (104,232,661,143,592,511,104,708,13))
+      EXCEPT
+      SELECT c7 FROM t7
+      WHERE NOT ((134=d7 OR c7=305)
+      OR c7 in (288,103,744,607,14,659,376,305,661,377,672,145));
+  - name: t5
+  - name: t9
+
+outputs:
+  - name: q270.out
+    data: |
+      325
+      394
+      645
+      761
+      964

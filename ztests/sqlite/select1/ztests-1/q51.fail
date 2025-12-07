@@ -1,0 +1,29 @@
+script: |
+  super -f tsv -I q51.sql > q51.out
+
+inputs:
+  - name: q51.sql
+    data: |
+      SELECT (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      a-b
+      FROM t1
+      WHERE b>c
+      ORDER BY 1,2;
+
+outputs:
+  - name: q51.out
+    data: |
+      0	-4
+      0	-3
+      0	-3
+      0	-2
+      0	-2
+      0	-1
+      0	-1
+      0	1
+      0	1
+      0	1
+      0	1
+      0	2
+      0	2
+      0	3

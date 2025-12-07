@@ -1,0 +1,11 @@
+script: |
+  super -f tsv -I q5210.sql | sort > q5210.out
+
+inputs:
+  - name: q5210.sql
+    data: |
+      SELECT + col0 FROM tab1 GROUP BY col0, col1 HAVING + - col1 < NULL;
+
+outputs:
+  - name: q5210.out
+    data: |

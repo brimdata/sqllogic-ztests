@@ -1,0 +1,33 @@
+script: |
+  super -f tsv -I q412.sql | sort > q412.out
+
+inputs:
+  - name: q412.sql
+    data: |
+      SELECT (a+b+c+d+e)/5,
+      a+b*2+c*3+d*4+e*5,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      abs(a)
+      FROM t1
+      WHERE a>b;
+
+outputs:
+  - name: q412.out
+    data: |
+      107	1612	0	107
+      132	1985	0	131
+      162	2432	0	163
+      172	2579	0	174
+      182	2728	0	182
+      187	2806	0	188
+      197	2949	0	199
+      212	3175	0	213
+      227	3399	0	229
+      232	3473	0	234
+      NULL	NULL	0	149
+      NULL	NULL	0	153
+      NULL	NULL	0	159
+      NULL	NULL	0	168
+      NULL	NULL	0	179
+      NULL	NULL	0	239
+      NULL	NULL	0	243

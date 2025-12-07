@@ -1,0 +1,43 @@
+script: |
+  super -f tsv -I q252.sql | tr '\t' '\n' | sort > q252.out
+
+inputs:
+  - name: q252.sql
+    data: |
+      SELECT c1 FROM t1
+      WHERE (608=c1 OR 52=a1)
+      OR (a1=847 AND e1=534 AND c1=637)
+      OR b1 in (525,696,736)
+      INTERSECT
+      SELECT e8 FROM t8
+      WHERE NOT (c8 in (196,5,599,354,321,151,508)
+      OR d8 in (210,422,482,327,439,580,116,466,179)
+      OR e8 in (761,859,223,833,485,272,548,221,947,106,383,919,38,203))
+      INTERSECT
+      SELECT e6 FROM t6
+      WHERE NOT ((870=a6 AND 12=c6)
+      OR (a6=64 AND 550=e6))
+      UNION ALL
+      SELECT a7 FROM t7
+      WHERE c7 in (682,981,364,585,857)
+      OR (455=b7 OR 924=d7 OR 280=b7)
+      OR e7 in (976,422,215,971,688);
+  - name: t6
+  - name: t8
+
+outputs:
+  - name: q252.out
+    data: |
+      120
+      231
+      27
+      290
+      325
+      592
+      6
+      757
+      806
+      876
+      912
+      925
+      936

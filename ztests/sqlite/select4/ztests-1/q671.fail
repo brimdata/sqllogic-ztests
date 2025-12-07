@@ -1,0 +1,39 @@
+script: |
+  super -f tsv -I q671.sql | tr '\t' '\n' | sort > q671.out
+
+inputs:
+  - name: q671.sql
+    data: |
+      SELECT c9 FROM t9
+      WHERE b9 in (759,421,50,13,680,152,170,251,379,524,142)
+      OR (c9=402)
+      EXCEPT
+      SELECT c5 FROM t5
+      WHERE NOT (a5 in (357,599,832,757,851,556,373,867,544,485,5,878)
+      OR d5 in (412,111,480,919,780,521,841,769,616,752,991,685,855)
+      OR (c5=570 AND b5=674))
+      UNION
+      SELECT c4 FROM t4
+      WHERE (e4=358)
+      OR (a4=841)
+      OR (804=c4 AND 81=e4 AND d4=86 AND 845=a4);
+  - name: t5
+  - name: t9
+
+outputs:
+  - name: q671.out
+    data: |
+      402
+      534
+      547
+      60
+      62
+      687
+      732
+      751
+      804
+      806
+      807
+      834
+      853
+      90

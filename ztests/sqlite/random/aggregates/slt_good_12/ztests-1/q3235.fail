@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q3235.sql | sort > q3235.out
+
+inputs:
+  - name: q3235.sql
+    data: |
+      SELECT DISTINCT * FROM tab2 WHERE NOT ( ( NOT + - col1 NOT IN ( - - CAST ( NULL AS REAL ), col2 ) ) );
+  - name: tab2
+
+outputs:
+  - name: q3235.out
+    data: |

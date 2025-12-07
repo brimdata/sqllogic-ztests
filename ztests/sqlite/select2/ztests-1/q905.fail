@@ -1,0 +1,45 @@
+script: |
+  super -f tsv -I q905.sql | sort > q905.out
+
+inputs:
+  - name: q905.sql
+    data: |
+      SELECT CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      b,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d)
+      FROM t1;
+
+outputs:
+  - name: q905.out
+    data: |
+      111	139	0
+      111	143	0
+      222	211	0
+      222	240	0
+      222	NULL	0
+      333	105	0
+      333	124	0
+      333	129	0
+      333	160	0
+      333	181	0
+      333	218	0
+      333	NULL	0
+      444	130	0
+      444	186	0
+      444	194	0
+      444	223	0
+      444	249	0
+      555	112	0
+      555	145	0
+      555	151	0
+      555	158	0
+      555	167	0
+      555	170	0
+      555	175	0
+      555	198	0
+      555	206	0
+      555	228	0
+      555	232	0
+      555	236	0
+      555	NULL	0

@@ -1,0 +1,75 @@
+script: |
+  super -f tsv -I q311.sql | tr '\t' '\n' | sort > q311.out
+
+inputs:
+  - name: q311.sql
+    data: |
+      SELECT e3 FROM t3
+      WHERE (b3=720 AND 524=d3 AND a3=393 AND 192=e3)
+      OR (a3=784 AND 336=d3)
+      INTERSECT
+      SELECT d1 FROM t1
+      WHERE NOT ((62=c1)
+      OR (c1=548 AND 637=a1 AND e1=125 AND d1=376 AND 404=b1)
+      OR (c1=870 AND b1=711 AND e1=14))
+      UNION
+      SELECT e4 FROM t4
+      WHERE c4 in (904,749,873,927)
+      OR c4 in (513,609,157,366,998,319,398,271,631,214,768,703)
+      UNION ALL
+      SELECT a8 FROM t8
+      WHERE (20=d8)
+      OR (b8=454 OR a8=312)
+      OR (c8=998)
+      EXCEPT
+      SELECT a9 FROM t9
+      WHERE NOT (b9 in (262,893,178,827,269,891,578,2,858,342)
+      OR (420=d9 AND 548=a9 AND 832=b9)
+      OR (e9=819 AND 488=a9))
+      UNION ALL
+      SELECT e2 FROM t2
+      WHERE (987=a2 AND b2=818)
+      OR b2 in (161,754,211,72,676,818,311,818,148,546,545,278)
+      OR (2=d2 OR 671=e2 OR 556=e2);
+  - name: t1
+  - name: t2
+
+outputs:
+  - name: q311.out
+    data: |
+      123
+      138
+      147
+      148
+      151
+      179
+      282
+      312
+      324
+      415
+      428
+      482
+      512
+      531
+      554
+      556
+      56
+      572
+      604
+      617
+      619
+      659
+      661
+      671
+      671
+      677
+      70
+      71
+      720
+      783
+      838
+      899
+      9
+      916
+      931
+      938

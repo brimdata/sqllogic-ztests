@@ -1,0 +1,39 @@
+script: |
+  super -f tsv -I q932.sql | tr '\t' '\n' | sort > q932.out
+
+inputs:
+  - name: q932.sql
+    data: |
+      SELECT c4 FROM t4
+      WHERE (752=a4 AND 85=e4 AND 0=c4 AND d4=665)
+      INTERSECT
+      SELECT c3 FROM t3
+      WHERE NOT (d3 in (560,375,683,624,737))
+      UNION ALL
+      SELECT b9 FROM t9
+      WHERE (601=c9 AND d9=95)
+      OR c9 in (547,487,402,37,224,75,793,240,531)
+      OR (b9=827 AND 801=e9 AND 78=a9)
+      EXCEPT
+      SELECT c6 FROM t6
+      WHERE NOT (b6 in (880,511,963,716,463,962,825));
+  - name: t1
+  - name: t3
+  - name: t8
+  - name: t9
+
+outputs:
+  - name: q932.out
+    data: |
+      15
+      152
+      19
+      211
+      228
+      326
+      568
+      667
+      74
+      827
+      926
+      936

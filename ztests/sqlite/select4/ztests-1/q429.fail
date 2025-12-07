@@ -1,0 +1,48 @@
+script: |
+  super -f tsv -I q429.sql | tr '\t' '\n' | sort > q429.out
+
+inputs:
+  - name: q429.sql
+    data: |
+      SELECT e4 FROM t4
+      WHERE (d4=973 AND c4=436 AND 450=a4 AND 23=b4 AND e4=596)
+      OR b4 in (653,907,925,678)
+      OR (357=c4)
+      INTERSECT
+      SELECT a7 FROM t7
+      WHERE NOT (e7 in (971,127,197,356,248,503,460,288,605,303)
+      OR d7 in (28,831,328,212,539,925,974,939,315,108,442,924,306,671))
+      UNION
+      SELECT b1 FROM t1
+      WHERE (556=b1 OR b1=269 OR e1=539)
+      OR (458=c1 AND a1=352)
+      OR e1 in (12,313,816,95,158,11,813,602,210,838,671,921,531)
+      EXCEPT
+      SELECT d5 FROM t5
+      WHERE NOT ((187=e5 AND c5=50 AND 342=a5 AND b5=744 AND d5=937)
+      OR (a5=445)
+      OR c5 in (649,723,437,697,187,18,31))
+      EXCEPT
+      SELECT a8 FROM t8
+      WHERE NOT ((e8=14 OR b8=992));
+  - name: t1
+  - name: t4
+  - name: t5
+  - name: t9
+
+outputs:
+  - name: q429.out
+    data: |
+      115
+      128
+      233
+      297
+      362
+      48
+      523
+      556
+      729
+      754
+      803
+      808
+      914

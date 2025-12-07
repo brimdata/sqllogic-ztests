@@ -1,0 +1,92 @@
+script: |
+  super -f tsv -I q618.sql | tr '\t' '\n' | sort > q618.out
+
+inputs:
+  - name: q618.sql
+    data: |
+      SELECT b6 FROM t6
+      WHERE (852=d6 AND c6=454 AND b6=427)
+      OR b6 in (716,984,350,6,421,232,604)
+      OR (360=e6 OR 95=e6)
+      UNION
+      SELECT e1 FROM t1
+      WHERE c1 in (486,639,902,758,12,623,207)
+      OR (358=a1)
+      UNION ALL
+      SELECT a5 FROM t5
+      WHERE e5 in (610,944,585,887,22,772,364,902,270,592,143,899,594,41)
+      OR (499=e5 OR e5=561 OR e5=758)
+      EXCEPT
+      SELECT e9 FROM t9
+      WHERE NOT (a9 in (104,269,830,924,72,474,511,429,919,11,273))
+      EXCEPT
+      SELECT d8 FROM t8
+      WHERE NOT ((631=d8)
+      OR (418=c8 OR c8=973)
+      OR (6=b8 AND 400=a8))
+      UNION ALL
+      SELECT b7 FROM t7
+      WHERE (408=e7 AND b7=396 AND 399=d7 AND c7=813 AND 97=a7)
+      OR (508=c7 OR 280=b7 OR 966=c7)
+      UNION ALL
+      SELECT a3 FROM t3
+      WHERE e3 in (221,765,7,425,932,536,871,951,25,163,3,393)
+      OR d3 in (923,548,825,764,850,135);
+  - name: t3
+  - name: t7
+
+outputs:
+  - name: q618.out
+    data: |
+      110
+      114
+      117
+      12
+      122
+      163
+      18
+      198
+      232
+      280
+      30
+      300
+      319
+      341
+      350
+      364
+      369
+      376
+      379
+      386
+      396
+      421
+      427
+      429
+      476
+      478
+      514
+      576
+      582
+      6
+      604
+      608
+      685
+      697
+      699
+      710
+      710
+      716
+      763
+      766
+      800
+      841
+      853
+      861
+      899
+      904
+      917
+      921
+      960
+      965
+      984
+      996

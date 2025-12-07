@@ -1,0 +1,44 @@
+script: |
+  super -f tsv -I q332.sql | tr '\t' '\n' | sort > q332.out
+
+inputs:
+  - name: q332.sql
+    data: |
+      SELECT b2 FROM t2
+      WHERE (e2=852)
+      OR b2 in (676,279,634,414,532,585,729,888,414,805,554,285,543)
+      EXCEPT
+      SELECT a9 FROM t9
+      WHERE NOT ((e9=792 OR c9=118))
+      UNION
+      SELECT d4 FROM t4
+      WHERE (d4=524)
+      OR (c4=794 OR 16=a4 OR e4=951)
+      OR (451=c4);
+  - name: t1
+  - name: t2
+  - name: t5
+  - name: t8
+  - name: t9
+
+outputs:
+  - name: q332.out
+    data: |
+      229
+      275
+      279
+      285
+      414
+      498
+      524
+      532
+      543
+      554
+      585
+      628
+      634
+      676
+      729
+      805
+      888
+      979

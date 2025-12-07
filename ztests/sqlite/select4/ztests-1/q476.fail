@@ -1,0 +1,34 @@
+script: |
+  super -f tsv -I q476.sql | tr '\t' '\n' | sort > q476.out
+
+inputs:
+  - name: q476.sql
+    data: |
+      SELECT e3 FROM t3
+      WHERE (249=e3 AND 262=a3)
+      OR e3 in (794,467,304,690,218,365,596,876,731,87,586,665,550)
+      EXCEPT
+      SELECT a2 FROM t2
+      WHERE NOT ((d2=488 OR d2=416))
+      EXCEPT
+      SELECT e7 FROM t7
+      WHERE NOT (d7 in (192,315,939,603));
+  - name: t1
+  - name: t4
+
+outputs:
+  - name: q476.out
+    data: |
+      218
+      249
+      365
+      467
+      550
+      586
+      596
+      665
+      690
+      731
+      794
+      87
+      876

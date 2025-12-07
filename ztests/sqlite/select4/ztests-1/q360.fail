@@ -1,0 +1,67 @@
+script: |
+  super -f tsv -I q360.sql | tr '\t' '\n' | sort > q360.out
+
+inputs:
+  - name: q360.sql
+    data: |
+      SELECT e7 FROM t7
+      WHERE (a7=130 OR 691=a7)
+      OR (22=a7)
+      UNION ALL
+      SELECT e6 FROM t6
+      WHERE (c6=961 OR a6=731 OR a6=474)
+      OR b6 in (512,427,696,575,223,421,541,781,126,782,350,63,452,0)
+      OR (b6=348 AND d6=488 AND 678=e6 AND a6=35)
+      EXCEPT
+      SELECT d4 FROM t4
+      WHERE NOT ((150=d4)
+      OR (e4=617 AND 546=d4 AND 157=c4)
+      OR (139=a4 OR 491=e4))
+      EXCEPT
+      SELECT d9 FROM t9
+      WHERE NOT ((227=b9 OR e9=858)
+      OR (788=e9 AND d9=450 AND 379=b9)
+      OR d9 in (23,732,332,597,161,660,450,360,601,606,602))
+      UNION
+      SELECT c8 FROM t8
+      WHERE (b8=6 OR d8=756)
+      UNION ALL
+      SELECT a2 FROM t2
+      WHERE (b2=501 AND 9=a2)
+      OR d2 in (256,813,241,790,663)
+      OR (a2=785 AND e2=788 AND d2=886 AND 141=c2 AND b2=90);
+  - name: t2
+  - name: t4
+  - name: t5
+
+outputs:
+  - name: q360.out
+    data: |
+      122
+      150
+      154
+      211
+      261
+      283
+      286
+      336
+      40
+      457
+      486
+      664
+      669
+      67
+      689
+      711
+      718
+      747
+      766
+      77
+      785
+      798
+      809
+      827
+      891
+      9
+      90
+      969

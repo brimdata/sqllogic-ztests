@@ -1,0 +1,47 @@
+script: |
+  super -f tsv -I q130.sql | sort > q130.out
+
+inputs:
+  - name: q130.sql
+    data: |
+      SELECT a+b*2+c*3+d*4+e*5,
+      d-e,
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      a+b*2+c*3,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d)
+      FROM t1;
+
+outputs:
+  - name: q130.out
+    data: |
+      1612	-1	333	635	0
+      1902	2	333	760	0
+      1985	1	444	793	0
+      2046	1	111	827	0
+      2131	-4	111	851	0
+      2432	2	333	966	0
+      2579	-2	555	1030	0
+      2728	3	333	1096	0
+      2806	-4	444	1121	0
+      2878	-2	444	1158	0
+      2949	-1	555	1180	0
+      3175	2	222	1277	0
+      3260	-2	333	1297	0
+      3331	1	444	1338	0
+      3399	-1	555	1360	0
+      3473	3	555	1391	0
+      3706	2	444	1484	0
+      NULL	-1	222	NULL	0
+      NULL	-1	333	NULL	0
+      NULL	1	555	NULL	0
+      NULL	4	555	NULL	0
+      NULL	NULL	222	1455	0
+      NULL	NULL	333	738	0
+      NULL	NULL	555	1000	0
+      NULL	NULL	555	1057	0
+      NULL	NULL	555	880	0
+      NULL	NULL	555	905	0
+      NULL	NULL	555	940	0
+      NULL	NULL	555	NULL	0
+      NULL	NULL	555	NULL	0

@@ -1,0 +1,49 @@
+script: |
+  super -f tsv -I q750.sql | tr '\t' '\n' | sort > q750.out
+
+inputs:
+  - name: q750.sql
+    data: |
+      SELECT b7 FROM t7
+      WHERE c7 in (478,432,301,709,948,232,966,92,954,529,934,482)
+      OR (d7=594 AND b7=764 AND 288=e7)
+      OR b7 in (222,861,455,996,59,480)
+      INTERSECT
+      SELECT b4 FROM t4
+      WHERE NOT (e4 in (790,476,552,816,38,9,85,916,300,122,206,349,531,763))
+      UNION ALL
+      SELECT d1 FROM t1
+      WHERE (355=b1)
+      OR (736=a1)
+      EXCEPT
+      SELECT b5 FROM t5
+      WHERE NOT ((c5=628 OR 944=e5)
+      OR (336=b5 OR 150=e5)
+      OR (148=a5))
+      UNION ALL
+      SELECT e3 FROM t3
+      WHERE (977=e3 OR c3=565 OR 614=a3)
+      OR d3 in (896,650,826,520,134,495,46,720,247,283);
+  - name: t3
+  - name: t5
+  - name: t9
+
+outputs:
+  - name: q750.out
+    data: |
+      192
+      235
+      25
+      274
+      318
+      393
+      480
+      578
+      660
+      701
+      724
+      765
+      83
+      913
+      929
+      977

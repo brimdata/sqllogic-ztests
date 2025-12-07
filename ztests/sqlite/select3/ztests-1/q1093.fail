@@ -1,0 +1,33 @@
+script: |
+  super -f tsv -I q1093.sql | sort > q1093.out
+
+inputs:
+  - name: q1093.sql
+    data: |
+      SELECT a+b*2+c*3,
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      a-b,
+      a,
+      abs(b-c),
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d)
+      FROM t1
+      WHERE b>c
+      ORDER BY 1,6,4;
+
+outputs:
+  - name: q1093.out
+    data: |
+      1000	555	1	168	1	0
+      1158	444	-3	191	1	0
+      1180	555	1	199	3	0
+      1297	333	-2	216	3	0
+      1360	555	1	229	3	0
+      1391	555	2	234	1	0
+      1484	444	-4	245	2	0
+      738	333	-3	121	1	0
+      760	333	-2	127	4	0
+      827	111	-1	138	2	0
+      851	111	-1	142	2	0
+      905	555	2	153	1	0
+      940	555	1	159	3	0

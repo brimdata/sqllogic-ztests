@@ -1,0 +1,60 @@
+script: |
+  super -f tsv -I q863.sql | tr '\t' '\n' | sort > q863.out
+
+inputs:
+  - name: q863.sql
+    data: |
+      SELECT e9 FROM t9
+      WHERE (c9=39 AND 495=d9)
+      OR e9 in (388,723,936,944,965,942,694,819)
+      UNION ALL
+      SELECT a7 FROM t7
+      WHERE (522=e7 OR 606=c7 OR 238=c7)
+      OR a7 in (699,324,97,277,290,430,114,27,806,6,48,430,707)
+      UNION ALL
+      SELECT d4 FROM t4
+      WHERE (d4=309)
+      OR (948=c4)
+      OR (e4=296 OR a4=596 OR d4=356)
+      EXCEPT
+      SELECT c6 FROM t6
+      WHERE NOT ((405=a6 OR 997=b6 OR 366=d6))
+      UNION ALL
+      SELECT b5 FROM t5
+      WHERE (e5=144 OR 717=b5)
+      EXCEPT
+      SELECT e2 FROM t2
+      WHERE NOT ((522=a2 OR d2=498 OR 145=b2))
+      EXCEPT
+      SELECT e3 FROM t3
+      WHERE NOT ((701=b3 AND d3=17 AND c3=885 AND 281=e3 AND 218=a3)
+      OR a3 in (899,803,566,42,777,971,651,836,5,614,396)
+      OR (c3=692 AND d3=102 AND 197=a3 AND 273=b3));
+  - name: t4
+  - name: t5
+
+outputs:
+  - name: q863.out
+    data: |
+      27
+      277
+      290
+      309
+      324
+      356
+      388
+      48
+      6
+      657
+      694
+      717
+      723
+      806
+      819
+      85
+      894
+      9
+      90
+      944
+      968
+      97

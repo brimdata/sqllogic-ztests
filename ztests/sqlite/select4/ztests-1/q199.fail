@@ -1,0 +1,42 @@
+script: |
+  super -f tsv -I q199.sql | tr '\t' '\n' | sort > q199.out
+
+inputs:
+  - name: q199.sql
+    data: |
+      SELECT d4 FROM t4
+      WHERE (c4=513 AND 568=d4)
+      OR (c4=768 OR b4=901)
+      EXCEPT
+      SELECT c9 FROM t9
+      WHERE NOT ((a9=776 OR 807=c9)
+      OR a9 in (435,924,891,148,172,297,429,830,747,841,14,78))
+      EXCEPT
+      SELECT a2 FROM t2
+      WHERE NOT (d2 in (332,772,897,488,79,80,235,14)
+      OR (a2=175 OR 56=e2 OR b2=297))
+      UNION
+      SELECT b3 FROM t3
+      WHERE (a3=349 OR e3=131 OR 522=d3)
+      OR (b3=811 AND e3=989 AND a3=532 AND c3=53)
+      UNION
+      SELECT e7 FROM t7
+      WHERE (861=b7 OR 442=a7)
+      OR (120=b7 AND a7=130);
+  - name: t8
+  - name: t9
+
+outputs:
+  - name: q199.out
+    data: |
+      144
+      260
+      481
+      542
+      568
+      651
+      686
+      689
+      811
+      860
+      888

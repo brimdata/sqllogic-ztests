@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q4861.sql | sort > q4861.out
+
+inputs:
+  - name: q4861.sql
+    data: |
+      SELECT DISTINCT MAX ( DISTINCT - col2 ) AS col2 FROM tab0 WHERE NOT col2 * + col1 + - 80 IS NOT NULL;
+
+outputs:
+  - name: q4861.out
+    data: |
+      NULL

@@ -1,0 +1,11 @@
+script: |
+  super -f tsv -I q8344.sql | sort > q8344.out
+
+inputs:
+  - name: q8344.sql
+    data: |
+      SELECT col1 * + 59 + + - ( - col1 ) AS col1 FROM tab0 GROUP BY col1, col2 HAVING ( - - col2 ) IS NULL;
+
+outputs:
+  - name: q8344.out
+    data: |

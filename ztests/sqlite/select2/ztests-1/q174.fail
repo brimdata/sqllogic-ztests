@@ -1,0 +1,21 @@
+script: |
+  super -f tsv -I q174.sql | sort > q174.out
+
+inputs:
+  - name: q174.sql
+    data: |
+      SELECT a+b*2+c*3+d*4+e*5,
+      d,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      a+b*2+c*3+d*4,
+      c,
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END
+      FROM t1
+      WHERE a IS NULL;
+
+outputs:
+  - name: q174.out
+    data: |
+      NULL	114	0	NULL	113	444
+      NULL	207	0	NULL	208	444

@@ -1,0 +1,21 @@
+script: |
+  super -f tsv -I q35.sql | sort > q35.out
+
+inputs:
+  - name: q35.sql
+    data: |
+      SELECT c,
+      b-c,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      a+b*2+c*3+d*4+e*5,
+      a,
+      (a+b+c+d+e)/5
+      FROM t1
+      WHERE b>c
+      AND (e>a AND e<b);
+
+outputs:
+  - name: q35.out
+    data: |
+      193	1	0	2878	191	192
+      247	2	0	3706	245	247

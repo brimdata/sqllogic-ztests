@@ -1,0 +1,48 @@
+script: |
+  super -f tsv -I q2361.sql | sort > q2361.out
+
+inputs:
+  - name: q2361.sql
+    data: |
+      SELECT (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      a+b*2,
+      d,
+      a,
+      a+b*2+c*3+d*4,
+      c-d
+      FROM t1
+      ORDER BY 6,5,3,4,1,2;
+
+outputs:
+  - name: q2361.out
+    data: |
+      0	317	108	107	1067	-2
+      0	NULL	101	104	NULL	1
+      0	NULL	116	115	NULL	3
+      0	NULL	203	201	NULL	-1
+      1	NULL	114	NULL	NULL	-1
+      10	483	164	163	1622	-3
+      11	502	NULL	168	NULL	NULL
+      12	514	171	174	1714	1
+      13	529	NULL	179	NULL	NULL
+      14	544	183	182	1828	1
+      15	560	185	188	1861	2
+      16	579	190	191	1918	3
+      17	595	196	199	1964	-1
+      18	NULL	207	NULL	NULL	1
+      19	635	212	213	2125	2
+      2	369	122	121	1226	1
+      20	652	217	216	2165	-2
+      21	666	222	220	2226	2
+      22	685	226	229	2264	-1
+      23	698	233	234	2323	-2
+      24	711	238	239	NULL	NULL
+      25	723	NULL	243	NULL	NULL
+      26	743	248	245	2476	-1
+      3	385	128	127	1272	-3
+      4	391	133	131	1325	1
+      5	416	136	138	1371	1
+      6	428	140	142	1411	1
+      7	439	NULL	149	NULL	NULL
+      8	455	NULL	153	NULL	NULL
+      9	475	NULL	159	NULL	NULL

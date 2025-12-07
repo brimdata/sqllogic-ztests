@@ -1,0 +1,48 @@
+script: |
+  super -f tsv -I q255.sql | sort > q255.out
+
+inputs:
+  - name: q255.sql
+    data: |
+      SELECT a+b*2+c*3+d*4+e*5,
+      a,
+      d,
+      (a+b+c+d+e)/5,
+      e,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b)
+      FROM t1
+      ORDER BY 1,2;
+
+outputs:
+  - name: q255.out
+    data: |
+      1612	107	108	107	109	0
+      1902	127	128	127	126	3
+      1985	131	133	132	132	4
+      2046	138	136	137	135	5
+      2131	142	140	142	144	6
+      2432	163	164	162	162	10
+      2579	174	171	172	173	12
+      2728	182	183	182	180	14
+      2806	188	185	187	189	15
+      2878	191	190	192	192	16
+      2949	199	196	197	197	17
+      3175	213	212	212	210	19
+      3260	216	217	217	219	20
+      3331	220	222	222	221	21
+      3399	229	226	227	227	22
+      3473	234	233	232	230	23
+      3706	245	248	247	246	26
+      NULL	104	101	NULL	NULL	0
+      NULL	115	116	NULL	117	0
+      NULL	121	122	NULL	NULL	2
+      NULL	149	NULL	NULL	146	7
+      NULL	153	NULL	NULL	NULL	8
+      NULL	159	NULL	NULL	157	9
+      NULL	168	NULL	NULL	165	11
+      NULL	179	NULL	NULL	177	13
+      NULL	201	203	NULL	204	0
+      NULL	239	238	NULL	237	24
+      NULL	243	NULL	NULL	NULL	25
+      NULL	NULL	114	NULL	110	1
+      NULL	NULL	207	NULL	NULL	18

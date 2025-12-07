@@ -1,0 +1,52 @@
+script: |
+  super -f tsv -I q585.sql | tr '\t' '\n' | sort > q585.out
+
+inputs:
+  - name: q585.sql
+    data: |
+      SELECT d4 FROM t4
+      WHERE (358=e4)
+      OR (e4=9 AND b4=829 AND c4=513 AND d4=568)
+      UNION
+      SELECT e7 FROM t7
+      WHERE (103=c7 AND e7=971)
+      OR (367=d7 AND a7=500 AND 832=b7 AND 197=e7 AND 705=c7)
+      EXCEPT
+      SELECT c2 FROM t2
+      WHERE NOT ((e2=923)
+      OR (b2=509))
+      EXCEPT
+      SELECT d3 FROM t3
+      WHERE NOT ((810=b3 AND c3=549 AND 249=e3 AND 262=a3))
+      EXCEPT
+      SELECT b8 FROM t8
+      WHERE NOT ((523=d8))
+      EXCEPT
+      SELECT e6 FROM t6
+      WHERE NOT ((d6=469 AND 2=a6 AND 211=e6 AND c6=12 AND b6=452)
+      OR d6 in (852,974,778,846,750,405,36,197,463,885,489)
+      OR (92=b6 AND e6=840))
+      UNION
+      SELECT d1 FROM t1
+      WHERE a1 in (324,215,268,213,862,607,145)
+      UNION ALL
+      SELECT d5 FROM t5
+      WHERE (184=e5 AND 810=d5);
+  - name: t3
+  - name: t7
+
+outputs:
+  - name: q585.out
+    data: |
+      223
+      232
+      265
+      277
+      568
+      571
+      716
+      810
+      818
+      837
+      949
+      971

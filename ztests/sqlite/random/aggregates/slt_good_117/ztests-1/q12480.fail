@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q12480.sql | sort > q12480.out
+
+inputs:
+  - name: q12480.sql
+    data: |
+      SELECT ALL COUNT ( * ) AS col1 FROM tab2 WHERE NOT col1 NOT BETWEEN - - 25 AND NULL;
+
+outputs:
+  - name: q12480.out
+    data: |
+      0

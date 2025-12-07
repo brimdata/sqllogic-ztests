@@ -1,0 +1,47 @@
+script: |
+  super -f tsv -I q148.sql | tr '\t' '\n' | sort > q148.out
+
+inputs:
+  - name: q148.sql
+    data: |
+      SELECT c4 FROM t4
+      WHERE a4 in (469,502,847,621)
+      UNION
+      SELECT c9 FROM t9
+      WHERE (426=e9)
+      EXCEPT
+      SELECT a1 FROM t1
+      WHERE NOT (e1 in (943,896,683,531,222,122,616,171,56,298,11,872)
+      OR (226=b1)
+      OR a1 in (294,395,145,32,276,505))
+      UNION
+      SELECT e2 FROM t2
+      WHERE c2 in (902,964,830,22,87,823,283,966,758,560)
+      UNION
+      SELECT c7 FROM t7
+      WHERE d7 in (675,891,192,772,328,148)
+      EXCEPT
+      SELECT d5 FROM t5
+      WHERE NOT ((24=a5 AND b5=723 AND 470=e5)
+      OR a5 in (24,445,749,867,675,180,319,730,757,642,826,519,921)
+      OR (b5=326));
+  - name: t4
+  - name: t6
+
+outputs:
+  - name: q148.out
+    data: |
+      123
+      138
+      252
+      317
+      366
+      428
+      524
+      604
+      626
+      635
+      671
+      781
+      783
+      906

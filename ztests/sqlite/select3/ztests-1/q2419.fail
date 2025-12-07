@@ -1,0 +1,25 @@
+script: |
+  super -f tsv -I q2419.sql | sort > q2419.out
+
+inputs:
+  - name: q2419.sql
+    data: |
+      SELECT b-c,
+      d,
+      a+b*2+c*3+d*4+e*5,
+      (a+b+c+d+e)/5,
+      a+b*2,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      a-b
+      FROM t1
+      WHERE b>c
+      AND d NOT BETWEEN 110 AND 150
+      AND (c<=d-2 OR c>=d+2)
+      ORDER BY 4,3;
+
+outputs:
+  - name: q2419.out
+    data: |
+      1	190	2878	192	579	0	-3
+      1	233	3473	232	698	0	2
+      3	217	3260	217	652	0	-2

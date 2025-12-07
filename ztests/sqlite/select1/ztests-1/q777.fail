@@ -1,0 +1,24 @@
+script: |
+  super -f tsv -I q777.sql > q777.out
+
+inputs:
+  - name: q777.sql
+    data: |
+      SELECT CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      b-c,
+      e,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      c,
+      a,
+      a+b*2
+      FROM t1
+      WHERE (e>a AND e<b)
+      AND (e>c OR e<d)
+      ORDER BY 3,6,2,1,5,7,4;
+
+outputs:
+  - name: q777.out
+    data: |
+      444	-1	221	24	224	220	666
+      444	2	246	29	247	245	743

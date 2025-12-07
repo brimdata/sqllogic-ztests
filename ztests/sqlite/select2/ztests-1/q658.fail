@@ -1,0 +1,45 @@
+script: |
+  super -f tsv -I q658.sql | sort > q658.out
+
+inputs:
+  - name: q658.sql
+    data: |
+      SELECT a+b*2+c*3+d*4
+      FROM t1
+      WHERE coalesce(a,b,c,d,e)<>0
+      OR a IS NULL
+      OR EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b);
+
+outputs:
+  - name: q658.out
+    data: |
+      1067
+      1226
+      1272
+      1325
+      1371
+      1411
+      1622
+      1714
+      1828
+      1861
+      1918
+      1964
+      2125
+      2165
+      2226
+      2264
+      2323
+      2476
+      NULL
+      NULL
+      NULL
+      NULL
+      NULL
+      NULL
+      NULL
+      NULL
+      NULL
+      NULL
+      NULL
+      NULL

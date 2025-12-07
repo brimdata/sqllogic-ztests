@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q11182.sql | sort > q11182.out
+
+inputs:
+  - name: q11182.sql
+    data: |
+      SELECT ALL SUM ( DISTINCT - col1 ) * - SUM ( + col1 ) * - 25 AS col1 FROM tab0;
+  - name: tab0
+
+outputs:
+  - name: q11182.out
+    data: |
+      -265225

@@ -1,0 +1,29 @@
+script: |
+  super -f tsv -I q136.sql | sort > q136.out
+
+inputs:
+  - name: q136.sql
+    data: |
+      SELECT a-b,
+      a+b*2+c*3+d*4+e*5,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      d
+      FROM t1
+      WHERE c BETWEEN b-2 AND d+2
+      AND d>e
+      AND coalesce(a,b,c,d,e)<>0;
+
+outputs:
+  - name: q136.out
+    data: |
+      -1	2046	5	111	136
+      -3	3331	21	444	222
+      -4	3706	26	444	248
+      1	1985	4	444	133
+      1	2728	14	333	183
+      2	3175	19	222	212
+      2	3473	23	555	233
+      3	2432	10	333	164
+      NULL	NULL	1	555	114

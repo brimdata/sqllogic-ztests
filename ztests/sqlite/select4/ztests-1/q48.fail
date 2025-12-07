@@ -1,0 +1,33 @@
+script: |
+  super -f tsv -I q48.sql | tr '\t' '\n' | sort > q48.out
+
+inputs:
+  - name: q48.sql
+    data: |
+      SELECT c9 FROM t9
+      WHERE (e9=657 OR 834=c9 OR 19=e9)
+      OR (764=c9 AND a9=389)
+      UNION
+      SELECT e2 FROM t2
+      WHERE (b2=217 AND a2=217)
+      EXCEPT
+      SELECT a6 FROM t6
+      WHERE NOT (d6 in (35,807,729,901,473))
+      UNION
+      SELECT e5 FROM t5
+      WHERE (689=c5 AND e5=141 AND 606=b5 AND d5=59 AND a5=270);
+  - name: t4
+  - name: t5
+  - name: t6
+  - name: t8
+  - name: t9
+
+outputs:
+  - name: q48.out
+    data: |
+      141
+      39
+      391
+      512
+      834
+      936

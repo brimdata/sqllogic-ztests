@@ -1,0 +1,51 @@
+script: |
+  super -f tsv -I q380.sql | tr '\t' '\n' | sort > q380.out
+
+inputs:
+  - name: q380.sql
+    data: |
+      SELECT b1 FROM t1
+      WHERE (299=c1 AND 781=b1 AND e1=300)
+      INTERSECT
+      SELECT d3 FROM t3
+      WHERE NOT ((e3=848 AND b3=566 AND 515=d3 AND 898=c3 AND a3=515))
+      UNION
+      SELECT d5 FROM t5
+      WHERE (b5=33 AND d5=171 AND 470=e5 AND c5=72)
+      UNION
+      SELECT b2 FROM t2
+      WHERE (e2=217 OR 836=d2 OR 692=c2)
+      OR c2 in (725,275,692,4,360,900,312)
+      OR d2 in (317,651,931)
+      UNION
+      SELECT b6 FROM t6
+      WHERE (e6=67)
+      UNION
+      SELECT a7 FROM t7
+      WHERE (777=d7 OR e7=689)
+      OR (c7=333 AND 87=a7 AND d7=225)
+      EXCEPT
+      SELECT d9 FROM t9
+      WHERE NOT ((445=e9 AND 122=b9));
+  - name: t5
+  - name: t7
+
+outputs:
+  - name: q380.out
+    data: |
+      114
+      130
+      171
+      262
+      278
+      292
+      313
+      317
+      380
+      592
+      632
+      776
+      784
+      820
+      87
+      93

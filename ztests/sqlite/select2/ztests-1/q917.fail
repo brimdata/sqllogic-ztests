@@ -1,0 +1,42 @@
+script: |
+  super -f tsv -I q917.sql | sort > q917.out
+
+inputs:
+  - name: q917.sql
+    data: |
+      SELECT abs(a),
+      c,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b)
+      FROM t1
+      WHERE (e>c OR e<d)
+      OR c>d;
+
+outputs:
+  - name: q917.out
+    data: |
+      104	102	0
+      107	106	0
+      115	119	0
+      121	123	2
+      127	125	3
+      131	134	4
+      138	137	5
+      142	141	6
+      159	155	9
+      163	161	10
+      174	172	12
+      179	176	13
+      182	184	14
+      188	187	15
+      191	193	16
+      199	195	17
+      201	202	0
+      213	214	19
+      216	215	20
+      220	224	21
+      229	225	22
+      234	231	23
+      239	NULL	24
+      245	247	26
+      NULL	113	1
+      NULL	208	18

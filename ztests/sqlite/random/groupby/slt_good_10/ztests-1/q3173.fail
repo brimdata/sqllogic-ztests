@@ -1,0 +1,11 @@
+script: |
+  super -f tsv -I q3173.sql | sort > q3173.out
+
+inputs:
+  - name: q3173.sql
+    data: |
+      SELECT col1 * - AVG ( col1 ) FROM tab1 GROUP BY col1, col1 HAVING NULL IS NOT NULL;
+
+outputs:
+  - name: q3173.out
+    data: |

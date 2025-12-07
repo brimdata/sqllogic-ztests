@@ -1,0 +1,50 @@
+script: |
+  super -f tsv -I q485.sql | tr '\t' '\n' | sort > q485.out
+
+inputs:
+  - name: q485.sql
+    data: |
+      SELECT c2 FROM t2
+      WHERE (d2=80 OR a2=35)
+      UNION ALL
+      SELECT d3 FROM t3
+      WHERE c3 in (600,763,947,492,641,403,823,885,220,467,326,592,656)
+      OR e3 in (977,393,254,136,178,341)
+      EXCEPT
+      SELECT d9 FROM t9
+      WHERE NOT ((107=e9 OR a9=739 OR 912=b9)
+      OR b9 in (13,751,496,680,77,136,426,95,891,5,122,301))
+      EXCEPT
+      SELECT d7 FROM t7
+      WHERE NOT ((142=d7 AND 288=a7 AND c7=770)
+      OR d7 in (139,418,526))
+      UNION
+      SELECT b8 FROM t8
+      WHERE (180=e8 AND c8=442);
+  - name: t3
+  - name: t8
+
+outputs:
+  - name: q485.out
+    data: |
+      133
+      168
+      17
+      173
+      184
+      197
+      354
+      355
+      386
+      466
+      508
+      548
+      624
+      683
+      708
+      711
+      720
+      764
+      796
+      826
+      841

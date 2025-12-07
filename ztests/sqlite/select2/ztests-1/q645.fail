@@ -1,0 +1,45 @@
+script: |
+  super -f tsv -I q645.sql | sort > q645.out
+
+inputs:
+  - name: q645.sql
+    data: |
+      SELECT CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      a+b*2,
+      b,
+      d-e
+      FROM t1
+      WHERE b IS NOT NULL;
+
+outputs:
+  - name: q645.out
+    data: |
+      111	0	416	139	1
+      111	0	428	143	-4
+      222	0	635	211	2
+      222	0	723	240	NULL
+      333	0	317	105	-1
+      333	0	369	124	NULL
+      333	0	385	129	2
+      333	0	483	160	2
+      333	0	544	181	3
+      333	0	652	218	-2
+      444	0	391	130	1
+      444	0	560	186	-4
+      444	0	579	194	-2
+      444	0	666	223	1
+      444	0	743	249	2
+      555	0	439	145	NULL
+      555	0	455	151	NULL
+      555	0	475	158	NULL
+      555	0	502	167	NULL
+      555	0	514	170	-2
+      555	0	529	175	NULL
+      555	0	595	198	-1
+      555	0	685	228	-1
+      555	0	698	232	3
+      555	0	711	236	1
+      555	0	NULL	112	4
+      555	0	NULL	206	NULL

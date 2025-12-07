@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q13107.sql | sort > q13107.out
+
+inputs:
+  - name: q13107.sql
+    data: |
+      SELECT ALL * FROM tab1 WHERE NULL NOT IN ( CAST ( + 64 AS INTEGER ) * + col2 );
+  - name: tab1
+
+outputs:
+  - name: q13107.out
+    data: |

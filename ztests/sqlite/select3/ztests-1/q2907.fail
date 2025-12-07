@@ -1,0 +1,45 @@
+script: |
+  super -f tsv -I q2907.sql | sort > q2907.out
+
+inputs:
+  - name: q2907.sql
+    data: |
+      SELECT (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END
+      FROM t1
+      ORDER BY 1,2;
+
+outputs:
+  - name: q2907.out
+    data: |
+      0	111
+      0	222
+      0	222
+      0	222
+      0	222
+      0	222
+      0	222
+      0	222
+      0	333
+      0	333
+      0	333
+      0	333
+      0	333
+      0	333
+      0	333
+      0	333
+      0	333
+      0	333
+      0	333
+      0	444
+      0	444
+      0	444
+      0	444
+      0	444
+      0	444
+      0	444
+      0	444
+      0	444
+      0	444
+      0	444

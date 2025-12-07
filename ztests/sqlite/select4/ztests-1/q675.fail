@@ -1,0 +1,70 @@
+script: |
+  super -f tsv -I q675.sql | tr '\t' '\n' | sort > q675.out
+
+inputs:
+  - name: q675.sql
+    data: |
+      SELECT c5 FROM t5
+      WHERE (717=b5 OR e5=749 OR 72=e5)
+      OR (471=c5 AND d5=132)
+      EXCEPT
+      SELECT b4 FROM t4
+      WHERE NOT (b4 in (587,700,167,220,76,653,442,577,480,387,434,877,826)
+      OR (b4=892 OR d4=546))
+      UNION
+      SELECT d2 FROM t2
+      WHERE a2 in (898,209,457,245,139,680,796,966,809,789)
+      OR c2 in (272,312,793,220,854,202,653,557,722,711,182)
+      OR d2 in (513,813,555,334,654,332,790,351,46,847,153)
+      EXCEPT
+      SELECT a8 FROM t8
+      WHERE NOT ((b8=878)
+      OR (221=e8 AND a8=795 AND c8=899 AND 673=b8 AND d8=112)
+      OR b8 in (878,102,219,540,175,359,155,511,862,1))
+      UNION ALL
+      SELECT d1 FROM t1
+      WHERE a1 in (853,299,371,358,536,637,498,461,189,194)
+      EXCEPT
+      SELECT e6 FROM t6
+      WHERE NOT ((c6=522))
+      EXCEPT
+      SELECT b3 FROM t3
+      WHERE NOT ((480=b3)
+      OR (e3=211 OR b3=813 OR 558=b3)
+      OR (854=e3));
+  - name: t5
+  - name: t9
+
+outputs:
+  - name: q675.out
+    data: |
+      2
+      213
+      216
+      263
+      275
+      332
+      351
+      365
+      416
+      418
+      471
+      498
+      513
+      516
+      525
+      555
+      598
+      655
+      663
+      691
+      80
+      803
+      805
+      813
+      819
+      833
+      843
+      892
+      951
+      96

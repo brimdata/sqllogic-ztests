@@ -1,0 +1,22 @@
+script: |
+  super -f tsv -I q1542.sql | sort > q1542.out
+
+inputs:
+  - name: q1542.sql
+    data: |
+      SELECT a-b,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      a+b*2+c*3,
+      a
+      FROM t1
+      WHERE c>d
+      AND (c<=d-2 OR c>=d+2);
+
+outputs:
+  - name: q1542.out
+    data: |
+      -3	0	1158	191
+      -3	0	1338	220
+      2	0	1121	188
+      2	0	1277	213
+      NULL	0	NULL	115

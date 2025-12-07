@@ -1,0 +1,41 @@
+script: |
+  super -f tsv -I q3293.sql | sort > q3293.out
+
+inputs:
+  - name: q3293.sql
+    data: |
+      SELECT c,
+      a+b*2+c*3+d*4
+      FROM t1
+      WHERE EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      ORDER BY 2,1;
+
+outputs:
+  - name: q3293.out
+    data: |
+      113	NULL
+      123	1226
+      125	1272
+      134	1325
+      137	1371
+      141	1411
+      147	NULL
+      150	NULL
+      155	NULL
+      161	1622
+      166	NULL
+      172	1714
+      176	NULL
+      184	1828
+      187	1861
+      193	1918
+      195	1964
+      208	NULL
+      214	2125
+      215	2165
+      224	2226
+      225	2264
+      231	2323
+      244	NULL
+      247	2476
+      NULL	NULL

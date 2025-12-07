@@ -1,0 +1,36 @@
+script: |
+  super -f tsv -I q2639.sql | sort > q2639.out
+
+inputs:
+  - name: q2639.sql
+    data: |
+      SELECT e,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b)
+      FROM t1
+      WHERE (e>a AND e<b)
+      OR a>b
+      ORDER BY 2,1;
+
+outputs:
+  - name: q2639.out
+    data: |
+      109	0
+      132	4
+      146	7
+      157	9
+      162	10
+      165	11
+      173	12
+      177	13
+      180	14
+      189	15
+      192	16
+      197	17
+      210	19
+      221	21
+      227	22
+      230	23
+      237	24
+      246	26
+      NULL	25
+      NULL	8

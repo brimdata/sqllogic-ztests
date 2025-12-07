@@ -1,0 +1,45 @@
+script: |
+  super -f tsv -I q879.sql | sort > q879.out
+
+inputs:
+  - name: q879.sql
+    data: |
+      SELECT CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END
+      FROM t1
+      WHERE (e>c OR e<d)
+      OR EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      OR c BETWEEN b-2 AND d+2
+      ORDER BY 1;
+
+outputs:
+  - name: q879.out
+    data: |
+      111
+      222
+      222
+      222
+      222
+      222
+      222
+      222
+      333
+      333
+      333
+      333
+      333
+      333
+      333
+      333
+      333
+      333
+      333
+      444
+      444
+      444
+      444
+      444
+      444
+      444
+      444
+      444

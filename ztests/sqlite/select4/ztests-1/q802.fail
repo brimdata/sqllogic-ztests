@@ -1,0 +1,70 @@
+script: |
+  super -f tsv -I q802.sql | tr '\t' '\n' | sort > q802.out
+
+inputs:
+  - name: q802.sql
+    data: |
+      SELECT e9 FROM t9
+      WHERE (e9=263 OR a9=891 OR 312=b9)
+      OR (b9=855 AND d9=967 AND 962=a9 AND 639=c9 AND e9=607)
+      UNION
+      SELECT d6 FROM t6
+      WHERE (21=d6 AND 320=c6)
+      OR (942=c6 AND d6=376 AND 798=e6 AND 0=b6)
+      UNION
+      SELECT e2 FROM t2
+      WHERE b2 in (170,90,966,297,846)
+      OR b2 in (585,418,90,599,292,859,818,605,21,527,414,820,897,326)
+      UNION ALL
+      SELECT d7 FROM t7
+      WHERE (260=c7 OR 280=c7)
+      OR (156=e7)
+      EXCEPT
+      SELECT b1 FROM t1
+      WHERE NOT (c1 in (481,208,623,758,531,57,788,486,346)
+      OR (639=c1 AND e1=117 AND b1=696)
+      OR (865=c1 AND 754=a1 AND 972=d1 AND 808=b1 AND 313=e1))
+      UNION
+      SELECT d3 FROM t3
+      WHERE (244=c3 AND 566=b3)
+      UNION
+      SELECT b4 FROM t4
+      WHERE (a4=922);
+  - name: t4
+  - name: t8
+
+outputs:
+  - name: q802.out
+    data: |
+      114
+      118
+      131
+      150
+      151
+      21
+      223
+      228
+      263
+      364
+      366
+      376
+      386
+      433
+      441
+      521
+      524
+      607
+      671
+      675
+      706
+      720
+      783
+      820
+      841
+      889
+      891
+      923
+      925
+      941
+      953
+      965

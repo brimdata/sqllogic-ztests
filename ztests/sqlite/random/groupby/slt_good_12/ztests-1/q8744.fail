@@ -1,0 +1,11 @@
+script: |
+  super -f tsv -I q8744.sql | sort > q8744.out
+
+inputs:
+  - name: q8744.sql
+    data: |
+      SELECT COUNT ( * ) * col0 FROM tab0 GROUP BY col0 HAVING MAX ( - - ( col1 ) ) IS NULL;
+
+outputs:
+  - name: q8744.out
+    data: |

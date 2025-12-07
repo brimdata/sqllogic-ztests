@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q11783.sql | sort > q11783.out
+
+inputs:
+  - name: q11783.sql
+    data: |
+      SELECT - + SUM ( DISTINCT col1 ) - 52 AS col2 FROM tab1 WHERE NULL IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q11783.out
+    data: |
+      NULL

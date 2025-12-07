@@ -1,0 +1,26 @@
+script: |
+  super -f tsv -I q871.sql | sort > q871.out
+
+inputs:
+  - name: q871.sql
+    data: |
+      SELECT d,
+      b-c
+      FROM t1
+      WHERE EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      AND d>e;
+
+outputs:
+  - name: q871.out
+    data: |
+      114	-1
+      128	4
+      133	-4
+      136	2
+      164	-1
+      183	-3
+      212	-3
+      222	-1
+      233	1
+      238	NULL
+      248	2

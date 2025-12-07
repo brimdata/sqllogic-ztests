@@ -1,0 +1,40 @@
+script: |
+  super -f tsv -I q854.sql | tr '\t' '\n' | sort > q854.out
+
+inputs:
+  - name: q854.sql
+    data: |
+      SELECT c6 FROM t6
+      WHERE (a6=2)
+      OR (740=a6 OR 850=b6)
+      OR (132=a6 OR 915=b6 OR a6=238)
+      UNION
+      SELECT b9 FROM t9
+      WHERE (d9=439)
+      OR e9 in (987,944,418,107,788)
+      OR (c9=923 OR c9=240)
+      EXCEPT
+      SELECT c8 FROM t8
+      WHERE NOT ((493=b8));
+  - name: t4
+  - name: t5
+
+outputs:
+  - name: q854.out
+    data: |
+      11
+      12
+      161
+      171
+      214
+      227
+      269
+      379
+      4
+      568
+      572
+      615
+      63
+      64
+      688
+      936

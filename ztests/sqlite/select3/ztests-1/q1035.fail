@@ -1,0 +1,44 @@
+script: |
+  super -f tsv -I q1035.sql | sort > q1035.out
+
+inputs:
+  - name: q1035.sql
+    data: |
+      SELECT a+b*2+c*3+d*4+e*5,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b)
+      FROM t1
+      ORDER BY 2,1;
+
+outputs:
+  - name: q1035.out
+    data: |
+      1612	0
+      1902	3
+      1985	4
+      2046	5
+      2131	6
+      2432	10
+      2579	12
+      2728	14
+      2806	15
+      2878	16
+      2949	17
+      3175	19
+      3260	20
+      3331	21
+      3399	22
+      3473	23
+      3706	26
+      NULL	0
+      NULL	0
+      NULL	0
+      NULL	1
+      NULL	11
+      NULL	13
+      NULL	18
+      NULL	2
+      NULL	24
+      NULL	25
+      NULL	7
+      NULL	8
+      NULL	9

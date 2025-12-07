@@ -1,0 +1,44 @@
+script: |
+  super -f tsv -I q337.sql | tr '\t' '\n' | sort > q337.out
+
+inputs:
+  - name: q337.sql
+    data: |
+      SELECT a3 FROM t3
+      WHERE d3 in (889,797,386,444,314,896)
+      OR (c3=145)
+      OR b3 in (827,355,649)
+      UNION
+      SELECT d1 FROM t1
+      WHERE (338=a1 OR 300=e1 OR e1=89)
+      OR (e1=48)
+      OR (168=c1 AND 241=a1)
+      EXCEPT
+      SELECT d9 FROM t9
+      WHERE NOT ((413=a9))
+      EXCEPT
+      SELECT e8 FROM t8
+      WHERE NOT ((a8=54 AND b8=324 AND 231=c8)
+      OR d8 in (330,624,179,466,761,472,534,735,366,192,108,269,767));
+  - name: t1
+  - name: t2
+  - name: t5
+  - name: t8
+  - name: t9
+
+outputs:
+  - name: q337.out
+    data: |
+      234
+      244
+      297
+      427
+      500
+      559
+      574
+      626
+      754
+      777
+      806
+      879
+      964

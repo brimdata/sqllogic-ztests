@@ -1,0 +1,29 @@
+script: |
+  super -f tsv -I q83.sql | sort > q83.out
+
+inputs:
+  - name: q83.sql
+    data: |
+      SELECT CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END,
+      b,
+      c,
+      a+b*2+c*3,
+      a+b*2+c*3+d*4,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      e
+      FROM t1
+      WHERE EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      AND d NOT BETWEEN 110 AND 150
+      AND d>e
+      ORDER BY 5,4,2;
+
+outputs:
+  - name: q83.out
+    data: |
+      1600	160	161	966	1622	10	162
+      2360	236	NULL	NULL	NULL	24	237
+      364	181	184	1096	1828	14	180
+      426	211	214	1277	2125	19	210
+      440	223	224	1338	2226	21	221
+      468	232	231	1391	2323	23	230
+      490	249	247	1484	2476	26	246

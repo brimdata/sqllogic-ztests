@@ -1,0 +1,47 @@
+script: |
+  super -f tsv -I q3262.sql | sort > q3262.out
+
+inputs:
+  - name: q3262.sql
+    data: |
+      SELECT (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      a+b*2+c*3+d*4,
+      c,
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END,
+      b
+      FROM t1;
+
+outputs:
+  - name: q3262.out
+    data: |
+      0	1067	106	333	105
+      0	1226	123	222	124
+      0	1272	125	222	129
+      0	1325	134	333	130
+      0	1371	137	222	139
+      0	1411	141	222	143
+      0	1622	161	444	160
+      0	1714	172	444	170
+      0	1828	184	333	181
+      0	1861	187	333	186
+      0	1918	193	222	194
+      0	1964	195	333	198
+      0	2125	214	333	211
+      0	2165	215	222	218
+      0	2226	224	222	223
+      0	2264	225	333	228
+      0	2323	231	333	232
+      0	2476	247	111	249
+      0	NULL	102	444	NULL
+      0	NULL	113	444	112
+      0	NULL	119	444	NULL
+      0	NULL	147	444	145
+      0	NULL	150	333	151
+      0	NULL	155	333	158
+      0	NULL	166	333	167
+      0	NULL	176	444	175
+      0	NULL	202	444	NULL
+      0	NULL	208	444	206
+      0	NULL	244	444	240
+      0	NULL	NULL	444	236

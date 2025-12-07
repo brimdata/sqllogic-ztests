@@ -1,0 +1,31 @@
+script: |
+  super -f tsv -I q839.sql | sort > q839.out
+
+inputs:
+  - name: q839.sql
+    data: |
+      SELECT CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END,
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END,
+      a+b*2,
+      abs(b-c),
+      b
+      FROM t1
+      WHERE EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      AND c>d
+      ORDER BY 5,4,3,1,2;
+
+outputs:
+  - name: q839.out
+    data: |
+      1240	222	369	1	124
+      1300	333	391	4	130
+      1390	222	416	2	139
+      1430	222	428	2	143
+      1700	444	514	2	170
+      364	333	544	3	181
+      376	333	560	1	186
+      382	222	579	1	194
+      426	333	635	3	211
+      440	222	666	1	223
+      NULL	444	NULL	2	206

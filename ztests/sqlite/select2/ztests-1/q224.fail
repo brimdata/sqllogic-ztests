@@ -1,0 +1,48 @@
+script: |
+  super -f tsv -I q224.sql | sort > q224.out
+
+inputs:
+  - name: q224.sql
+    data: |
+      SELECT (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      (a+b+c+d+e)/5,
+      e,
+      a+b*2,
+      c-d,
+      a,
+      CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END
+      FROM t1;
+
+outputs:
+  - name: q224.out
+    data: |
+      0	107	109	317	-2	107	1050
+      0	NULL	117	NULL	3	115	NULL
+      0	NULL	204	NULL	-1	201	402
+      0	NULL	NULL	NULL	1	104	NULL
+      1	NULL	110	NULL	-1	NULL	1120
+      10	162	162	483	-3	163	1600
+      11	NULL	165	502	NULL	168	1670
+      12	172	173	514	1	174	1700
+      13	NULL	177	529	NULL	179	358
+      14	182	180	544	1	182	364
+      15	187	189	560	2	188	376
+      16	192	192	579	3	191	382
+      17	197	197	595	-1	199	398
+      18	NULL	NULL	NULL	1	NULL	NULL
+      19	212	210	635	2	213	426
+      2	NULL	NULL	369	1	121	1240
+      20	217	219	652	-2	216	432
+      21	222	221	666	2	220	440
+      22	227	227	685	-1	229	458
+      23	232	230	698	-2	234	468
+      24	NULL	237	711	NULL	239	2360
+      25	NULL	NULL	723	NULL	243	486
+      26	247	246	743	-1	245	490
+      3	127	126	385	-3	127	1290
+      4	132	132	391	1	131	1300
+      5	137	135	416	1	138	1390
+      6	142	144	428	1	142	1430
+      7	NULL	146	439	NULL	149	1450
+      8	NULL	NULL	455	NULL	153	1510
+      9	NULL	157	475	NULL	159	1580

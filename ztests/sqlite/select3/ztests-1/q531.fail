@@ -1,0 +1,48 @@
+script: |
+  super -f tsv -I q531.sql | sort > q531.out
+
+inputs:
+  - name: q531.sql
+    data: |
+      SELECT abs(b-c),
+      c,
+      a+b*2,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      d-e,
+      a+b*2+c*3+d*4+e*5,
+      a-b
+      FROM t1
+      WHERE (e>c OR e<d)
+      OR (e>a AND e<b)
+      OR c>d
+      ORDER BY 2,7,6,5,4,1,3;
+
+outputs:
+  - name: q531.out
+    data: |
+      1	106	317	0	-1	1612	2
+      1	113	NULL	0	4	NULL	NULL
+      1	123	369	0	NULL	NULL	-3
+      1	161	483	0	2	2432	3
+      1	176	529	0	NULL	NULL	4
+      1	187	560	0	-4	2806	2
+      1	193	579	0	-2	2878	-3
+      1	224	666	0	1	3331	-3
+      1	231	698	0	3	3473	2
+      2	137	416	0	1	2046	-1
+      2	141	428	0	-4	2131	-1
+      2	172	514	0	-2	2579	4
+      2	208	NULL	0	NULL	NULL	NULL
+      2	247	743	0	2	3706	-4
+      3	155	475	0	NULL	NULL	1
+      3	184	544	0	3	2728	1
+      3	195	595	0	-1	2949	1
+      3	214	635	0	2	3175	2
+      3	215	652	0	-2	3260	-2
+      3	225	685	0	-1	3399	1
+      4	125	385	0	2	1902	-2
+      4	134	391	0	1	1985	1
+      NULL	102	NULL	0	NULL	NULL	NULL
+      NULL	119	NULL	0	-1	NULL	NULL
+      NULL	202	NULL	0	-1	NULL	NULL
+      NULL	NULL	711	0	1	NULL	3

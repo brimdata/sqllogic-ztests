@@ -1,0 +1,47 @@
+script: |
+  super -f tsv -I q1592.sql | sort > q1592.out
+
+inputs:
+  - name: q1592.sql
+    data: |
+      SELECT a+b*2,
+      a-b,
+      c-d,
+      CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END,
+      e,
+      c
+      FROM t1
+      WHERE e+d BETWEEN a+b-10 AND c+130
+      OR c BETWEEN b-2 AND d+2
+      OR EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b);
+
+outputs:
+  - name: q1592.out
+    data: |
+      317	2	-2	1050	109	106
+      369	-3	1	1240	NULL	123
+      385	-2	-3	1290	126	125
+      391	1	1	1300	132	134
+      416	-1	1	1390	135	137
+      428	-1	1	1430	144	141
+      439	4	NULL	1450	146	147
+      455	2	NULL	1510	NULL	150
+      475	1	NULL	1580	157	155
+      483	3	-3	1600	162	161
+      502	1	NULL	1670	165	166
+      514	4	1	1700	173	172
+      529	4	NULL	358	177	176
+      544	1	1	364	180	184
+      560	2	2	376	189	187
+      579	-3	3	382	192	193
+      595	1	-1	398	197	195
+      635	2	2	426	210	214
+      652	-2	-2	432	219	215
+      666	-3	2	440	221	224
+      685	1	-1	458	227	225
+      698	2	-2	468	230	231
+      711	3	NULL	2360	237	NULL
+      723	3	NULL	486	NULL	244
+      743	-4	-1	490	246	247
+      NULL	NULL	-1	1120	110	113
+      NULL	NULL	1	NULL	NULL	208

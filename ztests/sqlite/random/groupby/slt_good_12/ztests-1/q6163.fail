@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q6163.sql | sort > q6163.out
+
+inputs:
+  - name: q6163.sql
+    data: |
+      SELECT COUNT ( * ) * col2 FROM tab2 GROUP BY col1, col2 HAVING NULL IS NULL;
+
+outputs:
+  - name: q6163.out
+    data: |
+      58
+      79
+      87

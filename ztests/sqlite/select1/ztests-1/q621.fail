@@ -1,0 +1,32 @@
+script: |
+  super -f tsv -I q621.sql > q621.out
+
+inputs:
+  - name: q621.sql
+    data: |
+      SELECT (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      a+b*2+c*3+d*4+e*5,
+      abs(b-c),
+      d
+      FROM t1
+      WHERE (c<=d-2 OR c>=d+2)
+      ORDER BY 4,3,2,1;
+
+outputs:
+  - name: q621.out
+    data: |
+      1	1612	1	108
+      3	1757	1	116
+      5	1902	4	128
+      10	2281	1	154
+      12	2432	1	164
+      13	2501	1	169
+      15	2654	1	178
+      17	2806	1	185
+      18	2878	1	190
+      22	3175	3	212
+      23	3260	3	217
+      24	3331	1	222
+      26	3473	1	233
+      27	3553	1	238
+      28	3629	4	241

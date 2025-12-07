@@ -1,0 +1,64 @@
+script: |
+  super -f tsv -I q865.sql | tr '\t' '\n' | sort > q865.out
+
+inputs:
+  - name: q865.sql
+    data: |
+      SELECT a3 FROM t3
+      WHERE (b3=240 AND 825=d3 AND c3=863)
+      OR (e3=818 OR 335=a3 OR 187=e3)
+      OR (e3=536 OR a3=490)
+      INTERSECT
+      SELECT b5 FROM t5
+      WHERE NOT (e5 in (287,589,440,155,13,802,522,640,225,812,480)
+      OR c5 in (915,856,613,747,485,774,924,756,721,544,894)
+      OR (c5=756 AND 554=e5 AND d5=492 AND b5=161))
+      UNION ALL
+      SELECT c1 FROM t1
+      WHERE a1 in (479,445,249,213,268,879,330)
+      OR (894=b1)
+      OR e1 in (146,247,504,284,78,582,300,90,732,943,52)
+      UNION
+      SELECT c2 FROM t2
+      WHERE (45=c2 OR a2=545 OR a2=901)
+      OR c2 in (177,292,511,360,275,421)
+      OR a2 in (93,802,874,76)
+      EXCEPT
+      SELECT c6 FROM t6
+      WHERE NOT ((d6=767 AND b6=782 AND c6=258 AND 969=e6)
+      OR (e6=439));
+  - name: t4
+  - name: t5
+
+outputs:
+  - name: q865.out
+    data: |
+      268
+      27
+      275
+      284
+      299
+      312
+      337
+      360
+      379
+      387
+      402
+      419
+      420
+      421
+      465
+      486
+      511
+      553
+      623
+      680
+      703
+      736
+      765
+      814
+      871
+      887
+      902
+      933
+      979

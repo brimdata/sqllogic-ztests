@@ -1,0 +1,33 @@
+script: |
+  super -f tsv -I q602.sql | sort > q602.out
+
+inputs:
+  - name: q602.sql
+    data: |
+      SELECT CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END,
+      a,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d)
+      FROM t1
+      WHERE c>d
+      OR (e>a AND e<b);
+
+outputs:
+  - name: q602.out
+    data: |
+      111	222	138	0
+      111	222	142	0
+      222	333	213	0
+      333	222	121	0
+      333	333	182	0
+      333	444	115	0
+      444	111	245	0
+      444	222	191	0
+      444	222	220	0
+      444	333	131	0
+      444	333	188	0
+      555	444	104	0
+      555	444	174	0
+      555	444	NULL	0

@@ -1,0 +1,66 @@
+script: |
+  super -f tsv -I q484.sql | tr '\t' '\n' | sort > q484.out
+
+inputs:
+  - name: q484.sql
+    data: |
+      SELECT c7 FROM t7
+      WHERE (220=b7 OR e7=455 OR 722=a7)
+      INTERSECT
+      SELECT d5 FROM t5
+      WHERE NOT ((878=b5 AND d5=779 AND e5=885 AND 544=a5 AND c5=31)
+      OR b5 in (744,292,424,716)
+      OR (a5=445 AND 752=d5 AND 934=b5 AND 386=e5 AND 809=c5))
+      UNION
+      SELECT b2 FROM t2
+      WHERE (a2=308 OR 714=b2 OR 733=a2)
+      OR (140=e2 AND d2=351 AND a2=691 AND c2=837)
+      OR b2 in (297,264,90,820,38,823,73)
+      UNION
+      SELECT d1 FROM t1
+      WHERE (548=c1 AND 376=d1)
+      OR b1 in (49,802,307,645,738,440,828)
+      OR (b1=310 OR 620=c1)
+      EXCEPT
+      SELECT c8 FROM t8
+      WHERE NOT ((88=c8 AND 466=d8 AND a8=129 AND 320=e8 AND 466=b8))
+      EXCEPT
+      SELECT e4 FROM t4
+      WHERE NOT ((e4=792)
+      OR (546=e4 OR 281=a4 OR 25=d4)
+      OR (770=d4 AND 805=e4 AND 746=a4 AND b4=733))
+      UNION
+      SELECT b6 FROM t6
+      WHERE (821=a6 OR 457=d6)
+      OR b6 in (144,716,875,230,997,461,629)
+      OR (786=d6 OR b6=0);
+  - name: t3
+  - name: t8
+
+outputs:
+  - name: q484.out
+    data: |
+      0
+      144
+      223
+      230
+      254
+      264
+      296
+      461
+      507
+      549
+      585
+      60
+      602
+      618
+      629
+      643
+      714
+      716
+      726
+      73
+      823
+      875
+      90
+      997

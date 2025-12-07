@@ -1,0 +1,33 @@
+script: |
+  super -f tsv -I q216.sql | tr '\t' '\n' | sort > q216.out
+
+inputs:
+  - name: q216.sql
+    data: |
+      SELECT d2 FROM t2
+      WHERE a2 in (966,936,637,522,869)
+      OR (654=d2 AND 182=c2 AND 853=a2 AND b2=864 AND 548=e2)
+      UNION ALL
+      SELECT c1 FROM t1
+      WHERE (195=a1 AND 717=e1 AND c1=788 AND 384=b1 AND d1=161)
+      OR (d1=187)
+      EXCEPT
+      SELECT d5 FROM t5
+      WHERE NOT ((b5=569 AND 313=c5 AND e5=209 AND d5=757)
+      OR a5 in (740,476,683,785,369,196,349,685,297)
+      OR (b5=548));
+  - name: t5
+  - name: t6
+  - name: t9
+
+outputs:
+  - name: q216.out
+    data: |
+      373
+      377
+      416
+      525
+      577
+      654
+      788
+      838

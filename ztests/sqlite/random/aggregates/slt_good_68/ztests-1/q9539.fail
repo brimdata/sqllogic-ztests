@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q9539.sql | sort > q9539.out
+
+inputs:
+  - name: q9539.sql
+    data: |
+      SELECT CAST ( NULL AS REAL ) AS col0 FROM tab1 WHERE NOT NULL IN ( + - col0 );
+  - name: tab1
+
+outputs:
+  - name: q9539.out
+    data: |

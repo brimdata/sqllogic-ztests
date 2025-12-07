@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q1711.sql | sort > q1711.out
+
+inputs:
+  - name: q1711.sql
+    data: |
+      SELECT DISTINCT COUNT ( * ) AS col2 FROM tab1 WHERE ( NOT col2 BETWEEN ( NULL ) AND 59 );
+
+outputs:
+  - name: q1711.out
+    data: |
+      2

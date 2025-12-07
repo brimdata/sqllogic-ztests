@@ -1,0 +1,65 @@
+script: |
+  super -f tsv -I q949.sql | tr '\t' '\n' | sort > q949.out
+
+inputs:
+  - name: q949.sql
+    data: |
+      SELECT d7 FROM t7
+      WHERE e7 in (31,983,624,372,506)
+      OR e7 in (815,319,595,851,782,624,816,860,561,887)
+      OR b7 in (634,979,257,67)
+      EXCEPT
+      SELECT e4 FROM t4
+      WHERE NOT ((d4=549 AND a4=281 AND 288=b4 AND c4=752 AND e4=600))
+      UNION ALL
+      SELECT c6 FROM t6
+      WHERE a6 in (787,604,436,396,33,251,45)
+      EXCEPT
+      SELECT e3 FROM t3
+      WHERE NOT (d3 in (886,133,522,66)
+      OR (e3=467 OR c3=887 OR 637=a3)
+      OR (e3=457))
+      EXCEPT
+      SELECT b8 FROM t8
+      WHERE NOT ((678=e8 AND 965=c8 AND 957=a8 AND d8=608)
+      OR d8 in (482,291,615,326,330,862,769,494,683,899,20))
+      EXCEPT
+      SELECT e2 FROM t2
+      WHERE NOT (c2 in (150,45,902,512,275,161,933,819,292,450,220,24)
+      OR (844=d2 OR 179=c2))
+      UNION
+      SELECT c5 FROM t5
+      WHERE (e5=206)
+      OR a5 in (342,267,429,342,800,536)
+      OR d5 in (649,937,729,757,309);
+  - name: t6
+  - name: t8
+
+outputs:
+  - name: q949.out
+    data: |
+      142
+      159
+      199
+      216
+      306
+      313
+      315
+      37
+      471
+      50
+      506
+      513
+      514
+      579
+      628
+      687
+      709
+      721
+      723
+      733
+      787
+      817
+      956
+      961
+      989

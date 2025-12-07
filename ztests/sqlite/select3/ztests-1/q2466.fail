@@ -1,0 +1,22 @@
+script: |
+  super -f tsv -I q2466.sql | sort > q2466.out
+
+inputs:
+  - name: q2466.sql
+    data: |
+      SELECT CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d)
+      FROM t1
+      WHERE d>e
+      AND (e>c OR e<d)
+      AND (c<=d-2 OR c>=d+2);
+
+outputs:
+  - name: q2466.out
+    data: |
+      222	0
+      333	0
+      333	0
+      444	0
+      555	0

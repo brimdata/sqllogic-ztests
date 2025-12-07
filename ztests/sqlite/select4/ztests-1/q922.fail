@@ -1,0 +1,61 @@
+script: |
+  super -f tsv -I q922.sql | tr '\t' '\n' | sort > q922.out
+
+inputs:
+  - name: q922.sql
+    data: |
+      SELECT c3 FROM t3
+      WHERE b3 in (355,457,113,617,685,234,876,269,127)
+      OR (927=b3 OR d3=665)
+      OR (665=e3 OR 697=a3)
+      EXCEPT
+      SELECT d9 FROM t9
+      WHERE NOT (d9 in (166,818,790,464,467,606,591,104,646,235)
+      OR (b9=891 AND 127=e9 AND c9=975 AND 148=a9)
+      OR b9 in (227,74,312,214,891,16,269,379,149,595,326,900,122))
+      UNION
+      SELECT e4 FROM t4
+      WHERE c4 in (88,609,345,720,725,157,998,631,357,471,671,271,201)
+      EXCEPT
+      SELECT b8 FROM t8
+      WHERE NOT ((564=b8 AND 486=d8)
+      OR (620=e8 AND c8=168 AND b8=542))
+      UNION ALL
+      SELECT a6 FROM t6
+      WHERE a6 in (35,585,182,522,129,251,653)
+      OR b6 in (276,463,144)
+      EXCEPT
+      SELECT e5 FROM t5
+      WHERE NOT ((a5=267))
+      EXCEPT
+      SELECT b1 FROM t1
+      WHERE NOT (a1 in (972,479,281,746,88));
+  - name: t6
+  - name: t9
+
+outputs:
+  - name: q922.out
+    data: |
+      122
+      129
+      147
+      182
+      185
+      251
+      296
+      305
+      326
+      338
+      35
+      455
+      467
+      617
+      653
+      688
+      698
+      816
+      83
+      916
+      931
+      966
+      986

@@ -1,0 +1,56 @@
+script: |
+  super -f tsv -I q195.sql | tr '\t' '\n' | sort > q195.out
+
+inputs:
+  - name: q195.sql
+    data: |
+      SELECT e9 FROM t9
+      WHERE (c9=240 AND e9=944)
+      OR (a9=847 OR 14=a9)
+      OR (388=e9 OR d9=618 OR 361=b9)
+      EXCEPT
+      SELECT d7 FROM t7
+      WHERE NOT ((b7=360 OR 807=c7 OR 936=a7)
+      OR (c7=692)
+      OR (a7=884))
+      UNION ALL
+      SELECT a8 FROM t8
+      WHERE (b8=803 AND 511=d8 AND c8=79 AND e8=203 AND a8=920)
+      UNION
+      SELECT c4 FROM t4
+      WHERE a4 in (502,489,447,982,105,606,505,136,981,637,327,952,451)
+      OR (408=b4 OR d4=373 OR 144=d4)
+      OR (713=b4 AND 228=a4 AND c4=398)
+      EXCEPT
+      SELECT b2 FROM t2
+      WHERE NOT (e2 in (125,427,123,564,671,428,548,699,223,955,441)
+      OR (b2=897 OR c2=688 OR 548=e2));
+  - name: t3
+  - name: t6
+
+outputs:
+  - name: q195.out
+    data: |
+      149
+      214
+      293
+      307
+      366
+      388
+      398
+      484
+      536
+      581
+      584
+      703
+      758
+      832
+      854
+      88
+      904
+      920
+      934
+      936
+      944
+      984
+      998

@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q2451.sql | sort > q2451.out
+
+inputs:
+  - name: q2451.sql
+    data: |
+      SELECT col2 FROM tab1 GROUP BY col1, col2 HAVING + col1 IS NOT NULL;
+
+outputs:
+  - name: q2451.out
+    data: |
+      45
+      71
+      8

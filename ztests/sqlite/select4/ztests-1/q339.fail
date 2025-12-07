@@ -1,0 +1,22 @@
+script: |
+  super -f tsv -I q339.sql | tr '\t' '\n' | sort > q339.out
+
+inputs:
+  - name: q339.sql
+    data: |
+      SELECT c6 FROM t6
+      WHERE (45=a6 OR e6=6)
+      OR (d6=60 AND b6=963 AND 595=e6 AND 295=c6)
+      INTERSECT
+      SELECT a8 FROM t8
+      WHERE NOT ((a8=327 OR c8=230)
+      OR (427=c8 AND 610=d8 AND 359=a8));
+  - name: t1
+  - name: t2
+  - name: t5
+  - name: t8
+  - name: t9
+
+outputs:
+  - name: q339.out
+    data: |

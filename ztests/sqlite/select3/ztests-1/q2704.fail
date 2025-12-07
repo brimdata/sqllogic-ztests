@@ -1,0 +1,36 @@
+script: |
+  super -f tsv -I q2704.sql | sort > q2704.out
+
+inputs:
+  - name: q2704.sql
+    data: |
+      SELECT (a+b+c+d+e)/5,
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d)
+      FROM t1
+      WHERE a>b
+      OR (a>b-2 AND a<b+2);
+
+outputs:
+  - name: q2704.out
+    data: |
+      107	333	0
+      132	333	0
+      137	222	0
+      142	222	0
+      162	444	0
+      172	444	0
+      182	333	0
+      187	333	0
+      197	333	0
+      212	333	0
+      227	333	0
+      232	333	0
+      NULL	333	0
+      NULL	333	0
+      NULL	333	0
+      NULL	444	0
+      NULL	444	0
+      NULL	444	0
+      NULL	444	0

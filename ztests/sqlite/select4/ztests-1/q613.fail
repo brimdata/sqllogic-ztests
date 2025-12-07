@@ -1,0 +1,41 @@
+script: |
+  super -f tsv -I q613.sql | tr '\t' '\n' | sort > q613.out
+
+inputs:
+  - name: q613.sql
+    data: |
+      SELECT e2 FROM t2
+      WHERE (233=d2 AND 560=c2 AND 676=b2)
+      OR (a2=185 OR d2=351 OR a2=56)
+      OR a2 in (217,651,901,891,927,445,980)
+      UNION
+      SELECT c6 FROM t6
+      WHERE (d6=901 OR 390=b6)
+      OR (d6=21 OR c6=648)
+      EXCEPT
+      SELECT e8 FROM t8
+      WHERE NOT ((88=c8 AND 320=e8)
+      OR c8 in (354,377,935,394,683,279,448)
+      OR e8 in (776,416,485,980,859,204,273,510,488,469,463))
+      EXCEPT
+      SELECT d3 FROM t3
+      WHERE NOT ((c3=472 OR 393=e3 OR 73=c3));
+  - name: t3
+  - name: t7
+
+outputs:
+  - name: q613.out
+    data: |
+      140
+      308
+      320
+      339
+      463
+      547
+      648
+      654
+      721
+      936
+      938
+      945
+      992

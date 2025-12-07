@@ -1,0 +1,40 @@
+script: |
+  super -f tsv -I q353.sql > q353.out
+
+inputs:
+  - name: q353.sql
+    data: |
+      SELECT b-c,
+      a-b,
+      abs(a),
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      c-d,
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END
+      FROM t1
+      WHERE b>c
+      OR (a>b-2 AND a<b+2)
+      ORDER BY 4,3,1,5,6,2;
+
+outputs:
+  - name: q353.out
+    data: |
+      -1	-1	111	0	-1	111
+      1	-3	121	0	1	333
+      4	-2	127	0	-3	333
+      -4	1	131	0	1	444
+      2	-1	138	0	1	111
+      2	-1	142	0	1	111
+      1	2	153	0	-4	333
+      3	1	159	0	-1	555
+      1	1	168	0	-3	333
+      -3	1	182	0	1	333
+      1	-3	191	0	3	444
+      3	1	199	0	-1	555
+      -2	1	201	0	-1	222
+      -2	-1	205	0	1	111
+      3	-2	216	0	-2	333
+      3	1	229	0	-1	555
+      1	2	234	0	-2	555
+      1	3	239	0	-3	555
+      2	-4	245	0	-1	444

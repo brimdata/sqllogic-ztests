@@ -1,0 +1,49 @@
+script: |
+  super -f tsv -I q624.sql | tr '\t' '\n' | sort > q624.out
+
+inputs:
+  - name: q624.sql
+    data: |
+      SELECT e1 FROM t1
+      WHERE d1 in (973,213,508,223,577,55,38,432,87,17,701)
+      UNION ALL
+      SELECT a6 FROM t6
+      WHERE c6 in (637,513,528,292,963)
+      UNION ALL
+      SELECT c9 FROM t9
+      WHERE (230=e9 OR e9=736 OR 418=e9)
+      OR (253=c9)
+      OR (273=a9 AND 146=e9 AND c9=457 AND 463=d9)
+      EXCEPT
+      SELECT a8 FROM t8
+      WHERE NOT ((512=d8)
+      OR (113=a8 OR b8=807 OR a8=400)
+      OR (608=e8))
+      EXCEPT
+      SELECT d2 FROM t2
+      WHERE NOT ((c2=449)
+      OR c2 in (996,823,728));
+  - name: t2
+  - name: t4
+  - name: t8
+
+outputs:
+  - name: q624.out
+    data: |
+      118
+      14
+      151
+      161
+      232
+      253
+      298
+      436
+      457
+      56
+      572
+      602
+      779
+      816
+      85
+      905
+      997

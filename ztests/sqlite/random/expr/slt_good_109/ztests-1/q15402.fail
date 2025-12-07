@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q15402.sql | sort > q15402.out
+
+inputs:
+  - name: q15402.sql
+    data: |
+      SELECT COUNT ( ALL COALESCE ( + 42, - CAST ( NULL AS INTEGER ) ) ) * 60 AS col1;
+
+outputs:
+  - name: q15402.out
+    data: |
+      60

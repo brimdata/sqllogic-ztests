@@ -1,0 +1,29 @@
+script: |
+  super -f tsv -I q514.sql | tr '\t' '\n' | sort > q514.out
+
+inputs:
+  - name: q514.sql
+    data: |
+      SELECT d2 FROM t2
+      WHERE (c2=830 AND 418=b2 AND d2=547 AND 671=e2)
+      OR (499=e2 OR 902=c2 OR d2=373)
+      OR c2 in (933,292,275,981,290,251,123,512,992,141,854)
+      INTERSECT
+      SELECT c8 FROM t8
+      WHERE NOT (c8 in (692,100,260,461,901,427,166,907,88,998,690,419,32,381))
+      INTERSECT
+      SELECT e6 FROM t6
+      WHERE NOT (d6 in (956,729,674)
+      OR (b6=782 OR 60=d6 OR 67=e6))
+      UNION ALL
+      SELECT c9 FROM t9
+      WHERE (e9=195 AND c9=254 AND 959=d9 AND 28=a9 AND b9=348);
+  - name: t1
+  - name: t4
+  - name: t6
+  - name: t9
+
+outputs:
+  - name: q514.out
+    data: |
+      254

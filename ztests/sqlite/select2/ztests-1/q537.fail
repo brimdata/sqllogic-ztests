@@ -1,0 +1,44 @@
+script: |
+  super -f tsv -I q537.sql | sort > q537.out
+
+inputs:
+  - name: q537.sql
+    data: |
+      SELECT (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END
+      FROM t1;
+
+outputs:
+  - name: q537.out
+    data: |
+      0	222
+      0	333
+      0	333
+      0	555
+      1	555
+      10	333
+      11	555
+      12	555
+      13	555
+      14	333
+      15	444
+      16	444
+      17	555
+      18	555
+      19	222
+      2	333
+      20	333
+      21	444
+      22	555
+      23	555
+      24	555
+      25	222
+      26	444
+      3	333
+      4	444
+      5	111
+      6	111
+      7	555
+      8	555
+      9	555

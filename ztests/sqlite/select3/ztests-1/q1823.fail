@@ -1,0 +1,26 @@
+script: |
+  super -f tsv -I q1823.sql | sort > q1823.out
+
+inputs:
+  - name: q1823.sql
+    data: |
+      SELECT (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      a+b*2,
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      abs(b-c)
+      FROM t1
+      WHERE (a>b-2 AND a<b+2)
+      ORDER BY 2,1;
+
+outputs:
+  - name: q1823.out
+    data: |
+      11	502	555	1
+      14	544	333	3
+      17	595	555	3
+      22	685	555	3
+      4	391	444	4
+      5	416	111	2
+      6	428	111	2
+      9	475	555	3

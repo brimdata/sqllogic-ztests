@@ -1,0 +1,30 @@
+script: |
+  super -f tsv -I q786.sql > q786.out
+
+inputs:
+  - name: q786.sql
+    data: |
+      SELECT (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      d-e,
+      c-d,
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END
+      FROM t1
+      WHERE c BETWEEN b-2 AND d+2
+      AND EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      AND c>d
+      ORDER BY 1,2,3,4;
+
+outputs:
+  - name: q786.out
+    data: |
+      4	2	1	222
+      6	1	1	333
+      7	1	1	222
+      8	-4	1	222
+      14	-2	1	444
+      16	3	1	333
+      17	-4	2	333
+      21	-2	1	222
+      22	2	2	333
+      24	1	2	222

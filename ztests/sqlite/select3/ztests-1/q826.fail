@@ -1,0 +1,28 @@
+script: |
+  super -f tsv -I q826.sql | sort > q826.out
+
+inputs:
+  - name: q826.sql
+    data: |
+      SELECT b
+      FROM t1
+      WHERE c BETWEEN b-2 AND d+2
+      AND EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b);
+
+outputs:
+  - name: q826.out
+    data: |
+      112
+      124
+      130
+      139
+      143
+      160
+      170
+      181
+      186
+      206
+      211
+      223
+      232
+      249

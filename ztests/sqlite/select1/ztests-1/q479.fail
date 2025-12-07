@@ -1,0 +1,24 @@
+script: |
+  super -f tsv -I q479.sql > q479.out
+
+inputs:
+  - name: q479.sql
+    data: |
+      SELECT (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END,
+      d,
+      c,
+      a+b*2+c*3+d*4+e*5,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d)
+      FROM t1
+      WHERE (e>a AND e<b)
+      ORDER BY 4,2,3,1,5,6;
+
+outputs:
+  - name: q479.out
+    data: |
+      3	222	116	119	1757	0
+      18	222	190	193	2878	0
+      24	222	222	224	3331	0
+      29	111	248	247	3706	0

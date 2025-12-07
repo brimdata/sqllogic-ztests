@@ -1,0 +1,35 @@
+script: |
+  super -f tsv -I q733.sql | tr '\t' '\n' | sort > q733.out
+
+inputs:
+  - name: q733.sql
+    data: |
+      SELECT e2 FROM t2
+      WHERE (177=c2 AND e2=428)
+      INTERSECT
+      SELECT b9 FROM t9
+      WHERE NOT (a9 in (17,416,964,611,218,924,584,485,821,295,549,263,847)
+      OR (b9=178)
+      OR (b9=95))
+      UNION ALL
+      SELECT e7 FROM t7
+      WHERE (263=b7 OR b7=192 OR 798=b7)
+      UNION
+      SELECT d3 FROM t3
+      WHERE (12=a3)
+      OR (a3=727);
+  - name: t2
+  - name: t4
+  - name: t5
+  - name: t6
+  - name: t7
+
+outputs:
+  - name: q733.out
+    data: |
+      156
+      462
+      508
+      642
+      711
+      720

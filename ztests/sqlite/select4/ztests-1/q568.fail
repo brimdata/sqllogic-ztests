@@ -1,0 +1,53 @@
+script: |
+  super -f tsv -I q568.sql | tr '\t' '\n' | sort > q568.out
+
+inputs:
+  - name: q568.sql
+    data: |
+      SELECT a9 FROM t9
+      WHERE (712=a9 AND 619=e9 AND 74=b9)
+      OR d9 in (818,919,646,568,681)
+      UNION
+      SELECT b1 FROM t1
+      WHERE (685=c1)
+      OR (e1=685)
+      UNION
+      SELECT c3 FROM t3
+      WHERE (989=e3 OR 41=a3 OR a3=476)
+      OR (d3=217)
+      UNION ALL
+      SELECT e4 FROM t4
+      WHERE b4 in (644,577,532)
+      OR (605=a4)
+      EXCEPT
+      SELECT a7 FROM t7
+      WHERE NOT ((a7=27 AND 364=c7 AND 887=e7 AND 495=b7 AND d7=709)
+      OR b7 in (129,323,841,867,321,455,655)
+      OR (508=c7 AND 860=e7 AND 306=d7 AND b7=861 AND 982=a7))
+      EXCEPT
+      SELECT a8 FROM t8
+      WHERE NOT ((512=d8)
+      OR (d8=58 OR 199=e8)
+      OR (c8=298 OR 183=a8));
+  - name: t2
+  - name: t7
+
+outputs:
+  - name: q568.out
+    data: |
+      251
+      38
+      403
+      43
+      435
+      53
+      535
+      554
+      610
+      688
+      692
+      712
+      738
+      760
+      850
+      959

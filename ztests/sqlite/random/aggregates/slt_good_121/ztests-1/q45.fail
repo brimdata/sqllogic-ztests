@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q45.sql | sort > q45.out
+
+inputs:
+  - name: q45.sql
+    data: |
+      SELECT - ( COUNT ( * ) ) AS col1 FROM tab1 WHERE NOT col1 * 80 IS NOT NULL;
+
+outputs:
+  - name: q45.out
+    data: |
+      0

@@ -1,0 +1,20 @@
+script: |
+  super -f tsv -I q925.sql | tr '\t' '\n' | sort > q925.out
+
+inputs:
+  - name: q925.sql
+    data: |
+      SELECT d7 FROM t7
+      WHERE (a7=325 AND 478=c7 AND e7=688)
+      OR c7 in (966,146,145,954,857,249,843,725,174,523,206,585,22,853)
+      INTERSECT
+      SELECT b9 FROM t9
+      WHERE NOT (a9 in (457,41,553,712,511,584,488,747)
+      OR (e9=619 OR 526=c9 OR c9=252));
+  - name: t6
+  - name: t9
+
+outputs:
+  - name: q925.out
+    data: |
+      549

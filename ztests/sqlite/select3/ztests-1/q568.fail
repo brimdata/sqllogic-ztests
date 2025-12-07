@@ -1,0 +1,19 @@
+script: |
+  super -f tsv -I q568.sql | sort > q568.out
+
+inputs:
+  - name: q568.sql
+    data: |
+      SELECT b-c,
+      e,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d)
+      FROM t1
+      WHERE a>b
+      AND (a>b-2 AND a<b+2)
+      AND c BETWEEN b-2 AND d+2;
+
+outputs:
+  - name: q568.out
+    data: |
+      -3	180	0
+      -4	132	0

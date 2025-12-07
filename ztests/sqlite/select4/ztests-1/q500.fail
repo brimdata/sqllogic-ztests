@@ -1,0 +1,60 @@
+script: |
+  super -f tsv -I q500.sql | tr '\t' '\n' | sort > q500.out
+
+inputs:
+  - name: q500.sql
+    data: |
+      SELECT a9 FROM t9
+      WHERE (c9=569 OR 575=c9)
+      OR b9 in (2,423,118,178,803,827,379,855,456)
+      EXCEPT
+      SELECT b8 FROM t8
+      WHERE NOT ((c8=431 AND e8=223 AND d8=116 AND 239=a8)
+      OR (d8=511)
+      OR (b8=773 AND 767=d8 AND c8=647))
+      EXCEPT
+      SELECT c5 FROM t5
+      WHERE NOT (b5 in (858,874,716,942,231)
+      OR (d5=69))
+      UNION
+      SELECT d7 FROM t7
+      WHERE e7 in (436,215,27,439,319,971,979)
+      UNION ALL
+      SELECT b2 FROM t2
+      WHERE (925=c2 AND 152=d2)
+      UNION
+      SELECT c6 FROM t6
+      WHERE (554=e6 OR c6=146)
+      OR (e6=74 OR d6=453 OR 768=c6)
+      EXCEPT
+      SELECT d1 FROM t1
+      WHERE NOT ((c1=246 OR 237=a1 OR 717=e1));
+  - name: t1
+  - name: t7
+
+outputs:
+  - name: q500.out
+    data: |
+      104
+      11
+      123
+      139
+      146
+      177
+      199
+      251
+      413
+      430
+      539
+      549
+      572
+      584
+      69
+      768
+      78
+      79
+      811
+      841
+      925
+      962
+      996

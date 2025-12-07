@@ -1,0 +1,50 @@
+script: |
+  super -f tsv -I q2901.sql | sort > q2901.out
+
+inputs:
+  - name: q2901.sql
+    data: |
+      SELECT CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      c,
+      d-e,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      b,
+      CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END
+      FROM t1
+      ORDER BY 4,5;
+
+outputs:
+  - name: q2901.out
+    data: |
+      111	0	247	2	26	249	490
+      222	0	123	NULL	2	124	1240
+      222	0	125	2	3	129	1290
+      222	0	137	1	5	139	1390
+      222	0	141	-4	6	143	1430
+      222	0	193	-2	16	194	382
+      222	0	215	-2	20	218	432
+      222	0	224	1	21	223	440
+      333	0	106	-1	0	105	1050
+      333	0	134	1	4	130	1300
+      333	0	150	NULL	8	151	1510
+      333	0	155	NULL	9	158	1580
+      333	0	166	NULL	11	167	1670
+      333	0	184	3	14	181	364
+      333	0	187	-4	15	186	376
+      333	0	195	-1	17	198	398
+      333	0	214	2	19	211	426
+      333	0	225	-1	22	228	458
+      333	0	231	3	23	232	468
+      444	0	102	NULL	0	NULL	NULL
+      444	0	113	4	1	112	1120
+      444	0	119	-1	0	NULL	NULL
+      444	0	147	NULL	7	145	1450
+      444	0	161	2	10	160	1600
+      444	0	172	-2	12	170	1700
+      444	0	176	NULL	13	175	358
+      444	0	202	-1	0	NULL	402
+      444	0	208	NULL	18	206	NULL
+      444	0	244	NULL	25	240	486
+      444	0	NULL	1	24	236	2360

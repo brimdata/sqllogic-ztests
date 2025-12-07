@@ -1,0 +1,40 @@
+script: |
+  super -f tsv -I q652.sql | tr '\t' '\n' | sort > q652.out
+
+inputs:
+  - name: q652.sql
+    data: |
+      SELECT e3 FROM t3
+      WHERE (929=c3)
+      OR a3 in (863,98,777,347,429,275)
+      OR (238=d3 AND c3=477)
+      UNION ALL
+      SELECT a6 FROM t6
+      WHERE (271=d6)
+      OR e6 in (840,175,809,95,550,574,946)
+      EXCEPT
+      SELECT c1 FROM t1
+      WHERE NOT ((696=e1))
+      EXCEPT
+      SELECT d8 FROM t8
+      WHERE NOT ((c8=273 AND d8=472 AND 609=b8))
+      EXCEPT
+      SELECT a7 FROM t7
+      WHERE NOT ((648=c7 AND 39=e7));
+  - name: t1
+  - name: t2
+
+outputs:
+  - name: q652.out
+    data: |
+      300
+      310
+      318
+      550
+      602
+      64
+      657
+      740
+      959
+      973
+      993

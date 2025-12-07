@@ -1,0 +1,24 @@
+script: |
+  super -f tsv -I q769.sql | sort > q769.out
+
+inputs:
+  - name: q769.sql
+    data: |
+      SELECT CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END,
+      a+b*2+c*3
+      FROM t1
+      WHERE (c<=d-2 OR c>=d+2)
+      AND EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      ORDER BY 1,2;
+
+outputs:
+  - name: q769.out
+    data: |
+      1290	760
+      1600	966
+      376	1121
+      382	1158
+      426	1277
+      432	1297
+      440	1338
+      468	1391

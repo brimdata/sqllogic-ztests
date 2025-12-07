@@ -1,0 +1,72 @@
+script: |
+  super -f tsv -I q593.sql | tr '\t' '\n' | sort > q593.out
+
+inputs:
+  - name: q593.sql
+    data: |
+      SELECT b9 FROM t9
+      WHERE (a9=115 OR 235=d9)
+      EXCEPT
+      SELECT c8 FROM t8
+      WHERE NOT ((c8=394 AND d8=101 AND 503=b8)
+      OR (d8=523 AND 534=c8 AND 540=b8 AND a8=869 AND e8=422))
+      UNION ALL
+      SELECT a1 FROM t1
+      WHERE a1 in (477,707,237,352,988)
+      OR d1 in (213,726,217,25,661,602,828,519,319)
+      OR (c1=177)
+      EXCEPT
+      SELECT b3 FROM t3
+      WHERE NOT (a3 in (12,829,591,379,895,729,335,549,98,611,947))
+      UNION ALL
+      SELECT e5 FROM t5
+      WHERE (629=b5 OR b5=526 OR a5=53)
+      UNION
+      SELECT c4 FROM t4
+      WHERE (d4=441 AND b4=877)
+      OR b4 in (402,323,924,68,721,784,137,635,23,748,603,58,294)
+      OR (d4=985 OR 306=d4 OR 990=a4)
+      EXCEPT
+      SELECT a2 FROM t2
+      WHERE NOT ((901=a2)
+      OR c2 in (421,837,27,274,450,878,823,282,61,887,333,511)
+      OR c2 in (869,282,228,290,793,496,854,557,421,449,512))
+      UNION ALL
+      SELECT e7 FROM t7
+      WHERE (c7=174);
+  - name: t3
+  - name: t7
+
+outputs:
+  - name: q593.out
+    data: |
+      144
+      155
+      188
+      237
+      249
+      288
+      330
+      352
+      358
+      366
+      436
+      47
+      477
+      484
+      52
+      609
+      66
+      674
+      690
+      707
+      720
+      723
+      767
+      776
+      783
+      854
+      879
+      88
+      988
+      996

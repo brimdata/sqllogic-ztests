@@ -1,0 +1,46 @@
+script: |
+  super -f tsv -I q474.sql | sort > q474.out
+
+inputs:
+  - name: q474.sql
+    data: |
+      SELECT abs(b-c),
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d)
+      FROM t1
+      WHERE b IS NOT NULL
+      OR coalesce(a,b,c,d,e)<>0
+      OR a IS NULL;
+
+outputs:
+  - name: q474.out
+    data: |
+      1	0
+      1	0
+      1	0
+      1	0
+      1	0
+      1	0
+      1	0
+      1	0
+      1	0
+      1	0
+      1	0
+      2	0
+      2	0
+      2	0
+      2	0
+      2	0
+      2	0
+      3	0
+      3	0
+      3	0
+      3	0
+      3	0
+      3	0
+      4	0
+      4	0
+      4	0
+      NULL	0
+      NULL	0
+      NULL	0
+      NULL	0

@@ -1,0 +1,43 @@
+script: |
+  super -f tsv -I q641.sql | tr '\t' '\n' | sort > q641.out
+
+inputs:
+  - name: q641.sql
+    data: |
+      SELECT a1 FROM t1
+      WHERE (230=c1 AND 683=e1 AND d1=803 AND b1=807 AND a1=433)
+      OR d1 in (75,418,217,346,265,234,577,18,221,394,581,315)
+      OR (297=d1 AND 89=e1)
+      UNION ALL
+      SELECT b2 FROM t2
+      WHERE d2 in (310,260,265)
+      EXCEPT
+      SELECT d6 FROM t6
+      WHERE NOT ((b6=427 OR 572=a6)
+      OR (839=a6 OR 1=a6 OR 144=b6)
+      OR e6 in (654,915,631,74))
+      EXCEPT
+      SELECT d8 FROM t8
+      WHERE NOT (e8 in (700,678,349,632,233,186,578,392,646));
+  - name: t1
+  - name: t4
+  - name: t5
+  - name: t9
+
+outputs:
+  - name: q641.out
+    data: |
+      231
+      268
+      32
+      433
+      451
+      477
+      521
+      532
+      536
+      585
+      678
+      776
+      967
+      996

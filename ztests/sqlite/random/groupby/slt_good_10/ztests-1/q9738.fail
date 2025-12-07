@@ -1,0 +1,11 @@
+script: |
+  super -f tsv -I q9738.sql | sort > q9738.out
+
+inputs:
+  - name: q9738.sql
+    data: |
+      SELECT col0 FROM tab1 GROUP BY col0, col1 HAVING ( col1 ) < NULL;
+
+outputs:
+  - name: q9738.out
+    data: |

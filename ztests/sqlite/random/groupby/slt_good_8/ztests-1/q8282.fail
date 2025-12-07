@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q8282.sql | sort > q8282.out
+
+inputs:
+  - name: q8282.sql
+    data: |
+      SELECT DISTINCT col0 + - + col0 AS col1 FROM tab2 GROUP BY col2, col0;
+  - name: tab2
+
+outputs:
+  - name: q8282.out
+    data: |
+      0

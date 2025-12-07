@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q6686.sql | sort > q6686.out
+
+inputs:
+  - name: q6686.sql
+    data: |
+      SELECT DISTINCT + COUNT ( ALL col1 ), COUNT ( * ) FROM tab2 WHERE NOT - col2 IS NULL AND NULL IS NOT NULL;
+
+outputs:
+  - name: q6686.out
+    data: |
+      0	0

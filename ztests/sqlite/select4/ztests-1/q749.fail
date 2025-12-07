@@ -1,0 +1,27 @@
+script: |
+  super -f tsv -I q749.sql | tr '\t' '\n' | sort > q749.out
+
+inputs:
+  - name: q749.sql
+    data: |
+      SELECT c8 FROM t8
+      WHERE (a8=347)
+      OR (20=d8 AND a8=70 AND b8=523 AND e8=463 AND 979=c8)
+      INTERSECT
+      SELECT e9 FROM t9
+      WHERE NOT ((197=e9 AND 606=d9 AND b9=804 AND a9=458 AND c9=419)
+      OR (d9=51 AND 327=c9)
+      OR (291=e9 AND 118=b9))
+      INTERSECT
+      SELECT b5 FROM t5
+      WHERE NOT ((e5=270))
+      INTERSECT
+      SELECT c1 FROM t1
+      WHERE NOT (b1 in (807,432,696,350));
+  - name: t3
+  - name: t5
+  - name: t9
+
+outputs:
+  - name: q749.out
+    data: |

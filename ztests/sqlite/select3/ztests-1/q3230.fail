@@ -1,0 +1,50 @@
+script: |
+  super -f tsv -I q3230.sql | sort > q3230.out
+
+inputs:
+  - name: q3230.sql
+    data: |
+      SELECT c-d,
+      d,
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END,
+      (a+b+c+d+e)/5,
+      b-c,
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END
+      FROM t1
+      WHERE EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      OR d NOT BETWEEN 110 AND 150;
+
+outputs:
+  - name: q3230.out
+    data: |
+      -1	114	444	NULL	-1	555
+      -1	196	333	197	3	555
+      -1	203	444	NULL	NULL	222
+      -1	226	333	227	3	555
+      -1	248	111	247	2	444
+      -2	108	333	107	-1	333
+      -2	217	222	217	3	333
+      -2	233	333	232	1	555
+      -3	128	222	127	4	333
+      -3	164	444	162	-1	333
+      1	101	444	NULL	NULL	555
+      1	122	222	NULL	1	333
+      1	133	333	132	-4	444
+      1	136	222	137	2	111
+      1	140	222	142	2	111
+      1	171	444	172	-2	555
+      1	183	333	182	-3	333
+      1	207	444	NULL	-2	555
+      2	185	333	187	-1	444
+      2	212	333	212	-3	222
+      2	222	222	222	-1	444
+      3	190	222	192	1	444
+      NULL	238	444	NULL	NULL	555
+      NULL	NULL	333	NULL	1	555
+      NULL	NULL	333	NULL	1	555
+      NULL	NULL	333	NULL	3	555
+      NULL	NULL	444	NULL	-1	555
+      NULL	NULL	444	NULL	-2	555
+      NULL	NULL	444	NULL	-4	222

@@ -1,0 +1,32 @@
+script: |
+  super -f tsv -I q545.sql | tr '\t' '\n' | sort > q545.out
+
+inputs:
+  - name: q545.sql
+    data: |
+      SELECT d9 FROM t9
+      WHERE (549=b9 AND a9=764 AND 515=c9)
+      OR (127=b9 OR e9=854 OR e9=133)
+      UNION
+      SELECT b5 FROM t5
+      WHERE (155=e5 OR 599=c5)
+      EXCEPT
+      SELECT b6 FROM t6
+      WHERE NOT ((67=e6)
+      OR (a6=966 AND c6=807 AND e6=847 AND b6=276 AND d6=911)
+      OR (683=a6));
+  - name: t1
+  - name: t4
+  - name: t6
+  - name: t7
+  - name: t8
+
+outputs:
+  - name: q545.out
+    data: |
+      161
+      305
+      591
+      822
+      909
+      926

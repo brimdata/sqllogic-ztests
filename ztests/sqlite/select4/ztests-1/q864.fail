@@ -1,0 +1,32 @@
+script: |
+  super -f tsv -I q864.sql | tr '\t' '\n' | sort > q864.out
+
+inputs:
+  - name: q864.sql
+    data: |
+      SELECT b6 FROM t6
+      WHERE (c6=282 AND e6=523 AND d6=256 AND a6=240 AND 158=b6)
+      OR e6 in (100,972,646,439,5)
+      OR (287=c6 AND b6=962 AND d6=185 AND a6=604 AND e6=6)
+      EXCEPT
+      SELECT b8 FROM t8
+      WHERE NOT ((305=e8 OR 96=d8 OR 46=e8)
+      OR (964=b8 AND e8=149 AND 254=a8 AND c8=692 AND d8=48))
+      UNION ALL
+      SELECT e9 FROM t9
+      WHERE (b9=746 OR e9=672)
+      OR (e9=607);
+  - name: t4
+  - name: t5
+
+outputs:
+  - name: q864.out
+    data: |
+      158
+      388
+      606
+      607
+      672
+      954
+      962
+      974

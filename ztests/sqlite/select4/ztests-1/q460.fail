@@ -1,0 +1,23 @@
+script: |
+  super -f tsv -I q460.sql | tr '\t' '\n' | sort > q460.out
+
+inputs:
+  - name: q460.sql
+    data: |
+      SELECT a2 FROM t2
+      WHERE (216=d2)
+      INTERSECT
+      SELECT e8 FROM t8
+      WHERE NOT ((c8=799 AND 328=a8 AND b8=922 AND 899=d8 AND 377=e8)
+      OR (d8=756 OR 404=c8 OR 561=a8)
+      OR (a8=312 AND 397=b8))
+      INTERSECT
+      SELECT b9 FROM t9
+      WHERE NOT ((b9=524 OR c9=515 OR d9=967));
+  - name: t1
+  - name: t5
+  - name: t7
+
+outputs:
+  - name: q460.out
+    data: |

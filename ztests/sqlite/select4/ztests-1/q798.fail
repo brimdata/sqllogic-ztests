@@ -1,0 +1,43 @@
+script: |
+  super -f tsv -I q798.sql | tr '\t' '\n' | sort > q798.out
+
+inputs:
+  - name: q798.sql
+    data: |
+      SELECT d2 FROM t2
+      WHERE d2 in (833,977,651,225,836,126,621,249)
+      OR b2 in (846,599,113,938,966,635,643,139,275,729,519,509)
+      OR d2 in (86,525,953,310,897,306)
+      EXCEPT
+      SELECT d9 FROM t9
+      WHERE NOT ((161=d9 AND a9=764 AND 549=b9 AND 368=e9)
+      OR b9 in (913,936,891,245,421,269,236,893,549,127,912))
+      EXCEPT
+      SELECT a8 FROM t8
+      WHERE NOT ((187=c8))
+      EXCEPT
+      SELECT d5 FROM t5
+      WHERE NOT (e5 in (470,130,874,894,184)
+      OR (81=a5));
+  - name: t4
+  - name: t8
+
+outputs:
+  - name: q798.out
+    data: |
+      126
+      225
+      249
+      292
+      310
+      351
+      373
+      377
+      621
+      669
+      80
+      813
+      833
+      836
+      897
+      953

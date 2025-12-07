@@ -1,0 +1,77 @@
+script: |
+  super -f tsv -I q338.sql | tr '\t' '\n' | sort > q338.out
+
+inputs:
+  - name: q338.sql
+    data: |
+      SELECT d6 FROM t6
+      WHERE c6 in (320,28,718,328)
+      UNION ALL
+      SELECT a5 FROM t5
+      WHERE c5 in (766,894,384,152,747,443,222)
+      UNION
+      SELECT c4 FROM t4
+      WHERE (d4=31)
+      OR d4 in (546,736,55,309,661,260)
+      EXCEPT
+      SELECT d2 FROM t2
+      WHERE NOT ((b2=812 OR c2=810))
+      EXCEPT
+      SELECT a7 FROM t7
+      WHERE NOT ((e7=595)
+      OR (592=a7 AND 436=e7 AND c7=688 AND d7=539)
+      OR (488=c7 OR 92=c7 OR d7=709))
+      EXCEPT
+      SELECT d8 FROM t8
+      WHERE NOT (d8 in (610,845,715)
+      OR (c8=332 OR 541=c8 OR a8=328)
+      OR c8 in (117,961,668,691,789))
+      UNION ALL
+      SELECT a1 FROM t1
+      WHERE (c1=393)
+      OR e1 in (558,355,443,87,11,855,582,763,313,117,695,181,795,209)
+      EXCEPT
+      SELECT e3 FROM t3
+      WHERE NOT ((580=c3 OR 888=b3 OR 560=a3)
+      OR (c3=467)
+      OR (a3=576));
+  - name: t1
+  - name: t2
+  - name: t5
+  - name: t8
+  - name: t9
+
+outputs:
+  - name: q338.out
+    data: |
+      132
+      157
+      170
+      20
+      21
+      222
+      241
+      311
+      335
+      445
+      492
+      498
+      519
+      551
+      584
+      585
+      604
+      629
+      707
+      725
+      754
+      776
+      783
+      820
+      825
+      88
+      904
+      917
+      963
+      964
+      992

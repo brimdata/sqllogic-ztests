@@ -1,0 +1,34 @@
+script: |
+  super -f tsv -I q556.sql | tr '\t' '\n' | sort > q556.out
+
+inputs:
+  - name: q556.sql
+    data: |
+      SELECT a4 FROM t4
+      WHERE b4 in (700,587,480,708,139,713)
+      OR (971=c4)
+      INTERSECT
+      SELECT a7 FROM t7
+      WHERE NOT ((831=d7 AND e7=488 AND 180=a7 AND c7=725))
+      UNION ALL
+      SELECT b3 FROM t3
+      WHERE (b3=124 AND 697=a3 AND e3=7 AND c3=688)
+      EXCEPT
+      SELECT b1 FROM t1
+      WHERE NOT ((d1=900 AND b1=420 AND a1=281 AND c1=758))
+      UNION ALL
+      SELECT c2 FROM t2
+      WHERE a2 in (505,139,64,651,637);
+  - name: t2
+  - name: t3
+  - name: t6
+
+outputs:
+  - name: q556.out
+    data: |
+      124
+      272
+      509
+      575
+      65
+      758

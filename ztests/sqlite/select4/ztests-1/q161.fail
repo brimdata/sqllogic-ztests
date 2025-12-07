@@ -1,0 +1,69 @@
+script: |
+  super -f tsv -I q161.sql | tr '\t' '\n' | sort > q161.out
+
+inputs:
+  - name: q161.sql
+    data: |
+      SELECT d1 FROM t1
+      WHERE (e1=146 AND d1=275 AND a1=371 AND 871=c1)
+      OR (e1=222 AND b1=5 AND a1=972 AND d1=662)
+      OR d1 in (936,585,661,294,828,467,990,678,655,902,35,947,105)
+      UNION ALL
+      SELECT d3 FROM t3
+      WHERE (c3=555)
+      OR b3 in (814,832,677,616,58,788)
+      UNION ALL
+      SELECT e4 FROM t4
+      WHERE b4 in (721,387,919,653,137,261,68,607,986,331,826,538,901)
+      OR (661=e4 OR c4=47 OR d4=524)
+      EXCEPT
+      SELECT e9 FROM t9
+      WHERE NOT ((d9=51 AND 128=b9 AND 327=c9 AND 647=e9 AND 905=a9))
+      EXCEPT
+      SELECT d2 FROM t2
+      WHERE NOT (b2 in (897,297,264,60,527,706,765,442,519,501,279))
+      EXCEPT
+      SELECT c7 FROM t7
+      WHERE NOT ((995=a7 AND c7=855)
+      OR (b7=827))
+      UNION
+      SELECT e5 FROM t5
+      WHERE (d5=32 OR 725=e5 OR b5=716)
+      OR b5 in (306,380,559,784);
+  - name: t1
+  - name: t5
+
+outputs:
+  - name: q161.out
+    data: |
+      104
+      105
+      147
+      151
+      2
+      237
+      25
+      275
+      294
+      363
+      438
+      441
+      552
+      554
+      585
+      631
+      650
+      655
+      656
+      662
+      678
+      68
+      725
+      739
+      828
+      879
+      887
+      902
+      958
+      990
+      995

@@ -1,0 +1,26 @@
+script: |
+  super -f tsv -I q1232.sql | sort > q1232.out
+
+inputs:
+  - name: q1232.sql
+    data: |
+      SELECT b,
+      a+b*2+c*3+d*4+e*5
+      FROM t1
+      WHERE EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      AND d>e;
+
+outputs:
+  - name: q1232.out
+    data: |
+      112	NULL
+      129	1902
+      130	1985
+      139	2046
+      160	2432
+      181	2728
+      211	3175
+      223	3331
+      232	3473
+      236	NULL
+      249	3706

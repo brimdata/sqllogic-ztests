@@ -1,0 +1,62 @@
+script: |
+  super -f tsv -I q589.sql | tr '\t' '\n' | sort > q589.out
+
+inputs:
+  - name: q589.sql
+    data: |
+      SELECT c5 FROM t5
+      WHERE (429=a5 AND d5=132 AND c5=471)
+      OR a5 in (667,369,837,514,55,929,311,413,342,637,18,904,349,373)
+      OR (d5=847 OR 943=e5)
+      UNION ALL
+      SELECT c8 FROM t8
+      WHERE b8 in (34,656,7)
+      OR c8 in (901,691,298,683,299,321,541,266,461,77,5)
+      OR (d8=631)
+      EXCEPT
+      SELECT a9 FROM t9
+      WHERE NOT ((413=a9 AND 788=e9 AND b9=379 AND 62=c9)
+      OR (734=c9)
+      OR (e9=418 OR a9=559 OR a9=240))
+      EXCEPT
+      SELECT e2 FROM t2
+      WHERE NOT (a2 in (944,987,916,898)
+      OR (819=c2 OR 549=b2 OR 844=d2))
+      EXCEPT
+      SELECT b6 FROM t6
+      WHERE NOT ((390=b6 AND 992=c6 AND 45=a6 AND e6=707)
+      OR (a6=1 OR a6=829))
+      UNION
+      SELECT b3 FROM t3
+      WHERE d3 in (247,950,368,764,102)
+      EXCEPT
+      SELECT d1 FROM t1
+      WHERE NOT (a1 in (215,145,950,738,338,553,622)
+      OR (457=d1)
+      OR b1 in (822,681,43,32,662,594,579,914,233));
+  - name: t3
+  - name: t7
+
+outputs:
+  - name: q589.out
+    data: |
+      155
+      266
+      273
+      284
+      299
+      317
+      321
+      471
+      50
+      501
+      551
+      716
+      729
+      766
+      77
+      797
+      810
+      827
+      901
+      998

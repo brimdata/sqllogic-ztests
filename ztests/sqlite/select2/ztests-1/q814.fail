@@ -1,0 +1,30 @@
+script: |
+  super -f tsv -I q814.sql | sort > q814.out
+
+inputs:
+  - name: q814.sql
+    data: |
+      SELECT d-e,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      abs(a),
+      a+b*2+c*3+d*4+e*5,
+      b-c
+      FROM t1
+      WHERE b>c;
+
+outputs:
+  - name: q814.out
+    data: |
+      -1	0	199	2949	3
+      -1	0	229	3399	3
+      -2	0	191	2878	1
+      -2	0	216	3260	3
+      -4	0	142	2131	2
+      1	0	138	2046	2
+      2	0	127	1902	4
+      2	0	245	3706	2
+      3	0	234	3473	1
+      NULL	0	121	NULL	1
+      NULL	0	153	NULL	1
+      NULL	0	159	NULL	3
+      NULL	0	168	NULL	1

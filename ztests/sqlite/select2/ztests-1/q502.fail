@@ -1,0 +1,43 @@
+script: |
+  super -f tsv -I q502.sql | sort > q502.out
+
+inputs:
+  - name: q502.sql
+    data: |
+      SELECT abs(b-c),
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b)
+      FROM t1;
+
+outputs:
+  - name: q502.out
+    data: |
+      1	0
+      1	1
+      1	10
+      1	11
+      1	13
+      1	15
+      1	16
+      1	2
+      1	21
+      1	23
+      1	8
+      2	12
+      2	18
+      2	26
+      2	5
+      2	6
+      2	7
+      3	14
+      3	17
+      3	19
+      3	20
+      3	22
+      3	9
+      4	25
+      4	3
+      4	4
+      NULL	0
+      NULL	0
+      NULL	0
+      NULL	24

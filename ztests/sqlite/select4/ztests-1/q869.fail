@@ -1,0 +1,57 @@
+script: |
+  super -f tsv -I q869.sql | tr '\t' '\n' | sort > q869.out
+
+inputs:
+  - name: q869.sql
+    data: |
+      SELECT e6 FROM t6
+      WHERE (e6=798 AND d6=376 AND b6=0)
+      OR d6 in (21,600,970,942,974)
+      OR b6 in (230,452,716)
+      UNION
+      SELECT b5 FROM t5
+      WHERE b5 in (703,321,858,661)
+      OR d5 in (521,810,883,152,977,856,271,729)
+      OR (a5=53 AND d5=856 AND c5=196 AND b5=975)
+      UNION ALL
+      SELECT e4 FROM t4
+      WHERE b4 in (606,660,271,847,579,816,749,979,826)
+      OR (c4=417)
+      EXCEPT
+      SELECT e2 FROM t2
+      WHERE NOT ((718=a2 AND c2=657 AND b2=357 AND e2=510 AND d2=241)
+      OR (d2=235 OR 61=c2 OR d2=847))
+      EXCEPT
+      SELECT a7 FROM t7
+      WHERE NOT (d7 in (192,590,324,831,787,724))
+      EXCEPT
+      SELECT d8 FROM t8
+      WHERE NOT ((636=d8 AND a8=671 AND 74=c8 AND b8=105)
+      OR (e8=874 AND b8=769 AND c8=907 AND d8=141 AND a8=586))
+      EXCEPT
+      SELECT a3 FROM t3
+      WHERE NOT ((816=b3)
+      OR (964=a3 AND 888=b3 AND e3=131 AND 970=c3 AND d3=444));
+  - name: t4
+  - name: t5
+
+outputs:
+  - name: q869.out
+    data: |
+      1
+      211
+      321
+      38
+      412
+      415
+      495
+      546
+      634
+      661
+      716
+      771
+      798
+      858
+      874
+      972
+      975

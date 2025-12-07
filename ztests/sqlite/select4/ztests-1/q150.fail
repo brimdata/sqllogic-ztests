@@ -1,0 +1,62 @@
+script: |
+  super -f tsv -I q150.sql | tr '\t' '\n' | sort > q150.out
+
+inputs:
+  - name: q150.sql
+    data: |
+      SELECT e4 FROM t4
+      WHERE (b4=653 OR c4=758)
+      OR d4 in (481,546,973,197,146,356,713,185,905,212,901,617)
+      INTERSECT
+      SELECT a1 FROM t1
+      WHERE NOT ((172=c1 OR c1=62))
+      INTERSECT
+      SELECT b8 FROM t8
+      WHERE NOT ((947=e8 AND 269=d8 AND 637=a8 AND 149=c8 AND b8=228))
+      UNION
+      SELECT a3 FROM t3
+      WHERE (e3=254 OR b3=27 OR 347=a3)
+      OR e3 in (231,593,932,959,131,83,7,596,271,192,550,239,836)
+      OR (317=c3 OR c3=792)
+      EXCEPT
+      SELECT b7 FROM t7
+      WHERE NOT ((c7=853 AND e7=844 AND 386=a7))
+      UNION ALL
+      SELECT d5 FROM t5
+      WHERE (351=c5)
+      OR c5 in (185,678,927,625)
+      UNION ALL
+      SELECT c6 FROM t6
+      WHERE (664=d6);
+  - name: t4
+  - name: t6
+
+outputs:
+  - name: q150.out
+    data: |
+      146
+      197
+      282
+      344
+      347
+      378
+      383
+      393
+      542
+      548
+      549
+      559
+      614
+      651
+      667
+      697
+      699
+      729
+      803
+      810
+      818
+      895
+      910
+      964
+      965
+      965

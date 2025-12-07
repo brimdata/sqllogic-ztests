@@ -1,0 +1,52 @@
+script: |
+  super -f tsv -I q936.sql | tr '\t' '\n' | sort > q936.out
+
+inputs:
+  - name: q936.sql
+    data: |
+      SELECT e7 FROM t7
+      WHERE (456=e7 AND b7=627 AND 344=c7)
+      OR (707=a7 AND d7=177)
+      OR (183=d7)
+      EXCEPT
+      SELECT b8 FROM t8
+      WHERE NOT ((34=b8 AND d8=630 AND c8=501 AND a8=650))
+      UNION ALL
+      SELECT d4 FROM t4
+      WHERE (d4=989 OR 589=a4 OR 215=c4)
+      UNION
+      SELECT d9 FROM t9
+      WHERE b9 in (936,214,361,379,19,95,426,64,868,446,848,178,142,19)
+      OR (c9=327 OR c9=327)
+      OR (534=c9);
+  - name: t1
+  - name: t3
+  - name: t8
+  - name: t9
+
+outputs:
+  - name: q936.out
+    data: |
+      129
+      247
+      258
+      268
+      270
+      345
+      389
+      432
+      439
+      450
+      456
+      463
+      467
+      489
+      51
+      55
+      688
+      781
+      790
+      818
+      86
+      955
+      989

@@ -1,0 +1,46 @@
+script: |
+  super -f tsv -I q899.sql | tr '\t' '\n' | sort > q899.out
+
+inputs:
+  - name: q899.sql
+    data: |
+      SELECT d7 FROM t7
+      WHERE d7 in (457,785,526,196,539,315,367)
+      OR (a7=97 AND b7=579)
+      EXCEPT
+      SELECT d4 FROM t4
+      WHERE NOT ((a4=355))
+      UNION ALL
+      SELECT b5 FROM t5
+      WHERE d5 in (542,792,117)
+      OR e5 in (906,104,758,188,25,592,887,589)
+      OR c5 in (222,927,149);
+  - name: t3
+  - name: t7
+
+outputs:
+  - name: q899.out
+    data: |
+      196
+      26
+      306
+      315
+      336
+      367
+      380
+      391
+      393
+      457
+      526
+      527
+      539
+      629
+      640
+      685
+      731
+      736
+      785
+      789
+      79
+      846
+      897

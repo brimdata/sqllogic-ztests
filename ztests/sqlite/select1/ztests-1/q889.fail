@@ -1,0 +1,35 @@
+script: |
+  super -f tsv -I q889.sql > q889.out
+
+inputs:
+  - name: q889.sql
+    data: |
+      SELECT c,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      (a+b+c+d+e)/5,
+      a+b*2+c*3+d*4,
+      a+b*2+c*3
+      FROM t1
+      WHERE d>e
+      AND EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      AND c BETWEEN b-2 AND d+2
+      ORDER BY 4,5,3,1,2;
+
+outputs:
+  - name: q889.out
+    data: |
+      113	2	112	1130	674
+      123	4	122	1226	738
+      134	6	132	1325	793
+      137	7	137	1371	827
+      147	9	147	1472	880
+      150	10	152	1521	905
+      161	12	162	1622	966
+      166	13	167	1676	1000
+      176	15	177	1769	1057
+      184	16	182	1828	1096
+      214	22	212	2125	1277
+      224	24	222	2226	1338
+      231	26	232	2323	1391
+      235	27	237	2368	1416
+      247	29	247	2476	1484

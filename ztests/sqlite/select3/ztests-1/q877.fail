@@ -1,0 +1,23 @@
+script: |
+  super -f tsv -I q877.sql | sort > q877.out
+
+inputs:
+  - name: q877.sql
+    data: |
+      SELECT c,
+      (a+b+c+d+e)/5,
+      e,
+      d-e,
+      a+b*2,
+      b-c,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d)
+      FROM t1
+      WHERE d>e
+      AND (e>a AND e<b)
+      AND c>d
+      ORDER BY 5,1,6,2,3;
+
+outputs:
+  - name: q877.out
+    data: |
+      224	222	221	1	666	-1	0

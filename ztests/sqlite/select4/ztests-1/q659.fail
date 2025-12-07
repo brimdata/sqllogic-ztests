@@ -1,0 +1,19 @@
+script: |
+  super -f tsv -I q659.sql | tr '\t' '\n' | sort > q659.out
+
+inputs:
+  - name: q659.sql
+    data: |
+      SELECT d9 FROM t9
+      WHERE (d9=439 AND b9=64 AND a9=115)
+      EXCEPT
+      SELECT a8 FROM t8
+      WHERE NOT ((a8=474)
+      OR (314=a8 OR b8=98));
+  - name: t1
+  - name: t2
+
+outputs:
+  - name: q659.out
+    data: |
+      439

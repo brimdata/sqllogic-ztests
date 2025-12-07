@@ -1,0 +1,46 @@
+script: |
+  super -f tsv -I q579.sql > q579.out
+
+inputs:
+  - name: q579.sql
+    data: |
+      SELECT (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      b-c,
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END
+      FROM t1
+      ORDER BY 1,2,3;
+
+outputs:
+  - name: q579.out
+    data: |
+      0	-4	222
+      0	-4	444
+      0	-3	222
+      0	-3	333
+      0	-2	111
+      0	-2	222
+      0	-2	555
+      0	-2	555
+      0	-2	555
+      0	-1	111
+      0	-1	333
+      0	-1	333
+      0	-1	333
+      0	-1	444
+      0	-1	444
+      0	-1	555
+      0	1	333
+      0	1	333
+      0	1	333
+      0	1	444
+      0	1	555
+      0	1	555
+      0	2	111
+      0	2	111
+      0	2	444
+      0	3	333
+      0	3	555
+      0	3	555
+      0	3	555
+      0	4	333

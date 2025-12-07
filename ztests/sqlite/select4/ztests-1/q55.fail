@@ -1,0 +1,101 @@
+script: |
+  super -f tsv -I q55.sql | tr '\t' '\n' | sort > q55.out
+
+inputs:
+  - name: q55.sql
+    data: |
+      SELECT c4 FROM t4
+      WHERE (b4=888 OR 844=d4 OR 422=c4)
+      OR (e4=565 OR d4=889)
+      OR e4 in (307,185,290,405)
+      EXCEPT
+      SELECT b1 FROM t1
+      WHERE NOT ((b1=523 AND 458=c1 AND 816=e1 AND 352=a1)
+      OR (748=e1))
+      EXCEPT
+      SELECT c5 FROM t5
+      WHERE NOT ((991=d5 OR 526=b5)
+      OR (390=e5 OR 716=b5 OR 118=d5)
+      OR c5 in (681,668,657,721,989,934,894,628,86,797,941))
+      UNION
+      SELECT c2 FROM t2
+      WHERE (a2=508 AND d2=723 AND 444=c2 AND b2=170 AND e2=965)
+      OR (476=d2 OR 275=c2)
+      OR (d2=19)
+      UNION ALL
+      SELECT a6 FROM t6
+      WHERE a6 in (861,129,718,585,811,818,839)
+      OR c6 in (992,65,454,416,11,413,637,480,45,528,528,411,749)
+      UNION
+      SELECT c7 FROM t7
+      WHERE e7 in (499,827,887,638,302,782,816,929,408,356,595,904)
+      OR c7 in (482,795,302,934)
+      OR (841=b7 AND 970=e7)
+      EXCEPT
+      SELECT b9 FROM t9
+      WHERE NOT ((a9=240 AND 232=c9 AND b9=688 AND 418=e9)
+      OR (c9=253 AND e9=647 AND 808=d9)
+      OR d9 in (720,95,345,258,808,235,164,270,628,283,597,23,463,601))
+      UNION
+      SELECT c8 FROM t8
+      WHERE (186=b8 AND 826=a8)
+      OR (513=c8 AND 628=a8)
+      OR (106=e8 AND a8=72 AND d8=805 AND c8=668 AND b8=359);
+  - name: t4
+  - name: t5
+  - name: t6
+  - name: t8
+  - name: t9
+
+outputs:
+  - name: q55.out
+    data: |
+      100
+      129
+      145
+      238
+      243
+      257
+      271
+      275
+      302
+      341
+      364
+      374
+      393
+      41
+      444
+      45
+      474
+      482
+      484
+      513
+      518
+      557
+      572
+      585
+      586
+      635
+      653
+      668
+      672
+      691
+      694
+      718
+      720
+      740
+      764
+      795
+      811
+      813
+      839
+      85
+      851
+      860
+      861
+      877
+      887
+      92
+      934
+      966
+      967

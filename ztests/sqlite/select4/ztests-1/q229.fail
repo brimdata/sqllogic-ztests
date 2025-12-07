@@ -1,0 +1,34 @@
+script: |
+  super -f tsv -I q229.sql | tr '\t' '\n' | sort > q229.out
+
+inputs:
+  - name: q229.sql
+    data: |
+      SELECT d1 FROM t1
+      WHERE a1 in (268,241,477,32,879,738,746,517)
+      EXCEPT
+      SELECT b2 FROM t2
+      WHERE NOT (d2 in (749,669,750,317,838,137,953,516,351)
+      OR b2 in (765,545,820,819,820,504,864,754,599,414,217))
+      EXCEPT
+      SELECT d4 FROM t4
+      WHERE NOT ((318=a4 OR d4=524 OR c4=936))
+      UNION
+      SELECT c8 FROM t8
+      WHERE a8 in (653,920,564,46,402);
+  - name: t6
+  - name: t8
+
+outputs:
+  - name: q229.out
+    data: |
+      119
+      168
+      265
+      275
+      394
+      571
+      654
+      75
+      79
+      965

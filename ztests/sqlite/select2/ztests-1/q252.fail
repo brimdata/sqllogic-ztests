@@ -1,0 +1,44 @@
+script: |
+  super -f tsv -I q252.sql | sort > q252.out
+
+inputs:
+  - name: q252.sql
+    data: |
+      SELECT d,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b)
+      FROM t1
+      WHERE coalesce(a,b,c,d,e)<>0;
+
+outputs:
+  - name: q252.out
+    data: |
+      101	0
+      108	0
+      114	1
+      116	0
+      122	2
+      128	3
+      133	4
+      136	5
+      140	6
+      164	10
+      171	12
+      183	14
+      185	15
+      190	16
+      196	17
+      203	0
+      207	18
+      212	19
+      217	20
+      222	21
+      226	22
+      233	23
+      238	24
+      248	26
+      NULL	11
+      NULL	13
+      NULL	25
+      NULL	7
+      NULL	8
+      NULL	9

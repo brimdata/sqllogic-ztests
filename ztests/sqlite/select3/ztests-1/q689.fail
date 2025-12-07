@@ -1,0 +1,46 @@
+script: |
+  super -f tsv -I q689.sql | sort > q689.out
+
+inputs:
+  - name: q689.sql
+    data: |
+      SELECT c,
+      a,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      (a+b+c+d+e)/5,
+      a-b,
+      a+b*2+c*3
+      FROM t1
+      WHERE c>d
+      OR (e>c OR e<d)
+      ORDER BY 1,2,6,5;
+
+outputs:
+  - name: q689.out
+    data: |
+      102	104	0	NULL	NULL	NULL
+      106	107	0	107	2	635
+      113	NULL	0	NULL	NULL	NULL
+      119	115	0	NULL	NULL	NULL
+      123	121	0	NULL	-3	738
+      125	127	0	127	-2	760
+      134	131	0	132	1	793
+      137	138	0	137	-1	827
+      141	142	0	142	-1	851
+      155	159	0	NULL	1	940
+      161	163	0	162	3	966
+      172	174	0	172	4	1030
+      176	179	0	NULL	4	1057
+      184	182	0	182	1	1096
+      187	188	0	187	2	1121
+      193	191	0	192	-3	1158
+      195	199	0	197	1	1180
+      202	201	0	NULL	NULL	NULL
+      208	NULL	0	NULL	NULL	NULL
+      214	213	0	212	2	1277
+      215	216	0	217	-2	1297
+      224	220	0	222	-3	1338
+      225	229	0	227	1	1360
+      231	234	0	232	2	1391
+      247	245	0	247	-4	1484
+      NULL	239	0	NULL	3	NULL

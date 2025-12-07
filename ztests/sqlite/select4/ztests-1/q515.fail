@@ -1,0 +1,19 @@
+script: |
+  super -f tsv -I q515.sql | tr '\t' '\n' | sort > q515.out
+
+inputs:
+  - name: q515.sql
+    data: |
+      SELECT a8 FROM t8
+      WHERE e8 in (608,455,579,678,469,149,592,972,56,579)
+      INTERSECT
+      SELECT e9 FROM t9
+      WHERE NOT ((746=b9 OR a9=972 OR 686=d9));
+  - name: t1
+  - name: t4
+  - name: t6
+  - name: t9
+
+outputs:
+  - name: q515.out
+    data: |

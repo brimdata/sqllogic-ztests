@@ -1,0 +1,31 @@
+script: |
+  super -f tsv -I q395.sql > q395.out
+
+inputs:
+  - name: q395.sql
+    data: |
+      SELECT CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d)
+      FROM t1
+      WHERE c>d
+      ORDER BY 2,3,1;
+
+outputs:
+  - name: q395.out
+    data: |
+      333	364	0
+      444	376	0
+      444	382	0
+      111	410	0
+      222	426	0
+      444	440	0
+      222	486	0
+      555	1000	0
+      333	1180	0
+      333	1240	0
+      444	1300	0
+      111	1390	0
+      111	1430	0
+      555	1700	0

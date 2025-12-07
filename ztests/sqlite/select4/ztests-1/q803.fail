@@ -1,0 +1,43 @@
+script: |
+  super -f tsv -I q803.sql | tr '\t' '\n' | sort > q803.out
+
+inputs:
+  - name: q803.sql
+    data: |
+      SELECT b6 FROM t6
+      WHERE (d6=73 OR 534=c6 OR a6=64)
+      OR (a6=811)
+      EXCEPT
+      SELECT b7 FROM t7
+      WHERE NOT (c7 in (41,482,145,341,635,853,813,419,944,954,596,523,135,92))
+      EXCEPT
+      SELECT a1 FROM t1
+      WHERE NOT ((210=e1 OR 607=a1 OR 498=c1)
+      OR (298=e1 AND 942=b1)
+      OR (523=b1 OR d1=619))
+      EXCEPT
+      SELECT e3 FROM t3
+      WHERE NOT ((29=c3 OR 923=d3)
+      OR e3 in (147,892,814,310,854,333,586)
+      OR (478=a3 OR 959=a3))
+      EXCEPT
+      SELECT d2 FROM t2
+      WHERE NOT ((e2=322))
+      UNION
+      SELECT b8 FROM t8
+      WHERE (b8=603 AND d8=512)
+      OR (b8=365 OR 656=c8 OR d8=715)
+      OR (514=a8)
+      EXCEPT
+      SELECT a9 FROM t9
+      WHERE NOT (d9 in (554,919,967,628,129));
+  - name: t4
+  - name: t8
+
+outputs:
+  - name: q803.out
+    data: |
+      155
+      296
+      603
+      878

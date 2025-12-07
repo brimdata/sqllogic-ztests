@@ -1,0 +1,62 @@
+script: |
+  super -f tsv -I q722.sql | tr '\t' '\n' | sort > q722.out
+
+inputs:
+  - name: q722.sql
+    data: |
+      SELECT d7 FROM t7
+      WHERE (c7=344 AND 430=a7)
+      EXCEPT
+      SELECT e2 FROM t2
+      WHERE NOT ((543=b2 OR b2=585))
+      UNION
+      SELECT d3 FROM t3
+      WHERE (e3=972 OR 177=e3)
+      UNION ALL
+      SELECT c9 FROM t9
+      WHERE (15=b9)
+      OR (c9=807)
+      OR (c9=37 OR 926=b9)
+      EXCEPT
+      SELECT e4 FROM t4
+      WHERE NOT ((b4=607)
+      OR (141=e4 AND c4=832 AND a4=451))
+      UNION
+      SELECT a1 FROM t1
+      WHERE (d1=96 OR 289=c1 OR a1=4)
+      OR c1 in (482,420,814,626,876,765,787,680,639,136,530,67)
+      OR b1 in (213,355,280,682,37,75);
+  - name: t2
+  - name: t4
+  - name: t5
+  - name: t6
+  - name: t7
+
+outputs:
+  - name: q722.out
+    data: |
+      109
+      189
+      20
+      213
+      292
+      363
+      382
+      4
+      406
+      434
+      445
+      538
+      75
+      76
+      779
+      807
+      810
+      862
+      864
+      879
+      880
+      892
+      898
+      931
+      953

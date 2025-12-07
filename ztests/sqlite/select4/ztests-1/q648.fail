@@ -1,0 +1,67 @@
+script: |
+  super -f tsv -I q648.sql | tr '\t' '\n' | sort > q648.out
+
+inputs:
+  - name: q648.sql
+    data: |
+      SELECT e1 FROM t1
+      WHERE (738=a1)
+      OR (688=e1 OR 18=d1 OR 963=e1)
+      OR (594=b1)
+      UNION
+      SELECT d4 FROM t4
+      WHERE (d4=905)
+      OR (e4=850 AND d4=141 AND c4=489 AND 577=b4)
+      EXCEPT
+      SELECT b9 FROM t9
+      WHERE NOT ((d9=602)
+      OR (264=e9)
+      OR (e9=418 AND 240=a9 AND b9=688))
+      UNION
+      SELECT d6 FROM t6
+      WHERE c6 in (287,752,292,177,434,424,187,637,34,615,84,265,242,282)
+      UNION ALL
+      SELECT b7 FROM t7
+      WHERE d7 in (485,28,436,785,205,276,891,524,183,902,177,673,787,212);
+  - name: t1
+  - name: t2
+
+outputs:
+  - name: q648.out
+    data: |
+      141
+      172
+      185
+      2
+      256
+      276
+      277
+      308
+      34
+      340
+      407
+      467
+      473
+      503
+      541
+      560
+      600
+      67
+      670
+      670
+      688
+      729
+      747
+      750
+      781
+      786
+      813
+      815
+      822
+      868
+      89
+      905
+      921
+      923
+      963
+      974

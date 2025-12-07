@@ -1,0 +1,49 @@
+script: |
+  super -f tsv -I q258.sql | tr '\t' '\n' | sort > q258.out
+
+inputs:
+  - name: q258.sql
+    data: |
+      SELECT d1 FROM t1
+      WHERE (492=d1 OR 295=b1 OR 508=d1)
+      OR (737=e1 OR d1=298 OR 571=d1)
+      OR (602=d1 OR a1=553)
+      UNION ALL
+      SELECT c7 FROM t7
+      WHERE (b7=881 AND 156=e7)
+      OR d7 in (526,988,684,485,673,205,172,492,524,142,687,315,442,131)
+      EXCEPT
+      SELECT c2 FROM t2
+      WHERE NOT ((91=a2 OR e2=923))
+      EXCEPT
+      SELECT d4 FROM t4
+      WHERE NOT ((593=b4 OR b4=86 OR e4=575))
+      EXCEPT
+      SELECT d6 FROM t6
+      WHERE NOT ((251=a6)
+      OR (457=d6 AND e6=747 AND b6=223 AND 146=c6 AND a6=62))
+      UNION
+      SELECT b9 FROM t9
+      WHERE (e9=549 AND 129=d9 AND b9=19);
+  - name: t6
+  - name: t8
+
+outputs:
+  - name: q258.out
+    data: |
+      12
+      19
+      288
+      298
+      375
+      435
+      478
+      492
+      508
+      518
+      553
+      571
+      602
+      678
+      764
+      857

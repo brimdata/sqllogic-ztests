@@ -1,0 +1,43 @@
+script: |
+  super -f tsv -I q810.sql | tr '\t' '\n' | sort > q810.out
+
+inputs:
+  - name: q810.sql
+    data: |
+      SELECT b4 FROM t4
+      WHERE c4 in (0,675,723)
+      OR (a4=778 AND b4=587 AND 317=d4 AND 393=c4)
+      OR (d4=950)
+      INTERSECT
+      SELECT d9 FROM t9
+      WHERE NOT (c9 in (739,332,62,863,601,884,469,87,767,180,151,935,232))
+      UNION
+      SELECT a7 FROM t7
+      WHERE (c7=135 OR c7=565 OR c7=14)
+      OR a7 in (130,542,925,290,439,97,722,995,945,622,665,89,48)
+      EXCEPT
+      SELECT b2 FROM t2
+      WHERE NOT ((a2=651 AND b2=725));
+  - name: t2
+  - name: t5
+
+outputs:
+  - name: q810.out
+    data: |
+      120
+      130
+      290
+      439
+      48
+      542
+      622
+      665
+      722
+      736
+      89
+      919
+      925
+      945
+      958
+      97
+      995

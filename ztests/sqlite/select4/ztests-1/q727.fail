@@ -1,0 +1,21 @@
+script: |
+  super -f tsv -I q727.sql | tr '\t' '\n' | sort > q727.out
+
+inputs:
+  - name: q727.sql
+    data: |
+      SELECT e2 FROM t2
+      WHERE (a2=283 OR c2=282)
+      INTERSECT
+      SELECT e3 FROM t3
+      WHERE NOT ((376=a3)
+      OR c3 in (711,986,898,763,326,555,929,844,651,10,800));
+  - name: t2
+  - name: t4
+  - name: t5
+  - name: t6
+  - name: t7
+
+outputs:
+  - name: q727.out
+    data: |

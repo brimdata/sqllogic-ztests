@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q837.sql | sort > q837.out
+
+inputs:
+  - name: q837.sql
+    data: |
+      SELECT + MIN ( DISTINCT + - col1 ) - COUNT ( ALL - col2 ) AS col0 FROM tab1 WHERE ( NOT + col2 = NULL );
+
+outputs:
+  - name: q837.out
+    data: |
+      NULL

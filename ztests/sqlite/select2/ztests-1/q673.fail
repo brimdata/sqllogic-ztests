@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q673.sql | sort > q673.out
+
+inputs:
+  - name: q673.sql
+    data: |
+      SELECT abs(a),
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b)
+      FROM t1
+      WHERE e+d BETWEEN a+b-10 AND c+130
+      AND c BETWEEN b-2 AND d+2;
+
+outputs:
+  - name: q673.out
+    data: |
+      107	0

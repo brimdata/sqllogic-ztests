@@ -1,0 +1,55 @@
+script: |
+  super -f tsv -I q248.sql | tr '\t' '\n' | sort > q248.out
+
+inputs:
+  - name: q248.sql
+    data: |
+      SELECT e4 FROM t4
+      WHERE c4 in (201,489,860,297,660,840,609,319,993,671)
+      EXCEPT
+      SELECT d1 FROM t1
+      WHERE NOT ((254=d1 OR 200=c1 OR 51=e1)
+      OR (805=c1 OR b1=88 OR 864=c1))
+      UNION ALL
+      SELECT a3 FROM t3
+      WHERE (244=c3 AND 566=b3 AND 525=a3 AND d3=889 AND 120=e3)
+      OR (e3=844 AND 761=b3 AND 777=c3)
+      OR (d3=729 AND c3=669 AND e3=131 AND a3=729 AND 651=b3)
+      EXCEPT
+      SELECT a2 FROM t2
+      WHERE NOT ((914=d2 AND 680=a2 AND 463=e2 AND 674=b2))
+      UNION ALL
+      SELECT a6 FROM t6
+      WHERE c6 in (297,411,677,308,963,287,864,528,928,242)
+      EXCEPT
+      SELECT c8 FROM t8
+      WHERE NOT (e8 in (455,866,487,305,223,533,548,377,579,632,620,561,874,678)
+      OR (c8=374 OR 349=e8)
+      OR b8 in (952,364,870,511,796,369,397,162,540,351,324,761,300));
+  - name: t6
+  - name: t8
+
+outputs:
+  - name: q248.out
+    data: |
+      129
+      296
+      306
+      312
+      384
+      405
+      511
+      525
+      564
+      572
+      585
+      604
+      672
+      677
+      680
+      729
+      811
+      816
+      850
+      931
+      963

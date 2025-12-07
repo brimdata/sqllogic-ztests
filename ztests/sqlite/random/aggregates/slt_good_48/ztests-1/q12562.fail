@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q12562.sql | sort > q12562.out
+
+inputs:
+  - name: q12562.sql
+    data: |
+      SELECT SUM ( col0 ) FROM tab2 WHERE NOT NULL NOT IN ( - col0 );
+  - name: tab2
+
+outputs:
+  - name: q12562.out
+    data: |
+      NULL

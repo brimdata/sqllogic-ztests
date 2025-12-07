@@ -1,0 +1,48 @@
+script: |
+  super -f tsv -I q1146.sql | sort > q1146.out
+
+inputs:
+  - name: q1146.sql
+    data: |
+      SELECT a+b*2+c*3+d*4,
+      c-d,
+      a+b*2+c*3,
+      d,
+      d-e,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      abs(b-c)
+      FROM t1;
+
+outputs:
+  - name: q1146.out
+    data: |
+      1067	-2	635	108	-1	0	1
+      1226	1	738	122	NULL	2	1
+      1272	-3	760	128	2	3	4
+      1325	1	793	133	1	4	4
+      1371	1	827	136	1	5	2
+      1411	1	851	140	-4	6	2
+      1622	-3	966	164	2	10	1
+      1714	1	1030	171	-2	12	2
+      1828	1	1096	183	3	14	3
+      1861	2	1121	185	-4	15	1
+      1918	3	1158	190	-2	16	1
+      1964	-1	1180	196	-1	17	3
+      2125	2	1277	212	2	19	3
+      2165	-2	1297	217	-2	20	3
+      2226	2	1338	222	1	21	1
+      2264	-1	1360	226	-1	22	3
+      2323	-2	1391	233	3	23	1
+      2476	-1	1484	248	2	26	2
+      NULL	-1	NULL	114	4	1	1
+      NULL	-1	NULL	203	-1	0	NULL
+      NULL	1	NULL	101	NULL	0	NULL
+      NULL	1	NULL	207	NULL	18	2
+      NULL	3	NULL	116	-1	0	NULL
+      NULL	NULL	1000	NULL	NULL	11	1
+      NULL	NULL	1057	NULL	NULL	13	1
+      NULL	NULL	1455	NULL	NULL	25	4
+      NULL	NULL	880	NULL	NULL	7	2
+      NULL	NULL	905	NULL	NULL	8	1
+      NULL	NULL	940	NULL	NULL	9	3
+      NULL	NULL	NULL	238	1	24	NULL

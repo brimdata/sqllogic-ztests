@@ -1,0 +1,51 @@
+script: |
+  super -f tsv -I q550.sql | tr '\t' '\n' | sort > q550.out
+
+inputs:
+  - name: q550.sql
+    data: |
+      SELECT a1 FROM t1
+      WHERE (335=d1 AND c1=12 AND 314=a1)
+      INTERSECT
+      SELECT b2 FROM t2
+      WHERE NOT (b2 in (755,532,504,635,276,139))
+      UNION ALL
+      SELECT e4 FROM t4
+      WHERE (c4=74)
+      EXCEPT
+      SELECT a7 FROM t7
+      WHERE NOT (d7 in (492,399,395,367)
+      OR c7 in (807,857,781,98,280,103,548,482,606,575,764,626))
+      UNION
+      SELECT d9 FROM t9
+      WHERE a9 in (511,240,215,830)
+      UNION
+      SELECT e6 FROM t6
+      WHERE (d6=970 AND b6=144 AND c6=543 AND 1=e6 AND 696=a6)
+      OR d6 in (613,991,223,970,924,2,60,197);
+  - name: t2
+  - name: t3
+  - name: t5
+  - name: t7
+  - name: t8
+  - name: t9
+
+outputs:
+  - name: q550.out
+    data: |
+      1
+      100
+      223
+      24
+      274
+      283
+      286
+      316
+      324
+      549
+      585
+      595
+      631
+      665
+      766
+      987

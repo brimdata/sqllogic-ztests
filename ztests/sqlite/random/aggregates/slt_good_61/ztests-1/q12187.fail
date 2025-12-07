@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q12187.sql | sort > q12187.out
+
+inputs:
+  - name: q12187.sql
+    data: |
+      SELECT - COUNT ( * ) AS col1, ( + - AVG ( ALL col1 ) ) FROM tab1 WHERE NULL IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q12187.out
+    data: |
+      0	NULL

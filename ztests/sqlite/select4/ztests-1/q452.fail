@@ -1,0 +1,45 @@
+script: |
+  super -f tsv -I q452.sql | tr '\t' '\n' | sort > q452.out
+
+inputs:
+  - name: q452.sql
+    data: |
+      SELECT c7 FROM t7
+      WHERE (430=a7 AND e7=456 AND 344=c7 AND 892=d7)
+      OR (a7=995 OR 206=c7 OR 808=b7)
+      INTERSECT
+      SELECT c2 FROM t2
+      WHERE NOT (b2 in (297,311,433,592,938))
+      INTERSECT
+      SELECT b5 FROM t5
+      WHERE NOT ((d5=32 OR b5=234))
+      INTERSECT
+      SELECT d9 FROM t9
+      WHERE NOT ((126=c9)
+      OR (a9=28 AND 254=c9 AND b9=348))
+      EXCEPT
+      SELECT b3 FROM t3
+      WHERE NOT ((a3=696 AND 386=b3))
+      EXCEPT
+      SELECT a1 FROM t1
+      WHERE NOT ((e1=381))
+      UNION ALL
+      SELECT a4 FROM t4
+      WHERE (a4=378 AND 589=b4 AND c4=162)
+      OR (b4=289)
+      EXCEPT
+      SELECT a6 FROM t6
+      WHERE NOT ((924=d6 OR d6=60))
+      EXCEPT
+      SELECT c8 FROM t8
+      WHERE NOT (e8 in (105,186,431,149,682,620,809,600,333)
+      OR (534=d8)
+      OR (994=a8));
+  - name: t3
+  - name: t7
+
+outputs:
+  - name: q452.out
+    data: |
+      378
+      793

@@ -1,0 +1,49 @@
+script: |
+  super -f tsv -I q3166.sql | sort > q3166.out
+
+inputs:
+  - name: q3166.sql
+    data: |
+      SELECT (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      a+b*2+c*3+d*4,
+      a+b*2+c*3+d*4+e*5,
+      a,
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END
+      FROM t1
+      WHERE (a>b-2 AND a<b+2)
+      OR EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      OR d NOT BETWEEN 110 AND 150;
+
+outputs:
+  - name: q3166.out
+    data: |
+      0	1067	1612	107	333
+      0	1226	NULL	121	333
+      0	1272	1902	127	333
+      0	1325	1985	131	444
+      0	1371	2046	138	111
+      0	1411	2131	142	111
+      0	1622	2432	163	333
+      0	1714	2579	174	555
+      0	1828	2728	182	333
+      0	1861	2806	188	444
+      0	1918	2878	191	444
+      0	1964	2949	199	555
+      0	2125	3175	213	222
+      0	2165	3260	216	333
+      0	2226	3331	220	444
+      0	2264	3399	229	555
+      0	2323	3473	234	555
+      0	2476	3706	245	444
+      0	NULL	NULL	104	555
+      0	NULL	NULL	149	555
+      0	NULL	NULL	153	555
+      0	NULL	NULL	159	555
+      0	NULL	NULL	168	555
+      0	NULL	NULL	179	555
+      0	NULL	NULL	201	222
+      0	NULL	NULL	239	555
+      0	NULL	NULL	243	222
+      0	NULL	NULL	NULL	555
+      0	NULL	NULL	NULL	555

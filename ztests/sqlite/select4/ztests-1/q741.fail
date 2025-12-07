@@ -1,0 +1,18 @@
+script: |
+  super -f tsv -I q741.sql | tr '\t' '\n' | sort > q741.out
+
+inputs:
+  - name: q741.sql
+    data: |
+      SELECT d4 FROM t4
+      WHERE (d4=449 OR 471=c4 OR 778=e4)
+      INTERSECT
+      SELECT d3 FROM t3
+      WHERE NOT ((c3=900 OR 476=c3 OR a3=697));
+  - name: t2
+  - name: t5
+  - name: t9
+
+outputs:
+  - name: q741.out
+    data: |

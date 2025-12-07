@@ -1,0 +1,34 @@
+script: |
+  super -f tsv -I q176.sql | tr '\t' '\n' | sort > q176.out
+
+inputs:
+  - name: q176.sql
+    data: |
+      SELECT e8 FROM t8
+      WHERE (98=b8 OR e8=881)
+      OR d8 in (474,192,899,849,627,953)
+      UNION
+      SELECT e2 FROM t2
+      WHERE (b2=148 AND e2=572 AND 137=d2 AND c2=729 AND 266=a2)
+      EXCEPT
+      SELECT b9 FROM t9
+      WHERE NOT ((679=d9 OR 834=c9 OR d9=790))
+      EXCEPT
+      SELECT e5 FROM t5
+      WHERE NOT (c5 in (443,668,868,602,756,601,86,598,250,941,634,158,351)
+      OR (335=a5)
+      OR (d5=667));
+  - name: t1
+  - name: t5
+
+outputs:
+  - name: q176.out
+    data: |
+      305
+      377
+      46
+      485
+      512
+      572
+      579
+      881

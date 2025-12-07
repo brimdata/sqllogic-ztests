@@ -1,0 +1,19 @@
+script: |
+  super -f tsv -I q2161.sql | sort > q2161.out
+
+inputs:
+  - name: q2161.sql
+    data: |
+      SELECT (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      a,
+      a+b*2+c*3
+      FROM t1
+      WHERE (e>a AND e<b)
+      AND c BETWEEN b-2 AND d+2
+      ORDER BY 3,2;
+
+outputs:
+  - name: q2161.out
+    data: |
+      21	220	1338
+      26	245	1484

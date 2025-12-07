@@ -1,0 +1,54 @@
+script: |
+  super -f tsv -I q70.sql | tr '\t' '\n' | sort > q70.out
+
+inputs:
+  - name: q70.sql
+    data: |
+      SELECT c2 FROM t2
+      WHERE a2 in (966,779,279,10,718,691)
+      OR (c2=87)
+      OR (e2=720 AND d2=362)
+      UNION ALL
+      SELECT d1 FROM t1
+      WHERE (e1=696 AND 23=a1 AND d1=88 AND 426=b1)
+      EXCEPT
+      SELECT d6 FROM t6
+      WHERE NOT ((411=c6 OR 811=a6)
+      OR a6 in (604,696,829,414,653,251,173,585)
+      OR d6 in (822,807,924,393,34))
+      UNION
+      SELECT e3 FROM t3
+      WHERE (615=a3 AND 198=b3 AND c3=961 AND 87=e3)
+      OR d3 in (423,364,270,764,81,984,554,95)
+      EXCEPT
+      SELECT b8 FROM t8
+      WHERE NOT ((961=c8 AND b8=145 AND a8=359 AND e8=233)
+      OR (510=e8 OR a8=200 OR c8=648)
+      OR a8 in (651,400,504,822,638,453,597,341,312,841,807,200))
+      EXCEPT
+      SELECT e4 FROM t4
+      WHERE NOT ((a4=558 OR 450=a4)
+      OR (879=e4 AND 901=b4 AND d4=260 AND 585=c4)
+      OR a4 in (921,948,271,662));
+  - name: t2
+  - name: t7
+
+outputs:
+  - name: q70.out
+    data: |
+      119
+      192
+      193
+      233
+      260
+      272
+      3
+      449
+      586
+      657
+      676
+      731
+      779
+      83
+      87
+      88

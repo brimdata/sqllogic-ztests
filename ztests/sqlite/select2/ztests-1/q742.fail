@@ -1,0 +1,36 @@
+script: |
+  super -f tsv -I q742.sql | sort > q742.out
+
+inputs:
+  - name: q742.sql
+    data: |
+      SELECT a,
+      e,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      abs(a),
+      CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      (a+b+c+d+e)/5
+      FROM t1
+      WHERE c BETWEEN b-2 AND d+2
+      OR e+d BETWEEN a+b-10 AND c+130;
+
+outputs:
+  - name: q742.out
+    data: |
+      107	109	0	107	1050	0	107
+      121	NULL	2	121	1240	0	NULL
+      127	126	3	127	1290	0	127
+      131	132	4	131	1300	0	132
+      138	135	5	138	1390	0	137
+      142	144	6	142	1430	0	142
+      163	162	10	163	1600	0	162
+      174	173	12	174	1700	0	172
+      182	180	14	182	364	0	182
+      188	189	15	188	376	0	187
+      213	210	19	213	426	0	212
+      220	221	21	220	440	0	222
+      234	230	23	234	468	0	232
+      245	246	26	245	490	0	247
+      NULL	110	1	NULL	1120	0	NULL
+      NULL	NULL	18	NULL	NULL	0	NULL

@@ -1,0 +1,40 @@
+script: |
+  super -f tsv -I q296.sql | sort > q296.out
+
+inputs:
+  - name: q296.sql
+    data: |
+      SELECT (a+b+c+d+e)/5,
+      a,
+      a+b*2+c*3,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      abs(b-c),
+      d
+      FROM t1
+      WHERE coalesce(a,b,c,d,e)<>0
+      AND (e>c OR e<d);
+
+outputs:
+  - name: q296.out
+    data: |
+      107	107	635	0	1	108
+      127	127	760	0	4	128
+      132	131	793	0	4	133
+      137	138	827	0	2	136
+      142	142	851	0	2	140
+      162	163	966	0	1	164
+      172	174	1030	0	2	171
+      182	182	1096	0	3	183
+      187	188	1121	0	1	185
+      197	199	1180	0	3	196
+      212	213	1277	0	3	212
+      217	216	1297	0	3	217
+      222	220	1338	0	1	222
+      227	229	1360	0	3	226
+      232	234	1391	0	1	233
+      247	245	1484	0	2	248
+      NULL	159	940	0	3	NULL
+      NULL	179	1057	0	1	NULL
+      NULL	201	NULL	0	NULL	203
+      NULL	239	NULL	0	NULL	238
+      NULL	NULL	NULL	0	1	114

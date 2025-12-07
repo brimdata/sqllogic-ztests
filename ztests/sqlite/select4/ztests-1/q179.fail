@@ -1,0 +1,34 @@
+script: |
+  super -f tsv -I q179.sql | tr '\t' '\n' | sort > q179.out
+
+inputs:
+  - name: q179.sql
+    data: |
+      SELECT b4 FROM t4
+      WHERE (e4=476)
+      UNION ALL
+      SELECT d2 FROM t2
+      WHERE (c2=450)
+      EXCEPT
+      SELECT c1 FROM t1
+      WHERE NOT (a1 in (451,544,847,161,371))
+      UNION
+      SELECT b6 FROM t6
+      WHERE (a6=355)
+      EXCEPT
+      SELECT d7 FROM t7
+      WHERE NOT (e7 in (462,552,31,89,303,918)
+      OR (a7=736 AND 506=e7 AND c7=14));
+  - name: t1
+  - name: t3
+  - name: t5
+  - name: t6
+  - name: t7
+  - name: t8
+  - name: t9
+
+outputs:
+  - name: q179.out
+    data: |
+      249
+      997

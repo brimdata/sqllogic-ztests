@@ -1,0 +1,44 @@
+script: |
+  super -f tsv -I q739.sql | tr '\t' '\n' | sort > q739.out
+
+inputs:
+  - name: q739.sql
+    data: |
+      SELECT d8 FROM t8
+      WHERE (459=b8 AND 678=e8 AND 608=d8 AND c8=965)
+      OR (366=d8 AND b8=365)
+      INTERSECT
+      SELECT c7 FROM t7
+      WHERE NOT (e7 in (4,976,976,422)
+      OR (e7=562 OR d7=782 OR c7=585)
+      OR (e7=552 OR 500=d7))
+      UNION ALL
+      SELECT e3 FROM t3
+      WHERE (975=e3 AND a3=341 AND c3=555 AND d3=363 AND 677=b3)
+      OR c3 in (845,991,265,467,149,299,966)
+      OR c3 in (395,477,178,647,809,476,467)
+      EXCEPT
+      SELECT b2 FROM t2
+      WHERE NOT ((140=c2)
+      OR (a2=564 OR a2=76 OR 476=d2)
+      OR c2 in (773,140,136,346,161,244,87,992,150,197,344,925));
+  - name: t2
+  - name: t5
+  - name: t9
+
+outputs:
+  - name: q739.out
+    data: |
+      136
+      272
+      310
+      401
+      406
+      547
+      596
+      665
+      814
+      829
+      853
+      854
+      975

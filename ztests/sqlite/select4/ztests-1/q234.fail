@@ -1,0 +1,43 @@
+script: |
+  super -f tsv -I q234.sql | tr '\t' '\n' | sort > q234.out
+
+inputs:
+  - name: q234.sql
+    data: |
+      SELECT d5 FROM t5
+      WHERE e5 in (364,716,902,655,689,697,802,764,554,585,180)
+      OR (390=b5 AND 782=d5 AND e5=522)
+      UNION
+      SELECT b4 FROM t4
+      WHERE a4 in (746,919,510,621,378,589,474,412,451,901,509,170)
+      EXCEPT
+      SELECT a2 FROM t2
+      WHERE NOT ((e2=572 OR 869=c2)
+      OR c2 in (46,729,625,374,964));
+  - name: t6
+  - name: t8
+
+outputs:
+  - name: q234.out
+    data: |
+      114
+      280
+      344
+      361
+      389
+      413
+      434
+      437
+      476
+      492
+      58
+      589
+      678
+      700
+      772
+      782
+      816
+      855
+      856
+      938
+      979

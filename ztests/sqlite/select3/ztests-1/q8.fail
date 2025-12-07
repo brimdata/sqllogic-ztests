@@ -1,0 +1,31 @@
+script: |
+  super -f tsv -I q8.sql | sort > q8.out
+
+inputs:
+  - name: q8.sql
+    data: |
+      SELECT a+b*2+c*3+d*4+e*5,
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END,
+      abs(b-c),
+      (a+b+c+d+e)/5,
+      a+b*2+c*3
+      FROM t1
+      WHERE (e>c OR e<d)
+      AND d>e
+      AND EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b);
+
+outputs:
+  - name: q8.out
+    data: |
+      1902	222	4	127	760
+      1985	333	4	132	793
+      2046	222	2	137	827
+      2432	444	1	162	966
+      2728	333	3	182	1096
+      3175	333	3	212	1277
+      3331	222	1	222	1338
+      3473	333	1	232	1391
+      3706	111	2	247	1484
+      NULL	444	1	NULL	NULL
+      NULL	444	NULL	NULL	NULL

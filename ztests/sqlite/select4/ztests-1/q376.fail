@@ -1,0 +1,39 @@
+script: |
+  super -f tsv -I q376.sql | tr '\t' '\n' | sort > q376.out
+
+inputs:
+  - name: q376.sql
+    data: |
+      SELECT c6 FROM t6
+      WHERE e6 in (554,585,67,808,466,731,40,24,595,261)
+      INTERSECT
+      SELECT e4 FROM t4
+      WHERE NOT ((563=b4)
+      OR (d4=356 OR 735=b4)
+      OR (74=c4))
+      INTERSECT
+      SELECT c9 FROM t9
+      WHERE NOT ((647=e9 AND b9=880 AND 253=c9 AND 326=a9)
+      OR (987=d9))
+      EXCEPT
+      SELECT c7 FROM t7
+      WHERE NOT ((547=d7 AND b7=105 AND c7=206)
+      OR a7 in (147,48,642,622,350,916,430,912,165,958,706,233)
+      OR (782=e7 OR 891=d7))
+      EXCEPT
+      SELECT c2 FROM t2
+      WHERE NOT ((168=b2 OR 688=c2))
+      EXCEPT
+      SELECT a1 FROM t1
+      WHERE NOT ((a1=371 AND c1=871 AND 275=d1 AND e1=146 AND b1=49)
+      OR (c1=885 AND 89=e1 AND a1=738 AND 569=b1 AND 105=d1))
+      EXCEPT
+      SELECT e3 FROM t3
+      WHERE NOT ((70=a3)
+      OR (559=a3 AND 584=c3 AND 283=d3 AND e3=83));
+  - name: t1
+  - name: t5
+
+outputs:
+  - name: q376.out
+    data: |

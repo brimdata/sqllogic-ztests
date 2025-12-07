@@ -1,0 +1,67 @@
+script: |
+  super -f tsv -I q682.sql | tr '\t' '\n' | sort > q682.out
+
+inputs:
+  - name: q682.sql
+    data: |
+      SELECT b8 FROM t8
+      WHERE (b8=352 AND a8=579)
+      OR b8 in (364,540,1)
+      UNION ALL
+      SELECT b5 FROM t5
+      WHERE (26=b5 AND c5=485)
+      OR (a5=976 AND c5=313)
+      EXCEPT
+      SELECT b4 FROM t4
+      WHERE NOT ((a4=574 AND e4=311 AND c4=221 AND 33=b4)
+      OR (b4=167 AND 806=c4 AND a4=708 AND e4=358))
+      UNION
+      SELECT a7 FROM t7
+      WHERE (e7=929 AND a7=936 AND b7=827 AND c7=585 AND 196=d7)
+      OR (66=b7)
+      OR d7 in (436,765,526,673,192,982,787,831,939,666,603,801)
+      EXCEPT
+      SELECT a9 FROM t9
+      WHERE NOT ((b9=379 AND a9=413 AND 450=d9 AND e9=788 AND 62=c9)
+      OR c9 in (751,955,884,515,419,843,224,90,187,973))
+      EXCEPT
+      SELECT e6 FROM t6
+      WHERE NOT ((e6=74 OR a6=64 OR 185=d6))
+      UNION
+      SELECT a1 FROM t1
+      WHERE a1 in (445,195,477,767,382,953,170,538,314,147,972,498,109);
+  - name: t2
+  - name: t5
+
+outputs:
+  - name: q682.out
+    data: |
+      109
+      147
+      167
+      170
+      180
+      195
+      231
+      26
+      277
+      314
+      352
+      364
+      382
+      442
+      445
+      477
+      490
+      498
+      538
+      540
+      569
+      649
+      720
+      767
+      854
+      925
+      936
+      953
+      972

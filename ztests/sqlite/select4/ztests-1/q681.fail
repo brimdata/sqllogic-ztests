@@ -1,0 +1,38 @@
+script: |
+  super -f tsv -I q681.sql | tr '\t' '\n' | sort > q681.out
+
+inputs:
+  - name: q681.sql
+    data: |
+      SELECT e1 FROM t1
+      WHERE d1 in (130,902,922,275,394,942,899,35,412,972,481,581,223,161)
+      UNION
+      SELECT b9 FROM t9
+      WHERE (56=a9 AND 171=b9 AND 107=e9 AND 660=d9 AND c9=643)
+      EXCEPT
+      SELECT b6 FROM t6
+      WHERE NOT ((840=e6)
+      OR d6 in (35,185,463,367,488,366,590)
+      OR (647=d6 AND 355=a6));
+  - name: t2
+  - name: t5
+
+outputs:
+  - name: q681.out
+    data: |
+      117
+      14
+      146
+      171
+      299
+      313
+      504
+      51
+      52
+      522
+      531
+      717
+      896
+      921
+      96
+      962

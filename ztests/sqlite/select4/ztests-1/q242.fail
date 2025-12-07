@@ -1,0 +1,55 @@
+script: |
+  super -f tsv -I q242.sql | tr '\t' '\n' | sort > q242.out
+
+inputs:
+  - name: q242.sql
+    data: |
+      SELECT a7 FROM t7
+      WHERE b7 in (59,517,234,52,396,627)
+      OR (d7=315 OR 12=c7)
+      OR (a7=593 AND 485=d7 AND c7=553 AND 282=e7 AND 407=b7)
+      UNION
+      SELECT e3 FROM t3
+      WHERE (c3=970 AND 444=d3 AND e3=131 AND b3=888 AND 964=a3)
+      EXCEPT
+      SELECT c2 FROM t2
+      WHERE NOT ((353=b2 OR 405=d2 OR e2=841)
+      OR e2 in (753,428,981,788,411,692)
+      OR (35=b2))
+      EXCEPT
+      SELECT c1 FROM t1
+      WHERE NOT ((115=b1 OR b1=594)
+      OR (944=b1 OR e1=997))
+      EXCEPT
+      SELECT e5 FROM t5
+      WHERE NOT ((570=c5 AND b5=674 AND 975=e5 AND 5=a5))
+      EXCEPT
+      SELECT b6 FROM t6
+      WHERE NOT ((b6=696 OR b6=507)
+      OR a6 in (240,366,604,870,740,731,861,64,173,129,66,128))
+      UNION ALL
+      SELECT a8 FROM t8
+      WHERE (e8=463 OR 332=c8)
+      EXCEPT
+      SELECT e9 FROM t9
+      WHERE NOT (e9 in (694,567,477,255,30,19,954,264,127,267,873)
+      OR (b9=447 OR 37=c9 OR 739=c9))
+      EXCEPT
+      SELECT a4 FROM t4
+      WHERE NOT ((605=a4)
+      OR (a4=933));
+  - name: t6
+  - name: t8
+
+outputs:
+  - name: q242.out
+    data: |
+      131
+      430
+      593
+      638
+      70
+      709
+      75
+      896
+      912

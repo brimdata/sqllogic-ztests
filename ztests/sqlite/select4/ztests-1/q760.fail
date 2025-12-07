@@ -1,0 +1,46 @@
+script: |
+  super -f tsv -I q760.sql | tr '\t' '\n' | sort > q760.out
+
+inputs:
+  - name: q760.sql
+    data: |
+      SELECT d9 FROM t9
+      WHERE (214=b9 AND 463=d9 AND e9=146 AND c9=457 AND a9=273)
+      EXCEPT
+      SELECT c6 FROM t6
+      WHERE NOT (b6 in (202,378,507,6,774,490,583,243,262,882)
+      OR (283=e6))
+      UNION ALL
+      SELECT a5 FROM t5
+      WHERE (a5=342)
+      UNION ALL
+      SELECT d2 FROM t2
+      WHERE c2 in (374,728,496,150,444,127,964,807,182,141,878,511,27)
+      OR (560=e2)
+      OR (a2=802 AND 812=b2 AND 27=c2);
+  - name: t3
+  - name: t5
+  - name: t9
+
+outputs:
+  - name: q760.out
+    data: |
+      14
+      177
+      215
+      342
+      342
+      404
+      448
+      463
+      476
+      541
+      654
+      663
+      723
+      806
+      844
+      886
+      897
+      914
+      953

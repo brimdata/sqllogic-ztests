@@ -1,0 +1,51 @@
+script: |
+  super -f tsv -I q680.sql | tr '\t' '\n' | sort > q680.out
+
+inputs:
+  - name: q680.sql
+    data: |
+      SELECT b3 FROM t3
+      WHERE (615=d3 AND e3=87 AND c3=961 AND b3=198 AND a3=615)
+      OR (b3=382)
+      INTERSECT
+      SELECT d9 FROM t9
+      WHERE NOT ((863=c9 OR e9=819 OR d9=818))
+      EXCEPT
+      SELECT d8 FROM t8
+      WHERE NOT (d8 in (523,761,608,953,96,525,811,849,610,108,93,439,580)
+      OR a8 in (184,913,671,923,702,200,628,5,347,661)
+      OR (d8=116))
+      UNION ALL
+      SELECT d5 FROM t5
+      WHERE (250=c5 AND d5=855)
+      OR (b5=544)
+      UNION ALL
+      SELECT a4 FROM t4
+      WHERE (a4=337 OR b4=389)
+      OR e4 in (837,300,312,531,147,476,257,552,237,738)
+      EXCEPT
+      SELECT b6 FROM t6
+      WHERE NOT ((958=e6 AND 549=b6 AND a6=751)
+      OR (933=b6 OR 974=d6 OR a6=452))
+      EXCEPT
+      SELECT c2 FROM t2
+      WHERE NOT ((e2=671 AND 632=b2 AND 360=c2))
+      EXCEPT
+      SELECT c7 FROM t7
+      WHERE NOT ((422=e7));
+  - name: t2
+  - name: t5
+
+outputs:
+  - name: q680.out
+    data: |
+      139
+      16
+      367
+      579
+      602
+      651
+      745
+      792
+      901
+      952

@@ -1,0 +1,38 @@
+script: |
+  super -f tsv -I q783.sql | tr '\t' '\n' | sort > q783.out
+
+inputs:
+  - name: q783.sql
+    data: |
+      SELECT a9 FROM t9
+      WHERE d9 in (464,899,554,912,51,553,919)
+      OR a9 in (683,764,304,318,811,662,149,830,535)
+      OR (347=d9)
+      INTERSECT
+      SELECT d1 FROM t1
+      WHERE NOT (a1 in (241,525,147,215,668,433))
+      UNION
+      SELECT e5 FROM t5
+      WHERE c5 in (924,147,384,678,844,18,934)
+      OR (c5=579 AND 570=d5 AND 536=a5)
+      OR (443=d5 AND a5=740 AND e5=390 AND c5=696);
+  - name: t1
+  - name: t2
+  - name: t6
+  - name: t9
+
+outputs:
+  - name: q783.out
+    data: |
+      104
+      18
+      188
+      287
+      390
+      446
+      549
+      621
+      662
+      732
+      874
+      929

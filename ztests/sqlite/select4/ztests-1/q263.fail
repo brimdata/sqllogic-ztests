@@ -1,0 +1,30 @@
+script: |
+  super -f tsv -I q263.sql | tr '\t' '\n' | sort > q263.out
+
+inputs:
+  - name: q263.sql
+    data: |
+      SELECT d6 FROM t6
+      WHERE (648=c6 AND 825=a6 AND 392=b6 AND 225=e6 AND d6=424)
+      INTERSECT
+      SELECT c3 FROM t3
+      WHERE NOT ((c3=806 OR 835=b3 OR 217=d3))
+      UNION
+      SELECT d5 FROM t5
+      WHERE (419=d5 OR a5=514)
+      OR (c5=672 OR 601=c5 OR 921=a5)
+      OR (874=b5 OR 357=a5 OR e5=511);
+  - name: t5
+  - name: t9
+
+outputs:
+  - name: q263.out
+    data: |
+      274
+      32
+      369
+      419
+      470
+      557
+      856
+      858

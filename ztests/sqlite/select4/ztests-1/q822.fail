@@ -1,0 +1,34 @@
+script: |
+  super -f tsv -I q822.sql | tr '\t' '\n' | sort > q822.out
+
+inputs:
+  - name: q822.sql
+    data: |
+      SELECT e1 FROM t1
+      WHERE (e1=522 OR 468=e1 OR a1=32)
+      UNION ALL
+      SELECT d7 FROM t7
+      WHERE (d7=34 AND a7=651 AND b7=392 AND 691=c7 AND e7=595)
+      OR (e7=815 AND 142=d7 AND 288=a7)
+      EXCEPT
+      SELECT a4 FROM t4
+      WHERE NOT ((0=c4 OR c4=860 OR b4=849))
+      UNION
+      SELECT b6 FROM t6
+      WHERE (c6=506)
+      UNION ALL
+      SELECT d9 FROM t9
+      WHERE (e9=230);
+  - name: t3
+  - name: t7
+  - name: t9
+
+outputs:
+  - name: q822.out
+    data: |
+      142
+      166
+      230
+      34
+      468
+      522

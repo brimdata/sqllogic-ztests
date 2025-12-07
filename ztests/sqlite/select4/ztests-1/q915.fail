@@ -1,0 +1,71 @@
+script: |
+  super -f tsv -I q915.sql | tr '\t' '\n' | sort > q915.out
+
+inputs:
+  - name: q915.sql
+    data: |
+      SELECT c3 FROM t3
+      WHERE (d3=923 OR 708=d3)
+      UNION
+      SELECT a5 FROM t5
+      WHERE (271=d5 AND c5=489 AND e5=104 AND 602=a5)
+      OR b5 in (772,934,951,897,161,705,846,847,234,403,874,79,861)
+      UNION
+      SELECT a6 FROM t6
+      WHERE e6 in (668,750,466,255)
+      EXCEPT
+      SELECT b4 FROM t4
+      WHERE NOT ((b4=137)
+      OR (6=e4 AND d4=821 AND a4=921))
+      EXCEPT
+      SELECT c8 FROM t8
+      WHERE NOT (c8 in (421,291,168))
+      UNION ALL
+      SELECT c2 FROM t2
+      WHERE (b2=501 AND 16=e2 AND 9=a2)
+      OR b2 in (297,279,676,73,729,932,60,776,161,220,818,784,888,414)
+      EXCEPT
+      SELECT e1 FROM t1
+      WHERE NOT (a1 in (779,868,249,895)
+      OR (307=b1 AND 299=a1 AND c1=5))
+      EXCEPT
+      SELECT b9 FROM t9
+      WHERE NOT ((b9=819 AND a9=389 AND c9=764 AND 759=d9)
+      OR (b9=19 OR b9=893)
+      OR (b9=103 AND d9=525 AND c9=739 AND a9=295))
+      EXCEPT
+      SELECT e7 FROM t7
+      WHERE NOT ((456=e7)
+      OR (103=c7));
+  - name: t3
+  - name: t4
+
+outputs:
+  - name: q915.out
+    data: |
+      140
+      235
+      334
+      335
+      339
+      346
+      366
+      369
+      374
+      392
+      445
+      492
+      509
+      511
+      551
+      557
+      560
+      675
+      676
+      764
+      785
+      81
+      867
+      894
+      960
+      967

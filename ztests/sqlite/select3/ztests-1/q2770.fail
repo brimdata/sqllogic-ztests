@@ -1,0 +1,49 @@
+script: |
+  super -f tsv -I q2770.sql | sort > q2770.out
+
+inputs:
+  - name: q2770.sql
+    data: |
+      SELECT a+b*2+c*3+d*4,
+      abs(a),
+      abs(b-c),
+      CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END,
+      d,
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d)
+      FROM t1;
+
+outputs:
+  - name: q2770.out
+    data: |
+      1067	107	1	1050	108	333	0
+      1226	121	1	1240	122	333	0
+      1272	127	4	1290	128	333	0
+      1325	131	4	1300	133	444	0
+      1371	138	2	1390	136	111	0
+      1411	142	2	1430	140	111	0
+      1622	163	1	1600	164	333	0
+      1714	174	2	1700	171	555	0
+      1828	182	3	364	183	333	0
+      1861	188	1	376	185	444	0
+      1918	191	1	382	190	444	0
+      1964	199	3	398	196	555	0
+      2125	213	3	426	212	222	0
+      2165	216	3	432	217	333	0
+      2226	220	1	440	222	444	0
+      2264	229	3	458	226	555	0
+      2323	234	1	468	233	555	0
+      2476	245	2	490	248	444	0
+      NULL	104	NULL	NULL	101	555	0
+      NULL	115	NULL	NULL	116	333	0
+      NULL	149	2	1450	NULL	555	0
+      NULL	153	1	1510	NULL	555	0
+      NULL	159	3	1580	NULL	555	0
+      NULL	168	1	1670	NULL	555	0
+      NULL	179	1	358	NULL	555	0
+      NULL	201	NULL	402	203	222	0
+      NULL	239	NULL	2360	238	555	0
+      NULL	243	4	486	NULL	222	0
+      NULL	NULL	1	1120	114	555	0
+      NULL	NULL	2	NULL	207	555	0

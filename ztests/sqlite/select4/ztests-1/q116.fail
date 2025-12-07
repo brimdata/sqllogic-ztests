@@ -1,0 +1,39 @@
+script: |
+  super -f tsv -I q116.sql | tr '\t' '\n' | sort > q116.out
+
+inputs:
+  - name: q116.sql
+    data: |
+      SELECT a6 FROM t6
+      WHERE c6 in (187,615,648,411,45,454,122,572,534,123,415,161,65)
+      OR (489=d6 OR d6=493 OR d6=929)
+      OR (c6=25 AND 290=b6)
+      UNION
+      SELECT e9 FROM t9
+      WHERE (445=e9 OR 41=a9)
+      EXCEPT
+      SELECT b1 FROM t1
+      WHERE NOT ((39=c1));
+  - name: t1
+  - name: t9
+
+outputs:
+  - name: q116.out
+    data: |
+      104
+      129
+      445
+      452
+      469
+      474
+      518
+      531
+      537
+      615
+      657
+      66
+      672
+      683
+      718
+      825
+      877

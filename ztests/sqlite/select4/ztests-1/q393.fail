@@ -1,0 +1,68 @@
+script: |
+  super -f tsv -I q393.sql | tr '\t' '\n' | sort > q393.out
+
+inputs:
+  - name: q393.sql
+    data: |
+      SELECT b7 FROM t7
+      WHERE a7 in (982,285,386)
+      OR (c7=135 OR 924=d7 OR d7=722)
+      UNION
+      SELECT b4 FROM t4
+      WHERE (d4=665 AND 752=a4 AND e4=85 AND c4=0)
+      OR (a4=662)
+      UNION
+      SELECT e3 FROM t3
+      WHERE (892=e3)
+      OR a3 in (784,971,952,262,879,566,162,895)
+      EXCEPT
+      SELECT a6 FROM t6
+      WHERE NOT ((729=c6 AND 283=e6)
+      OR (696=a6 OR 568=a6 OR 992=c6))
+      EXCEPT
+      SELECT a9 FROM t9
+      WHERE NOT ((b9=848 AND 467=d9 AND 146=c9)
+      OR (b9=127 OR d9=790 OR b9=125))
+      UNION ALL
+      SELECT e2 FROM t2
+      WHERE e2 in (223,671,688,939,556,386,673,777,706,521,524,945)
+      OR (808=e2 OR 720=e2)
+      OR (527=b2 OR a2=637);
+  - name: t5
+  - name: t7
+
+outputs:
+  - name: q393.out
+    data: |
+      138
+      202
+      205
+      223
+      249
+      250
+      265
+      271
+      386
+      510
+      514
+      521
+      524
+      547
+      556
+      596
+      671
+      671
+      673
+      688
+      690
+      706
+      720
+      777
+      808
+      814
+      820
+      854
+      884
+      892
+      939
+      945

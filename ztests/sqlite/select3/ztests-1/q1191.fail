@@ -1,0 +1,43 @@
+script: |
+  super -f tsv -I q1191.sql | sort > q1191.out
+
+inputs:
+  - name: q1191.sql
+    data: |
+      SELECT a,
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      e,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b)
+      FROM t1
+      WHERE (e>a AND e<b)
+      OR (e>c OR e<d)
+      OR (c<=d-2 OR c>=d+2)
+      ORDER BY 1,4,3,2;
+
+outputs:
+  - name: q1191.out
+    data: |
+      107	333	109	0
+      115	333	117	0
+      127	333	126	3
+      131	444	132	4
+      138	111	135	5
+      142	111	144	6
+      159	555	157	9
+      163	333	162	10
+      174	555	173	12
+      179	555	177	13
+      182	333	180	14
+      188	444	189	15
+      191	444	192	16
+      199	555	197	17
+      201	222	204	0
+      213	222	210	19
+      216	333	219	20
+      220	444	221	21
+      229	555	227	22
+      234	555	230	23
+      239	555	237	24
+      245	444	246	26
+      NULL	555	110	1

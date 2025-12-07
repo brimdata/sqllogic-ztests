@@ -1,0 +1,23 @@
+script: |
+  super -f tsv -I q3099.sql | sort > q3099.out
+
+inputs:
+  - name: q3099.sql
+    data: |
+      SELECT a+b*2+c*3+d*4+e*5,
+      c,
+      (a+b+c+d+e)/5,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b)
+      FROM t1
+      WHERE b>c
+      AND c BETWEEN b-2 AND d+2
+      ORDER BY 4,2,1;
+
+outputs:
+  - name: q3099.out
+    data: |
+      2046	137	137	5
+      2131	141	142	6
+      3473	231	232	23
+      3706	247	247	26
+      NULL	123	NULL	2

@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q538.sql | sort > q538.out
+
+inputs:
+  - name: q538.sql
+    data: |
+      SELECT - col1 AS col1 FROM tab0 GROUP BY col0, col1, col2 HAVING NOT + col1 BETWEEN NULL AND col0;
+
+outputs:
+  - name: q538.out
+    data: |
+      -81

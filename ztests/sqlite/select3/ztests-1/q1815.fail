@@ -1,0 +1,46 @@
+script: |
+  super -f tsv -I q1815.sql | sort > q1815.out
+
+inputs:
+  - name: q1815.sql
+    data: |
+      SELECT CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      a,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b)
+      FROM t1
+      ORDER BY 3,2;
+
+outputs:
+  - name: q1815.out
+    data: |
+      111	138	5
+      111	142	6
+      222	201	0
+      222	213	19
+      222	243	25
+      333	107	0
+      333	115	0
+      333	121	2
+      333	127	3
+      333	163	10
+      333	182	14
+      333	216	20
+      444	131	4
+      444	188	15
+      444	191	16
+      444	220	21
+      444	245	26
+      555	104	0
+      555	149	7
+      555	153	8
+      555	159	9
+      555	168	11
+      555	174	12
+      555	179	13
+      555	199	17
+      555	229	22
+      555	234	23
+      555	239	24
+      555	NULL	1
+      555	NULL	18

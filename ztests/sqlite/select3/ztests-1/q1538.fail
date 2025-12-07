@@ -1,0 +1,48 @@
+script: |
+  super -f tsv -I q1538.sql | sort > q1538.out
+
+inputs:
+  - name: q1538.sql
+    data: |
+      SELECT a+b*2,
+      a+b*2+c*3+d*4,
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END,
+      b,
+      c-d,
+      a+b*2+c*3+d*4+e*5
+      FROM t1
+      WHERE EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      OR (e>c OR e<d);
+
+outputs:
+  - name: q1538.out
+    data: |
+      317	1067	333	105	-2	1612
+      369	1226	222	124	1	NULL
+      385	1272	222	129	-3	1902
+      391	1325	333	130	1	1985
+      416	1371	222	139	1	2046
+      428	1411	222	143	1	2131
+      439	NULL	444	145	NULL	NULL
+      455	NULL	333	151	NULL	NULL
+      475	NULL	333	158	NULL	NULL
+      483	1622	444	160	-3	2432
+      502	NULL	333	167	NULL	NULL
+      514	1714	444	170	1	2579
+      529	NULL	444	175	NULL	NULL
+      544	1828	333	181	1	2728
+      560	1861	333	186	2	2806
+      579	1918	222	194	3	2878
+      595	1964	333	198	-1	2949
+      635	2125	333	211	2	3175
+      652	2165	222	218	-2	3260
+      666	2226	222	223	2	3331
+      685	2264	333	228	-1	3399
+      698	2323	333	232	-2	3473
+      711	NULL	444	236	NULL	NULL
+      723	NULL	444	240	NULL	NULL
+      743	2476	111	249	-1	3706
+      NULL	NULL	444	112	-1	NULL
+      NULL	NULL	444	206	1	NULL
+      NULL	NULL	444	NULL	-1	NULL

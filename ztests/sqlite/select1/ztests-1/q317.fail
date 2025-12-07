@@ -1,0 +1,43 @@
+script: |
+  super -f tsv -I q317.sql > q317.out
+
+inputs:
+  - name: q317.sql
+    data: |
+      SELECT a+b*2+c*3+d*4+e*5
+      FROM t1
+      WHERE EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      ORDER BY 1;
+
+outputs:
+  - name: q317.out
+    data: |
+      1612
+      1680
+      1757
+      1826
+      1902
+      1985
+      2046
+      2131
+      2202
+      2281
+      2349
+      2432
+      2501
+      2579
+      2654
+      2728
+      2806
+      2878
+      2949
+      3039
+      3114
+      3175
+      3260
+      3331
+      3399
+      3473
+      3553
+      3629
+      3706

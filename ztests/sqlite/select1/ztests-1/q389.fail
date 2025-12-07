@@ -1,0 +1,45 @@
+script: |
+  super -f tsv -I q389.sql > q389.out
+
+inputs:
+  - name: q389.sql
+    data: |
+      SELECT a,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      abs(b-c)
+      FROM t1
+      ORDER BY 3,2,1;
+
+outputs:
+  - name: q389.out
+    data: |
+      107	0	1
+      111	0	1
+      115	0	1
+      121	0	1
+      153	0	1
+      163	0	1
+      168	0	1
+      179	0	1
+      188	0	1
+      191	0	1
+      220	0	1
+      234	0	1
+      239	0	1
+      104	0	2
+      138	0	2
+      142	0	2
+      149	0	2
+      174	0	2
+      201	0	2
+      205	0	2
+      245	0	2
+      159	0	3
+      182	0	3
+      199	0	3
+      213	0	3
+      216	0	3
+      229	0	3
+      127	0	4
+      131	0	4
+      243	0	4

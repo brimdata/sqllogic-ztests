@@ -1,0 +1,49 @@
+script: |
+  super -f tsv -I q1701.sql | sort > q1701.out
+
+inputs:
+  - name: q1701.sql
+    data: |
+      SELECT (a+b+c+d+e)/5,
+      c,
+      d,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      b-c
+      FROM t1
+      WHERE EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      OR d NOT BETWEEN 110 AND 150
+      OR (a>b-2 AND a<b+2)
+      ORDER BY 3,5;
+
+outputs:
+  - name: q1701.out
+    data: |
+      107	106	108	0	-1
+      127	125	128	0	4
+      132	134	133	0	-4
+      137	137	136	0	2
+      142	141	140	0	2
+      162	161	164	0	-1
+      172	172	171	0	-2
+      182	184	183	0	-3
+      187	187	185	0	-1
+      192	193	190	0	1
+      197	195	196	0	3
+      212	214	212	0	-3
+      217	215	217	0	3
+      222	224	222	0	-1
+      227	225	226	0	3
+      232	231	233	0	1
+      247	247	248	0	2
+      NULL	102	101	0	NULL
+      NULL	113	114	0	-1
+      NULL	123	122	0	1
+      NULL	147	NULL	0	-2
+      NULL	150	NULL	0	1
+      NULL	155	NULL	0	3
+      NULL	166	NULL	0	1
+      NULL	176	NULL	0	-1
+      NULL	202	203	0	NULL
+      NULL	208	207	0	-2
+      NULL	244	NULL	0	-4
+      NULL	NULL	238	0	NULL

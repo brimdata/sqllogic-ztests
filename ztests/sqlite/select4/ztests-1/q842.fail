@@ -1,0 +1,24 @@
+script: |
+  super -f tsv -I q842.sql | tr '\t' '\n' | sort > q842.out
+
+inputs:
+  - name: q842.sql
+    data: |
+      SELECT b4 FROM t4
+      WHERE b4 in (379,721,357,40,765,603,23,721,137,319,713,94,735)
+      INTERSECT
+      SELECT a2 FROM t2
+      WHERE NOT ((725=a2 AND c2=103 AND 857=b2)
+      OR a2 in (660,980,916,775,874,785,522,382,123))
+      EXCEPT
+      SELECT a3 FROM t3
+      WHERE NOT ((b3=740)
+      OR (211=b3 OR 548=a3)
+      OR (779=b3 AND 303=a3));
+  - name: t1
+  - name: t7
+
+outputs:
+  - name: q842.out
+    data: |
+      735

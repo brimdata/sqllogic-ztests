@@ -1,0 +1,11 @@
+script: |
+  super -f tsv -I q5580.sql | sort > q5580.out
+
+inputs:
+  - name: q5580.sql
+    data: |
+      SELECT DISTINCT col2 FROM tab1 GROUP BY tab1.col2 HAVING NULL NOT IN ( - tab1.col2 );
+
+outputs:
+  - name: q5580.out
+    data: |

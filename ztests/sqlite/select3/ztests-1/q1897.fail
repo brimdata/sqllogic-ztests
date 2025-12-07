@@ -1,0 +1,45 @@
+script: |
+  super -f tsv -I q1897.sql | sort > q1897.out
+
+inputs:
+  - name: q1897.sql
+    data: |
+      SELECT (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      a,
+      (a+b+c+d+e)/5
+      FROM t1
+      ORDER BY 3,1;
+
+outputs:
+  - name: q1897.out
+    data: |
+      0	104	NULL
+      0	107	107
+      0	115	NULL
+      0	121	NULL
+      0	127	127
+      0	131	132
+      0	138	137
+      0	142	142
+      0	149	NULL
+      0	153	NULL
+      0	159	NULL
+      0	163	162
+      0	168	NULL
+      0	174	172
+      0	179	NULL
+      0	182	182
+      0	188	187
+      0	191	192
+      0	199	197
+      0	201	NULL
+      0	213	212
+      0	216	217
+      0	220	222
+      0	229	227
+      0	234	232
+      0	239	NULL
+      0	243	NULL
+      0	245	247
+      0	NULL	NULL
+      0	NULL	NULL

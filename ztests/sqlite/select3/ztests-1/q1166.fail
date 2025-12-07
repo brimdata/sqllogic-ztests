@@ -1,0 +1,42 @@
+script: |
+  super -f tsv -I q1166.sql | sort > q1166.out
+
+inputs:
+  - name: q1166.sql
+    data: |
+      SELECT b,
+      a-b,
+      a+b*2
+      FROM t1
+      WHERE (a>b-2 AND a<b+2)
+      OR EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b);
+
+outputs:
+  - name: q1166.out
+    data: |
+      112	NULL	NULL
+      124	-3	369
+      129	-2	385
+      130	1	391
+      139	-1	416
+      143	-1	428
+      145	4	439
+      151	2	455
+      158	1	475
+      160	3	483
+      167	1	502
+      170	4	514
+      175	4	529
+      181	1	544
+      186	2	560
+      194	-3	579
+      198	1	595
+      206	NULL	NULL
+      211	2	635
+      218	-2	652
+      223	-3	666
+      228	1	685
+      232	2	698
+      236	3	711
+      240	3	723
+      249	-4	743

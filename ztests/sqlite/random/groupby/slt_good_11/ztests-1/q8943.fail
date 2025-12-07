@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q8943.sql | sort > q8943.out
+
+inputs:
+  - name: q8943.sql
+    data: |
+      SELECT DISTINCT col2 AS col1, - 8 AS col1 FROM tab1 GROUP BY col2, col2;
+
+outputs:
+  - name: q8943.out
+    data: |
+      45	-8
+      71	-8
+      8	-8

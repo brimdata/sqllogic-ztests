@@ -1,0 +1,47 @@
+script: |
+  super -f tsv -I q716.sql | sort > q716.out
+
+inputs:
+  - name: q716.sql
+    data: |
+      SELECT abs(a),
+      a+b*2,
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      a+b*2+c*3+d*4
+      FROM t1;
+
+outputs:
+  - name: q716.out
+    data: |
+      104	NULL	555	0	NULL
+      107	317	333	0	1067
+      115	NULL	333	0	NULL
+      121	369	333	2	1226
+      127	385	333	3	1272
+      131	391	444	4	1325
+      138	416	111	5	1371
+      142	428	111	6	1411
+      149	439	555	7	NULL
+      153	455	555	8	NULL
+      159	475	555	9	NULL
+      163	483	333	10	1622
+      168	502	555	11	NULL
+      174	514	555	12	1714
+      179	529	555	13	NULL
+      182	544	333	14	1828
+      188	560	444	15	1861
+      191	579	444	16	1918
+      199	595	555	17	1964
+      201	NULL	222	0	NULL
+      213	635	222	19	2125
+      216	652	333	20	2165
+      220	666	444	21	2226
+      229	685	555	22	2264
+      234	698	555	23	2323
+      239	711	555	24	NULL
+      243	723	222	25	NULL
+      245	743	444	26	2476
+      NULL	NULL	555	1	NULL
+      NULL	NULL	555	18	NULL

@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q2223.sql | sort > q2223.out
+
+inputs:
+  - name: q2223.sql
+    data: |
+      SELECT ALL COALESCE ( MIN ( ALL 25 ), + CAST ( COUNT ( * ) AS INTEGER ) ) * - 50;
+
+outputs:
+  - name: q2223.out
+    data: |
+      -1250

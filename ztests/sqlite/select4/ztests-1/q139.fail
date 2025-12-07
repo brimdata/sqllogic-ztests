@@ -1,0 +1,31 @@
+script: |
+  super -f tsv -I q139.sql | tr '\t' '\n' | sort > q139.out
+
+inputs:
+  - name: q139.sql
+    data: |
+      SELECT b1 FROM t1
+      WHERE (e1=89 OR c1=39 OR 525=b1)
+      OR (a1=668)
+      EXCEPT
+      SELECT c8 FROM t8
+      WHERE NOT ((431=e8 AND 160=c8 AND a8=406 AND 815=d8 AND 934=b8)
+      OR d8 in (651,141,456,690,210,610,767,743,108,738,512,466,731)
+      OR (b8=145 AND d8=96 AND a8=359 AND c8=961 AND e8=233))
+      UNION
+      SELECT a4 FROM t4
+      WHERE (a4=513)
+      OR (276=b4);
+  - name: t1
+  - name: t7
+
+outputs:
+  - name: q139.out
+    data: |
+      303
+      346
+      373
+      513
+      525
+      569
+      766

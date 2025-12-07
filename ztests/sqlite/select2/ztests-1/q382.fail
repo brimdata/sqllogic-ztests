@@ -1,0 +1,33 @@
+script: |
+  super -f tsv -I q382.sql | sort > q382.out
+
+inputs:
+  - name: q382.sql
+    data: |
+      SELECT b-c,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      c,
+      d
+      FROM t1
+      WHERE d NOT BETWEEN 110 AND 150;
+
+outputs:
+  - name: q382.out
+    data: |
+      -1	0	106	108
+      -1	0	161	164
+      -1	0	187	185
+      -1	0	224	222
+      -2	0	172	171
+      -2	0	208	207
+      -3	0	184	183
+      -3	0	214	212
+      1	0	193	190
+      1	0	231	233
+      2	0	247	248
+      3	0	195	196
+      3	0	215	217
+      3	0	225	226
+      NULL	0	102	101
+      NULL	0	202	203
+      NULL	0	NULL	238

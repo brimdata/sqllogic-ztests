@@ -1,0 +1,46 @@
+script: |
+  super -f tsv -I q113.sql | sort > q113.out
+
+inputs:
+  - name: q113.sql
+    data: |
+      SELECT CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END,
+      a-b,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      (a+b+c+d+e)/5,
+      c
+      FROM t1
+      WHERE c BETWEEN b-2 AND d+2
+      OR a>b
+      OR b IS NOT NULL;
+
+outputs:
+  - name: q113.out
+    data: |
+      1050	2	0	107	106
+      1120	NULL	0	NULL	113
+      1240	-3	0	NULL	123
+      1290	-2	0	127	125
+      1300	1	0	132	134
+      1390	-1	0	137	137
+      1430	-1	0	142	141
+      1450	4	0	NULL	147
+      1510	2	0	NULL	150
+      1580	1	0	NULL	155
+      1600	3	0	162	161
+      1670	1	0	NULL	166
+      1700	4	0	172	172
+      2360	3	0	NULL	NULL
+      358	4	0	NULL	176
+      364	1	0	182	184
+      376	2	0	187	187
+      382	-3	0	192	193
+      398	1	0	197	195
+      426	2	0	212	214
+      432	-2	0	217	215
+      440	-3	0	222	224
+      458	1	0	227	225
+      468	2	0	232	231
+      486	3	0	NULL	244
+      490	-4	0	247	247
+      NULL	NULL	0	NULL	208

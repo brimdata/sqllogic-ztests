@@ -1,0 +1,63 @@
+script: |
+  super -f tsv -I q644.sql | tr '\t' '\n' | sort > q644.out
+
+inputs:
+  - name: q644.sql
+    data: |
+      SELECT c9 FROM t9
+      WHERE (942=e9 AND 297=a9 AND 848=b9 AND 467=d9 AND c9=146)
+      OR (d9=960)
+      OR d9 in (388,608,525,164,86,553,23,439,235)
+      EXCEPT
+      SELECT b4 FROM t4
+      WHERE NOT (e4 in (438,390,631,405,103,661,565,835,619))
+      EXCEPT
+      SELECT b1 FROM t1
+      WHERE NOT ((90=e1)
+      OR (774=c1 OR e1=52))
+      EXCEPT
+      SELECT c7 FROM t7
+      WHERE NOT (e7 in (506,302,816,688,900,92,455,254,272,782,862,945,183,456)
+      OR (b7=541 AND 855=c7 AND d7=276 AND 995=a7)
+      OR (688=e7 OR 467=c7 OR 114=a7))
+      UNION
+      SELECT b3 FROM t3
+      WHERE (378=a3 AND b3=214 AND d3=982 AND c3=651 AND 836=e3)
+      OR e3 in (341,304,120,527,951,862,467,871,218,578,464,876)
+      OR (984=d3 OR a3=143 OR 599=d3)
+      EXCEPT
+      SELECT a8 FROM t8
+      WHERE NOT ((d8=737 AND a8=127 AND c8=225 AND b8=975 AND e8=646)
+      OR e8 in (510,864,809,866,533,678,463,548,956,38,175,383,431));
+  - name: t1
+  - name: t2
+
+outputs:
+  - name: q644.out
+    data: |
+      124
+      145
+      146
+      151
+      214
+      272
+      296
+      321
+      382
+      407
+      437
+      526
+      542
+      566
+      577
+      70
+      734
+      739
+      783
+      811
+      814
+      834
+      843
+      884
+      927
+      95

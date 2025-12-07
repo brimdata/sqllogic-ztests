@@ -1,0 +1,69 @@
+script: |
+  super -f tsv -I q565.sql | tr '\t' '\n' | sort > q565.out
+
+inputs:
+  - name: q565.sql
+    data: |
+      SELECT b2 FROM t2
+      WHERE (a2=508 AND b2=170 AND c2=444 AND 723=d2)
+      OR (a2=789)
+      OR (817=a2 AND 276=b2 AND d2=177 AND 753=e2 AND c2=496)
+      UNION
+      SELECT c9 FROM t9
+      WHERE e9 in (679,868,335,278,245,239,995,264,445,657,750,197)
+      OR (d9=646 AND 959=a9 AND c9=739 AND e9=868 AND b9=578)
+      UNION ALL
+      SELECT e6 FROM t6
+      WHERE (a6=818 OR 60=d6)
+      OR e6 in (731,95,324,90,255)
+      UNION ALL
+      SELECT d5 FROM t5
+      WHERE (d5=542 AND b5=846)
+      EXCEPT
+      SELECT b8 FROM t8
+      WHERE NOT (b8 in (105,741,102,351,244,155,696,162,984))
+      UNION
+      SELECT a1 FROM t1
+      WHERE b1 in (523,255,75,32,43,781,993,808,281,828,233,652)
+      EXCEPT
+      SELECT e4 FROM t4
+      WHERE NOT ((294=b4 OR b4=941 OR a4=651)
+      OR (23=b4 OR e4=438 OR a4=661)
+      OR a4 in (723,151,605,318,574,450,337,602));
+  - name: t3
+  - name: t5
+  - name: t7
+  - name: t9
+
+outputs:
+  - name: q565.out
+    data: |
+      170
+      173
+      255
+      276
+      280
+      288
+      380
+      39
+      419
+      461
+      479
+      521
+      544
+      547
+      579
+      584
+      595
+      60
+      654
+      731
+      754
+      853
+      857
+      864
+      87
+      90
+      95
+      955
+      973

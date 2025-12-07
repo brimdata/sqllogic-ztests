@@ -1,0 +1,64 @@
+script: |
+  super -f tsv -I q640.sql | tr '\t' '\n' | sort > q640.out
+
+inputs:
+  - name: q640.sql
+    data: |
+      SELECT d9 FROM t9
+      WHERE e9 in (335,542,868)
+      OR (868=e9 AND d9=646)
+      OR (a9=485)
+      UNION
+      SELECT c5 FROM t5
+      WHERE (433=b5)
+      UNION ALL
+      SELECT c8 FROM t8
+      WHERE (935=c8)
+      OR c8 in (901,442,790,404,979,908,844,448,789,154,249,136,427,799)
+      UNION
+      SELECT c6 FROM t6
+      WHERE (223=d6 AND 681=b6 AND e6=324)
+      OR c6 in (928,522,769,543,961,528)
+      OR c6 in (677,270,718,216,35,159)
+      EXCEPT
+      SELECT c7 FROM t7
+      WHERE NOT ((280=e7 AND a7=894 AND 606=c7 AND d7=105 AND b7=996)
+      OR (e7=31 AND a7=97 AND 579=b7))
+      EXCEPT
+      SELECT e1 FROM t1
+      WHERE NOT ((b1=572)
+      OR (e1=497));
+  - name: t1
+  - name: t4
+  - name: t5
+  - name: t9
+
+outputs:
+  - name: q640.out
+    data: |
+      136
+      154
+      159
+      216
+      267
+      270
+      35
+      399
+      404
+      427
+      448
+      528
+      543
+      677
+      718
+      769
+      789
+      790
+      799
+      844
+      901
+      908
+      928
+      935
+      961
+      979

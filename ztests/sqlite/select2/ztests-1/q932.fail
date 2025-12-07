@@ -1,0 +1,42 @@
+script: |
+  super -f tsv -I q932.sql | sort > q932.out
+
+inputs:
+  - name: q932.sql
+    data: |
+      SELECT c
+      FROM t1
+      WHERE b>c
+      OR b IS NOT NULL
+      OR EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b);
+
+outputs:
+  - name: q932.out
+    data: |
+      106
+      113
+      123
+      125
+      134
+      137
+      141
+      147
+      150
+      155
+      161
+      166
+      172
+      176
+      184
+      187
+      193
+      195
+      208
+      214
+      215
+      224
+      225
+      231
+      244
+      247
+      NULL

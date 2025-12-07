@@ -1,0 +1,60 @@
+script: |
+  super -f tsv -I q983.sql | tr '\t' '\n' | sort > q983.out
+
+inputs:
+  - name: q983.sql
+    data: |
+      SELECT c6 FROM t6
+      WHERE e6 in (257,489,711,668,731)
+      EXCEPT
+      SELECT a7 FROM t7
+      WHERE NOT (d7 in (939,527,34,603,192,172))
+      UNION
+      SELECT a3 FROM t3
+      WHERE b3 in (321,464,835,595,651,407,649,632,334,224,211,914,761,317)
+      OR (b3=57 AND d3=913 AND 375=e3)
+      UNION ALL
+      SELECT b4 FROM t4
+      WHERE (837=e4 OR c4=712 OR d4=797)
+      OR a4 in (997,271,746,773,662,752,901)
+      EXCEPT
+      SELECT e2 FROM t2
+      WHERE NOT ((b2=864 OR 268=a2 OR 818=b2));
+  - name: t2
+  - name: t3
+  - name: t6
+
+outputs:
+  - name: q983.out
+    data: |
+      137
+      161
+      190
+      271
+      286
+      292
+      306
+      337
+      389
+      41
+      413
+      442
+      5
+      506
+      513
+      559
+      608
+      697
+      727
+      729
+      733
+      751
+      810
+      829
+      84
+      847
+      872
+      884
+      917
+      98
+      995

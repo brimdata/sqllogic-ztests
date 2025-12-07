@@ -1,0 +1,45 @@
+script: |
+  super -f tsv -I q1356.sql | sort > q1356.out
+
+inputs:
+  - name: q1356.sql
+    data: |
+      SELECT e,
+      b,
+      CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      a
+      FROM t1
+      WHERE EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      OR e+d BETWEEN a+b-10 AND c+130;
+
+outputs:
+  - name: q1356.out
+    data: |
+      109	105	333	107
+      110	112	555	NULL
+      126	129	333	127
+      132	130	444	131
+      135	139	111	138
+      144	143	111	142
+      146	145	555	149
+      157	158	555	159
+      162	160	333	163
+      165	167	555	168
+      173	170	555	174
+      177	175	555	179
+      180	181	333	182
+      189	186	444	188
+      192	194	444	191
+      197	198	555	199
+      210	211	222	213
+      219	218	333	216
+      221	223	444	220
+      227	228	555	229
+      230	232	555	234
+      237	236	555	239
+      246	249	444	245
+      NULL	124	333	121
+      NULL	151	555	153
+      NULL	206	555	NULL
+      NULL	240	222	243

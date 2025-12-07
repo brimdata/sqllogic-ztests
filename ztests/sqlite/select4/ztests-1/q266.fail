@@ -1,0 +1,79 @@
+script: |
+  super -f tsv -I q266.sql | tr '\t' '\n' | sort > q266.out
+
+inputs:
+  - name: q266.sql
+    data: |
+      SELECT e4 FROM t4
+      WHERE c4 in (758,220,119,675,214,732,162,806)
+      INTERSECT
+      SELECT e7 FROM t7
+      WHERE NOT ((e7=826))
+      UNION
+      SELECT d1 FROM t1
+      WHERE (c1=272 OR d1=172)
+      OR (b1=32 AND 366=c1)
+      UNION
+      SELECT d6 FROM t6
+      WHERE (c6=434 OR d6=34 OR 807=d6)
+      OR b6 in (350,276,984,217,54,300,699,662,601,463,281,650)
+      UNION ALL
+      SELECT a2 FROM t2
+      WHERE (186=a2 AND e2=37 AND 345=d2)
+      UNION ALL
+      SELECT b8 FROM t8
+      WHERE c8 in (381,789,196,100,61,32,668,187)
+      OR (a8=913 OR 244=b8 OR 541=d8)
+      OR e8 in (440,272,736,919,893,392,221,579,944,305,64,149,56);
+  - name: t5
+  - name: t9
+
+outputs:
+  - name: q266.out
+    data: |
+      1
+      102
+      105
+      172
+      182
+      184
+      186
+      186
+      211
+      244
+      269
+      269
+      286
+      313
+      321
+      34
+      359
+      386
+      397
+      489
+      493
+      500
+      52
+      561
+      590
+      642
+      656
+      664
+      673
+      690
+      73
+      750
+      793
+      807
+      807
+      862
+      867
+      870
+      889
+      9
+      911
+      929
+      931
+      949
+      963
+      964

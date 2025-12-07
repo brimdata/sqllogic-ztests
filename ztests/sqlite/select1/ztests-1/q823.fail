@@ -1,0 +1,19 @@
+script: |
+  super -f tsv -I q823.sql > q823.out
+
+inputs:
+  - name: q823.sql
+    data: |
+      SELECT (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b)
+      FROM t1
+      WHERE e+d BETWEEN a+b-10 AND c+130
+      AND EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      AND (c<=d-2 OR c>=d+2)
+      ORDER BY 1;
+
+outputs:
+  - name: q823.out
+    data: |
+      1
+      3
+      5

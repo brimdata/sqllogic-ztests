@@ -1,0 +1,52 @@
+script: |
+  super -f tsv -I q341.sql | tr '\t' '\n' | sort > q341.out
+
+inputs:
+  - name: q341.sql
+    data: |
+      SELECT b1 FROM t1
+      WHERE (b1=55 AND 693=e1 AND d1=459)
+      OR a1 in (785,678,499,498,20,936,637,371,451,591)
+      OR (c1=846)
+      UNION ALL
+      SELECT c3 FROM t3
+      WHERE c3 in (549,692,826,800,555,860,75)
+      OR (353=c3)
+      UNION
+      SELECT e2 FROM t2
+      WHERE (244=c2 OR 137=d2)
+      OR (501=b2)
+      EXCEPT
+      SELECT a5 FROM t5
+      WHERE NOT ((443=c5 AND 691=d5 AND 98=e5 AND 587=b5 AND 153=a5)
+      OR b5 in (975,321,424,729,326,205,858,861,736,260,143,771,998,530)
+      OR e5 in (937,18,437,708))
+      EXCEPT
+      SELECT a6 FROM t6
+      WHERE NOT ((929=d6 AND e6=77 AND b6=350)
+      OR (e6=574 OR b6=604 OR 677=c6));
+  - name: t3
+  - name: t9
+
+outputs:
+  - name: q341.out
+    data: |
+      16
+      282
+      353
+      404
+      49
+      525
+      549
+      555
+      60
+      620
+      692
+      75
+      826
+      857
+      860
+      894
+      94
+      940
+      944

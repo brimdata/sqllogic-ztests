@@ -1,0 +1,32 @@
+script: |
+  super -f tsv -I q386.sql | sort > q386.out
+
+inputs:
+  - name: q386.sql
+    data: |
+      SELECT d,
+      e,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      a+b*2+c*3+d*4+e*5,
+      CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END,
+      abs(b-c)
+      FROM t1
+      WHERE coalesce(a,b,c,d,e)<>0
+      AND c>d;
+
+outputs:
+  - name: q386.out
+    data: |
+      101	NULL	0	NULL	NULL	NULL
+      116	117	0	NULL	NULL	NULL
+      122	NULL	2	NULL	1240	1
+      133	132	4	1985	1300	4
+      136	135	5	2046	1390	2
+      140	144	6	2131	1430	2
+      171	173	12	2579	1700	2
+      183	180	14	2728	364	3
+      185	189	15	2806	376	1
+      190	192	16	2878	382	1
+      207	NULL	18	NULL	NULL	2
+      212	210	19	3175	426	3
+      222	221	21	3331	440	1

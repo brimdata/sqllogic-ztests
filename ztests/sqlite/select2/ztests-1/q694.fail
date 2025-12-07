@@ -1,0 +1,39 @@
+script: |
+  super -f tsv -I q694.sql | sort > q694.out
+
+inputs:
+  - name: q694.sql
+    data: |
+      SELECT b-c,
+      a+b*2,
+      b,
+      CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+      WHEN a<b+3 THEN 333 ELSE 444 END,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b)
+      FROM t1
+      WHERE (e>c OR e<d);
+
+outputs:
+  - name: q694.out
+    data: |
+      -1	317	105	333	0
+      -1	483	160	444	10
+      -1	529	175	444	13
+      -1	560	186	333	15
+      -1	666	223	222	21
+      -1	NULL	112	444	1
+      -2	514	170	444	12
+      -3	544	181	333	14
+      -3	635	211	333	19
+      -4	391	130	333	4
+      1	698	232	333	23
+      2	416	139	222	5
+      2	428	143	222	6
+      2	743	249	111	26
+      3	475	158	333	9
+      3	595	198	333	17
+      3	652	218	222	20
+      3	685	228	333	22
+      4	385	129	222	3
+      NULL	711	236	444	24
+      NULL	NULL	NULL	444	0

@@ -1,0 +1,40 @@
+script: |
+  super -f tsv -I q610.sql | sort > q610.out
+
+inputs:
+  - name: q610.sql
+    data: |
+      SELECT b-c,
+      a+b*2
+      FROM t1
+      WHERE EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b);
+
+outputs:
+  - name: q610.out
+    data: |
+      -1	483
+      -1	529
+      -1	560
+      -1	666
+      -1	NULL
+      -2	439
+      -2	514
+      -2	NULL
+      -3	544
+      -3	635
+      -4	391
+      -4	723
+      1	369
+      1	455
+      1	502
+      1	579
+      1	698
+      2	416
+      2	428
+      2	743
+      3	475
+      3	595
+      3	652
+      3	685
+      4	385
+      NULL	711

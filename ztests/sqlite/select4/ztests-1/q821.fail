@@ -1,0 +1,39 @@
+script: |
+  super -f tsv -I q821.sql | tr '\t' '\n' | sort > q821.out
+
+inputs:
+  - name: q821.sql
+    data: |
+      SELECT c7 FROM t7
+      WHERE d7 in (924,675,164,315,916,395,805,673,772,436,346,278)
+      INTERSECT
+      SELECT e4 FROM t4
+      WHERE NOT ((e4=63 AND b4=678 AND 948=c4)
+      OR (160=a4)
+      OR (c4=964 AND 386=a4 AND 103=e4 AND 903=b4))
+      EXCEPT
+      SELECT c8 FROM t8
+      WHERE NOT (d8 in (889,366,466,743,534,344)
+      OR b8 in (951,466,397,9,640,469,889,155,300,405,351,761)
+      OR (b8=624 AND 956=e8 AND c8=821 AND 667=d8))
+      EXCEPT
+      SELECT a9 FROM t9
+      WHERE NOT ((864=b9)
+      OR b9 in (301,152,410,803,15,818,913,149,170,171))
+      UNION
+      SELECT d5 FROM t5
+      WHERE (c5=437 AND d5=555 AND 330=a5)
+      OR (e5=232 AND 320=b5 AND 495=d5)
+      EXCEPT
+      SELECT c2 FROM t2
+      WHERE NOT (b2 in (545,549,820,270)
+      OR (d2=2 OR 441=e2));
+  - name: t3
+  - name: t7
+  - name: t9
+
+outputs:
+  - name: q821.out
+    data: |
+      495
+      555

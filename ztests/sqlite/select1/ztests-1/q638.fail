@@ -1,0 +1,46 @@
+script: |
+  super -f tsv -I q638.sql > q638.out
+
+inputs:
+  - name: q638.sql
+    data: |
+      SELECT CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d)
+      FROM t1
+      ORDER BY 3,1,2;
+
+outputs:
+  - name: q638.out
+    data: |
+      111	2	0
+      111	7	0
+      111	8	0
+      111	21	0
+      222	20	0
+      222	22	0
+      222	28	0
+      333	1	0
+      333	3	0
+      333	4	0
+      333	5	0
+      333	10	0
+      333	12	0
+      333	13	0
+      333	16	0
+      333	23	0
+      444	6	0
+      444	17	0
+      444	18	0
+      444	24	0
+      444	29	0
+      555	0	0
+      555	9	0
+      555	11	0
+      555	14	0
+      555	15	0
+      555	19	0
+      555	25	0
+      555	26	0
+      555	27	0

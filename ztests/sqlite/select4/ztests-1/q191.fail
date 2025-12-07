@@ -1,0 +1,57 @@
+script: |
+  super -f tsv -I q191.sql | tr '\t' '\n' | sort > q191.out
+
+inputs:
+  - name: q191.sql
+    data: |
+      SELECT a8 FROM t8
+      WHERE (c8=74 OR a8=15)
+      OR (794=a8)
+      EXCEPT
+      SELECT b3 FROM t3
+      WHERE NOT ((a3=143)
+      OR (317=c3 AND 712=e3 AND b3=558 AND 344=a3 AND d3=553)
+      OR (e3=365 AND b3=122 AND a3=105 AND d3=133))
+      EXCEPT
+      SELECT a5 FROM t5
+      WHERE NOT ((b5=784 AND 847=d5 AND 551=c5 AND e5=441 AND a5=637))
+      UNION
+      SELECT e4 FROM t4
+      WHERE c4 in (581,794,88)
+      OR c4 in (993,424,153,0,403)
+      EXCEPT
+      SELECT c7 FROM t7
+      WHERE NOT (a7 in (31,130,386,684,290,894,48,158,699,35,565,416)
+      OR (276=d7)
+      OR (c7=180 OR c7=232))
+      EXCEPT
+      SELECT a9 FROM t9
+      WHERE NOT ((801=c9 OR a9=450 OR c9=587)
+      OR (736=e9)
+      OR e9 in (841,804,737,657,868,486,854,567,477,619,792))
+      EXCEPT
+      SELECT e6 FROM t6
+      WHERE NOT ((e6=95 OR 54=b6)
+      OR c6 in (416,620,267,320,12,146,159,752,717)
+      OR (a6=129))
+      EXCEPT
+      SELECT e1 FROM t1
+      WHERE NOT ((e1=696 AND b1=426))
+      EXCEPT
+      SELECT b2 FROM t2
+      WHERE NOT ((c2=557 AND a2=308));
+  - name: t1
+  - name: t3
+  - name: t5
+  - name: t6
+  - name: t7
+  - name: t8
+  - name: t9
+
+outputs:
+  - name: q191.out
+    data: |
+      15
+      307
+      350
+      85

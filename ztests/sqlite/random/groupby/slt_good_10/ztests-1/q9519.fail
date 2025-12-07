@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q9519.sql | sort > q9519.out
+
+inputs:
+  - name: q9519.sql
+    data: |
+      SELECT - col1, + col2 AS col1 FROM tab1 GROUP BY col1, col2;
+
+outputs:
+  - name: q9519.out
+    data: |
+      -44	71
+      -57	45
+      -6	8

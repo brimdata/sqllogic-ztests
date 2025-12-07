@@ -1,0 +1,31 @@
+script: |
+  super -f tsv -I q3126.sql | sort > q3126.out
+
+inputs:
+  - name: q3126.sql
+    data: |
+      SELECT CASE a+1 WHEN b THEN 111 WHEN c THEN 222
+      WHEN d THEN 333  WHEN e THEN 444 ELSE 555 END,
+      d,
+      (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+      (a+b+c+d+e)/5,
+      a+b*2
+      FROM t1
+      WHERE b>c;
+
+outputs:
+  - name: q3126.out
+    data: |
+      111	136	0	137	416
+      111	140	0	142	428
+      333	122	0	NULL	369
+      333	128	0	127	385
+      333	217	0	217	652
+      444	190	0	192	579
+      444	248	0	247	743
+      555	196	0	197	595
+      555	226	0	227	685
+      555	233	0	232	698
+      555	NULL	0	NULL	455
+      555	NULL	0	NULL	475
+      555	NULL	0	NULL	502

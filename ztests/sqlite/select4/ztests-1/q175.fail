@@ -1,0 +1,45 @@
+script: |
+  super -f tsv -I q175.sql | tr '\t' '\n' | sort > q175.out
+
+inputs:
+  - name: q175.sql
+    data: |
+      SELECT c9 FROM t9
+      WHERE (955=c9 AND 535=a9)
+      UNION ALL
+      SELECT e8 FROM t8
+      WHERE (702=b8 AND e8=700 AND 841=a8 AND 563=c8)
+      EXCEPT
+      SELECT e6 FROM t6
+      WHERE NOT ((963=b6 AND 595=e6))
+      UNION ALL
+      SELECT a2 FROM t2
+      WHERE d2 in (23,806,404,19,377,750)
+      OR (c2=819 AND 148=e2 AND b2=546)
+      OR (c2=746)
+      UNION ALL
+      SELECT d3 FROM t3
+      WHERE (d3=217)
+      OR (c3=178)
+      EXCEPT
+      SELECT c7 FROM t7
+      WHERE NOT (e7 in (462,624,595,462,456));
+  - name: t1
+  - name: t5
+
+outputs:
+  - name: q175.out
+    data: |
+      159
+      2
+      217
+      297
+      415
+      434
+      445
+      700
+      751
+      769
+      775
+      869
+      955

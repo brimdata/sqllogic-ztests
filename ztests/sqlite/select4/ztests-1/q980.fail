@@ -1,0 +1,88 @@
+script: |
+  super -f tsv -I q980.sql | tr '\t' '\n' | sort > q980.out
+
+inputs:
+  - name: q980.sql
+    data: |
+      SELECT a6 FROM t6
+      WHERE a6 in (870,359,522,2,386,148,821,116,643,45,564)
+      OR (b6=601 AND e6=431 AND 269=d6 AND 28=c6 AND a6=540)
+      OR c6 in (123,267,399)
+      UNION ALL
+      SELECT c1 FROM t1
+      WHERE (620=c1)
+      UNION ALL
+      SELECT b9 FROM t9
+      WHERE (c9=351 OR 278=e9)
+      OR d9 in (439,467,744,450)
+      OR (783=b9 AND c9=64)
+      UNION ALL
+      SELECT b5 FROM t5
+      WHERE a5 in (270,180,330,332,832,445,929,837,540,958,421,369,851)
+      OR d5 in (835,271,818,537,276)
+      OR d5 in (361,118,255,818,919,757,413,805)
+      EXCEPT
+      SELECT e4 FROM t4
+      WHERE NOT ((c4=178 OR c4=489 OR 319=c4)
+      OR e4 in (600,405,376,854,543,816,958,311,837,381,217)
+      OR (2=c4 AND d4=507))
+      UNION ALL
+      SELECT c7 FROM t7
+      WHERE (b7=340)
+      EXCEPT
+      SELECT e8 FROM t8
+      WHERE NOT ((259=b8))
+      EXCEPT
+      SELECT a3 FROM t3
+      WHERE NOT (b3 in (211,779,914,159,437))
+      UNION ALL
+      SELECT b2 FROM t2
+      WHERE (d2=488 AND 688=e2 AND a2=944)
+      OR (d2=723 OR c2=275);
+  - name: t2
+  - name: t3
+  - name: t6
+
+outputs:
+  - name: q980.out
+    data: |
+      113
+      116
+      127
+      148
+      161
+      170
+      193
+      2
+      205
+      230
+      239
+      26
+      270
+      292
+      338
+      359
+      389
+      391
+      403
+      433
+      45
+      522
+      540
+      564
+      569
+      606
+      643
+      66
+      674
+      705
+      731
+      783
+      789
+      821
+      848
+      860
+      870
+      90
+      93
+      934

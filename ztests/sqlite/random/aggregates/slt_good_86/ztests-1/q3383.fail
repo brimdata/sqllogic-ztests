@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q3383.sql | sort > q3383.out
+
+inputs:
+  - name: q3383.sql
+    data: |
+      SELECT COUNT ( * ) * - MIN ( ALL - col2 ) AS col1 FROM tab1 WHERE NOT col2 IS NOT NULL;
+
+outputs:
+  - name: q3383.out
+    data: |
+      NULL

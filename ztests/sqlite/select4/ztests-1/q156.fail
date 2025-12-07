@@ -1,0 +1,87 @@
+script: |
+  super -f tsv -I q156.sql | tr '\t' '\n' | sort > q156.out
+
+inputs:
+  - name: q156.sql
+    data: |
+      SELECT d2 FROM t2
+      WHERE a2 in (574,785,93,538,131,669,324,10,185,564)
+      OR (e2=535)
+      UNION
+      SELECT d6 FROM t6
+      WHERE a6 in (683,653,870,821,537,396,452,270,787)
+      EXCEPT
+      SELECT c3 FROM t3
+      WHERE NOT ((e3=823 OR d3=809)
+      OR (a3=12))
+      UNION
+      SELECT c9 FROM t9
+      WHERE (905=c9)
+      UNION ALL
+      SELECT c4 FROM t4
+      WHERE (a4=625)
+      UNION
+      SELECT a5 FROM t5
+      WHERE (637=a5 AND 441=e5)
+      UNION ALL
+      SELECT e1 FROM t1
+      WHERE d1 in (761,666,96,807,4)
+      OR e1 in (483,921,110,534,904,523)
+      UNION
+      SELECT b7 FROM t7
+      WHERE b7 in (66,735,720,503,514,923,679,192,655,175,426,257,896)
+      OR a7 in (165,707,62,500,416);
+  - name: t1
+  - name: t5
+
+outputs:
+  - name: q156.out
+    data: |
+      110
+      129
+      152
+      175
+      192
+      209
+      220
+      223
+      257
+      260
+      308
+      35
+      363
+      367
+      426
+      453
+      483
+      489
+      503
+      514
+      523
+      534
+      581
+      637
+      655
+      66
+      660
+      679
+      720
+      731
+      735
+      749
+      752
+      753
+      790
+      832
+      886
+      896
+      90
+      904
+      905
+      921
+      923
+      924
+      931
+      953
+      956
+      974

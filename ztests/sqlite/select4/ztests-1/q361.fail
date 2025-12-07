@@ -1,0 +1,62 @@
+script: |
+  super -f tsv -I q361.sql | tr '\t' '\n' | sort > q361.out
+
+inputs:
+  - name: q361.sql
+    data: |
+      SELECT a6 FROM t6
+      WHERE d6 in (366,911,21,667,852,807,424,885,767,405)
+      UNION
+      SELECT e9 FROM t9
+      WHERE (b9=751 AND e9=19 AND a9=919)
+      OR d9 in (463,618,591)
+      EXCEPT
+      SELECT c3 FROM t3
+      WHERE NOT ((651=e3)
+      OR (524=d3 AND 524=c3 AND 393=a3 AND e3=192 AND b3=720))
+      UNION
+      SELECT b7 FROM t7
+      WHERE (660=b7)
+      OR (192=d7 AND b7=896 AND a7=277 AND 975=e7 AND 781=c7)
+      UNION
+      SELECT a1 FROM t1
+      WHERE (b1=914)
+      OR e1 in (402,125,747,135,221,963,772,811,12,568)
+      UNION
+      SELECT a8 FROM t8
+      WHERE (e8=592)
+      UNION ALL
+      SELECT a5 FROM t5
+      WHERE (a5=485 AND 943=e5 AND d5=964 AND 936=c5)
+      EXCEPT
+      SELECT a4 FROM t4
+      WHERE NOT (d4 in (185,100,449,820,881))
+      EXCEPT
+      SELECT a2 FROM t2
+      WHERE NOT ((c2=4 AND d2=235)
+      OR (b2=811 AND 809=a2 AND 548=e2 AND d2=833)
+      OR (560=c2));
+  - name: t2
+  - name: t4
+  - name: t5
+
+outputs:
+  - name: q361.out
+    data: |
+      170
+      19
+      194
+      238
+      307
+      45
+      477
+      485
+      518
+      591
+      610
+      657
+      678
+      818
+      838
+      862
+      896

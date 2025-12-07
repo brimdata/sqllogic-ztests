@@ -1,0 +1,88 @@
+script: |
+  super -f tsv -I q770.sql | tr '\t' '\n' | sort > q770.out
+
+inputs:
+  - name: q770.sql
+    data: |
+      SELECT d6 FROM t6
+      WHERE d6 in (664,600,467,911,867,424)
+      OR (255=a6 OR 414=a6)
+      OR (e6=761 OR b6=449 OR 290=b6)
+      INTERSECT
+      SELECT d8 FROM t8
+      WHERE NOT ((300=b8 OR 807=b8)
+      OR a8 in (12,638,564,957))
+      INTERSECT
+      SELECT c3 FROM t3
+      WHERE NOT ((e3=853 OR 548=a3 OR b3=124)
+      OR (c3=265 AND d3=548 AND b3=788 AND e3=136)
+      OR (334=b3))
+      UNION
+      SELECT a7 FROM t7
+      WHERE c7 in (243,659,146,14,103,931,688,705)
+      OR (436=d7 OR 462=e7)
+      OR e7 in (663,197,183,89,816,860,372,290,503)
+      EXCEPT
+      SELECT a4 FROM t4
+      WHERE NOT (c4 in (455,873,674,436))
+      UNION
+      SELECT b9 FROM t9
+      WHERE (161=d9 AND 549=b9 AND 368=e9)
+      UNION
+      SELECT b2 FROM t2
+      WHERE (150=c2 AND d2=806 AND e2=777 AND a2=769 AND b2=168)
+      OR d2 in (892,887,750,682,663,749,389,860,448,516)
+      OR (b2=784 AND 707=e2 AND a2=283 AND 790=d2)
+      UNION
+      SELECT e1 FROM t1
+      WHERE a1 in (967,981,492,194,314,517,75,161,521)
+      EXCEPT
+      SELECT d5 FROM t5
+      WHERE NOT ((242=a5 AND 634=d5 AND e5=68 AND b5=559)
+      OR (342=a5 OR a5=332));
+  - name: t3
+  - name: t5
+  - name: t8
+  - name: t9
+
+outputs:
+  - name: q770.out
+    data: |
+      122
+      135
+      165
+      167
+      168
+      228
+      231
+      270
+      329
+      367
+      433
+      452
+      463
+      48
+      500
+      545
+      549
+      568
+      592
+      6
+      605
+      622
+      628
+      671
+      706
+      714
+      715
+      73
+      736
+      744
+      755
+      758
+      784
+      863
+      89
+      897
+      921
+      932

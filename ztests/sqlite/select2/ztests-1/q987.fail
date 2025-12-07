@@ -1,0 +1,50 @@
+script: |
+  super -f tsv -I q987.sql | sort > q987.out
+
+inputs:
+  - name: q987.sql
+    data: |
+      SELECT a-b,
+      (a+b+c+d+e)/5,
+      abs(b-c),
+      c,
+      abs(a),
+      e,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b)
+      FROM t1
+      WHERE d NOT BETWEEN 110 AND 150
+      OR EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      OR a IS NULL;
+
+outputs:
+  - name: q987.out
+    data: |
+      -1	137	2	137	138	135	5
+      -1	142	2	141	142	144	6
+      -2	127	4	125	127	126	3
+      -2	217	3	215	216	219	20
+      -3	192	1	193	191	192	16
+      -3	222	1	224	220	221	21
+      -3	NULL	1	123	121	NULL	2
+      -4	247	2	247	245	246	26
+      1	132	4	134	131	132	4
+      1	182	3	184	182	180	14
+      1	197	3	195	199	197	17
+      1	227	3	225	229	227	22
+      1	NULL	1	166	168	165	11
+      1	NULL	3	155	159	157	9
+      2	107	1	106	107	109	0
+      2	187	1	187	188	189	15
+      2	212	3	214	213	210	19
+      2	232	1	231	234	230	23
+      2	NULL	1	150	153	NULL	8
+      3	162	1	161	163	162	10
+      3	NULL	4	244	243	NULL	25
+      3	NULL	NULL	NULL	239	237	24
+      4	172	2	172	174	173	12
+      4	NULL	1	176	179	177	13
+      4	NULL	2	147	149	146	7
+      NULL	NULL	1	113	NULL	110	1
+      NULL	NULL	2	208	NULL	NULL	18
+      NULL	NULL	NULL	102	104	NULL	0
+      NULL	NULL	NULL	202	201	204	0

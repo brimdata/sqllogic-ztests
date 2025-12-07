@@ -1,0 +1,26 @@
+script: |
+  super -f tsv -I q85.sql | sort > q85.out
+
+inputs:
+  - name: q85.sql
+    data: |
+      SELECT a,
+      (a+b+c+d+e)/5,
+      b
+      FROM t1
+      WHERE c>d
+      AND (e>c OR e<d)
+      AND EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      ORDER BY 1,3;
+
+outputs:
+  - name: q85.out
+    data: |
+      131	132	130
+      138	137	139
+      142	142	143
+      174	172	170
+      182	182	181
+      188	187	186
+      213	212	211
+      220	222	223

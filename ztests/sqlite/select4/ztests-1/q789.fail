@@ -1,0 +1,77 @@
+script: |
+  super -f tsv -I q789.sql | tr '\t' '\n' | sort > q789.out
+
+inputs:
+  - name: q789.sql
+    data: |
+      SELECT b9 FROM t9
+      WHERE (e9=291)
+      UNION ALL
+      SELECT b3 FROM t3
+      WHERE a3 in (234,335,380,992,964,576,379,754,879,710,865,959)
+      OR (d3=560 AND 776=a3 AND 459=e3)
+      OR (c3=565 AND b3=445)
+      UNION ALL
+      SELECT a6 FROM t6
+      WHERE (e6=946 AND d6=901 AND 378=b6 AND c6=308)
+      OR (500=c6 OR d6=196)
+      EXCEPT
+      SELECT a4 FROM t4
+      WHERE NOT ((c4=484 AND d4=844))
+      UNION
+      SELECT e2 FROM t2
+      WHERE (733=a2 OR 981=e2 OR 22=c2)
+      OR d2 in (60,158,14,404,750,454,753,126,263)
+      OR b2 in (313,270,181,755,812,599,317,820)
+      UNION ALL
+      SELECT d5 FROM t5
+      WHERE (193=b5 OR c5=856)
+      OR (e5=943)
+      OR (d5=42 AND b5=847 AND c5=210 AND 718=e5 AND 749=a5);
+  - name: t1
+  - name: t2
+  - name: t6
+  - name: t9
+
+outputs:
+  - name: q789.out
+    data: |
+      103
+      118
+      125
+      151
+      202
+      217
+      233
+      307
+      322
+      381
+      42
+      428
+      434
+      445
+      524
+      534
+      565
+      584
+      585
+      647
+      686
+      706
+      721
+      790
+      805
+      815
+      827
+      888
+      899
+      925
+      932
+      936
+      939
+      940
+      953
+      955
+      964
+      981
+      991

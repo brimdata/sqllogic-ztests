@@ -1,0 +1,25 @@
+script: |
+  super -f tsv -I q948.sql | sort > q948.out
+
+inputs:
+  - name: q948.sql
+    data: |
+      SELECT (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d)
+      FROM t1
+      WHERE EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+      AND d>e;
+
+outputs:
+  - name: q948.out
+    data: |
+      0
+      0
+      0
+      0
+      0
+      0
+      0
+      0
+      0
+      0
+      0

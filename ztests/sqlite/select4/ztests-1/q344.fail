@@ -1,0 +1,51 @@
+script: |
+  super -f tsv -I q344.sql | tr '\t' '\n' | sort > q344.out
+
+inputs:
+  - name: q344.sql
+    data: |
+      SELECT b4 FROM t4
+      WHERE (b4=644 AND 82=a4 AND 617=d4)
+      OR (c4=319)
+      OR a4 in (29,746,847,845,997,422,502,271,447,474)
+      EXCEPT
+      SELECT b7 FROM t7
+      WHERE NOT ((506=b7)
+      OR (523=c7)
+      OR (226=d7))
+      UNION
+      SELECT e5 FROM t5
+      WHERE (c5=721 OR a5=602 OR 234=b5)
+      EXCEPT
+      SELECT b1 FROM t1
+      WHERE NOT (e1 in (288,254,747,695,717,795,158)
+      OR (a1=173 AND 872=e1 AND d1=86)
+      OR e1 in (221,813,628,558))
+      EXCEPT
+      SELECT e9 FROM t9
+      WHERE NOT ((50=b9 AND 924=a9)
+      OR a9 in (847,964,28,389,41,263,56,610,549,559,251,972,548,919)
+      OR (542=e9 AND b9=446 AND d9=790 AND a9=685 AND c9=992))
+      EXCEPT
+      SELECT d8 FROM t8
+      WHERE NOT (a8 in (331,661,359,46,15,586,54,242,328,400,883))
+      EXCEPT
+      SELECT d3 FROM t3
+      WHERE NOT (b3 in (376,156,720,983,198,273))
+      EXCEPT
+      SELECT e6 FROM t6
+      WHERE NOT ((c6=500 OR c6=441)
+      OR (e6=601));
+  - name: t3
+  - name: t9
+
+outputs:
+  - name: q344.out
+    data: |
+      104
+      180
+      644
+      653
+      733
+      810
+      964

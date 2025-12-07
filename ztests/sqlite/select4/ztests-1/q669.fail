@@ -1,0 +1,27 @@
+script: |
+  super -f tsv -I q669.sql | tr '\t' '\n' | sort > q669.out
+
+inputs:
+  - name: q669.sql
+    data: |
+      SELECT d7 FROM t7
+      WHERE (539=d7 AND b7=280 AND 688=c7)
+      OR d7 in (831,199,367,346,507,172,575,131,572,391,680,418,34,687)
+      INTERSECT
+      SELECT a2 FROM t2
+      WHERE NOT ((a2=308 AND 557=c2 AND e2=115 AND 416=d2 AND b2=60)
+      OR (60=b2 OR a2=660)
+      OR (b2=966))
+      EXCEPT
+      SELECT d9 FROM t9
+      WHERE NOT ((127=b9 OR a9=511)
+      OR (864=b9 AND 535=a9)
+      OR (d9=389 AND 973=c9 AND 679=e9 AND 95=b9 AND a9=450));
+  - name: t1
+  - name: t2
+
+outputs:
+  - name: q669.out
+    data: |
+      131
+      680

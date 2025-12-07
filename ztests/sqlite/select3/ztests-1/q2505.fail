@@ -1,0 +1,23 @@
+script: |
+  super -f tsv -I q2505.sql | sort > q2505.out
+
+inputs:
+  - name: q2505.sql
+    data: |
+      SELECT a+b*2+c*3,
+      a,
+      a+b*2+c*3+d*4+e*5,
+      d-e,
+      (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+      abs(a),
+      b
+      FROM t1
+      WHERE (e>a AND e<b)
+      ORDER BY 7,5,1;
+
+outputs:
+  - name: q2505.out
+    data: |
+      1158	191	2878	-2	16	191	194
+      1338	220	3331	1	21	220	223
+      1484	245	3706	2	26	245	249

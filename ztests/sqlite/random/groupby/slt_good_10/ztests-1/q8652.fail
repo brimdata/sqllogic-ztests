@@ -1,0 +1,11 @@
+script: |
+  super -f tsv -I q8652.sql | sort > q8652.out
+
+inputs:
+  - name: q8652.sql
+    data: |
+      SELECT - + AVG ( DISTINCT + col1 ) FROM tab1 AS cor0 GROUP BY col1, col2 HAVING col1 NOT BETWEEN NULL AND NULL;
+
+outputs:
+  - name: q8652.out
+    data: |
