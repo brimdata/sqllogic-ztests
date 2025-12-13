@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8509.sql | sort > q8509.out
+
+inputs:
+  - name: q8509.sql
+    data: |
+      SELECT ALL CASE + cor0.col2 WHEN 88 * cor0.col2 THEN NULL WHEN 40 THEN cor0.col2 END FROM tab2 AS cor0 GROUP BY cor0.col2;
+  - name: tab2
+
+outputs:
+  - name: q8509.out
+    data: |
+      NULL
+      NULL
+      NULL

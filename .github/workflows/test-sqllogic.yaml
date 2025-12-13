@@ -65,12 +65,13 @@ jobs:
           sudo rm -rf /opt/hostedtoolcache/PyPy
           sudo rm -rf /opt/hostedtoolcache/Ruby
           sudo rm -rf /opt/hostedtoolcache/CodeQL
-      - uses: actions/checkout@v5
-        with:
-          repository: brimdata/super
-          path: super
-          ref: ${{ needs.setup.outputs.ref }}
-      - uses: actions/checkout@v5
+      - name: Checkout super
+        run: |
+          git clone https://github.com/brimdata/super.git super
+          cd super
+          git checkout ${{ needs.setup.outputs.ref }}
+      - name: Checkout sqllogic-ztests
+        uses: actions/checkout@v5
         with:
           path: sqllogic-ztests
       - uses: actions/setup-go@v5

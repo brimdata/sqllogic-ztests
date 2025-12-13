@@ -1,0 +1,13 @@
+# Failed due to: Failed results diff despite sorting
+script: |
+  super -f tsv -I q5660.sql | sort > q5660.out
+
+inputs:
+  - name: q5660.sql
+    data: |
+      SELECT ALL * FROM tab2 cor0 WHERE NULL IN ( - ( - - CAST ( NULL AS INTEGER ) ) );
+  - name: tab2
+
+outputs:
+  - name: q5660.out
+    data: |

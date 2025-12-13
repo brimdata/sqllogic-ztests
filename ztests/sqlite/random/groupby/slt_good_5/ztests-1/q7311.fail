@@ -1,3 +1,4 @@
+# Failed due to: Failed results diff despite sorting
 script: |
   super -f tsv -I q7311.sql | sort > q7311.out
 
@@ -5,6 +6,7 @@ inputs:
   - name: q7311.sql
     data: |
       SELECT DISTINCT - + CASE + tab1.col1 WHEN - col1 THEN - tab1.col1 END + - ( tab1.col1 ) FROM tab1 GROUP BY tab1.col1;
+  - name: tab1
 
 outputs:
   - name: q7311.out

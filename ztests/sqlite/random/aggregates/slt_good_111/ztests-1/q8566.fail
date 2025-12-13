@@ -1,0 +1,13 @@
+# Failed due to: Failed results diff despite sorting
+script: |
+  super -f tsv -I q8566.sql | sort > q8566.out
+
+inputs:
+  - name: q8566.sql
+    data: |
+      SELECT ALL * FROM tab1 WHERE NOT NULL NOT IN ( - CAST ( NULL AS INTEGER ), + 43 );
+  - name: tab1
+
+outputs:
+  - name: q8566.out
+    data: |
