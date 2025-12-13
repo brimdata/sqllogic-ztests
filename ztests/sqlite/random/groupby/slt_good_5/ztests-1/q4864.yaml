@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4864.sql | sort > q4864.out
+
+inputs:
+  - name: q4864.sql
+    data: |
+      SELECT cor0.col1 * + CASE cor0.col0 / + cor0.col2 WHEN + cor0.col0 / cor0.col0 THEN cor0.col1 * + cor0.col1 WHEN cor0.col0 / - cor0.col0 THEN NULL END FROM tab2 AS cor0 GROUP BY cor0.col1, cor0.col0, cor0.col2;
+  - name: tab2
+
+outputs:
+  - name: q4864.out
+    data: |
+      205379
+      68921
+      NULL

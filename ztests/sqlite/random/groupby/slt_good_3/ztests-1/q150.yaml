@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q150.sql | sort > q150.out
+
+inputs:
+  - name: q150.sql
+    data: |
+      SELECT ALL CASE 96 WHEN tab2.col2 + - tab2.col2 * - 31 THEN tab2.col2 END FROM tab2 GROUP BY tab2.col2;
+  - name: tab2
+
+outputs:
+  - name: q150.out
+    data: |
+      NULL
+      NULL
+      NULL

@@ -1,0 +1,13 @@
+# Failed due to: Failed results diff despite sorting
+script: |
+  super -f tsv -I q7629.sql | sort > q7629.out
+
+inputs:
+  - name: q7629.sql
+    data: |
+      SELECT * FROM tab2 AS cor0 WHERE NOT NULL NOT IN ( col0, ( + - CAST ( NULL AS INTEGER ) ), col1 + + + col0, col1, + col2 );
+  - name: tab2
+
+outputs:
+  - name: q7629.out
+    data: |
