@@ -15,6 +15,11 @@ on:
         required: false
         default: false
         type: boolean
+      ZTEST_VECTOR:
+        description: 'Setting of ZTEST_VECTOR environment variable'
+        required: false
+        type: string
+        default: ''
 
 jobs:
   setup:
@@ -41,6 +46,8 @@ jobs:
   test-sqllogic:
     needs: setup
     runs-on: ubuntu-22.04
+    env:
+      ZTEST_VECTOR: ${{ inputs.ZTEST_VECTOR }}
     strategy:
       fail-fast: ${{ needs.setup.outputs.fail-fast == 'true' }}
       matrix:

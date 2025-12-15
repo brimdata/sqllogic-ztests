@@ -3,7 +3,7 @@ module github.com/brimdata/sqllogic-ztests
 go 1.25.3
 
 require (
-	github.com/brimdata/super v0.0.0-20251022173451-8012b6d91679
+	github.com/brimdata/super v0.0.0-20251215192123-3aa10af2e4af
 	github.com/stretchr/testify v1.10.0
 )
 
@@ -22,6 +22,7 @@ require (
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/dgryski/go-metro v0.0.0-20180109044635-280f6062b5bc // indirect
 	github.com/goccy/go-json v0.10.4 // indirect
+	github.com/goccy/go-yaml v1.19.0 // indirect
 	github.com/golang/snappy v0.0.4 // indirect
 	github.com/google/flatbuffers v24.12.23+incompatible // indirect
 	github.com/hashicorp/golang-lru/arc/v2 v2.0.7 // indirect
