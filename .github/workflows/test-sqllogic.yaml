@@ -95,6 +95,8 @@ jobs:
             ln -sf "$(basename -s .parquet $file).${{ github.event.inputs.format }}" "$(dirname $file)/$(basename -s .parquet $file)"
             rm "$file"
           done
+          find sqllogic-ztests -name \*.parquet
+          find sqllogic-ztests -name \*.${{ github.event.inputs.format }}
           cd sqllogic-ztests
           ZTEST_PATH="$(pwd)/../super/dist" go test . -timeout 6h -count=1 -run ${{ matrix.test.pattern }}
 
