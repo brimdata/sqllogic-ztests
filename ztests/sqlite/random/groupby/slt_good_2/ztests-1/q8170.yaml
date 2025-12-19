@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q8170.sql | sort > q8170.out
+
+inputs:
+  - name: q8170.sql
+    data: |
+      SELECT + tab2.col1 FROM tab2 WHERE NULL NOT IN ( - tab2.col0 * tab2.col0 - + tab2.col1 ) GROUP BY tab2.col1;
+  - name: tab2
+
+outputs:
+  - name: q8170.out
+    data: |

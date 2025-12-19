@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q8253.sql | sort > q8253.out
+
+inputs:
+  - name: q8253.sql
+    data: |
+      SELECT DISTINCT col2 + - col2 FROM tab1 WHERE NOT NULL IN ( col1 / col0 );
+  - name: tab1
+
+outputs:
+  - name: q8253.out
+    data: |

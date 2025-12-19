@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q11002.sql | sort > q11002.out
+
+inputs:
+  - name: q11002.sql
+    data: |
+      SELECT ALL * FROM tab2 WHERE NULL NOT IN ( - 85, 31 + + col1 );
+  - name: tab2
+
+outputs:
+  - name: q11002.out
+    data: |

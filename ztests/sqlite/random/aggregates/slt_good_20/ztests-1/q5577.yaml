@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q5577.sql | sort > q5577.out
+
+inputs:
+  - name: q5577.sql
+    data: |
+      SELECT - ( - col2 ) AS col2 FROM tab2 WHERE NOT NULL IN ( - col0 );
+  - name: tab2
+
+outputs:
+  - name: q5577.out
+    data: |

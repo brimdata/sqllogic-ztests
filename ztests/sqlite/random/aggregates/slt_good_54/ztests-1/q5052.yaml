@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q5052.sql | sort > q5052.out
+
+inputs:
+  - name: q5052.sql
+    data: |
+      SELECT DISTINCT * FROM tab1 WHERE NOT NULL NOT IN ( + CAST ( NULL AS INTEGER ) * - col1 );
+  - name: tab1
+
+outputs:
+  - name: q5052.out
+    data: |

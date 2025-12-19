@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q1537.sql | sort > q1537.out
+
+inputs:
+  - name: q1537.sql
+    data: |
+      SELECT - col1 * col1 FROM tab2 WHERE - col1 NOT IN ( - col2 * col1 + - 14, - CAST ( NULL AS INTEGER ) );
+  - name: tab2
+
+outputs:
+  - name: q1537.out
+    data: |

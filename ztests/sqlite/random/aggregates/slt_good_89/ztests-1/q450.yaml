@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q450.sql | sort > q450.out
+
+inputs:
+  - name: q450.sql
+    data: |
+      SELECT DISTINCT col0 AS col0 FROM tab1 AS cor0 WHERE col2 NOT IN ( col0 * col1, col2 / - + col1, + CAST ( NULL AS INTEGER ) );
+  - name: tab1
+
+outputs:
+  - name: q450.out
+    data: |

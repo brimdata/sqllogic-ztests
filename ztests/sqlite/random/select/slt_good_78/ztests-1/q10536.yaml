@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q10536.sql | sort > q10536.out
+
+inputs:
+  - name: q10536.sql
+    data: |
+      SELECT ALL * FROM tab0 WHERE NOT NULL IN ( - tab0.col1 );
+  - name: tab0
+
+outputs:
+  - name: q10536.out
+    data: |

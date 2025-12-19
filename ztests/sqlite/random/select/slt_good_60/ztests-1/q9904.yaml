@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q9904.sql | sort > q9904.out
+
+inputs:
+  - name: q9904.sql
+    data: |
+      SELECT + col1 AS col1 FROM tab2 WHERE NOT ( NULL ) IN ( col0 * - col0 );
+  - name: tab2
+
+outputs:
+  - name: q9904.out
+    data: |

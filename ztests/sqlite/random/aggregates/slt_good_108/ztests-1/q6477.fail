@@ -1,0 +1,14 @@
+# Failed due to: Failed results diff despite sorting
+script: |
+  super -f tsv -I q6477.sql | sort > q6477.out
+
+inputs:
+  - name: q6477.sql
+    data: |
+      SELECT DISTINCT - CAST ( NULL AS INTEGER ) * + COUNT ( * ) FROM tab0 WHERE ( NULL ) NOT IN ( - col2 );
+  - name: tab0
+
+outputs:
+  - name: q6477.out
+    data: |
+      NULL

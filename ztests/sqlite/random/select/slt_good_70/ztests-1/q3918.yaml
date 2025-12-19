@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q3918.sql | sort > q3918.out
+
+inputs:
+  - name: q3918.sql
+    data: |
+      SELECT ALL tab0.col1 / - tab0.col1 FROM tab0 WHERE NULL NOT IN ( col2 );
+  - name: tab0
+
+outputs:
+  - name: q3918.out
+    data: |

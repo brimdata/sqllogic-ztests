@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q5144.sql | sort > q5144.out
+
+inputs:
+  - name: q5144.sql
+    data: |
+      SELECT DISTINCT * FROM tab0 WHERE col2 * + 83 NOT IN ( 22 / + CAST ( NULL AS REAL ) + + col2 );
+  - name: tab0
+
+outputs:
+  - name: q5144.out
+    data: |

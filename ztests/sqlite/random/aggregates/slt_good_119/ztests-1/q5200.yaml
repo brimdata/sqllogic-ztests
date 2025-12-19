@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q5200.sql | sort > q5200.out
+
+inputs:
+  - name: q5200.sql
+    data: |
+      SELECT ALL - col0 AS col0 FROM tab1 WHERE NOT NULL IN ( col2 * 26 );
+  - name: tab1
+
+outputs:
+  - name: q5200.out
+    data: |
