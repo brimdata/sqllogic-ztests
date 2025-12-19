@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q5625.sql | sort > q5625.out
+
+inputs:
+  - name: q5625.sql
+    data: |
+      SELECT - col2 + col2 * col2 AS col1 FROM tab2 WHERE NOT ( NULL ) IN ( + tab2.col0 );
+  - name: tab2
+
+outputs:
+  - name: q5625.out
+    data: |

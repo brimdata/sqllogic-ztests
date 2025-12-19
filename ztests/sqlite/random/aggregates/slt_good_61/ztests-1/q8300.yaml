@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q8300.sql | sort > q8300.out
+
+inputs:
+  - name: q8300.sql
+    data: |
+      SELECT * FROM tab2 WHERE col0 / + 5 * + col1 - - CAST ( NULL AS INTEGER ) NOT IN ( + col1 );
+  - name: tab2
+
+outputs:
+  - name: q8300.out
+    data: |

@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q12059.sql | sort > q12059.out
+
+inputs:
+  - name: q12059.sql
+    data: |
+      SELECT col1 FROM tab0 WHERE ( col2 * ( CAST ( NULL AS REAL ) ) ) NOT IN ( + col1 + CAST ( + col0 - col0 * 48 AS INTEGER ) );
+  - name: tab0
+
+outputs:
+  - name: q12059.out
+    data: |

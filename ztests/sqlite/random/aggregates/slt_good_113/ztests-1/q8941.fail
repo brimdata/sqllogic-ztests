@@ -1,0 +1,16 @@
+# Failed due to: Failed results diff despite sorting
+script: |
+  super -f tsv -I q8941.sql | sort > q8941.out
+
+inputs:
+  - name: q8941.sql
+    data: |
+      SELECT CAST ( NULL AS REAL ) AS col1 FROM tab2 WHERE NOT col2 + - + col0 IN ( - col1 );
+  - name: tab2
+
+outputs:
+  - name: q8941.out
+    data: |
+      NULL
+      NULL
+      NULL

@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q1881.sql | sort > q1881.out
+
+inputs:
+  - name: q1881.sql
+    data: |
+      SELECT col1 * - 89 AS col0 FROM tab2 WHERE NOT NULL IN ( + col0 );
+  - name: tab2
+
+outputs:
+  - name: q1881.out
+    data: |

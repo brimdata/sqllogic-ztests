@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q5466.sql | sort > q5466.out
+
+inputs:
+  - name: q5466.sql
+    data: |
+      SELECT 95 + col2 FROM tab1 WHERE NULL NOT IN ( 20, - col1, - 40 * col2 );
+  - name: tab1
+
+outputs:
+  - name: q5466.out
+    data: |

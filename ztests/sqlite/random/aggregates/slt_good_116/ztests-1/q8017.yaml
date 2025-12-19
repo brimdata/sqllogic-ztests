@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q8017.sql | sort > q8017.out
+
+inputs:
+  - name: q8017.sql
+    data: |
+      SELECT + col1 FROM tab0 WHERE NOT NULL NOT IN ( + + col1, - CAST ( NULL AS INTEGER ) );
+  - name: tab0
+
+outputs:
+  - name: q8017.out
+    data: |

@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q4779.sql | sort > q4779.out
+
+inputs:
+  - name: q4779.sql
+    data: |
+      SELECT ALL col1 FROM tab2 WHERE NULL NOT IN ( col1 - + col1 * + col2 * col1 );
+  - name: tab2
+
+outputs:
+  - name: q4779.out
+    data: |

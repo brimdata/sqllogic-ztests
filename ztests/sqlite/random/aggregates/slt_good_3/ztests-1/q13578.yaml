@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q13578.sql | sort > q13578.out
+
+inputs:
+  - name: q13578.sql
+    data: |
+      SELECT DISTINCT * FROM tab1 WHERE NULL NOT IN ( 9 * col1 );
+  - name: tab1
+
+outputs:
+  - name: q13578.out
+    data: |
