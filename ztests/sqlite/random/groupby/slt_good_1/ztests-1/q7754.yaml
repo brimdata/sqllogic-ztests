@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q7754.sql | sort > q7754.out
+
+inputs:
+  - name: q7754.sql
+    data: |
+      SELECT ALL cor0.col1 * cor0.col1 FROM tab1 AS cor0 WHERE NOT ( NULL ) IN ( cor0.col0 + cor0.col2 ) GROUP BY cor0.col1;
+  - name: tab1
+
+outputs:
+  - name: q7754.out
+    data: |

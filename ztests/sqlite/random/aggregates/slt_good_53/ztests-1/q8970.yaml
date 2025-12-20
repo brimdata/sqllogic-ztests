@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q8970.sql | sort > q8970.out
+
+inputs:
+  - name: q8970.sql
+    data: |
+      SELECT col2 FROM tab0 WHERE CAST ( NULL AS INTEGER ) + col2 NOT IN ( col2 + 46 );
+  - name: tab0
+
+outputs:
+  - name: q8970.out
+    data: |

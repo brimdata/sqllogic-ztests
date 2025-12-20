@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q8416.sql | sort > q8416.out
+
+inputs:
+  - name: q8416.sql
+    data: |
+      SELECT * FROM tab2 WHERE CAST ( NULL AS INTEGER ) IN ( + col1, + col2, - + col1 * + CAST ( NULL AS INTEGER ), - + col1 * + - 49 - col2 );
+  - name: tab2
+
+outputs:
+  - name: q8416.out
+    data: |

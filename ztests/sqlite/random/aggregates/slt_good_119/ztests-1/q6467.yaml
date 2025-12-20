@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q6467.sql | sort > q6467.out
+
+inputs:
+  - name: q6467.sql
+    data: |
+      SELECT DISTINCT * FROM tab0 WHERE NOT NULL IN ( - CAST ( col1 AS REAL ) + - col1 * - 6 );
+  - name: tab0
+
+outputs:
+  - name: q6467.out
+    data: |

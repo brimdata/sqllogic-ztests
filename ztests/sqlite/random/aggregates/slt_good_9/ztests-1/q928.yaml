@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q928.sql | sort > q928.out
+
+inputs:
+  - name: q928.sql
+    data: |
+      SELECT DISTINCT - col1 + - col0 * 75 AS col2 FROM tab2 WHERE NOT + col0 IN ( CAST ( NULL AS REAL ) );
+  - name: tab2
+
+outputs:
+  - name: q928.out
+    data: |

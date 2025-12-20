@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q7823.sql | sort > q7823.out
+
+inputs:
+  - name: q7823.sql
+    data: |
+      SELECT * FROM tab1 WHERE - CAST ( + 23 AS REAL ) NOT IN ( - 12 / CAST ( NULL AS REAL ), col2, 71 );
+  - name: tab1
+
+outputs:
+  - name: q7823.out
+    data: |

@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q11804.sql | sort > q11804.out
+
+inputs:
+  - name: q11804.sql
+    data: |
+      SELECT * FROM tab2 WHERE NOT ( NOT NULL NOT IN ( - 93, - col0, col0 - + - col0 ) );
+  - name: tab2
+
+outputs:
+  - name: q11804.out
+    data: |

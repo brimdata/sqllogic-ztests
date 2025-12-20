@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q4746.sql | sort > q4746.out
+
+inputs:
+  - name: q4746.sql
+    data: |
+      SELECT ALL - col2 FROM tab2 WHERE NOT + CAST ( NULL AS INTEGER ) IN ( col0, + col1 );
+  - name: tab2
+
+outputs:
+  - name: q4746.out
+    data: |

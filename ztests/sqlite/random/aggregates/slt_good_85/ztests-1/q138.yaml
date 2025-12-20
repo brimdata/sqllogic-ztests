@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q138.sql | sort > q138.out
+
+inputs:
+  - name: q138.sql
+    data: |
+      SELECT DISTINCT - col1 * 21 AS col1 FROM tab2 WHERE NOT ( CAST ( NULL AS INTEGER ) ) IN ( col2 );
+  - name: tab2
+
+outputs:
+  - name: q138.out
+    data: |

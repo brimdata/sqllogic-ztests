@@ -69,3 +69,29 @@ This is a temporary fix to produce TSV output from `super` that is `diff`-able
 against the expected sqllogictest outputs. Patching will not be necessary once
 [super/5961](https://github.com/brimdata/super/issues/5961) and
 [super/6381](https://github.com/brimdata/super/issues/6381) are addressed.
+
+## Improving Git Performance
+
+Since there's 3+ million files in this repo, local Git operations on its 
+contents can be painfully slow. To improve on this, it's been found that
+executing the following inside your local clone of the repo may improve things
+significantly:
+
+```
+git config feature.manyFiles true
+git config core.fsmonitor true
+git fsmonitor--daemon start
+git maintenance run
+```
+
+On my Intel-based Macbook, this brings the time to run `git status` down from
+~40 seconds to ~1 second.
+
+More notes regarding these commands:
+
+* For the `core.fsmonitor true` config to have effect, that
+  [`fsmonitor--daemon`](https://git-scm.com/docs/git-fsmonitor--daemon) must be
+  running, which monitors the working directory for changes.
+
+* The `git maintenance run` is a "one shot" optimization pass, so should be
+  re-run periodically to get the best possible performance.

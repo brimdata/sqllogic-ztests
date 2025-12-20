@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q5088.sql | sort > q5088.out
+
+inputs:
+  - name: q5088.sql
+    data: |
+      SELECT col2 / tab2.col2 + col0 FROM tab2 WHERE NOT NULL IN ( col2 / col1 );
+  - name: tab2
+
+outputs:
+  - name: q5088.out
+    data: |

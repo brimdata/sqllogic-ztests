@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q8182.sql | sort > q8182.out
+
+inputs:
+  - name: q8182.sql
+    data: |
+      SELECT ALL + col1 FROM tab2 WHERE NULL NOT IN ( + col0 );
+  - name: tab2
+
+outputs:
+  - name: q8182.out
+    data: |

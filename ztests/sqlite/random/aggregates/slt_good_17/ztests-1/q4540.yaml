@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q4540.sql | sort > q4540.out
+
+inputs:
+  - name: q4540.sql
+    data: |
+      SELECT DISTINCT col0 * - 7 + + col2 * col0 AS col2 FROM tab2 WHERE NOT NULL IN ( col1 );
+  - name: tab2
+
+outputs:
+  - name: q4540.out
+    data: |

@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q10607.sql | sort > q10607.out
+
+inputs:
+  - name: q10607.sql
+    data: |
+      SELECT DISTINCT + + col1 FROM tab2 WHERE NULL NOT IN ( col2, col2, + ( + - col1 ) );
+  - name: tab2
+
+outputs:
+  - name: q10607.out
+    data: |

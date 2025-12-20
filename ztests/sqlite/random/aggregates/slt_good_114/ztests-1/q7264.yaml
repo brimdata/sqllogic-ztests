@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q7264.sql | sort > q7264.out
+
+inputs:
+  - name: q7264.sql
+    data: |
+      SELECT DISTINCT * FROM tab2 WHERE NULL NOT IN ( - - CAST ( + 64 AS INTEGER ) );
+  - name: tab2
+
+outputs:
+  - name: q7264.out
+    data: |

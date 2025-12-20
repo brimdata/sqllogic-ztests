@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q1062.sql | sort > q1062.out
+
+inputs:
+  - name: q1062.sql
+    data: |
+      SELECT * FROM tab2 WHERE NOT NULL IN ( 60, col2, - col2 );
+  - name: tab2
+
+outputs:
+  - name: q1062.out
+    data: |

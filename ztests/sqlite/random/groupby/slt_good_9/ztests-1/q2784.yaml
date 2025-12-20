@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q2784.sql | sort > q2784.out
+
+inputs:
+  - name: q2784.sql
+    data: |
+      SELECT col2 FROM tab2 WHERE NULL NOT IN ( - - col1 ) GROUP BY col2 HAVING NOT NULL IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q2784.out
+    data: |

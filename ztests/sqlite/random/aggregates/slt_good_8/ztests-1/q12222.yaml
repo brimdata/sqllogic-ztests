@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q12222.sql | sort > q12222.out
+
+inputs:
+  - name: q12222.sql
+    data: |
+      SELECT ALL 98 FROM tab2 WHERE NOT - col1 IN ( + - CAST ( NULL AS REAL ) + + 49, + 98, - - col1 );
+  - name: tab2
+
+outputs:
+  - name: q12222.out
+    data: |

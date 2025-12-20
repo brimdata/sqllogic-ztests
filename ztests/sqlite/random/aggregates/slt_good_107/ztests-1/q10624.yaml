@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q10624.sql | sort > q10624.out
+
+inputs:
+  - name: q10624.sql
+    data: |
+      SELECT 12 - 55 AS col0 FROM tab2 WHERE NOT ( CAST ( NULL AS INTEGER ) ) IN ( + col2 );
+  - name: tab2
+
+outputs:
+  - name: q10624.out
+    data: |

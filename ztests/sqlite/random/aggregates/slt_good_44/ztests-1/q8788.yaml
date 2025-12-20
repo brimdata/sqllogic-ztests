@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q8788.sql | sort > q8788.out
+
+inputs:
+  - name: q8788.sql
+    data: |
+      SELECT * FROM tab1 WHERE NULL IN ( - CAST ( NULL AS REAL ) );
+  - name: tab1
+
+outputs:
+  - name: q8788.out
+    data: |

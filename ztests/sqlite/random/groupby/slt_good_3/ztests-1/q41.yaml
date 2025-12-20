@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q41.sql | sort > q41.out
+
+inputs:
+  - name: q41.sql
+    data: |
+      SELECT ALL - col0 AS col2 FROM tab2 WHERE NULL NOT IN ( tab2.col2 ) GROUP BY tab2.col0;
+  - name: tab2
+
+outputs:
+  - name: q41.out
+    data: |
