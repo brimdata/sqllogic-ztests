@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q12476.sql | sort > q12476.out
+
+inputs:
+  - name: q12476.sql
+    data: |
+      SELECT ALL NULLIF ( - COUNT ( * ), - + COUNT ( * ) / 76 ) AS col2;
+
+outputs:
+  - name: q12476.out
+    data: |
+      -1

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q3923.sql | sort > q3923.out
+
+inputs:
+  - name: q3923.sql
+    data: |
+      SELECT DISTINCT NULLIF ( col0, CAST ( + 41 AS INTEGER ) ) + - tab2.col0 * col0 FROM tab2 GROUP BY tab2.col0;
+  - name: tab2
+
+outputs:
+  - name: q3923.out
+    data: |
+      -210
+      -8190
+      -8372

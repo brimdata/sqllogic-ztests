@@ -1,0 +1,16 @@
+# Failed due to: No Such Field error
+script: |
+  super -f tsv -I q1342.sql | sort > q1342.out
+
+inputs:
+  - name: q1342.sql
+    data: |
+      SELECT COUNT ( * ) AS col2, 98 / AVG ( ALL - CAST ( NULL AS REAL ) );
+  - name: tab0
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q1342.out
+    data: |
+      1	NULL

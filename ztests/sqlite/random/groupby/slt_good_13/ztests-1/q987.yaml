@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q987.sql | sort > q987.out
+
+inputs:
+  - name: q987.sql
+    data: |
+      SELECT DISTINCT + cor0.col1 * NULLIF ( - cor0.col1, cor0.col1 ) + - 24 + cor0.col1 * cor0.col1 AS col0 FROM tab0 AS cor0 GROUP BY cor0.col1;
+  - name: tab0
+
+outputs:
+  - name: q987.out
+    data: |
+      -24
+      NULL

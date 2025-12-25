@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q7931.sql | sort > q7931.out
+
+inputs:
+  - name: q7931.sql
+    data: |
+      SELECT NULLIF ( 95, + cor0.col1 ) FROM tab0 AS cor0 GROUP BY col1;
+  - name: tab0
+
+outputs:
+  - name: q7931.out
+    data: |
+      95
+      95

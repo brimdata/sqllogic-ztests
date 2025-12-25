@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1348.sql | sort > q1348.out
+
+inputs:
+  - name: q1348.sql
+    data: |
+      SELECT ALL NULLIF ( - cor0.col1, + cor0.col1 ) FROM tab1 AS cor0 GROUP BY cor0.col1;
+  - name: tab1
+
+outputs:
+  - name: q1348.out
+    data: |
+      -44
+      -57
+      -6

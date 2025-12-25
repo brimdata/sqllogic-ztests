@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8482.sql | sort > q8482.out
+
+inputs:
+  - name: q8482.sql
+    data: |
+      SELECT ALL - ( NULLIF ( + cor0.col0, 97 ) ) / + COALESCE ( cor0.col1, + cor0.col1, 30, + 30 ) AS col0 FROM tab1 AS cor0 GROUP BY cor0.col1, cor0.col0;
+  - name: tab1
+
+outputs:
+  - name: q8482.out
+    data: |
+      -1
+      -3
+      0

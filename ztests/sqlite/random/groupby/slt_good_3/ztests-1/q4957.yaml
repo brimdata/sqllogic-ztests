@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4957.sql | sort > q4957.out
+
+inputs:
+  - name: q4957.sql
+    data: |
+      SELECT + NULLIF ( 80, cor0.col1 ) * 27 AS col1 FROM tab1 AS cor0 GROUP BY cor0.col1, cor0.col0;
+  - name: tab1
+
+outputs:
+  - name: q4957.out
+    data: |
+      2160
+      2160
+      2160

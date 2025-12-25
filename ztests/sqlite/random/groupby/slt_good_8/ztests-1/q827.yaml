@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q827.sql | sort > q827.out
+
+inputs:
+  - name: q827.sql
+    data: |
+      SELECT ALL - tab2.col2 - ( + NULLIF ( + tab2.col2, tab2.col2 * + col2 ) ) FROM tab2 GROUP BY col2;
+  - name: tab2
+
+outputs:
+  - name: q827.out
+    data: |
+      -116
+      -158
+      -174

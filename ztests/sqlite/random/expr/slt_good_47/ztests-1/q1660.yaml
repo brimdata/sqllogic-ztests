@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q1660.sql | sort > q1660.out
+
+inputs:
+  - name: q1660.sql
+    data: |
+      SELECT + ( NULLIF ( - COALESCE ( 6, + COUNT ( * ) * + 75 ), + + COUNT ( * ) * 25 + + - MAX ( + - CAST ( NULL AS INTEGER ) ) ) ) AS col2;
+
+outputs:
+  - name: q1660.out
+    data: |
+      -6

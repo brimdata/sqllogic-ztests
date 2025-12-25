@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8561.sql | sort > q8561.out
+
+inputs:
+  - name: q8561.sql
+    data: |
+      SELECT ALL NULLIF ( - 26, - tab2.col2 ) + + tab2.col2 AS col2 FROM tab2 GROUP BY tab2.col2;
+  - name: tab2
+
+outputs:
+  - name: q8561.out
+    data: |
+      32
+      53
+      61

@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q5075.sql | sort > q5075.out
+
+inputs:
+  - name: q5075.sql
+    data: |
+      SELECT - - COALESCE ( NULLIF ( COUNT ( * ), MAX ( CAST ( NULL AS INTEGER ) ) + - AVG ( + CAST ( NULL AS REAL ) ) ), + 29 );
+
+outputs:
+  - name: q5075.out
+    data: |
+      1

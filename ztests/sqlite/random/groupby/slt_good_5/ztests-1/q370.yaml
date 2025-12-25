@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q370.sql | sort > q370.out
+
+inputs:
+  - name: q370.sql
+    data: |
+      SELECT ALL NULLIF ( - tab2.col1, tab2.col1 * - tab2.col1 ) AS col1 FROM tab2 GROUP BY tab2.col1;
+  - name: tab2
+
+outputs:
+  - name: q370.out
+    data: |
+      -41
+      -59
+      -61

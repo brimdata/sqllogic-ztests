@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q4010.sql | sort > q4010.out
+
+inputs:
+  - name: q4010.sql
+    data: |
+      SELECT COALESCE ( - 6, + NULLIF ( 96, COUNT ( * ) ) );
+
+outputs:
+  - name: q4010.out
+    data: |
+      -6

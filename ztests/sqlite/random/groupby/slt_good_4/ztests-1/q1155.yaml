@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1155.sql | sort > q1155.out
+
+inputs:
+  - name: q1155.sql
+    data: |
+      SELECT DISTINCT NULLIF ( tab2.col0, tab2.col0 + + tab2.col0 ) * 6 - + col0 FROM tab2 GROUP BY col0;
+  - name: tab2
+
+outputs:
+  - name: q1155.out
+    data: |
+      455
+      460
+      75
