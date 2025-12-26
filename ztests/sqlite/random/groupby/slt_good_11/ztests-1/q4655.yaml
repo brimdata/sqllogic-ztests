@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q4655.sql | sort > q4655.out
+
+inputs:
+  - name: q4655.sql
+    data: |
+      SELECT col1 + - 89 AS col1 FROM tab1 WHERE NOT NULLIF ( - + col0, - + ( + 39 ) * + col2 ) IS NOT NULL GROUP BY col1;
+  - name: tab1
+
+outputs:
+  - name: q4655.out
+    data: |

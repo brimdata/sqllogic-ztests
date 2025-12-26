@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1014.sql | sort > q1014.out
+
+inputs:
+  - name: q1014.sql
+    data: |
+      SELECT NULLIF ( - cor0.col0, - 97 ) + 40 AS col0 FROM tab1 AS cor0 GROUP BY cor0.col0;
+  - name: tab1
+
+outputs:
+  - name: q1014.out
+    data: |
+      -42
+      12
+      18

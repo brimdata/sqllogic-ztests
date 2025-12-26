@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q5407.sql | sort > q5407.out
+
+inputs:
+  - name: q5407.sql
+    data: |
+      SELECT NULLIF ( col1, cor0.col1 ) + + cor0.col0 AS col2 FROM tab2 AS cor0 GROUP BY cor0.col0, col1;
+  - name: tab2
+
+outputs:
+  - name: q5407.out
+    data: |
+      NULL
+      NULL
+      NULL

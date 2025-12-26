@@ -1,4 +1,4 @@
-# Failed due to: https://github.com/brimdata/super/issues/6249
+# Failed due to: Failed results diff despite sorting
 script: |
   super -f tsv -I q1923.sql | sort > q1923.out
 
@@ -6,6 +6,9 @@ inputs:
   - name: q1923.sql
     data: |
       SELECT ALL + ( - NULLIF ( - 0, CAST ( NULL AS REAL ) ) ) * + + COUNT ( * );
+  - name: tab0
+  - name: tab1
+  - name: tab2
 
 outputs:
   - name: q1923.out

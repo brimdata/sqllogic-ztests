@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q3423.sql | sort > q3423.out
+
+inputs:
+  - name: q3423.sql
+    data: |
+      SELECT NULLIF ( + cor0.col1, col0 ) + 19 FROM tab1 AS cor0 GROUP BY col1, cor0.col0;
+  - name: tab1
+
+outputs:
+  - name: q3423.out
+    data: |
+      25
+      63
+      76

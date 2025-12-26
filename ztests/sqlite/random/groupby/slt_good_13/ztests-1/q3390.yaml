@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q3390.sql | sort > q3390.out
+
+inputs:
+  - name: q3390.sql
+    data: |
+      SELECT + COALESCE ( 46 + + cor0.col1, NULLIF ( 22, cor0.col1 ), + cor0.col1 ) AS col1 FROM tab1 cor0 GROUP BY cor0.col1, cor0.col1;
+  - name: tab1
+
+outputs:
+  - name: q3390.out
+    data: |
+      103
+      52
+      90

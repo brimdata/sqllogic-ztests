@@ -1,0 +1,16 @@
+# Failed due to: No Such Field error
+script: |
+  super -f tsv -I q8276.sql | sort > q8276.out
+
+inputs:
+  - name: q8276.sql
+    data: |
+      SELECT - - MAX ( 10 ) / 1 AS col1, + AVG ( ALL - - CAST ( NULL AS INTEGER ) );
+  - name: tab0
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q8276.out
+    data: |
+      10	NULL

@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q5077.sql | sort > q5077.out
+
+inputs:
+  - name: q5077.sql
+    data: |
+      SELECT + NULLIF ( COUNT ( * ), + COALESCE ( COUNT ( * ), COUNT ( * ) * + - 97, + 16 ) + - - COUNT ( * ) ) AS col2;
+
+outputs:
+  - name: q5077.out
+    data: |
+      1

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q2301.sql | sort > q2301.out
+
+inputs:
+  - name: q2301.sql
+    data: |
+      SELECT ALL + 70 * NULLIF ( col1, + tab1.col1 ) FROM tab1 GROUP BY tab1.col1;
+  - name: tab1
+
+outputs:
+  - name: q2301.out
+    data: |
+      NULL
+      NULL
+      NULL
