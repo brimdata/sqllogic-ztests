@@ -15,6 +15,15 @@ on:
         required: false
         default: false
         type: boolean
+      category:
+        description: 'Category of ztest files to run'
+        required: true
+        type: choice
+        options:
+        - yaml
+        - fail
+        - both
+        default: yaml
 
 jobs:
   setup:
@@ -65,6 +74,13 @@ jobs:
           sudo rm -rf /opt/hostedtoolcache/PyPy
           sudo rm -rf /opt/hostedtoolcache/Ruby
           sudo rm -rf /opt/hostedtoolcache/CodeQL
+      - name: Display workflow inputs
+        run: |
+          echo "Workflow Inputs:"
+          echo "  ref: ${{ github.event.inputs.ref || 'main (scheduled)' }}"
+          echo "  fail-fast: ${{ github.event.inputs.fail-fast || 'false (scheduled)' }}"
+          echo "  category: ${{ github.event.inputs.category || 'yaml (scheduled)' }}"
+          echo "  Event: ${{ github.event_name }}"
       - name: Checkout super
         run: |
           git clone https://github.com/brimdata/super.git super
@@ -83,24 +99,73 @@ jobs:
       - run: |
           patch -d super -p1 < sqllogic-ztests/super.patch
           make -C super build
-      - name: Run ${{ matrix.test.name }} tests
+      - name: Adjust which ztest files are run
+        if: github.event_name == 'workflow_dispatch' && github.event.inputs.category != 'yaml'
         run: |
           cd sqllogic-ztests
-          ZTEST_PATH="$(pwd)/../super/dist" go test . -timeout 6h -count=1 -run ${{ matrix.test.pattern }}
+          if [ "${{ github.event.inputs.category }}" = "fail" ]; then
+            find ztests -name "*.yaml" -delete
+          fi
+          if [ "${{ github.event.inputs.category }}" = "fail" ] || [ "${{ github.event.inputs.category }}" = "both" ]; then
+            rm -f ztests/sqlite/select5/ztests-1/*.fail || true
+            find ztests -name "*.fail" -print0 | xargs -0 -P 8 -n 100 bash -c 'for f; do mv "$f" "${f%.fail}.yaml"; done' _
+          fi
+      - name: Run ${{ matrix.test.name }} tests
+        id: run-tests
+        run: |
+          cd sqllogic-ztests
+          ZTEST_PATH="$(pwd)/../super/dist" go test . -timeout 6h -count=1 -run ${{ matrix.test.pattern }} 2>&1 | tee test-output.log || true
+          tests_ran=$(find $(echo "${{ matrix.test.pattern }}" | sed 's/^TestSPQ\///') -name \*.yaml | wc -l)
+          failure_count=$(grep "        --- FAIL" test-output.log | sed 's/.*FAIL: //' | sed 's/ (.*$//' | sort | uniq | wc -l)
+          echo "tests_ran=$tests_ran" | tee -a test-output.log
+          echo "success_count=$((tests_ran - failure_count))" | tee -a test-output.log
+          echo "failure_count=$failure_count" | tee -a test-output.log
+          if [ $failure_count -gt 0 ]; then
+            echo "HAS_FAILURES=true" >> $GITHUB_OUTPUT
+          fi
+      - name: Upload test logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-logs-${{ matrix.test.name }}
+          path: sqllogic-ztests/test-output.log
+      - name: Fail job if tests failed
+        if: steps.run-tests.outputs.HAS_FAILURES == 'true'
+        run: exit 1
 
   summary:
     needs: test-sqllogic
     runs-on: ubuntu-22.04
     if: always()
     steps:
-      - name: Check test results
+      - name: Download all test logs
+        uses: actions/download-artifact@v4
+        with:
+          pattern: test-logs-*
+          path: logs
+      - name: Aggregate failure counts
         run: |
-          echo "Test Results Summary"
-          echo "===================="
-          results='${{ needs.test-sqllogic.result }}'
-          if [ "$results" != "success" ]; then
-            echo "❌ Some tests failed"
-            echo "Check individual job results above for details"
+          total_tests_ran=0
+          total_failures=0
+          total_successes=0
+          for log_dir in logs/test-logs-*; do
+            test_name=$(basename "$log_dir" | sed 's/test-logs-//')
+            log_file="$log_dir/test-output.log"
+            if [ -f "$log_file" ]; then
+              tests_ran=$(grep "^tests_ran=" "$log_file" | cut -f2 -d= || echo "0")
+              failure_count=$(grep "^failure_count=" "$log_file" | cut -f2 -d= || echo "0")
+              success_count=$(grep "^success_count=" "$log_file" | cut -f2 -d= || echo "0")
+              echo "$test_name: $tests_ran queries executed, $success_count successes, $failure_count failures"
+              total_tests_ran=$((total_tests_ran + tests_ran))
+              total_failures=$((total_failures + failure_count))
+              total_successes=$((total_successes + success_count))
+            else
+              echo "$test_name: log not found"
+            fi
+          done
+          echo "$total_tests_ran total tests executed, $total_successes total successes, $total_failures total failures"
+          if [ $total_failures -gt 0 ]; then
+            echo "❌ Tests had failures"
             exit 1
           else
             echo "✅ All test sets passed!"
