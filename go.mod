@@ -3,7 +3,7 @@ module github.com/brimdata/sqllogic-ztests
 go 1.25.3
 
 require (
-	github.com/brimdata/super v0.0.0-20251220014716-924128b72bc6
+	github.com/brimdata/super v0.0.0-20251229174613-bcb865ed6d3e
 	github.com/stretchr/testify v1.10.0
 )
 
