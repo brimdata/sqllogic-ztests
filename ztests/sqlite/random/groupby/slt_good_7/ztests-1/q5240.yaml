@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q5240.sql | sort > q5240.out
+
+inputs:
+  - name: q5240.sql
+    data: |
+      SELECT NULLIF ( cor0.col1, - cor0.col1 ) * - col1 FROM tab0 AS cor0 GROUP BY cor0.col1;
+  - name: tab0
+
+outputs:
+  - name: q5240.out
+    data: |
+      -6561
+      NULL

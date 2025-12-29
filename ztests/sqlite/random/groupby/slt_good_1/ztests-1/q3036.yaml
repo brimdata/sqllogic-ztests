@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q3036.sql | sort > q3036.out
+
+inputs:
+  - name: q3036.sql
+    data: |
+      SELECT NULLIF ( cor0.col1, - col1 * 35 + 87 ) * cor0.col1 AS col1 FROM tab1 AS cor0 GROUP BY cor0.col1;
+  - name: tab1
+
+outputs:
+  - name: q3036.out
+    data: |
+      1936
+      3249
+      36

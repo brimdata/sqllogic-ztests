@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q12947.sql | sort > q12947.out
+
+inputs:
+  - name: q12947.sql
+    data: |
+      SELECT ALL CASE WHEN NULLIF ( + - CAST ( NULL AS INTEGER ), COUNT ( * ) ) >= - - 31 THEN NULL ELSE 31 END AS col2, + COUNT ( * );
+
+outputs:
+  - name: q12947.out
+    data: |
+      31	1

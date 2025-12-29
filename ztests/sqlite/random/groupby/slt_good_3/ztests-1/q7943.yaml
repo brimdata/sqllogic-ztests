@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q7943.sql | sort > q7943.out
+
+inputs:
+  - name: q7943.sql
+    data: |
+      SELECT ALL NULLIF ( - cor0.col1, cor0.col1 / cor0.col1 ) + col1 / + 70 FROM tab2 AS cor0 GROUP BY cor0.col2, cor0.col1;
+  - name: tab2
+
+outputs:
+  - name: q7943.out
+    data: |
+      -41
+      -59
+      -61

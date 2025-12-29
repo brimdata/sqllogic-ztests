@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q9003.sql | sort > q9003.out
+
+inputs:
+  - name: q9003.sql
+    data: |
+      SELECT ALL + 59 * NULLIF ( cor0.col1, cor0.col1 ) AS col0 FROM tab1 AS cor0 CROSS JOIN tab0 cor1 GROUP BY cor0.col1;
+  - name: tab0
+  - name: tab1
+
+outputs:
+  - name: q9003.out
+    data: |
+      NULL
+      NULL
+      NULL

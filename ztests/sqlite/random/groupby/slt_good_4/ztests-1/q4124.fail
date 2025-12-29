@@ -1,4 +1,4 @@
-# Failed due to: Other problem
+# Failed due to: No Such Field error
 script: |
   super -f tsv -I q4124.sql | sort > q4124.out
 
@@ -6,6 +6,9 @@ inputs:
   - name: q4124.sql
     data: |
       SELECT tab1.col0 + - col0 FROM tab1 GROUP BY col0 HAVING NOT ( tab1.col0 ) BETWEEN NULL AND ( NULL );
+  - name: tab0
+  - name: tab1
+  - name: tab2
 
 outputs:
   - name: q4124.out

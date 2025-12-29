@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q5328.sql | sort > q5328.out
+
+inputs:
+  - name: q5328.sql
+    data: |
+      SELECT ALL + COALESCE ( + NULLIF ( + CAST ( NULL AS INTEGER ), + - 99 + - COUNT ( * ) ), + COUNT ( * ) );
+
+outputs:
+  - name: q5328.out
+    data: |
+      1

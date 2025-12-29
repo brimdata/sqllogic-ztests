@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9976.sql | sort > q9976.out
+
+inputs:
+  - name: q9976.sql
+    data: |
+      SELECT + NULLIF ( cor0.col1, + cor0.col2 ) / 3 AS col2 FROM tab2 AS cor0 GROUP BY cor0.col2, cor0.col1;
+  - name: tab2
+
+outputs:
+  - name: q9976.out
+    data: |
+      13
+      19
+      20

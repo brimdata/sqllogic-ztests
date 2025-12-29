@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4264.sql | sort > q4264.out
+
+inputs:
+  - name: q4264.sql
+    data: |
+      SELECT + col2 + + NULLIF ( + col2, col2 * - 64 ) AS col1 FROM tab2 GROUP BY col2;
+  - name: tab2
+
+outputs:
+  - name: q4264.out
+    data: |
+      116
+      158
+      174

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q772.sql | sort > q772.out
+
+inputs:
+  - name: q772.sql
+    data: |
+      SELECT DISTINCT - NULLIF ( tab2.col2, tab2.col2 - + tab2.col2 ) AS col1 FROM tab2 GROUP BY tab2.col2;
+  - name: tab2
+
+outputs:
+  - name: q772.out
+    data: |
+      -58
+      -79
+      -87

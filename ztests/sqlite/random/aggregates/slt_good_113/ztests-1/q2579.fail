@@ -1,4 +1,4 @@
-# Failed due to: Other problem
+# Failed due to: No Such Field error
 script: |
   super -f tsv -I q2579.sql | sort > q2579.out
 
@@ -6,6 +6,9 @@ inputs:
   - name: q2579.sql
     data: |
       SELECT ALL + COUNT ( * ) - CAST ( NULL AS INTEGER ) AS col1 FROM tab0 WHERE NOT + CAST ( + col1 AS REAL ) IS NULL;
+  - name: tab0
+  - name: tab1
+  - name: tab2
 
 outputs:
   - name: q2579.out

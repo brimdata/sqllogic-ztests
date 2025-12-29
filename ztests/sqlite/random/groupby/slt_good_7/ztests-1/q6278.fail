@@ -1,4 +1,4 @@
-# Failed due to: https://github.com/brimdata/super/issues/6249
+# Failed due to: Failed results diff despite sorting
 script: |
   super -f tsv -I q6278.sql | sort > q6278.out
 
@@ -6,6 +6,9 @@ inputs:
   - name: q6278.sql
     data: |
       SELECT DISTINCT + NULLIF ( tab2.col0, tab2.col0 ) AS col2 FROM tab2 GROUP BY tab2.col0;
+  - name: tab0
+  - name: tab1
+  - name: tab2
 
 outputs:
   - name: q6278.out

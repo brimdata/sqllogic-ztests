@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q2060.sql | sort > q2060.out
+
+inputs:
+  - name: q2060.sql
+    data: |
+      SELECT DISTINCT col2 / NULLIF ( - 2, ( - col2 ) ) AS col0 FROM tab1 GROUP BY col2;
+  - name: tab1
+
+outputs:
+  - name: q2060.out
+    data: |
+      -22
+      -35
+      -4

@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q1023.sql | sort > q1023.out
+
+inputs:
+  - name: q1023.sql
+    data: |
+      SELECT - COUNT ( + NULLIF ( 98, 3 * - CAST ( NULL AS INTEGER ) ) ) AS col1;
+
+outputs:
+  - name: q1023.out
+    data: |
+      -1

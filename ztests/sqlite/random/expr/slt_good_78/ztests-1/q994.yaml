@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q994.sql | sort > q994.out
+
+inputs:
+  - name: q994.sql
+    data: |
+      SELECT ALL + 39 + - NULLIF ( COUNT ( * ), - CAST ( NULL AS INTEGER ) ) AS col1;
+
+outputs:
+  - name: q994.out
+    data: |
+      38

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9189.sql | sort > q9189.out
+
+inputs:
+  - name: q9189.sql
+    data: |
+      SELECT + NULLIF ( 39, + col1 * col1 * - 97 ) AS col1 FROM tab2 AS cor0 GROUP BY col1, col0 HAVING NOT NULL IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q9189.out
+    data: |
+      39
+      39
+      39

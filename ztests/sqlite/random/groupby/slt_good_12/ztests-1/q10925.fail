@@ -1,4 +1,4 @@
-# Failed due to: https://github.com/brimdata/super/issues/6249
+# Failed due to: Failed results diff despite sorting
 script: |
   super -f tsv -I q10925.sql | sort > q10925.out
 
@@ -6,6 +6,9 @@ inputs:
   - name: q10925.sql
     data: |
       SELECT DISTINCT 0 / - NULLIF ( col2, col2 ) + - col0 * ( 23 + + 73 ) AS col1 FROM tab2 GROUP BY col2, col0 HAVING NOT NULL IS NOT NULL;
+  - name: tab0
+  - name: tab1
+  - name: tab2
 
 outputs:
   - name: q10925.out

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q5317.sql | sort > q5317.out
+
+inputs:
+  - name: q5317.sql
+    data: |
+      SELECT - NULLIF ( col1, cor0.col0 ) + + cor0.col0 * col1 FROM tab2 AS cor0 GROUP BY cor0.col0, col1;
+  - name: tab2
+
+outputs:
+  - name: q5317.out
+    data: |
+      3731
+      5310
+      854

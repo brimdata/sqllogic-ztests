@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q15530.sql | sort > q15530.out
+
+inputs:
+  - name: q15530.sql
+    data: |
+      SELECT ALL - + ( + COALESCE ( + - NULLIF ( + - 95, 95 ), COUNT ( * ) ) );
+
+outputs:
+  - name: q15530.out
+    data: |
+      -95

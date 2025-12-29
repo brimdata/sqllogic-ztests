@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q14904.sql | sort > q14904.out
+
+inputs:
+  - name: q14904.sql
+    data: |
+      SELECT + 16 * MIN ( CASE NULLIF ( CAST ( ( + 30 ) AS REAL ), + 52 ) WHEN + 30 THEN 8 ELSE NULL END ) AS col2;
+
+outputs:
+  - name: q14904.out
+    data: |
+      128

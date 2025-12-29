@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q15189.sql | sort > q15189.out
+
+inputs:
+  - name: q15189.sql
+    data: |
+      SELECT 11 / 34 AS col2, COUNT ( NULLIF ( + 4, - CAST ( NULL AS INTEGER ) ) );
+
+outputs:
+  - name: q15189.out
+    data: |
+      0	1

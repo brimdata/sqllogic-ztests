@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q6056.sql | sort > q6056.out
+
+inputs:
+  - name: q6056.sql
+    data: |
+      SELECT - NULLIF ( 47, cor0.col1 - + CAST ( NULL AS INTEGER ) ) FROM tab2 AS cor0 GROUP BY cor0.col1;
+  - name: tab2
+
+outputs:
+  - name: q6056.out
+    data: |
+      -47
+      -47
+      -47

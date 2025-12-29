@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4324.sql | sort > q4324.out
+
+inputs:
+  - name: q4324.sql
+    data: |
+      SELECT DISTINCT NULLIF ( cor0.col0, 44 + cor0.col0 / - cor0.col1 ) + + cor0.col0 * col0 AS col2 FROM tab2 cor0 GROUP BY col1, cor0.col0;
+  - name: tab2
+
+outputs:
+  - name: q4324.out
+    data: |
+      240
+      8372
+      8556

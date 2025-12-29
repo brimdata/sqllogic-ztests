@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q2868.sql | sort > q2868.out
+
+inputs:
+  - name: q2868.sql
+    data: |
+      SELECT DISTINCT CAST ( + ( - NULLIF ( + 90, COUNT ( * ) ) ) AS INTEGER );
+
+outputs:
+  - name: q2868.out
+    data: |
+      -90
