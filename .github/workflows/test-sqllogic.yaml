@@ -63,14 +63,18 @@ jobs:
         test:
           - name: sqlite-select
             pattern: TestSPQ/ztests/sqlite/select[1-5]
-          - name: sqlite-random-aggregates
-            pattern: TestSPQ/ztests/sqlite/random/aggregates
+          - name: sqlite-random-aggregates-part1
+            pattern: TestSPQ/ztests/sqlite/random/aggregates/slt_good_([0-9]|[0-5][0-9]|6[0-4])
+          - name: sqlite-random-aggregates-part2
+            pattern: TestSPQ/ztests/sqlite/random/aggregates/slt_good_(6[5-9]|[7-9][0-9]|1[0-1][0-9]|12[0-9])
           - name: sqlite-random-expr
             pattern: TestSPQ/ztests/sqlite/random/expr
           - name: sqlite-random-groupby
             pattern: TestSPQ/ztests/sqlite/random/groupby
-          - name: sqlite-random-select
-            pattern: TestSPQ/ztests/sqlite/random/select
+          - name: sqlite-random-select-part1
+            pattern: TestSPQ/ztests/sqlite/random/select/slt_good_([0-9]|[0-5][0-9]|6[0-4])
+          - name: sqlite-random-select-part2
+            pattern: TestSPQ/ztests/sqlite/random/select/slt_good_(6[5-9]|[7-9][0-9]|1[0-1][0-9]|12[0-9])
     name: test-${{ matrix.test.name }}
     steps:
       - name: Remove unneeded tools to free up disk space
