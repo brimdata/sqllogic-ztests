@@ -63,18 +63,29 @@ jobs:
         test:
           - name: sqlite-select
             pattern: TestSPQ/ztests/sqlite/select[1-5]
+            filter_dirs: false
           - name: sqlite-random-aggregates-part1
-            pattern: TestSPQ/ztests/sqlite/random/aggregates/slt_good_([0-9]|[0-5][0-9]|6[0-4])
+            pattern: TestSPQ/ztests/sqlite/random/aggregates
+            filter_dirs: true
+            dir_range: "0-64"
           - name: sqlite-random-aggregates-part2
-            pattern: TestSPQ/ztests/sqlite/random/aggregates/slt_good_(6[5-9]|[7-9][0-9]|1[0-1][0-9]|12[0-9])
+            pattern: TestSPQ/ztests/sqlite/random/aggregates
+            filter_dirs: true
+            dir_range: "65-129"
           - name: sqlite-random-expr
             pattern: TestSPQ/ztests/sqlite/random/expr
+            filter_dirs: false
           - name: sqlite-random-groupby
             pattern: TestSPQ/ztests/sqlite/random/groupby
+            filter_dirs: false
           - name: sqlite-random-select-part1
-            pattern: TestSPQ/ztests/sqlite/random/select/slt_good_([0-9]|[0-5][0-9]|6[0-4])
+            pattern: TestSPQ/ztests/sqlite/random/select
+            filter_dirs: true
+            dir_range: "0-64"
           - name: sqlite-random-select-part2
-            pattern: TestSPQ/ztests/sqlite/random/select/slt_good_(6[5-9]|[7-9][0-9]|1[0-1][0-9]|12[0-4])
+            pattern: TestSPQ/ztests/sqlite/random/select
+            filter_dirs: true
+            dir_range: "65-124"
     name: test-${{ matrix.test.name }}
     steps:
       - name: Remove unneeded tools to free up disk space
@@ -110,6 +121,25 @@ jobs:
       - run: |
           patch -d super -p1 < sqllogic-ztests/super.patch
           make -C super build
+      - name: Filter directories for split tests
+        if: matrix.test.filter_dirs == true
+        run: |
+          cd sqllogic-ztests
+          base_dir=$(echo "${{ matrix.test.pattern }}" | sed 's/^TestSPQ\///')
+          range="${{ matrix.test.dir_range }}"
+          start=$(echo $range | cut -d- -f1)
+          end=$(echo $range | cut -d- -f2)
+
+          # Remove directories outside the range
+          for dir in $base_dir/slt_good_*; do
+            if [ -d "$dir" ]; then
+              num=$(basename "$dir" | sed 's/slt_good_//')
+              if [ "$num" -lt "$start" ] || [ "$num" -gt "$end" ]; then
+                echo "Removing $dir (outside range $start-$end)"
+                rm -rf "$dir"
+              fi
+            fi
+          done
       - name: Adjust which ztest files are run
         if: github.event_name == 'workflow_dispatch' && github.event.inputs.category != 'yaml'
         run: |
@@ -125,8 +155,8 @@ jobs:
         id: run-tests
         run: |
           cd sqllogic-ztests
-          ZTEST_PATH="$(pwd)/../super/dist" go test . -timeout 6h -count=1 -run ${{ matrix.test.pattern }} 2>&1 | tee test-output.log || true
-          tests_ran=$(find $(echo "${{ matrix.test.pattern }}" | sed 's/^TestSPQ\///') -name \*.yaml | wc -l)
+          ZTEST_PATH="$(pwd)/../super/dist" go test . -timeout 6h -count=1 -run "${{ matrix.test.pattern }}" 2>&1 | tee test-output.log || true
+          tests_ran=$(find $(echo "${{ matrix.test.pattern }}" | sed 's/^TestSPQ\///') -name \*.yaml 2>/dev/null | wc -l)
           failure_count=$(grep "        --- FAIL" test-output.log | sed 's/.*FAIL: //' | sed 's/ (.*$//' | sort | uniq | wc -l)
           echo "tests_ran=$tests_ran" | tee -a test-output.log
           echo "success_count=$((tests_ran - failure_count))" | tee -a test-output.log
