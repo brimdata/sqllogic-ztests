@@ -130,12 +130,20 @@ jobs:
           if [ $failure_count -gt 0 ]; then
             echo "HAS_FAILURES=true" >> $GITHUB_OUTPUT
           fi
+      - name: Summarize test failures
+        if: steps.run-tests.outputs.HAS_FAILURES == 'true'
+        run: |
+          cd sqllogic-ztests
+          ./failure-summary.sh test-output.log | tee failure-summary.txt
       - name: Upload test logs
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: test-logs-${{ matrix.test.name }}
-          path: sqllogic-ztests/test-output.log
+          path: |
+            sqllogic-ztests/test-output.log
+            sqllogic-ztests/failure-summary.txt
+          if-no-files-found: ignore
       - name: Fail job if tests failed
         if: steps.run-tests.outputs.HAS_FAILURES == 'true'
         run: exit 1
