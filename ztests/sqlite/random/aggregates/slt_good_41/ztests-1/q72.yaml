@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q72.sql | sort > q72.out
+
+inputs:
+  - name: q72.sql
+    data: |
+      SELECT ALL + SUM ( DISTINCT col0 ) * 70 AS col0 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q72.out
+    data: |
+      15890

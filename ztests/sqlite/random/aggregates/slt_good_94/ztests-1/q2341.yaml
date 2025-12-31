@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q2341.sql | sort > q2341.out
+
+inputs:
+  - name: q2341.sql
+    data: |
+      SELECT ALL - SUM ( DISTINCT col1 ) AS col1 FROM tab1 WHERE NULL IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q2341.out
+    data: |
+      -66

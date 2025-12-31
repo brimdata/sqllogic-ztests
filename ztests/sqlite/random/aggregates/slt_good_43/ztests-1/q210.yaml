@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q210.sql | sort > q210.out
+
+inputs:
+  - name: q210.sql
+    data: |
+      SELECT - 85 * - MIN ( - col1 ) / MAX ( ALL CAST ( NULL AS INTEGER ) ) * - COUNT ( * ) FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q210.out
+    data: |
+      NULL

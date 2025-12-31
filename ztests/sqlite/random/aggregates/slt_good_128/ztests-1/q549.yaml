@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q549.sql | sort > q549.out
+
+inputs:
+  - name: q549.sql
+    data: |
+      SELECT ALL - COUNT ( DISTINCT CAST ( NULL AS REAL ) ) * + MAX ( col1 ) FROM tab2 AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q549.out
+    data: |
+      0

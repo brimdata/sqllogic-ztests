@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q7455.sql | sort > q7455.out
+
+inputs:
+  - name: q7455.sql
+    data: |
+      SELECT ALL ( - CAST ( MAX ( DISTINCT col1 ) AS INTEGER ) ) AS col2 FROM tab2 AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q7455.out
+    data: |
+      -77

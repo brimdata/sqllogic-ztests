@@ -1,0 +1,16 @@
+# Failed due to: Column Does Not Exist error
+script: |
+  super -f tsv -I q1914.sql | sort > q1914.out
+
+inputs:
+  - name: q1914.sql
+    data: |
+      SELECT ALL MIN ( DISTINCT - ( + col1 ) ) FROM tab1 WHERE NOT + col1 IN ( col2 );
+  - name: tab0
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q1914.out
+    data: |
+      -47

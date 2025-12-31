@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q7365.sql | sort > q7365.out
+
+inputs:
+  - name: q7365.sql
+    data: |
+      SELECT DISTINCT COUNT ( * ), ( ( - - MIN ( DISTINCT col0 ) ) ) + + CAST ( NULL AS REAL ) AS col2 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q7365.out
+    data: |
+      3	NULL

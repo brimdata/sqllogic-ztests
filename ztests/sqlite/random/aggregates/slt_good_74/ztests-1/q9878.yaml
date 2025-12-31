@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q9878.sql | sort > q9878.out
+
+inputs:
+  - name: q9878.sql
+    data: |
+      SELECT DISTINCT + CAST ( - MIN ( ALL col2 ) AS INTEGER ) AS col2 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q9878.out
+    data: |
+      -23

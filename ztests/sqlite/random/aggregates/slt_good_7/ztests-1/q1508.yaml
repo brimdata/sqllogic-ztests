@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q1508.sql | sort > q1508.out
+
+inputs:
+  - name: q1508.sql
+    data: |
+      SELECT COUNT ( * ) * - COUNT ( ALL col0 ) AS col1 FROM tab0 WHERE 23 IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q1508.out
+    data: |
+      -9

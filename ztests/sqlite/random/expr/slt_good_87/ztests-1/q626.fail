@@ -1,0 +1,16 @@
+# Failed due to: No Such Field error
+script: |
+  super -f tsv -I q626.sql | sort > q626.out
+
+inputs:
+  - name: q626.sql
+    data: |
+      SELECT DISTINCT CAST ( NULL AS INTEGER ), MIN ( DISTINCT + 45 ) AS col1;
+  - name: tab0
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q626.out
+    data: |
+      NULL	45

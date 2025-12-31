@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q8630.sql | sort > q8630.out
+
+inputs:
+  - name: q8630.sql
+    data: |
+      SELECT ALL + 95 * - CAST ( MIN ( DISTINCT col1 ) AS INTEGER ) AS col1 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q8630.out
+    data: |
+      -4845

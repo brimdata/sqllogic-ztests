@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q10262.sql | sort > q10262.out
+
+inputs:
+  - name: q10262.sql
+    data: |
+      SELECT col0 AS col0 FROM tab0 cor0 GROUP BY col0 HAVING + SUM ( DISTINCT CAST ( NULL AS REAL ) ) IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q10262.out
+    data: |

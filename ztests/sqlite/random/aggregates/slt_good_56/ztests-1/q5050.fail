@@ -1,0 +1,16 @@
+# Failed due to: Column Does Not Exist error
+script: |
+  super -f tsv -I q5050.sql | sort > q5050.out
+
+inputs:
+  - name: q5050.sql
+    data: |
+      SELECT MIN ( ALL - 68 ) AS col0 FROM tab1, tab0 AS cor0;
+  - name: tab0
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q5050.out
+    data: |
+      -68

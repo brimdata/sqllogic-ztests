@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q8318.sql | sort > q8318.out
+
+inputs:
+  - name: q8318.sql
+    data: |
+      SELECT + SUM ( ALL CAST ( NULL AS INTEGER ) ) - ( COUNT ( * ) ) * 90 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q8318.out
+    data: |
+      NULL

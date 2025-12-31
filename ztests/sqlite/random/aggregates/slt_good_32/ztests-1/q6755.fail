@@ -1,0 +1,16 @@
+# Failed due to: Column Does Not Exist error
+script: |
+  super -f tsv -I q6755.sql | sort > q6755.out
+
+inputs:
+  - name: q6755.sql
+    data: |
+      SELECT ALL MAX ( ALL + 31 ) AS col2 FROM tab1;
+  - name: tab0
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q6755.out
+    data: |
+      31

@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q1635.sql | sort > q1635.out
+
+inputs:
+  - name: q1635.sql
+    data: |
+      SELECT DISTINCT ( + MIN ( ALL col1 ) ) / + COUNT ( * ) AS col0 FROM tab2 AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q1635.out
+    data: |
+      17

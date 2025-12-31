@@ -1,0 +1,16 @@
+# Failed due to: Column Does Not Exist error
+script: |
+  super -f tsv -I q8088.sql | sort > q8088.out
+
+inputs:
+  - name: q8088.sql
+    data: |
+      SELECT COUNT ( DISTINCT - + 32 ) AS col1 FROM tab1;
+  - name: tab0
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q8088.out
+    data: |
+      1

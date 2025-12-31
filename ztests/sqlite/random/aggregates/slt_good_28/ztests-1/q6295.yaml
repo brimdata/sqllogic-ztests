@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q6295.sql | sort > q6295.out
+
+inputs:
+  - name: q6295.sql
+    data: |
+      SELECT - COUNT ( DISTINCT CAST ( NULL AS INTEGER ) ) + - COUNT ( * ) AS col2 FROM tab2 WHERE NOT + col1 * + - col1 BETWEEN 2 AND col0;
+  - name: tab2
+
+outputs:
+  - name: q6295.out
+    data: |
+      -3

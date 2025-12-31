@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q4311.sql | sort > q4311.out
+
+inputs:
+  - name: q4311.sql
+    data: |
+      SELECT DISTINCT + CAST ( MIN ( DISTINCT col0 ) AS INTEGER ) FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q4311.out
+    data: |
+      46

@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q2511.sql | sort > q2511.out
+
+inputs:
+  - name: q2511.sql
+    data: |
+      SELECT ALL COUNT ( * ) * - COUNT ( ALL col0 ) FROM tab1 WHERE NULL IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q2511.out
+    data: |
+      -9

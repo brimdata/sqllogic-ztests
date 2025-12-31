@@ -1,0 +1,16 @@
+# Failed due to: Column Does Not Exist error
+script: |
+  super -f tsv -I q2358.sql | sort > q2358.out
+
+inputs:
+  - name: q2358.sql
+    data: |
+      SELECT 6 AS col1, SUM ( ALL + - CAST ( NULL AS INTEGER ) ) FROM tab1 AS cor0 WHERE NOT NULL IS NOT NULL;
+  - name: tab0
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q2358.out
+    data: |
+      6	NULL

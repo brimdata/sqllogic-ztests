@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q1585.sql | sort > q1585.out
+
+inputs:
+  - name: q1585.sql
+    data: |
+      SELECT - COUNT ( * ) * + COUNT ( col2 ) + - SUM ( DISTINCT col2 ) FROM tab0;
+  - name: tab0
+
+outputs:
+  - name: q1585.out
+    data: |
+      -165

@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q4211.sql | sort > q4211.out
+
+inputs:
+  - name: q4211.sql
+    data: |
+      SELECT DISTINCT - MIN ( DISTINCT col2 ) AS col1 FROM tab2 WHERE NOT NULL IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q4211.out
+    data: |
+      -23

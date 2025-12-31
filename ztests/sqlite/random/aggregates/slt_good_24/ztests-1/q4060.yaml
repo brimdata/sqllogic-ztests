@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q4060.sql | sort > q4060.out
+
+inputs:
+  - name: q4060.sql
+    data: |
+      SELECT DISTINCT - COUNT ( DISTINCT 0 ) / 40, COUNT ( * ) AS col1 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q4060.out
+    data: |
+      0	3

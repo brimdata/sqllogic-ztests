@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q64.sql | sort > q64.out
+
+inputs:
+  - name: q64.sql
+    data: |
+      SELECT ALL COUNT ( ALL CAST ( NULL AS INTEGER ) ) * 1 AS col1 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q64.out
+    data: |
+      0

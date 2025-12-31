@@ -1,0 +1,15 @@
+# Failed due to: Column Does Not Exist error
+script: |
+  super -f tsv -I q9220.sql | sort > q9220.out
+
+inputs:
+  - name: q9220.sql
+    data: |
+      SELECT DISTINCT AVG ( DISTINCT + col1 ) FROM tab0 AS cor0 GROUP BY col1, col2 HAVING NOT NULL IS NULL;
+  - name: tab0
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q9220.out
+    data: |

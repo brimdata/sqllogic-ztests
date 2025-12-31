@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q13716.sql | sort > q13716.out
+
+inputs:
+  - name: q13716.sql
+    data: |
+      SELECT ALL - COUNT ( * ) * 80 * + SUM ( DISTINCT col2 ) FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q13716.out
+    data: |
+      -29040

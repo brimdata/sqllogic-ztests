@@ -1,0 +1,16 @@
+# Failed due to: Column Does Not Exist error
+script: |
+  super -f tsv -I q103.sql | sort > q103.out
+
+inputs:
+  - name: q103.sql
+    data: |
+      SELECT MAX ( DISTINCT - col0 ) FROM tab1 AS cor0 WHERE NULL IS NULL;
+  - name: tab0
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q103.out
+    data: |
+      -51

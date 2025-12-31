@@ -1,0 +1,16 @@
+# Failed due to: No Such Field error
+script: |
+  super -f tsv -I q1228.sql | sort > q1228.out
+
+inputs:
+  - name: q1228.sql
+    data: |
+      SELECT 54 * - 23 col1, MAX ( ALL - CAST ( NULL AS INTEGER ) );
+  - name: tab0
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q1228.out
+    data: |
+      -1242	NULL

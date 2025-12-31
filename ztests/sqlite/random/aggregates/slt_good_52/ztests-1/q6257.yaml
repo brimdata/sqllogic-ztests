@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q6257.sql | sort > q6257.out
+
+inputs:
+  - name: q6257.sql
+    data: |
+      SELECT + COUNT ( DISTINCT col2 ) * COUNT ( * ) - COUNT ( * ) AS col1 FROM tab0 AS cor0;
+  - name: tab0
+
+outputs:
+  - name: q6257.out
+    data: |
+      6

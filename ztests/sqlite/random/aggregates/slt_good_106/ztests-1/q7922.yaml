@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q7922.sql | sort > q7922.out
+
+inputs:
+  - name: q7922.sql
+    data: |
+      SELECT DISTINCT COUNT ( * ) + - CAST ( - COUNT ( DISTINCT 99 ) AS INTEGER ) FROM tab1 AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q7922.out
+    data: |
+      4

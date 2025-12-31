@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q8319.sql | sort > q8319.out
+
+inputs:
+  - name: q8319.sql
+    data: |
+      SELECT + SUM ( DISTINCT col1 ) FROM tab1 WHERE col1 <= col2 * 53;
+  - name: tab1
+
+outputs:
+  - name: q8319.out
+    data: |
+      66

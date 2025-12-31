@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q8088.sql | sort > q8088.out
+
+inputs:
+  - name: q8088.sql
+    data: |
+      SELECT + CAST ( - AVG ( DISTINCT col2 ) AS INTEGER ) FROM tab1 AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q8088.out
+    data: |
+      -74

@@ -1,0 +1,18 @@
+# Failed due to: Column Does Not Exist error
+script: |
+  super -f tsv -I q6523.sql | sort > q6523.out
+
+inputs:
+  - name: q6523.sql
+    data: |
+      SELECT MIN ( ALL - - col0 ) AS col2 FROM tab1 GROUP BY col1, col0, col0 HAVING NULL IS NULL;
+  - name: tab0
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q6523.out
+    data: |
+      22
+      28
+      82

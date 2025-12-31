@@ -1,0 +1,16 @@
+# Failed due to: Column Does Not Exist error
+script: |
+  super -f tsv -I q9146.sql | sort > q9146.out
+
+inputs:
+  - name: q9146.sql
+    data: |
+      SELECT SUM ( DISTINCT - col1 ) AS col2 FROM tab2;
+  - name: tab0
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q9146.out
+    data: |
+      -195

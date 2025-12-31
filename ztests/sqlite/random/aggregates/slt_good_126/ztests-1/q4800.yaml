@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q4800.sql | sort > q4800.out
+
+inputs:
+  - name: q4800.sql
+    data: |
+      SELECT DISTINCT ( + COUNT ( ALL col2 ) ) * - - 99 AS col0 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q4800.out
+    data: |
+      297

@@ -1,0 +1,16 @@
+# Failed due to: Column Does Not Exist error
+script: |
+  super -f tsv -I q6495.sql | sort > q6495.out
+
+inputs:
+  - name: q6495.sql
+    data: |
+      SELECT DISTINCT 43 AS col2, MAX ( ALL + - 64 ) FROM tab0 AS cor0 CROSS JOIN tab2 AS cor1;
+  - name: tab0
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q6495.out
+    data: |
+      43	-64

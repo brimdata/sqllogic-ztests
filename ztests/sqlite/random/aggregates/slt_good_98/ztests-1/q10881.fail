@@ -1,0 +1,16 @@
+# Failed due to: Column Does Not Exist error
+script: |
+  super -f tsv -I q10881.sql | sort > q10881.out
+
+inputs:
+  - name: q10881.sql
+    data: |
+      SELECT COUNT ( DISTINCT - + 97 ) AS col0 FROM tab2 WHERE ( NULL IS NULL );
+  - name: tab0
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q10881.out
+    data: |
+      1

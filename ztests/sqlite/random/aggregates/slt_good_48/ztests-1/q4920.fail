@@ -1,0 +1,16 @@
+# Failed due to: Column Does Not Exist error
+script: |
+  super -f tsv -I q4920.sql | sort > q4920.out
+
+inputs:
+  - name: q4920.sql
+    data: |
+      SELECT DISTINCT SUM ( DISTINCT - 17 ) AS col2 FROM tab0 cor0 CROSS JOIN tab2 AS cor1;
+  - name: tab0
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q4920.out
+    data: |
+      -17

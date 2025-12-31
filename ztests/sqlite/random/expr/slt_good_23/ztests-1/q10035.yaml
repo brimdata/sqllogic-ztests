@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q10035.sql | sort > q10035.out
+
+inputs:
+  - name: q10035.sql
+    data: |
+      SELECT COUNT ( * ) - ( NULLIF ( CAST ( SUM ( DISTINCT CAST ( NULL AS INTEGER ) ) AS INTEGER ), - 1 ) );
+
+outputs:
+  - name: q10035.out
+    data: |
+      NULL

@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q11381.sql | sort > q11381.out
+
+inputs:
+  - name: q11381.sql
+    data: |
+      SELECT ALL COUNT ( + col2 ) + + COUNT ( ALL col2 ) * 37 FROM tab0;
+  - name: tab0
+
+outputs:
+  - name: q11381.out
+    data: |
+      114
