@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q12582.sql | sort > q12582.out
+
+inputs:
+  - name: q12582.sql
+    data: |
+      SELECT + MIN ( DISTINCT col0 ) * - SUM ( + col1 ) FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q12582.out
+    data: |
+      -8970

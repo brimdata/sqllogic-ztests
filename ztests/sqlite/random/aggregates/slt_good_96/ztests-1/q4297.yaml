@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q4297.sql | sort > q4297.out
+
+inputs:
+  - name: q4297.sql
+    data: |
+      SELECT DISTINCT 16 / - COUNT ( ALL col2 ) AS col2, CAST ( NULL AS REAL ) FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q4297.out
+    data: |
+      -5	NULL

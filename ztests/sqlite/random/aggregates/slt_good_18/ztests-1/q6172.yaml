@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q6172.sql | sort > q6172.out
+
+inputs:
+  - name: q6172.sql
+    data: |
+      SELECT - ( + MIN ( DISTINCT col1 ) ) + - COUNT ( * ) FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q6172.out
+    data: |
+      -54

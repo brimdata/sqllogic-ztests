@@ -1,0 +1,16 @@
+# Failed due to: Column Does Not Exist error
+script: |
+  super -f tsv -I q1674.sql | sort > q1674.out
+
+inputs:
+  - name: q1674.sql
+    data: |
+      SELECT MAX ( DISTINCT + CAST ( col1 AS INTEGER ) ) FROM tab1 AS cor0 WHERE ( NULL ) IS NULL;
+  - name: tab0
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q1674.out
+    data: |
+      47

@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q2188.sql | sort > q2188.out
+
+inputs:
+  - name: q2188.sql
+    data: |
+      SELECT ALL COUNT ( DISTINCT NULLIF ( + 97, + CAST ( NULL AS INTEGER ) ) ) * - COUNT ( * );
+
+outputs:
+  - name: q2188.out
+    data: |
+      -1

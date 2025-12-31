@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q4140.sql | sort > q4140.out
+
+inputs:
+  - name: q4140.sql
+    data: |
+      SELECT DISTINCT COUNT ( * ) * + MIN ( ALL col1 ) FROM tab0 AS cor0;
+  - name: tab0
+
+outputs:
+  - name: q4140.out
+    data: |
+      3

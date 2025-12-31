@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q5000.sql | sort > q5000.out
+
+inputs:
+  - name: q5000.sql
+    data: |
+      SELECT - AVG ( ALL col1 ) FROM tab1 AS cor0 WHERE NOT NULL IS NULL GROUP BY col1, col1;
+  - name: tab1
+
+outputs:
+  - name: q5000.out
+    data: |

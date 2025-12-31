@@ -1,0 +1,16 @@
+# Failed due to: Column Does Not Exist error
+script: |
+  super -f tsv -I q7975.sql | sort > q7975.out
+
+inputs:
+  - name: q7975.sql
+    data: |
+      SELECT ALL COUNT ( DISTINCT - CAST ( NULL AS INTEGER ) ) FROM tab2;
+  - name: tab0
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q7975.out
+    data: |
+      0

@@ -1,0 +1,16 @@
+# Failed due to: Column Does Not Exist error
+script: |
+  super -f tsv -I q12041.sql | sort > q12041.out
+
+inputs:
+  - name: q12041.sql
+    data: |
+      SELECT DISTINCT COUNT ( DISTINCT + - 16 ) AS col2 FROM tab1;
+  - name: tab0
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q12041.out
+    data: |
+      1

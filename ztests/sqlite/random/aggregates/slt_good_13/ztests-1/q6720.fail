@@ -1,0 +1,16 @@
+# Failed due to: Column Does Not Exist error
+script: |
+  super -f tsv -I q6720.sql | sort > q6720.out
+
+inputs:
+  - name: q6720.sql
+    data: |
+      SELECT + COUNT ( * ), MIN ( ALL - col2 ) AS col0 FROM tab0 AS cor0 WHERE NOT 2 IS NULL;
+  - name: tab0
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q6720.out
+    data: |
+      3	-99

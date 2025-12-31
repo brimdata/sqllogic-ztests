@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q6529.sql | sort > q6529.out
+
+inputs:
+  - name: q6529.sql
+    data: |
+      SELECT ALL + COUNT ( DISTINCT col1 ) FROM tab2 WHERE NULL IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q6529.out
+    data: |
+      3

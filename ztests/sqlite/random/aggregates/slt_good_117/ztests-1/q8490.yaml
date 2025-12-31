@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q8490.sql | sort > q8490.out
+
+inputs:
+  - name: q8490.sql
+    data: |
+      SELECT - MAX ( DISTINCT 64 ) FROM tab1 AS cor0 CROSS JOIN tab1 AS cor1;
+  - name: tab1
+
+outputs:
+  - name: q8490.out
+    data: |
+      -64

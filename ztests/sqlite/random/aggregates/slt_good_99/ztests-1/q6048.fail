@@ -1,0 +1,16 @@
+# Failed due to: Column Does Not Exist error
+script: |
+  super -f tsv -I q6048.sql | sort > q6048.out
+
+inputs:
+  - name: q6048.sql
+    data: |
+      SELECT DISTINCT SUM ( ALL + col2 ) FROM tab2 AS cor0 WHERE - col1 IS NOT NULL;
+  - name: tab0
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q6048.out
+    data: |
+      121

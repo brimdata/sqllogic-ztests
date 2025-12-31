@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q3207.sql | sort > q3207.out
+
+inputs:
+  - name: q3207.sql
+    data: |
+      SELECT ALL + MAX ( ALL col2 ) * 96 AS col1 FROM tab0 WHERE NOT ( NULL ) IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q3207.out
+    data: |
+      9504

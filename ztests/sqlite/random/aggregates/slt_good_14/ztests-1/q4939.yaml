@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q4939.sql | sort > q4939.out
+
+inputs:
+  - name: q4939.sql
+    data: |
+      SELECT + MIN ( DISTINCT CAST ( - 52 AS INTEGER ) ) AS col1 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q4939.out
+    data: |
+      -52

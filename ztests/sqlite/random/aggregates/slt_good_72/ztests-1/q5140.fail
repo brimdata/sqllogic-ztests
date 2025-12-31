@@ -1,0 +1,16 @@
+# Failed due to: Column Does Not Exist error
+script: |
+  super -f tsv -I q5140.sql | sort > q5140.out
+
+inputs:
+  - name: q5140.sql
+    data: |
+      SELECT DISTINCT MIN ( ALL + 29 ) AS col1 FROM tab1;
+  - name: tab0
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q5140.out
+    data: |
+      29

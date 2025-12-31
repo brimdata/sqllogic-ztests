@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q13326.sql | sort > q13326.out
+
+inputs:
+  - name: q13326.sql
+    data: |
+      SELECT ALL + SUM ( ALL col1 ) FROM tab0 AS cor0 WHERE NOT 36 IN ( ( - col1 ) );
+  - name: tab0
+
+outputs:
+  - name: q13326.out
+    data: |
+      103

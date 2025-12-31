@@ -1,0 +1,15 @@
+# Failed due to: Column Does Not Exist error
+script: |
+  super -f tsv -I q7333.sql | sort > q7333.out
+
+inputs:
+  - name: q7333.sql
+    data: |
+      SELECT ALL AVG ( ALL - + col1 ) AS col2 FROM tab1 GROUP BY col1 HAVING NOT NULL <> NULL;
+  - name: tab0
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q7333.out
+    data: |

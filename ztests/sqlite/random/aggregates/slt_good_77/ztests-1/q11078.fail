@@ -1,0 +1,16 @@
+# Failed due to: Column Does Not Exist error
+script: |
+  super -f tsv -I q11078.sql | sort > q11078.out
+
+inputs:
+  - name: q11078.sql
+    data: |
+      SELECT DISTINCT AVG ( ALL + CAST ( NULL AS INTEGER ) ) AS col0 FROM tab0 AS cor0;
+  - name: tab0
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q11078.out
+    data: |
+      NULL

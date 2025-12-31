@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q7829.sql | sort > q7829.out
+
+inputs:
+  - name: q7829.sql
+    data: |
+      SELECT CAST ( MAX ( ALL col1 ) AS INTEGER ) FROM tab1 AS cor0 WHERE NOT NULL IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q7829.out
+    data: |
+      47

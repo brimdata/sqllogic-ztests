@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q3450.sql | sort > q3450.out
+
+inputs:
+  - name: q3450.sql
+    data: |
+      SELECT ALL + 41 * - SUM ( DISTINCT col2 ) FROM tab0 cor0 WHERE NOT ( NULL ) IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q3450.out
+    data: |
+      -6396

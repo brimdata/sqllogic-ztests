@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q417.sql | sort > q417.out
+
+inputs:
+  - name: q417.sql
+    data: |
+      SELECT ALL - COUNT ( * ) * 56 * - COUNT ( DISTINCT col1 ) AS col2 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q417.out
+    data: |
+      504

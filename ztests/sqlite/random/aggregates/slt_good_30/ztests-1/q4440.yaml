@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q4440.sql | sort > q4440.out
+
+inputs:
+  - name: q4440.sql
+    data: |
+      SELECT ALL - SUM ( DISTINCT col1 ) * - 30 AS col0 FROM tab0;
+  - name: tab0
+
+outputs:
+  - name: q4440.out
+    data: |
+      3090

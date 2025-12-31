@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q3072.sql | sort > q3072.out
+
+inputs:
+  - name: q3072.sql
+    data: |
+      SELECT ALL + CAST ( MAX ( DISTINCT col0 ) AS INTEGER ) - + 99 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q3072.out
+    data: |
+      -24

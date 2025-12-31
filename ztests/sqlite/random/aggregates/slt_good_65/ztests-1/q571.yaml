@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q571.sql | sort > q571.out
+
+inputs:
+  - name: q571.sql
+    data: |
+      SELECT DISTINCT COUNT ( CAST ( NULL AS INTEGER ) ) - MIN ( ALL col0 ) * + COUNT ( * ) FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q571.out
+    data: |
+      -138

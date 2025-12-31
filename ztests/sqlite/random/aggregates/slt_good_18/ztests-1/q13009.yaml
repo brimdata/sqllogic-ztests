@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q13009.sql | sort > q13009.out
+
+inputs:
+  - name: q13009.sql
+    data: |
+      SELECT - SUM ( DISTINCT col0 ) * - COUNT ( * ) * - ( - 60 ) FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q13009.out
+    data: |
+      33300

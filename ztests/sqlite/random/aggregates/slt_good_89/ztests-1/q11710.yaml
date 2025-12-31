@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q11710.sql | sort > q11710.out
+
+inputs:
+  - name: q11710.sql
+    data: |
+      SELECT ALL ( SUM ( DISTINCT col1 ) ) AS col1, + COUNT ( - col2 ) FROM tab2 AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q11710.out
+    data: |
+      195	3

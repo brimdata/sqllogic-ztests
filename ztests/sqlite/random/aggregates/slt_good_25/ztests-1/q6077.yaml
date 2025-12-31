@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q6077.sql | sort > q6077.out
+
+inputs:
+  - name: q6077.sql
+    data: |
+      SELECT CAST ( MIN ( ALL col0 ) AS INTEGER ) * - 58 - COUNT ( * ) AS col0 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q6077.out
+    data: |
+      -2671

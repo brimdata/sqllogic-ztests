@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q6010.sql | sort > q6010.out
+
+inputs:
+  - name: q6010.sql
+    data: |
+      SELECT ALL + ( - CAST ( - NULLIF ( - SUM ( DISTINCT 4 ), - 4 ) AS INTEGER ) ) AS col2;
+
+outputs:
+  - name: q6010.out
+    data: |
+      NULL

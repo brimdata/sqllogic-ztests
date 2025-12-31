@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q2549.sql | sort > q2549.out
+
+inputs:
+  - name: q2549.sql
+    data: |
+      SELECT ALL + MAX ( ALL 48 ) FROM ( tab2 AS cor0 CROSS JOIN tab1 AS cor1 );
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q2549.out
+    data: |
+      48

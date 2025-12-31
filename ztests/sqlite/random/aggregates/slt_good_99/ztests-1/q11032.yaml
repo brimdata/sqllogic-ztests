@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q11032.sql | sort > q11032.out
+
+inputs:
+  - name: q11032.sql
+    data: |
+      SELECT DISTINCT CAST ( - AVG ( ALL 11 ) AS INTEGER ) FROM tab1 AS cor0 CROSS JOIN tab1 AS cor1;
+  - name: tab1
+
+outputs:
+  - name: q11032.out
+    data: |
+      -11

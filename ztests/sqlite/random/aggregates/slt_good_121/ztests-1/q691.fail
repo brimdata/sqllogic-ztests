@@ -1,0 +1,16 @@
+# Failed due to: Column Does Not Exist error
+script: |
+  super -f tsv -I q691.sql | sort > q691.out
+
+inputs:
+  - name: q691.sql
+    data: |
+      SELECT ALL MIN ( ALL + col1 ) FROM tab2 AS cor0 WHERE NOT NULL IS NOT NULL;
+  - name: tab0
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q691.out
+    data: |
+      51

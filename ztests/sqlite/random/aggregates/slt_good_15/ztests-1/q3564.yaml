@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q3564.sql | sort > q3564.out
+
+inputs:
+  - name: q3564.sql
+    data: |
+      SELECT DISTINCT COUNT ( * ) / - MAX ( ALL col1 ) + - COUNT ( * ) FROM tab2 WHERE NOT NULL IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q3564.out
+    data: |
+      -3

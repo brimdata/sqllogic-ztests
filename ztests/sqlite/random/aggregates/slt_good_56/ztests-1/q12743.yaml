@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q12743.sql | sort > q12743.out
+
+inputs:
+  - name: q12743.sql
+    data: |
+      SELECT + ( - MIN ( ALL col1 ) ) AS col1 FROM tab0 WHERE NOT NULL IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q12743.out
+    data: |
+      -1

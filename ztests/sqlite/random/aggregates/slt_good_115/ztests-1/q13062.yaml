@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q13062.sql | sort > q13062.out
+
+inputs:
+  - name: q13062.sql
+    data: |
+      SELECT SUM ( DISTINCT CAST ( NULL AS REAL ) ) * - MAX ( DISTINCT col2 ) + - COUNT ( * ) FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q13062.out
+    data: |
+      NULL

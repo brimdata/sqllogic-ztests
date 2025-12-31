@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q10292.sql | sort > q10292.out
+
+inputs:
+  - name: q10292.sql
+    data: |
+      SELECT ALL COUNT ( DISTINCT col0 ) * - MIN ( DISTINCT col2 ) FROM tab0;
+  - name: tab0
+
+outputs:
+  - name: q10292.out
+    data: |
+      -30

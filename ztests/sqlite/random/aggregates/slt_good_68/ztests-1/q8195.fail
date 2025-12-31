@@ -1,0 +1,16 @@
+# Failed due to: Column Does Not Exist error
+script: |
+  super -f tsv -I q8195.sql | sort > q8195.out
+
+inputs:
+  - name: q8195.sql
+    data: |
+      SELECT DISTINCT MAX ( ALL - 15 ) AS col0 FROM tab1;
+  - name: tab0
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q8195.out
+    data: |
+      -15

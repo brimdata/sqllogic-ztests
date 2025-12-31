@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q5930.sql | sort > q5930.out
+
+inputs:
+  - name: q5930.sql
+    data: |
+      SELECT + SUM ( ALL 92 ) AS col2 FROM ( tab2 AS cor0 CROSS JOIN tab2 AS cor1 );
+  - name: tab2
+
+outputs:
+  - name: q5930.out
+    data: |
+      828

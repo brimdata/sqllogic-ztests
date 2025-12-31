@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q8879.sql | sort > q8879.out
+
+inputs:
+  - name: q8879.sql
+    data: |
+      SELECT + SUM ( - col2 ) * CAST ( MIN ( ALL col1 ) AS INTEGER ) FROM tab2 AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q8879.out
+    data: |
+      -6171

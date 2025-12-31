@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q3287.sql | sort > q3287.out
+
+inputs:
+  - name: q3287.sql
+    data: |
+      SELECT ALL CAST ( NULL AS INTEGER ) * + COUNT ( * ) + - AVG ( DISTINCT col1 ) AS col2, - 1 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q3287.out
+    data: |
+      NULL	-1

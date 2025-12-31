@@ -1,0 +1,16 @@
+# Failed due to: Column Does Not Exist error
+script: |
+  super -f tsv -I q32.sql | sort > q32.out
+
+inputs:
+  - name: q32.sql
+    data: |
+      SELECT DISTINCT COUNT ( DISTINCT - col0 ) FROM tab0 AS cor0;
+  - name: tab0
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q32.out
+    data: |
+      3

@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q8679.sql | sort > q8679.out
+
+inputs:
+  - name: q8679.sql
+    data: |
+      SELECT + MAX ( DISTINCT col0 ) AS col1 FROM tab2 WHERE NOT ( NOT ( NULL ) IS NULL );
+  - name: tab2
+
+outputs:
+  - name: q8679.out
+    data: |
+      75

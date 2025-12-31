@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q143.sql | sort > q143.out
+
+inputs:
+  - name: q143.sql
+    data: |
+      SELECT DISTINCT MAX ( ALL col1 ) * 79 FROM tab1 WHERE NULL IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q143.out
+    data: |
+      3713

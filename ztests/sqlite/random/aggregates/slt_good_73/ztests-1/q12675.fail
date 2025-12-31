@@ -1,0 +1,16 @@
+# Failed due to: Column Does Not Exist error
+script: |
+  super -f tsv -I q12675.sql | sort > q12675.out
+
+inputs:
+  - name: q12675.sql
+    data: |
+      SELECT DISTINCT MIN ( DISTINCT + 42 ) AS col0 FROM tab1;
+  - name: tab0
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q12675.out
+    data: |
+      42

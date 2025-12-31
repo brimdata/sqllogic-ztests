@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q7346.sql | sort > q7346.out
+
+inputs:
+  - name: q7346.sql
+    data: |
+      SELECT MIN ( ALL col0 ) * - MIN ( ALL col1 ) AS col1 FROM tab0 WHERE NULL IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q7346.out
+    data: |
+      -15

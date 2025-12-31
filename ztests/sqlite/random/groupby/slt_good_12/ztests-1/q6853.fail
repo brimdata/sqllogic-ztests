@@ -1,0 +1,18 @@
+# Failed due to: Column Does Not Exist error
+script: |
+  super -f tsv -I q6853.sql | sort > q6853.out
+
+inputs:
+  - name: q6853.sql
+    data: |
+      SELECT ALL SUM ( DISTINCT - - col1 ) FROM tab1 AS cor0 GROUP BY col1;
+  - name: tab0
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q6853.out
+    data: |
+      44
+      57
+      6

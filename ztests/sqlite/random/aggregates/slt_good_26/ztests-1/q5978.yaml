@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q5978.sql | sort > q5978.out
+
+inputs:
+  - name: q5978.sql
+    data: |
+      SELECT ALL SUM ( + col0 ) * - SUM ( ALL col1 ) FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q5978.out
+    data: |
+      -36075

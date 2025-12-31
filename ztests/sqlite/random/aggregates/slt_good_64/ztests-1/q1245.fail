@@ -1,0 +1,16 @@
+# Failed due to: Column Does Not Exist error
+script: |
+  super -f tsv -I q1245.sql | sort > q1245.out
+
+inputs:
+  - name: q1245.sql
+    data: |
+      SELECT COUNT ( * ) AS col2, MAX ( DISTINCT - 40 ) FROM tab1;
+  - name: tab0
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q1245.out
+    data: |
+      3	-40

@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q1732.sql | sort > q1732.out
+
+inputs:
+  - name: q1732.sql
+    data: |
+      SELECT + MAX ( DISTINCT col2 ) + - - COUNT ( * ) FROM tab0;
+  - name: tab0
+
+outputs:
+  - name: q1732.out
+    data: |
+      102

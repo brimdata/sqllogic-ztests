@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q9516.sql | sort > q9516.out
+
+inputs:
+  - name: q9516.sql
+    data: |
+      SELECT 55 * COUNT ( * ) * ( - SUM ( ALL col1 ) ) AS col1 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q9516.out
+    data: |
+      -10890

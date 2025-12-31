@@ -1,0 +1,16 @@
+# Failed due to: Column Does Not Exist error
+script: |
+  super -f tsv -I q13082.sql | sort > q13082.out
+
+inputs:
+  - name: q13082.sql
+    data: |
+      SELECT MIN ( DISTINCT + - col1 ) AS col0, SUM ( ALL + CAST ( NULL AS INTEGER ) ) AS col2 FROM tab1;
+  - name: tab0
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q13082.out
+    data: |
+      -47	NULL

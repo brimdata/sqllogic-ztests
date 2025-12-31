@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q5949.sql | sort > q5949.out
+
+inputs:
+  - name: q5949.sql
+    data: |
+      SELECT + ( ( - COUNT ( DISTINCT col1 ) ) ) - - MIN ( col0 + ( 72 ) ) AS col1 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q5949.out
+    data: |
+      120

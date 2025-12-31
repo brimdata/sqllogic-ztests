@@ -1,0 +1,16 @@
+# Failed due to: Column Does Not Exist error
+script: |
+  super -f tsv -I q8435.sql | sort > q8435.out
+
+inputs:
+  - name: q8435.sql
+    data: |
+      SELECT MAX ( ALL + col2 ) AS col2, - COUNT ( * ) FROM tab2;
+  - name: tab0
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q8435.out
+    data: |
+      58	-3

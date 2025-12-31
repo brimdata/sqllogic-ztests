@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q1500.sql | sort > q1500.out
+
+inputs:
+  - name: q1500.sql
+    data: |
+      SELECT CAST ( NULL AS INTEGER ) * - - ( - - MAX ( DISTINCT col1 ) ) AS col2 FROM tab0;
+  - name: tab0
+
+outputs:
+  - name: q1500.out
+    data: |
+      NULL

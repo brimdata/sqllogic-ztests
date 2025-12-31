@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q9120.sql | sort > q9120.out
+
+inputs:
+  - name: q9120.sql
+    data: |
+      SELECT + COUNT ( * ) * 22, 50 * MIN ( DISTINCT CAST ( NULL AS REAL ) ) AS col1;
+
+outputs:
+  - name: q9120.out
+    data: |
+      22	NULL

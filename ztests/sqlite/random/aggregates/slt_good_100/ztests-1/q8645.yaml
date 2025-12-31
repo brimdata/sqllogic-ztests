@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q8645.sql | sort > q8645.out
+
+inputs:
+  - name: q8645.sql
+    data: |
+      SELECT DISTINCT AVG ( DISTINCT col2 ) + - + CAST ( NULL AS INTEGER ) AS col1 FROM tab1 AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q8645.out
+    data: |
+      NULL

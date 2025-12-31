@@ -1,0 +1,16 @@
+# Failed due to: Column Does Not Exist error
+script: |
+  super -f tsv -I q11862.sql | sort > q11862.out
+
+inputs:
+  - name: q11862.sql
+    data: |
+      SELECT COUNT ( ALL + 37 ) AS col2 FROM tab0 AS cor0 CROSS JOIN tab2 AS cor1;
+  - name: tab0
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q11862.out
+    data: |
+      9

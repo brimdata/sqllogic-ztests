@@ -1,0 +1,16 @@
+# Failed due to: Column Does Not Exist error
+script: |
+  super -f tsv -I q1044.sql | sort > q1044.out
+
+inputs:
+  - name: q1044.sql
+    data: |
+      SELECT ALL MIN ( DISTINCT - 61 ) AS col2 FROM tab2;
+  - name: tab0
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q1044.out
+    data: |
+      -61

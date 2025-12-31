@@ -1,0 +1,16 @@
+# Failed due to: Column Does Not Exist error
+script: |
+  super -f tsv -I q8157.sql | sort > q8157.out
+
+inputs:
+  - name: q8157.sql
+    data: |
+      SELECT MIN ( ALL - col1 ) FROM tab1 WHERE NULL IS NULL;
+  - name: tab0
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q8157.out
+    data: |
+      -47

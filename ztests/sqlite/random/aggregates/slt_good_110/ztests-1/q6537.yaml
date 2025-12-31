@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q6537.sql | sort > q6537.out
+
+inputs:
+  - name: q6537.sql
+    data: |
+      SELECT DISTINCT - - MIN ( DISTINCT col0 ), COUNT ( * ) AS col1 FROM tab2 WHERE NOT NULL IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q6537.out
+    data: |
+      46	3

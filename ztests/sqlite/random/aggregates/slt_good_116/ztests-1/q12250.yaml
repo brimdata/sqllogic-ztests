@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q12250.sql | sort > q12250.out
+
+inputs:
+  - name: q12250.sql
+    data: |
+      SELECT ALL COUNT ( * ) * + ( + COUNT ( ALL col1 ) ) FROM tab1 AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q12250.out
+    data: |
+      9

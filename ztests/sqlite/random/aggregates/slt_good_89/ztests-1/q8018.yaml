@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q8018.sql | sort > q8018.out
+
+inputs:
+  - name: q8018.sql
+    data: |
+      SELECT ALL MIN ( DISTINCT col1 ) - 55 FROM tab1 WHERE ( NULL IS NULL );
+  - name: tab1
+
+outputs:
+  - name: q8018.out
+    data: |
+      -50

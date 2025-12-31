@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q4027.sql | sort > q4027.out
+
+inputs:
+  - name: q4027.sql
+    data: |
+      SELECT MIN ( DISTINCT col1 ) + AVG ( + CAST ( NULL AS INTEGER ) + col0 ) AS col2 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q4027.out
+    data: |
+      NULL

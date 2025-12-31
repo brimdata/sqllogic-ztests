@@ -1,0 +1,16 @@
+# Failed due to: Column Does Not Exist error
+script: |
+  super -f tsv -I q13312.sql | sort > q13312.out
+
+inputs:
+  - name: q13312.sql
+    data: |
+      SELECT ALL SUM ( DISTINCT - 41 ) FROM tab1 cor0 CROSS JOIN tab0 AS cor1;
+  - name: tab0
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q13312.out
+    data: |
+      -41
