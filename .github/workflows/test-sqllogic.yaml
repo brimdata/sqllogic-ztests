@@ -192,11 +192,18 @@ jobs:
         with:
           pattern: test-logs-*
           path: logs
-      - name: Aggregate failure counts
+      - name: Aggregate failure counts and summaries
         run: |
+          echo "=========================================="
+          echo "OVERALL TEST SUMMARY"
+          echo "=========================================="
+          echo ""
+
           total_tests_ran=0
           total_failures=0
           total_successes=0
+
+          # Aggregate basic counts
           for log_dir in logs/test-logs-*; do
             test_name=$(basename "$log_dir" | sed 's/test-logs-//')
             log_file="$log_dir/test-output.log"
@@ -212,7 +219,60 @@ jobs:
               echo "$test_name: log not found"
             fi
           done
-          echo "$total_tests_ran total tests executed, $total_successes total successes, $total_failures total failures"
+
+          echo ""
+          echo "=========================================="
+          echo "TOTALS: $total_tests_ran tests, $total_successes successes, $total_failures failures"
+          echo "=========================================="
+          echo ""
+
+          # Aggregate vector/sequence failure breakdowns
+          if [ $total_failures -gt 0 ]; then
+            echo ""
+            echo "=========================================="
+            echo "FAILURE BREAKDOWN BY RUNTIME"
+            echo "=========================================="
+            echo ""
+
+            total_both=0
+            total_vector_only=0
+            total_sequence_only=0
+
+            for log_dir in logs/test-logs-*; do
+              test_name=$(basename "$log_dir" | sed 's/test-logs-//')
+              summary_file="$log_dir/failure-summary.txt"
+
+              if [ -f "$summary_file" ]; then
+                echo "--- $test_name ---"
+
+                # Extract counts from the summary file
+                both_count=$(grep "^Failed in BOTH" "$summary_file" | grep -oE '\([0-9]+ tests\)' | grep -oE '[0-9]+' || echo "0")
+                vector_count=$(grep "^Failed in VECTOR only" "$summary_file" | grep -oE '\([0-9]+ tests\)' | grep -oE '[0-9]+' || echo "0")
+                sequence_count=$(grep "^Failed in SEQUENCE only" "$summary_file" | grep -oE '\([0-9]+ tests\)' | grep -oE '[0-9]+' || echo "0")
+
+                echo "  Both runtimes: $both_count"
+                echo "  Vector only: $vector_count"
+                echo "  Sequence only: $sequence_count"
+                echo ""
+
+                total_both=$((total_both + both_count))
+                total_vector_only=$((total_vector_only + vector_count))
+                total_sequence_only=$((total_sequence_only + sequence_count))
+              fi
+            done
+
+            echo "=========================================="
+            echo "AGGREGATE FAILURE BREAKDOWN"
+            echo "=========================================="
+            echo "Total failures by runtime:"
+            echo "  Both vector and sequence: $total_both"
+            echo "  Vector only: $total_vector_only"
+            echo "  Sequence only: $total_sequence_only"
+            echo "  Total unique failing tests: $((total_both + total_vector_only + total_sequence_only))"
+            echo ""
+          fi
+
+          # Final result
           if [ $total_failures -gt 0 ]; then
             echo "❌ Tests had failures"
             exit 1
