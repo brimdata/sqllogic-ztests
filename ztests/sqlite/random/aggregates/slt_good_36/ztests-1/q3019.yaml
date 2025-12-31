@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q3019.sql | sort > q3019.out
+
+inputs:
+  - name: q3019.sql
+    data: |
+      SELECT + CAST ( - COUNT ( ALL col2 ) AS INTEGER ) FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q3019.out
+    data: |
+      -3

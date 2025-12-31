@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q223.sql | sort > q223.out
+
+inputs:
+  - name: q223.sql
+    data: |
+      SELECT ALL + SUM ( ALL CAST ( NULL AS INTEGER ) ) FROM tab2 AS cor0 CROSS JOIN tab1 AS cor1;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q223.out
+    data: |
+      NULL

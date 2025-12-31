@@ -1,0 +1,16 @@
+# Failed due to: Column Does Not Exist error
+script: |
+  super -f tsv -I q922.sql | sort > q922.out
+
+inputs:
+  - name: q922.sql
+    data: |
+      SELECT ALL - 83 AS col2, SUM ( ALL + col2 ) FROM tab1 cor0;
+  - name: tab0
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q922.out
+    data: |
+      -83	223

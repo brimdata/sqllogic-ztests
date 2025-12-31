@@ -1,0 +1,16 @@
+# Failed due to: Column Does Not Exist error
+script: |
+  super -f tsv -I q4093.sql | sort > q4093.out
+
+inputs:
+  - name: q4093.sql
+    data: |
+      SELECT DISTINCT MIN ( ALL - ( 93 ) ) AS col0 FROM tab2;
+  - name: tab0
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q4093.out
+    data: |
+      -93

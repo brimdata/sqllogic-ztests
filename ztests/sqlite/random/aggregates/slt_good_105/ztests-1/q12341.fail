@@ -1,0 +1,16 @@
+# Failed due to: Column Does Not Exist error
+script: |
+  super -f tsv -I q12341.sql | sort > q12341.out
+
+inputs:
+  - name: q12341.sql
+    data: |
+      SELECT COUNT ( ALL + + 48 ) AS col1 FROM tab2 WHERE NOT 48 IS NULL;
+  - name: tab0
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q12341.out
+    data: |
+      3

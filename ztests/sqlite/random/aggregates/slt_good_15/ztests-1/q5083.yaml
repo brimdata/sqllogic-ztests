@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q5083.sql | sort > q5083.out
+
+inputs:
+  - name: q5083.sql
+    data: |
+      SELECT - COUNT ( * ) * CAST ( NULL AS INTEGER ) + - MIN ( DISTINCT col2 ) * - COUNT ( * ) FROM tab0;
+  - name: tab0
+
+outputs:
+  - name: q5083.out
+    data: |
+      NULL

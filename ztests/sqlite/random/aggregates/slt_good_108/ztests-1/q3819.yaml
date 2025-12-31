@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q3819.sql | sort > q3819.out
+
+inputs:
+  - name: q3819.sql
+    data: |
+      SELECT MAX ( DISTINCT col2 ) - SUM ( DISTINCT col0 ) AS col1 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q3819.out
+    data: |
+      -131

@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q4823.sql | sort > q4823.out
+
+inputs:
+  - name: q4823.sql
+    data: |
+      SELECT ALL COUNT ( * ) AS col2, COUNT ( ALL col1 ) - - CAST ( + CAST ( NULL AS INTEGER ) AS INTEGER ) FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q4823.out
+    data: |
+      3	NULL

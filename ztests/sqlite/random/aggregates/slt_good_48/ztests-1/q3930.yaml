@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q3930.sql | sort > q3930.out
+
+inputs:
+  - name: q3930.sql
+    data: |
+      SELECT + 32 / - MAX ( DISTINCT col1 ), COUNT ( * ) AS col0 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q3930.out
+    data: |
+      0	3

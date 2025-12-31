@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q2984.sql | sort > q2984.out
+
+inputs:
+  - name: q2984.sql
+    data: |
+      SELECT SUM ( DISTINCT col2 ) + COUNT ( * ) AS col2 FROM tab2 WHERE + col0 IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q2984.out
+    data: |
+      124

@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q15188.sql | sort > q15188.out
+
+inputs:
+  - name: q15188.sql
+    data: |
+      SELECT ALL + MAX ( DISTINCT NULLIF ( + 8, CAST ( NULL AS INTEGER ) ) ) col1;
+
+outputs:
+  - name: q15188.out
+    data: |
+      8

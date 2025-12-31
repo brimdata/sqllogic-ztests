@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q42.sql | sort > q42.out
+
+inputs:
+  - name: q42.sql
+    data: |
+      SELECT ALL - AVG ( DISTINCT col0 ) FROM tab2 GROUP BY col2, col0 HAVING NULL IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q42.out
+    data: |

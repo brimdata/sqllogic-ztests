@@ -1,0 +1,16 @@
+# Failed due to: Column Does Not Exist error
+script: |
+  super -f tsv -I q690.sql | sort > q690.out
+
+inputs:
+  - name: q690.sql
+    data: |
+      SELECT 35 AS col1, MAX ( ALL - col1 ) AS col2 FROM tab0;
+  - name: tab0
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q690.out
+    data: |
+      35	-1

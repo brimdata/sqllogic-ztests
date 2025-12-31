@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q6676.sql | sort > q6676.out
+
+inputs:
+  - name: q6676.sql
+    data: |
+      SELECT + 42 + - ( - MAX ( ALL col1 ) ) AS col1 FROM tab2 AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q6676.out
+    data: |
+      119

@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q13888.sql | sort > q13888.out
+
+inputs:
+  - name: q13888.sql
+    data: |
+      SELECT ALL + MAX ( ALL col0 ) FROM tab2 WHERE NOT ( 66 * - col0 - CAST ( NULL AS INTEGER ) / col0 ) IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q13888.out
+    data: |
+      75

@@ -1,0 +1,16 @@
+# Failed due to: Column Does Not Exist error
+script: |
+  super -f tsv -I q6501.sql | sort > q6501.out
+
+inputs:
+  - name: q6501.sql
+    data: |
+      SELECT 37 AS col2, SUM ( ALL + + col1 ) AS col0 FROM tab2;
+  - name: tab0
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q6501.out
+    data: |
+      37	195

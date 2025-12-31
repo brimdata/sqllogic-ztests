@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q5962.sql | sort > q5962.out
+
+inputs:
+  - name: q5962.sql
+    data: |
+      SELECT ALL + 7 * - CAST ( AVG ( DISTINCT col1 ) AS INTEGER ) FROM tab1 WHERE NOT ( 17 + - col1 ) >= col2;
+  - name: tab1
+
+outputs:
+  - name: q5962.out
+    data: |
+      -154

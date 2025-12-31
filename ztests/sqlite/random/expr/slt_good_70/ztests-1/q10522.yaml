@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q10522.sql | sort > q10522.out
+
+inputs:
+  - name: q10522.sql
+    data: |
+      SELECT 2 AS col2, COALESCE ( + 73, - NULLIF ( + 28, + 15 ) + MAX ( ALL CAST ( NULL AS INTEGER ) ) ) AS col1;
+
+outputs:
+  - name: q10522.out
+    data: |
+      2	73

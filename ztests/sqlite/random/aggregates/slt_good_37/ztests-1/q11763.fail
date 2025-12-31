@@ -1,0 +1,16 @@
+# Failed due to: Column Does Not Exist error
+script: |
+  super -f tsv -I q11763.sql | sort > q11763.out
+
+inputs:
+  - name: q11763.sql
+    data: |
+      SELECT ALL COUNT ( DISTINCT + - col1 ) FROM tab2;
+  - name: tab0
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q11763.out
+    data: |
+      3

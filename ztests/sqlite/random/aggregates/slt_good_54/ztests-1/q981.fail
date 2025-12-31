@@ -1,0 +1,16 @@
+# Failed due to: Column Does Not Exist error
+script: |
+  super -f tsv -I q981.sql | sort > q981.out
+
+inputs:
+  - name: q981.sql
+    data: |
+      SELECT ALL MIN ( ALL + 31 ) AS col0 FROM tab1;
+  - name: tab0
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q981.out
+    data: |
+      31

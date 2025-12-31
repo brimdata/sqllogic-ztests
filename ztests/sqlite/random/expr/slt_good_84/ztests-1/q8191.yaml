@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q8191.sql | sort > q8191.out
+
+inputs:
+  - name: q8191.sql
+    data: |
+      SELECT COALESCE ( COUNT ( * ), - + ( COUNT ( * ) ) / AVG ( ALL 97 ) + CAST ( NULL AS INTEGER ) ) AS col0;
+
+outputs:
+  - name: q8191.out
+    data: |
+      1
