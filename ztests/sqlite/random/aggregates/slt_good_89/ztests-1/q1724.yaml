@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q1724.sql | sort > q1724.out
+
+inputs:
+  - name: q1724.sql
+    data: |
+      SELECT ALL + MIN ( ALL + - CAST ( NULL AS REAL ) ) FROM tab1, tab2 AS cor0;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q1724.out
+    data: |
+      NULL

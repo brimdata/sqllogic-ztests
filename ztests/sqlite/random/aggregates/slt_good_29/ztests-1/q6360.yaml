@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q6360.sql | sort > q6360.out
+
+inputs:
+  - name: q6360.sql
+    data: |
+      SELECT DISTINCT + COUNT ( * ) - CAST ( ( + MIN ( ALL - col1 ) ) AS INTEGER ) FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q6360.out
+    data: |
+      80

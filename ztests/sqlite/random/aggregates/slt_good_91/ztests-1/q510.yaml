@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q510.sql | sort > q510.out
+
+inputs:
+  - name: q510.sql
+    data: |
+      SELECT 6, + SUM ( ALL + CAST ( - col1 AS INTEGER ) ) * COUNT ( * ) AS col0 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q510.out
+    data: |
+      6	-198

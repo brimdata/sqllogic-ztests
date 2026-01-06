@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q27.sql | sort > q27.out
+
+inputs:
+  - name: q27.sql
+    data: |
+      SELECT DISTINCT COUNT ( * ) - MAX ( ALL - col2 ) FROM tab0 AS cor0;
+  - name: tab0
+
+outputs:
+  - name: q27.out
+    data: |
+      13

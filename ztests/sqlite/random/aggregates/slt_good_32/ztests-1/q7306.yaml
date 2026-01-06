@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q7306.sql | sort > q7306.out
+
+inputs:
+  - name: q7306.sql
+    data: |
+      SELECT ALL + SUM ( DISTINCT + CAST ( NULL AS INTEGER ) ) FROM tab1 WHERE ( NOT ( NULL IS NOT NULL ) );
+  - name: tab1
+
+outputs:
+  - name: q7306.out
+    data: |
+      NULL

@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q8899.sql | sort > q8899.out
+
+inputs:
+  - name: q8899.sql
+    data: |
+      SELECT ALL COUNT ( * ) / AVG ( DISTINCT - ( + CAST ( NULL AS INTEGER ) ) ) AS col0 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q8899.out
+    data: |
+      NULL

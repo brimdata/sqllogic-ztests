@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q6181.sql | sort > q6181.out
+
+inputs:
+  - name: q6181.sql
+    data: |
+      SELECT ALL + ( MIN ( ALL - col0 ) ) * - 3 FROM tab1 AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q6181.out
+    data: |
+      273

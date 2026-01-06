@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q390.sql | sort > q390.out
+
+inputs:
+  - name: q390.sql
+    data: |
+      SELECT 13 AS col1, MAX ( DISTINCT ( - 61 ) ) * COUNT ( ALL - col1 ) FROM tab1 AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q390.out
+    data: |
+      13	-183

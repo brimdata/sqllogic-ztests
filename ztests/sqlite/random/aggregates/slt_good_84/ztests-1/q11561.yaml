@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q11561.sql | sort > q11561.out
+
+inputs:
+  - name: q11561.sql
+    data: |
+      SELECT DISTINCT + CAST ( + - AVG ( DISTINCT ( + ( - col2 ) ) ) AS INTEGER ) FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q11561.out
+    data: |
+      40

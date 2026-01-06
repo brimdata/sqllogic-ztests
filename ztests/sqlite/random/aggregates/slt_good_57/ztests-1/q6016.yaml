@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q6016.sql | sort > q6016.out
+
+inputs:
+  - name: q6016.sql
+    data: |
+      SELECT SUM ( ALL + col1 ) + - MIN ( ALL - col0 ) FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q6016.out
+    data: |
+      157

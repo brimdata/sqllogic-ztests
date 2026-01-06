@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q7611.sql | sort > q7611.out
+
+inputs:
+  - name: q7611.sql
+    data: |
+      SELECT DISTINCT AVG ( DISTINCT - - col2 ) FROM tab2 WHERE NULL IS NOT NULL GROUP BY col1, col2;
+  - name: tab2
+
+outputs:
+  - name: q7611.out
+    data: |

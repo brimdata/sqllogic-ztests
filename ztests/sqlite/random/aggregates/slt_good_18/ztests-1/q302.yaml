@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q302.sql | sort > q302.out
+
+inputs:
+  - name: q302.sql
+    data: |
+      SELECT COUNT ( * ) + - ( MAX ( ALL - ( 95 ) ) ) AS col2 FROM tab0 AS cor0 CROSS JOIN tab0 AS cor1 WHERE NOT NULL IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q302.out
+    data: |
+      104

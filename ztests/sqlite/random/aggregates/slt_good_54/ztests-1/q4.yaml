@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q4.sql | sort > q4.out
+
+inputs:
+  - name: q4.sql
+    data: |
+      SELECT MAX ( ALL - + col2 ) * CAST ( AVG ( DISTINCT - col2 ) AS INTEGER ) FROM tab0 cor0;
+  - name: tab0
+
+outputs:
+  - name: q4.out
+    data: |
+      520

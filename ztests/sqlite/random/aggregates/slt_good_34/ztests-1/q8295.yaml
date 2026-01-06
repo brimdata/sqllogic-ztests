@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q8295.sql | sort > q8295.out
+
+inputs:
+  - name: q8295.sql
+    data: |
+      SELECT DISTINCT CAST ( - ( AVG ( ALL - col1 ) ) AS INTEGER ) + COUNT ( * ) FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q8295.out
+    data: |
+      68

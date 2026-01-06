@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q9448.sql | sort > q9448.out
+
+inputs:
+  - name: q9448.sql
+    data: |
+      SELECT ALL + + COUNT ( * ) + - COUNT ( ALL + CAST ( NULL AS INTEGER ) ) AS col2;
+
+outputs:
+  - name: q9448.out
+    data: |
+      1

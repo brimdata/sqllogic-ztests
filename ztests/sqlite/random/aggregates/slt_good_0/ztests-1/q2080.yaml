@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q2080.sql | sort > q2080.out
+
+inputs:
+  - name: q2080.sql
+    data: |
+      SELECT + ( - SUM ( DISTINCT - col1 ) ) AS col2 FROM tab0 AS cor0;
+  - name: tab0
+
+outputs:
+  - name: q2080.out
+    data: |
+      103

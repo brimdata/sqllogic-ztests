@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q1885.sql | sort > q1885.out
+
+inputs:
+  - name: q1885.sql
+    data: |
+      SELECT ALL + 43 * - MAX ( DISTINCT - col0 ) AS col2 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q1885.out
+    data: |
+      2193

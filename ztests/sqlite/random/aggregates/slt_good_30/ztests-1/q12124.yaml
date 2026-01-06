@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q12124.sql | sort > q12124.out
+
+inputs:
+  - name: q12124.sql
+    data: |
+      SELECT + SUM ( ALL + 30 ) AS col2 FROM tab1 AS cor0 CROSS JOIN tab1 AS cor1;
+  - name: tab1
+
+outputs:
+  - name: q12124.out
+    data: |
+      270

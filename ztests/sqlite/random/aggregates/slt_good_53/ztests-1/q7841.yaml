@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q7841.sql | sort > q7841.out
+
+inputs:
+  - name: q7841.sql
+    data: |
+      SELECT MIN ( ALL + col1 ) + + COUNT ( * ) * ( - MIN ( col1 ) ) FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q7841.out
+    data: |
+      -102

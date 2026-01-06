@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q1123.sql | sort > q1123.out
+
+inputs:
+  - name: q1123.sql
+    data: |
+      SELECT DISTINCT COUNT ( ALL - col1 ) AS col1 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q1123.out
+    data: |
+      3

@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q9564.sql | sort > q9564.out
+
+inputs:
+  - name: q9564.sql
+    data: |
+      SELECT MIN ( DISTINCT + - col1 ) AS col2, SUM ( DISTINCT - col1 ) FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q9564.out
+    data: |
+      -47	-66

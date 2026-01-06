@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q9087.sql | sort > q9087.out
+
+inputs:
+  - name: q9087.sql
+    data: |
+      SELECT ALL + ( + - MAX ( DISTINCT + + col1 ) ) FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q9087.out
+    data: |
+      -47

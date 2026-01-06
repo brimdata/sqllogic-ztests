@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q12007.sql | sort > q12007.out
+
+inputs:
+  - name: q12007.sql
+    data: |
+      SELECT ALL COUNT ( ALL + col1 ) * - 99 AS col2 FROM tab0;
+  - name: tab0
+
+outputs:
+  - name: q12007.out
+    data: |
+      -297

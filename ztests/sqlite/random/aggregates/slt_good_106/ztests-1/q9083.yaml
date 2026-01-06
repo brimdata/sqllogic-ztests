@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q9083.sql | sort > q9083.out
+
+inputs:
+  - name: q9083.sql
+    data: |
+      SELECT 13 AS col1, - SUM ( ALL ( - - col1 ) ) AS col2 FROM tab1 AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q9083.out
+    data: |
+      13	-66

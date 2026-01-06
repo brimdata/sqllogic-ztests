@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q6033.sql | sort > q6033.out
+
+inputs:
+  - name: q6033.sql
+    data: |
+      SELECT SUM ( DISTINCT - col2 ) * CAST ( MIN ( DISTINCT col0 ) AS INTEGER ) FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q6033.out
+    data: |
+      -5566

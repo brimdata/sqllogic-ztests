@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q7111.sql | sort > q7111.out
+
+inputs:
+  - name: q7111.sql
+    data: |
+      SELECT + COUNT ( * ) / 17 + COUNT ( * ) * ( - MIN ( ALL - col0 ) ) FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q7111.out
+    data: |
+      273

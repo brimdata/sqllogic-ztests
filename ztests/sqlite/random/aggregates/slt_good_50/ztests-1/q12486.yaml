@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q12486.sql | sort > q12486.out
+
+inputs:
+  - name: q12486.sql
+    data: |
+      SELECT DISTINCT MIN ( ALL + col2 ) + - CAST ( + SUM ( ALL + col2 ) AS INTEGER ) FROM tab2 AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q12486.out
+    data: |
+      -98

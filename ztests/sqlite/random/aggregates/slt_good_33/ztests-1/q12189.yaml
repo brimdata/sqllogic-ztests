@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q12189.sql | sort > q12189.out
+
+inputs:
+  - name: q12189.sql
+    data: |
+      SELECT COUNT ( * ) * + COUNT ( DISTINCT - 80 ) AS col1 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q12189.out
+    data: |
+      3

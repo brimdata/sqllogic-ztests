@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q11544.sql | sort > q11544.out
+
+inputs:
+  - name: q11544.sql
+    data: |
+      SELECT ALL + MAX ( DISTINCT - col1 ) / 36 AS col1 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q11544.out
+    data: |
+      -1

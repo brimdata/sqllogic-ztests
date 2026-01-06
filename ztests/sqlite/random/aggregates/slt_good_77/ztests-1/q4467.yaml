@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q4467.sql | sort > q4467.out
+
+inputs:
+  - name: q4467.sql
+    data: |
+      SELECT COUNT ( ALL + 83 ) * + COUNT ( DISTINCT col1 ) AS col1 FROM tab1 WHERE ( NULL ) IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q4467.out
+    data: |
+      9

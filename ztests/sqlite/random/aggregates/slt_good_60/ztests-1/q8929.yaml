@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q8929.sql | sort > q8929.out
+
+inputs:
+  - name: q8929.sql
+    data: |
+      SELECT ALL MAX ( ALL - col0 ) * COUNT ( * ) + COUNT ( * ) * - 64 FROM tab2 AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q8929.out
+    data: |
+      -330

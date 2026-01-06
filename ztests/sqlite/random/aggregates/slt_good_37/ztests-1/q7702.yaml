@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q7702.sql | sort > q7702.out
+
+inputs:
+  - name: q7702.sql
+    data: |
+      SELECT DISTINCT - COUNT ( DISTINCT - + 2 ) * COUNT ( DISTINCT col2 ) AS col2 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q7702.out
+    data: |
+      -3

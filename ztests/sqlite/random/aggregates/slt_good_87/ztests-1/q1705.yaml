@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q1705.sql | sort > q1705.out
+
+inputs:
+  - name: q1705.sql
+    data: |
+      SELECT + ( + MAX ( + col1 ) ), MIN ( ALL - col0 ) AS col1 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q1705.out
+    data: |
+      47	-91

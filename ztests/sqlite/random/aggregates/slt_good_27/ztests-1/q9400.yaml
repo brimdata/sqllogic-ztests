@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q9400.sql | sort > q9400.out
+
+inputs:
+  - name: q9400.sql
+    data: |
+      SELECT + ( + MIN ( DISTINCT - col2 ) ) / + ( + MAX ( + 24 ) ) AS col1 FROM tab2 AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q9400.out
+    data: |
+      -2

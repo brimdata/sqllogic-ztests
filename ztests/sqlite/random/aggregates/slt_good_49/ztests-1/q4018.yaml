@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q4018.sql | sort > q4018.out
+
+inputs:
+  - name: q4018.sql
+    data: |
+      SELECT + COUNT ( * ) / + ( COUNT ( DISTINCT col0 ) * + 24 ) + - MIN ( ALL - col2 ) AS col0 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q4018.out
+    data: |
+      96

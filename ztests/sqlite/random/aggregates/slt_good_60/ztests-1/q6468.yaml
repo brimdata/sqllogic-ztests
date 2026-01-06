@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q6468.sql | sort > q6468.out
+
+inputs:
+  - name: q6468.sql
+    data: |
+      SELECT DISTINCT CAST ( + + MAX ( DISTINCT - CAST ( + 14 AS INTEGER ) ) AS INTEGER ) AS col2 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q6468.out
+    data: |
+      -14

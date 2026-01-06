@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q5220.sql | sort > q5220.out
+
+inputs:
+  - name: q5220.sql
+    data: |
+      SELECT ALL + SUM ( DISTINCT - NULLIF ( + 30, + CAST ( NULL AS INTEGER ) ) ) AS col1;
+
+outputs:
+  - name: q5220.out
+    data: |
+      -30

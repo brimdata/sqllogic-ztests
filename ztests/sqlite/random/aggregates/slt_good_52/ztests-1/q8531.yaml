@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q8531.sql | sort > q8531.out
+
+inputs:
+  - name: q8531.sql
+    data: |
+      SELECT DISTINCT + MAX ( DISTINCT + CAST ( + col1 AS INTEGER ) ) * 6 AS col2 FROM tab1 AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q8531.out
+    data: |
+      282

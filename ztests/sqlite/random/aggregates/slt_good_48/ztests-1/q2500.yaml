@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q2500.sql | sort > q2500.out
+
+inputs:
+  - name: q2500.sql
+    data: |
+      SELECT DISTINCT COUNT ( ALL - + col0 ) * - 8 AS col1 FROM tab1 WHERE NULL IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q2500.out
+    data: |
+      -24

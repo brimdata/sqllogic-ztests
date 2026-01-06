@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q5580.sql | sort > q5580.out
+
+inputs:
+  - name: q5580.sql
+    data: |
+      SELECT ALL + COUNT ( ALL - col2 ) + CAST ( NULL AS REAL ) AS col2 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q5580.out
+    data: |
+      NULL

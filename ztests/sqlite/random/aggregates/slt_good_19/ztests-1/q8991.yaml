@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q8991.sql | sort > q8991.out
+
+inputs:
+  - name: q8991.sql
+    data: |
+      SELECT CAST ( + - SUM ( ALL + col1 ) AS INTEGER ) FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q8991.out
+    data: |
+      -195

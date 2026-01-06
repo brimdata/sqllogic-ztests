@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q5254.sql | sort > q5254.out
+
+inputs:
+  - name: q5254.sql
+    data: |
+      SELECT COUNT ( * ) AS col1, MIN ( ALL + col1 ) * - 53 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q5254.out
+    data: |
+      3	-2703

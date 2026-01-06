@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q3236.sql | sort > q3236.out
+
+inputs:
+  - name: q3236.sql
+    data: |
+      SELECT DISTINCT 31, + COUNT ( DISTINCT - col1 ) AS col1 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q3236.out
+    data: |
+      31	3

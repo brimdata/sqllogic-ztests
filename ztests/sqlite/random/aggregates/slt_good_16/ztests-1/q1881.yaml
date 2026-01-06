@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q1881.sql | sort > q1881.out
+
+inputs:
+  - name: q1881.sql
+    data: |
+      SELECT DISTINCT COUNT ( * ) * + CAST ( COUNT ( DISTINCT - 25 ) AS INTEGER ) AS col1 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q1881.out
+    data: |
+      3

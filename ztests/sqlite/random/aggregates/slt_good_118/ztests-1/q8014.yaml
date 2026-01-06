@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q8014.sql | sort > q8014.out
+
+inputs:
+  - name: q8014.sql
+    data: |
+      SELECT ALL + SUM ( DISTINCT - col2 ) AS col2, MIN ( - col1 ) AS col1 FROM tab1 AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q8014.out
+    data: |
+      -223	-47

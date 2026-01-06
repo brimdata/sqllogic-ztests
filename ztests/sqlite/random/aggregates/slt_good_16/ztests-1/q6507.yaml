@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q6507.sql | sort > q6507.out
+
+inputs:
+  - name: q6507.sql
+    data: |
+      SELECT CAST ( COUNT ( * ) AS INTEGER ) * SUM ( DISTINCT - col2 ) + - COUNT ( * ) AS col0 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q6507.out
+    data: |
+      -366

@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q8488.sql | sort > q8488.out
+
+inputs:
+  - name: q8488.sql
+    data: |
+      SELECT - 9 * + MIN ( DISTINCT - col0 * CAST ( NULL AS INTEGER ) ) FROM tab1 WHERE col0 IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q8488.out
+    data: |
+      NULL

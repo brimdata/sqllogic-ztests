@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q6217.sql | sort > q6217.out
+
+inputs:
+  - name: q6217.sql
+    data: |
+      SELECT ALL CAST ( - SUM ( DISTINCT - CAST ( NULL AS INTEGER ) ) AS INTEGER ) FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q6217.out
+    data: |
+      NULL

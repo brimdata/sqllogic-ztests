@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q7643.sql | sort > q7643.out
+
+inputs:
+  - name: q7643.sql
+    data: |
+      SELECT DISTINCT COUNT ( ALL - col0 ) AS col2 FROM tab0 WHERE NOT NULL IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q7643.out
+    data: |
+      3

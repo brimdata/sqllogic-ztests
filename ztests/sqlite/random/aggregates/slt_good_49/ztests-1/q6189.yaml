@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q6189.sql | sort > q6189.out
+
+inputs:
+  - name: q6189.sql
+    data: |
+      SELECT ALL + MAX ( ALL - col0 ) FROM tab0 WHERE NOT - col1 IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q6189.out
+    data: |
+      -15

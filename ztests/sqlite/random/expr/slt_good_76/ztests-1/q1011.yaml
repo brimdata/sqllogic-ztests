@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q1011.sql | sort > q1011.out
+
+inputs:
+  - name: q1011.sql
+    data: |
+      SELECT + 99 AS col2, + ( - SUM ( ALL - CAST ( NULL AS INTEGER ) ) ) AS col1;
+
+outputs:
+  - name: q1011.out
+    data: |
+      99	NULL

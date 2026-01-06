@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q7915.sql | sort > q7915.out
+
+inputs:
+  - name: q7915.sql
+    data: |
+      SELECT ALL 4 + CAST ( + - SUM ( DISTINCT - ( col1 ) ) AS INTEGER ) AS col0 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q7915.out
+    data: |
+      199

@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q5914.sql | sort > q5914.out
+
+inputs:
+  - name: q5914.sql
+    data: |
+      SELECT ( COUNT ( ALL - CAST ( NULL AS INTEGER ) ) ) * - MIN ( col2 / - col1 ) AS col1 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q5914.out
+    data: |
+      0

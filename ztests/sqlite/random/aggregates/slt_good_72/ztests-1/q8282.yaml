@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q8282.sql | sort > q8282.out
+
+inputs:
+  - name: q8282.sql
+    data: |
+      SELECT DISTINCT SUM ( DISTINCT - col2 ) * - 11 + COUNT ( * ) AS col2, + COUNT ( * ) AS col1 FROM tab2 AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q8282.out
+    data: |
+      1334	3

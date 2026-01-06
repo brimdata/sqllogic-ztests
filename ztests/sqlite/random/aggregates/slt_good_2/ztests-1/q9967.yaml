@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q9967.sql | sort > q9967.out
+
+inputs:
+  - name: q9967.sql
+    data: |
+      SELECT MIN ( DISTINCT col2 ) + COUNT ( DISTINCT - col0 ) + - + COUNT ( * ) FROM tab0;
+  - name: tab0
+
+outputs:
+  - name: q9967.out
+    data: |
+      10

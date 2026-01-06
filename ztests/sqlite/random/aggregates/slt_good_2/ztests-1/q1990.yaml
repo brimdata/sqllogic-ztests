@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q1990.sql | sort > q1990.out
+
+inputs:
+  - name: q1990.sql
+    data: |
+      SELECT DISTINCT - - 1 AS col1, MAX ( DISTINCT - + 40 ) FROM tab2 AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q1990.out
+    data: |
+      1	-40

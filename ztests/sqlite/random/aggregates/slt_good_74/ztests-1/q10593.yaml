@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q10593.sql | sort > q10593.out
+
+inputs:
+  - name: q10593.sql
+    data: |
+      SELECT ALL + 50 * SUM ( DISTINCT + col1 ) FROM tab2 cor0;
+  - name: tab2
+
+outputs:
+  - name: q10593.out
+    data: |
+      9750

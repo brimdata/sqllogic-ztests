@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q9628.sql | sort > q9628.out
+
+inputs:
+  - name: q9628.sql
+    data: |
+      SELECT ALL ( + CAST ( NULL AS INTEGER ) ) + CAST ( - COUNT ( * ) AS INTEGER ) * CAST ( + ( - AVG ( ALL - col0 ) ) AS REAL ) FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q9628.out
+    data: |
+      NULL

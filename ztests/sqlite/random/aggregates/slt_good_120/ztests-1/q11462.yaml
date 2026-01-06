@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q11462.sql | sort > q11462.out
+
+inputs:
+  - name: q11462.sql
+    data: |
+      SELECT ALL COUNT ( * ) * - MAX ( ALL - col1 ) AS col1 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q11462.out
+    data: |
+      15

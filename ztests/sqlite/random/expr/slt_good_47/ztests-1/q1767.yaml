@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q1767.sql | sort > q1767.out
+
+inputs:
+  - name: q1767.sql
+    data: |
+      SELECT ALL + SUM ( DISTINCT - NULLIF ( + 30, + CAST ( NULL AS INTEGER ) ) ) AS col1;
+
+outputs:
+  - name: q1767.out
+    data: |
+      -30

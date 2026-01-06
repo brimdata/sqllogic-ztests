@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q11082.sql | sort > q11082.out
+
+inputs:
+  - name: q11082.sql
+    data: |
+      SELECT COUNT ( ALL - col1 ) + - - CAST ( + + COUNT ( * ) AS INTEGER ) AS col2 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q11082.out
+    data: |
+      6

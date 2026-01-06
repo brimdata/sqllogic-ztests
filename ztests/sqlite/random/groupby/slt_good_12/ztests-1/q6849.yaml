@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q6849.sql | sort > q6849.out
+
+inputs:
+  - name: q6849.sql
+    data: |
+      SELECT SUM ( DISTINCT - col0 ), + col0 AS col0 FROM tab0 GROUP BY col0 HAVING NULL IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q6849.out
+    data: |
+      -26	26
+      -43	43
+      -83	83

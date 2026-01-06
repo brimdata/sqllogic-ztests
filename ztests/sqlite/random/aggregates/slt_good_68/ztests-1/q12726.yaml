@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q12726.sql | sort > q12726.out
+
+inputs:
+  - name: q12726.sql
+    data: |
+      SELECT ALL + ( ( - SUM ( DISTINCT - CAST ( NULL AS INTEGER ) ) ) ) / COUNT ( * ) FROM tab2 AS cor0 WHERE NOT col0 BETWEEN NULL AND col2;
+  - name: tab2
+
+outputs:
+  - name: q12726.out
+    data: |
+      NULL

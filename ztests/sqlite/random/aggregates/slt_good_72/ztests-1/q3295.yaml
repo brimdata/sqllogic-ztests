@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q3295.sql | sort > q3295.out
+
+inputs:
+  - name: q3295.sql
+    data: |
+      SELECT COUNT ( ALL ( - col2 ) ) + 7 * - COUNT ( * ) FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q3295.out
+    data: |
+      -18

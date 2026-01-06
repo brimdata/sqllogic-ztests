@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q259.sql | sort > q259.out
+
+inputs:
+  - name: q259.sql
+    data: |
+      SELECT DISTINCT COUNT ( * ) * + CAST ( + COUNT ( ALL + ( col1 ) ) AS INTEGER ) AS col1 FROM tab0;
+  - name: tab0
+
+outputs:
+  - name: q259.out
+    data: |
+      9

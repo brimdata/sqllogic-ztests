@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q4340.sql | sort > q4340.out
+
+inputs:
+  - name: q4340.sql
+    data: |
+      SELECT ALL ( - - MIN ( DISTINCT - col2 ) ) AS col1 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q4340.out
+    data: |
+      -58

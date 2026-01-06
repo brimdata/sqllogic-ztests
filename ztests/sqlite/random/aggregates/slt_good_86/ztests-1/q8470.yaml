@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q8470.sql | sort > q8470.out
+
+inputs:
+  - name: q8470.sql
+    data: |
+      SELECT ALL + ( + - CAST ( - MAX ( DISTINCT - col0 ) AS INTEGER ) ) FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q8470.out
+    data: |
+      -46

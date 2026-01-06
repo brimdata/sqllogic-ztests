@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q7848.sql | sort > q7848.out
+
+inputs:
+  - name: q7848.sql
+    data: |
+      SELECT + SUM ( DISTINCT col1 ) + - 93 * MAX ( DISTINCT + col0 ) - - COUNT ( * ) FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q7848.out
+    data: |
+      -6777

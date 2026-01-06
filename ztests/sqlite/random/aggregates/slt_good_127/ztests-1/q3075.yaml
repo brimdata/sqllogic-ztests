@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q3075.sql | sort > q3075.out
+
+inputs:
+  - name: q3075.sql
+    data: |
+      SELECT DISTINCT MAX ( DISTINCT - col0 ) AS col0 FROM tab2 WHERE CAST ( NULL AS INTEGER ) IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q3075.out
+    data: |
+      -46

@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q484.sql | sort > q484.out
+
+inputs:
+  - name: q484.sql
+    data: |
+      SELECT 45 AS col1, + MAX ( DISTINCT + NULLIF ( 20, 14 ) ) + + COUNT ( * ) AS col0;
+
+outputs:
+  - name: q484.out
+    data: |
+      45	21

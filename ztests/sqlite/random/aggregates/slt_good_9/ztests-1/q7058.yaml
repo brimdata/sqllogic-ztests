@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q7058.sql | sort > q7058.out
+
+inputs:
+  - name: q7058.sql
+    data: |
+      SELECT DISTINCT COUNT ( ALL - CAST ( ( + col0 ) AS INTEGER ) ) * - COUNT ( * ) AS col0 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q7058.out
+    data: |
+      -9

@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q5303.sql | sort > q5303.out
+
+inputs:
+  - name: q5303.sql
+    data: |
+      SELECT - 43 AS col1, ( + MAX ( DISTINCT + col1 ) ) FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q5303.out
+    data: |
+      -43	77

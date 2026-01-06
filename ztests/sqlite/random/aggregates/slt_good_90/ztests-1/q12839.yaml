@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q12839.sql | sort > q12839.out
+
+inputs:
+  - name: q12839.sql
+    data: |
+      SELECT - COUNT ( ALL - CAST ( NULL AS INTEGER ) ) * COUNT ( * ) + - 22 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q12839.out
+    data: |
+      -22

@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q5782.sql | sort > q5782.out
+
+inputs:
+  - name: q5782.sql
+    data: |
+      SELECT DISTINCT CAST ( MAX ( ALL + CAST ( NULL AS REAL ) ) AS INTEGER ) FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q5782.out
+    data: |
+      NULL

@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q11973.sql | sort > q11973.out
+
+inputs:
+  - name: q11973.sql
+    data: |
+      SELECT ALL + COUNT ( * ) / + COUNT ( ALL - col1 ) FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q11973.out
+    data: |
+      1

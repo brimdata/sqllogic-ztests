@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q13413.sql | sort > q13413.out
+
+inputs:
+  - name: q13413.sql
+    data: |
+      SELECT 65 - - SUM ( ALL + CAST ( NULL AS INTEGER ) ) * COUNT ( * ) AS col0 FROM tab1 WHERE NULL IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q13413.out
+    data: |
+      NULL

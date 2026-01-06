@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q256.sql | sort > q256.out
+
+inputs:
+  - name: q256.sql
+    data: |
+      SELECT COUNT ( * ) + - + 21 + - COUNT ( DISTINCT + col1 ) + + COUNT ( * ) FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q256.out
+    data: |
+      -18

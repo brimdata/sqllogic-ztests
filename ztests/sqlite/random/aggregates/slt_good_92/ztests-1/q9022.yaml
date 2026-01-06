@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q9022.sql | sort > q9022.out
+
+inputs:
+  - name: q9022.sql
+    data: |
+      SELECT DISTINCT - + 12 + SUM ( DISTINCT - - 5 ) AS col1 FROM tab2 AS cor0 CROSS JOIN tab1 AS cor1;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q9022.out
+    data: |
+      -7

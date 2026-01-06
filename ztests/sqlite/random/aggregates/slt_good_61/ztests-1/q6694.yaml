@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q6694.sql | sort > q6694.out
+
+inputs:
+  - name: q6694.sql
+    data: |
+      SELECT ALL MIN ( ALL - col1 ) + + CAST ( - COUNT ( * ) AS INTEGER ) FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q6694.out
+    data: |
+      -80
