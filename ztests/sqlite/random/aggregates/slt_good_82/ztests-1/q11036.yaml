@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q11036.sql | sort > q11036.out
+
+inputs:
+  - name: q11036.sql
+    data: |
+      SELECT - MAX ( - col1 ) * - MAX ( DISTINCT - col1 ) AS col2 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q11036.out
+    data: |
+      2601

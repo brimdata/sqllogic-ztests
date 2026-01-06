@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q874.sql | sort > q874.out
+
+inputs:
+  - name: q874.sql
+    data: |
+      SELECT ALL + - COUNT ( * ) * - COUNT ( ALL - col1 ) AS col0 FROM tab2 AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q874.out
+    data: |
+      9

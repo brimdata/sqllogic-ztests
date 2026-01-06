@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q3482.sql | sort > q3482.out
+
+inputs:
+  - name: q3482.sql
+    data: |
+      SELECT MIN ( ALL + 85 ) FROM tab2 WHERE NOT - col2 BETWEEN NULL AND ( col0 * - 64 );
+  - name: tab2
+
+outputs:
+  - name: q3482.out
+    data: |
+      85

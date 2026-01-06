@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q1665.sql | sort > q1665.out
+
+inputs:
+  - name: q1665.sql
+    data: |
+      SELECT ALL + - COUNT ( ALL - 42 ) AS col2, COUNT ( * ) FROM tab1 AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q1665.out
+    data: |
+      -3	3

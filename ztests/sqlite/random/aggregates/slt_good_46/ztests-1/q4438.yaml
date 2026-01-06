@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q4438.sql | sort > q4438.out
+
+inputs:
+  - name: q4438.sql
+    data: |
+      SELECT ( - MAX ( DISTINCT - col1 ) ) / COUNT ( * ) FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q4438.out
+    data: |
+      17

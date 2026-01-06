@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q21.sql | sort > q21.out
+
+inputs:
+  - name: q21.sql
+    data: |
+      SELECT ALL + MIN ( ALL - - col0 ), COUNT ( * ) AS col2 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q21.out
+    data: |
+      46	3

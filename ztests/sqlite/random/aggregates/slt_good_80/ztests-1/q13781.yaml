@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q13781.sql | sort > q13781.out
+
+inputs:
+  - name: q13781.sql
+    data: |
+      SELECT ALL - + SUM ( DISTINCT - 42 ) - COUNT ( * ) FROM tab1 AS cor0 CROSS JOIN tab2 AS cor1;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q13781.out
+    data: |
+      33

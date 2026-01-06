@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q12619.sql | sort > q12619.out
+
+inputs:
+  - name: q12619.sql
+    data: |
+      SELECT COUNT ( ALL + - ( + col1 ) ) AS col2 FROM tab2 AS cor0 WHERE col0 IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q12619.out
+    data: |
+      3

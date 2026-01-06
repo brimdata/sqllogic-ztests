@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q6744.sql | sort > q6744.out
+
+inputs:
+  - name: q6744.sql
+    data: |
+      SELECT CAST ( - ( MIN ( DISTINCT - col2 ) ) AS INTEGER ) FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q6744.out
+    data: |
+      96

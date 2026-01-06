@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q4223.sql | sort > q4223.out
+
+inputs:
+  - name: q4223.sql
+    data: |
+      SELECT ALL COUNT ( * ) + - MIN ( DISTINCT + col1 ) FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q4223.out
+    data: |
+      -48

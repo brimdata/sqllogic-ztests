@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q11680.sql | sort > q11680.out
+
+inputs:
+  - name: q11680.sql
+    data: |
+      SELECT - MAX ( ALL + - CAST ( NULL AS INTEGER ) ) AS col1, + SUM ( ALL col1 ) FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q11680.out
+    data: |
+      NULL	195

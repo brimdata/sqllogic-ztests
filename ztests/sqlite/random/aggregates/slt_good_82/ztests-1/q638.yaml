@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q638.sql | sort > q638.out
+
+inputs:
+  - name: q638.sql
+    data: |
+      SELECT + ( + MIN ( DISTINCT + col2 ) ) + + COUNT ( * ) FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q638.out
+    data: |
+      26

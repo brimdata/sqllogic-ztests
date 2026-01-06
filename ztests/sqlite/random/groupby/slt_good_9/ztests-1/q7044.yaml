@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q7044.sql | sort > q7044.out
+
+inputs:
+  - name: q7044.sql
+    data: |
+      SELECT col1 AS col0 FROM tab2 GROUP BY col1 HAVING NOT AVG ( ALL + col0 ) <> NULL;
+  - name: tab2
+
+outputs:
+  - name: q7044.out
+    data: |

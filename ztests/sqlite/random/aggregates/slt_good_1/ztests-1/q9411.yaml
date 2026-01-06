@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q9411.sql | sort > q9411.out
+
+inputs:
+  - name: q9411.sql
+    data: |
+      SELECT ALL + COUNT ( ALL + col1 ) AS col1 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q9411.out
+    data: |
+      3

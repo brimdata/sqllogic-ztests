@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q4087.sql | sort > q4087.out
+
+inputs:
+  - name: q4087.sql
+    data: |
+      SELECT - MAX ( col1 ) + - MIN ( DISTINCT - col2 ) AS col2 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q4087.out
+    data: |
+      49

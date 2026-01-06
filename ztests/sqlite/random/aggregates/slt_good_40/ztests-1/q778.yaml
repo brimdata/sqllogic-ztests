@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q778.sql | sort > q778.out
+
+inputs:
+  - name: q778.sql
+    data: |
+      SELECT ALL + MAX ( ALL + 30 ) FROM tab0 AS cor0 CROSS JOIN tab2 cor1;
+  - name: tab0
+  - name: tab2
+
+outputs:
+  - name: q778.out
+    data: |
+      30

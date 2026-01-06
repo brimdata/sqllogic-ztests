@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q8929.sql | sort > q8929.out
+
+inputs:
+  - name: q8929.sql
+    data: |
+      SELECT ALL + MIN ( ALL + col0 ) * 25 * - COUNT ( * ) AS col1 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q8929.out
+    data: |
+      -3450

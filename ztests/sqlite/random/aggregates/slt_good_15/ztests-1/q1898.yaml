@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q1898.sql | sort > q1898.out
+
+inputs:
+  - name: q1898.sql
+    data: |
+      SELECT ALL + ( + MAX ( DISTINCT - col2 ) ) AS col0 FROM tab0;
+  - name: tab0
+
+outputs:
+  - name: q1898.out
+    data: |
+      -10

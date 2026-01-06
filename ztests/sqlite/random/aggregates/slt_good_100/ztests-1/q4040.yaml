@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q4040.sql | sort > q4040.out
+
+inputs:
+  - name: q4040.sql
+    data: |
+      SELECT ALL + COUNT ( DISTINCT - 42 ) AS col0 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q4040.out
+    data: |
+      1

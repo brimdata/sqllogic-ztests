@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q4173.sql | sort > q4173.out
+
+inputs:
+  - name: q4173.sql
+    data: |
+      SELECT ALL CAST ( - AVG ( DISTINCT - col2 ) AS INTEGER ) AS col2 FROM tab2 AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q4173.out
+    data: |
+      40

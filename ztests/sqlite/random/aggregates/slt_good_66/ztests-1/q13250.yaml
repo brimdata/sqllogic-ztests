@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q13250.sql | sort > q13250.out
+
+inputs:
+  - name: q13250.sql
+    data: |
+      SELECT DISTINCT COUNT ( * ) * - MAX ( + col1 ) * MIN ( ALL - col1 ) FROM tab0;
+  - name: tab0
+
+outputs:
+  - name: q13250.out
+    data: |
+      19683

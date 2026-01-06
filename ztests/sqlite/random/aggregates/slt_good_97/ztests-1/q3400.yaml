@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q3400.sql | sort > q3400.out
+
+inputs:
+  - name: q3400.sql
+    data: |
+      SELECT SUM ( ALL ( + col1 ) ) AS col2 FROM tab1 AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q3400.out
+    data: |
+      66

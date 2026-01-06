@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q2726.sql | sort > q2726.out
+
+inputs:
+  - name: q2726.sql
+    data: |
+      SELECT ALL SUM ( ALL - col1 ) FROM tab1 WHERE col2 IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q2726.out
+    data: |
+      -66

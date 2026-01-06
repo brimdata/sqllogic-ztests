@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q6742.sql | sort > q6742.out
+
+inputs:
+  - name: q6742.sql
+    data: |
+      SELECT DISTINCT - ( SUM ( DISTINCT - col1 ) ) - + MIN ( DISTINCT + + col0 ) AS col1 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q6742.out
+    data: |
+      149

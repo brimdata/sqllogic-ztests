@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q955.sql | sort > q955.out
+
+inputs:
+  - name: q955.sql
+    data: |
+      SELECT DISTINCT ( + SUM ( DISTINCT - col1 ) ) AS col2 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q955.out
+    data: |
+      -195

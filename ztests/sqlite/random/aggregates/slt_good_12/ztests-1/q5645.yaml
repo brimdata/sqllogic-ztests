@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q5645.sql | sort > q5645.out
+
+inputs:
+  - name: q5645.sql
+    data: |
+      SELECT DISTINCT MAX ( ALL - col0 ) + COUNT ( * ) AS col1 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q5645.out
+    data: |
+      -43

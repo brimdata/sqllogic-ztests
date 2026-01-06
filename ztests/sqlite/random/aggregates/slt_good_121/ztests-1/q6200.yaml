@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q6200.sql | sort > q6200.out
+
+inputs:
+  - name: q6200.sql
+    data: |
+      SELECT + ( - COUNT ( DISTINCT + col2 ) ) + + - COUNT ( * ) FROM tab1 AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q6200.out
+    data: |
+      -6

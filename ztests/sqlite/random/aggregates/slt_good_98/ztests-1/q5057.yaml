@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q5057.sql | sort > q5057.out
+
+inputs:
+  - name: q5057.sql
+    data: |
+      SELECT ALL MIN ( DISTINCT + 10 ) FROM tab1, tab2 AS cor0 WHERE NOT NULL IS NOT NULL;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q5057.out
+    data: |
+      10

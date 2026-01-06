@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q4526.sql | sort > q4526.out
+
+inputs:
+  - name: q4526.sql
+    data: |
+      SELECT + 60 / MIN ( DISTINCT + col1 ) * 25 AS col2 FROM tab2 AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q4526.out
+    data: |
+      25

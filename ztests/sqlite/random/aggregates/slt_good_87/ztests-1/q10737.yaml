@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q10737.sql | sort > q10737.out
+
+inputs:
+  - name: q10737.sql
+    data: |
+      SELECT ALL MIN ( DISTINCT + 50 ) AS col2, COUNT ( col1 ) AS col1 FROM tab2 AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q10737.out
+    data: |
+      50	3

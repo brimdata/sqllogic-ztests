@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q12852.sql | sort > q12852.out
+
+inputs:
+  - name: q12852.sql
+    data: |
+      SELECT ALL - MAX ( ALL + 16 ) FROM tab1 AS cor0 CROSS JOIN tab1 AS cor1;
+  - name: tab1
+
+outputs:
+  - name: q12852.out
+    data: |
+      -16

@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q8578.sql | sort > q8578.out
+
+inputs:
+  - name: q8578.sql
+    data: |
+      SELECT - COUNT ( * ) + CAST ( + AVG ( DISTINCT + col2 ) AS INTEGER ) FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q8578.out
+    data: |
+      37

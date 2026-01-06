@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q10746.sql | sort > q10746.out
+
+inputs:
+  - name: q10746.sql
+    data: |
+      SELECT ALL + ( - MIN ( ALL - + 52 ) ) FROM tab1 AS cor0 CROSS JOIN tab2 cor1;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q10746.out
+    data: |
+      52

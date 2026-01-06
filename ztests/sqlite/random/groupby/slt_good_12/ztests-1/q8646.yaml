@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8646.sql | sort > q8646.out
+
+inputs:
+  - name: q8646.sql
+    data: |
+      SELECT - + SUM ( DISTINCT - col1 ) AS col0 FROM tab2 AS cor0 GROUP BY col1;
+  - name: tab2
+
+outputs:
+  - name: q8646.out
+    data: |
+      41
+      59
+      61

@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q13068.sql | sort > q13068.out
+
+inputs:
+  - name: q13068.sql
+    data: |
+      SELECT DISTINCT COUNT ( * ) * - 84 * + COUNT ( ALL - col0 ) + 65 AS col0 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q13068.out
+    data: |
+      -691

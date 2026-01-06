@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q12644.sql | sort > q12644.out
+
+inputs:
+  - name: q12644.sql
+    data: |
+      SELECT DISTINCT - COUNT ( * ) * 16 / COUNT ( DISTINCT + col1 ) FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q12644.out
+    data: |
+      -16

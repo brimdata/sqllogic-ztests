@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q11102.sql | sort > q11102.out
+
+inputs:
+  - name: q11102.sql
+    data: |
+      SELECT ALL CAST ( + MIN ( DISTINCT - col1 ) AS INTEGER ) + - - 32 AS col0 FROM tab0;
+  - name: tab0
+
+outputs:
+  - name: q11102.out
+    data: |
+      -49

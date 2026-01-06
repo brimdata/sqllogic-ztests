@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q1010.sql | sort > q1010.out
+
+inputs:
+  - name: q1010.sql
+    data: |
+      SELECT ALL ( + 90 ) + COUNT ( * ) * MIN ( DISTINCT - col1 ) FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q1010.out
+    data: |
+      -141

@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q4201.sql | sort > q4201.out
+
+inputs:
+  - name: q4201.sql
+    data: |
+      SELECT ALL 64 + 10 * MAX ( DISTINCT + ( col1 ) ) AS col2 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q4201.out
+    data: |
+      834

@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q6061.sql | sort > q6061.out
+
+inputs:
+  - name: q6061.sql
+    data: |
+      SELECT ALL - CAST ( MAX ( DISTINCT - col0 ) AS INTEGER ) - COUNT ( * ) FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q6061.out
+    data: |
+      48

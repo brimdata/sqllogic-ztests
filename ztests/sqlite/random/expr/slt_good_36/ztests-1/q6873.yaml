@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q6873.sql | sort > q6873.out
+
+inputs:
+  - name: q6873.sql
+    data: |
+      SELECT DISTINCT CASE ( - COUNT ( * ) ) WHEN - + 42 THEN NULL WHEN 19 + - 10 THEN 77 END AS col2;
+
+outputs:
+  - name: q6873.out
+    data: |
+      NULL

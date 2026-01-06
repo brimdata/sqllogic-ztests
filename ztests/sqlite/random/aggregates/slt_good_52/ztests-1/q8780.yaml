@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q8780.sql | sort > q8780.out
+
+inputs:
+  - name: q8780.sql
+    data: |
+      SELECT COUNT ( ALL - col2 ) FROM tab2 WHERE NOT - - col2 IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q8780.out
+    data: |
+      3

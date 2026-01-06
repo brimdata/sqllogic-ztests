@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q9642.sql | sort > q9642.out
+
+inputs:
+  - name: q9642.sql
+    data: |
+      SELECT + col2 AS col2, + AVG ( ALL - col2 ) AS col1 FROM tab0 AS cor0 GROUP BY col2 HAVING NOT NULL NOT BETWEEN ( NULL ) AND col2;
+  - name: tab0
+
+outputs:
+  - name: q9642.out
+    data: |

@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q7370.sql | sort > q7370.out
+
+inputs:
+  - name: q7370.sql
+    data: |
+      SELECT DISTINCT - 6 AS col2, + MAX ( DISTINCT - col1 ) AS col0 FROM tab0;
+  - name: tab0
+
+outputs:
+  - name: q7370.out
+    data: |
+      -6	-1

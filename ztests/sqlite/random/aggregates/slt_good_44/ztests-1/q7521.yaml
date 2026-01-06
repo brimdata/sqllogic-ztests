@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q7521.sql | sort > q7521.out
+
+inputs:
+  - name: q7521.sql
+    data: |
+      SELECT ( COUNT ( * ) ) / - COUNT ( DISTINCT - ( 5 ) ) FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q7521.out
+    data: |
+      -3

@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q11223.sql | sort > q11223.out
+
+inputs:
+  - name: q11223.sql
+    data: |
+      SELECT ALL ( - SUM ( ALL - - col1 ) ) AS col1 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q11223.out
+    data: |
+      -195

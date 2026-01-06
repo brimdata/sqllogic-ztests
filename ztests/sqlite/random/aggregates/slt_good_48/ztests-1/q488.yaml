@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q488.sql | sort > q488.out
+
+inputs:
+  - name: q488.sql
+    data: |
+      SELECT COUNT ( * ) AS col0, SUM ( ALL col1 ) / SUM ( ALL - col2 ) FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q488.out
+    data: |
+      3	-1

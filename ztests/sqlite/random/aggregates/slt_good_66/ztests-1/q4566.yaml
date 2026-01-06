@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q4566.sql | sort > q4566.out
+
+inputs:
+  - name: q4566.sql
+    data: |
+      SELECT ALL COUNT ( * ) + COUNT ( DISTINCT - 73 ) AS col2, 50 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q4566.out
+    data: |
+      4	50

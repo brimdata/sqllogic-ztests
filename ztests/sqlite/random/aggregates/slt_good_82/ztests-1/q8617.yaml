@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q8617.sql | sort > q8617.out
+
+inputs:
+  - name: q8617.sql
+    data: |
+      SELECT ALL + COUNT ( * ) / - COUNT ( * ) - - MAX ( ALL - col1 ) FROM tab2 AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q8617.out
+    data: |
+      -52

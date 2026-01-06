@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q9721.sql | sort > q9721.out
+
+inputs:
+  - name: q9721.sql
+    data: |
+      SELECT + AVG ( ALL - col1 ) AS col2 FROM tab0 AS cor0 WHERE col0 IS NULL GROUP BY col1, col1;
+  - name: tab0
+
+outputs:
+  - name: q9721.out
+    data: |

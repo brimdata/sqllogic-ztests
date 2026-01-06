@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q8016.sql | sort > q8016.out
+
+inputs:
+  - name: q8016.sql
+    data: |
+      SELECT ALL COUNT ( ALL + - col2 ) + COUNT ( * ) FROM tab2 AS cor0 WHERE + col1 IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q8016.out
+    data: |
+      6

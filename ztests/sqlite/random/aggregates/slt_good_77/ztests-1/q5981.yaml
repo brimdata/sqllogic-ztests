@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q5981.sql | sort > q5981.out
+
+inputs:
+  - name: q5981.sql
+    data: |
+      SELECT ALL 4 * COUNT ( * ) + - SUM ( ALL - col0 ) FROM tab1 AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q5981.out
+    data: |
+      239

@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q6454.sql | sort > q6454.out
+
+inputs:
+  - name: q6454.sql
+    data: |
+      SELECT DISTINCT - COUNT ( * ) + ( COUNT ( DISTINCT + CAST ( col2 AS REAL ) ) ) * COUNT ( * ) AS col2 FROM tab2 cor0;
+  - name: tab2
+
+outputs:
+  - name: q6454.out
+    data: |
+      6

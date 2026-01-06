@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q5601.sql | sort > q5601.out
+
+inputs:
+  - name: q5601.sql
+    data: |
+      SELECT MAX ( ALL - CAST ( + 60 AS INTEGER ) ) AS col1;
+
+outputs:
+  - name: q5601.out
+    data: |
+      -60

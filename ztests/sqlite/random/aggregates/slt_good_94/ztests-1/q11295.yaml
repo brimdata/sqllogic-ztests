@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q11295.sql | sort > q11295.out
+
+inputs:
+  - name: q11295.sql
+    data: |
+      SELECT ( - MIN ( ALL + 21 ) ) FROM ( tab1 AS cor0 CROSS JOIN tab0 cor1 );
+  - name: tab0
+  - name: tab1
+
+outputs:
+  - name: q11295.out
+    data: |
+      -21

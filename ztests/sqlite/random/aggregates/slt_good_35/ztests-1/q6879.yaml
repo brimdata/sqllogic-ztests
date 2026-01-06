@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q6879.sql | sort > q6879.out
+
+inputs:
+  - name: q6879.sql
+    data: |
+      SELECT ALL + COUNT ( ALL - col0 ) * ( + COUNT ( * ) * 64 ) FROM tab1 AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q6879.out
+    data: |
+      576

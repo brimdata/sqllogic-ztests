@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q11170.sql | sort > q11170.out
+
+inputs:
+  - name: q11170.sql
+    data: |
+      SELECT DISTINCT + ( - MIN ( DISTINCT - col1 ) ) AS col0 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q11170.out
+    data: |
+      47

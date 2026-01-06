@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q4228.sql | sort > q4228.out
+
+inputs:
+  - name: q4228.sql
+    data: |
+      SELECT DISTINCT + SUM ( DISTINCT - 64 ) FROM tab2 AS cor0 CROSS JOIN tab1 AS cor1;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q4228.out
+    data: |
+      -64

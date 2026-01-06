@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q1531.sql | sort > q1531.out
+
+inputs:
+  - name: q1531.sql
+    data: |
+      SELECT DISTINCT MAX ( ALL + 77 ) AS col1 FROM tab1 AS cor0 CROSS JOIN tab1 AS cor1;
+  - name: tab1
+
+outputs:
+  - name: q1531.out
+    data: |
+      77

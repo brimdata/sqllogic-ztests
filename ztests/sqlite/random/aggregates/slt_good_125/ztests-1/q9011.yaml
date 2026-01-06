@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q9011.sql | sort > q9011.out
+
+inputs:
+  - name: q9011.sql
+    data: |
+      SELECT + - ( - COUNT ( * ) ) * + SUM ( DISTINCT + CAST ( col0 AS INTEGER ) ) FROM tab1 AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q9011.out
+    data: |
+      681

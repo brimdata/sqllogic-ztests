@@ -1,0 +1,12 @@
+script: |
+  super -f tsv -I q8210.sql | sort > q8210.out
+
+inputs:
+  - name: q8210.sql
+    data: |
+      SELECT ALL 60 * - AVG ( ALL + + col1 ) AS col2 FROM tab2 GROUP BY col1 HAVING NOT NULL IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q8210.out
+    data: |

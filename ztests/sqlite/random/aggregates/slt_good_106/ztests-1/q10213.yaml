@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q10213.sql | sort > q10213.out
+
+inputs:
+  - name: q10213.sql
+    data: |
+      SELECT ALL - + MAX ( ALL - 2 ) * + SUM ( + col1 ) FROM tab2 AS cor0 WHERE col1 IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q10213.out
+    data: |
+      390

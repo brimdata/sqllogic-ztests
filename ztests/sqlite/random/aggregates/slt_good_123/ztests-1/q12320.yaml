@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q12320.sql | sort > q12320.out
+
+inputs:
+  - name: q12320.sql
+    data: |
+      SELECT - COUNT ( col0 ) + + - COUNT ( ALL - CAST ( NULL AS REAL ) ) FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q12320.out
+    data: |
+      -3

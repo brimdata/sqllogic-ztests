@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q5463.sql | sort > q5463.out
+
+inputs:
+  - name: q5463.sql
+    data: |
+      SELECT COUNT ( + col1 ) + - CAST ( NULL AS INTEGER ) * - COUNT ( DISTINCT - col2 ) FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q5463.out
+    data: |
+      NULL

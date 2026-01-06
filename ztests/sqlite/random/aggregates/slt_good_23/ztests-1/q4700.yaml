@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q4700.sql | sort > q4700.out
+
+inputs:
+  - name: q4700.sql
+    data: |
+      SELECT ALL + MIN ( ALL - 8 ) FROM tab0 AS cor0 CROSS JOIN tab1 cor1;
+  - name: tab0
+  - name: tab1
+
+outputs:
+  - name: q4700.out
+    data: |
+      -8

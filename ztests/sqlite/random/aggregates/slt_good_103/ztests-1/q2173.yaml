@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q2173.sql | sort > q2173.out
+
+inputs:
+  - name: q2173.sql
+    data: |
+      SELECT DISTINCT + SUM ( ALL - col1 ) + SUM ( ALL - col0 ) FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q2173.out
+    data: |
+      -293

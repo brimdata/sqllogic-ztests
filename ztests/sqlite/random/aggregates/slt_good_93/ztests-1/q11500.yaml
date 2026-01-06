@@ -1,0 +1,13 @@
+script: |
+  super -f tsv -I q11500.sql | sort > q11500.out
+
+inputs:
+  - name: q11500.sql
+    data: |
+      SELECT ALL + ( CAST ( MIN ( ALL + col0 ) AS INTEGER ) ) FROM tab0 AS cor0 WHERE NOT ( NULL ) IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q11500.out
+    data: |
+      15
