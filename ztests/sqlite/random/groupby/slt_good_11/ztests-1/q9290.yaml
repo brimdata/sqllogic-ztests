@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q9290.sql | sort > q9290.out
+
+vector: true
+
+inputs:
+  - name: q9290.sql
+    data: |
+      SELECT ALL + 20 * - col1 * + col2 FROM tab2 GROUP BY col2, col1 HAVING NOT NULL >= - col1 * col1 * + col1;
+  - name: tab2
+
+outputs:
+  - name: q9290.out
+    data: |

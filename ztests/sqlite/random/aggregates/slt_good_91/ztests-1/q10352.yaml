@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q10352.sql | sort > q10352.out
+
+vector: true
+
+inputs:
+  - name: q10352.sql
+    data: |
+      SELECT ALL COUNT ( * ) AS col2 FROM tab2 WHERE col2 NOT IN ( + - col1 ) AND col1 + 4 NOT BETWEEN 2 * CAST ( - 97 AS INTEGER ) + - 95 AND ( ( col0 ) );
+  - name: tab2
+
+outputs:
+  - name: q10352.out
+    data: |
+      2

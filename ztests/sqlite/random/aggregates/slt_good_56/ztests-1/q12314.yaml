@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q12314.sql | sort > q12314.out
+
+vector: true
+
+inputs:
+  - name: q12314.sql
+    data: |
+      SELECT ALL + COUNT ( * ) AS col2 FROM tab1 AS cor0 WHERE col2 / + - 17 NOT IN ( + 1, + 82 * col1, - col1 );
+  - name: tab1
+
+outputs:
+  - name: q12314.out
+    data: |
+      3

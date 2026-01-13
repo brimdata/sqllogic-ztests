@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q10583.sql | sort > q10583.out
+
+vector: true
+
+inputs:
+  - name: q10583.sql
+    data: |
+      SELECT ALL col2, 55 AS col2 FROM tab2 WHERE ( col2 BETWEEN - col0 AND 44 );
+  - name: tab2
+
+outputs:
+  - name: q10583.out
+    data: |
+      23	55
+      40	55

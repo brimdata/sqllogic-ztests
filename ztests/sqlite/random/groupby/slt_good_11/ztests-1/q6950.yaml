@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q6950.sql | sort > q6950.out
+
+vector: true
+
+inputs:
+  - name: q6950.sql
+    data: |
+      SELECT + 62 AS col2 FROM tab1 AS cor0 GROUP BY col1, col1, col0 HAVING NULL NOT BETWEEN col1 AND + + 0;
+  - name: tab1
+
+outputs:
+  - name: q6950.out
+    data: |

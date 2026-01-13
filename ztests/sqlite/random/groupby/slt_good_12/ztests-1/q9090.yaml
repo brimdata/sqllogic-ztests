@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q9090.sql | sort > q9090.out
+
+vector: true
+
+inputs:
+  - name: q9090.sql
+    data: |
+      SELECT DISTINCT - col1 AS col0, col1 FROM tab2 AS cor0 WHERE NULL IS NULL GROUP BY col1, col1 HAVING NULL >= + 22 * - COUNT ( * );
+  - name: tab2
+
+outputs:
+  - name: q9090.out
+    data: |

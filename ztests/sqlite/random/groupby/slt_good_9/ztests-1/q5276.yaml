@@ -1,0 +1,18 @@
+script: |
+  super -f tsv -I q5276.sql | sort > q5276.out
+
+vector: true
+
+inputs:
+  - name: q5276.sql
+    data: |
+      pragma pg
+      SELECT DISTINCT + col0 AS col0, col0 FROM tab0 GROUP BY col0, col0 HAVING NULL IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q5276.out
+    data: |
+      26	26
+      43	43
+      83	83

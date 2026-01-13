@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q8070.sql | sort > q8070.out
+
+vector: true
+
+inputs:
+  - name: q8070.sql
+    data: |
+      SELECT - col1 FROM tab0 GROUP BY col1, col2 HAVING col1 IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q8070.out
+    data: |
+      -81
+      0
+      0

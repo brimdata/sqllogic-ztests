@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q3.sql | sort > q3.out
+
+vector: true
+
+inputs:
+  - name: q3.sql
+    data: |
+      SELECT DISTINCT - + col1, col1 FROM tab2 AS cor0 GROUP BY col1, col0;
+  - name: tab2
+
+outputs:
+  - name: q3.out
+    data: |
+      -41	41
+      -59	59
+      -61	61

@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q9469.sql | sort > q9469.out
+
+vector: true
+
+inputs:
+  - name: q9469.sql
+    data: |
+      SELECT DISTINCT - MIN ( + col1 ) FROM tab0 GROUP BY col1, col2 HAVING ( + col1 <= NULL );
+  - name: tab0
+
+outputs:
+  - name: q9469.out
+    data: |

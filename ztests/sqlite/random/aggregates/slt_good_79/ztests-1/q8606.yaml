@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8606.sql | sort > q8606.out
+
+vector: true
+
+inputs:
+  - name: q8606.sql
+    data: |
+      SELECT ALL + ( - COUNT ( * ) ) AS col1 FROM tab2 AS cor0 WHERE NOT + ( - - col1 ) = col0;
+  - name: tab2
+
+outputs:
+  - name: q8606.out
+    data: |
+      -3

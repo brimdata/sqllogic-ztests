@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q10294.sql | sort > q10294.out
+
+vector: true
+
+inputs:
+  - name: q10294.sql
+    data: |
+      SELECT - col1 * - MAX ( - col1 ) FROM tab1 GROUP BY col1;
+  - name: tab1
+
+outputs:
+  - name: q10294.out
+    data: |
+      -1936
+      -3249
+      -36

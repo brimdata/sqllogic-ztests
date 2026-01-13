@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q93.sql | sort > q93.out
+
+vector: true
+
+inputs:
+  - name: q93.sql
+    data: |
+      SELECT - + col2 * + 46 AS col1 FROM tab1 AS cor0 GROUP BY col2, col2, col0 HAVING NULL >= + col2;
+  - name: tab1
+
+outputs:
+  - name: q93.out
+    data: |

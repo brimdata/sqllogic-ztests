@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q8173.sql | sort > q8173.out
+
+vector: true
+
+inputs:
+  - name: q8173.sql
+    data: |
+      SELECT ALL + ( - col2 ) AS col2 FROM tab1 WHERE NOT - col2 NOT BETWEEN ( - col1 ) AND 85 + col0 / 66;
+  - name: tab1
+
+outputs:
+  - name: q8173.out
+    data: |

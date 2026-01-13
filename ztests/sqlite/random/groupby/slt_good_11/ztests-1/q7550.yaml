@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q7550.sql | sort > q7550.out
 
+vector: true
+
 inputs:
   - name: q7550.sql
     data: |
+      pragma pg
       SELECT col1 / - - 42 AS col1 FROM tab2 GROUP BY col1, col0, col0 HAVING NULL IS NULL;
   - name: tab2
 

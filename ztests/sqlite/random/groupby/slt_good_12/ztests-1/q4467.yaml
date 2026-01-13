@@ -1,0 +1,18 @@
+script: |
+  super -f tsv -I q4467.sql | sort > q4467.out
+
+vector: true
+
+inputs:
+  - name: q4467.sql
+    data: |
+      pragma pg
+      SELECT DISTINCT col2 AS col2, + 60 * - col2 FROM tab0 GROUP BY col2;
+  - name: tab0
+
+outputs:
+  - name: q4467.out
+    data: |
+      24	-1440
+      38	-2280
+      79	-4740

@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q5830.sql | sort > q5830.out
+
+vector: true
+
+inputs:
+  - name: q5830.sql
+    data: |
+      SELECT DISTINCT tab2.col2 FROM tab2 GROUP BY tab2.col2 HAVING NOT NULL BETWEEN col2 AND - tab2.col2;
+  - name: tab2
+
+outputs:
+  - name: q5830.out
+    data: |

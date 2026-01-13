@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q8808.sql | sort > q8808.out
+
+vector: true
+
+inputs:
+  - name: q8808.sql
+    data: |
+      SELECT ALL + 88 * col1 FROM tab2 AS cor0 GROUP BY col1, col0 HAVING ( + col0 + + ( - col1 ) ) IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q8808.out
+    data: |
+      3608
+      5192
+      5368

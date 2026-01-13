@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q3270.sql | sort > q3270.out
+
+vector: true
+
+inputs:
+  - name: q3270.sql
+    data: |
+      SELECT ALL CAST ( NULL AS INTEGER ) FROM tab2 AS cor0 GROUP BY col0 HAVING ( NULL ) NOT BETWEEN NULL AND - ( + col0 ) * CAST ( NULL AS INTEGER );
+  - name: tab2
+
+outputs:
+  - name: q3270.out
+    data: |

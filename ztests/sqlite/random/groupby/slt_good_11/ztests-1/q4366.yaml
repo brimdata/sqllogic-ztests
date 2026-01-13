@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q4366.sql | sort > q4366.out
+
+vector: true
+
+inputs:
+  - name: q4366.sql
+    data: |
+      SELECT ALL - ( + col0 ) FROM tab1 cor0 GROUP BY col0 HAVING NOT + CAST ( + - col0 AS REAL ) IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q4366.out
+    data: |

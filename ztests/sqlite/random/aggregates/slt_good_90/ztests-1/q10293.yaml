@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q10293.sql | sort > q10293.out
+
+vector: true
+
+inputs:
+  - name: q10293.sql
+    data: |
+      SELECT ALL + col2 AS col1, 50 * - col1 AS col1 FROM tab1 AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q10293.out
+    data: |
+      59	-250
+      68	-2350
+      96	-700

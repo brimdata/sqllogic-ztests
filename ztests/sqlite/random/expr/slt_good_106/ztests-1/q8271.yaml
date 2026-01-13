@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q8271.sql | sort > q8271.out
+
+vector: true
+
+inputs:
+  - name: q8271.sql
+    data: |
+      SELECT + - 80 col0, + ( + COUNT ( ALL CAST ( NULL AS INTEGER ) ) ) AS col0;
+
+outputs:
+  - name: q8271.out
+    data: |
+      -80	0

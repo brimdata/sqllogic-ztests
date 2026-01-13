@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q5064.sql | sort > q5064.out
+
+vector: true
+
+inputs:
+  - name: q5064.sql
+    data: |
+      SELECT col1 * + col1 + col0 AS col2 FROM tab2 WHERE NOT col2 IN ( + tab2.col2 );
+  - name: tab2
+
+outputs:
+  - name: q5064.out
+    data: |

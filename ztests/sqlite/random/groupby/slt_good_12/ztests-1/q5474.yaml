@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q5474.sql | sort > q5474.out
+
+vector: true
+
+inputs:
+  - name: q5474.sql
+    data: |
+      SELECT ALL - col2 AS col1 FROM tab1 GROUP BY col2 HAVING NOT ( - CAST ( + + col2 AS INTEGER ) >= + col2 );
+  - name: tab1
+
+outputs:
+  - name: q5474.out
+    data: |
+      -45
+      -71
+      -8

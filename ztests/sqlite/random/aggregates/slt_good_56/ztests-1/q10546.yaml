@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q10546.sql | sort > q10546.out
+
+vector: true
+
+inputs:
+  - name: q10546.sql
+    data: |
+      SELECT DISTINCT col1 AS col2 FROM tab2 AS cor0 WHERE col2 + - - col2 NOT BETWEEN + - 4 AND ( + col1 );
+  - name: tab2
+
+outputs:
+  - name: q10546.out
+    data: |
+      67
+      77

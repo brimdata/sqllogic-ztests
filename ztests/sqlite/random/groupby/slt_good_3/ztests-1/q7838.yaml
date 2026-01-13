@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q7838.sql | sort > q7838.out
+
+vector: true
+
+inputs:
+  - name: q7838.sql
+    data: |
+      SELECT + tab0.col1 - col1 * - tab0.col1 FROM tab0 GROUP BY tab0.col1 HAVING NOT ( tab0.col1 + col1 ) IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q7838.out
+    data: |
+      0
+      6642

@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q7792.sql | sort > q7792.out
 
+vector: true
+
 inputs:
   - name: q7792.sql
     data: |
+      pragma pg
       SELECT col0 AS col0 FROM tab2 GROUP BY col1, col0 HAVING NOT NULL NOT BETWEEN 49 AND NULL;
   - name: tab2
 

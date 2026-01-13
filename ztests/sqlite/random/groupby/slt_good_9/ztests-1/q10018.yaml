@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q10018.sql | sort > q10018.out
+
+vector: true
+
+inputs:
+  - name: q10018.sql
+    data: |
+      SELECT - col0 * AVG ( - col0 ) FROM tab0 GROUP BY col0 HAVING NOT NULL > NULL;
+  - name: tab0
+
+outputs:
+  - name: q10018.out
+    data: |

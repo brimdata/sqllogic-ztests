@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q8253.sql | sort > q8253.out
+
+vector: true
+
+inputs:
+  - name: q8253.sql
+    data: |
+      SELECT DISTINCT + col2 FROM tab2 GROUP BY col2, col0 HAVING NOT NULL < col2;
+  - name: tab2
+
+outputs:
+  - name: q8253.out
+    data: |

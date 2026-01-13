@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q5459.sql | sort > q5459.out
+
+vector: true
+
+inputs:
+  - name: q5459.sql
+    data: |
+      SELECT - + col1 AS col2, - col2 * + 6 AS col2 FROM tab1 WHERE + - 66 <> - - col1;
+  - name: tab1
+
+outputs:
+  - name: q5459.out
+    data: |
+      -14	-576
+      -47	-408
+      -5	-354

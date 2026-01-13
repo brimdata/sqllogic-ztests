@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4836.sql | sort > q4836.out
+
+vector: true
+
+inputs:
+  - name: q4836.sql
+    data: |
+      SELECT DISTINCT col1 AS col2 FROM tab0 GROUP BY col1 HAVING NOT - col1 BETWEEN NULL AND - 42;
+  - name: tab0
+
+outputs:
+  - name: q4836.out
+    data: |
+      0

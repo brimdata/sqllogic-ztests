@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q5215.sql | sort > q5215.out
+
+vector: true
+
+inputs:
+  - name: q5215.sql
+    data: |
+      SELECT + col0 AS col1 FROM tab1 WHERE NOT - CAST ( - col1 AS INTEGER ) > 65;
+  - name: tab1
+
+outputs:
+  - name: q5215.out
+    data: |
+      51
+      85
+      91

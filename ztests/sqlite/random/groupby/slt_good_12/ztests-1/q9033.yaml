@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q9033.sql | sort > q9033.out
 
+vector: true
+
 inputs:
   - name: q9033.sql
     data: |
+      pragma pg
       SELECT ALL col1 * col0 + 52 AS col1 FROM tab0 AS cor0 GROUP BY col0, col1 HAVING 38 IS NOT NULL;
   - name: tab0
 

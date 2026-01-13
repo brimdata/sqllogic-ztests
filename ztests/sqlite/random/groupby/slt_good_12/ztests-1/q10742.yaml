@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q10742.sql | sort > q10742.out
+
+vector: true
+
+inputs:
+  - name: q10742.sql
+    data: |
+      SELECT DISTINCT + - CAST ( NULL AS INTEGER ) / MAX ( - col0 ) FROM tab0 AS cor0 GROUP BY col0, col1;
+  - name: tab0
+
+outputs:
+  - name: q10742.out
+    data: |
+      NULL

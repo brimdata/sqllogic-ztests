@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q12045.sql | sort > q12045.out
+
+vector: true
+
+inputs:
+  - name: q12045.sql
+    data: |
+      SELECT col2 AS col2, + col2 * - - 16 AS col2 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q12045.out
+    data: |
+      59	944
+      68	1088
+      96	1536

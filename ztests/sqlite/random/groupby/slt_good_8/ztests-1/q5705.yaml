@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q5705.sql | sort > q5705.out
+
+vector: true
+
+inputs:
+  - name: q5705.sql
+    data: |
+      pragma pg
+      SELECT DISTINCT - CAST ( NULL AS INTEGER ) * + cor0.col1 AS col2 FROM tab0 AS cor0 GROUP BY cor0.col1, col2;
+  - name: tab0
+
+outputs:
+  - name: q5705.out
+    data: |
+      NULL

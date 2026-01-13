@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4111.sql | sort > q4111.out
+
+vector: true
+
+inputs:
+  - name: q4111.sql
+    data: |
+      SELECT + 13 * MAX ( ALL col2 ) AS col2, COUNT ( DISTINCT + col0 ) AS col2, - + COUNT ( * ) FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q4111.out
+    data: |
+      1248	3	-3

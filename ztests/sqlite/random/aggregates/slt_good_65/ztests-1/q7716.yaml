@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q7716.sql | sort > q7716.out
+
+vector: true
+
+inputs:
+  - name: q7716.sql
+    data: |
+      SELECT DISTINCT COUNT ( * ) AS col0 FROM tab2 WHERE - col1 <> - CAST ( - col0 AS REAL );
+  - name: tab2
+
+outputs:
+  - name: q7716.out
+    data: |
+      3

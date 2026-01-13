@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9184.sql | sort > q9184.out
+
+vector: true
+
+inputs:
+  - name: q9184.sql
+    data: |
+      SELECT COUNT ( * ) AS col1 FROM tab0 WHERE 83 / col0 NOT IN ( col1 );
+  - name: tab0
+
+outputs:
+  - name: q9184.out
+    data: |
+      3

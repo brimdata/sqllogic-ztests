@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q10581.sql | sort > q10581.out
+
+vector: true
+
+inputs:
+  - name: q10581.sql
+    data: |
+      SELECT DISTINCT - CAST ( NULL AS INTEGER ) AS col0 FROM tab2 GROUP BY col2 HAVING NOT ( + col2 ) NOT BETWEEN 35 + COUNT ( * ) AND ( NULL );
+  - name: tab2
+
+outputs:
+  - name: q10581.out
+    data: |

@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q9190.sql | sort > q9190.out
+
+vector: true
+
+inputs:
+  - name: q9190.sql
+    data: |
+      SELECT 51 AS col0 FROM tab1 GROUP BY col2, col1 HAVING - col2 * + col2 IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q9190.out
+    data: |
+      51
+      51
+      51

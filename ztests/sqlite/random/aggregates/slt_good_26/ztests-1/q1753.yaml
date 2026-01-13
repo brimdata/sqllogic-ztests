@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1753.sql | sort > q1753.out
+
+vector: true
+
+inputs:
+  - name: q1753.sql
+    data: |
+      SELECT - 87 AS col1 FROM tab2 WHERE NOT ( col1 > + col0 );
+  - name: tab2
+
+outputs:
+  - name: q1753.out
+    data: |
+      -87

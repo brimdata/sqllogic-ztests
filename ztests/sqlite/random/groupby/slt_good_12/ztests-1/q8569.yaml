@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q8569.sql | sort > q8569.out
+
+vector: true
+
+inputs:
+  - name: q8569.sql
+    data: |
+      SELECT ALL + col1 + - COUNT ( ALL - col1 ) AS col2, - COUNT ( * ) / + col1 AS col0 FROM tab1 AS cor0 GROUP BY col1, col1 HAVING - col1 IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q8569.out
+    data: |
+      43	0
+      5	0
+      56	0

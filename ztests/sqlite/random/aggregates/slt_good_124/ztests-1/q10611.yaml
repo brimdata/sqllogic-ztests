@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q10611.sql | sort > q10611.out
+
+vector: true
+
+inputs:
+  - name: q10611.sql
+    data: |
+      SELECT ALL + COUNT ( * ) * - 8 + 23 AS col1, - 14 AS col1 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q10611.out
+    data: |
+      -1	-14

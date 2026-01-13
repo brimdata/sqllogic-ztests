@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q3420.sql | sort > q3420.out
+
+vector: true
+
+inputs:
+  - name: q3420.sql
+    data: |
+      SELECT 74 AS col2, 46 * - MAX ( ALL col2 ) AS col2 FROM tab0 AS cor0;
+  - name: tab0
+
+outputs:
+  - name: q3420.out
+    data: |
+      74	-4554

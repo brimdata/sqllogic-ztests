@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q2936.sql | sort > q2936.out
+
+vector: true
+
+inputs:
+  - name: q2936.sql
+    data: |
+      SELECT DISTINCT + col1 + - col1 * + col1 FROM tab1 WHERE NOT + col0 BETWEEN - 29 - 82 AND NULL GROUP BY col1 HAVING NOT col1 = ( NULL );
+  - name: tab1
+
+outputs:
+  - name: q2936.out
+    data: |

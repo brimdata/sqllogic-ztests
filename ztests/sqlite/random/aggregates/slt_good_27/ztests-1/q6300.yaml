@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q6300.sql | sort > q6300.out
+
+vector: true
+
+inputs:
+  - name: q6300.sql
+    data: |
+      SELECT - 94 AS col2, + col2 + - 30 AS col2 FROM tab1 AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q6300.out
+    data: |
+      -94	29
+      -94	38
+      -94	66

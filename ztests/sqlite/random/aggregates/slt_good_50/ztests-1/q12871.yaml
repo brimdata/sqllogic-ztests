@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q12871.sql | sort > q12871.out
+
+vector: true
+
+inputs:
+  - name: q12871.sql
+    data: |
+      SELECT col1 * - col2 AS col2 FROM tab1 WHERE - col1 < col2;
+  - name: tab1
+
+outputs:
+  - name: q12871.out
+    data: |
+      -1344
+      -295
+      -3196

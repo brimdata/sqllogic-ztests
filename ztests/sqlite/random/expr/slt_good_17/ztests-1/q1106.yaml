@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q1106.sql | sort > q1106.out
+
+vector: true
+
+inputs:
+  - name: q1106.sql
+    data: |
+      SELECT DISTINCT NULLIF ( + 20, - + CAST ( NULL AS INTEGER ) ) AS col2, 15 AS col2;
+
+outputs:
+  - name: q1106.out
+    data: |
+      20	15

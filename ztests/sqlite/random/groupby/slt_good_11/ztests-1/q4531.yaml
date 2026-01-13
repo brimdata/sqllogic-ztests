@@ -1,0 +1,18 @@
+script: |
+  super -f tsv -I q4531.sql | sort > q4531.out
+
+vector: true
+
+inputs:
+  - name: q4531.sql
+    data: |
+      pragma pg
+      SELECT - CASE + + col1 WHEN + 57 THEN + col0 ELSE NULL END + col0 + + ( - col0 ) AS col0 FROM tab2 GROUP BY col0, col1;
+  - name: tab2
+
+outputs:
+  - name: q4531.out
+    data: |
+      NULL
+      NULL
+      NULL

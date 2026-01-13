@@ -1,0 +1,18 @@
+script: |
+  super -f tsv -I q7824.sql | sort > q7824.out
+
+vector: true
+
+inputs:
+  - name: q7824.sql
+    data: |
+      pragma pg
+      SELECT - col1 * - 71 AS col2 FROM tab1 GROUP BY col1, col2, col0 HAVING NOT ( - ( col1 ) ) = + col2 * + col1;
+  - name: tab1
+
+outputs:
+  - name: q7824.out
+    data: |
+      3124
+      4047
+      426

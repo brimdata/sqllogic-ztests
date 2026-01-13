@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q8480.sql | sort > q8480.out
+
+vector: true
+
+inputs:
+  - name: q8480.sql
+    data: |
+      SELECT - CAST ( + col0 AS INTEGER ) + - - col0 AS col2, col2 AS col2 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q8480.out
+    data: |
+      0	23
+      0	40
+      0	58

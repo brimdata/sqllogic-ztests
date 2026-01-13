@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q8154.sql | sort > q8154.out
+
+vector: true
+
+inputs:
+  - name: q8154.sql
+    data: |
+      SELECT COUNT ( * ) + + - col0 FROM tab1 GROUP BY col0 HAVING NOT NULL BETWEEN NULL AND 26;
+  - name: tab1
+
+outputs:
+  - name: q8154.out
+    data: |

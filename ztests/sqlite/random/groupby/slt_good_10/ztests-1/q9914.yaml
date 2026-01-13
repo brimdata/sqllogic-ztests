@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q9914.sql | sort > q9914.out
+
+vector: true
+
+inputs:
+  - name: q9914.sql
+    data: |
+      SELECT col0 * - col0 FROM tab0 WHERE NOT ( NULL ) NOT BETWEEN ( NULL ) AND NULL GROUP BY col0 HAVING NOT ( - AVG ( ALL col0 ) ) IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q9914.out
+    data: |

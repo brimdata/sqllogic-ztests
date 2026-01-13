@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q5168.sql | sort > q5168.out
 
+vector: true
+
 inputs:
   - name: q5168.sql
     data: |
+      pragma pg
       SELECT ALL - NULLIF ( + + col1, 5 * + + col1 ) AS col1 FROM tab0 GROUP BY col1;
   - name: tab0
 

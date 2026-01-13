@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q6931.sql | sort > q6931.out
+
+vector: true
+
+inputs:
+  - name: q6931.sql
+    data: |
+      SELECT - cor0.col1 AS col2, - cor0.col0 AS col2 FROM tab1 AS cor0 GROUP BY cor0.col1, cor0.col0;
+  - name: tab1
+
+outputs:
+  - name: q6931.out
+    data: |
+      -44	-82
+      -57	-28
+      -6	-22

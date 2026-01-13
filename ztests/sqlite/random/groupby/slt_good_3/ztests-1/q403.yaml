@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q403.sql | sort > q403.out
+
+vector: true
+
+inputs:
+  - name: q403.sql
+    data: |
+      SELECT DISTINCT 18 * + 18 AS col2 FROM tab1 GROUP BY tab1.col2;
+  - name: tab1
+
+outputs:
+  - name: q403.out
+    data: |
+      324

@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q8019.sql | sort > q8019.out
+
+vector: true
+
+inputs:
+  - name: q8019.sql
+    data: |
+      SELECT ALL + col1 AS col0, col1 - col0 + - col0 AS col0 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q8019.out
+    data: |
+      14	-88
+      47	-135
+      5	-165

@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q1158.sql | sort > q1158.out
+
+vector: true
+
+inputs:
+  - name: q1158.sql
+    data: |
+      SELECT + 18 AS col1, - 91 * + - COUNT ( * ) AS col1 FROM tab2 AS cor0 CROSS JOIN tab1 AS cor1;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q1158.out
+    data: |
+      18	819

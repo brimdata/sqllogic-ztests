@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q4001.sql | sort > q4001.out
+
+vector: true
+
+inputs:
+  - name: q4001.sql
+    data: |
+      SELECT DISTINCT + 81 AS col1 FROM tab1 WHERE ( NOT + 58 + + col2 IS NULL ) GROUP BY col0 HAVING ( CAST ( + col0 AS INTEGER ) ) + - col0 IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q4001.out
+    data: |

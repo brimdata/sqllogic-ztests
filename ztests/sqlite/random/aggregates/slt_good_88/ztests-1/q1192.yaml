@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1192.sql | sort > q1192.out
+
+vector: true
+
+inputs:
+  - name: q1192.sql
+    data: |
+      SELECT DISTINCT CAST ( NULL AS INTEGER ) / col1 AS col0, 19 AS col0 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q1192.out
+    data: |
+      NULL	19

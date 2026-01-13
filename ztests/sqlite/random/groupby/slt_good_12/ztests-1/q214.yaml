@@ -1,0 +1,18 @@
+script: |
+  super -f tsv -I q214.sql | sort > q214.out
+
+vector: true
+
+inputs:
+  - name: q214.sql
+    data: |
+      pragma pg
+      SELECT col0 AS col0, col0 * + col0 AS col0 FROM tab1 GROUP BY col1, col0;
+  - name: tab1
+
+outputs:
+  - name: q214.out
+    data: |
+      22	484
+      28	784
+      82	6724

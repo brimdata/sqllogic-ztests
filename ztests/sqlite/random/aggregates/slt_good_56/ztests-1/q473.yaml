@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q473.sql | sort > q473.out
+
+vector: true
+
+inputs:
+  - name: q473.sql
+    data: |
+      SELECT DISTINCT SUM ( DISTINCT + col2 ) AS col1 FROM tab2 WHERE NOT CAST ( col0 AS INTEGER ) BETWEEN + ( - col1 ) AND ( - col0 );
+  - name: tab2
+
+outputs:
+  - name: q473.out
+    data: |
+      121

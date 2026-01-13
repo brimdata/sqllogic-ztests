@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q3333.sql | sort > q3333.out
+
+vector: true
+
+inputs:
+  - name: q3333.sql
+    data: |
+      SELECT DISTINCT + COALESCE ( 55, + tab1.col0 ) AS col2 FROM tab1 GROUP BY tab1.col0;
+  - name: tab1
+
+outputs:
+  - name: q3333.out
+    data: |
+      55

@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q13610.sql | sort > q13610.out
+
+vector: true
+
+inputs:
+  - name: q13610.sql
+    data: |
+      SELECT DISTINCT col1 + 92 / col0 AS col0, + 40 AS col0 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q13610.out
+    data: |
+      15	40
+      48	40
+      6	40

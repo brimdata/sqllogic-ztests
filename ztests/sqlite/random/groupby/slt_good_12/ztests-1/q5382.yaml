@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q5382.sql | sort > q5382.out
+
+vector: true
+
+inputs:
+  - name: q5382.sql
+    data: |
+      pragma pg
+      SELECT - 14 AS col0, COUNT ( * ) AS col1 FROM tab2 GROUP BY col0, col2 HAVING NOT - col2 * - - COUNT ( * ) >= NULL;
+  - name: tab2
+
+outputs:
+  - name: q5382.out
+    data: |

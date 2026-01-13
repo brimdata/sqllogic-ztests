@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q10.sql | sort > q10.out
+
+vector: true
+
+inputs:
+  - name: q10.sql
+    data: |
+      SELECT DISTINCT 11 / - cor0.col1 AS col1 FROM tab1 AS cor0 GROUP BY cor0.col1;
+  - name: tab1
+
+outputs:
+  - name: q10.out
+    data: |
+      -1
+      0

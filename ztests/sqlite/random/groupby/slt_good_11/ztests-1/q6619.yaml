@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q6619.sql | sort > q6619.out
 
+vector: true
+
 inputs:
   - name: q6619.sql
     data: |
+      pragma pg
       SELECT DISTINCT ( + col1 ) * + 25 AS col2 FROM tab1 GROUP BY col2, col1 HAVING NULL BETWEEN - col2 AND ( NULL );
   - name: tab1
 

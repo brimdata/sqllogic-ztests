@@ -1,0 +1,18 @@
+script: |
+  super -f tsv -I q11149.sql | sort > q11149.out
+
+vector: true
+
+inputs:
+  - name: q11149.sql
+    data: |
+      pragma pg
+      SELECT DISTINCT + col1 AS col1, ( - col2 ) FROM tab2 cor0 GROUP BY col1, col2 HAVING - COUNT ( DISTINCT - col0 ) IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q11149.out
+    data: |
+      41	-58
+      59	-79
+      61	-87

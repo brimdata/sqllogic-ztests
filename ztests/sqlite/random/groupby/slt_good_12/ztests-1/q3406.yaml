@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q3406.sql | sort > q3406.out
 
+vector: true
+
 inputs:
   - name: q3406.sql
     data: |
+      pragma pg
       SELECT + ( - CAST ( NULL AS INTEGER ) ) / col1 AS col1 FROM tab1 GROUP BY col1 HAVING ( col1 ) <= ( + col1 + - 11 );
   - name: tab1
 

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8499.sql | sort > q8499.out
+
+vector: true
+
+inputs:
+  - name: q8499.sql
+    data: |
+      SELECT DISTINCT COALESCE ( - 80, - cor0.col0 ) FROM tab2 AS cor0 GROUP BY cor0.col0;
+  - name: tab2
+
+outputs:
+  - name: q8499.out
+    data: |
+      -80

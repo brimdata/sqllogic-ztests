@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q1498.sql | sort > q1498.out
+
+vector: true
+
+inputs:
+  - name: q1498.sql
+    data: |
+      SELECT DISTINCT - col1 AS col0 FROM tab2 WHERE - col1 * - col0 < col1;
+  - name: tab2
+
+outputs:
+  - name: q1498.out
+    data: |

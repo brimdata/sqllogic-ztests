@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q2340.sql | sort > q2340.out
+
+vector: true
+
+inputs:
+  - name: q2340.sql
+    data: |
+      SELECT DISTINCT + col1 * + ( + col1 ) AS col2, col0 AS col2 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q2340.out
+    data: |
+      2601	46
+      4489	75
+      5929	64

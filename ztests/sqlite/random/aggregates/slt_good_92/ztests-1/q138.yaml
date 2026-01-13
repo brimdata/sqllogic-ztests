@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q138.sql | sort > q138.out
+
+vector: true
+
+inputs:
+  - name: q138.sql
+    data: |
+      SELECT DISTINCT col1 * 89 AS col2 FROM tab2 AS cor0 WHERE 74 < ( + col2 );
+  - name: tab2
+
+outputs:
+  - name: q138.out
+    data: |

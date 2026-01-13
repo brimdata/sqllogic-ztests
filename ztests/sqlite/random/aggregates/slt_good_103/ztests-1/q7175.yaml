@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q7175.sql | sort > q7175.out
+
+vector: true
+
+inputs:
+  - name: q7175.sql
+    data: |
+      SELECT col2 / - col2 AS col0, + col2 * - 50 + - col1 AS col0 FROM tab0;
+  - name: tab0
+
+outputs:
+  - name: q7175.out
+    data: |
+      -1	-2431
+      -1	-4951
+      -1	-521

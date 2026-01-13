@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q6315.sql | sort > q6315.out
+
+vector: true
+
+inputs:
+  - name: q6315.sql
+    data: |
+      SELECT CAST ( NULL AS INTEGER ) * MIN ( ALL + col0 ) AS col1, + SUM ( DISTINCT CAST ( + col1 AS INTEGER ) ) AS col1 FROM tab2 AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q6315.out
+    data: |
+      NULL	195

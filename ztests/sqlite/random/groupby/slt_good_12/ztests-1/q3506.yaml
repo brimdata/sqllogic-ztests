@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q3506.sql | sort > q3506.out
+
+vector: true
+
+inputs:
+  - name: q3506.sql
+    data: |
+      SELECT DISTINCT col1 - + 57 AS col2 FROM tab2 GROUP BY col1 HAVING - col1 <= 95 * + col1;
+  - name: tab2
+
+outputs:
+  - name: q3506.out
+    data: |
+      -16
+      2
+      4

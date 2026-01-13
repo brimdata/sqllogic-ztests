@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q7480.sql | sort > q7480.out
+
+vector: true
+
+inputs:
+  - name: q7480.sql
+    data: |
+      SELECT DISTINCT CAST ( + 80 AS INTEGER ) AS col0 FROM tab0 AS cor0 CROSS JOIN tab0 AS cor1 GROUP BY cor1.col2, cor1.col2;
+  - name: tab0
+
+outputs:
+  - name: q7480.out
+    data: |
+      80

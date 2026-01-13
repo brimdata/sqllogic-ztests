@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q7585.sql | sort > q7585.out
+
+vector: true
+
+inputs:
+  - name: q7585.sql
+    data: |
+      SELECT DISTINCT 92 AS col0 FROM tab2 AS cor0 CROSS JOIN tab0 cor1 GROUP BY cor1.col0, cor0.col0;
+  - name: tab0
+  - name: tab2
+
+outputs:
+  - name: q7585.out
+    data: |
+      92

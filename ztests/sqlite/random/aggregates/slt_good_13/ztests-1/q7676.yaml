@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q7676.sql | sort > q7676.out
+
+vector: true
+
+inputs:
+  - name: q7676.sql
+    data: |
+      SELECT DISTINCT - CAST ( NULL AS REAL ) AS col1, + ( - col2 ) AS col1 FROM tab2 AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q7676.out
+    data: |
+      NULL	-23
+      NULL	-40
+      NULL	-58

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q7951.sql | sort > q7951.out
+
+vector: true
+
+inputs:
+  - name: q7951.sql
+    data: |
+      SELECT ALL - COUNT ( * ) AS col2 FROM tab1 WHERE ( col2 ) > ( col1 * - 17 );
+  - name: tab1
+
+outputs:
+  - name: q7951.out
+    data: |
+      -3

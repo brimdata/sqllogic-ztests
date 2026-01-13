@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q12505.sql | sort > q12505.out
+
+vector: true
+
+inputs:
+  - name: q12505.sql
+    data: |
+      SELECT 26 AS col1, + 5 * ( col1 ) AS col1 FROM tab0;
+  - name: tab0
+
+outputs:
+  - name: q12505.out
+    data: |
+      26	105
+      26	405
+      26	5

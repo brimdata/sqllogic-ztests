@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q6897.sql | sort > q6897.out
 
+vector: true
+
 inputs:
   - name: q6897.sql
     data: |
+      pragma pg
       SELECT - col2 AS col2 FROM tab2 WHERE - 75 NOT IN ( col2 * - col1 ) GROUP BY col2 HAVING NOT col2 IS NULL;
   - name: tab2
 

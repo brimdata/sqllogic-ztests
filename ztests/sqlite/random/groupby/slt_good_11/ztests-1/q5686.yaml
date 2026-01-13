@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q5686.sql | sort > q5686.out
+
+vector: true
+
+inputs:
+  - name: q5686.sql
+    data: |
+      SELECT DISTINCT 76 AS col2 FROM tab1 GROUP BY col0 HAVING NULL < col0 * + 30;
+  - name: tab1
+
+outputs:
+  - name: q5686.out
+    data: |

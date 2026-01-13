@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q6282.sql | sort > q6282.out
+
+vector: true
+
+inputs:
+  - name: q6282.sql
+    data: |
+      SELECT - col1 - + col2 + + + col0 + - col2 AS col0 FROM tab2 WHERE NOT - col2 BETWEEN col0 AND NULL;
+  - name: tab2
+
+outputs:
+  - name: q6282.out
+    data: |
+      -108
+      -51
+      -93

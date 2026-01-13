@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q3580.sql | sort > q3580.out
+
+vector: true
+
+inputs:
+  - name: q3580.sql
+    data: |
+      SELECT DISTINCT + - 99 FROM tab1, tab0 AS cor0 GROUP BY tab1.col2;
+  - name: tab0
+  - name: tab1
+
+outputs:
+  - name: q3580.out
+    data: |
+      -99

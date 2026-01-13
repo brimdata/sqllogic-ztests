@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q5705.sql | sort > q5705.out
+
+vector: true
+
+inputs:
+  - name: q5705.sql
+    data: |
+      SELECT ALL + col2 * col1 * - col0 AS col0, col0 * - + col2 AS col0 FROM tab2 AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q5705.out
+    data: |
+      -197120	-2560
+      -291450	-4350
+      -53958	-1058

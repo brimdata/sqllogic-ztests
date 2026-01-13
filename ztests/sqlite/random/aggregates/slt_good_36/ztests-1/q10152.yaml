@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q10152.sql | sort > q10152.out
+
+vector: true
+
+inputs:
+  - name: q10152.sql
+    data: |
+      SELECT + COUNT ( * ) AS col0 FROM tab2 WHERE NOT ( + - col1 / col0 - - col1 * - col2 * 24 ) = - ( col2 );
+  - name: tab2
+
+outputs:
+  - name: q10152.out
+    data: |
+      3

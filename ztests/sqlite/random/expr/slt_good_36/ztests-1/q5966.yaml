@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q5966.sql | sort > q5966.out
+
+vector: true
+
+inputs:
+  - name: q5966.sql
+    data: |
+      SELECT ALL 77, ( + COUNT ( - CASE WHEN NULL IS NULL THEN NULL ELSE + CAST ( NULL AS INTEGER ) END ) ) AS col1;
+
+outputs:
+  - name: q5966.out
+    data: |
+      77	0

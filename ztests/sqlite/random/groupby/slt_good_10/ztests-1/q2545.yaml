@@ -1,0 +1,18 @@
+script: |
+  super -f tsv -I q2545.sql | sort > q2545.out
+
+vector: true
+
+inputs:
+  - name: q2545.sql
+    data: |
+      pragma pg
+      SELECT ALL col0, - col0 AS col0 FROM tab0 AS cor0 GROUP BY col0;
+  - name: tab0
+
+outputs:
+  - name: q2545.out
+    data: |
+      26	-26
+      43	-43
+      83	-83

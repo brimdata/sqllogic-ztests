@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q7903.sql | sort > q7903.out
+
+vector: true
+
+inputs:
+  - name: q7903.sql
+    data: |
+      SELECT - col1 - + col0 AS col2 FROM tab0 WHERE NOT - col1 * - col1 * col2 < + col1;
+  - name: tab0
+
+outputs:
+  - name: q7903.out
+    data: |
+      -110
+      -132
+      -180

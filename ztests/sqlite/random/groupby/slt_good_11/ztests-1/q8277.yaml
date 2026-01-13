@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q8277.sql | sort > q8277.out
 
+vector: true
+
 inputs:
   - name: q8277.sql
     data: |
+      pragma pg
       SELECT col1 * 30 AS col1 FROM tab1 GROUP BY col1, col0 HAVING NOT - 54 < NULL;
   - name: tab1
 

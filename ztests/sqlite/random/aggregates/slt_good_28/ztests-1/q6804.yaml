@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q6804.sql | sort > q6804.out
+
+vector: true
+
+inputs:
+  - name: q6804.sql
+    data: |
+      SELECT ALL - MIN ( DISTINCT - col2 ) * 50 AS col2, 36 AS col2 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q6804.out
+    data: |
+      2900	36

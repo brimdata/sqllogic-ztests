@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q9965.sql | sort > q9965.out
+
+vector: true
+
+inputs:
+  - name: q9965.sql
+    data: |
+      SELECT tab1.col1 / - col0 AS col2 FROM tab1 WHERE NOT col2 * - col2 IN ( - col2 * + col0 / col1 );
+  - name: tab1
+
+outputs:
+  - name: q9965.out
+    data: |
+      -8
+      0
+      0

@@ -1,0 +1,18 @@
+script: |
+  super -f tsv -I q2195.sql | sort > q2195.out
+
+vector: true
+
+inputs:
+  - name: q2195.sql
+    data: |
+      pragma pg
+      SELECT + col0 AS col0, col0 FROM tab2 GROUP BY col0, col0;
+  - name: tab2
+
+outputs:
+  - name: q2195.out
+    data: |
+      15	15
+      91	91
+      92	92

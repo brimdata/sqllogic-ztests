@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q11138.sql | sort > q11138.out
+
+vector: true
+
+inputs:
+  - name: q11138.sql
+    data: |
+      SELECT DISTINCT 22 FROM tab1 AS cor0 GROUP BY col0 HAVING NOT NULL BETWEEN NULL AND col0;
+  - name: tab1
+
+outputs:
+  - name: q11138.out
+    data: |

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q12482.sql | sort > q12482.out
+
+vector: true
+
+inputs:
+  - name: q12482.sql
+    data: |
+      SELECT CAST ( NULL AS REAL ) * COUNT ( * ) - - COUNT ( * ) AS col0, - MAX ( DISTINCT - col1 ) AS col0 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q12482.out
+    data: |
+      NULL	5

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q12200.sql | sort > q12200.out
+
+vector: true
+
+inputs:
+  - name: q12200.sql
+    data: |
+      SELECT MIN ( + ( col1 ) ) AS col1 FROM tab2 WHERE NOT col1 BETWEEN ( NULL ) AND + col2 / - col1;
+  - name: tab2
+
+outputs:
+  - name: q12200.out
+    data: |
+      51

@@ -1,0 +1,18 @@
+script: |
+  super -f tsv -I q10286.sql | sort > q10286.out
+
+vector: true
+
+inputs:
+  - name: q10286.sql
+    data: |
+      pragma pg
+      SELECT DISTINCT col0 AS col0, col0 * + 86 FROM tab2 AS cor0 GROUP BY col0;
+  - name: tab2
+
+outputs:
+  - name: q10286.out
+    data: |
+      15	1290
+      91	7826
+      92	7912

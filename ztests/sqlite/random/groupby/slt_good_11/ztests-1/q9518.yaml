@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q9518.sql | sort > q9518.out
 
+vector: true
+
 inputs:
   - name: q9518.sql
     data: |
+      pragma pg
       SELECT 77 AS col1 FROM tab1 GROUP BY col1 HAVING + - CAST ( - - 25 AS INTEGER ) IS NULL;
   - name: tab1
 

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q10169.sql | sort > q10169.out
+
+vector: true
+
+inputs:
+  - name: q10169.sql
+    data: |
+      pragma pg
+      SELECT ALL - ( - ( - 82 ) ) AS col2 FROM tab1 AS cor0 GROUP BY col1, col2, col0 HAVING ( col0 / - col2 ) IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q10169.out
+    data: |

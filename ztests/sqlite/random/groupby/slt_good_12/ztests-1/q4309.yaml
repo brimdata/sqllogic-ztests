@@ -1,0 +1,18 @@
+script: |
+  super -f tsv -I q4309.sql | sort > q4309.out
+
+vector: true
+
+inputs:
+  - name: q4309.sql
+    data: |
+      pragma pg
+      SELECT ( 57 ) AS col1 FROM tab0 GROUP BY col2, col1, col0 HAVING NOT + col2 * col2 IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q4309.out
+    data: |
+      57
+      57
+      57

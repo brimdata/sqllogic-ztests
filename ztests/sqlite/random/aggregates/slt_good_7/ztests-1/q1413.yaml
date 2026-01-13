@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q1413.sql | sort > q1413.out
+
+vector: true
+
+inputs:
+  - name: q1413.sql
+    data: |
+      SELECT 8 AS col0, CAST ( - col2 AS INTEGER ) AS col0 FROM tab0 WHERE ( NOT NULL IS NOT NULL );
+  - name: tab0
+
+outputs:
+  - name: q1413.out
+    data: |
+      8	-10
+      8	-47
+      8	-99

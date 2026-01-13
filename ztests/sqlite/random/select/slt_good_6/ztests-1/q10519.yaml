@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q10519.sql | sort > q10519.out
+
+vector: true
+
+inputs:
+  - name: q10519.sql
+    data: |
+      SELECT DISTINCT * FROM tab0, tab0 cor0 WHERE NOT cor0.col2 <= tab0.col0;
+  - name: tab0
+
+outputs:
+  - name: q10519.out
+    data: |
+      24	86	33	24	86	33
+      24	86	33	89	91	82
+      35	97	1	89	91	82

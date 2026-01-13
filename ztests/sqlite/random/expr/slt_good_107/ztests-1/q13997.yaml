@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q13997.sql | sort > q13997.out
+
+vector: true
+
+inputs:
+  - name: q13997.sql
+    data: |
+      SELECT - CASE WHEN NOT 42 IS NULL THEN NULL ELSE 49 END AS col2, - 49 AS col1;
+
+outputs:
+  - name: q13997.out
+    data: |
+      NULL	-49

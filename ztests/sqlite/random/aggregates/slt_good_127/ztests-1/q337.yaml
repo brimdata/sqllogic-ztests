@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q337.sql | sort > q337.out
+
+vector: true
+
+inputs:
+  - name: q337.sql
+    data: |
+      SELECT col2 AS col1, - col0 AS col1 FROM tab0 WHERE NOT - col1 IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q337.out
+    data: |

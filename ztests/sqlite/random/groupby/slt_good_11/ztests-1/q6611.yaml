@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q6611.sql | sort > q6611.out
+
+vector: true
+
+inputs:
+  - name: q6611.sql
+    data: |
+      SELECT DISTINCT col2 / + 41 FROM tab0 AS cor0 GROUP BY col2 HAVING + col2 BETWEEN col2 AND ( NULL );
+  - name: tab0
+
+outputs:
+  - name: q6611.out
+    data: |

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8206.sql | sort > q8206.out
+
+vector: true
+
+inputs:
+  - name: q8206.sql
+    data: |
+      SELECT 99 AS col1, - MAX ( DISTINCT col2 ) AS col1 FROM tab2 AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q8206.out
+    data: |
+      99	-58

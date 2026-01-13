@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q8124.sql | sort > q8124.out
+
+vector: true
+
+inputs:
+  - name: q8124.sql
+    data: |
+      SELECT ALL + col0 * + col1 FROM tab2 WHERE NULL IS NULL GROUP BY col1, col0 HAVING col1 BETWEEN NULL AND + col0;
+  - name: tab2
+
+outputs:
+  - name: q8124.out
+    data: |

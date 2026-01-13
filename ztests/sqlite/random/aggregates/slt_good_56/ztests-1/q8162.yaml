@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8162.sql | sort > q8162.out
+
+vector: true
+
+inputs:
+  - name: q8162.sql
+    data: |
+      SELECT + ( + ( COUNT ( col0 ) ) ) AS col1 FROM tab1 WHERE col1 + - + CAST ( 32 AS REAL ) IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q8162.out
+    data: |
+      3

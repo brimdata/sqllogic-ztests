@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8854.sql | sort > q8854.out
+
+vector: true
+
+inputs:
+  - name: q8854.sql
+    data: |
+      SELECT 12 * + COUNT ( * ) AS col1, ( - + ( COUNT ( ALL - col1 ) ) ) AS col1 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q8854.out
+    data: |
+      36	-3

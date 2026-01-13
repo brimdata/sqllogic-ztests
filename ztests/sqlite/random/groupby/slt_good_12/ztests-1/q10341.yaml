@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q10341.sql | sort > q10341.out
+
+vector: true
+
+inputs:
+  - name: q10341.sql
+    data: |
+      SELECT DISTINCT col1 - - 99 / + - CAST ( NULL AS INTEGER ) AS col0 FROM tab0 GROUP BY col1;
+  - name: tab0
+
+outputs:
+  - name: q10341.out
+    data: |
+      NULL

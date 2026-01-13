@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q609.sql | sort > q609.out
+
+vector: true
+
+inputs:
+  - name: q609.sql
+    data: |
+      SELECT DISTINCT tab2.col0 + + tab2.col0 AS col1 FROM tab2 GROUP BY tab2.col0 HAVING NULL NOT BETWEEN + tab2.col0 AND - col0;
+  - name: tab2
+
+outputs:
+  - name: q609.out
+    data: |

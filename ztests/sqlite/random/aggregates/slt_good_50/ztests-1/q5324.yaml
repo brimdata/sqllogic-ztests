@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q5324.sql | sort > q5324.out
+
+vector: true
+
+inputs:
+  - name: q5324.sql
+    data: |
+      SELECT DISTINCT 1 AS col2, MIN ( ALL col2 ) * COUNT ( + 97 ) AS col2 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q5324.out
+    data: |
+      1	177

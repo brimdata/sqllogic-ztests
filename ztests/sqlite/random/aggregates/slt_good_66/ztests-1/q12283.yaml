@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q12283.sql | sort > q12283.out
+
+vector: true
+
+inputs:
+  - name: q12283.sql
+    data: |
+      SELECT COUNT ( * ) AS col1, COUNT ( * ) FROM tab0 AS cor0 WHERE + col1 <> + - 64;
+  - name: tab0
+
+outputs:
+  - name: q12283.out
+    data: |
+      3	3

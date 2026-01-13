@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q7638.sql | sort > q7638.out
+
+vector: true
+
+inputs:
+  - name: q7638.sql
+    data: |
+      SELECT ALL col2 AS col1, - col0 * col0 AS col1 FROM tab0;
+  - name: tab0
+
+outputs:
+  - name: q7638.out
+    data: |
+      10	-7569
+      47	-225
+      99	-9409

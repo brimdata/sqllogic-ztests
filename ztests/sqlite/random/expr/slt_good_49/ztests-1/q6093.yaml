@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q6093.sql | sort > q6093.out
+
+vector: true
+
+inputs:
+  - name: q6093.sql
+    data: |
+      SELECT ALL + - COUNT ( * ) / + - CAST ( NULL AS REAL ) AS col0, 42 AS col0;
+
+outputs:
+  - name: q6093.out
+    data: |
+      NULL	42

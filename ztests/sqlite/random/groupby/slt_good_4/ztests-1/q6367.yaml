@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q6367.sql | sort > q6367.out
+
+vector: true
+
+inputs:
+  - name: q6367.sql
+    data: |
+      SELECT ALL + tab2.col1 FROM tab2 GROUP BY tab2.col1 HAVING tab2.col1 IN ( tab2.col1 );
+  - name: tab2
+
+outputs:
+  - name: q6367.out
+    data: |
+      41
+      59
+      61

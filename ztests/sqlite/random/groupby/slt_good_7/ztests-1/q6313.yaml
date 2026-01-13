@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q6313.sql | sort > q6313.out
 
+vector: true
+
 inputs:
   - name: q6313.sql
     data: |
+      pragma pg
       SELECT ALL - NULLIF ( + col0, - cor0.col0 ) * cor0.col1 AS col0 FROM tab1 cor0 GROUP BY col0, cor0.col1;
   - name: tab1
 

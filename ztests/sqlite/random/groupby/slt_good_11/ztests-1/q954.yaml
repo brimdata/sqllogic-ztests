@@ -1,0 +1,18 @@
+script: |
+  super -f tsv -I q954.sql | sort > q954.out
+
+vector: true
+
+inputs:
+  - name: q954.sql
+    data: |
+      pragma pg
+      SELECT col1, - col1 AS col1 FROM tab0 GROUP BY col0, col1;
+  - name: tab0
+
+outputs:
+  - name: q954.out
+    data: |
+      0	0
+      0	0
+      81	-81

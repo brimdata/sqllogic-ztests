@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q153.sql | sort > q153.out
+
+vector: true
+
+inputs:
+  - name: q153.sql
+    data: |
+      SELECT DISTINCT col1 AS col0, 45 * col0 AS col0 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q153.out
+    data: |
+      14	2295
+      47	4095
+      5	3825

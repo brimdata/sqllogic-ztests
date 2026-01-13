@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q9260.sql | sort > q9260.out
+
+vector: true
+
+inputs:
+  - name: q9260.sql
+    data: |
+      SELECT col0 AS col0, 18, - + col0 * - col1 + + col0 AS col0 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q9260.out
+    data: |
+      51	18	765
+      85	18	510
+      91	18	4368

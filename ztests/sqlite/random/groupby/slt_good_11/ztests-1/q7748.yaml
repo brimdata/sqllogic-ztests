@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q7748.sql | sort > q7748.out
+
+vector: true
+
+inputs:
+  - name: q7748.sql
+    data: |
+      SELECT - col2 AS col0 FROM tab2 GROUP BY col2, col2 HAVING NOT + - col2 >= - 71 * CAST ( NULL AS REAL );
+  - name: tab2
+
+outputs:
+  - name: q7748.out
+    data: |

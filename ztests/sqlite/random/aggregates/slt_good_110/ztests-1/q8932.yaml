@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q8932.sql | sort > q8932.out
+
+vector: true
+
+inputs:
+  - name: q8932.sql
+    data: |
+      SELECT ALL + CAST ( - col1 AS INTEGER ) AS col0, - 8 AS col0 FROM tab1 AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q8932.out
+    data: |
+      -14	-8
+      -47	-8
+      -5	-8

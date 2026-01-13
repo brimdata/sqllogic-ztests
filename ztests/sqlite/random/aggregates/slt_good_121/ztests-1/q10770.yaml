@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q10770.sql | sort > q10770.out
+
+vector: true
+
+inputs:
+  - name: q10770.sql
+    data: |
+      SELECT ALL + ( col0 ) * CAST ( - 32 AS INTEGER ) AS col1, - col1 * - - 93 AS col1 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q10770.out
+    data: |
+      -1632	-1302
+      -2720	-465
+      -2912	-4371

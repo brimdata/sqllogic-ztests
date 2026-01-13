@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q8629.sql | sort > q8629.out
+
+vector: true
+
+inputs:
+  - name: q8629.sql
+    data: |
+      SELECT + 92 AS col1, + 13 * col1 AS col1 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q8629.out
+    data: |
+      92	182
+      92	611
+      92	65

@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q6142.sql | sort > q6142.out
+
+vector: true
+
+inputs:
+  - name: q6142.sql
+    data: |
+      SELECT col2 + - col1 + + - col2 * col2, ( col2 ) FROM tab1 GROUP BY col2, col1;
+  - name: tab1
+
+outputs:
+  - name: q6142.out
+    data: |
+      -2037	45
+      -5014	71
+      -62	8

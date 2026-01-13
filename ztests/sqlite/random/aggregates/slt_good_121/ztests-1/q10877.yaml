@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q10877.sql | sort > q10877.out
+
+vector: true
+
+inputs:
+  - name: q10877.sql
+    data: |
+      SELECT MAX ( DISTINCT - col2 ) AS col1, - CAST ( + + COUNT ( * ) AS INTEGER ) AS col1 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q10877.out
+    data: |
+      -23	-3

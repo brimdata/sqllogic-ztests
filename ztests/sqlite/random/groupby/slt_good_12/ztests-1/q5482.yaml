@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q5482.sql | sort > q5482.out
+
+vector: true
+
+inputs:
+  - name: q5482.sql
+    data: |
+      SELECT - col2 FROM tab2 GROUP BY col2 HAVING - COALESCE ( col2, + + CAST ( NULL AS INTEGER ) * - 29 ) IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q5482.out
+    data: |
+      -58
+      -79
+      -87

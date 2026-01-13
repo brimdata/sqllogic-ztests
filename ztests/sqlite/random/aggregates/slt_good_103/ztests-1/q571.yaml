@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q571.sql | sort > q571.out
+
+vector: true
+
+inputs:
+  - name: q571.sql
+    data: |
+      SELECT ALL + col2 * - col2 AS col1, col0 AS col1 FROM tab2 WHERE - col2 BETWEEN NULL AND col0;
+  - name: tab2
+
+outputs:
+  - name: q571.out
+    data: |

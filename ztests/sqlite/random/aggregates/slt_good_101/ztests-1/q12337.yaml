@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q12337.sql | sort > q12337.out
+
+vector: true
+
+inputs:
+  - name: q12337.sql
+    data: |
+      SELECT MIN ( col2 ) AS col0, - COUNT ( * ) AS col0 FROM tab0;
+  - name: tab0
+
+outputs:
+  - name: q12337.out
+    data: |
+      10	-3

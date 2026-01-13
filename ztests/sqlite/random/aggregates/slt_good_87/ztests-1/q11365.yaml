@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q11365.sql | sort > q11365.out
+
+vector: true
+
+inputs:
+  - name: q11365.sql
+    data: |
+      SELECT MIN ( DISTINCT + 37 ) AS col2 FROM tab2 WHERE NOT ( - col2 IS NULL );
+  - name: tab2
+
+outputs:
+  - name: q11365.out
+    data: |
+      37

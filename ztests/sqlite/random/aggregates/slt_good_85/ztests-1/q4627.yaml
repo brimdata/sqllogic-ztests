@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q4627.sql | sort > q4627.out
+
+vector: true
+
+inputs:
+  - name: q4627.sql
+    data: |
+      SELECT DISTINCT - 99 + col2 AS col1, CAST ( NULL AS INTEGER ) AS col1 FROM tab0;
+  - name: tab0
+
+outputs:
+  - name: q4627.out
+    data: |
+      -52	NULL
+      -89	NULL
+      0	NULL

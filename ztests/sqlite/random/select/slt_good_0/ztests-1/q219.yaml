@@ -1,0 +1,23 @@
+script: |
+  super -f tsv -I q219.sql | sort > q219.out
+
+vector: true
+
+inputs:
+  - name: q219.sql
+    data: |
+      SELECT * FROM tab1, tab1 AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q219.out
+    data: |
+      3	26	54	3	26	54
+      3	26	54	64	10	57
+      3	26	54	80	13	96
+      64	10	57	3	26	54
+      64	10	57	64	10	57
+      64	10	57	80	13	96
+      80	13	96	3	26	54
+      80	13	96	64	10	57
+      80	13	96	80	13	96

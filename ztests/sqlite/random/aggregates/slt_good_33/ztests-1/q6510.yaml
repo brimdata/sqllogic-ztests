@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q6510.sql | sort > q6510.out
+
+vector: true
+
+inputs:
+  - name: q6510.sql
+    data: |
+      SELECT ( 28 ) AS col1, col1 * - col1 - col0 AS col1 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q6510.out
+    data: |
+      28	-110
+      28	-2300
+      28	-247

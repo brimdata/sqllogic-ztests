@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q5886.sql | sort > q5886.out
+
+vector: true
+
+inputs:
+  - name: q5886.sql
+    data: |
+      SELECT DISTINCT + 28 FROM tab2 GROUP BY col1 HAVING NOT ( NULL ) IS NOT NULL AND NOT + ( + COALESCE ( - col1, + COALESCE ( col1, - 43 ) ) ) IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q5886.out
+    data: |
+      28

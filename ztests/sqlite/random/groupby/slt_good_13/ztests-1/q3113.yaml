@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q3113.sql | sort > q3113.out
 
+vector: true
+
 inputs:
   - name: q3113.sql
     data: |
+      pragma pg
       SELECT - cor0.col1 * 31 * 22 AS col1 FROM tab2 cor0 GROUP BY cor0.col1, col1;
   - name: tab2
 

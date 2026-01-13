@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q4276.sql | sort > q4276.out
+
+vector: true
+
+inputs:
+  - name: q4276.sql
+    data: |
+      SELECT ALL 15 AS col2, col2 - - CAST ( NULL AS INTEGER ) AS col2 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q4276.out
+    data: |
+      15	NULL
+      15	NULL
+      15	NULL

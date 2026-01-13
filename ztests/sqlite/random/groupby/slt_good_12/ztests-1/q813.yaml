@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q813.sql | sort > q813.out
+
+vector: true
+
+inputs:
+  - name: q813.sql
+    data: |
+      SELECT - col0 FROM tab1 GROUP BY col0 HAVING ( NULL ) NOT BETWEEN col0 AND ( NULL );
+  - name: tab1
+
+outputs:
+  - name: q813.out
+    data: |

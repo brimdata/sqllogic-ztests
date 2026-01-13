@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q3237.sql | sort > q3237.out
+
+vector: true
+
+inputs:
+  - name: q3237.sql
+    data: |
+      SELECT + col2 * - 47 AS col2, - CAST ( NULL AS INTEGER ) AS col2 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q3237.out
+    data: |
+      -2773	NULL
+      -3196	NULL
+      -4512	NULL

@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q2830.sql | sort > q2830.out
+
+vector: true
+
+inputs:
+  - name: q2830.sql
+    data: |
+      SELECT - col2 AS col0, 99 * - col0 + col0 * - 90 AS col0 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q2830.out
+    data: |
+      -59	-16065
+      -68	-17199
+      -96	-9639

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q6674.sql | sort > q6674.out
+
+vector: true
+
+inputs:
+  - name: q6674.sql
+    data: |
+      pragma pg
+      SELECT DISTINCT col0 / ( - col0 ) * ( col2 ) + - col2 + col1 * col0 + + 11 AS col1 FROM tab1 GROUP BY col0, col2, col1 HAVING col0 IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q6674.out
+    data: |

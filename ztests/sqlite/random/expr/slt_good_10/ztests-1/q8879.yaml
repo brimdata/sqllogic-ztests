@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q8879.sql | sort > q8879.out
+
+vector: true
+
+inputs:
+  - name: q8879.sql
+    data: |
+      SELECT ALL 27 AS col1, - CASE WHEN NULL <> 70 THEN - 2 END;
+
+outputs:
+  - name: q8879.out
+    data: |
+      27	NULL

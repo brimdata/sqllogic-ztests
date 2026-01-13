@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q8191.sql | sort > q8191.out
+
+vector: true
+
+inputs:
+  - name: q8191.sql
+    data: |
+      SELECT + CAST ( - COUNT ( * ) AS INTEGER ) / + col0 * + COUNT ( * ) + + + col0 FROM tab2 GROUP BY col0;
+  - name: tab2
+
+outputs:
+  - name: q8191.out
+    data: |
+      15
+      91
+      92

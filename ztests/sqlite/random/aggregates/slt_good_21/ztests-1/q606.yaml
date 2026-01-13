@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q606.sql | sort > q606.out
+
+vector: true
+
+inputs:
+  - name: q606.sql
+    data: |
+      SELECT col0 + - + col0 + - + 34 AS col0, - 26 AS col0 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q606.out
+    data: |
+      -34	-26
+      -34	-26
+      -34	-26

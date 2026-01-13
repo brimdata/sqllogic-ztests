@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q3018.sql | sort > q3018.out
+
+vector: true
+
+inputs:
+  - name: q3018.sql
+    data: |
+      SELECT DISTINCT + 87 + 79 FROM tab1, tab2 AS cor0 GROUP BY cor0.col0;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q3018.out
+    data: |
+      166

@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q3242.sql | sort > q3242.out
+
+vector: true
+
+inputs:
+  - name: q3242.sql
+    data: |
+      pragma pg
+      SELECT DISTINCT + col1 * + + col0 / + - col1 - + + ( - CAST ( NULL AS INTEGER ) ) * + + col0 AS col1 FROM tab2 GROUP BY col0, col1, col0 HAVING NULL IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q3242.out
+    data: |
+      NULL

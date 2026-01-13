@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q8672.sql | sort > q8672.out
+
+vector: true
+
+inputs:
+  - name: q8672.sql
+    data: |
+      SELECT 29 AS col1, + col1 / 99 * CAST ( NULL AS INTEGER ) + - 66 AS col1 FROM tab2 AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q8672.out
+    data: |
+      29	NULL
+      29	NULL
+      29	NULL

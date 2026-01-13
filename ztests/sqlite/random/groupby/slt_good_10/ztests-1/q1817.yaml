@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q1817.sql | sort > q1817.out
+
+vector: true
+
+inputs:
+  - name: q1817.sql
+    data: |
+      SELECT DISTINCT + col1 * col2 FROM tab1 GROUP BY col1, col2 HAVING - col1 IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q1817.out
+    data: |
+      2565
+      3124
+      48

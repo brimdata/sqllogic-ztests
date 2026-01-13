@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8184.sql | sort > q8184.out
+
+vector: true
+
+inputs:
+  - name: q8184.sql
+    data: |
+      SELECT ALL + + 10 + ( COUNT ( * ) ) AS col1, - COUNT ( * ) AS col1 FROM tab1 AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q8184.out
+    data: |
+      13	-3

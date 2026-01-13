@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q10003.sql | sort > q10003.out
+
+vector: true
+
+inputs:
+  - name: q10003.sql
+    data: |
+      SELECT - col0 FROM tab2 GROUP BY col0 HAVING NOT NULL > ( + - 20 * + col0 );
+  - name: tab2
+
+outputs:
+  - name: q10003.out
+    data: |

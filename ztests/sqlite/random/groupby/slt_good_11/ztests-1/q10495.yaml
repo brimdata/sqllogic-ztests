@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q10495.sql | sort > q10495.out
 
+vector: true
+
 inputs:
   - name: q10495.sql
     data: |
+      pragma pg
       SELECT DISTINCT col0 + col1 AS col1 FROM tab0 AS cor0 WHERE COALESCE ( col2, + col1, + + col0 ) BETWEEN NULL AND NULL GROUP BY col0, col1;
   - name: tab0
 

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8583.sql | sort > q8583.out
+
+vector: true
+
+inputs:
+  - name: q8583.sql
+    data: |
+      pragma pg
+      SELECT DISTINCT col2 AS col1 FROM tab2 AS cor0 WHERE NOT NULL IS NULL GROUP BY col1, col0, col2 HAVING NOT - col2 IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q8583.out
+    data: |

@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q8229.sql | sort > q8229.out
+
+vector: true
+
+inputs:
+  - name: q8229.sql
+    data: |
+      SELECT + 7 * ( col0 ) AS col1 FROM tab2 GROUP BY col0, col0, col0 HAVING ( - col0 ) + COUNT ( * ) IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q8229.out
+    data: |
+      105
+      637
+      644

@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q10265.sql | sort > q10265.out
+
+vector: true
+
+inputs:
+  - name: q10265.sql
+    data: |
+      SELECT ALL - col2 AS col1 FROM tab1 WHERE col1 + col0 + col0 * - col1 NOT BETWEEN col0 + col0 AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q10265.out
+    data: |
+      -54
+      -57
+      -96

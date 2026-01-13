@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q8504.sql | sort > q8504.out
+
+vector: true
+
+inputs:
+  - name: q8504.sql
+    data: |
+      SELECT + 41 FROM tab0 GROUP BY col0 HAVING NOT + - col0 >= - + ( + COUNT ( * ) );
+  - name: tab0
+
+outputs:
+  - name: q8504.out
+    data: |
+      41
+      41
+      41

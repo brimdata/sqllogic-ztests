@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q13789.sql | sort > q13789.out
+
+vector: true
+
+inputs:
+  - name: q13789.sql
+    data: |
+      SELECT + 37 AS col2, - CASE - 73 WHEN COUNT ( * ) THEN + + 99 WHEN - 92 THEN NULL ELSE NULL END AS col0;
+
+outputs:
+  - name: q13789.out
+    data: |
+      37	NULL

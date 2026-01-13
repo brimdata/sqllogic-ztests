@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q8145.sql | sort > q8145.out
+
+vector: true
+
+inputs:
+  - name: q8145.sql
+    data: |
+      SELECT DISTINCT + col2 * CAST ( + col2 AS INTEGER ) AS col2 FROM tab1 AS cor0 WHERE + col0 < col2 + - col1 * 66;
+  - name: tab1
+
+outputs:
+  - name: q8145.out
+    data: |

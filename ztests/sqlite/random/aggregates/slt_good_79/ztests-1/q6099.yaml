@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q6099.sql | sort > q6099.out
+
+vector: true
+
+inputs:
+  - name: q6099.sql
+    data: |
+      SELECT ( + - COUNT ( * ) ) AS col1, - COUNT ( * ) AS col1 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q6099.out
+    data: |
+      -3	-3

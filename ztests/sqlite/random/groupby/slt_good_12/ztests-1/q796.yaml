@@ -1,0 +1,18 @@
+script: |
+  super -f tsv -I q796.sql | sort > q796.out
+
+vector: true
+
+inputs:
+  - name: q796.sql
+    data: |
+      pragma pg
+      SELECT - col1 - + - 95 AS col1, ( - col1 ) * + col1 + col1 FROM tab2 AS cor0 GROUP BY col1;
+  - name: tab2
+
+outputs:
+  - name: q796.out
+    data: |
+      34	-3660
+      36	-3422
+      54	-1640

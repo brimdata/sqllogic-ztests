@@ -1,0 +1,23 @@
+script: |
+  super -f tsv -I q12223.sql | sort > q12223.out
+
+vector: true
+
+inputs:
+  - name: q12223.sql
+    data: |
+      SELECT ALL * FROM tab2 cor0 CROSS JOIN tab2 cor1 WHERE ( - ( 13 ) ) <= 7;
+  - name: tab2
+
+outputs:
+  - name: q12223.out
+    data: |
+      46	51	23	46	51	23
+      46	51	23	64	77	40
+      46	51	23	75	67	58
+      64	77	40	46	51	23
+      64	77	40	64	77	40
+      64	77	40	75	67	58
+      75	67	58	46	51	23
+      75	67	58	64	77	40
+      75	67	58	75	67	58

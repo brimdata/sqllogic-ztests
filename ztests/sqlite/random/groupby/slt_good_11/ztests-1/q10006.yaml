@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q10006.sql | sort > q10006.out
 
+vector: true
+
 inputs:
   - name: q10006.sql
     data: |
+      pragma pg
       SELECT ALL col1 AS col1 FROM tab2 GROUP BY col1 HAVING NOT - 37 >= - + 87;
   - name: tab2
 

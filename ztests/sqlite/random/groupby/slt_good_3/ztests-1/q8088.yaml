@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q8088.sql | sort > q8088.out
+
+vector: true
+
+inputs:
+  - name: q8088.sql
+    data: |
+      SELECT DISTINCT + tab2.col0 / + 49 FROM tab2 GROUP BY tab2.col0;
+  - name: tab2
+
+outputs:
+  - name: q8088.out
+    data: |
+      0
+      1

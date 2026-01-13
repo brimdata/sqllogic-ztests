@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q6776.sql | sort > q6776.out
+
+vector: true
+
+inputs:
+  - name: q6776.sql
+    data: |
+      SELECT + col1 AS col0, - ( - col1 ) + col2 * col2 * - col0 * col1 AS col0 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q6776.out
+    data: |
+      51	-1240983
+      67	-16904033
+      77	-7884723

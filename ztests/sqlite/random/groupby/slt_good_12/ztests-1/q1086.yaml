@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q1086.sql | sort > q1086.out
 
+vector: true
+
 inputs:
   - name: q1086.sql
     data: |
+      pragma pg
       SELECT ALL + - 37 AS col0 FROM tab0 AS cor0 GROUP BY col0 HAVING NOT ( - ( col0 ) NOT BETWEEN NULL AND NULL );
   - name: tab0
 

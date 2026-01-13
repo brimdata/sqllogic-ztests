@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q8223.sql | sort > q8223.out
+
+vector: true
+
+inputs:
+  - name: q8223.sql
+    data: |
+      SELECT DISTINCT - 24 AS col2 FROM tab0 AS cor0 CROSS JOIN tab1 AS cor1 GROUP BY cor1.col1;
+  - name: tab0
+  - name: tab1
+
+outputs:
+  - name: q8223.out
+    data: |
+      -24

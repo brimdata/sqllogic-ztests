@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q8192.sql | sort > q8192.out
+
+vector: true
+
+inputs:
+  - name: q8192.sql
+    data: |
+      SELECT - col1 FROM tab0 GROUP BY col1, col2 HAVING + - NULLIF ( + col1, NULLIF ( + + 95, col2 / + - 51 ) ) IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q8192.out
+    data: |

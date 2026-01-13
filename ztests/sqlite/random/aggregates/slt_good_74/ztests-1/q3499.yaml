@@ -1,0 +1,23 @@
+script: |
+  super -f tsv -I q3499.sql | sort > q3499.out
+
+vector: true
+
+inputs:
+  - name: q3499.sql
+    data: |
+      SELECT * FROM tab1 AS cor0 CROSS JOIN tab1 AS cor1 WHERE 23 IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q3499.out
+    data: |
+      51	14	96	51	14	96
+      51	14	96	85	5	59
+      51	14	96	91	47	68
+      85	5	59	51	14	96
+      85	5	59	85	5	59
+      85	5	59	91	47	68
+      91	47	68	51	14	96
+      91	47	68	85	5	59
+      91	47	68	91	47	68

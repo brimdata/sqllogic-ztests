@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q10326.sql | sort > q10326.out
+
+vector: true
+
+inputs:
+  - name: q10326.sql
+    data: |
+      SELECT DISTINCT col0, col0 * - 63 AS col1 FROM tab1 GROUP BY col0;
+  - name: tab1
+
+outputs:
+  - name: q10326.out
+    data: |
+      22	-1386
+      28	-1764
+      82	-5166

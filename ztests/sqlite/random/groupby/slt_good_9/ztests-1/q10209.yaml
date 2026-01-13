@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q10209.sql | sort > q10209.out
+
+vector: true
+
+inputs:
+  - name: q10209.sql
+    data: |
+      pragma pg
+      SELECT col1 AS col0 FROM tab1 GROUP BY col0, col1 HAVING NOT NULL BETWEEN NULL AND + + AVG ( DISTINCT + + col1 );
+  - name: tab1
+
+outputs:
+  - name: q10209.out
+    data: |

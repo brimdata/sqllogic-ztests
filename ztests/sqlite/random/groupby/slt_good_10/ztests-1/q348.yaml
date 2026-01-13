@@ -1,0 +1,18 @@
+script: |
+  super -f tsv -I q348.sql | sort > q348.out
+
+vector: true
+
+inputs:
+  - name: q348.sql
+    data: |
+      pragma pg
+      SELECT DISTINCT col1 AS col1, col1 * col1 AS col0 FROM tab2 GROUP BY col1;
+  - name: tab2
+
+outputs:
+  - name: q348.out
+    data: |
+      41	1681
+      59	3481
+      61	3721

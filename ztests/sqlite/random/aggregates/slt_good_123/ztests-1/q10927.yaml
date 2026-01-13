@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q10927.sql | sort > q10927.out
+
+vector: true
+
+inputs:
+  - name: q10927.sql
+    data: |
+      SELECT + COUNT ( * ) AS col1, - SUM ( - CAST ( NULL AS REAL ) ) AS col1 FROM tab2 AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q10927.out
+    data: |
+      3	NULL

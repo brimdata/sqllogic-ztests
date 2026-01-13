@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q4042.sql | sort > q4042.out
+
+vector: true
+
+inputs:
+  - name: q4042.sql
+    data: |
+      SELECT DISTINCT + CAST ( NULL AS INTEGER ) AS col0, col2 * - col2 AS col0 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q4042.out
+    data: |
+      NULL	-3481
+      NULL	-4624
+      NULL	-9216

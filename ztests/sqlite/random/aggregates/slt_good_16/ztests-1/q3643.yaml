@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q3643.sql | sort > q3643.out
+
+vector: true
+
+inputs:
+  - name: q3643.sql
+    data: |
+      SELECT ALL - col2 AS col0 FROM tab1 WHERE NOT - col0 < - - col2;
+  - name: tab1
+
+outputs:
+  - name: q3643.out
+    data: |

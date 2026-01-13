@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q10001.sql | sort > q10001.out
+
+vector: true
+
+inputs:
+  - name: q10001.sql
+    data: |
+      SELECT DISTINCT CAST ( NULL AS INTEGER ) AS col1 FROM tab2 WHERE 75 BETWEEN 5 / + 10 AND + col1 + col0;
+  - name: tab2
+
+outputs:
+  - name: q10001.out
+    data: |
+      NULL

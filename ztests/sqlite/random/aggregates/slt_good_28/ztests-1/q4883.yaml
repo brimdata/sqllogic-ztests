@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q4883.sql | sort > q4883.out
+
+vector: true
+
+inputs:
+  - name: q4883.sql
+    data: |
+      SELECT ALL 4 AS col1, + ( - col2 ) AS col1 FROM tab1 AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q4883.out
+    data: |
+      4	-59
+      4	-68
+      4	-96

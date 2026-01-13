@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q560.sql | sort > q560.out
+
+vector: true
+
+inputs:
+  - name: q560.sql
+    data: |
+      SELECT col1 + col1 AS col1, - col2 AS col1 FROM tab2 AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q560.out
+    data: |
+      102	-23
+      134	-58
+      154	-40

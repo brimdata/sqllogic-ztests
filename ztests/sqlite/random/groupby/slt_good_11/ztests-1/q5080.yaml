@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q5080.sql | sort > q5080.out
+
+vector: true
+
+inputs:
+  - name: q5080.sql
+    data: |
+      SELECT DISTINCT + NULLIF ( 10, 73 ) AS col1 FROM tab2 AS cor0 GROUP BY col0, col0;
+  - name: tab2
+
+outputs:
+  - name: q5080.out
+    data: |
+      10

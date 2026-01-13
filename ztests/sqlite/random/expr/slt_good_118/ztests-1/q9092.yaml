@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q9092.sql | sort > q9092.out
+
+vector: true
+
+inputs:
+  - name: q9092.sql
+    data: |
+      SELECT 28 AS col1, COUNT ( * ) + - 77 AS col1;
+
+outputs:
+  - name: q9092.out
+    data: |
+      28	-76

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q6300.sql | sort > q6300.out
+
+vector: true
+
+inputs:
+  - name: q6300.sql
+    data: |
+      SELECT - COUNT ( * ) AS col1 FROM tab2 WHERE col1 + col0 * - 68 IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q6300.out
+    data: |
+      -3

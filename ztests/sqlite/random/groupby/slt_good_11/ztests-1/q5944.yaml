@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q5944.sql | sort > q5944.out
 
+vector: true
+
 inputs:
   - name: q5944.sql
     data: |
+      pragma pg
       SELECT DISTINCT - - 63 AS col2 FROM tab0 AS cor0 GROUP BY col2, col2 HAVING NOT CAST ( NULL AS REAL ) IS NULL;
   - name: tab0
 

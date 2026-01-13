@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q1861.sql | sort > q1861.out
+
+vector: true
+
+inputs:
+  - name: q1861.sql
+    data: |
+      SELECT ALL 42 AS col2, COALESCE ( - 89, ( CAST ( NULL AS INTEGER ) ) ) AS col2;
+
+outputs:
+  - name: q1861.out
+    data: |
+      42	-89

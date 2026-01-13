@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q289.sql | sort > q289.out
+
+vector: true
+
+inputs:
+  - name: q289.sql
+    data: |
+      SELECT DISTINCT - NULLIF ( COALESCE ( 40, + cor0.col0 + 35 ), cor0.col0 ) AS col0 FROM tab1 AS cor0 GROUP BY cor0.col0;
+  - name: tab1
+
+outputs:
+  - name: q289.out
+    data: |
+      -40

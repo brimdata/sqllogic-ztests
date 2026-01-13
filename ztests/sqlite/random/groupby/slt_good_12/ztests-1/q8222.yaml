@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q8222.sql | sort > q8222.out
+
+vector: true
+
+inputs:
+  - name: q8222.sql
+    data: |
+      SELECT ALL - COUNT ( * ) * 40 + + col1 FROM tab1 AS cor0 WHERE NOT NULL <> NULL GROUP BY col1, col2;
+  - name: tab1
+
+outputs:
+  - name: q8222.out
+    data: |

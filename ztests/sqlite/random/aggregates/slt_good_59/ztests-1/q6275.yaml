@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q6275.sql | sort > q6275.out
+
+vector: true
+
+inputs:
+  - name: q6275.sql
+    data: |
+      SELECT col0 + CAST ( NULL AS INTEGER ) AS col1 FROM tab2 WHERE NOT - col1 = col2 - 90;
+  - name: tab2
+
+outputs:
+  - name: q6275.out
+    data: |
+      NULL
+      NULL
+      NULL

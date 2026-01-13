@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q9712.sql | sort > q9712.out
+
+vector: true
+
+inputs:
+  - name: q9712.sql
+    data: |
+      SELECT ALL 83 AS col2, CAST ( - col2 AS INTEGER ) AS col2 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q9712.out
+    data: |
+      83	-59
+      83	-68
+      83	-96

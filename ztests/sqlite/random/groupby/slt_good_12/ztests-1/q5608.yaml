@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q5608.sql | sort > q5608.out
+
+vector: true
+
+inputs:
+  - name: q5608.sql
+    data: |
+      SELECT DISTINCT - CAST ( NULL AS REAL ) AS col0 FROM tab1 AS cor0 WHERE NOT - col0 IN ( - - col1 ) GROUP BY col1;
+  - name: tab1
+
+outputs:
+  - name: q5608.out
+    data: |
+      NULL

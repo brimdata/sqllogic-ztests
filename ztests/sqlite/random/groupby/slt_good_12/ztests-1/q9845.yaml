@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q9845.sql | sort > q9845.out
+
+vector: true
+
+inputs:
+  - name: q9845.sql
+    data: |
+      SELECT - 91 FROM tab1 cor0 GROUP BY col1 HAVING NOT - ( COUNT ( * ) ) <> - - col1;
+  - name: tab1
+
+outputs:
+  - name: q9845.out
+    data: |

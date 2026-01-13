@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q10551.sql | sort > q10551.out
+
+vector: true
+
+inputs:
+  - name: q10551.sql
+    data: |
+      SELECT ALL + NULLIF ( - 42, + 1 * CAST ( NULL AS INTEGER ) ) AS col2, CAST ( NULL AS INTEGER ) AS col2;
+
+outputs:
+  - name: q10551.out
+    data: |
+      -42	NULL

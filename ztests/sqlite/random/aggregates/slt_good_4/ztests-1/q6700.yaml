@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q6700.sql | sort > q6700.out
+
+vector: true
+
+inputs:
+  - name: q6700.sql
+    data: |
+      SELECT ALL - SUM ( col0 ) AS col2 FROM tab0 WHERE col2 * - col2 IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q6700.out
+    data: |
+      -199

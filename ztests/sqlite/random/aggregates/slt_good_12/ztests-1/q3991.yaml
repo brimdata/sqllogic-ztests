@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q3991.sql | sort > q3991.out
+
+vector: true
+
+inputs:
+  - name: q3991.sql
+    data: |
+      SELECT DISTINCT 49 AS col2, + COUNT ( * ) AS col1 FROM tab1 WHERE NOT + col1 IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q3991.out
+    data: |
+      49	3

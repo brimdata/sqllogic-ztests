@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q4816.sql | sort > q4816.out
+
+vector: true
+
+inputs:
+  - name: q4816.sql
+    data: |
+      SELECT DISTINCT cor0.col1 / col0 FROM tab2 AS cor0 GROUP BY cor0.col0, cor0.col1;
+  - name: tab2
+
+outputs:
+  - name: q4816.out
+    data: |
+      0
+      4

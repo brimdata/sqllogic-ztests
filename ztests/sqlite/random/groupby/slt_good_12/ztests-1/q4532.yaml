@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q4532.sql | sort > q4532.out
 
+vector: true
+
 inputs:
   - name: q4532.sql
     data: |
+      pragma pg
       SELECT ALL 15 + - col2 AS col2 FROM tab1 AS cor0 GROUP BY col2 HAVING - 48 > NULL;
   - name: tab1
 

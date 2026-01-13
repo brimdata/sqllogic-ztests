@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q6508.sql | sort > q6508.out
+
+vector: true
+
+inputs:
+  - name: q6508.sql
+    data: |
+      SELECT DISTINCT col1 * 69 FROM tab2 AS cor0 WHERE NOT col2 IS NULL GROUP BY col2, col2, col1 HAVING NULLIF ( col1, + 37 * col1 + + 30 * CAST ( NULL AS INTEGER ) ) <> + 17;
+  - name: tab2
+
+outputs:
+  - name: q6508.out
+    data: |
+      2829
+      4071
+      4209

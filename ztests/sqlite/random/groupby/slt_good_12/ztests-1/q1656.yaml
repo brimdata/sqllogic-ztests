@@ -1,0 +1,18 @@
+script: |
+  super -f tsv -I q1656.sql | sort > q1656.out
+
+vector: true
+
+inputs:
+  - name: q1656.sql
+    data: |
+      pragma pg
+      SELECT ALL + 18 AS col2 FROM tab0 GROUP BY col0, col2 HAVING - + col0 IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q1656.out
+    data: |
+      18
+      18
+      18

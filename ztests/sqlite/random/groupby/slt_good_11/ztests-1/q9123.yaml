@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q9123.sql | sort > q9123.out
 
+vector: true
+
 inputs:
   - name: q9123.sql
     data: |
+      pragma pg
       SELECT DISTINCT - 66 AS col2, col0 AS col0 FROM tab2 GROUP BY col0 HAVING + COALESCE ( - col0, - 88, - + 55 ) + - col0 IS NULL;
   - name: tab2
 

@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q13684.sql | sort > q13684.out
+
+vector: true
+
+inputs:
+  - name: q13684.sql
+    data: |
+      SELECT DISTINCT - 70 AS col1, + col1 AS col1 FROM tab1 WHERE NULL IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q13684.out
+    data: |
+      -70	14
+      -70	47
+      -70	5

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q12848.sql | sort > q12848.out
+
+vector: true
+
+inputs:
+  - name: q12848.sql
+    data: |
+      SELECT - MIN ( 36 ) AS col2, + 51 FROM tab2 WHERE NOT ( NOT ( col2 * - 62 - col2 IS NOT NULL ) );
+  - name: tab2
+
+outputs:
+  - name: q12848.out
+    data: |
+      -36	51

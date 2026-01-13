@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q13802.sql | sort > q13802.out
+
+vector: true
+
+inputs:
+  - name: q13802.sql
+    data: |
+      SELECT DISTINCT CAST ( - col0 AS INTEGER ), col0 + - 21 AS col2, + - 4 AS col2 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q13802.out
+    data: |
+      -51	30	-4
+      -85	64	-4
+      -91	70	-4

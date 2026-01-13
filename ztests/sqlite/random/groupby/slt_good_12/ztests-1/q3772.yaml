@@ -1,0 +1,18 @@
+script: |
+  super -f tsv -I q3772.sql | sort > q3772.out
+
+vector: true
+
+inputs:
+  - name: q3772.sql
+    data: |
+      pragma pg
+      SELECT col0 * - col0 AS col0, col0 / 6 + - + col0 FROM tab0 GROUP BY col0 HAVING col0 IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q3772.out
+    data: |
+      -1849	-36
+      -676	-22
+      -6889	-70

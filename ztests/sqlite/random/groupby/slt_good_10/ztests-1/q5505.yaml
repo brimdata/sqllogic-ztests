@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q5505.sql | sort > q5505.out
+
+vector: true
+
+inputs:
+  - name: q5505.sql
+    data: |
+      pragma pg
+      SELECT ALL - col0 AS col1 FROM tab0 WHERE NOT col0 IS NOT NULL GROUP BY col0, col1 HAVING NOT col0 + + col1 IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q5505.out
+    data: |

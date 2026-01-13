@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q5016.sql | sort > q5016.out
 
+vector: true
+
 inputs:
   - name: q5016.sql
     data: |
+      pragma pg
       SELECT ALL col1 * col1 / + 53 + + 3 AS col1 FROM tab0 GROUP BY col1;
   - name: tab0
 

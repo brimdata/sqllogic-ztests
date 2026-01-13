@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9481.sql | sort > q9481.out
+
+vector: true
+
+inputs:
+  - name: q9481.sql
+    data: |
+      SELECT ALL SUM ( col1 ) + - 12 AS col2 FROM tab0 AS cor0 WHERE NOT 82 BETWEEN + ( + col2 ) AND NULL;
+  - name: tab0
+
+outputs:
+  - name: q9481.out
+    data: |
+      -11

@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q3464.sql | sort > q3464.out
 
+vector: true
+
 inputs:
   - name: q3464.sql
     data: |
+      pragma pg
       SELECT DISTINCT COALESCE ( 20, + 58 ) AS col0 FROM tab1 GROUP BY col0;
   - name: tab1
 

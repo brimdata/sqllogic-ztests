@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q6078.sql | sort > q6078.out
 
+vector: true
+
 inputs:
   - name: q6078.sql
     data: |
+      pragma pg
       SELECT col0 * - - 17 * 14 * col0 AS col2 FROM tab2 GROUP BY col0, col2 HAVING NOT NULL IS NOT NULL;
   - name: tab2
 

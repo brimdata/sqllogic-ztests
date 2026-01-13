@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9037.sql | sort > q9037.out
+
+vector: true
+
+inputs:
+  - name: q9037.sql
+    data: |
+      pragma pg
+      SELECT col2 AS col2, + col2 / + + 1 FROM tab0 AS cor0 WHERE NULL <= NULL GROUP BY col2;
+  - name: tab0
+
+outputs:
+  - name: q9037.out
+    data: |

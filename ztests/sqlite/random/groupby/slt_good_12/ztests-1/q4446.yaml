@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q4446.sql | sort > q4446.out
+
+vector: true
+
+inputs:
+  - name: q4446.sql
+    data: |
+      SELECT + ( + col2 ), ( - + col2 ) FROM tab1 GROUP BY col2 HAVING NOT + 23 * col2 <= ( col2 );
+  - name: tab1
+
+outputs:
+  - name: q4446.out
+    data: |
+      45	-45
+      71	-71
+      8	-8

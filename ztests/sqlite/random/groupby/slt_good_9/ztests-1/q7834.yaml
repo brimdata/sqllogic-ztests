@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q7834.sql | sort > q7834.out
+
+vector: true
+
+inputs:
+  - name: q7834.sql
+    data: |
+      pragma pg
+      SELECT col0 - + - col0 + - col0 AS col1 FROM tab0 GROUP BY col1, col0 HAVING ( ( NULL BETWEEN NULL AND - col0 ) );
+  - name: tab0
+
+outputs:
+  - name: q7834.out
+    data: |

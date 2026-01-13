@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q10147.sql | sort > q10147.out
+
+vector: true
+
+inputs:
+  - name: q10147.sql
+    data: |
+      SELECT - 32 * col1 FROM tab2 GROUP BY col0, col1 HAVING NOT ( + 47 * - col0 + COUNT ( * ) ) < - ( col0 );
+  - name: tab2
+
+outputs:
+  - name: q10147.out
+    data: |

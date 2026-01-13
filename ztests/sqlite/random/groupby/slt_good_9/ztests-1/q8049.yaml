@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q8049.sql | sort > q8049.out
+
+vector: true
+
+inputs:
+  - name: q8049.sql
+    data: |
+      SELECT ALL col1 FROM tab1 GROUP BY col1, col2 HAVING NULL > ( + col2 );
+  - name: tab1
+
+outputs:
+  - name: q8049.out
+    data: |

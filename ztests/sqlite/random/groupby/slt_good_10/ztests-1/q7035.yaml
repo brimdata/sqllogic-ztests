@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q7035.sql | sort > q7035.out
 
+vector: true
+
 inputs:
   - name: q7035.sql
     data: |
+      pragma pg
       SELECT DISTINCT - col2 AS col2 FROM tab2 WHERE NOT NULL IS NULL GROUP BY col2;
   - name: tab2
 

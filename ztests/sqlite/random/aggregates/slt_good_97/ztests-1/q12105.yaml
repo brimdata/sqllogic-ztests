@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q12105.sql | sort > q12105.out
+
+vector: true
+
+inputs:
+  - name: q12105.sql
+    data: |
+      SELECT DISTINCT 15 AS col0, - MIN ( DISTINCT - col2 ) AS col0 FROM tab2 AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q12105.out
+    data: |
+      15	58

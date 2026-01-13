@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q9502.sql | sort > q9502.out
+
+vector: true
+
+inputs:
+  - name: q9502.sql
+    data: |
+      SELECT DISTINCT - + 57 FROM tab2, tab1 AS cor0 GROUP BY cor0.col0;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q9502.out
+    data: |
+      -57

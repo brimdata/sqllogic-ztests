@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q9782.sql | sort > q9782.out
+
+vector: true
+
+inputs:
+  - name: q9782.sql
+    data: |
+      SELECT col0 + + 51 / COUNT ( * ) FROM tab0 GROUP BY col0 HAVING 23 IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q9782.out
+    data: |

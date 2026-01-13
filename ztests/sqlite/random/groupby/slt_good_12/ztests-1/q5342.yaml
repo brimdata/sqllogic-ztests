@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q5342.sql | sort > q5342.out
+
+vector: true
+
+inputs:
+  - name: q5342.sql
+    data: |
+      SELECT DISTINCT 70 FROM tab0 AS cor0 GROUP BY col1, col1 HAVING NOT NULL IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q5342.out
+    data: |
+      70

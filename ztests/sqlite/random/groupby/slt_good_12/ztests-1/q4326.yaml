@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q4326.sql | sort > q4326.out
 
+vector: true
+
 inputs:
   - name: q4326.sql
     data: |
+      pragma pg
       SELECT ALL - col2 + + 19 AS col2 FROM tab1 AS cor0 GROUP BY col1, col2 HAVING NULL NOT BETWEEN ( - + 8 ) AND NULL;
   - name: tab1
 

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9861.sql | sort > q9861.out
+
+vector: true
+
+inputs:
+  - name: q9861.sql
+    data: |
+      pragma pg
+      SELECT ALL - col2 AS col0 FROM tab2 AS cor0 WHERE NULL > - col2 + - col1 GROUP BY col2, col0, col1 HAVING - + col2 IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q9861.out
+    data: |

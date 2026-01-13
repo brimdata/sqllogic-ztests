@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q10517.sql | sort > q10517.out
+
+vector: true
+
+inputs:
+  - name: q10517.sql
+    data: |
+      SELECT DISTINCT + COUNT ( * ) AS col1 FROM tab2 cor0 WHERE - col1 BETWEEN - 68 AND - col2;
+  - name: tab2
+
+outputs:
+  - name: q10517.out
+    data: |
+      2

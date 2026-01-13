@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q2008.sql | sort > q2008.out
+
+vector: true
+
+inputs:
+  - name: q2008.sql
+    data: |
+      SELECT DISTINCT - + COUNT ( - col2 ) AS col2 FROM tab0 cor0 WHERE NOT col2 <= + 43;
+  - name: tab0
+
+outputs:
+  - name: q2008.out
+    data: |
+      -2

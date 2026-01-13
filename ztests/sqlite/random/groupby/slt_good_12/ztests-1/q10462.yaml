@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q10462.sql | sort > q10462.out
+
+vector: true
+
+inputs:
+  - name: q10462.sql
+    data: |
+      pragma pg
+      SELECT + 22 * - col0 / - col2 AS col0 FROM tab0 GROUP BY col0, col0, col2 HAVING NOT + col0 * col0 * col2 + 78 > NULL;
+  - name: tab0
+
+outputs:
+  - name: q10462.out
+    data: |

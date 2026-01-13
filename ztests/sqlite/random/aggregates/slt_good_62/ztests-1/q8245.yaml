@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q8245.sql | sort > q8245.out
+
+vector: true
+
+inputs:
+  - name: q8245.sql
+    data: |
+      SELECT + col2 AS col2, 28 * col2 AS col2 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q8245.out
+    data: |
+      59	1652
+      68	1904
+      96	2688

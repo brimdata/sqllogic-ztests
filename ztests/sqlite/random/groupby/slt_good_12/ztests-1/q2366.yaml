@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q2366.sql | sort > q2366.out
+
+vector: true
+
+inputs:
+  - name: q2366.sql
+    data: |
+      SELECT - 36 FROM tab2 AS cor0 GROUP BY col1 HAVING col1 IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q2366.out
+    data: |

@@ -1,0 +1,18 @@
+script: |
+  super -f tsv -I q9675.sql | sort > q9675.out
+
+vector: true
+
+inputs:
+  - name: q9675.sql
+    data: |
+      pragma pg
+      SELECT ALL + col0 AS col0, + col0 AS col2 FROM tab1 WHERE col0 IS NOT NULL GROUP BY col0;
+  - name: tab1
+
+outputs:
+  - name: q9675.out
+    data: |
+      22	22
+      28	28
+      82	82

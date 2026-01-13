@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q7240.sql | sort > q7240.out
+
+vector: true
+
+inputs:
+  - name: q7240.sql
+    data: |
+      SELECT ALL - + CASE + COUNT ( * ) WHEN + 7 THEN NULL WHEN - COUNT ( * ) THEN - - 7 END AS col1, 95 AS col2;
+
+outputs:
+  - name: q7240.out
+    data: |
+      NULL	95

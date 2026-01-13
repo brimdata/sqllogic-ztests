@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q1074.sql | sort > q1074.out
+
+vector: true
+
+inputs:
+  - name: q1074.sql
+    data: |
+      pragma pg
+      SELECT DISTINCT - + col1 - + + 2 AS col1 FROM tab0 AS cor0 GROUP BY col1, col2 HAVING NULL IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q1074.out
+    data: |
+      -2
+      -83

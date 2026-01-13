@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q11575.sql | sort > q11575.out
+
+vector: true
+
+inputs:
+  - name: q11575.sql
+    data: |
+      SELECT - 9 * + COUNT ( * ) AS col1, CAST ( NULL AS INTEGER ) AS col1 FROM tab1 AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q11575.out
+    data: |
+      -27	NULL

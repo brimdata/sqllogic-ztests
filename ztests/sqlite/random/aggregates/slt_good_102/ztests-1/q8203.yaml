@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8203.sql | sort > q8203.out
+
+vector: true
+
+inputs:
+  - name: q8203.sql
+    data: |
+      SELECT ALL + COUNT ( col0 ) AS col0 FROM tab2 WHERE ( + col0 ) = ( + col0 );
+  - name: tab2
+
+outputs:
+  - name: q8203.out
+    data: |
+      3

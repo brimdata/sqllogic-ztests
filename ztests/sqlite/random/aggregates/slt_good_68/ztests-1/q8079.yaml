@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q8079.sql | sort > q8079.out
+
+vector: true
+
+inputs:
+  - name: q8079.sql
+    data: |
+      SELECT DISTINCT - CAST ( col0 AS INTEGER ) AS col2 FROM tab2 AS cor0 WHERE NOT ( col2 * + - col0 ) BETWEEN col0 AND NULL;
+  - name: tab2
+
+outputs:
+  - name: q8079.out
+    data: |
+      -46
+      -64
+      -75

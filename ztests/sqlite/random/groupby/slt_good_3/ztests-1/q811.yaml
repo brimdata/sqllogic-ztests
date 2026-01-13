@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q811.sql | sort > q811.out
+
+vector: true
+
+inputs:
+  - name: q811.sql
+    data: |
+      SELECT DISTINCT - 40 FROM tab1 AS cor0 GROUP BY cor0.col1, cor0.col2;
+  - name: tab1
+
+outputs:
+  - name: q811.out
+    data: |
+      -40

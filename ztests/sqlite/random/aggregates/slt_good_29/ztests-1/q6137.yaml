@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q6137.sql | sort > q6137.out
+
+vector: true
+
+inputs:
+  - name: q6137.sql
+    data: |
+      SELECT DISTINCT - col1 AS col2 FROM tab2 AS cor0 WHERE - col2 NOT BETWEEN col1 AND ( col1 );
+  - name: tab2
+
+outputs:
+  - name: q6137.out
+    data: |
+      -51
+      -67
+      -77

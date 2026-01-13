@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q571.sql | sort > q571.out
+
+vector: true
+
+inputs:
+  - name: q571.sql
+    data: |
+      SELECT DISTINCT 40 / + 51 FROM tab1, tab2 AS cor0 GROUP BY cor0.col0;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q571.out
+    data: |
+      0

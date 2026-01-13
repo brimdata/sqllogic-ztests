@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8086.sql | sort > q8086.out
+
+vector: true
+
+inputs:
+  - name: q8086.sql
+    data: |
+      SELECT DISTINCT - + 56 FROM tab0 GROUP BY tab0.col1;
+  - name: tab0
+
+outputs:
+  - name: q8086.out
+    data: |
+      -56

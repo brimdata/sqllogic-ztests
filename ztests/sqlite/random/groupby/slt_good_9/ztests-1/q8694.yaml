@@ -1,0 +1,18 @@
+script: |
+  super -f tsv -I q8694.sql | sort > q8694.out
+
+vector: true
+
+inputs:
+  - name: q8694.sql
+    data: |
+      pragma pg
+      SELECT DISTINCT - col2 AS col1 FROM tab1 AS cor0 GROUP BY col1, col2 HAVING NOT col2 IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q8694.out
+    data: |
+      -45
+      -71
+      -8

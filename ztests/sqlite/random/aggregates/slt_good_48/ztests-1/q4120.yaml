@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4120.sql | sort > q4120.out
+
+vector: true
+
+inputs:
+  - name: q4120.sql
+    data: |
+      SELECT COUNT ( col2 ) AS col1 FROM tab2 AS cor0 WHERE col2 NOT BETWEEN - col1 * - col0 AND col0 + 38 / + 83;
+  - name: tab2
+
+outputs:
+  - name: q4120.out
+    data: |
+      3

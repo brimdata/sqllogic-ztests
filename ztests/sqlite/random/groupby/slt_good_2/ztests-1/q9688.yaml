@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9688.sql | sort > q9688.out
+
+vector: true
+
+inputs:
+  - name: q9688.sql
+    data: |
+      SELECT DISTINCT tab2.col2 - tab2.col2 FROM tab2 GROUP BY tab2.col2;
+  - name: tab2
+
+outputs:
+  - name: q9688.out
+    data: |
+      0

@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q3688.sql | sort > q3688.out
+
+vector: true
+
+inputs:
+  - name: q3688.sql
+    data: |
+      SELECT DISTINCT col2 * + col2 AS col0, col1 * + - col1 AS col0 FROM tab0 AS cor0;
+  - name: tab0
+
+outputs:
+  - name: q3688.out
+    data: |
+      100	-441
+      2209	-6561
+      9801	-1

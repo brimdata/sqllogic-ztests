@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q13863.sql | sort > q13863.out
+
+vector: true
+
+inputs:
+  - name: q13863.sql
+    data: |
+      SELECT - col2 / col1 AS col1 FROM tab2 WHERE NOT + ( col0 ) > + col1;
+  - name: tab2
+
+outputs:
+  - name: q13863.out
+    data: |
+      0
+      0

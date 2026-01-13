@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q12725.sql | sort > q12725.out
+
+vector: true
+
+inputs:
+  - name: q12725.sql
+    data: |
+      SELECT ALL + COUNT ( * ) + - - COUNT ( * ) AS col2 FROM tab0 AS cor0 WHERE NOT 80 <= ( + col2 );
+  - name: tab0
+
+outputs:
+  - name: q12725.out
+    data: |
+      4

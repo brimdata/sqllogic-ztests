@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q4045.sql | sort > q4045.out
 
+vector: true
+
 inputs:
   - name: q4045.sql
     data: |
+      pragma pg
       SELECT + 5 / cor0.col2 + - cor0.col0 AS col1 FROM tab1 AS cor0 GROUP BY cor0.col2, col1, cor0.col0;
   - name: tab1
 

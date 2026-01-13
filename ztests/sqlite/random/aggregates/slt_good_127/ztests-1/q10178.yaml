@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q10178.sql | sort > q10178.out
+
+vector: true
+
+inputs:
+  - name: q10178.sql
+    data: |
+      SELECT ALL COUNT ( * ) / SUM ( ALL col1 * + col2 ) AS col1 FROM tab1 AS cor0 WHERE + 2 NOT IN ( + + col1 + col0 );
+  - name: tab1
+
+outputs:
+  - name: q10178.out
+    data: |
+      0

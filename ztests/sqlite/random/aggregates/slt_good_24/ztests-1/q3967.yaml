@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q3967.sql | sort > q3967.out
+
+vector: true
+
+inputs:
+  - name: q3967.sql
+    data: |
+      SELECT MAX ( ALL 40 ) AS col0 FROM tab1 WHERE NOT col0 BETWEEN - col2 AND - 66;
+  - name: tab1
+
+outputs:
+  - name: q3967.out
+    data: |
+      40

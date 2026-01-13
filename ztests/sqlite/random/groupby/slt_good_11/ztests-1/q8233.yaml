@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q8233.sql | sort > q8233.out
+
+vector: true
+
+inputs:
+  - name: q8233.sql
+    data: |
+      pragma pg
+      SELECT DISTINCT + 24 * + 81 AS col1 FROM tab1 AS cor0 GROUP BY col1, col0;
+  - name: tab1
+
+outputs:
+  - name: q8233.out
+    data: |
+      1944

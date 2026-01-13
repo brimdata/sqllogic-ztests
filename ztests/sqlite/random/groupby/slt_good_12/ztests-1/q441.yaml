@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q441.sql | sort > q441.out
+
+vector: true
+
+inputs:
+  - name: q441.sql
+    data: |
+      SELECT + col1 FROM tab1 WHERE NOT 91 * - col2 IN ( 67 + - col1 * - CAST ( NULL AS INTEGER ) ) GROUP BY col1, col1 HAVING - col1 IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q441.out
+    data: |

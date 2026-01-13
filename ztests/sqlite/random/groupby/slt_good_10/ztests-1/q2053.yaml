@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q2053.sql | sort > q2053.out
+
+vector: true
+
+inputs:
+  - name: q2053.sql
+    data: |
+      SELECT ALL col1 AS col2 FROM tab1 AS cor0 GROUP BY col1 HAVING NOT NULL = col1 / + + col1;
+  - name: tab1
+
+outputs:
+  - name: q2053.out
+    data: |

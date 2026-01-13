@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q9953.sql | sort > q9953.out
+
+vector: true
+
+inputs:
+  - name: q9953.sql
+    data: |
+      SELECT tab2.col0 FROM tab2 GROUP BY tab2.col0 HAVING NOT ( - tab2.col0 ) IN ( tab2.col0 );
+  - name: tab2
+
+outputs:
+  - name: q9953.out
+    data: |
+      15
+      91
+      92

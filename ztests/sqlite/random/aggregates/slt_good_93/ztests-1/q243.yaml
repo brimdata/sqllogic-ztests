@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q243.sql | sort > q243.out
+
+vector: true
+
+inputs:
+  - name: q243.sql
+    data: |
+      SELECT DISTINCT CAST ( NULL AS INTEGER ) AS col0 FROM tab0 WHERE NOT + col2 < ( - col2 + - col0 );
+  - name: tab0
+
+outputs:
+  - name: q243.out
+    data: |
+      NULL

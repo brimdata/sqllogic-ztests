@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q4243.sql | sort > q4243.out
+
+vector: true
+
+inputs:
+  - name: q4243.sql
+    data: |
+      SELECT ALL 58 AS col1, - col1 * + col2 AS col1 FROM tab2 AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q4243.out
+    data: |
+      58	-1173
+      58	-3080
+      58	-3886

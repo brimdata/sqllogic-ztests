@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4289.sql | sort > q4289.out
+
+vector: true
+
+inputs:
+  - name: q4289.sql
+    data: |
+      SELECT DISTINCT SUM ( DISTINCT - col1 ) * + MIN ( - col1 ) AS col0, - COUNT ( * ) * - COUNT ( * ) AS col0 FROM tab1 AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q4289.out
+    data: |
+      3102	9

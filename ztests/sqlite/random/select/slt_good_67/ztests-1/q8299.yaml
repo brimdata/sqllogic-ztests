@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q8299.sql | sort > q8299.out
+
+vector: true
+
+inputs:
+  - name: q8299.sql
+    data: |
+      SELECT DISTINCT + col0 AS col2 FROM tab1 WHERE NOT ( col2 ) IN ( + col0 );
+  - name: tab1
+
+outputs:
+  - name: q8299.out
+    data: |
+      3
+      64
+      80

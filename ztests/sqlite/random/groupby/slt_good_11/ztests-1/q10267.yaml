@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q10267.sql | sort > q10267.out
+
+vector: true
+
+inputs:
+  - name: q10267.sql
+    data: |
+      SELECT ALL + col0 * col0 + + CAST ( NULL AS INTEGER ), ( col0 ) FROM tab1 GROUP BY col0, col0;
+  - name: tab1
+
+outputs:
+  - name: q10267.out
+    data: |
+      NULL	22
+      NULL	28
+      NULL	82

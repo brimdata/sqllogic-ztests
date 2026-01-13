@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q2799.sql | sort > q2799.out
+
+vector: true
+
+inputs:
+  - name: q2799.sql
+    data: |
+      SELECT MAX ( col1 ) AS col1, - COUNT ( * ) * - COUNT ( * ) AS col1 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q2799.out
+    data: |
+      77	9

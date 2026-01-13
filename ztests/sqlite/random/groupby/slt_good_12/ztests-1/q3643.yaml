@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q3643.sql | sort > q3643.out
+
+vector: true
+
+inputs:
+  - name: q3643.sql
+    data: |
+      pragma pg
+      SELECT DISTINCT + col1 * + - col1 AS col1 FROM tab0 AS cor0 GROUP BY col1, col0, col0 HAVING 86 IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q3643.out
+    data: |
+      -6561
+      0

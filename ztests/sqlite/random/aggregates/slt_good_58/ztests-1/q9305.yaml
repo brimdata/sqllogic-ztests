@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9305.sql | sort > q9305.out
+
+vector: true
+
+inputs:
+  - name: q9305.sql
+    data: |
+      SELECT + COUNT ( * ) AS col2 FROM tab2 WHERE ( + - col2 ) <> - 77 - + col1;
+  - name: tab2
+
+outputs:
+  - name: q9305.out
+    data: |
+      3

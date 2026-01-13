@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q2021.sql | sort > q2021.out
 
+vector: true
+
 inputs:
   - name: q2021.sql
     data: |
+      pragma pg
       SELECT - CAST ( + 3 AS INTEGER ) AS col1 FROM tab2 AS cor0 GROUP BY col1 HAVING - col1 IN ( - 91 );
   - name: tab2
 

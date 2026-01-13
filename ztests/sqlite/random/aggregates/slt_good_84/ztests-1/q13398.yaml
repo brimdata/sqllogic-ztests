@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q13398.sql | sort > q13398.out
+
+vector: true
+
+inputs:
+  - name: q13398.sql
+    data: |
+      SELECT ALL COUNT ( ALL - CAST ( NULL AS INTEGER ) ) AS col0 FROM tab2 WHERE col0 * - 8 + - 33 IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q13398.out
+    data: |
+      0

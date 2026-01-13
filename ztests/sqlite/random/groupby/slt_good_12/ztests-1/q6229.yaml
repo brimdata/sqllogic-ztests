@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q6229.sql | sort > q6229.out
+
+vector: true
+
+inputs:
+  - name: q6229.sql
+    data: |
+      SELECT DISTINCT + COUNT ( * ) - - + COUNT ( * ) FROM tab1 GROUP BY col2, col0;
+  - name: tab1
+
+outputs:
+  - name: q6229.out
+    data: |
+      2

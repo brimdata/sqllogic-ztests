@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q2807.sql | sort > q2807.out
+
+vector: true
+
+inputs:
+  - name: q2807.sql
+    data: |
+      SELECT ALL col1 + + 14 AS col1, ( - col1 ) AS col1 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q2807.out
+    data: |
+      19	-5
+      28	-14
+      61	-47

@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q7958.sql | sort > q7958.out
+
+vector: true
+
+inputs:
+  - name: q7958.sql
+    data: |
+      SELECT 17 + - col1 FROM tab0 AS cor0 GROUP BY col1, col2 HAVING col1 / - col2 + - 43 IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q7958.out
+    data: |

@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q8270.sql | sort > q8270.out
+
+vector: true
+
+inputs:
+  - name: q8270.sql
+    data: |
+      SELECT DISTINCT col0 AS col2 FROM tab0 GROUP BY col0 HAVING NOT col0 = - col0;
+  - name: tab0
+
+outputs:
+  - name: q8270.out
+    data: |
+      26
+      43
+      83

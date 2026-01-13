@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q3608.sql | sort > q3608.out
+
+vector: true
+
+inputs:
+  - name: q3608.sql
+    data: |
+      SELECT ALL 53 * + col0, col0 FROM tab1 AS cor0 GROUP BY col0;
+  - name: tab1
+
+outputs:
+  - name: q3608.out
+    data: |
+      1166	22
+      1484	28
+      4346	82

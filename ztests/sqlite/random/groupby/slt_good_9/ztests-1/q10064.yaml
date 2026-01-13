@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q10064.sql | sort > q10064.out
+
+vector: true
+
+inputs:
+  - name: q10064.sql
+    data: |
+      SELECT DISTINCT - col2 FROM tab0 GROUP BY col2 HAVING NOT - col2 IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q10064.out
+    data: |
+      -24
+      -38
+      -79

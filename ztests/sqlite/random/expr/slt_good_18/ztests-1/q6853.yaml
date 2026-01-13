@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q6853.sql | sort > q6853.out
+
+vector: true
+
+inputs:
+  - name: q6853.sql
+    data: |
+      SELECT + 16 / COUNT ( * ) col1, - NULLIF ( 25, 6 ) AS col1;
+
+outputs:
+  - name: q6853.out
+    data: |
+      16	-25

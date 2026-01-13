@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q8890.sql | sort > q8890.out
 
+vector: true
+
 inputs:
   - name: q8890.sql
     data: |
+      pragma pg
       SELECT ALL 23 AS col2 FROM tab1 WHERE NULL IS NOT NULL GROUP BY col1, col2 HAVING + col2 = - 41;
   - name: tab1
 

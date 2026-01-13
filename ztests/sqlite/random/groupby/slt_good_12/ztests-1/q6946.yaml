@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q6946.sql | sort > q6946.out
+
+vector: true
+
+inputs:
+  - name: q6946.sql
+    data: |
+      SELECT ALL col0 + - CAST ( NULL AS INTEGER ) FROM tab2 GROUP BY col1, col0 HAVING - col1 = NULLIF ( + - col1, + - col0 );
+  - name: tab2
+
+outputs:
+  - name: q6946.out
+    data: |
+      NULL
+      NULL
+      NULL

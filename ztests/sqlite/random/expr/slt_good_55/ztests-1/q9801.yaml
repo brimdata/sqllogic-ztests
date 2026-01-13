@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q9801.sql | sort > q9801.out
+
+vector: true
+
+inputs:
+  - name: q9801.sql
+    data: |
+      SELECT ALL + - CASE WHEN COUNT ( * ) IS NULL THEN 3 * 90 ELSE NULL END * + 1 col0;
+
+outputs:
+  - name: q9801.out
+    data: |
+      NULL

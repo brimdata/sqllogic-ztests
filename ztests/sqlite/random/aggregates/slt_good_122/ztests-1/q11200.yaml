@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q11200.sql | sort > q11200.out
+
+vector: true
+
+inputs:
+  - name: q11200.sql
+    data: |
+      SELECT DISTINCT + COUNT ( * ) + + 40 AS col0 FROM tab0 AS cor0 WHERE col0 <> 60;
+  - name: tab0
+
+outputs:
+  - name: q11200.out
+    data: |
+      43

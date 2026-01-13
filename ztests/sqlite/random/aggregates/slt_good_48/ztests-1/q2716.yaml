@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q2716.sql | sort > q2716.out
+
+vector: true
+
+inputs:
+  - name: q2716.sql
+    data: |
+      SELECT ALL MAX ( + col1 ) AS col0 FROM tab2 WHERE NOT col0 IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q2716.out
+    data: |
+      77

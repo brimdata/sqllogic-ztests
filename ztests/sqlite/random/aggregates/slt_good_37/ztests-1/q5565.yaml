@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q5565.sql | sort > q5565.out
+
+vector: true
+
+inputs:
+  - name: q5565.sql
+    data: |
+      SELECT + ( col0 ) AS col1 FROM tab1 WHERE col0 NOT IN ( col1 );
+  - name: tab1
+
+outputs:
+  - name: q5565.out
+    data: |
+      51
+      85
+      91

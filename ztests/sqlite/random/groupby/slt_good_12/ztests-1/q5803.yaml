@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q5803.sql | sort > q5803.out
+
+vector: true
+
+inputs:
+  - name: q5803.sql
+    data: |
+      SELECT DISTINCT - 45 FROM tab2 GROUP BY col2 HAVING ( col2 ) IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q5803.out
+    data: |
+      -45

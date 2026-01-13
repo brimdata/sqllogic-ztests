@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q8127.sql | sort > q8127.out
+
+vector: true
+
+inputs:
+  - name: q8127.sql
+    data: |
+      SELECT DISTINCT + col0 FROM tab0 GROUP BY col2, col0 HAVING NOT ( - col2 * col0 ) <= ( NULL );
+  - name: tab0
+
+outputs:
+  - name: q8127.out
+    data: |

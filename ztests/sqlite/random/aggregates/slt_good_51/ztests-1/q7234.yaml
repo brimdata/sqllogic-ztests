@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q7234.sql | sort > q7234.out
+
+vector: true
+
+inputs:
+  - name: q7234.sql
+    data: |
+      SELECT 45 AS col0, + 56, COUNT ( * ) * + COUNT ( - col1 ) AS col0 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q7234.out
+    data: |
+      45	56	9

@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q7604.sql | sort > q7604.out
+
+vector: true
+
+inputs:
+  - name: q7604.sql
+    data: |
+      SELECT ALL CAST ( + - CASE - ( + COUNT ( * ) ) WHEN + - COALESCE ( COUNT ( * ), + 97 ) THEN NULL ELSE - COUNT ( * ) END AS REAL ) AS col2;
+
+outputs:
+  - name: q7604.out
+    data: |
+      NULL

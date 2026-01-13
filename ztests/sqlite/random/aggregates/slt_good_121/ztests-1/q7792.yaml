@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q7792.sql | sort > q7792.out
+
+vector: true
+
+inputs:
+  - name: q7792.sql
+    data: |
+      SELECT col1 AS col2 FROM tab2 WHERE - col1 NOT BETWEEN - col2 AND col0;
+  - name: tab2
+
+outputs:
+  - name: q7792.out
+    data: |
+      51
+      67
+      77

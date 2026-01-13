@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q8025.sql | sort > q8025.out
+
+vector: true
+
+inputs:
+  - name: q8025.sql
+    data: |
+      SELECT col2 + - COUNT ( * ) FROM tab2 AS cor0 GROUP BY col2, col1, col2;
+  - name: tab2
+
+outputs:
+  - name: q8025.out
+    data: |
+      57
+      78
+      86

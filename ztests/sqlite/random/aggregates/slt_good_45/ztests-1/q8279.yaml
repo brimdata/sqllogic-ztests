@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q8279.sql | sort > q8279.out
+
+vector: true
+
+inputs:
+  - name: q8279.sql
+    data: |
+      SELECT + col2 AS col2, col0 * + col2 AS col2 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q8279.out
+    data: |
+      23	1058
+      40	2560
+      58	4350

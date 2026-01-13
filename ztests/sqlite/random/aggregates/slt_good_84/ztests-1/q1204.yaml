@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q1204.sql | sort > q1204.out
+
+vector: true
+
+inputs:
+  - name: q1204.sql
+    data: |
+      SELECT col0 * + CAST ( NULL AS INTEGER ) AS col2 FROM tab0 WHERE NOT ( col2 ) IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q1204.out
+    data: |

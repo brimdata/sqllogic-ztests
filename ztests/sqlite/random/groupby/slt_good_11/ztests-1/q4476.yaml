@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q4476.sql | sort > q4476.out
 
+vector: true
+
 inputs:
   - name: q4476.sql
     data: |
+      pragma pg
       SELECT DISTINCT + 20 * + CAST ( - col0 AS INTEGER ) AS col0 FROM tab2 GROUP BY col0 HAVING NULL IS NULL;
   - name: tab2
 

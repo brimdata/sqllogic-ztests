@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1929.sql | sort > q1929.out
+
+vector: true
+
+inputs:
+  - name: q1929.sql
+    data: |
+      pragma pg
+      SELECT col0 AS col0 FROM tab0 GROUP BY col0, col1 HAVING NOT NULL NOT BETWEEN NULL AND + col1;
+  - name: tab0
+
+outputs:
+  - name: q1929.out
+    data: |

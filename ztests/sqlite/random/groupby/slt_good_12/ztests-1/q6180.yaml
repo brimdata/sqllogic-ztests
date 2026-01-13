@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q6180.sql | sort > q6180.out
+
+vector: true
+
+inputs:
+  - name: q6180.sql
+    data: |
+      SELECT col1, + 71 * - col1 FROM tab2 AS cor0 WHERE NOT ( NULL IS NULL ) GROUP BY col2, col1 HAVING col2 IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q6180.out
+    data: |

@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q8961.sql | sort > q8961.out
+
+vector: true
+
+inputs:
+  - name: q8961.sql
+    data: |
+      SELECT tab0.col1 AS col0 FROM tab0 GROUP BY tab0.col1 HAVING ( NULL ) IN ( tab0.col1 / tab0.col1 );
+  - name: tab0
+
+outputs:
+  - name: q8961.out
+    data: |

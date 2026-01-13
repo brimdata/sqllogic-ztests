@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q8494.sql | sort > q8494.out
+
+vector: true
+
+inputs:
+  - name: q8494.sql
+    data: |
+      SELECT col1 + - col1 + - col1 * - col1 + - col1, col1 FROM tab2 GROUP BY col1;
+  - name: tab2
+
+outputs:
+  - name: q8494.out
+    data: |
+      1640	41
+      3422	59
+      3660	61

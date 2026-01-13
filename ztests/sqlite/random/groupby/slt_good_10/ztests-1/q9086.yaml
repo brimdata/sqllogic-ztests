@@ -1,0 +1,18 @@
+script: |
+  super -f tsv -I q9086.sql | sort > q9086.out
+
+vector: true
+
+inputs:
+  - name: q9086.sql
+    data: |
+      pragma pg
+      SELECT DISTINCT + col0 AS col2, - col0 AS col0 FROM tab0 GROUP BY col0 HAVING NULL IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q9086.out
+    data: |
+      26	-26
+      43	-43
+      83	-83

@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q12657.sql | sort > q12657.out
+
+vector: true
+
+inputs:
+  - name: q12657.sql
+    data: |
+      SELECT ALL CAST ( NULL AS INTEGER ) * ( 21 ) AS col1, col1 + col1 AS col1 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q12657.out
+    data: |
+      NULL	10
+      NULL	28
+      NULL	94

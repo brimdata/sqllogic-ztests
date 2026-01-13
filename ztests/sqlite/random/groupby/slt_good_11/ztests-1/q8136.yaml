@@ -1,0 +1,18 @@
+script: |
+  super -f tsv -I q8136.sql | sort > q8136.out
+
+vector: true
+
+inputs:
+  - name: q8136.sql
+    data: |
+      pragma pg
+      SELECT ALL col0 AS col0, + CAST ( - col0 AS INTEGER ) + - 72 FROM tab1 GROUP BY col0;
+  - name: tab1
+
+outputs:
+  - name: q8136.out
+    data: |
+      22	-94
+      28	-100
+      82	-154

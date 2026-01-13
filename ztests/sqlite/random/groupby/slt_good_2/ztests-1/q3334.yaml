@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q3334.sql | sort > q3334.out
+
+vector: true
+
+inputs:
+  - name: q3334.sql
+    data: |
+      SELECT DISTINCT CAST ( + 31 AS INTEGER ) FROM tab1 AS cor0 GROUP BY cor0.col2;
+  - name: tab1
+
+outputs:
+  - name: q3334.out
+    data: |
+      31

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1288.sql | sort > q1288.out
+
+vector: true
+
+inputs:
+  - name: q1288.sql
+    data: |
+      pragma pg
+      SELECT DISTINCT + col1 * - - col2 AS col0 FROM tab0 GROUP BY col1, col2, col0 HAVING - col1 BETWEEN NULL AND NULL;
+  - name: tab0
+
+outputs:
+  - name: q1288.out
+    data: |

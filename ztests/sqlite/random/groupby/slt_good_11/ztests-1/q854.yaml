@@ -1,0 +1,18 @@
+script: |
+  super -f tsv -I q854.sql | sort > q854.out
+
+vector: true
+
+inputs:
+  - name: q854.sql
+    data: |
+      pragma pg
+      SELECT DISTINCT col2, col2 AS col2 FROM tab2 cor0 GROUP BY col1, col2;
+  - name: tab2
+
+outputs:
+  - name: q854.out
+    data: |
+      58	58
+      79	79
+      87	87

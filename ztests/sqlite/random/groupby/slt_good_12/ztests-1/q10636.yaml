@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q10636.sql | sort > q10636.out
+
+vector: true
+
+inputs:
+  - name: q10636.sql
+    data: |
+      SELECT + SUM ( col2 ) * col2 FROM tab2 GROUP BY col1, col2;
+  - name: tab2
+
+outputs:
+  - name: q10636.out
+    data: |
+      3364
+      6241
+      7569

@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q10477.sql | sort > q10477.out
 
+vector: true
+
 inputs:
   - name: q10477.sql
     data: |
+      pragma pg
       SELECT DISTINCT col1 AS col1 FROM tab1 AS cor0 GROUP BY col1, col2 HAVING NULL IS NULL;
   - name: tab1
 

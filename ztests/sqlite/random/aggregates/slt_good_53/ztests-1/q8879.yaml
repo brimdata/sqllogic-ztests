@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q8879.sql | sort > q8879.out
+
+vector: true
+
+inputs:
+  - name: q8879.sql
+    data: |
+      SELECT col0 AS col2, col1 * + col0 + + ( + col0 ) * col2 AS col2 FROM tab0;
+  - name: tab0
+
+outputs:
+  - name: q8879.out
+    data: |
+      15	1920
+      87	2697
+      97	9700

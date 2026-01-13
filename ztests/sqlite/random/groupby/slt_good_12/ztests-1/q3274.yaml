@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q3274.sql | sort > q3274.out
+
+vector: true
+
+inputs:
+  - name: q3274.sql
+    data: |
+      SELECT + col2 + + col1 FROM tab1 GROUP BY col2, col1 HAVING col2 * col2 <> ( NULL );
+  - name: tab1
+
+outputs:
+  - name: q3274.out
+    data: |

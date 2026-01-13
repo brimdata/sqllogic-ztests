@@ -1,0 +1,18 @@
+script: |
+  super -f tsv -I q6727.sql | sort > q6727.out
+
+vector: true
+
+inputs:
+  - name: q6727.sql
+    data: |
+      pragma pg
+      SELECT DISTINCT col0 * col0 AS col0 FROM tab0 GROUP BY col0 HAVING NOT + - AVG ( ALL col1 ) IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q6727.out
+    data: |
+      1849
+      676
+      6889

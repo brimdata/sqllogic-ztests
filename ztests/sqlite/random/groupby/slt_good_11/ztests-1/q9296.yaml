@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q9296.sql | sort > q9296.out
 
+vector: true
+
 inputs:
   - name: q9296.sql
     data: |
+      pragma pg
       SELECT DISTINCT - 16 / col1 * - col1 AS col1 FROM tab1 GROUP BY col1;
   - name: tab1
 

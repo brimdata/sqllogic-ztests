@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q872.sql | sort > q872.out
+
+vector: true
+
+inputs:
+  - name: q872.sql
+    data: |
+      SELECT DISTINCT - - CAST ( NULL AS INTEGER ) AS col1, + 98 FROM tab0 WHERE NOT - - col1 IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q872.out
+    data: |

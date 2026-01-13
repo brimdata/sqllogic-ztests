@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q2038.sql | sort > q2038.out
+
+vector: true
+
+inputs:
+  - name: q2038.sql
+    data: |
+      SELECT 80 AS col1, 1 - - - 88 AS col1;
+
+outputs:
+  - name: q2038.out
+    data: |
+      80	-87

@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q537.sql | sort > q537.out
+
+vector: true
+
+inputs:
+  - name: q537.sql
+    data: |
+      SELECT ALL + 37 + + col0 AS col2, + ( - ( + col2 ) ) / + col0 AS col2 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q537.out
+    data: |
+      122	0
+      128	0
+      88	-1

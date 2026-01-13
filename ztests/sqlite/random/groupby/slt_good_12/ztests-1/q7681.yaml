@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q7681.sql | sort > q7681.out
+
+vector: true
+
+inputs:
+  - name: q7681.sql
+    data: |
+      SELECT - COUNT ( * ) * - col1 * + col1 FROM tab2 GROUP BY col1;
+  - name: tab2
+
+outputs:
+  - name: q7681.out
+    data: |
+      1681
+      3481
+      3721

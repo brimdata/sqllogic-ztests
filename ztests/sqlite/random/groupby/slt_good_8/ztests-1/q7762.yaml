@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q7762.sql | sort > q7762.out
+
+vector: true
+
+inputs:
+  - name: q7762.sql
+    data: |
+      SELECT AVG ( col2 ) * col2 FROM tab2 GROUP BY col2, col2, col2 HAVING NOT NULL IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q7762.out
+    data: |

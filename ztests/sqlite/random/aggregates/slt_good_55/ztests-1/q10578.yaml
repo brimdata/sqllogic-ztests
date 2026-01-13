@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q10578.sql | sort > q10578.out
+
+vector: true
+
+inputs:
+  - name: q10578.sql
+    data: |
+      SELECT 10 AS col0, + ( - col0 ) AS col0 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q10578.out
+    data: |
+      10	-46
+      10	-64
+      10	-75

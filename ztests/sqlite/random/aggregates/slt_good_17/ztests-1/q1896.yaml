@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1896.sql | sort > q1896.out
+
+vector: true
+
+inputs:
+  - name: q1896.sql
+    data: |
+      SELECT DISTINCT MIN ( ALL + col0 ), MIN ( DISTINCT ( col1 ) ) AS col0, COUNT ( * ) AS col0 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q1896.out
+    data: |
+      46	51	3

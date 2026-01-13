@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q6352.sql | sort > q6352.out
+
+vector: true
+
+inputs:
+  - name: q6352.sql
+    data: |
+      SELECT - 54 AS col1, COALESCE ( + 42, CAST ( NULL AS INTEGER ) ) AS col1;
+
+outputs:
+  - name: q6352.out
+    data: |
+      -54	42

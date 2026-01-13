@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q6259.sql | sort > q6259.out
+
+vector: true
+
+inputs:
+  - name: q6259.sql
+    data: |
+      SELECT - NULLIF ( + col1, - COUNT ( * ) ) AS col2 FROM tab2 GROUP BY col1, col0 HAVING NULL > + COUNT ( * ) + col0;
+  - name: tab2
+
+outputs:
+  - name: q6259.out
+    data: |

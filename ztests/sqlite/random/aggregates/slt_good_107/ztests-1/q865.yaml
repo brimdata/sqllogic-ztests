@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q865.sql | sort > q865.out
+
+vector: true
+
+inputs:
+  - name: q865.sql
+    data: |
+      SELECT DISTINCT 1 AS col1, - COUNT ( * ) AS col1 FROM tab2 cor0;
+  - name: tab2
+
+outputs:
+  - name: q865.out
+    data: |
+      1	-3

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q6948.sql | sort > q6948.out
+
+vector: true
+
+inputs:
+  - name: q6948.sql
+    data: |
+      pragma pg
+      SELECT DISTINCT col1 AS col1 FROM tab0 GROUP BY col0, col1 HAVING NOT ( col0 ) NOT BETWEEN NULL AND NULL;
+  - name: tab0
+
+outputs:
+  - name: q6948.out
+    data: |

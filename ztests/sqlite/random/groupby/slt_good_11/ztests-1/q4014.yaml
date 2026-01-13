@@ -1,0 +1,18 @@
+script: |
+  super -f tsv -I q4014.sql | sort > q4014.out
+
+vector: true
+
+inputs:
+  - name: q4014.sql
+    data: |
+      pragma pg
+      SELECT col1 * + 77 * - 68 AS col0, col0 AS col0 FROM tab2 AS cor0 GROUP BY col1, col0;
+  - name: tab2
+
+outputs:
+  - name: q4014.out
+    data: |
+      -214676	92
+      -308924	91
+      -319396	15

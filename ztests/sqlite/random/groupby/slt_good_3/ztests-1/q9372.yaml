@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q9372.sql | sort > q9372.out
+
+vector: true
+
+inputs:
+  - name: q9372.sql
+    data: |
+      SELECT DISTINCT + col1 * + cor0.col0 AS col1 FROM tab0 AS cor0 GROUP BY cor0.col0, cor0.col1;
+  - name: tab0
+
+outputs:
+  - name: q9372.out
+    data: |
+      0
+      3483

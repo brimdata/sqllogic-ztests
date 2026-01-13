@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9474.sql | sort > q9474.out
+
+vector: true
+
+inputs:
+  - name: q9474.sql
+    data: |
+      SELECT DISTINCT + ( CASE cor0.col2 WHEN + cor0.col2 THEN 41 END ) FROM tab2 cor0 GROUP BY cor0.col2;
+  - name: tab2
+
+outputs:
+  - name: q9474.out
+    data: |
+      41

@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q5424.sql | sort > q5424.out
+
+vector: true
+
+inputs:
+  - name: q5424.sql
+    data: |
+      SELECT ALL + 80 FROM tab1 GROUP BY col1 HAVING - + NULLIF ( col1, + 94 ) IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q5424.out
+    data: |
+      80
+      80
+      80

@@ -1,0 +1,18 @@
+script: |
+  super -f tsv -I q9881.sql | sort > q9881.out
+
+vector: true
+
+inputs:
+  - name: q9881.sql
+    data: |
+      pragma pg
+      SELECT DISTINCT col2 AS col2, - col2 AS col0 FROM tab0 AS cor0 WHERE NULL IS NULL GROUP BY col2, col2;
+  - name: tab0
+
+outputs:
+  - name: q9881.out
+    data: |
+      24	-24
+      38	-38
+      79	-79

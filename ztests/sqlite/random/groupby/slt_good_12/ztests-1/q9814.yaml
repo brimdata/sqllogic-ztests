@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q9814.sql | sort > q9814.out
+
+vector: true
+
+inputs:
+  - name: q9814.sql
+    data: |
+      SELECT ALL col1 + - AVG ( col0 ) + - - col1 FROM tab0 GROUP BY col0, col1 HAVING NOT + 13 >= NULL;
+  - name: tab0
+
+outputs:
+  - name: q9814.out
+    data: |

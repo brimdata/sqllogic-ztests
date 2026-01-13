@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9488.sql | sort > q9488.out
+
+vector: true
+
+inputs:
+  - name: q9488.sql
+    data: |
+      SELECT ALL + MAX ( ( col1 ) ) AS col0, - 92 AS col0 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q9488.out
+    data: |
+      47	-92

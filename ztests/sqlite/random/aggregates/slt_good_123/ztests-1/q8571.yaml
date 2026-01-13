@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q8571.sql | sort > q8571.out
+
+vector: true
+
+inputs:
+  - name: q8571.sql
+    data: |
+      SELECT DISTINCT col0 AS col0, + 56 AS col1, col2 + col0 AS col0 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q8571.out
+    data: |
+      51	56	147
+      85	56	144
+      91	56	159

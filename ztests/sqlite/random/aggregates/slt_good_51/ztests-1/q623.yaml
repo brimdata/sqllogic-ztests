@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q623.sql | sort > q623.out
+
+vector: true
+
+inputs:
+  - name: q623.sql
+    data: |
+      SELECT ALL 64 AS col1, + MAX ( col1 ) AS col1 FROM tab2 WHERE col0 * col2 IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q623.out
+    data: |
+      64	77

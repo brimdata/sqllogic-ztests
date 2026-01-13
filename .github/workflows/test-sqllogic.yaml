@@ -56,14 +56,29 @@ jobs:
         test:
           - name: sqlite-select
             pattern: TestSPQ/ztests/sqlite/select[1-5]
-          - name: sqlite-random-aggregates
+            filter_dirs: false
+          - name: sqlite-random-aggregates-part1
             pattern: TestSPQ/ztests/sqlite/random/aggregates
+            filter_dirs: true
+            dir_range: "0-64"
+          - name: sqlite-random-aggregates-part2
+            pattern: TestSPQ/ztests/sqlite/random/aggregates
+            filter_dirs: true
+            dir_range: "65-129"
           - name: sqlite-random-expr
             pattern: TestSPQ/ztests/sqlite/random/expr
+            filter_dirs: false
           - name: sqlite-random-groupby
             pattern: TestSPQ/ztests/sqlite/random/groupby
-          - name: sqlite-random-select
+            filter_dirs: false
+          - name: sqlite-random-select-part1
             pattern: TestSPQ/ztests/sqlite/random/select
+            filter_dirs: true
+            dir_range: "0-64"
+          - name: sqlite-random-select-part2
+            pattern: TestSPQ/ztests/sqlite/random/select
+            filter_dirs: true
+            dir_range: "65-124"
     name: test-${{ matrix.test.name }}
     steps:
       - name: Remove unneeded tools to free up disk space
@@ -86,6 +101,7 @@ jobs:
           git clone https://github.com/brimdata/super.git super
           cd super
           git checkout ${{ needs.setup.outputs.ref }}
+          git rev-parse HEAD
       - name: Checkout sqllogic-ztests
         uses: actions/checkout@v5
         with:
@@ -99,6 +115,25 @@ jobs:
       - run: |
           patch -d super -p1 < sqllogic-ztests/super.patch
           make -C super build
+      - name: Filter directories for split tests
+        if: matrix.test.filter_dirs == true
+        run: |
+          cd sqllogic-ztests
+          base_dir=$(echo "${{ matrix.test.pattern }}" | sed 's/^TestSPQ\///')
+          range="${{ matrix.test.dir_range }}"
+          start=$(echo $range | cut -d- -f1)
+          end=$(echo $range | cut -d- -f2)
+
+          # Remove directories outside the range
+          for dir in $base_dir/slt_good_*; do
+            if [ -d "$dir" ]; then
+              num=$(basename "$dir" | sed 's/slt_good_//')
+              if [ "$num" -lt "$start" ] || [ "$num" -gt "$end" ]; then
+                echo "Removing $dir (outside range $start-$end)"
+                rm -rf "$dir"
+              fi
+            fi
+          done
       - name: Adjust which ztest files are run
         if: github.event_name == 'workflow_dispatch' && github.event.inputs.category != 'yaml'
         run: |
@@ -114,8 +149,8 @@ jobs:
         id: run-tests
         run: |
           cd sqllogic-ztests
-          ZTEST_PATH="$(pwd)/../super/dist" go test . -timeout 6h -count=1 -run ${{ matrix.test.pattern }} 2>&1 | tee test-output.log || true
-          tests_ran=$(find $(echo "${{ matrix.test.pattern }}" | sed 's/^TestSPQ\///') -name \*.yaml | wc -l)
+          ZTEST_PATH="$(pwd)/../super/dist" go test . -timeout 6h -count=1 -run "${{ matrix.test.pattern }}" 2>&1 | tee test-output.log || true
+          tests_ran=$(find $(echo "${{ matrix.test.pattern }}" | sed 's/^TestSPQ\///') -name \*.yaml 2>/dev/null | wc -l)
           failure_count=$(grep "        --- FAIL" test-output.log | sed 's/.*FAIL: //' | sed 's/ (.*$//' | sort | uniq | wc -l)
           echo "tests_ran=$tests_ran" | tee -a test-output.log
           echo "success_count=$((tests_ran - failure_count))" | tee -a test-output.log
@@ -123,12 +158,20 @@ jobs:
           if [ $failure_count -gt 0 ]; then
             echo "HAS_FAILURES=true" >> $GITHUB_OUTPUT
           fi
+      - name: Summarize test failures
+        if: steps.run-tests.outputs.HAS_FAILURES == 'true'
+        run: |
+          cd sqllogic-ztests
+          ./failure-summary.sh test-output.log | tee failure-summary.txt
       - name: Upload test logs
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: test-logs-${{ matrix.test.name }}
-          path: sqllogic-ztests/test-output.log
+          path: |
+            sqllogic-ztests/test-output.log
+            sqllogic-ztests/failure-summary.txt
+          if-no-files-found: ignore
       - name: Fail job if tests failed
         if: steps.run-tests.outputs.HAS_FAILURES == 'true'
         run: exit 1
@@ -143,11 +186,18 @@ jobs:
         with:
           pattern: test-logs-*
           path: logs
-      - name: Aggregate failure counts
+      - name: Aggregate failure counts and summaries
         run: |
+          echo "=========================================="
+          echo "OVERALL TEST SUMMARY"
+          echo "=========================================="
+          echo ""
+
           total_tests_ran=0
           total_failures=0
           total_successes=0
+
+          # Aggregate basic counts
           for log_dir in logs/test-logs-*; do
             test_name=$(basename "$log_dir" | sed 's/test-logs-//')
             log_file="$log_dir/test-output.log"
@@ -163,7 +213,60 @@ jobs:
               echo "$test_name: log not found"
             fi
           done
-          echo "$total_tests_ran total tests executed, $total_successes total successes, $total_failures total failures"
+
+          echo ""
+          echo "=========================================="
+          echo "TOTALS: $total_tests_ran tests, $total_successes successes, $total_failures failures"
+          echo "=========================================="
+          echo ""
+
+          # Aggregate vector/sequence failure breakdowns
+          if [ $total_failures -gt 0 ]; then
+            echo ""
+            echo "=========================================="
+            echo "FAILURE BREAKDOWN BY RUNTIME"
+            echo "=========================================="
+            echo ""
+
+            total_both=0
+            total_vector_only=0
+            total_sequence_only=0
+
+            for log_dir in logs/test-logs-*; do
+              test_name=$(basename "$log_dir" | sed 's/test-logs-//')
+              summary_file="$log_dir/failure-summary.txt"
+
+              if [ -f "$summary_file" ]; then
+                echo "--- $test_name ---"
+
+                # Extract counts from the summary file
+                both_count=$(grep "^Failed in BOTH" "$summary_file" | grep -oE '\([0-9]+ tests\)' | grep -oE '[0-9]+' || echo "0")
+                vector_count=$(grep "^Failed in VECTOR only" "$summary_file" | grep -oE '\([0-9]+ tests\)' | grep -oE '[0-9]+' || echo "0")
+                sequence_count=$(grep "^Failed in SEQUENCE only" "$summary_file" | grep -oE '\([0-9]+ tests\)' | grep -oE '[0-9]+' || echo "0")
+
+                echo "  Both runtimes: $both_count"
+                echo "  Vector only: $vector_count"
+                echo "  Sequence only: $sequence_count"
+                echo ""
+
+                total_both=$((total_both + both_count))
+                total_vector_only=$((total_vector_only + vector_count))
+                total_sequence_only=$((total_sequence_only + sequence_count))
+              fi
+            done
+
+            echo "=========================================="
+            echo "AGGREGATE FAILURE BREAKDOWN"
+            echo "=========================================="
+            echo "Total failures by runtime:"
+            echo "  Both vector and sequence: $total_both"
+            echo "  Vector only: $total_vector_only"
+            echo "  Sequence only: $total_sequence_only"
+            echo "  Total unique failing tests: $((total_both + total_vector_only + total_sequence_only))"
+            echo ""
+          fi
+
+          # Final result
           if [ $total_failures -gt 0 ]; then
             echo "❌ Tests had failures"
             exit 1

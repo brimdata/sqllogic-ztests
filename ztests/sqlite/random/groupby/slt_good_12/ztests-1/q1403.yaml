@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q1403.sql | sort > q1403.out
 
+vector: true
+
 inputs:
   - name: q1403.sql
     data: |
+      pragma pg
       SELECT DISTINCT + ( - + col2 ) AS col2 FROM tab2 WHERE NULL NOT BETWEEN - - col2 AND NULL GROUP BY col2;
   - name: tab2
 

@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q8374.sql | sort > q8374.out
 
+vector: true
+
 inputs:
   - name: q8374.sql
     data: |
+      pragma pg
       SELECT ALL - col0 * col0 - 70 AS col1 FROM tab2 GROUP BY col1, col0 HAVING ( NULL ) < + 75;
   - name: tab2
 

@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q802.sql | sort > q802.out
+
+vector: true
+
+inputs:
+  - name: q802.sql
+    data: |
+      SELECT ALL tab0.col0 AS col2 FROM tab0 GROUP BY tab0.col0 HAVING tab0.col0 <= ( NULL );
+  - name: tab0
+
+outputs:
+  - name: q802.out
+    data: |

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4871.sql | sort > q4871.out
+
+vector: true
+
+inputs:
+  - name: q4871.sql
+    data: |
+      SELECT DISTINCT + - CAST ( 14 AS INTEGER ) FROM tab0 GROUP BY tab0.col2;
+  - name: tab0
+
+outputs:
+  - name: q4871.out
+    data: |
+      -14

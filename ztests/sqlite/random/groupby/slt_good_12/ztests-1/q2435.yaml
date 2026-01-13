@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q2435.sql | sort > q2435.out
+
+vector: true
+
+inputs:
+  - name: q2435.sql
+    data: |
+      SELECT + CAST ( NULL AS INTEGER ) FROM tab1 GROUP BY col0 HAVING + CAST ( - col0 AS INTEGER ) IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q2435.out
+    data: |

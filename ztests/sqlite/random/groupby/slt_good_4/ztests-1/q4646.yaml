@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q4646.sql | sort > q4646.out
+
+vector: true
+
+inputs:
+  - name: q4646.sql
+    data: |
+      SELECT ALL tab2.col0 AS col0 FROM tab2 GROUP BY tab2.col0 HAVING ( NULL ) IN ( tab2.col0 );
+  - name: tab2
+
+outputs:
+  - name: q4646.out
+    data: |

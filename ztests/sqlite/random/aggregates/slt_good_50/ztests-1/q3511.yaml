@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q3511.sql | sort > q3511.out
+
+vector: true
+
+inputs:
+  - name: q3511.sql
+    data: |
+      SELECT COUNT ( * ) AS col1 FROM tab0 WHERE + CAST ( - ( 43 ) AS INTEGER ) NOT IN ( - col1 );
+  - name: tab0
+
+outputs:
+  - name: q3511.out
+    data: |
+      3

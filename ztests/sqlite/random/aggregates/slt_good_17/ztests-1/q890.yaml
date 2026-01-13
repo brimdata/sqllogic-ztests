@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q890.sql | sort > q890.out
+
+vector: true
+
+inputs:
+  - name: q890.sql
+    data: |
+      SELECT + 21 / - col0 AS col1, - col1 - - col2 AS col1 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q890.out
+    data: |
+      0	-28
+      0	-37
+      0	-9

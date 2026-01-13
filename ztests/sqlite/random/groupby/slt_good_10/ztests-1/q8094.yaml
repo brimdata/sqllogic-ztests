@@ -1,0 +1,18 @@
+script: |
+  super -f tsv -I q8094.sql | sort > q8094.out
+
+vector: true
+
+inputs:
+  - name: q8094.sql
+    data: |
+      pragma pg
+      SELECT col0 AS col0 FROM tab2 GROUP BY col0, col2 HAVING + col2 IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q8094.out
+    data: |
+      15
+      91
+      92

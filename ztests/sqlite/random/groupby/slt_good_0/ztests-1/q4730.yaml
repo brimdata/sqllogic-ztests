@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q4730.sql | sort > q4730.out
+
+vector: true
+
+inputs:
+  - name: q4730.sql
+    data: |
+      SELECT DISTINCT - 75 * - 92 FROM tab1, tab2 AS cor0, tab1 AS cor1 GROUP BY cor0.col0;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q4730.out
+    data: |
+      6900

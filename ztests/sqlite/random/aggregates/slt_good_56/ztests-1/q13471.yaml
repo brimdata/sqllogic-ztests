@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q13471.sql | sort > q13471.out
+
+vector: true
+
+inputs:
+  - name: q13471.sql
+    data: |
+      SELECT DISTINCT - col0 AS col2, + col1 AS col2 FROM tab0 WHERE NOT - + 50 * - col1 IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q13471.out
+    data: |

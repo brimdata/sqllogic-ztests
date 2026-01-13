@@ -1,0 +1,18 @@
+script: |
+  super -f tsv -I q9105.sql | sort > q9105.out
+
+vector: true
+
+inputs:
+  - name: q9105.sql
+    data: |
+      pragma pg
+      SELECT ALL + ( - col0 ), col0 + - - 85 + col0 AS col0 FROM tab2 GROUP BY col0;
+  - name: tab2
+
+outputs:
+  - name: q9105.out
+    data: |
+      -15	115
+      -91	267
+      -92	269

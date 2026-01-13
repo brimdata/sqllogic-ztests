@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q3128.sql | sort > q3128.out
 
+vector: true
+
 inputs:
   - name: q3128.sql
     data: |
+      pragma pg
       SELECT DISTINCT col2 AS col2 FROM tab0 WHERE NOT - 55 NOT BETWEEN NULL AND NULL OR NOT NULL < ( NULL ) GROUP BY col2, col2;
   - name: tab0
 

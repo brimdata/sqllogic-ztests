@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q11334.sql | sort > q11334.out
+
+vector: true
+
+inputs:
+  - name: q11334.sql
+    data: |
+      SELECT DISTINCT - col1 AS col1, col1 + - + CAST ( NULL AS INTEGER ) AS col1 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q11334.out
+    data: |
+      -51	NULL
+      -67	NULL
+      -77	NULL

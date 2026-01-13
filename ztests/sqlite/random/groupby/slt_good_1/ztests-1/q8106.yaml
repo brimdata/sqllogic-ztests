@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q8106.sql | sort > q8106.out
+
+vector: true
+
+inputs:
+  - name: q8106.sql
+    data: |
+      SELECT DISTINCT cor0.col0 / COALESCE ( 57, + cor0.col0 * - cor0.col0 ) AS col2 FROM tab1 AS cor0 GROUP BY cor0.col0, cor0.col0;
+  - name: tab1
+
+outputs:
+  - name: q8106.out
+    data: |
+      0
+      1

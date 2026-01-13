@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q6145.sql | sort > q6145.out
+
+vector: true
+
+inputs:
+  - name: q6145.sql
+    data: |
+      SELECT - CAST ( NULL AS INTEGER ) AS col1, + 50 FROM tab2 WHERE + col1 IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q6145.out
+    data: |

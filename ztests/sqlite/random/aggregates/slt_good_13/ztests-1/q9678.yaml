@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q9678.sql | sort > q9678.out
+
+vector: true
+
+inputs:
+  - name: q9678.sql
+    data: |
+      SELECT - + col2 AS col1, ( - + CAST ( NULL AS REAL ) ) AS col1 FROM tab0 WHERE NOT NULL IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q9678.out
+    data: |

@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q3010.sql | sort > q3010.out
+
+vector: true
+
+inputs:
+  - name: q3010.sql
+    data: |
+      SELECT DISTINCT - col1 FROM tab0 GROUP BY col1 HAVING - col1 IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q3010.out
+    data: |

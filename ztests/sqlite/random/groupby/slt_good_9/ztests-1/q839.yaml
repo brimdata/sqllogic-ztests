@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q839.sql | sort > q839.out
+
+vector: true
+
+inputs:
+  - name: q839.sql
+    data: |
+      SELECT ALL - col0 FROM tab1 GROUP BY col0 HAVING NOT NULL >= + col0;
+  - name: tab1
+
+outputs:
+  - name: q839.out
+    data: |

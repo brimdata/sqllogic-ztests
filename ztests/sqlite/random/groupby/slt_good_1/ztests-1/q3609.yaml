@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q3609.sql | sort > q3609.out
+
+vector: true
+
+inputs:
+  - name: q3609.sql
+    data: |
+      SELECT DISTINCT cor0.col1 * + cor0.col1 + 29 AS col2 FROM tab0 AS cor0 GROUP BY cor0.col0, cor0.col1;
+  - name: tab0
+
+outputs:
+  - name: q3609.out
+    data: |
+      29
+      6590

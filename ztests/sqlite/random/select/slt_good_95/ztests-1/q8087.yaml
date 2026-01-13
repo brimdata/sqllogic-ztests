@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8087.sql | sort > q8087.out
+
+vector: true
+
+inputs:
+  - name: q8087.sql
+    data: |
+      SELECT DISTINCT - col2 * + col1 * col1 AS col2 FROM tab1 WHERE + col0 NOT BETWEEN NULL AND ( col2 );
+  - name: tab1
+
+outputs:
+  - name: q8087.out
+    data: |
+      -5700

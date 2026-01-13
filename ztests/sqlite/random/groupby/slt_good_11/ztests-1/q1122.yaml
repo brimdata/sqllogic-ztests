@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q1122.sql | sort > q1122.out
 
+vector: true
+
 inputs:
   - name: q1122.sql
     data: |
+      pragma pg
       SELECT col0 / col0 AS col0 FROM tab0 AS cor0 WHERE NULL IS NOT NULL GROUP BY col0 HAVING AVG ( - col2 ) - - col0 IS NULL;
   - name: tab0
 

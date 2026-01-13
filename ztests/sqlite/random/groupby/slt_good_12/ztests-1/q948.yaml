@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q948.sql | sort > q948.out
+
+vector: true
+
+inputs:
+  - name: q948.sql
+    data: |
+      pragma pg
+      SELECT ALL + col1 / - - 67 AS col1, + col1 FROM tab2 GROUP BY col1 HAVING NOT NULL < NULL;
+  - name: tab2
+
+outputs:
+  - name: q948.out
+    data: |

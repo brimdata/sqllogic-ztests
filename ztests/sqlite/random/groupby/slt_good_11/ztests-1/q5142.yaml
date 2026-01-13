@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q5142.sql | sort > q5142.out
+
+vector: true
+
+inputs:
+  - name: q5142.sql
+    data: |
+      SELECT DISTINCT 53 AS col2 FROM tab2 WHERE NULL NOT IN ( + col0 ) GROUP BY col0 HAVING col0 NOT BETWEEN NULL AND NULL;
+  - name: tab2
+
+outputs:
+  - name: q5142.out
+    data: |

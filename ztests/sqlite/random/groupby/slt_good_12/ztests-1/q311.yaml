@@ -1,0 +1,18 @@
+script: |
+  super -f tsv -I q311.sql | sort > q311.out
+
+vector: true
+
+inputs:
+  - name: q311.sql
+    data: |
+      pragma pg
+      SELECT ALL NULLIF ( - col0, col1 ) * - 90, col0 * col0 * col0 AS col0 FROM tab2 AS cor0 GROUP BY col0, col1 HAVING col1 NOT BETWEEN - col1 - + col1 AND 31;
+  - name: tab2
+
+outputs:
+  - name: q311.out
+    data: |
+      1350	3375
+      8190	753571
+      8280	778688

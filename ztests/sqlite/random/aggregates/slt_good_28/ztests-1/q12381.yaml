@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q12381.sql | sort > q12381.out
+
+vector: true
+
+inputs:
+  - name: q12381.sql
+    data: |
+      SELECT - + 26 + - - col2 AS col0, 29 - + + col1 AS col0 FROM tab2 WHERE NOT NULL BETWEEN + - col2 AND + 42;
+  - name: tab2
+
+outputs:
+  - name: q12381.out
+    data: |

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q12705.sql | sort > q12705.out
+
+vector: true
+
+inputs:
+  - name: q12705.sql
+    data: |
+      SELECT 11 * SUM ( DISTINCT + - CAST ( - col1 AS INTEGER ) ) AS col1, 95 AS col1 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q12705.out
+    data: |
+      2145	95

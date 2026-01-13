@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q6458.sql | sort > q6458.out
 
+vector: true
+
 inputs:
   - name: q6458.sql
     data: |
+      pragma pg
       SELECT + 63 + + col1 AS col1 FROM tab0 AS cor0 GROUP BY col1, col1 HAVING NULL BETWEEN - + 49 AND - col1 * 36 + 83;
   - name: tab0
 

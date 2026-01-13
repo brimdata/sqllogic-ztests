@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8963.sql | sort > q8963.out
+
+vector: true
+
+inputs:
+  - name: q8963.sql
+    data: |
+      SELECT - + 27 AS col1 FROM tab1 WHERE NOT 43 NOT BETWEEN - 87 AND col1;
+  - name: tab1
+
+outputs:
+  - name: q8963.out
+    data: |
+      -27

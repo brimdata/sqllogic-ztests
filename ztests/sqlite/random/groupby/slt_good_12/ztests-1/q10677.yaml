@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q10677.sql | sort > q10677.out
+
+vector: true
+
+inputs:
+  - name: q10677.sql
+    data: |
+      pragma pg
+      SELECT ALL - col1 AS col0, 86 AS col1 FROM tab2 AS cor0 GROUP BY col1 HAVING NOT + COUNT ( * ) >= - CAST ( NULL AS INTEGER );
+  - name: tab2
+
+outputs:
+  - name: q10677.out
+    data: |

@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q8062.sql | sort > q8062.out
 
+vector: true
+
 inputs:
   - name: q8062.sql
     data: |
+      pragma pg
       SELECT + - col0 AS col0 FROM tab0 AS cor0 GROUP BY col0 HAVING NOT ( NULL ) BETWEEN AVG ( + col1 ) AND NULL;
   - name: tab0
 

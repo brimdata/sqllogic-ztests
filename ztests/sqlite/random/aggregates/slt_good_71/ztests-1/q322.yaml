@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q322.sql | sort > q322.out
+
+vector: true
+
+inputs:
+  - name: q322.sql
+    data: |
+      SELECT + col2 + - - 24 AS col1 FROM tab1 WHERE - ( + col2 ) NOT BETWEEN NULL AND - col1;
+  - name: tab1
+
+outputs:
+  - name: q322.out
+    data: |

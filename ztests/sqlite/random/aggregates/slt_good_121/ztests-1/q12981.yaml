@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q12981.sql | sort > q12981.out
+
+vector: true
+
+inputs:
+  - name: q12981.sql
+    data: |
+      SELECT COUNT ( * ) AS col1 FROM tab0 AS cor0 WHERE + col1 NOT BETWEEN 70 AND 65;
+  - name: tab0
+
+outputs:
+  - name: q12981.out
+    data: |
+      3

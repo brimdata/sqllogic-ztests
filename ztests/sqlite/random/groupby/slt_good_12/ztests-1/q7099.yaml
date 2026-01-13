@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q7099.sql | sort > q7099.out
+
+vector: true
+
+inputs:
+  - name: q7099.sql
+    data: |
+      SELECT col0 FROM tab1 cor0 GROUP BY col0 HAVING NOT - MIN ( ALL col2 ) * + COUNT ( * ) IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q7099.out
+    data: |

@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q6133.sql | sort > q6133.out
 
+vector: true
+
 inputs:
   - name: q6133.sql
     data: |
+      pragma pg
       SELECT ALL - col2 AS col2 FROM tab0 AS cor0 GROUP BY col2 HAVING NOT COUNT ( * ) * 30 IS NULL;
   - name: tab0
 

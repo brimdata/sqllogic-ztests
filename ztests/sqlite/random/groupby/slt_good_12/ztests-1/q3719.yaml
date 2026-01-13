@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q3719.sql | sort > q3719.out
+
+vector: true
+
+inputs:
+  - name: q3719.sql
+    data: |
+      SELECT ALL + col1 * - 12 AS col0, + col1 AS col0 FROM tab2 AS cor0 GROUP BY col1;
+  - name: tab2
+
+outputs:
+  - name: q3719.out
+    data: |
+      -492	41
+      -708	59
+      -732	61

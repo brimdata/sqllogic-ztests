@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q5712.sql | sort > q5712.out
+
+vector: true
+
+inputs:
+  - name: q5712.sql
+    data: |
+      SELECT COUNT ( * ) * + col2 + + col2 FROM tab1 GROUP BY col2 HAVING NULL IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q5712.out
+    data: |
+      142
+      16
+      90

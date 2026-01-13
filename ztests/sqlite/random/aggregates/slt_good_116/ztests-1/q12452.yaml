@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q12452.sql | sort > q12452.out
+
+vector: true
+
+inputs:
+  - name: q12452.sql
+    data: |
+      SELECT ALL + 26 AS col1, col1 + col0 + - col0 * - 48 AS col1 FROM tab0;
+  - name: tab0
+
+outputs:
+  - name: q12452.out
+    data: |
+      26	4284
+      26	4754
+      26	816

@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q10353.sql | sort > q10353.out
 
+vector: true
+
 inputs:
   - name: q10353.sql
     data: |
+      pragma pg
       SELECT + col0 AS col0 FROM tab2 WHERE ( + col0 * 20 ) IS NOT NULL GROUP BY col2, col0, col0;
   - name: tab2
 

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q12462.sql | sort > q12462.out
+
+vector: true
+
+inputs:
+  - name: q12462.sql
+    data: |
+      SELECT ALL SUM ( DISTINCT - 38 ) AS col1 FROM tab1 AS cor0 WHERE col1 IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q12462.out
+    data: |
+      -38

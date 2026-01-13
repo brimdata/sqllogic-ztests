@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q3051.sql | sort > q3051.out
 
+vector: true
+
 inputs:
   - name: q3051.sql
     data: |
+      pragma pg
       SELECT CAST ( ( + + CAST ( - col0 AS REAL ) ) AS INTEGER ) AS col0 FROM tab2 GROUP BY col0, col2;
   - name: tab2
 

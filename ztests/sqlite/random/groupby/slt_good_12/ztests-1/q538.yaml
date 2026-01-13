@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q538.sql | sort > q538.out
+
+vector: true
+
+inputs:
+  - name: q538.sql
+    data: |
+      SELECT col0 + - CASE WHEN 64 IS NULL THEN + col0 END FROM tab2 AS cor0 GROUP BY col0;
+  - name: tab2
+
+outputs:
+  - name: q538.out
+    data: |
+      NULL
+      NULL
+      NULL

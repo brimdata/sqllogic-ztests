@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q8283.sql | sort > q8283.out
+
+vector: true
+
+inputs:
+  - name: q8283.sql
+    data: |
+      SELECT col1, 5 * - col1 AS col2 FROM tab0 GROUP BY col1 HAVING NOT + col1 * col1 BETWEEN NULL AND NULL;
+  - name: tab0
+
+outputs:
+  - name: q8283.out
+    data: |

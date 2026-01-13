@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q2409.sql | sort > q2409.out
 
+vector: true
+
 inputs:
   - name: q2409.sql
     data: |
+      pragma pg
       SELECT cor0.col2 * - 36 AS col2 FROM tab1 cor0 GROUP BY col2;
   - name: tab1
 

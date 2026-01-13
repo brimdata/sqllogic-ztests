@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4288.sql | sort > q4288.out
+
+vector: true
+
+inputs:
+  - name: q4288.sql
+    data: |
+      SELECT col2 AS col0 FROM tab1 WHERE - col0 > - col2;
+  - name: tab1
+
+outputs:
+  - name: q4288.out
+    data: |
+      96

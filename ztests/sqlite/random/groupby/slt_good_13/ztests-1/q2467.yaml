@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q2467.sql | sort > q2467.out
+
+vector: true
+
+inputs:
+  - name: q2467.sql
+    data: |
+      SELECT DISTINCT NULLIF ( NULLIF ( 7, cor0.col1 ), + 59 ) FROM tab0 cor0 GROUP BY cor0.col1, cor0.col1, cor0.col1;
+  - name: tab0
+
+outputs:
+  - name: q2467.out
+    data: |
+      7

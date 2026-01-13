@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4575.sql | sort > q4575.out
+
+vector: true
+
+inputs:
+  - name: q4575.sql
+    data: |
+      SELECT + SUM ( col1 ) * 80 AS col0 FROM tab0 WHERE ( col0 * + col0 ) IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q4575.out
+    data: |
+      8240

@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q1667.sql | sort > q1667.out
+
+vector: true
+
+inputs:
+  - name: q1667.sql
+    data: |
+      SELECT + 95 AS col2, CAST ( + ( col2 ) AS INTEGER ) * 96 + col1 AS col2 FROM tab2 AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q1667.out
+    data: |
+      95	2259
+      95	3917
+      95	5635

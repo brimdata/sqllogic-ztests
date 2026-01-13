@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q3376.sql | sort > q3376.out
+
+vector: true
+
+inputs:
+  - name: q3376.sql
+    data: |
+      SELECT + 32 AS col2, - col2 + + col0 AS col2 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q3376.out
+    data: |
+      32	-45
+      32	23
+      32	26

@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q4323.sql | sort > q4323.out
 
+vector: true
+
 inputs:
   - name: q4323.sql
     data: |
+      pragma pg
       SELECT COALESCE ( + ( col2 ), + tab1.col2 ) AS col2 FROM tab1 GROUP BY col2;
   - name: tab1
 

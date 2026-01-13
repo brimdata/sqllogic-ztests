@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q2561.sql | sort > q2561.out
 
+vector: true
+
 inputs:
   - name: q2561.sql
     data: |
+      pragma pg
       SELECT DISTINCT col2 * - 86 AS col2 FROM tab1 GROUP BY col1, col2, col0 HAVING ( 83 BETWEEN - - 38 AND 56 );
   - name: tab1
 

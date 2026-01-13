@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q4486.sql | sort > q4486.out
+
+vector: true
+
+inputs:
+  - name: q4486.sql
+    data: |
+      SELECT + col1 AS col1, - 20 AS col1 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q4486.out
+    data: |
+      51	-20
+      67	-20
+      77	-20

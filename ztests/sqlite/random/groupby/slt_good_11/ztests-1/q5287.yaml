@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q5287.sql | sort > q5287.out
+
+vector: true
+
+inputs:
+  - name: q5287.sql
+    data: |
+      SELECT + col1 * ( + AVG ( 8 ) ) AS col2 FROM tab2 GROUP BY col1 HAVING NOT ( NULL ) IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q5287.out
+    data: |

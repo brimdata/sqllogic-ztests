@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q11821.sql | sort > q11821.out
+
+vector: true
+
+inputs:
+  - name: q11821.sql
+    data: |
+      SELECT col2 + - col2 * col2 AS col0 FROM tab2 WHERE NOT col0 * + col1 < + col2;
+  - name: tab2
+
+outputs:
+  - name: q11821.out
+    data: |
+      -1406
+      -650
+      -702

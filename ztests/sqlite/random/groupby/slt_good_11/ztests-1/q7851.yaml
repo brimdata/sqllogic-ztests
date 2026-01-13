@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q7851.sql | sort > q7851.out
 
+vector: true
+
 inputs:
   - name: q7851.sql
     data: |
+      pragma pg
       SELECT DISTINCT col2 * + 2 AS col2 FROM tab2 WHERE NOT col1 * col1 >= ( NULL ) GROUP BY col2 HAVING - 67 IS NOT NULL;
   - name: tab2
 

@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q9068.sql | sort > q9068.out
+
+vector: true
+
+inputs:
+  - name: q9068.sql
+    data: |
+      SELECT DISTINCT - 60 + - 18 FROM tab2, tab1 AS cor0 GROUP BY cor0.col1;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q9068.out
+    data: |
+      -78

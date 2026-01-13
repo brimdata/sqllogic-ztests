@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q1362.sql | sort > q1362.out
+
+vector: true
+
+inputs:
+  - name: q1362.sql
+    data: |
+      SELECT ALL - cor0.col1 FROM tab2 cor0 GROUP BY cor0.col1 HAVING ( NULL ) IN ( cor0.col1 );
+  - name: tab2
+
+outputs:
+  - name: q1362.out
+    data: |

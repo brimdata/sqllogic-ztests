@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q10459.sql | sort > q10459.out
+
+vector: true
+
+inputs:
+  - name: q10459.sql
+    data: |
+      SELECT col0 * + COUNT ( col0 ) + - - col0 AS col2 FROM tab0 AS cor0 GROUP BY col0;
+  - name: tab0
+
+outputs:
+  - name: q10459.out
+    data: |
+      166
+      52
+      86

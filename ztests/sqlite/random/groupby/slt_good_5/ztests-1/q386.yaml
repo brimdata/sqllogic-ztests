@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q386.sql | sort > q386.out
+
+vector: true
+
+inputs:
+  - name: q386.sql
+    data: |
+      SELECT DISTINCT + 5 AS col2 FROM tab1 GROUP BY tab1.col0;
+  - name: tab1
+
+outputs:
+  - name: q386.out
+    data: |
+      5

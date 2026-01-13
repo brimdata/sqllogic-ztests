@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q5580.sql | sort > q5580.out
+
+vector: true
+
+inputs:
+  - name: q5580.sql
+    data: |
+      SELECT + COUNT ( * ) AS col0 FROM tab1 WHERE NOT col0 - + 89 IN ( + 1, + col1, + 22 );
+  - name: tab1
+
+outputs:
+  - name: q5580.out
+    data: |
+      3

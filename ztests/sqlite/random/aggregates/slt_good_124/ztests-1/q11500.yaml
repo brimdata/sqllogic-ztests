@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q11500.sql | sort > q11500.out
+
+vector: true
+
+inputs:
+  - name: q11500.sql
+    data: |
+      SELECT DISTINCT col1 AS col1, col2 * - col0 AS col1 FROM tab2 AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q11500.out
+    data: |
+      51	-1058
+      67	-4350
+      77	-2560

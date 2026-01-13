@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q547.sql | sort > q547.out
+
+vector: true
+
+inputs:
+  - name: q547.sql
+    data: |
+      SELECT DISTINCT CAST ( NULL AS INTEGER ) + - 33 * + col2 AS col0 FROM tab1 AS cor0 GROUP BY cor0.col2;
+  - name: tab1
+
+outputs:
+  - name: q547.out
+    data: |
+      NULL

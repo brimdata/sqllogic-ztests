@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q5234.sql | sort > q5234.out
+
+vector: true
+
+inputs:
+  - name: q5234.sql
+    data: |
+      SELECT DISTINCT - 95 AS col1, CAST ( NULL AS INTEGER ) AS col1 FROM tab2 WHERE NOT col1 IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q5234.out
+    data: |
+      -95	NULL

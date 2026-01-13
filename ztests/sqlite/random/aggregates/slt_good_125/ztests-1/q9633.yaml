@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9633.sql | sort > q9633.out
+
+vector: true
+
+inputs:
+  - name: q9633.sql
+    data: |
+      SELECT ALL COUNT ( + 95 ) AS col1 FROM tab2 WHERE col1 NOT IN ( - 16 );
+  - name: tab2
+
+outputs:
+  - name: q9633.out
+    data: |
+      3

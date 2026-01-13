@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q2618.sql | sort > q2618.out
+
+vector: true
+
+inputs:
+  - name: q2618.sql
+    data: |
+      SELECT DISTINCT col1 AS col0, - ( col1 ) - + col0 AS col0, + ( + - 13 ) FROM tab2 AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q2618.out
+    data: |
+      51	-97	-13
+      67	-142	-13
+      77	-141	-13

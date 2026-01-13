@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q3629.sql | sort > q3629.out
+
+vector: true
+
+inputs:
+  - name: q3629.sql
+    data: |
+      SELECT DISTINCT + 5 FROM tab2 GROUP BY tab2.col2;
+  - name: tab2
+
+outputs:
+  - name: q3629.out
+    data: |
+      5

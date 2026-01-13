@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q4072.sql | sort > q4072.out
+
+vector: true
+
+inputs:
+  - name: q4072.sql
+    data: |
+      SELECT DISTINCT AVG ( col2 ) AS col1 FROM tab0 AS cor0 WHERE NOT col1 <= ( NULL ) GROUP BY col2;
+  - name: tab0
+
+outputs:
+  - name: q4072.out
+    data: |

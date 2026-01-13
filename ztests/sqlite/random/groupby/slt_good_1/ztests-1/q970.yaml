@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q970.sql | sort > q970.out
+
+vector: true
+
+inputs:
+  - name: q970.sql
+    data: |
+      SELECT DISTINCT + 90 FROM tab1, tab2 AS cor0 GROUP BY tab1.col0;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q970.out
+    data: |
+      90

@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q13505.sql | sort > q13505.out
+
+vector: true
+
+inputs:
+  - name: q13505.sql
+    data: |
+      SELECT col1 * - ( - 95 ) * col2 + - 65 AS col1, + CAST ( NULL AS INTEGER ) AS col1 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q13505.out
+    data: |
+      127615	NULL
+      27960	NULL
+      303555	NULL

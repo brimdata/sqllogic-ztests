@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q53.sql | sort > q53.out
+
+vector: true
+
+inputs:
+  - name: q53.sql
+    data: |
+      SELECT DISTINCT 49 * - 23 AS col2 FROM tab2, tab2 AS cor0 GROUP BY cor0.col1;
+  - name: tab2
+
+outputs:
+  - name: q53.out
+    data: |
+      -1127

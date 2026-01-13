@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q1080.sql | sort > q1080.out
+
+vector: true
+
+inputs:
+  - name: q1080.sql
+    data: |
+      SELECT DISTINCT + 63 FROM tab2, tab1 AS cor0 GROUP BY tab2.col0;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q1080.out
+    data: |
+      63

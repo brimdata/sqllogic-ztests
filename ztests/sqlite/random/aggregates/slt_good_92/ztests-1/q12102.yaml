@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q12102.sql | sort > q12102.out
+
+vector: true
+
+inputs:
+  - name: q12102.sql
+    data: |
+      SELECT DISTINCT 68 AS col1, ( + 25 ) * - col1 + - ( + - col2 ) AS col1 FROM tab0 AS cor0 WHERE NOT ( NULL IS NOT NULL );
+  - name: tab0
+
+outputs:
+  - name: q12102.out
+    data: |
+      68	-1978
+      68	-515
+      68	74

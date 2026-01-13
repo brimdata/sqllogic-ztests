@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q7403.sql | sort > q7403.out
+
+vector: true
+
+inputs:
+  - name: q7403.sql
+    data: |
+      SELECT COUNT ( * ) + col0 FROM tab0 GROUP BY col0 HAVING NULL IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q7403.out
+    data: |

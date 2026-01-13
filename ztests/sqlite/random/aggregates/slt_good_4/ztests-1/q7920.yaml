@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q7920.sql | sort > q7920.out
+
+vector: true
+
+inputs:
+  - name: q7920.sql
+    data: |
+      SELECT DISTINCT - CAST ( NULL AS INTEGER ) AS col2, - 48 AS col2 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q7920.out
+    data: |
+      NULL	-48

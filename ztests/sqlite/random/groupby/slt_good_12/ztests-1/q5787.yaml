@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q5787.sql | sort > q5787.out
+
+vector: true
+
+inputs:
+  - name: q5787.sql
+    data: |
+      SELECT - + MAX ( col1 ) / 31 * + col1 FROM tab1 WHERE NOT col0 IS NULL GROUP BY col1;
+  - name: tab1
+
+outputs:
+  - name: q5787.out
+    data: |
+      -44
+      -57
+      0

@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q2595.sql | sort > q2595.out
+
+vector: true
+
+inputs:
+  - name: q2595.sql
+    data: |
+      SELECT DISTINCT 19 * 98 AS col2 FROM tab1, tab0 AS cor0, tab2 AS cor1 GROUP BY tab1.col1;
+  - name: tab0
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q2595.out
+    data: |
+      1862

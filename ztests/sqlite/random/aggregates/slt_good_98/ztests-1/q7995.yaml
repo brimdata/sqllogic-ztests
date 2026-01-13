@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q7995.sql | sort > q7995.out
+
+vector: true
+
+inputs:
+  - name: q7995.sql
+    data: |
+      SELECT ( COUNT ( * ) ) + - AVG ( DISTINCT - col1 ) * CAST ( NULL AS REAL ) AS col1 FROM tab1 AS cor0 WHERE NOT col0 <= - 15 * col1 - col1;
+  - name: tab1
+
+outputs:
+  - name: q7995.out
+    data: |
+      NULL

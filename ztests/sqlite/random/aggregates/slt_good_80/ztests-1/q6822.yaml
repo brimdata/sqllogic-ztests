@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q6822.sql | sort > q6822.out
+
+vector: true
+
+inputs:
+  - name: q6822.sql
+    data: |
+      SELECT DISTINCT - + 55 AS col2, SUM ( col2 ) AS col2 FROM tab2 AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q6822.out
+    data: |
+      -55	121

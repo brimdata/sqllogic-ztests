@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q9716.sql | sort > q9716.out
+
+vector: true
+
+inputs:
+  - name: q9716.sql
+    data: |
+      SELECT - + col2 + - - col2 AS col0 FROM tab0 AS cor0 WHERE NOT CAST ( NULL AS REAL ) NOT BETWEEN NULL AND NULL GROUP BY col2 HAVING NOT - + col2 IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q9716.out
+    data: |

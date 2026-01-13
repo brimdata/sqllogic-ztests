@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q13315.sql | sort > q13315.out
+
+vector: true
+
+inputs:
+  - name: q13315.sql
+    data: |
+      SELECT DISTINCT - + CAST ( 32 AS INTEGER ) AS col1, CAST ( NULL AS INTEGER ) + - + 66 AS col1;
+
+outputs:
+  - name: q13315.out
+    data: |
+      -32	NULL

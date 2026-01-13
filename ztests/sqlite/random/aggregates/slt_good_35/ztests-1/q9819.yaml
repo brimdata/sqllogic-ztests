@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9819.sql | sort > q9819.out
+
+vector: true
+
+inputs:
+  - name: q9819.sql
+    data: |
+      SELECT DISTINCT + 78 AS col2, 3 * + MAX ( - col2 ) AS col2 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q9819.out
+    data: |
+      78	-177

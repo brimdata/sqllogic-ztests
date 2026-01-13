@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q1525.sql | sort > q1525.out
+
+vector: true
+
+inputs:
+  - name: q1525.sql
+    data: |
+      SELECT + col0 * - 18 AS col1, col1 * - col0 - + col2 AS col1 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q1525.out
+    data: |
+      -1530	-484
+      -1638	-4345
+      -918	-810

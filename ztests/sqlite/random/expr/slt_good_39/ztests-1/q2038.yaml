@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q2038.sql | sort > q2038.out
+
+vector: true
+
+inputs:
+  - name: q2038.sql
+    data: |
+      SELECT ALL COUNT ( * ) col0, - 58 + - ( 41 ) AS col0;
+
+outputs:
+  - name: q2038.out
+    data: |
+      1	-99

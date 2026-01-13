@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q4311.sql | sort > q4311.out
+
+vector: true
+
+inputs:
+  - name: q4311.sql
+    data: |
+      SELECT DISTINCT 86 + col1 + 82 FROM tab2 GROUP BY col1 HAVING NOT col1 IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q4311.out
+    data: |
+      209
+      227
+      229

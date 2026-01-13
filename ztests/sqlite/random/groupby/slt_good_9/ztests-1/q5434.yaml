@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q5434.sql | sort > q5434.out
 
+vector: true
+
 inputs:
   - name: q5434.sql
     data: |
+      pragma pg
       SELECT ALL col1 * - col1 AS col1 FROM tab2 GROUP BY col1;
   - name: tab2
 

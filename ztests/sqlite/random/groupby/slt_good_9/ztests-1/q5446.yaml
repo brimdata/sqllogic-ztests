@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q5446.sql | sort > q5446.out
+
+vector: true
+
+inputs:
+  - name: q5446.sql
+    data: |
+      SELECT ALL + AVG ( ALL + - col0 ) + col1 FROM tab0 AS cor0 GROUP BY col0, col1 HAVING NULL <= NULL;
+  - name: tab0
+
+outputs:
+  - name: q5446.out
+    data: |

@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q9293.sql | sort > q9293.out
+
+vector: true
+
+inputs:
+  - name: q9293.sql
+    data: |
+      SELECT DISTINCT + ( - ( CAST ( NULL AS INTEGER ) ) ) AS col1, 30 AS col2, - col1 AS col1 FROM tab0 cor0;
+  - name: tab0
+
+outputs:
+  - name: q9293.out
+    data: |
+      NULL	30	-1
+      NULL	30	-21
+      NULL	30	-81

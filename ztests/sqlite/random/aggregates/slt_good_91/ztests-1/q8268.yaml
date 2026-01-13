@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q8268.sql | sort > q8268.out
+
+vector: true
+
+inputs:
+  - name: q8268.sql
+    data: |
+      SELECT DISTINCT col0 * - col1 * + - col1 * + - 96 AS col1, + col0 AS col1 FROM tab1 WHERE + col1 IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q8268.out
+    data: |

@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q5352.sql | sort > q5352.out
+
+vector: true
+
+inputs:
+  - name: q5352.sql
+    data: |
+      SELECT - col1 * + ( CAST ( NULL AS INTEGER ) ) + - col2 * col1 AS col1 FROM tab2 WHERE ( NOT ( - col1 ) IS NOT NULL );
+  - name: tab2
+
+outputs:
+  - name: q5352.out
+    data: |

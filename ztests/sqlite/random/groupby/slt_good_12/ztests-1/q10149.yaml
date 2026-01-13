@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q10149.sql | sort > q10149.out
+
+vector: true
+
+inputs:
+  - name: q10149.sql
+    data: |
+      SELECT CASE col1 WHEN 97 THEN NULL WHEN - col1 THEN NULL WHEN 44 + 66 THEN - 54 ELSE - MAX ( - col1 ) / 25 END * col1 AS col2 FROM tab1 WHERE col0 IS NULL GROUP BY col1;
+  - name: tab1
+
+outputs:
+  - name: q10149.out
+    data: |

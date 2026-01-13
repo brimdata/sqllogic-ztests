@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q468.sql | sort > q468.out
+
+vector: true
+
+inputs:
+  - name: q468.sql
+    data: |
+      SELECT DISTINCT - ( col1 ) AS col2 FROM tab1 WHERE col2 NOT BETWEEN NULL AND - col1;
+  - name: tab1
+
+outputs:
+  - name: q468.out
+    data: |
+      -14
+      -47
+      -5

@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q3070.sql | sort > q3070.out
+
+vector: true
+
+inputs:
+  - name: q3070.sql
+    data: |
+      SELECT DISTINCT * FROM tab0 AS cor0 GROUP BY col1, cor0.col0, cor0.col2;
+  - name: tab0
+
+outputs:
+  - name: q3070.out
+    data: |
+      26	0	79
+      43	81	24
+      83	0	38

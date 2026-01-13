@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9683.sql | sort > q9683.out
+
+vector: true
+
+inputs:
+  - name: q9683.sql
+    data: |
+      pragma pg
+      SELECT - 21 + 87 AS col0 FROM tab2 GROUP BY col1, col2, col0 HAVING NULL IN ( - 13 + CASE 38 + + col0 WHEN - CAST ( NULL AS INTEGER ) THEN col1 ELSE NULL END );
+  - name: tab2
+
+outputs:
+  - name: q9683.out
+    data: |

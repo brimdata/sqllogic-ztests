@@ -1,0 +1,18 @@
+script: |
+  super -f tsv -I q2946.sql | sort > q2946.out
+
+vector: true
+
+inputs:
+  - name: q2946.sql
+    data: |
+      pragma pg
+      SELECT tab2.col1 * tab2.col1 AS col1 FROM tab2 GROUP BY col1 HAVING ( - tab2.col1 + tab2.col1 ) IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q2946.out
+    data: |
+      1681
+      3481
+      3721

@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q8956.sql | sort > q8956.out
 
+vector: true
+
 inputs:
   - name: q8956.sql
     data: |
+      pragma pg
       SELECT + 81 AS col0 FROM tab0 AS cor0 GROUP BY col0 HAVING NOT COUNT ( * ) IS NOT NULL;
   - name: tab0
 

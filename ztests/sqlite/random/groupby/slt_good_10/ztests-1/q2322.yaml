@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q2322.sql | sort > q2322.out
 
+vector: true
+
 inputs:
   - name: q2322.sql
     data: |
+      pragma pg
       SELECT ALL col0 AS col2 FROM tab0 AS cor0 GROUP BY col0, col2 HAVING ( col2 ) <> col2;
   - name: tab0
 

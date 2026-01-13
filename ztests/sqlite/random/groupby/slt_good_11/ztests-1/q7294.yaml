@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q7294.sql | sort > q7294.out
 
+vector: true
+
 inputs:
   - name: q7294.sql
     data: |
+      pragma pg
       SELECT ALL - + col0 AS col1 FROM tab0 WHERE ( + - COALESCE ( + col1, col2 ) ) + - - col0 >= NULL GROUP BY col1, col0, col1;
   - name: tab0
 

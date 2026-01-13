@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q3075.sql | sort > q3075.out
 
+vector: true
+
 inputs:
   - name: q3075.sql
     data: |
+      pragma pg
       SELECT - 3 * - col1 AS col2 FROM tab0 GROUP BY col2, col1 HAVING NOT ( NULL <= 62 / - 21 );
   - name: tab0
 

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8589.sql | sort > q8589.out
+
+vector: true
+
+inputs:
+  - name: q8589.sql
+    data: |
+      pragma pg
+      SELECT DISTINCT ( 32 ) AS col0 FROM tab2 GROUP BY col1, col0 HAVING col1 BETWEEN - + col1 AND - + 66 * - - col0;
+  - name: tab2
+
+outputs:
+  - name: q8589.out
+    data: |

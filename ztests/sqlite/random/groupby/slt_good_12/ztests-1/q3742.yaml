@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q3742.sql | sort > q3742.out
 
+vector: true
+
 inputs:
   - name: q3742.sql
     data: |
+      pragma pg
       SELECT col2 AS col2 FROM tab0 GROUP BY col2, col1 HAVING NOT - 41 BETWEEN NULL AND NULL;
   - name: tab0
 

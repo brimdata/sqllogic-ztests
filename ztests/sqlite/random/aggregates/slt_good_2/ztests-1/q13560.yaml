@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q13560.sql | sort > q13560.out
+
+vector: true
+
+inputs:
+  - name: q13560.sql
+    data: |
+      SELECT - MAX ( + 25 ) AS col2 FROM tab1 AS cor0 WHERE col2 >= - col1;
+  - name: tab1
+
+outputs:
+  - name: q13560.out
+    data: |
+      -25

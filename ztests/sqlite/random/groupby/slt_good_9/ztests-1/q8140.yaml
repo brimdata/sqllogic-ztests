@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q8140.sql | sort > q8140.out
+
+vector: true
+
+inputs:
+  - name: q8140.sql
+    data: |
+      SELECT col1, col1 FROM tab1 AS cor0 GROUP BY col1 HAVING NULL IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q8140.out
+    data: |
+      44	44
+      57	57
+      6	6

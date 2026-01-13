@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q4120.sql | sort > q4120.out
 
+vector: true
+
 inputs:
   - name: q4120.sql
     data: |
+      pragma pg
       SELECT DISTINCT col2, + col2 AS col1 FROM tab1 AS cor0 WHERE + col2 * - - col2 <= - CAST ( col1 AS INTEGER ) GROUP BY col2, col1 HAVING NOT + col1 IS NULL;
   - name: tab1
 

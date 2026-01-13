@@ -1,0 +1,18 @@
+script: |
+  super -f tsv -I q6908.sql | sort > q6908.out
+
+vector: true
+
+inputs:
+  - name: q6908.sql
+    data: |
+      pragma pg
+      SELECT col2, col2 AS col2 FROM tab1 GROUP BY col2, col2;
+  - name: tab1
+
+outputs:
+  - name: q6908.out
+    data: |
+      45	45
+      71	71
+      8	8

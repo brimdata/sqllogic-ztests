@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q7582.sql | sort > q7582.out
+
+vector: true
+
+inputs:
+  - name: q7582.sql
+    data: |
+      SELECT ALL + CAST ( NULL AS INTEGER ) AS col1, COUNT ( * ) AS col1 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q7582.out
+    data: |
+      NULL	3

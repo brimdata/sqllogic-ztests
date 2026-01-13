@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q6451.sql | sort > q6451.out
+
+vector: true
+
+inputs:
+  - name: q6451.sql
+    data: |
+      SELECT + - col2 + + ( + COUNT ( * ) ) AS col0 FROM tab1 WHERE NULL IS NOT NULL GROUP BY col2, col1 HAVING NOT - col1 * - col1 BETWEEN NULL AND ( NULL );
+  - name: tab1
+
+outputs:
+  - name: q6451.out
+    data: |

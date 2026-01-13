@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q4812.sql | sort > q4812.out
+
+vector: true
+
+inputs:
+  - name: q4812.sql
+    data: |
+      SELECT DISTINCT + col1 FROM tab1 AS cor0 GROUP BY col0, col1 HAVING NOT NULLIF ( - col1, + col1 ) <= + 58;
+  - name: tab1
+
+outputs:
+  - name: q4812.out
+    data: |

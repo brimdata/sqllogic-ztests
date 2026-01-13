@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q11580.sql | sort > q11580.out
+
+vector: true
+
+inputs:
+  - name: q11580.sql
+    data: |
+      SELECT + + MIN ( DISTINCT + + col2 ) * COUNT ( * ) AS col1 FROM tab2 AS cor0 WHERE col1 > 3 * + - col0;
+  - name: tab2
+
+outputs:
+  - name: q11580.out
+    data: |
+      69

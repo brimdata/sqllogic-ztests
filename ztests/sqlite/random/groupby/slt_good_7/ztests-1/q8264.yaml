@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8264.sql | sort > q8264.out
+
+vector: true
+
+inputs:
+  - name: q8264.sql
+    data: |
+      SELECT DISTINCT + + 10 FROM tab2 GROUP BY tab2.col2;
+  - name: tab2
+
+outputs:
+  - name: q8264.out
+    data: |
+      10

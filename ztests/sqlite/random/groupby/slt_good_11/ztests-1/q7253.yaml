@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q7253.sql | sort > q7253.out
+
+vector: true
+
+inputs:
+  - name: q7253.sql
+    data: |
+      pragma pg
+      SELECT - + col1 * - 10 * - 13 AS col0 FROM tab0 AS cor0 GROUP BY col1, col0, col2 HAVING + col0 + + col1 >= + 32;
+  - name: tab0
+
+outputs:
+  - name: q7253.out
+    data: |
+      -10530
+      0

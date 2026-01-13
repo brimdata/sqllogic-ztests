@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q10722.sql | sort > q10722.out
+
+vector: true
+
+inputs:
+  - name: q10722.sql
+    data: |
+      SELECT DISTINCT CAST ( NULL AS INTEGER ) FROM tab2 AS cor0 GROUP BY col1 HAVING NOT NULL IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q10722.out
+    data: |
+      NULL

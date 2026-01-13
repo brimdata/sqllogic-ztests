@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q2306.sql | sort > q2306.out
+
+vector: true
+
+inputs:
+  - name: q2306.sql
+    data: |
+      SELECT ALL + - col0 AS col1 FROM tab1 AS cor0 WHERE NOT ( - col2 * - col1 >= + 6 );
+  - name: tab1
+
+outputs:
+  - name: q2306.out
+    data: |

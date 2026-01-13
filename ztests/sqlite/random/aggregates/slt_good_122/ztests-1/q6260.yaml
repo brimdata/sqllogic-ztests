@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q6260.sql | sort > q6260.out
+
+vector: true
+
+inputs:
+  - name: q6260.sql
+    data: |
+      SELECT - col2 AS col2, col2 * col1 * col0 AS col2 FROM tab1 WHERE NOT - col1 BETWEEN NULL AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q6260.out
+    data: |

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q6383.sql | sort > q6383.out
+
+vector: true
+
+inputs:
+  - name: q6383.sql
+    data: |
+      pragma pg
+      SELECT DISTINCT - COALESCE ( + col2, col1 ) AS col1 FROM tab0 GROUP BY col1, col2 HAVING NOT + CAST ( NULL AS INTEGER ) * - col1 * - col2 = NULL;
+  - name: tab0
+
+outputs:
+  - name: q6383.out
+    data: |

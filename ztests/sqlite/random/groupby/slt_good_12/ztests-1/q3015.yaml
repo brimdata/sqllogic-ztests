@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q3015.sql | sort > q3015.out
+
+vector: true
+
+inputs:
+  - name: q3015.sql
+    data: |
+      SELECT ALL col1 + + col2 FROM tab0 GROUP BY col1, col2 HAVING ( NULL ) <> ( - col1 + + CAST ( NULL AS REAL ) * - 19 );
+  - name: tab0
+
+outputs:
+  - name: q3015.out
+    data: |

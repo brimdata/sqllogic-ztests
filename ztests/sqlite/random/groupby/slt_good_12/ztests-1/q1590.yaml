@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q1590.sql | sort > q1590.out
+
+vector: true
+
+inputs:
+  - name: q1590.sql
+    data: |
+      SELECT 89 FROM tab1 GROUP BY col0 HAVING NOT ( NULL ) IS NULL OR + col0 / + NULLIF ( + 87 * col0, col0 / 59 ) > ( NULL );
+  - name: tab1
+
+outputs:
+  - name: q1590.out
+    data: |

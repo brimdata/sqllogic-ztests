@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q6125.sql | sort > q6125.out
+
+vector: true
+
+inputs:
+  - name: q6125.sql
+    data: |
+      SELECT 19 FROM tab0 GROUP BY col0, col1, col2 HAVING NOT - col2 BETWEEN ( col1 / 4 + + COALESCE ( col2, col2 ) ) AND ( - 9 );
+  - name: tab0
+
+outputs:
+  - name: q6125.out
+    data: |
+      19
+      19
+      19

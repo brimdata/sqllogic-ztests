@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q2009.sql | sort > q2009.out
+
+vector: true
+
+inputs:
+  - name: q2009.sql
+    data: |
+      SELECT + col0 FROM tab2 GROUP BY col1, col0 HAVING col0 * col0 IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q2009.out
+    data: |
+      15
+      91
+      92
