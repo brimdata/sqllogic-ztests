@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q8883.sql | sort > q8883.out
+
+vector: true
+
+inputs:
+  - name: q8883.sql
+    data: |
+      pragma pg
+      SELECT DISTINCT 90 AS col0 FROM tab2 AS cor0 GROUP BY col0, cor0.col1, cor0.col0;
+  - name: tab2
+
+outputs:
+  - name: q8883.out
+    data: |
+      90

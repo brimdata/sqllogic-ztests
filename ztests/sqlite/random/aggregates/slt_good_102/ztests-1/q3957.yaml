@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q3957.sql | sort > q3957.out
+
+vector: true
+
+inputs:
+  - name: q3957.sql
+    data: |
+      SELECT ALL col2 AS col0 FROM tab2 WHERE + col2 IN ( + col1, + col0, + 24, - col1 + - - col0 );
+  - name: tab2
+
+outputs:
+  - name: q3957.out
+    data: |

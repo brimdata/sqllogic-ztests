@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1781.sql | sort > q1781.out
+
+vector: true
+
+inputs:
+  - name: q1781.sql
+    data: |
+      SELECT DISTINCT - COALESCE ( 70, col1 + 26 ) FROM tab0 GROUP BY col1;
+  - name: tab0
+
+outputs:
+  - name: q1781.out
+    data: |
+      -70

@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q2372.sql | sort > q2372.out
+
+vector: true
+
+inputs:
+  - name: q2372.sql
+    data: |
+      SELECT + col0 AS col2 FROM tab2 GROUP BY col0 HAVING NULL NOT BETWEEN - AVG ( DISTINCT + col1 ) AND NULL;
+  - name: tab2
+
+outputs:
+  - name: q2372.out
+    data: |

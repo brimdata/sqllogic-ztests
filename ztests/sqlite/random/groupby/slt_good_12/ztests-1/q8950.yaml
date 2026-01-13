@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8950.sql | sort > q8950.out
+
+vector: true
+
+inputs:
+  - name: q8950.sql
+    data: |
+      SELECT DISTINCT 41 * + COUNT ( * ) FROM tab1 GROUP BY col2, col0;
+  - name: tab1
+
+outputs:
+  - name: q8950.out
+    data: |
+      41

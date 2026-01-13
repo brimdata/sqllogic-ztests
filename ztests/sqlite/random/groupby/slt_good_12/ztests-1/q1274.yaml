@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q1274.sql | sort > q1274.out
 
+vector: true
+
 inputs:
   - name: q1274.sql
     data: |
+      pragma pg
       SELECT - col2 + CAST ( CAST ( NULL AS INTEGER ) AS INTEGER ) AS col1 FROM tab0 GROUP BY col1, col2 HAVING - + 92 IS NULL;
   - name: tab0
 

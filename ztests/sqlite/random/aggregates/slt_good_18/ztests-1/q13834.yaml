@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q13834.sql | sort > q13834.out
+
+vector: true
+
+inputs:
+  - name: q13834.sql
+    data: |
+      SELECT ALL 12 AS col1, - 73 AS col2, + + col1 AS col2 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q13834.out
+    data: |
+      12	-73	14
+      12	-73	47
+      12	-73	5

@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q6780.sql | sort > q6780.out
+
+vector: true
+
+inputs:
+  - name: q6780.sql
+    data: |
+      SELECT MIN ( DISTINCT + 16 ) col2, CAST ( - COUNT ( * ) AS INTEGER ) col2;
+
+outputs:
+  - name: q6780.out
+    data: |
+      16	-1

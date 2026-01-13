@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q10390.sql | sort > q10390.out
+
+vector: true
+
+inputs:
+  - name: q10390.sql
+    data: |
+      pragma pg
+      SELECT + 78 + - col2 AS col0 FROM tab2 GROUP BY col1, col0, col2 HAVING NOT col2 <> + ( col1 ) + + MAX ( - + col2 );
+  - name: tab2
+
+outputs:
+  - name: q10390.out
+    data: |

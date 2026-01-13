@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q7222.sql | sort > q7222.out
+
+vector: true
+
+inputs:
+  - name: q7222.sql
+    data: |
+      SELECT DISTINCT - NULLIF ( cor0.col1, NULLIF ( 47, cor0.col1 ) ) - - cor0.col1 * cor0.col1 FROM tab0 AS cor0 GROUP BY cor0.col1, cor0.col2;
+  - name: tab0
+
+outputs:
+  - name: q7222.out
+    data: |
+      0
+      6480

@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q4354.sql | sort > q4354.out
 
+vector: true
+
 inputs:
   - name: q4354.sql
     data: |
+      pragma pg
       SELECT DISTINCT + CAST ( NULL AS REAL ) AS col2 FROM tab1 AS cor0 GROUP BY col1, col2 HAVING ( + 16 ) IS NULL;
   - name: tab1
 

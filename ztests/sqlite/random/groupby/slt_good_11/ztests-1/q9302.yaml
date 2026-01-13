@@ -1,0 +1,18 @@
+script: |
+  super -f tsv -I q9302.sql | sort > q9302.out
+
+vector: true
+
+inputs:
+  - name: q9302.sql
+    data: |
+      pragma pg
+      SELECT DISTINCT col2 AS col2, + col2 * - - col2 * - 81 FROM tab0 AS cor0 GROUP BY col2;
+  - name: tab0
+
+outputs:
+  - name: q9302.out
+    data: |
+      24	-46656
+      38	-116964
+      79	-505521

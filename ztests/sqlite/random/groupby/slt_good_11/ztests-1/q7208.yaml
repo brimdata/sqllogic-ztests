@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q7208.sql | sort > q7208.out
+
+vector: true
+
+inputs:
+  - name: q7208.sql
+    data: |
+      pragma pg
+      SELECT DISTINCT + - 10 AS col0, + col0 * - col0 + + + CAST ( NULL AS REAL ) AS col2 FROM tab2 AS cor0 GROUP BY col0;
+  - name: tab2
+
+outputs:
+  - name: q7208.out
+    data: |
+      -10	NULL

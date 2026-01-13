@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q3392.sql | sort > q3392.out
 
+vector: true
+
 inputs:
   - name: q3392.sql
     data: |
+      pragma pg
       SELECT DISTINCT col1 AS col1 FROM tab1 AS cor0 GROUP BY col0, col1, col2 HAVING 12 > - + 95;
   - name: tab1
 

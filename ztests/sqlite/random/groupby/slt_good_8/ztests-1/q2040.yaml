@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q2040.sql | sort > q2040.out
 
+vector: true
+
 inputs:
   - name: q2040.sql
     data: |
+      pragma pg
       SELECT DISTINCT + cor0.col1 * + 19 AS col1 FROM tab2 AS cor0 GROUP BY col1;
   - name: tab2
 

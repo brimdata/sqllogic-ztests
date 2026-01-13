@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8093.sql | sort > q8093.out
+
+vector: true
+
+inputs:
+  - name: q8093.sql
+    data: |
+      pragma pg
+      SELECT 21 AS col0 FROM tab1 WHERE ( NOT - col1 IS NOT NULL ) GROUP BY col0, col2 HAVING NOT - col2 - col0 IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q8093.out
+    data: |

@@ -1,0 +1,18 @@
+script: |
+  super -f tsv -I q3643.sql | sort > q3643.out
+
+vector: true
+
+inputs:
+  - name: q3643.sql
+    data: |
+      pragma pg
+      SELECT ALL - col0 AS col1, col0 AS col0 FROM tab1 AS cor0 GROUP BY col0, col0;
+  - name: tab1
+
+outputs:
+  - name: q3643.out
+    data: |
+      -22	22
+      -28	28
+      -82	82

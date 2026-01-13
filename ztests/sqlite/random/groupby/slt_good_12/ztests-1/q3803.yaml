@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q3803.sql | sort > q3803.out
+
+vector: true
+
+inputs:
+  - name: q3803.sql
+    data: |
+      SELECT 43 + 98 AS col2 FROM tab0 GROUP BY col1 HAVING ( NOT ( NOT col1 + - + col1 IS NOT NULL ) );
+  - name: tab0
+
+outputs:
+  - name: q3803.out
+    data: |
+      141
+      141

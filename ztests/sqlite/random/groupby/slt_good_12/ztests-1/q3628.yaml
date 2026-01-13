@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q3628.sql | sort > q3628.out
+
+vector: true
+
+inputs:
+  - name: q3628.sql
+    data: |
+      SELECT ALL col0 FROM tab2 GROUP BY col2, col0, col2 HAVING NOT + + CAST ( col2 AS INTEGER ) <> NULL;
+  - name: tab2
+
+outputs:
+  - name: q3628.out
+    data: |

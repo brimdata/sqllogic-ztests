@@ -1,0 +1,18 @@
+script: |
+  super -f tsv -I q6019.sql | sort > q6019.out
+
+vector: true
+
+inputs:
+  - name: q6019.sql
+    data: |
+      pragma pg
+      SELECT col0 / - 46 AS col1, col0 + - - col0 AS col0 FROM tab2 GROUP BY col0 HAVING NOT 33 IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q6019.out
+    data: |
+      -1	182
+      -2	184
+      0	30

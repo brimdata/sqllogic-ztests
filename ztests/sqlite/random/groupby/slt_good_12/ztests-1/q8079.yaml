@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q8079.sql | sort > q8079.out
+
+vector: true
+
+inputs:
+  - name: q8079.sql
+    data: |
+      SELECT DISTINCT - COUNT ( * ) + col2 + - 46 FROM tab2 GROUP BY col2, col2;
+  - name: tab2
+
+outputs:
+  - name: q8079.out
+    data: |
+      11
+      32
+      40

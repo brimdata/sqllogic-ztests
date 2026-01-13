@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q4172.sql | sort > q4172.out
+
+vector: true
+
+inputs:
+  - name: q4172.sql
+    data: |
+      SELECT ALL + col1 * - col2 - col0 AS col1, ( - 55 ) AS col1 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q4172.out
+    data: |
+      -1395	-55
+      -3287	-55
+      -380	-55

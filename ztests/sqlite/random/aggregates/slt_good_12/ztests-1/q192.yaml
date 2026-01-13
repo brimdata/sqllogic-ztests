@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q192.sql | sort > q192.out
+
+vector: true
+
+inputs:
+  - name: q192.sql
+    data: |
+      SELECT DISTINCT col0 + + ( - CAST ( NULL AS REAL ) ) + + col0 AS col0 FROM tab1 AS cor0 WHERE ( col1 ) <> + CAST ( col0 AS INTEGER );
+  - name: tab1
+
+outputs:
+  - name: q192.out
+    data: |
+      NULL

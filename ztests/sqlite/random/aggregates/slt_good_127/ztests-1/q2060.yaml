@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q2060.sql | sort > q2060.out
+
+vector: true
+
+inputs:
+  - name: q2060.sql
+    data: |
+      SELECT + 65 AS col2, - col0 AS col2 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q2060.out
+    data: |
+      65	-51
+      65	-85
+      65	-91

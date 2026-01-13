@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q4546.sql | sort > q4546.out
+
+vector: true
+
+inputs:
+  - name: q4546.sql
+    data: |
+      SELECT - 31 AS col2, + 33 AS col2 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q4546.out
+    data: |
+      -31	33
+      -31	33
+      -31	33

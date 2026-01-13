@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q5357.sql | sort > q5357.out
 
+vector: true
+
 inputs:
   - name: q5357.sql
     data: |
+      pragma pg
       SELECT ALL col0 AS col0 FROM tab2 GROUP BY col0 HAVING NOT ( AVG ( + 50 ) * col0 ) IS NOT NULL;
   - name: tab2
 

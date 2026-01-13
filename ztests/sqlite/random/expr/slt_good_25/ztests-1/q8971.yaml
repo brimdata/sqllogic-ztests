@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q8971.sql | sort > q8971.out
+
+vector: true
+
+inputs:
+  - name: q8971.sql
+    data: |
+      SELECT - ( COUNT ( * ) ) + 22 + - CASE + - COUNT ( * ) WHEN + 49 THEN 70 WHEN AVG ( 3 ) THEN NULL ELSE NULL END AS col1;
+
+outputs:
+  - name: q8971.out
+    data: |
+      NULL

@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q659.sql | sort > q659.out
+
+vector: true
+
+inputs:
+  - name: q659.sql
+    data: |
+      SELECT - col1 * - col1, col1 FROM tab2 AS cor0 GROUP BY col1;
+  - name: tab2
+
+outputs:
+  - name: q659.out
+    data: |
+      1681	41
+      3481	59
+      3721	61

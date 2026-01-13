@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q6793.sql | sort > q6793.out
+
+vector: true
+
+inputs:
+  - name: q6793.sql
+    data: |
+      SELECT DISTINCT - col0 * + col0 AS col0 FROM tab1 WHERE NOT - col1 + - col1 * + col0 BETWEEN + col0 * - col2 - col1 AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q6793.out
+    data: |

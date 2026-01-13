@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q534.sql | sort > q534.out
+
+vector: true
+
+inputs:
+  - name: q534.sql
+    data: |
+      SELECT ALL + col1 * + - AVG ( col1 ) * - col1 AS col2 FROM tab0 AS cor0 GROUP BY col1 HAVING NOT NULL IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q534.out
+    data: |

@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q14454.sql | sort > q14454.out
+
+vector: true
+
+inputs:
+  - name: q14454.sql
+    data: |
+      SELECT ALL COUNT ( * ) col2, + COALESCE ( + - 10, - - CAST ( NULL AS INTEGER ) ) - + 63 AS col2;
+
+outputs:
+  - name: q14454.out
+    data: |
+      1	-73

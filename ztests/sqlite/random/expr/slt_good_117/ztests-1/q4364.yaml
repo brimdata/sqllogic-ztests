@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q4364.sql | sort > q4364.out
+
+vector: true
+
+inputs:
+  - name: q4364.sql
+    data: |
+      SELECT 12 col1, + COUNT ( 35 ) + - CAST ( NULL AS INTEGER ) AS col1;
+
+outputs:
+  - name: q4364.out
+    data: |
+      12	NULL

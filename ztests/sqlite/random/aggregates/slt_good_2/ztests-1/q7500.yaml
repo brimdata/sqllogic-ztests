@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q7500.sql | sort > q7500.out
+
+vector: true
+
+inputs:
+  - name: q7500.sql
+    data: |
+      SELECT + col1 * 7 AS col2, + ( 36 ) AS col2 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q7500.out
+    data: |
+      329	36
+      35	36
+      98	36

@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q6502.sql | sort > q6502.out
+
+vector: true
+
+inputs:
+  - name: q6502.sql
+    data: |
+      SELECT - col0 * + col2 AS col1, - 43 AS col1 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q6502.out
+    data: |
+      -4896	-43
+      -5015	-43
+      -6188	-43

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1640.sql | sort > q1640.out
+
+vector: true
+
+inputs:
+  - name: q1640.sql
+    data: |
+      SELECT - + 34 * + MAX ( ALL CAST ( + - col1 AS INTEGER ) ) + COUNT ( * ) AS col2 FROM tab0 AS cor0 WHERE + col2 IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q1640.out
+    data: |
+      37

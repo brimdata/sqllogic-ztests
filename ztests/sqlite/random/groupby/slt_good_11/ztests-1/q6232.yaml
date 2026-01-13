@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q6232.sql | sort > q6232.out
 
+vector: true
+
 inputs:
   - name: q6232.sql
     data: |
+      pragma pg
       SELECT col1 AS col0 FROM tab0 cor0 WHERE NOT col0 NOT BETWEEN CAST ( NULL AS INTEGER ) / col2 + - col1 * - 76 AND ( NULL ) GROUP BY col1, col0;
   - name: tab0
 

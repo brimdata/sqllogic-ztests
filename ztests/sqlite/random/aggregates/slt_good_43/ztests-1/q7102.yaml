@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q7102.sql | sort > q7102.out
+
+vector: true
+
+inputs:
+  - name: q7102.sql
+    data: |
+      SELECT ALL ( - SUM ( - col0 ) ) AS col2 FROM tab0 WHERE NOT ( - CAST ( 42 AS INTEGER ) ) >= col2;
+  - name: tab0
+
+outputs:
+  - name: q7102.out
+    data: |
+      199

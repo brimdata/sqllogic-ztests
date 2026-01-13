@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q3531.sql | sort > q3531.out
+
+vector: true
+
+inputs:
+  - name: q3531.sql
+    data: |
+      SELECT DISTINCT col2 / - ( + 40 ) AS col1, 34 AS col1 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q3531.out
+    data: |
+      -1	34
+      0	34

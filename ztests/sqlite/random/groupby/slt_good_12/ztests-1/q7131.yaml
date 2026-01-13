@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q7131.sql | sort > q7131.out
+
+vector: true
+
+inputs:
+  - name: q7131.sql
+    data: |
+      SELECT ALL col1 * COUNT ( * ) FROM tab0 GROUP BY col2, col1 HAVING - CAST ( + 61 AS INTEGER ) <= ( + 77 );
+  - name: tab0
+
+outputs:
+  - name: q7131.out
+    data: |
+      0
+      0
+      81

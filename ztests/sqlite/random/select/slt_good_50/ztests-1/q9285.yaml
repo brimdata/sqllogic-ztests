@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9285.sql | sort > q9285.out
+
+vector: true
+
+inputs:
+  - name: q9285.sql
+    data: |
+      SELECT - col2 AS col0 FROM tab1 WHERE col1 NOT BETWEEN col1 + - col1 AND + col0;
+  - name: tab1
+
+outputs:
+  - name: q9285.out
+    data: |
+      -54

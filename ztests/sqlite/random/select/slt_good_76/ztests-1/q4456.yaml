@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4456.sql | sort > q4456.out
+
+vector: true
+
+inputs:
+  - name: q4456.sql
+    data: |
+      SELECT - tab2.col1 AS col0 FROM tab2 WHERE NOT col1 / - col0 <= + col0 + - col1;
+  - name: tab2
+
+outputs:
+  - name: q4456.out
+    data: |
+      -31

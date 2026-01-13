@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q9531.sql | sort > q9531.out
+
+vector: true
+
+inputs:
+  - name: q9531.sql
+    data: |
+      SELECT - AVG ( DISTINCT col2 ) - + col2 FROM tab0 GROUP BY col2 HAVING + - 9 IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q9531.out
+    data: |

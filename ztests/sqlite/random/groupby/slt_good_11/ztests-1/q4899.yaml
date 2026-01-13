@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q4899.sql | sort > q4899.out
+
+vector: true
+
+inputs:
+  - name: q4899.sql
+    data: |
+      SELECT + col0 FROM tab2 cor0 GROUP BY col1, col0 HAVING ( col1 ) = + 42 * col0 * + col0;
+  - name: tab2
+
+outputs:
+  - name: q4899.out
+    data: |

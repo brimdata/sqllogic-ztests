@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q7659.sql | sort > q7659.out
+
+vector: true
+
+inputs:
+  - name: q7659.sql
+    data: |
+      SELECT DISTINCT - - col1 / 40 / - col1 / + COUNT ( * ) FROM tab1 AS cor0 GROUP BY col1, col2 HAVING col1 IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q7659.out
+    data: |
+      0

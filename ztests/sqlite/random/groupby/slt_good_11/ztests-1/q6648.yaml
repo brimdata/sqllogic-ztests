@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q6648.sql | sort > q6648.out
+
+vector: true
+
+inputs:
+  - name: q6648.sql
+    data: |
+      SELECT DISTINCT + NULLIF ( + + 24, AVG ( DISTINCT + + 70 ) ) FROM tab0 GROUP BY col1;
+  - name: tab0
+
+outputs:
+  - name: q6648.out
+    data: |
+      24

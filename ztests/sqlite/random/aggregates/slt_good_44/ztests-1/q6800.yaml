@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q6800.sql | sort > q6800.out
+
+vector: true
+
+inputs:
+  - name: q6800.sql
+    data: |
+      SELECT 89 AS col2, + 82 AS col2 FROM tab1 WHERE + - col2 NOT BETWEEN NULL AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q6800.out
+    data: |

@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q7840.sql | sort > q7840.out
+
+vector: true
+
+inputs:
+  - name: q7840.sql
+    data: |
+      SELECT + col1 - + col1 FROM tab0 GROUP BY col1 HAVING NOT - col1 < NULL;
+  - name: tab0
+
+outputs:
+  - name: q7840.out
+    data: |

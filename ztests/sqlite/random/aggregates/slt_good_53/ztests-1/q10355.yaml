@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q10355.sql | sort > q10355.out
+
+vector: true
+
+inputs:
+  - name: q10355.sql
+    data: |
+      SELECT - MAX ( - col1 ) AS col0 FROM tab2 WHERE NOT col0 BETWEEN col1 + 61 AND ( + ( CAST ( NULL AS REAL ) ) );
+  - name: tab2
+
+outputs:
+  - name: q10355.out
+    data: |
+      51

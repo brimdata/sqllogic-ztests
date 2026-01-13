@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q9523.sql | sort > q9523.out
+
+vector: true
+
+inputs:
+  - name: q9523.sql
+    data: |
+      SELECT DISTINCT + 98 AS col2 FROM tab1, tab2 AS cor0 GROUP BY tab1.col0;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q9523.out
+    data: |
+      98

@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q13738.sql | sort > q13738.out
+
+vector: true
+
+inputs:
+  - name: q13738.sql
+    data: |
+      SELECT + 24 AS col2, col0 * + col0 * + col0 AS col1, + - CAST ( NULL AS INTEGER ) AS col2 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q13738.out
+    data: |
+      24	132651	NULL
+      24	614125	NULL
+      24	753571	NULL

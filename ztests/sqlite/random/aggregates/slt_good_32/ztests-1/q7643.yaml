@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q7643.sql | sort > q7643.out
+
+vector: true
+
+inputs:
+  - name: q7643.sql
+    data: |
+      SELECT CAST ( + + col1 AS INTEGER ) * col2 + CAST ( NULL AS REAL ) + - ( + 7 ) AS col2, - col0 AS col2 FROM tab0;
+  - name: tab0
+
+outputs:
+  - name: q7643.out
+    data: |
+      NULL	-15
+      NULL	-87
+      NULL	-97

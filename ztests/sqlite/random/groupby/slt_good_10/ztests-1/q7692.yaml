@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q7692.sql | sort > q7692.out
+
+vector: true
+
+inputs:
+  - name: q7692.sql
+    data: |
+      SELECT - col1 FROM tab2 AS cor0 WHERE NOT NULL IS NOT NULL GROUP BY col1 HAVING ( + - AVG ( DISTINCT - col2 ) ) IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q7692.out
+    data: |

@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q2982.sql | sort > q2982.out
 
+vector: true
+
 inputs:
   - name: q2982.sql
     data: |
+      pragma pg
       SELECT - + col1 + + col2 AS col2 FROM tab1 AS cor0 GROUP BY col2, col1 HAVING + 13 * - col2 + 31 <> NULL;
   - name: tab1
 

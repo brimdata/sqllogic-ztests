@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q530.sql | sort > q530.out
+
+vector: true
+
+inputs:
+  - name: q530.sql
+    data: |
+      SELECT ALL - col0 AS col2 FROM tab2 GROUP BY col0 HAVING col0 <> - col0;
+  - name: tab2
+
+outputs:
+  - name: q530.out
+    data: |
+      -15
+      -91
+      -92

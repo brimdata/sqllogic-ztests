@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q1863.sql | sort > q1863.out
+
+vector: true
+
+inputs:
+  - name: q1863.sql
+    data: |
+      SELECT DISTINCT col0, - 60 FROM tab2 GROUP BY col1, col0 HAVING NOT ( + col1 * + - ( col1 ) + + - col0 ) IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q1863.out
+    data: |
+      15	-60
+      91	-60
+      92	-60

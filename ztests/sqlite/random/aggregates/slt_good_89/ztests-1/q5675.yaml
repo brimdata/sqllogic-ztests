@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q5675.sql | sort > q5675.out
+
+vector: true
+
+inputs:
+  - name: q5675.sql
+    data: |
+      SELECT ALL - ( - + col2 ) AS col1, - col0 AS col1 FROM tab2 WHERE ( NOT ( NULL IS NOT NULL ) );
+  - name: tab2
+
+outputs:
+  - name: q5675.out
+    data: |
+      23	-46
+      40	-64
+      58	-75

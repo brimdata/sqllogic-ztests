@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q2802.sql | sort > q2802.out
+
+vector: true
+
+inputs:
+  - name: q2802.sql
+    data: |
+      SELECT 32 + - + 31 FROM tab0 AS cor0 GROUP BY col1 HAVING NOT NULL IN ( - col1 );
+  - name: tab0
+
+outputs:
+  - name: q2802.out
+    data: |

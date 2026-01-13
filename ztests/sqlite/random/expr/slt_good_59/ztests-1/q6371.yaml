@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q6371.sql | sort > q6371.out
+
+vector: true
+
+inputs:
+  - name: q6371.sql
+    data: |
+      SELECT ALL 52, - CASE - CAST ( NULL AS REAL ) WHEN - 85 THEN + 24 WHEN + 81 + - 5 THEN NULL END AS col1;
+
+outputs:
+  - name: q6371.out
+    data: |
+      52	NULL

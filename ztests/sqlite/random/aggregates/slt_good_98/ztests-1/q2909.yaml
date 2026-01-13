@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q2909.sql | sort > q2909.out
+
+vector: true
+
+inputs:
+  - name: q2909.sql
+    data: |
+      SELECT - 86 AS col1 FROM tab1 WHERE - col2 <= + col1;
+  - name: tab1
+
+outputs:
+  - name: q2909.out
+    data: |
+      -86
+      -86
+      -86

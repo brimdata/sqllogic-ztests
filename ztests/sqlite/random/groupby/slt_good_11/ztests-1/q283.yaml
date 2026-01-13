@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q283.sql | sort > q283.out
+
+vector: true
+
+inputs:
+  - name: q283.sql
+    data: |
+      SELECT - col0 * - col0 / - AVG ( + col0 ) FROM tab2 WHERE NOT NULL IS NULL GROUP BY col2, col0;
+  - name: tab2
+
+outputs:
+  - name: q283.out
+    data: |

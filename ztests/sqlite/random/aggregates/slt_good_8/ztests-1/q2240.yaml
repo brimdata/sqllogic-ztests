@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q2240.sql | sort > q2240.out
+
+vector: true
+
+inputs:
+  - name: q2240.sql
+    data: |
+      SELECT DISTINCT CAST ( + col1 AS INTEGER ) + - ( col2 ) / 38 * col1 AS col2, + ( - + 93 ) AS col2 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q2240.out
+    data: |
+      0	-93
+      51	-93

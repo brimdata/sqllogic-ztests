@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q816.sql | sort > q816.out
+
+vector: true
+
+inputs:
+  - name: q816.sql
+    data: |
+      SELECT col2 AS col0, - col2 * - col0 * + col1 AS col0 FROM tab1 AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q816.out
+    data: |
+      59	25075
+      68	290836
+      96	68544

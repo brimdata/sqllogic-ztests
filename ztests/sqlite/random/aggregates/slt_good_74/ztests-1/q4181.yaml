@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q4181.sql | sort > q4181.out
+
+vector: true
+
+inputs:
+  - name: q4181.sql
+    data: |
+      SELECT DISTINCT + 73 AS col0, COUNT ( * ) AS col0 FROM tab1 AS cor0 CROSS JOIN tab0 AS cor1;
+  - name: tab0
+  - name: tab1
+
+outputs:
+  - name: q4181.out
+    data: |
+      73	9

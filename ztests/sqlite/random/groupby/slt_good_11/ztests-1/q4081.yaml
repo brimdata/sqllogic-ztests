@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q4081.sql | sort > q4081.out
+
+vector: true
+
+inputs:
+  - name: q4081.sql
+    data: |
+      SELECT col1, - col1 FROM tab0 GROUP BY col1;
+  - name: tab0
+
+outputs:
+  - name: q4081.out
+    data: |
+      0	0
+      81	-81

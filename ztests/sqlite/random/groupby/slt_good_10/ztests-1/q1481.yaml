@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q1481.sql | sort > q1481.out
+
+vector: true
+
+inputs:
+  - name: q1481.sql
+    data: |
+      SELECT ALL col1 * - col1 AS col2 FROM tab2 GROUP BY col1, col1 HAVING NOT - + col1 IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q1481.out
+    data: |
+      -1681
+      -3481
+      -3721

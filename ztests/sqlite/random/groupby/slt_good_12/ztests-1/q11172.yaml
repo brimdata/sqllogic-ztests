@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q11172.sql | sort > q11172.out
+
+vector: true
+
+inputs:
+  - name: q11172.sql
+    data: |
+      SELECT + + COUNT ( * ) + ( + col1 ) FROM tab0 AS cor0 GROUP BY col1;
+  - name: tab0
+
+outputs:
+  - name: q11172.out
+    data: |
+      2
+      82

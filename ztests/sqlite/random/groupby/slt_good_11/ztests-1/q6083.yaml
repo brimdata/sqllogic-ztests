@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q6083.sql | sort > q6083.out
+
+vector: true
+
+inputs:
+  - name: q6083.sql
+    data: |
+      SELECT col2 - + 7 FROM tab0 AS cor0 GROUP BY col1, col2 HAVING - col1 IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q6083.out
+    data: |
+      17
+      31
+      72

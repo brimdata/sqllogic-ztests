@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q4070.sql | sort > q4070.out
+
+vector: true
+
+inputs:
+  - name: q4070.sql
+    data: |
+      SELECT ALL + col0 + + 74 AS col1 FROM tab1 WHERE NOT col1 BETWEEN - 14 * col0 AND col0;
+  - name: tab1
+
+outputs:
+  - name: q4070.out
+    data: |

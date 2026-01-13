@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1504.sql | sort > q1504.out
+
+vector: true
+
+inputs:
+  - name: q1504.sql
+    data: |
+      SELECT DISTINCT 42 AS col0, 14 * - ( COUNT ( * ) ), + 29 AS col0 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q1504.out
+    data: |
+      42	-42	29

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8402.sql | sort > q8402.out
+
+vector: true
+
+inputs:
+  - name: q8402.sql
+    data: |
+      SELECT DISTINCT + CAST ( 8 AS INTEGER ) FROM tab1 AS cor0 GROUP BY cor0.col0, cor0.col0;
+  - name: tab1
+
+outputs:
+  - name: q8402.out
+    data: |
+      8

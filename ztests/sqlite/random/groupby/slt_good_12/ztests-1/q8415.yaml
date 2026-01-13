@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q8415.sql | sort > q8415.out
 
+vector: true
+
 inputs:
   - name: q8415.sql
     data: |
+      pragma pg
       SELECT DISTINCT + 81 AS col1 FROM tab0 GROUP BY col1, col1 HAVING - - col1 NOT BETWEEN 86 AND NULL;
   - name: tab0
 

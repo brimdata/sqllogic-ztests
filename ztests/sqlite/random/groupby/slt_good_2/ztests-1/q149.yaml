@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q149.sql | sort > q149.out
+
+vector: true
+
+inputs:
+  - name: q149.sql
+    data: |
+      SELECT DISTINCT - CAST ( 95 AS INTEGER ) FROM tab2, tab1 AS cor0 GROUP BY cor0.col0;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q149.out
+    data: |
+      -95

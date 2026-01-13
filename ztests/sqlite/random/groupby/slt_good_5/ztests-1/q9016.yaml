@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9016.sql | sort > q9016.out
+
+vector: true
+
+inputs:
+  - name: q9016.sql
+    data: |
+      SELECT DISTINCT CASE - cor0.col2 WHEN cor0.col0 THEN - cor0.col2 ELSE NULL END AS col1 FROM tab1 AS cor0 GROUP BY cor0.col2, cor0.col0;
+  - name: tab1
+
+outputs:
+  - name: q9016.out
+    data: |
+      NULL

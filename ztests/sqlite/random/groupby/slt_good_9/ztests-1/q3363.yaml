@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q3363.sql | sort > q3363.out
+
+vector: true
+
+inputs:
+  - name: q3363.sql
+    data: |
+      pragma pg
+      SELECT DISTINCT col0 AS col0 FROM tab0 cor0 GROUP BY col2, col0 HAVING NOT - + col2 = NULL;
+  - name: tab0
+
+outputs:
+  - name: q3363.out
+    data: |

@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q2765.sql | sort > q2765.out
 
+vector: true
+
 inputs:
   - name: q2765.sql
     data: |
+      pragma pg
       SELECT ALL ( + 8 ) AS col1 FROM tab2 AS cor0 WHERE ( NOT ( + + 68 * + col0 ) <> NULL ) GROUP BY col0, col1;
   - name: tab2
 

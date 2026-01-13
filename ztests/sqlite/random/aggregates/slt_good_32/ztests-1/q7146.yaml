@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q7146.sql | sort > q7146.out
+
+vector: true
+
+inputs:
+  - name: q7146.sql
+    data: |
+      SELECT + 42 AS col2, 29, ( col2 ) AS col2 FROM tab2 AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q7146.out
+    data: |
+      42	29	23
+      42	29	40
+      42	29	58

@@ -1,0 +1,18 @@
+script: |
+  super -f tsv -I q1442.sql | sort > q1442.out
+
+vector: true
+
+inputs:
+  - name: q1442.sql
+    data: |
+      pragma pg
+      SELECT ALL col0 AS col1 FROM tab2 GROUP BY col0, col1 HAVING NOT col0 <= - 19;
+  - name: tab2
+
+outputs:
+  - name: q1442.out
+    data: |
+      15
+      91
+      92

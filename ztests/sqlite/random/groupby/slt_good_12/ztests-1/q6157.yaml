@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q6157.sql | sort > q6157.out
 
+vector: true
+
 inputs:
   - name: q6157.sql
     data: |
+      pragma pg
       SELECT 41 / ( - + col1 ) AS col1 FROM tab1 AS cor0 GROUP BY col1 HAVING NOT + + COUNT ( * ) IS NOT NULL;
   - name: tab1
 

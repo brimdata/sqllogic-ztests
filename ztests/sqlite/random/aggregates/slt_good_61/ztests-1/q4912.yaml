@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4912.sql | sort > q4912.out
+
+vector: true
+
+inputs:
+  - name: q4912.sql
+    data: |
+      SELECT DISTINCT col0 * col1 + CAST ( NULL AS INTEGER ) * ( + 99 ) AS col1 FROM tab0 WHERE NOT ( - col1 ) IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q4912.out
+    data: |
+      NULL

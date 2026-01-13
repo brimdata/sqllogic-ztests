@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q9416.sql | sort > q9416.out
+
+vector: true
+
+inputs:
+  - name: q9416.sql
+    data: |
+      SELECT col2 + + col2 FROM tab2 GROUP BY col2 HAVING NULL NOT IN ( + col2 );
+  - name: tab2
+
+outputs:
+  - name: q9416.out
+    data: |

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q10346.sql | sort > q10346.out
+
+vector: true
+
+inputs:
+  - name: q10346.sql
+    data: |
+      pragma pg
+      SELECT col0 AS col0 FROM tab1 GROUP BY col0, col2 HAVING - 44 * col2 = 95;
+  - name: tab1
+
+outputs:
+  - name: q10346.out
+    data: |

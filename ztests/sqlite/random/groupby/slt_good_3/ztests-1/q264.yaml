@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q264.sql | sort > q264.out
+
+vector: true
+
+inputs:
+  - name: q264.sql
+    data: |
+      SELECT DISTINCT + - 36 FROM tab2 GROUP BY tab2.col1;
+  - name: tab2
+
+outputs:
+  - name: q264.out
+    data: |
+      -36

@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q10364.sql | sort > q10364.out
+
+vector: true
+
+inputs:
+  - name: q10364.sql
+    data: |
+      SELECT + + 95 AS col2, COUNT ( * ) + ( + - COUNT ( * ) ) AS col2;
+
+outputs:
+  - name: q10364.out
+    data: |
+      95	0

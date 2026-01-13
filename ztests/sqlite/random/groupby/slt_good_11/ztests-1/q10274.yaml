@@ -1,0 +1,18 @@
+script: |
+  super -f tsv -I q10274.sql | sort > q10274.out
+
+vector: true
+
+inputs:
+  - name: q10274.sql
+    data: |
+      pragma pg
+      SELECT - col2 AS col2, - col2 FROM tab0 GROUP BY col2, col0;
+  - name: tab0
+
+outputs:
+  - name: q10274.out
+    data: |
+      -24	-24
+      -38	-38
+      -79	-79

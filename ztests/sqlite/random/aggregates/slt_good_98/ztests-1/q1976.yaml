@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1976.sql | sort > q1976.out
+
+vector: true
+
+inputs:
+  - name: q1976.sql
+    data: |
+      SELECT DISTINCT COUNT ( * ) AS col1, + COUNT ( * ) * - + 54 AS col1 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q1976.out
+    data: |
+      3	-162

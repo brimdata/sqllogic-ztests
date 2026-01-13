@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q9523.sql | sort > q9523.out
+
+vector: true
+
+inputs:
+  - name: q9523.sql
+    data: |
+      SELECT + col2 AS col0 FROM tab1 GROUP BY col1, col2 HAVING AVG ( ALL col2 ) IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q9523.out
+    data: |
+      45
+      71
+      8

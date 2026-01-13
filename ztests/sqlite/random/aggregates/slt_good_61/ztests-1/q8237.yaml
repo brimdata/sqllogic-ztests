@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8237.sql | sort > q8237.out
+
+vector: true
+
+inputs:
+  - name: q8237.sql
+    data: |
+      SELECT COUNT ( * ) AS col2, - ( + 32 ) AS col2 FROM tab1 AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q8237.out
+    data: |
+      3	-32

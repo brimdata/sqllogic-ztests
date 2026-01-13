@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q8276.sql | sort > q8276.out
 
+vector: true
+
 inputs:
   - name: q8276.sql
     data: |
+      pragma pg
       SELECT DISTINCT - cor0.col0 / 55 AS col0 FROM tab2 AS cor0 GROUP BY col0;
   - name: tab2
 

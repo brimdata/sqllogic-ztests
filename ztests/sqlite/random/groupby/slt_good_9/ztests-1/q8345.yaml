@@ -1,0 +1,18 @@
+script: |
+  super -f tsv -I q8345.sql | sort > q8345.out
+
+vector: true
+
+inputs:
+  - name: q8345.sql
+    data: |
+      pragma pg
+      SELECT ALL col2 * - - col2 AS col2, - col2 / - col2 FROM tab0 GROUP BY col2;
+  - name: tab0
+
+outputs:
+  - name: q8345.out
+    data: |
+      1444	1
+      576	1
+      6241	1

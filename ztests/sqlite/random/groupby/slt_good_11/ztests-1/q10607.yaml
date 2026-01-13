@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q10607.sql | sort > q10607.out
 
+vector: true
+
 inputs:
   - name: q10607.sql
     data: |
+      pragma pg
       SELECT ALL - col2 AS col2 FROM tab1 WHERE NOT NULL <> ( 78 + CASE WHEN NOT ( NULL ) IS NULL THEN + col0 ELSE NULL END ) GROUP BY col1, col2;
   - name: tab1
 

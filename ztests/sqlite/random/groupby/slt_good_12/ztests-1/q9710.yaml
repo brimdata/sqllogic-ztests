@@ -1,0 +1,18 @@
+script: |
+  super -f tsv -I q9710.sql | sort > q9710.out
+
+vector: true
+
+inputs:
+  - name: q9710.sql
+    data: |
+      pragma pg
+      SELECT 92 * 20 AS col0, - 54 * - - col2 AS col0 FROM tab0 GROUP BY col2, col0;
+  - name: tab0
+
+outputs:
+  - name: q9710.out
+    data: |
+      1840	-1296
+      1840	-2052
+      1840	-4266

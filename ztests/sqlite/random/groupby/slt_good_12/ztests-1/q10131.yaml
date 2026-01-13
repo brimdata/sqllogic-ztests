@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q10131.sql | sort > q10131.out
 
+vector: true
+
 inputs:
   - name: q10131.sql
     data: |
+      pragma pg
       SELECT ALL - 96 / - col0 AS col1 FROM tab1 AS cor0 GROUP BY col1, col2, col0 HAVING NULL IS NULL;
   - name: tab1
 

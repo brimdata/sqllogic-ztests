@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9126.sql | sort > q9126.out
+
+vector: true
+
+inputs:
+  - name: q9126.sql
+    data: |
+      SELECT DISTINCT - 34 AS col0, COUNT ( * ) AS col0 FROM ( tab2 AS cor0 CROSS JOIN tab2 AS cor1 );
+  - name: tab2
+
+outputs:
+  - name: q9126.out
+    data: |
+      -34	9

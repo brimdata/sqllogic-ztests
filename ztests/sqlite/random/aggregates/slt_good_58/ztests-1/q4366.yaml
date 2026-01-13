@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4366.sql | sort > q4366.out
+
+vector: true
+
+inputs:
+  - name: q4366.sql
+    data: |
+      SELECT - COUNT ( * ) AS col1 FROM tab2 WHERE NOT - col1 < - col0;
+  - name: tab2
+
+outputs:
+  - name: q4366.out
+    data: |
+      -1

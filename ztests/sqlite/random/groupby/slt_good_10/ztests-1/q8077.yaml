@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q8077.sql | sort > q8077.out
+
+vector: true
+
+inputs:
+  - name: q8077.sql
+    data: |
+      SELECT DISTINCT - col0 FROM tab2 GROUP BY col0 HAVING NULL <= - col0;
+  - name: tab2
+
+outputs:
+  - name: q8077.out
+    data: |

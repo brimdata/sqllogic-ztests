@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q6284.sql | sort > q6284.out
+
+vector: true
+
+inputs:
+  - name: q6284.sql
+    data: |
+      SELECT ALL - MIN ( ALL 9 ) AS col2 FROM tab2 WHERE ( + col2 ) NOT BETWEEN col1 AND - col1;
+  - name: tab2
+
+outputs:
+  - name: q6284.out
+    data: |
+      -9

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q2857.sql | sort > q2857.out
+
+vector: true
+
+inputs:
+  - name: q2857.sql
+    data: |
+      SELECT DISTINCT + CAST ( 46 AS INTEGER ) AS col1 FROM tab1 GROUP BY col0;
+  - name: tab1
+
+outputs:
+  - name: q2857.out
+    data: |
+      46

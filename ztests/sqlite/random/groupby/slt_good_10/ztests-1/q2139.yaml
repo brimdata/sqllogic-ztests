@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q2139.sql | sort > q2139.out
+
+vector: true
+
+inputs:
+  - name: q2139.sql
+    data: |
+      pragma pg
+      SELECT col1 AS col1 FROM tab1 cor0 GROUP BY col1, col0 HAVING NULL >= - col0;
+  - name: tab1
+
+outputs:
+  - name: q2139.out
+    data: |

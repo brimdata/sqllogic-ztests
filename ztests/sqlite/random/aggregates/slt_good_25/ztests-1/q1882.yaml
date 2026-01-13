@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q1882.sql | sort > q1882.out
+
+vector: true
+
+inputs:
+  - name: q1882.sql
+    data: |
+      SELECT 11 AS col2, + col1 + - 19 AS col2 FROM tab0 AS cor0;
+  - name: tab0
+
+outputs:
+  - name: q1882.out
+    data: |
+      11	-18
+      11	2
+      11	62

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4109.sql | sort > q4109.out
+
+vector: true
+
+inputs:
+  - name: q4109.sql
+    data: |
+      SELECT MAX ( ALL - col1 ) AS col1 FROM tab1 WHERE - col1 * 70 NOT IN ( - col2 );
+  - name: tab1
+
+outputs:
+  - name: q4109.out
+    data: |
+      -5

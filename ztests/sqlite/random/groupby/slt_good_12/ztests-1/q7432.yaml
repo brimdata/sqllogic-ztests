@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q7432.sql | sort > q7432.out
+
+vector: true
+
+inputs:
+  - name: q7432.sql
+    data: |
+      SELECT DISTINCT COUNT ( * ) * + 60 FROM tab2 GROUP BY col0, col1;
+  - name: tab2
+
+outputs:
+  - name: q7432.out
+    data: |
+      60

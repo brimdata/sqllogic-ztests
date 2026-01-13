@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q13983.sql | sort > q13983.out
+
+vector: true
+
+inputs:
+  - name: q13983.sql
+    data: |
+      SELECT ALL + 13 - col1 * - col1 AS col1, col0 AS col0, col0 AS col1 FROM tab0 WHERE NOT - + 42 - - + col1 IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q13983.out
+    data: |
+      14	97	97
+      454	87	87
+      6574	15	15

@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q3023.sql | sort > q3023.out
+
+vector: true
+
+inputs:
+  - name: q3023.sql
+    data: |
+      SELECT DISTINCT + col1 / - 13 AS col1, - col1 * - col0 AS col1 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q3023.out
+    data: |
+      -1	714
+      -3	4277
+      0	425

@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q4957.sql | sort > q4957.out
+
+vector: true
+
+inputs:
+  - name: q4957.sql
+    data: |
+      pragma pg
+      SELECT + 12 AS col2 FROM tab1 GROUP BY col2, col1 HAVING + CAST ( + 33 AS INTEGER ) <= col2;
+  - name: tab1
+
+outputs:
+  - name: q4957.out
+    data: |
+      12
+      12

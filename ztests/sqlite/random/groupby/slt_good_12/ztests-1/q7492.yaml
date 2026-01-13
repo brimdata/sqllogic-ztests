@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q7492.sql | sort > q7492.out
+
+vector: true
+
+inputs:
+  - name: q7492.sql
+    data: |
+      pragma pg
+      SELECT DISTINCT + 4 + + col0 * col2 AS col0 FROM tab0 GROUP BY col0, col2 HAVING col2 + COUNT ( * ) IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q7492.out
+    data: |

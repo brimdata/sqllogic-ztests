@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q0.sql | sort > q0.out
+
+vector: true
+
+inputs:
+  - name: q0.sql
+    data: |
+      SELECT - 76 AS col0 FROM tab1 WHERE + - col0 < col1;
+  - name: tab1
+
+outputs:
+  - name: q0.out
+    data: |
+      -76
+      -76
+      -76

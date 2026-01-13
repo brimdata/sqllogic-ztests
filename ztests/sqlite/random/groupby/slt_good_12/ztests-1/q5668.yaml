@@ -1,0 +1,18 @@
+script: |
+  super -f tsv -I q5668.sql | sort > q5668.out
+
+vector: true
+
+inputs:
+  - name: q5668.sql
+    data: |
+      pragma pg
+      SELECT 79 AS col1, col2 * + col1 / + - COUNT ( * ) AS col1 FROM tab0 GROUP BY col2, col1;
+  - name: tab0
+
+outputs:
+  - name: q5668.out
+    data: |
+      79	-1944
+      79	0
+      79	0

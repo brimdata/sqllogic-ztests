@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q1983.sql | sort > q1983.out
+
+vector: true
+
+inputs:
+  - name: q1983.sql
+    data: |
+      SELECT + - col1 - - CAST ( NULL AS INTEGER ) + 85 AS col2 FROM tab2 WHERE col0 - - col2 + 57 IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q1983.out
+    data: |

@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q188.sql | sort > q188.out
 
+vector: true
+
 inputs:
   - name: q188.sql
     data: |
+      pragma pg
       SELECT ALL - 75 + CAST ( - 81 AS INTEGER ) AS col2 FROM tab1 GROUP BY col1, col2 HAVING + col2 IS NOT NULL;
   - name: tab1
 

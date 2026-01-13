@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8580.sql | sort > q8580.out
+
+vector: true
+
+inputs:
+  - name: q8580.sql
+    data: |
+      SELECT ALL - SUM ( DISTINCT + + col1 ) AS col0 FROM tab2 WHERE NOT col1 IN ( col2 * + ( col0 ) );
+  - name: tab2
+
+outputs:
+  - name: q8580.out
+    data: |
+      -195

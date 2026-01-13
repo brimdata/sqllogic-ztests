@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q11863.sql | sort > q11863.out
+
+vector: true
+
+inputs:
+  - name: q11863.sql
+    data: |
+      SELECT ALL CAST ( NULL AS INTEGER ) AS col1 FROM tab2 AS cor0 WHERE ( NOT - col1 / col1 * - ( - + col2 ) IS NOT NULL );
+  - name: tab2
+
+outputs:
+  - name: q11863.out
+    data: |

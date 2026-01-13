@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q10206.sql | sort > q10206.out
+
+vector: true
+
+inputs:
+  - name: q10206.sql
+    data: |
+      pragma pg
+      SELECT DISTINCT 47 * + - 30 AS col2 FROM tab2 GROUP BY col2, col1;
+  - name: tab2
+
+outputs:
+  - name: q10206.out
+    data: |
+      -1410

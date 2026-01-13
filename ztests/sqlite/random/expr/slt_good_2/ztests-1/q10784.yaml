@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q10784.sql | sort > q10784.out
+
+vector: true
+
+inputs:
+  - name: q10784.sql
+    data: |
+      SELECT CAST ( NULL AS INTEGER ) AS col1, 12 AS col1, 80 + COALESCE ( - + MAX ( 2 ), + 50 );
+
+outputs:
+  - name: q10784.out
+    data: |
+      NULL	12	78

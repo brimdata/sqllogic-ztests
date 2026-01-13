@@ -1,0 +1,18 @@
+script: |
+  super -f tsv -I q10070.sql | sort > q10070.out
+
+vector: true
+
+inputs:
+  - name: q10070.sql
+    data: |
+      pragma pg
+      SELECT - col0 AS col0, col0 * col1 AS col0 FROM tab1 cor0 GROUP BY col1, col0 HAVING NULL IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q10070.out
+    data: |
+      -22	132
+      -28	1596
+      -82	3608

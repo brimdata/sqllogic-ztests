@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q1786.sql | sort > q1786.out
+
+vector: true
+
+inputs:
+  - name: q1786.sql
+    data: |
+      SELECT DISTINCT col1 AS col2 FROM tab2 GROUP BY col1 HAVING NOT ( NOT NULL < col1 );
+  - name: tab2
+
+outputs:
+  - name: q1786.out
+    data: |

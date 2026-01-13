@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q4511.sql | sort > q4511.out
+
+vector: true
+
+inputs:
+  - name: q4511.sql
+    data: |
+      SELECT COALESCE ( - CAST ( + - CAST ( NULL AS INTEGER ) AS INTEGER ), + col1 ) AS col2, col1 * col1 AS col2 FROM tab2 GROUP BY col1;
+  - name: tab2
+
+outputs:
+  - name: q4511.out
+    data: |
+      41	1681
+      59	3481
+      61	3721

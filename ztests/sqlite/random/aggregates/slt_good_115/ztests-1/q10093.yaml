@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q10093.sql | sort > q10093.out
+
+vector: true
+
+inputs:
+  - name: q10093.sql
+    data: |
+      SELECT - col2 + CAST ( 8 AS INTEGER ) AS col2 FROM tab1 WHERE CAST ( - col2 AS INTEGER ) < col0;
+  - name: tab1
+
+outputs:
+  - name: q10093.out
+    data: |
+      -51
+      -60
+      -88

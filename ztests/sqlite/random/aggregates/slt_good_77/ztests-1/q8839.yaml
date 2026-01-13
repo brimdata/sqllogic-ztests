@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q8839.sql | sort > q8839.out
+
+vector: true
+
+inputs:
+  - name: q8839.sql
+    data: |
+      SELECT col1 AS col0, col0 * + ( + ( col0 ) ) - - + 1 AS col0 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q8839.out
+    data: |
+      51	2117
+      67	5626
+      77	4097

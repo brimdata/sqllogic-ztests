@@ -1,0 +1,18 @@
+script: |
+  super -f tsv -I q10762.sql | sort > q10762.out
+
+vector: true
+
+inputs:
+  - name: q10762.sql
+    data: |
+      pragma pg
+      SELECT + - col1 AS col1, - col1 AS col1 FROM tab2 AS cor0 GROUP BY col1;
+  - name: tab2
+
+outputs:
+  - name: q10762.out
+    data: |
+      -41	-41
+      -59	-59
+      -61	-61

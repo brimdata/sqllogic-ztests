@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8260.sql | sort > q8260.out
+
+vector: true
+
+inputs:
+  - name: q8260.sql
+    data: |
+      SELECT 5 AS col0 FROM tab1 WHERE ( - col0 ) BETWEEN - 97 * col0 AND col1 * - CAST ( CAST ( 13 AS REAL ) AS REAL );
+  - name: tab1
+
+outputs:
+  - name: q8260.out
+    data: |
+      5

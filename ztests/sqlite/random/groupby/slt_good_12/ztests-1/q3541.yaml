@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q3541.sql | sort > q3541.out
 
+vector: true
+
 inputs:
   - name: q3541.sql
     data: |
+      pragma pg
       SELECT DISTINCT - 12 AS col1, 4 / col0 AS col0 FROM tab2 cor0 GROUP BY col0 HAVING NOT NULL IS NULL;
   - name: tab2
 

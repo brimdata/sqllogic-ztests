@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q1559.sql | sort > q1559.out
 
+vector: true
+
 inputs:
   - name: q1559.sql
     data: |
+      pragma pg
       SELECT col1 * - col1 AS col1 FROM tab1 GROUP BY col1 HAVING NOT NULL IS NOT NULL;
   - name: tab1
 

@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q12577.sql | sort > q12577.out
+
+vector: true
+
+inputs:
+  - name: q12577.sql
+    data: |
+      SELECT DISTINCT 56 AS col2, CAST ( - + 44 AS INTEGER ) / - col2 - - + CAST ( + col2 AS INTEGER ) AS col2 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q12577.out
+    data: |
+      56	59
+      56	68
+      56	96

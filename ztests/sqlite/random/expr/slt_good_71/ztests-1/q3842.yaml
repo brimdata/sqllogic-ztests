@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q3842.sql | sort > q3842.out
+
+vector: true
+
+inputs:
+  - name: q3842.sql
+    data: |
+      SELECT ALL - + CASE WHEN NOT ( MIN ( + + 1 ) ) IS NULL THEN NULL ELSE + 99 END;
+
+outputs:
+  - name: q3842.out
+    data: |
+      NULL

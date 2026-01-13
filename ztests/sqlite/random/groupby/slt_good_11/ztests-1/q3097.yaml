@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q3097.sql | sort > q3097.out
 
+vector: true
+
 inputs:
   - name: q3097.sql
     data: |
+      pragma pg
       SELECT + 5 + 93 * - col0 AS col0 FROM tab0 WHERE col2 IS NULL GROUP BY col2, col0, col1;
   - name: tab0
 

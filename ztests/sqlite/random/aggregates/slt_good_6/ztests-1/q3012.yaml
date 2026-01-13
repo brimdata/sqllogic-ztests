@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q3012.sql | sort > q3012.out
+
+vector: true
+
+inputs:
+  - name: q3012.sql
+    data: |
+      SELECT - COUNT ( * ) / - COUNT ( * ) * + MIN ( ALL CAST ( NULL AS INTEGER ) ) AS col1, + COUNT ( ALL + col1 ) AS col1 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q3012.out
+    data: |
+      NULL	3

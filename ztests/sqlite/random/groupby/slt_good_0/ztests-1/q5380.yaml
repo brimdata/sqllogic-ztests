@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q5380.sql | sort > q5380.out
+
+vector: true
+
+inputs:
+  - name: q5380.sql
+    data: |
+      SELECT DISTINCT 31 * 34 AS col2 FROM tab2 GROUP BY tab2.col2;
+  - name: tab2
+
+outputs:
+  - name: q5380.out
+    data: |
+      1054

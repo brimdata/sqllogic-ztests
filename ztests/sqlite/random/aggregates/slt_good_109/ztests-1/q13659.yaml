@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q13659.sql | sort > q13659.out
+
+vector: true
+
+inputs:
+  - name: q13659.sql
+    data: |
+      SELECT DISTINCT 11 - col0 AS col0 FROM tab1 WHERE NOT col1 BETWEEN ( col2 ) + - col2 AND - col0;
+  - name: tab1
+
+outputs:
+  - name: q13659.out
+    data: |
+      -40
+      -74
+      -80

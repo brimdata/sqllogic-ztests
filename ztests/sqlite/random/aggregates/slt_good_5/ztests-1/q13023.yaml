@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q13023.sql | sort > q13023.out
+
+vector: true
+
+inputs:
+  - name: q13023.sql
+    data: |
+      SELECT ALL + MIN ( - - col2 ) AS col1, 15 AS col1 FROM tab2 AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q13023.out
+    data: |
+      23	15

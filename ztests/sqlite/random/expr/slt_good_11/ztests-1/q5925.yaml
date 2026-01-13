@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q5925.sql | sort > q5925.out
+
+vector: true
+
+inputs:
+  - name: q5925.sql
+    data: |
+      SELECT ALL - CASE 95 WHEN 10 + COUNT ( * ) THEN - CAST ( COUNT ( * ) AS INTEGER ) ELSE NULL END * 9 AS col1;
+
+outputs:
+  - name: q5925.out
+    data: |
+      NULL

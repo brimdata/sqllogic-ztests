@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8069.sql | sort > q8069.out
+
+vector: true
+
+inputs:
+  - name: q8069.sql
+    data: |
+      SELECT DISTINCT - 31 AS col1, + COUNT ( * ) AS col1 FROM tab2 AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q8069.out
+    data: |
+      -31	3

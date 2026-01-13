@@ -1,0 +1,23 @@
+script: |
+  super -f tsv -I q13811.sql | sort > q13811.out
+
+vector: true
+
+inputs:
+  - name: q13811.sql
+    data: |
+      SELECT DISTINCT * FROM tab2, tab2 AS cor0 WHERE NOT 17 IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q13811.out
+    data: |
+      46	51	23	46	51	23
+      46	51	23	64	77	40
+      46	51	23	75	67	58
+      64	77	40	46	51	23
+      64	77	40	64	77	40
+      64	77	40	75	67	58
+      75	67	58	46	51	23
+      75	67	58	64	77	40
+      75	67	58	75	67	58

@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q9081.sql | sort > q9081.out
+
+vector: true
+
+inputs:
+  - name: q9081.sql
+    data: |
+      SELECT DISTINCT col2 FROM tab0 AS cor0 GROUP BY col2, col0 HAVING NULL BETWEEN - AVG ( DISTINCT + - col0 ) AND NULL;
+  - name: tab0
+
+outputs:
+  - name: q9081.out
+    data: |

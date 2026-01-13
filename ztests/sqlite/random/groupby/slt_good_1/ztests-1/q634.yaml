@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q634.sql | sort > q634.out
+
+vector: true
+
+inputs:
+  - name: q634.sql
+    data: |
+      SELECT DISTINCT + 10 AS col2 FROM tab0 AS cor0 CROSS JOIN tab2 AS cor1 GROUP BY cor1.col0;
+  - name: tab0
+  - name: tab2
+
+outputs:
+  - name: q634.out
+    data: |
+      10

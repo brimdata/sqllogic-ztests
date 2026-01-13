@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q4141.sql | sort > q4141.out
+
+vector: true
+
+inputs:
+  - name: q4141.sql
+    data: |
+      SELECT DISTINCT 94 AS col2, - col1 * - col1 AS col2 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q4141.out
+    data: |
+      94	196
+      94	2209
+      94	25

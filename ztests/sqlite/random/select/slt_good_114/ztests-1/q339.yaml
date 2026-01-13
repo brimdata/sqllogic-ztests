@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q339.sql | sort > q339.out
+
+vector: true
+
+inputs:
+  - name: q339.sql
+    data: |
+      SELECT ALL col1 * - col0 AS col1 FROM tab0 WHERE ( col0 ) NOT BETWEEN col1 AND ( NULL );
+  - name: tab0
+
+outputs:
+  - name: q339.out
+    data: |
+      -2064
+      -3395
+      -8099

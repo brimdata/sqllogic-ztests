@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4002.sql | sort > q4002.out
+
+vector: true
+
+inputs:
+  - name: q4002.sql
+    data: |
+      SELECT + COUNT ( * ) AS col0 FROM tab1 WHERE NOT - col2 = ( col0 + - + ( col1 ) );
+  - name: tab1
+
+outputs:
+  - name: q4002.out
+    data: |
+      3

@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q6940.sql | sort > q6940.out
+
+vector: true
+
+inputs:
+  - name: q6940.sql
+    data: |
+      SELECT + col2 * + + col1 AS col0, + CAST ( + - col0 AS INTEGER ) AS col0 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q6940.out
+    data: |
+      1173	-46
+      3080	-64
+      3886	-75

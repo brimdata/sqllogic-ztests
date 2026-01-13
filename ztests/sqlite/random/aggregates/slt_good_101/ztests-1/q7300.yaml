@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q7300.sql | sort > q7300.out
+
+vector: true
+
+inputs:
+  - name: q7300.sql
+    data: |
+      SELECT 93 AS col1, - col1 * - + 63 AS col1 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q7300.out
+    data: |
+      93	2961
+      93	315
+      93	882

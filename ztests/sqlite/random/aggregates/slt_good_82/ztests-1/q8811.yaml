@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q8811.sql | sort > q8811.out
+
+vector: true
+
+inputs:
+  - name: q8811.sql
+    data: |
+      SELECT - CAST ( NULL AS INTEGER ) + COUNT ( * ) AS col1, - 47 AS col1 FROM tab2 AS cor0 CROSS JOIN tab0 AS cor1;
+  - name: tab0
+  - name: tab2
+
+outputs:
+  - name: q8811.out
+    data: |
+      NULL	-47

@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q2804.sql | sort > q2804.out
 
+vector: true
+
 inputs:
   - name: q2804.sql
     data: |
+      pragma pg
       SELECT ALL col2 AS col0 FROM tab2 AS cor0 GROUP BY col0, col2 HAVING NULL NOT BETWEEN - 55 * - 68 + + - col0 AND NULL;
   - name: tab2
 

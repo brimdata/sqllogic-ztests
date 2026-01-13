@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9023.sql | sort > q9023.out
+
+vector: true
+
+inputs:
+  - name: q9023.sql
+    data: |
+      SELECT DISTINCT + ( + SUM ( ALL + 4 ) ) AS col0, - COUNT ( * ) AS col0 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q9023.out
+    data: |
+      12	-3

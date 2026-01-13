@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q3495.sql | sort > q3495.out
+
+vector: true
+
+inputs:
+  - name: q3495.sql
+    data: |
+      SELECT ALL col2, - col2 + + col2 FROM tab0 GROUP BY col2 HAVING NOT - 87 + + 71 IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q3495.out
+    data: |
+      24	0
+      38	0
+      79	0

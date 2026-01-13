@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q1615.sql | sort > q1615.out
+
+vector: true
+
+inputs:
+  - name: q1615.sql
+    data: |
+      SELECT - col0 FROM tab2 GROUP BY col0 HAVING NOT + col0 IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q1615.out
+    data: |
+      -15
+      -91
+      -92

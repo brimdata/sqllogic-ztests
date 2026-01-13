@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q843.sql | sort > q843.out
+
+vector: true
+
+inputs:
+  - name: q843.sql
+    data: |
+      SELECT - col1 FROM tab0 GROUP BY col1 HAVING NULL NOT BETWEEN ( NULL ) AND ( col1 * + col1 );
+  - name: tab0
+
+outputs:
+  - name: q843.out
+    data: |

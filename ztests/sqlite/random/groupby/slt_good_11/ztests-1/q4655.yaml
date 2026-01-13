@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q4655.sql | sort > q4655.out
 
+vector: true
+
 inputs:
   - name: q4655.sql
     data: |
+      pragma pg
       SELECT col1 + - 89 AS col1 FROM tab1 WHERE NOT NULLIF ( - + col0, - + ( + 39 ) * + col2 ) IS NOT NULL GROUP BY col1;
   - name: tab1
 

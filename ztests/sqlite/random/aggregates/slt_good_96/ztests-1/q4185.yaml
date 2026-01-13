@@ -1,0 +1,23 @@
+script: |
+  super -f tsv -I q4185.sql | sort > q4185.out
+
+vector: true
+
+inputs:
+  - name: q4185.sql
+    data: |
+      SELECT DISTINCT * FROM tab1 AS cor0 CROSS JOIN tab1 WHERE NOT 43 + 1 IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q4185.out
+    data: |
+      51	14	96	51	14	96
+      51	14	96	85	5	59
+      51	14	96	91	47	68
+      85	5	59	51	14	96
+      85	5	59	85	5	59
+      85	5	59	91	47	68
+      91	47	68	51	14	96
+      91	47	68	85	5	59
+      91	47	68	91	47	68

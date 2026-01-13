@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1712.sql | sort > q1712.out
+
+vector: true
+
+inputs:
+  - name: q1712.sql
+    data: |
+      SELECT DISTINCT + COUNT ( DISTINCT + col0 ) + + 17 AS col0 FROM tab2 WHERE + col0 IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q1712.out
+    data: |
+      20

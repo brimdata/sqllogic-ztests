@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q6370.sql | sort > q6370.out
+
+vector: true
+
+inputs:
+  - name: q6370.sql
+    data: |
+      SELECT + + col2 / + COUNT ( * ) + 63 + - ( - col2 ) / - col2 AS col0, - col2 * + COUNT ( * ) AS col0 FROM tab2 AS cor0 GROUP BY col2;
+  - name: tab2
+
+outputs:
+  - name: q6370.out
+    data: |
+      120	-58
+      141	-79
+      149	-87

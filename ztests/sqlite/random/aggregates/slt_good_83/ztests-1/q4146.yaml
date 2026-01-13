@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q4146.sql | sort > q4146.out
+
+vector: true
+
+inputs:
+  - name: q4146.sql
+    data: |
+      SELECT + ( - col1 ) AS col2 FROM tab2 WHERE NOT col0 BETWEEN - 0 + col0 AND + 44 * col2;
+  - name: tab2
+
+outputs:
+  - name: q4146.out
+    data: |

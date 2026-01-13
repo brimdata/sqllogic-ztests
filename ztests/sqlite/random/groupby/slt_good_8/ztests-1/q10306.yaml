@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q10306.sql | sort > q10306.out
 
+vector: true
+
 inputs:
   - name: q10306.sql
     data: |
+      pragma pg
       SELECT ALL col2 AS col2 FROM tab2 WHERE NOT NULL BETWEEN NULL AND NULL GROUP BY col0, col2, col2;
   - name: tab2
 

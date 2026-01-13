@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q5357.sql | sort > q5357.out
+
+vector: true
+
+inputs:
+  - name: q5357.sql
+    data: |
+      SELECT ALL col1 AS col1, 43 + - col2 AS col1 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q5357.out
+    data: |
+      51	20
+      67	-15
+      77	3

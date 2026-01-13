@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q9401.sql | sort > q9401.out
+
+vector: true
+
+inputs:
+  - name: q9401.sql
+    data: |
+      SELECT DISTINCT col0 AS col2, ( ( + - col2 ) ) + - col1 - col1 AS col2 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q9401.out
+    data: |
+      46	-125
+      64	-194
+      75	-192

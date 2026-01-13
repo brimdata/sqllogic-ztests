@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q1681.sql | sort > q1681.out
+
+vector: true
+
+inputs:
+  - name: q1681.sql
+    data: |
+      SELECT + col0 FROM tab2 AS cor0 GROUP BY col1, col0 HAVING ( + 97 * col0 ) BETWEEN NULL AND NULL;
+  - name: tab2
+
+outputs:
+  - name: q1681.out
+    data: |

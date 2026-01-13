@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q6020.sql | sort > q6020.out
+
+vector: true
+
+inputs:
+  - name: q6020.sql
+    data: |
+      SELECT ALL 73 * COUNT ( * ) - col1 FROM tab2 GROUP BY col1, col0, col1 HAVING ( NULL ) NOT IN ( col0 );
+  - name: tab2
+
+outputs:
+  - name: q6020.out
+    data: |

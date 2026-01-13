@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q2060.sql | sort > q2060.out
+
+vector: true
+
+inputs:
+  - name: q2060.sql
+    data: |
+      SELECT DISTINCT - 30 FROM tab1 AS cor0 CROSS JOIN tab0 cor1 GROUP BY cor1.col2;
+  - name: tab0
+  - name: tab1
+
+outputs:
+  - name: q2060.out
+    data: |
+      -30

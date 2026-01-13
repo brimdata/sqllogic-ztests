@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q9122.sql | sort > q9122.out
 
+vector: true
+
 inputs:
   - name: q9122.sql
     data: |
+      pragma pg
       SELECT - 42 / - col0 AS col0 FROM tab2 WHERE ( NULL > NULL ) GROUP BY col0;
   - name: tab2
 

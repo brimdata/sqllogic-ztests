@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8542.sql | sort > q8542.out
+
+vector: true
+
+inputs:
+  - name: q8542.sql
+    data: |
+      SELECT + 1 AS col2, COUNT ( * ) * - COUNT ( * ) AS col2 FROM tab2, tab2 AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q8542.out
+    data: |
+      1	-81

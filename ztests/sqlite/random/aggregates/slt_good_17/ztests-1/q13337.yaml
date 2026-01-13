@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q13337.sql | sort > q13337.out
+
+vector: true
+
+inputs:
+  - name: q13337.sql
+    data: |
+      SELECT ALL + COUNT ( col0 ) AS col1 FROM tab1 AS cor0 WHERE 35 <> ( col1 );
+  - name: tab1
+
+outputs:
+  - name: q13337.out
+    data: |
+      3

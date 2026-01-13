@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q80.sql | sort > q80.out
+
+vector: true
+
+inputs:
+  - name: q80.sql
+    data: |
+      SELECT ALL col1 * + col2 AS col1, col1 AS col1 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q80.out
+    data: |
+      1173	51
+      3080	77
+      3886	67

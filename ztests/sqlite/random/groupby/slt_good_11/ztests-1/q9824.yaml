@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q9824.sql | sort > q9824.out
+
+vector: true
+
+inputs:
+  - name: q9824.sql
+    data: |
+      SELECT + col2 AS col0 FROM tab0 GROUP BY col2 HAVING - + col2 BETWEEN ( NULL ) AND NULL;
+  - name: tab0
+
+outputs:
+  - name: q9824.out
+    data: |

@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q1530.sql | sort > q1530.out
+
+vector: true
+
+inputs:
+  - name: q1530.sql
+    data: |
+      SELECT 73 AS col0 FROM tab1 GROUP BY col2 HAVING + COALESCE ( + - col2, + - CAST ( NULL AS INTEGER ) ) < NULL;
+  - name: tab1
+
+outputs:
+  - name: q1530.out
+    data: |

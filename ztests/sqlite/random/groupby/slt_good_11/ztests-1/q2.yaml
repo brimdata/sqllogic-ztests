@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q2.sql | sort > q2.out
 
+vector: true
+
 inputs:
   - name: q2.sql
     data: |
+      pragma pg
       SELECT col2 AS col2 FROM tab2 GROUP BY col2 HAVING - + col2 >= - - col2;
   - name: tab2
 

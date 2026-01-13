@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q1973.sql | sort > q1973.out
+
+vector: true
+
+inputs:
+  - name: q1973.sql
+    data: |
+      SELECT ( - col1 ) AS col2 FROM tab2 AS cor0 WHERE NOT - col2 NOT BETWEEN + col1 AND col0;
+  - name: tab2
+
+outputs:
+  - name: q1973.out
+    data: |

@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q2956.sql | sort > q2956.out
+
+vector: true
+
+inputs:
+  - name: q2956.sql
+    data: |
+      SELECT 87 AS col0, + CAST ( - col2 AS INTEGER ) + - col2 AS col0 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q2956.out
+    data: |
+      87	-118
+      87	-136
+      87	-192

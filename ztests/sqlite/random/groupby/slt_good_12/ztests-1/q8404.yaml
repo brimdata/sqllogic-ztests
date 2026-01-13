@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q8404.sql | sort > q8404.out
+
+vector: true
+
+inputs:
+  - name: q8404.sql
+    data: |
+      SELECT DISTINCT + 11 AS col2 FROM tab2 GROUP BY col0 HAVING + col0 + - 36 = + 19;
+  - name: tab2
+
+outputs:
+  - name: q8404.out
+    data: |

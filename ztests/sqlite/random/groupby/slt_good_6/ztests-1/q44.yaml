@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q44.sql | sort > q44.out
+
+vector: true
+
+inputs:
+  - name: q44.sql
+    data: |
+      SELECT DISTINCT - cor0.col1 / + cor0.col2 AS col2 FROM tab0 AS cor0 GROUP BY cor0.col2, cor0.col1;
+  - name: tab0
+
+outputs:
+  - name: q44.out
+    data: |
+      -3
+      0

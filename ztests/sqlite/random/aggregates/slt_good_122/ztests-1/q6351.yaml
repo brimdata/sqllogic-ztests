@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q6351.sql | sort > q6351.out
+
+vector: true
+
+inputs:
+  - name: q6351.sql
+    data: |
+      SELECT 56 AS col2, ( - - SUM ( - col1 ) ) AS col2 FROM tab2 AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q6351.out
+    data: |
+      56	-195

@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q3862.sql | sort > q3862.out
+
+vector: true
+
+inputs:
+  - name: q3862.sql
+    data: |
+      SELECT ALL - AVG ( col0 ) FROM tab2 GROUP BY col0 HAVING NULL < - col0;
+  - name: tab2
+
+outputs:
+  - name: q3862.out
+    data: |

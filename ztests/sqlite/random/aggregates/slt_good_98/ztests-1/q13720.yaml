@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q13720.sql | sort > q13720.out
+
+vector: true
+
+inputs:
+  - name: q13720.sql
+    data: |
+      SELECT COUNT ( + col1 ) + 17 * COUNT ( * ) AS col0 FROM tab1 WHERE NOT + 91 BETWEEN 1 AND col0;
+  - name: tab1
+
+outputs:
+  - name: q13720.out
+    data: |
+      36

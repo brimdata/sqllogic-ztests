@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q742.sql | sort > q742.out
+
+vector: true
+
+inputs:
+  - name: q742.sql
+    data: |
+      pragma pg
+      SELECT - col1 AS col1, + col1 * - col1 * + col1 AS col2 FROM tab0 cor0 GROUP BY col1 HAVING NULL IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q742.out
+    data: |

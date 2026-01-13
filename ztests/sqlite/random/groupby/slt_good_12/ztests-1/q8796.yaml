@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q8796.sql | sort > q8796.out
+
+vector: true
+
+inputs:
+  - name: q8796.sql
+    data: |
+      SELECT ALL + COUNT ( * ) - - col1 * col1 * - col1 * - col1 AS col0 FROM tab0 GROUP BY col1;
+  - name: tab0
+
+outputs:
+  - name: q8796.out
+    data: |
+      2
+      43046722

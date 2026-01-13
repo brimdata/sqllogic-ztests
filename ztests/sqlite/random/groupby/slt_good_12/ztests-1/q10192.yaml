@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q10192.sql | sort > q10192.out
+
+vector: true
+
+inputs:
+  - name: q10192.sql
+    data: |
+      SELECT + 95 * col2 FROM tab1 AS cor0 GROUP BY col1, col2 HAVING ( CAST ( + col1 AS INTEGER ) * - COUNT ( * ) ) <> - MIN ( ALL 15 );
+  - name: tab1
+
+outputs:
+  - name: q10192.out
+    data: |
+      4275
+      6745
+      760

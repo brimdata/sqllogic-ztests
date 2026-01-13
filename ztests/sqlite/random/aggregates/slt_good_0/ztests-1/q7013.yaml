@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q7013.sql | sort > q7013.out
+
+vector: true
+
+inputs:
+  - name: q7013.sql
+    data: |
+      SELECT col0 * + 19 AS col0, col1 AS col0 FROM tab2 WHERE NOT ( NULL IS NULL );
+  - name: tab2
+
+outputs:
+  - name: q7013.out
+    data: |

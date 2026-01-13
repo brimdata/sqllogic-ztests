@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q10545.sql | sort > q10545.out
+
+vector: true
+
+inputs:
+  - name: q10545.sql
+    data: |
+      SELECT 52 * col1 + - col0 FROM tab2 GROUP BY col1, col0 HAVING MAX ( ALL - 65 ) >= ( col0 );
+  - name: tab2
+
+outputs:
+  - name: q10545.out
+    data: |

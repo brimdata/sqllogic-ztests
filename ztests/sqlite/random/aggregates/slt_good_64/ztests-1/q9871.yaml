@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9871.sql | sort > q9871.out
+
+vector: true
+
+inputs:
+  - name: q9871.sql
+    data: |
+      SELECT ALL - 44 AS col1, - COUNT ( * ) AS col1 FROM tab2 AS cor0 CROSS JOIN tab2 cor1;
+  - name: tab2
+
+outputs:
+  - name: q9871.out
+    data: |
+      -44	-9

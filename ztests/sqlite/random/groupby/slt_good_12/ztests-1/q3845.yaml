@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q3845.sql | sort > q3845.out
+
+vector: true
+
+inputs:
+  - name: q3845.sql
+    data: |
+      SELECT DISTINCT NULLIF ( 10, col1 ), col1 FROM tab2 GROUP BY col1;
+  - name: tab2
+
+outputs:
+  - name: q3845.out
+    data: |
+      10	41
+      10	59
+      10	61

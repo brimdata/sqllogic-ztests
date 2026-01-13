@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q10093.sql | sort > q10093.out
 
+vector: true
+
 inputs:
   - name: q10093.sql
     data: |
+      pragma pg
       SELECT ALL col2 + - - COALESCE ( 85, ( + 86 ) ) + + col2 AS col2 FROM tab2 AS cor0 GROUP BY col2;
   - name: tab2
 

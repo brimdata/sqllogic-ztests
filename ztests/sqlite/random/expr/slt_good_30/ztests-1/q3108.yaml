@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q3108.sql | sort > q3108.out
+
+vector: true
+
+inputs:
+  - name: q3108.sql
+    data: |
+      SELECT + + COUNT ( * ) AS col2, COALESCE ( - 90, COUNT ( * ) ) col2;
+
+outputs:
+  - name: q3108.out
+    data: |
+      1	-90

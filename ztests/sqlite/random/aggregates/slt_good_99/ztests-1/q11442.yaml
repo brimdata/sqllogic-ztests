@@ -1,0 +1,23 @@
+script: |
+  super -f tsv -I q11442.sql | sort > q11442.out
+
+vector: true
+
+inputs:
+  - name: q11442.sql
+    data: |
+      SELECT * FROM tab2 AS cor0 CROSS JOIN tab2 WHERE NOT + 14 * + 57 IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q11442.out
+    data: |
+      46	51	23	46	51	23
+      46	51	23	64	77	40
+      46	51	23	75	67	58
+      64	77	40	46	51	23
+      64	77	40	64	77	40
+      64	77	40	75	67	58
+      75	67	58	46	51	23
+      75	67	58	64	77	40
+      75	67	58	75	67	58

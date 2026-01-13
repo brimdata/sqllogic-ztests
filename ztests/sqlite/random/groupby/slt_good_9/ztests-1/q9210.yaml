@@ -1,0 +1,18 @@
+script: |
+  super -f tsv -I q9210.sql | sort > q9210.out
+
+vector: true
+
+inputs:
+  - name: q9210.sql
+    data: |
+      pragma pg
+      SELECT DISTINCT + col2, col2 AS col2 FROM tab2 AS cor0 GROUP BY col2, col0;
+  - name: tab2
+
+outputs:
+  - name: q9210.out
+    data: |
+      58	58
+      79	79
+      87	87

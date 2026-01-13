@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q1197.sql | sort > q1197.out
+
+vector: true
+
+inputs:
+  - name: q1197.sql
+    data: |
+      SELECT DISTINCT - col1 AS col1, + ( + 12 ) AS col1 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q1197.out
+    data: |
+      -14	12
+      -47	12
+      -5	12

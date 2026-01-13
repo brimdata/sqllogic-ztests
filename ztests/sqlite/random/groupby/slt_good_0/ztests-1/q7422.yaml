@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q7422.sql | sort > q7422.out
+
+vector: true
+
+inputs:
+  - name: q7422.sql
+    data: |
+      SELECT DISTINCT cor0.col1 * - 42 AS col1 FROM tab0 AS cor0 GROUP BY cor0.col2, cor0.col1;
+  - name: tab0
+
+outputs:
+  - name: q7422.out
+    data: |
+      -3402
+      0

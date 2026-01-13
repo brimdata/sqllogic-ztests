@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q10088.sql | sort > q10088.out
+
+vector: true
+
+inputs:
+  - name: q10088.sql
+    data: |
+      SELECT + MIN ( DISTINCT col2 ) FROM tab1 AS cor0 WHERE NOT col1 BETWEEN - + col1 + + - col1 AND + 7 GROUP BY col2 HAVING + col2 IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q10088.out
+    data: |

@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q4910.sql | sort > q4910.out
+
+vector: true
+
+inputs:
+  - name: q4910.sql
+    data: |
+      SELECT - NULLIF ( + ( + 32 ), - ( 59 ) ) AS col2, 5 AS col2;
+
+outputs:
+  - name: q4910.out
+    data: |
+      -32	5

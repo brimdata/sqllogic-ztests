@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q6275.sql | sort > q6275.out
+
+vector: true
+
+inputs:
+  - name: q6275.sql
+    data: |
+      SELECT - 70 FROM tab0 GROUP BY col2 HAVING NOT - col2 <> NULL;
+  - name: tab0
+
+outputs:
+  - name: q6275.out
+    data: |

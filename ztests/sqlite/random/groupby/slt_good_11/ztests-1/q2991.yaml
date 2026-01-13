@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q2991.sql | sort > q2991.out
 
+vector: true
+
 inputs:
   - name: q2991.sql
     data: |
+      pragma pg
       SELECT + 86 + col2 / 2 AS col2 FROM tab2 WHERE NOT col2 < - col0 GROUP BY col2;
   - name: tab2
 

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q3999.sql | sort > q3999.out
+
+vector: true
+
+inputs:
+  - name: q3999.sql
+    data: |
+      SELECT DISTINCT + 99 FROM tab2 AS cor0 GROUP BY col0, col1 HAVING NOT NULL IS NOT NULL AND NOT 43 IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q3999.out
+    data: |
+      99

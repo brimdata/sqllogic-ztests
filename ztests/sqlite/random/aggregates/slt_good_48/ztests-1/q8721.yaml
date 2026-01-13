@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8721.sql | sort > q8721.out
+
+vector: true
+
+inputs:
+  - name: q8721.sql
+    data: |
+      SELECT DISTINCT COUNT ( * ) AS col0, COUNT ( * ) + 82 AS col0 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q8721.out
+    data: |
+      3	85

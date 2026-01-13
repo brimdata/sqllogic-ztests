@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q3138.sql | sort > q3138.out
+
+vector: true
+
+inputs:
+  - name: q3138.sql
+    data: |
+      pragma pg
+      SELECT - col1 AS col1 FROM tab2 GROUP BY col1, col0 HAVING NULL > ( + 78 ) * 44 + - + col0;
+  - name: tab2
+
+outputs:
+  - name: q3138.out
+    data: |

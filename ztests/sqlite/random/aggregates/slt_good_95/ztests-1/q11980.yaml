@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q11980.sql | sort > q11980.out
+
+vector: true
+
+inputs:
+  - name: q11980.sql
+    data: |
+      SELECT ALL 70 AS col2, 72 * - COUNT ( * ) AS col2 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q11980.out
+    data: |
+      70	-216

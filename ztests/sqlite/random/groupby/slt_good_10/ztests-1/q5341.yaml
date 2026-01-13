@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q5341.sql | sort > q5341.out
+
+vector: true
+
+inputs:
+  - name: q5341.sql
+    data: |
+      SELECT ALL col0 * - col0, col0 FROM tab0 GROUP BY col0 HAVING NULL IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q5341.out
+    data: |
+      -1849	43
+      -676	26
+      -6889	83

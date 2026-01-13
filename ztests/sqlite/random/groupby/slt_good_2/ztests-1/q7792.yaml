@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q7792.sql | sort > q7792.out
+
+vector: true
+
+inputs:
+  - name: q7792.sql
+    data: |
+      SELECT DISTINCT + 8 AS col2 FROM tab2 AS cor0 GROUP BY cor0.col1;
+  - name: tab2
+
+outputs:
+  - name: q7792.out
+    data: |
+      8

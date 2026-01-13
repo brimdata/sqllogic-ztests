@@ -1,0 +1,24 @@
+script: |
+  super -f tsv -I q7992.sql | sort > q7992.out
+
+vector: true
+
+inputs:
+  - name: q7992.sql
+    data: |
+      SELECT DISTINCT * FROM tab0 AS cor0 CROSS JOIN tab2 cor1 WHERE NOT ( NULL IS NOT NULL );
+  - name: tab0
+  - name: tab2
+
+outputs:
+  - name: q7992.out
+    data: |
+      15	81	47	46	51	23
+      15	81	47	64	77	40
+      15	81	47	75	67	58
+      87	21	10	46	51	23
+      87	21	10	64	77	40
+      87	21	10	75	67	58
+      97	1	99	46	51	23
+      97	1	99	64	77	40
+      97	1	99	75	67	58

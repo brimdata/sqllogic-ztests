@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q8844.sql | sort > q8844.out
+
+vector: true
+
+inputs:
+  - name: q8844.sql
+    data: |
+      SELECT DISTINCT col2 - CAST ( - col1 AS INTEGER ) * - col2 * - col1 AS col1, col0 AS col1 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q8844.out
+    data: |
+      237200	64
+      260420	75
+      59846	46

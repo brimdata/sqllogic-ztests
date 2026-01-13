@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q765.sql | sort > q765.out
+
+vector: true
+
+inputs:
+  - name: q765.sql
+    data: |
+      SELECT DISTINCT + col2 AS col0, col2 FROM tab0 AS cor0 GROUP BY col2, col2;
+  - name: tab0
+
+outputs:
+  - name: q765.out
+    data: |
+      24	24
+      38	38
+      79	79

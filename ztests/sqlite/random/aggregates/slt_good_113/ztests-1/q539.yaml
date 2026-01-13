@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q539.sql | sort > q539.out
+
+vector: true
+
+inputs:
+  - name: q539.sql
+    data: |
+      SELECT + MIN ( DISTINCT col2 ) AS col2, CAST ( NULL AS INTEGER ) / 83 AS col2 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q539.out
+    data: |
+      23	NULL

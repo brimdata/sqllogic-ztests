@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q6948.sql | sort > q6948.out
 
+vector: true
+
 inputs:
   - name: q6948.sql
     data: |
+      pragma pg
       SELECT DISTINCT + col2 AS col2 FROM tab2 GROUP BY col2 HAVING 90 BETWEEN - 9 AND MIN ( - - 42 );
   - name: tab2
 

@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q8633.sql | sort > q8633.out
+
+vector: true
+
+inputs:
+  - name: q8633.sql
+    data: |
+      SELECT ALL COUNT ( * ) * + col1 + 38 * - col2 FROM tab2 AS cor0 WHERE NOT NULL IS NOT NULL GROUP BY col2, col1;
+  - name: tab2
+
+outputs:
+  - name: q8633.out
+    data: |
+      -2163
+      -2943
+      -3245

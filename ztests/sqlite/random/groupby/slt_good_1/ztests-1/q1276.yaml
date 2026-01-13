@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q1276.sql | sort > q1276.out
 
+vector: true
+
 inputs:
   - name: q1276.sql
     data: |
+      pragma pg
       SELECT DISTINCT + COALESCE ( 20, col1 ) / cor0.col1 AS col1 FROM tab1 cor0 GROUP BY col1;
   - name: tab1
 

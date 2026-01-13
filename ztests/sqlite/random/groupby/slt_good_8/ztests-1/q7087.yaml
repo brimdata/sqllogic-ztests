@@ -1,0 +1,18 @@
+script: |
+  super -f tsv -I q7087.sql | sort > q7087.out
+
+vector: true
+
+inputs:
+  - name: q7087.sql
+    data: |
+      pragma pg
+      SELECT DISTINCT - col2, - col2 AS col2 FROM tab2 GROUP BY col2;
+  - name: tab2
+
+outputs:
+  - name: q7087.out
+    data: |
+      -58	-58
+      -79	-79
+      -87	-87

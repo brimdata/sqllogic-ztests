@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q5452.sql | sort > q5452.out
+
+vector: true
+
+inputs:
+  - name: q5452.sql
+    data: |
+      SELECT ALL col2, col2 FROM tab0 WHERE NOT ( NULL ) IS NOT NULL GROUP BY col2 HAVING SUM ( DISTINCT + col0 ) IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q5452.out
+    data: |

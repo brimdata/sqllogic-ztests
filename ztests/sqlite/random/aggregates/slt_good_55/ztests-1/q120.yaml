@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q120.sql | sort > q120.out
+
+vector: true
+
+inputs:
+  - name: q120.sql
+    data: |
+      SELECT DISTINCT CAST ( NULL AS REAL ) * - col0 AS col2, - 49 AS col2 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q120.out
+    data: |
+      NULL	-49

@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q4962.sql | sort > q4962.out
+
+vector: true
+
+inputs:
+  - name: q4962.sql
+    data: |
+      SELECT DISTINCT - tab2.col1 * col0 AS col0 FROM tab2 WHERE NOT col2 * col0 > ( col2 );
+  - name: tab2
+
+outputs:
+  - name: q4962.out
+    data: |

@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q5346.sql | sort > q5346.out
+
+vector: true
+
+inputs:
+  - name: q5346.sql
+    data: |
+      SELECT ALL 31 / - col2 AS col1 FROM tab0 GROUP BY col2 HAVING col2 <= NULL;
+  - name: tab0
+
+outputs:
+  - name: q5346.out
+    data: |

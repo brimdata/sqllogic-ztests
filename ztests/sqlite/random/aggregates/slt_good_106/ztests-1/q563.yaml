@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q563.sql | sort > q563.out
+
+vector: true
+
+inputs:
+  - name: q563.sql
+    data: |
+      SELECT col0 AS col0, - 25 * + - col0 * - col1 AS col2, - ( - col1 ) * 64 AS col0 FROM tab0;
+  - name: tab0
+
+outputs:
+  - name: q563.out
+    data: |
+      15	-30375	5184
+      87	-45675	1344
+      97	-2425	64

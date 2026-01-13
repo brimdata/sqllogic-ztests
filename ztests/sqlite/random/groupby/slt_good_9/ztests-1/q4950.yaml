@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q4950.sql | sort > q4950.out
+
+vector: true
+
+inputs:
+  - name: q4950.sql
+    data: |
+      SELECT col0 * - col0 / - col0 FROM tab2 GROUP BY col0 HAVING NOT ( NULL ) <> AVG ( DISTINCT col1 );
+  - name: tab2
+
+outputs:
+  - name: q4950.out
+    data: |

@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q1174.sql | sort > q1174.out
+
+vector: true
+
+inputs:
+  - name: q1174.sql
+    data: |
+      pragma pg
+      SELECT DISTINCT 11 AS col2 FROM tab2 cor0 GROUP BY col1, col2, col2 HAVING NOT NULL IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q1174.out
+    data: |
+      11

@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q9105.sql | sort > q9105.out
+
+vector: true
+
+inputs:
+  - name: q9105.sql
+    data: |
+      SELECT + 21 + - col0 + + 96 + - - col0 FROM tab2 GROUP BY col0, col1 HAVING NOT NULL NOT BETWEEN NULL AND ( col1 );
+  - name: tab2
+
+outputs:
+  - name: q9105.out
+    data: |

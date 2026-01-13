@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q8087.sql | sort > q8087.out
+
+vector: true
+
+inputs:
+  - name: q8087.sql
+    data: |
+      SELECT ALL + col1 + - + COUNT ( * ) - - col1 AS col2 FROM tab1 GROUP BY col1 HAVING NOT - COUNT ( * ) IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q8087.out
+    data: |

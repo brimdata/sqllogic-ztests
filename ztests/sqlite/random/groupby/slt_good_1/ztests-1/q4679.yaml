@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4679.sql | sort > q4679.out
+
+vector: true
+
+inputs:
+  - name: q4679.sql
+    data: |
+      SELECT DISTINCT NULLIF ( 98, cor0.col2 + - cor0.col2 ) FROM tab1 AS cor0 GROUP BY cor0.col2;
+  - name: tab1
+
+outputs:
+  - name: q4679.out
+    data: |
+      98

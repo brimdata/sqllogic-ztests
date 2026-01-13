@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q10158.sql | sort > q10158.out
 
+vector: true
+
 inputs:
   - name: q10158.sql
     data: |
+      pragma pg
       SELECT DISTINCT - 14 AS col2 FROM tab0 WHERE NULL NOT BETWEEN ( col1 + + 55 ) AND ( col1 * + 86 ) GROUP BY col0, col2, col1;
   - name: tab0
 

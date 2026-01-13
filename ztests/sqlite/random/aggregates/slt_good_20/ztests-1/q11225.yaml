@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q11225.sql | sort > q11225.out
+
+vector: true
+
+inputs:
+  - name: q11225.sql
+    data: |
+      SELECT 82 AS col1, col1 + - CAST ( NULL AS INTEGER ) AS col1 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q11225.out
+    data: |
+      82	NULL
+      82	NULL
+      82	NULL

@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q2172.sql | sort > q2172.out
+
+vector: true
+
+inputs:
+  - name: q2172.sql
+    data: |
+      SELECT ALL - col1 + - col1, 60 AS col2 FROM tab2 AS cor0 GROUP BY col0, col1 HAVING - col0 IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q2172.out
+    data: |
+      -118	60
+      -122	60
+      -82	60

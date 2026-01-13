@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q2293.sql | sort > q2293.out
+
+vector: true
+
+inputs:
+  - name: q2293.sql
+    data: |
+      SELECT - col1 + - col1 / + col1 AS col0 FROM tab0 GROUP BY col1 HAVING + col1 <> NULL;
+  - name: tab0
+
+outputs:
+  - name: q2293.out
+    data: |

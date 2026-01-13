@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q9118.sql | sort > q9118.out
+
+vector: true
+
+inputs:
+  - name: q9118.sql
+    data: |
+      SELECT 81 AS col1, - col2 / col0 AS col1 FROM tab0;
+  - name: tab0
+
+outputs:
+  - name: q9118.out
+    data: |
+      81	-1
+      81	-3
+      81	0

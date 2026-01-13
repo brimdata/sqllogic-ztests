@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q981.sql | sort > q981.out
+
+vector: true
+
+inputs:
+  - name: q981.sql
+    data: |
+      SELECT + col1 * CAST ( NULL AS INTEGER ) + + 67 AS col2 FROM tab2 WHERE ( + + col2 ) <= ( 42 );
+  - name: tab2
+
+outputs:
+  - name: q981.out
+    data: |
+      NULL
+      NULL

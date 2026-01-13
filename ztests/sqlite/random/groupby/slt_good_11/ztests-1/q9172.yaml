@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9172.sql | sort > q9172.out
+
+vector: true
+
+inputs:
+  - name: q9172.sql
+    data: |
+      SELECT DISTINCT + 32 FROM tab0 WHERE + + ( + col1 ) IS NOT NULL GROUP BY col0;
+  - name: tab0
+
+outputs:
+  - name: q9172.out
+    data: |
+      32

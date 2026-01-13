@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q8397.sql | sort > q8397.out
+
+vector: true
+
+inputs:
+  - name: q8397.sql
+    data: |
+      SELECT + 27 / col1, + 45 AS col1, - - col0 AS col1 FROM tab2 AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q8397.out
+    data: |
+      0	45	46
+      0	45	64
+      0	45	75

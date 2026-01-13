@@ -1,0 +1,18 @@
+script: |
+  super -f tsv -I q4893.sql | sort > q4893.out
+
+vector: true
+
+inputs:
+  - name: q4893.sql
+    data: |
+      pragma pg
+      SELECT + col1 AS col1 FROM tab1 GROUP BY col1 HAVING NOT - + AVG ( DISTINCT + + col0 ) IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q4893.out
+    data: |
+      44
+      57
+      6

@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q6272.sql | sort > q6272.out
 
+vector: true
+
 inputs:
   - name: q6272.sql
     data: |
+      pragma pg
       SELECT DISTINCT - col2 AS col2 FROM tab2 AS cor0 GROUP BY col0, col2 HAVING NULL >= - - COUNT ( * ) * - 78;
   - name: tab2
 

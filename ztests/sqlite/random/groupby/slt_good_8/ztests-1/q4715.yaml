@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4715.sql | sort > q4715.out
+
+vector: true
+
+inputs:
+  - name: q4715.sql
+    data: |
+      SELECT DISTINCT cor0.col2 / ( cor0.col2 * cor0.col2 ) AS col1 FROM tab0 cor0 GROUP BY cor0.col2;
+  - name: tab0
+
+outputs:
+  - name: q4715.out
+    data: |
+      0

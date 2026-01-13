@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q6088.sql | sort > q6088.out
+
+vector: true
+
+inputs:
+  - name: q6088.sql
+    data: |
+      SELECT ALL - 92 + + col0 AS col1 FROM tab2 AS cor0 GROUP BY col0 HAVING NOT ( + SUM ( DISTINCT col2 ) ) = ( + col0 );
+  - name: tab2
+
+outputs:
+  - name: q6088.out
+    data: |
+      -1
+      -77
+      0

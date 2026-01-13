@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q999.sql | sort > q999.out
+
+vector: true
+
+inputs:
+  - name: q999.sql
+    data: |
+      SELECT ALL - COALESCE ( + COUNT ( * ), - - COUNT ( * ) + + ( - 42 ), + 90 ) col2, + 5 AS col2;
+
+outputs:
+  - name: q999.out
+    data: |
+      -1	5

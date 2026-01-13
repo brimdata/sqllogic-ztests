@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q11092.sql | sort > q11092.out
+
+vector: true
+
+inputs:
+  - name: q11092.sql
+    data: |
+      SELECT DISTINCT 11 / 8 FROM tab1 WHERE NOT + 8 IS NULL GROUP BY col0;
+  - name: tab1
+
+outputs:
+  - name: q11092.out
+    data: |
+      1

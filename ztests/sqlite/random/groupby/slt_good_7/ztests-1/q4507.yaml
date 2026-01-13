@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q4507.sql | sort > q4507.out
+
+vector: true
+
+inputs:
+  - name: q4507.sql
+    data: |
+      SELECT tab2.col2 FROM tab2 GROUP BY tab2.col2 HAVING NULL > tab2.col2;
+  - name: tab2
+
+outputs:
+  - name: q4507.out
+    data: |

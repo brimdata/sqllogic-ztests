@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q7728.sql | sort > q7728.out
+
+vector: true
+
+inputs:
+  - name: q7728.sql
+    data: |
+      pragma pg
+      SELECT ALL 75 AS col2 FROM tab0 GROUP BY col0, col2 HAVING NOT ( + col0 + col2 + AVG ( col1 ) * + AVG ( ALL col2 ) * + col0 IS NOT NULL );
+  - name: tab0
+
+outputs:
+  - name: q7728.out
+    data: |

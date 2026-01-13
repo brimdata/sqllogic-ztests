@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q2580.sql | sort > q2580.out
+
+vector: true
+
+inputs:
+  - name: q2580.sql
+    data: |
+      SELECT DISTINCT + tab0.col0 FROM tab0 WHERE col1 IS NULL GROUP BY col0 HAVING ( tab0.col0 ) IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q2580.out
+    data: |

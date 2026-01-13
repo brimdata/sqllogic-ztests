@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q5886.sql | sort > q5886.out
+
+vector: true
+
+inputs:
+  - name: q5886.sql
+    data: |
+      SELECT ALL + - col0 + + AVG ( + col0 ) FROM tab2 AS cor0 GROUP BY col1, col0 HAVING col0 IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q5886.out
+    data: |

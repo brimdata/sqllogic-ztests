@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q3262.sql | sort > q3262.out
+
+vector: true
+
+inputs:
+  - name: q3262.sql
+    data: |
+      SELECT DISTINCT - - col1 * col2 FROM tab1 AS cor0 GROUP BY col1, col2 HAVING ( NULL ) NOT BETWEEN col1 + - 49 AND ( NULL );
+  - name: tab1
+
+outputs:
+  - name: q3262.out
+    data: |

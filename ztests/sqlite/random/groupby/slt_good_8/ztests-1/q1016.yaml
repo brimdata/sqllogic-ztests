@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1016.sql | sort > q1016.out
+
+vector: true
+
+inputs:
+  - name: q1016.sql
+    data: |
+      SELECT DISTINCT 90 AS col1 FROM tab0, tab0 cor0 GROUP BY tab0.col0;
+  - name: tab0
+
+outputs:
+  - name: q1016.out
+    data: |
+      90

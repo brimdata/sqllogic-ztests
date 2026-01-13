@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q4456.sql | sort > q4456.out
+
+vector: true
+
+inputs:
+  - name: q4456.sql
+    data: |
+      SELECT ( - COUNT ( * ) ) AS col1, MIN ( 99 ) - COALESCE ( - - 34, - 14 + COUNT ( * ), 0 ) col2, - 42 + 21 AS col2;
+
+outputs:
+  - name: q4456.out
+    data: |
+      -1	65	-21

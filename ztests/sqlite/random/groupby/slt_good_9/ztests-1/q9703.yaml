@@ -1,0 +1,18 @@
+script: |
+  super -f tsv -I q9703.sql | sort > q9703.out
+
+vector: true
+
+inputs:
+  - name: q9703.sql
+    data: |
+      pragma pg
+      SELECT DISTINCT - col1 AS col1 FROM tab2 AS cor0 GROUP BY col2, col1 HAVING NOT col1 BETWEEN NULL AND - col2;
+  - name: tab2
+
+outputs:
+  - name: q9703.out
+    data: |
+      -41
+      -59
+      -61

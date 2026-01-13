@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q4831.sql | sort > q4831.out
+
+vector: true
+
+inputs:
+  - name: q4831.sql
+    data: |
+      SELECT + 90 AS col1, 30 * + col1 AS col1 FROM tab1 AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q4831.out
+    data: |
+      90	1410
+      90	150
+      90	420

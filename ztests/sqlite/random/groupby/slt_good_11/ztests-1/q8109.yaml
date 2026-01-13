@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q8109.sql | sort > q8109.out
 
+vector: true
+
 inputs:
   - name: q8109.sql
     data: |
+      pragma pg
       SELECT ALL col0 * - NULLIF ( 32, - col1 ) - - + ( col0 ) AS col1 FROM tab2 AS cor0 GROUP BY col0, col1;
   - name: tab2
 

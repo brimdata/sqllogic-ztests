@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q13401.sql | sort > q13401.out
+
+vector: true
+
+inputs:
+  - name: q13401.sql
+    data: |
+      SELECT DISTINCT + CAST ( col2 AS INTEGER ) AS col2, + 23 AS col2 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q13401.out
+    data: |
+      59	23
+      68	23
+      96	23

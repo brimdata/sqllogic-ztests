@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1853.sql | sort > q1853.out
+
+vector: true
+
+inputs:
+  - name: q1853.sql
+    data: |
+      SELECT DISTINCT + CAST ( NULL AS REAL ) FROM tab1 GROUP BY tab1.col1;
+  - name: tab1
+
+outputs:
+  - name: q1853.out
+    data: |
+      NULL

@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q4180.sql | sort > q4180.out
+
+vector: true
+
+inputs:
+  - name: q4180.sql
+    data: |
+      SELECT DISTINCT 4 AS col0 FROM tab1 AS cor0 CROSS JOIN tab0 AS cor1 GROUP BY cor0.col1;
+  - name: tab0
+  - name: tab1
+
+outputs:
+  - name: q4180.out
+    data: |
+      4

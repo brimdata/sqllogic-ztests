@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q10239.sql | sort > q10239.out
+
+vector: true
+
+inputs:
+  - name: q10239.sql
+    data: |
+      SELECT DISTINCT - col1 AS col0 FROM tab0 GROUP BY tab0.col1 HAVING NULL BETWEEN NULL AND NULL OR ( + tab0.col1 ) BETWEEN NULL AND ( NULL );
+  - name: tab0
+
+outputs:
+  - name: q10239.out
+    data: |

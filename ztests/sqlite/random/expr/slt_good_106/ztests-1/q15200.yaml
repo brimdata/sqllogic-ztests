@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q15200.sql | sort > q15200.out
+
+vector: true
+
+inputs:
+  - name: q15200.sql
+    data: |
+      SELECT - CASE COUNT ( * ) WHEN 77 THEN NULL WHEN 98 THEN + - 22 * - + 7 ELSE NULL END;
+
+outputs:
+  - name: q15200.out
+    data: |
+      NULL

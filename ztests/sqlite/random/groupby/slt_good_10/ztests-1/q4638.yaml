@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q4638.sql | sort > q4638.out
+
+vector: true
+
+inputs:
+  - name: q4638.sql
+    data: |
+      SELECT DISTINCT + col1 + - col1 * - + col1 FROM tab2 AS cor0 GROUP BY col1 HAVING ( NULL ) NOT IN ( - col1 );
+  - name: tab2
+
+outputs:
+  - name: q4638.out
+    data: |

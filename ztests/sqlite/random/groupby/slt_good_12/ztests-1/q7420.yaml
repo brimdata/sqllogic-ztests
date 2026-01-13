@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q7420.sql | sort > q7420.out
+
+vector: true
+
+inputs:
+  - name: q7420.sql
+    data: |
+      SELECT - SUM ( col1 ) * + col1 FROM tab0 cor0 GROUP BY col1, col1;
+  - name: tab0
+
+outputs:
+  - name: q7420.out
+    data: |
+      -6561
+      0

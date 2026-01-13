@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q9432.sql | sort > q9432.out
+
+vector: true
+
+inputs:
+  - name: q9432.sql
+    data: |
+      SELECT 11 + - CASE COUNT ( * ) WHEN CAST ( NULL AS INTEGER ) THEN - 55 ELSE NULL END AS col0;
+
+outputs:
+  - name: q9432.out
+    data: |
+      NULL

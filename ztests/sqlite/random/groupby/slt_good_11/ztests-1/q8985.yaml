@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q8985.sql | sort > q8985.out
 
+vector: true
+
 inputs:
   - name: q8985.sql
     data: |
+      pragma pg
       SELECT ALL - col1 AS col1 FROM tab1 AS cor0 WHERE NOT ( - col1 + + col2 ) NOT BETWEEN + col0 AND + col2 GROUP BY col2, col1;
   - name: tab1
 

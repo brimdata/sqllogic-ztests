@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q8980.sql | sort > q8980.out
+
+vector: true
+
+inputs:
+  - name: q8980.sql
+    data: |
+      SELECT - col1 + - col2 AS col1, + 10 AS col1 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q8980.out
+    data: |
+      -117	10
+      -125	10
+      -74	10

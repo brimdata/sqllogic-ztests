@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q6495.sql | sort > q6495.out
 
+vector: true
+
 inputs:
   - name: q6495.sql
     data: |
+      pragma pg
       SELECT + col1 AS col1 FROM tab0 WHERE NULL IN ( COALESCE ( - 51, + col1 ), col1 ) GROUP BY col1;
   - name: tab0
 

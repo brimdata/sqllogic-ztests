@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q10103.sql | sort > q10103.out
+
+vector: true
+
+inputs:
+  - name: q10103.sql
+    data: |
+      pragma pg
+      SELECT col1 + - col2 AS col2, 94 AS col1 FROM tab0 GROUP BY col1, col2 HAVING NOT + col2 BETWEEN + + col1 + + col1 AND NULL;
+  - name: tab0
+
+outputs:
+  - name: q10103.out
+    data: |
+      57	94

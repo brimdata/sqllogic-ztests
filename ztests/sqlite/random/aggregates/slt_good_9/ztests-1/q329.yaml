@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q329.sql | sort > q329.out
+
+vector: true
+
+inputs:
+  - name: q329.sql
+    data: |
+      SELECT ALL CAST ( NULL AS REAL ) AS col2 FROM tab1 AS cor0 WHERE NOT ( + col2 + - 8 * - col0 ) IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q329.out
+    data: |

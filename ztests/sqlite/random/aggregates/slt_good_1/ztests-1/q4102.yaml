@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q4102.sql | sort > q4102.out
+
+vector: true
+
+inputs:
+  - name: q4102.sql
+    data: |
+      SELECT + ( col1 ), + col1 * + - CAST ( CAST ( NULL AS INTEGER ) AS INTEGER ) + - ( + - col1 ) AS col2, col2 * + col1 AS col2 FROM tab1 AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q4102.out
+    data: |
+      14	NULL	1344
+      47	NULL	3196
+      5	NULL	295

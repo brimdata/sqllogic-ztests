@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q4347.sql | sort > q4347.out
+
+vector: true
+
+inputs:
+  - name: q4347.sql
+    data: |
+      SELECT ALL col2 - col2 * tab1.col2 AS col0 FROM tab1 WHERE NOT ( col1 - col1 ) > col0;
+  - name: tab1
+
+outputs:
+  - name: q4347.out
+    data: |
+      -2862
+      -3192
+      -9120

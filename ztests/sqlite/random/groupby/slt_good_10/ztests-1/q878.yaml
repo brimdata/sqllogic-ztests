@@ -1,0 +1,18 @@
+script: |
+  super -f tsv -I q878.sql | sort > q878.out
+
+vector: true
+
+inputs:
+  - name: q878.sql
+    data: |
+      pragma pg
+      SELECT ALL col0 AS col2, col2 + + col2 FROM tab0 GROUP BY col0, col2, col2 HAVING - AVG ( + col0 ) IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q878.out
+    data: |
+      26	158
+      43	48
+      83	76

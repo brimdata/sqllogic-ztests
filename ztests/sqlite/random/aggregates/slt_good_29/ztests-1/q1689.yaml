@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q1689.sql | sort > q1689.out
+
+vector: true
+
+inputs:
+  - name: q1689.sql
+    data: |
+      SELECT ALL col1 + - col2 * - col1 + col2 AS col1, + col1 AS col1 FROM tab2 AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q1689.out
+    data: |
+      1247	51
+      3197	77
+      4011	67

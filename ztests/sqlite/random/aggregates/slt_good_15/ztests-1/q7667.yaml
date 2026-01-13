@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q7667.sql | sort > q7667.out
+
+vector: true
+
+inputs:
+  - name: q7667.sql
+    data: |
+      SELECT DISTINCT COUNT ( - col2 ) AS col2 FROM tab0 AS cor0 WHERE NOT col2 IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q7667.out
+    data: |
+      3

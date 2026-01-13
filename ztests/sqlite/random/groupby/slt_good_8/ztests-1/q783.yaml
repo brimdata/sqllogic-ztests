@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q783.sql | sort > q783.out
 
+vector: true
+
 inputs:
   - name: q783.sql
     data: |
+      pragma pg
       SELECT DISTINCT - NULLIF ( - col0, 91 ) AS col0 FROM tab2 GROUP BY col0;
   - name: tab2
 

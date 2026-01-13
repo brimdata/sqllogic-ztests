@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q8621.sql | sort > q8621.out
+
+vector: true
+
+inputs:
+  - name: q8621.sql
+    data: |
+      SELECT ALL col0 * - col0 FROM tab0 GROUP BY col0 HAVING NOT 30 + 20 / COUNT ( DISTINCT - col0 ) IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q8621.out
+    data: |
+      -1849
+      -676
+      -6889

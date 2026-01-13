@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q10033.sql | sort > q10033.out
+
+vector: true
+
+inputs:
+  - name: q10033.sql
+    data: |
+      SELECT + tab1.col1 FROM tab1 GROUP BY tab1.col1 HAVING NULL IN ( tab1.col1 - - tab1.col1 );
+  - name: tab1
+
+outputs:
+  - name: q10033.out
+    data: |

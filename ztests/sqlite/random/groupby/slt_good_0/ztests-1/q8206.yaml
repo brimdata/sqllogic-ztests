@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8206.sql | sort > q8206.out
+
+vector: true
+
+inputs:
+  - name: q8206.sql
+    data: |
+      SELECT DISTINCT 32 * - 1 AS col2 FROM tab1 AS cor0 GROUP BY cor0.col0;
+  - name: tab1
+
+outputs:
+  - name: q8206.out
+    data: |
+      -32

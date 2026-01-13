@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4869.sql | sort > q4869.out
+
+vector: true
+
+inputs:
+  - name: q4869.sql
+    data: |
+      pragma pg
+      SELECT - 68 * - col2 AS col2 FROM tab2 GROUP BY col0, col2 HAVING - + 73 NOT BETWEEN NULL AND col0;
+  - name: tab2
+
+outputs:
+  - name: q4869.out
+    data: |

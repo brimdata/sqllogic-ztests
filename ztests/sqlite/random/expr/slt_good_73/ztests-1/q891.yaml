@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q891.sql | sort > q891.out
+
+vector: true
+
+inputs:
+  - name: q891.sql
+    data: |
+      SELECT ALL + CAST ( + 10 AS INTEGER ) AS col1, COUNT ( * ) + - 6 AS col2, + 39 AS col2;
+
+outputs:
+  - name: q891.out
+    data: |
+      10	-5	39

@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q4161.sql | sort > q4161.out
+
+vector: true
+
+inputs:
+  - name: q4161.sql
+    data: |
+      pragma pg
+      SELECT DISTINCT + CAST ( NULL AS REAL ) * - col0 AS col0 FROM tab0 WHERE + col0 <> col2 GROUP BY col2, col0;
+  - name: tab0
+
+outputs:
+  - name: q4161.out
+    data: |
+      NULL

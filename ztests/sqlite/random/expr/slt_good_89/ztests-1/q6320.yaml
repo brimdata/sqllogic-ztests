@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q6320.sql | sort > q6320.out
+
+vector: true
+
+inputs:
+  - name: q6320.sql
+    data: |
+      SELECT - CASE NULLIF ( - COUNT ( * ), - 99 ) WHEN 98 * 36 THEN 32 WHEN - 40 THEN NULL ELSE NULL END AS col2;
+
+outputs:
+  - name: q6320.out
+    data: |
+      NULL

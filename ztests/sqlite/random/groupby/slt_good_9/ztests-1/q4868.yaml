@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4868.sql | sort > q4868.out
+
+vector: true
+
+inputs:
+  - name: q4868.sql
+    data: |
+      pragma pg
+      SELECT ALL col1 AS col1 FROM tab2 GROUP BY col0, col1 HAVING + col0 >= AVG ( DISTINCT + col0 ) * + col0;
+  - name: tab2
+
+outputs:
+  - name: q4868.out
+    data: |

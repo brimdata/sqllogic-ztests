@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q489.sql | sort > q489.out
+
+vector: true
+
+inputs:
+  - name: q489.sql
+    data: |
+      SELECT DISTINCT CAST ( NULL AS INTEGER ) AS col1 FROM tab1 WHERE NOT 95 BETWEEN NULL AND - col1;
+  - name: tab1
+
+outputs:
+  - name: q489.out
+    data: |
+      NULL

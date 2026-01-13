@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q6360.sql | sort > q6360.out
+
+vector: true
+
+inputs:
+  - name: q6360.sql
+    data: |
+      SELECT DISTINCT CAST ( NULL AS INTEGER ) AS col1 FROM tab2 GROUP BY tab2.col1;
+  - name: tab2
+
+outputs:
+  - name: q6360.out
+    data: |
+      NULL

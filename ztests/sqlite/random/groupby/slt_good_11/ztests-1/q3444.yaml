@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q3444.sql | sort > q3444.out
+
+vector: true
+
+inputs:
+  - name: q3444.sql
+    data: |
+      SELECT + col1 * + 2 + col1 FROM tab0 GROUP BY col1, col1, col2 HAVING NOT + - CAST ( + col2 AS INTEGER ) + + 19 IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q3444.out
+    data: |

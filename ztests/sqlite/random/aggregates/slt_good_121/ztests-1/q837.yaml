@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q837.sql | sort > q837.out
+
+vector: true
+
+inputs:
+  - name: q837.sql
+    data: |
+      SELECT DISTINCT 70 AS col0, - CAST ( - col0 AS INTEGER ) AS col0 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q837.out
+    data: |
+      70	46
+      70	64
+      70	75

@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q660.sql | sort > q660.out
+
+vector: true
+
+inputs:
+  - name: q660.sql
+    data: |
+      SELECT + col1 AS col2, col1 * col1 - - + col1, - col1 AS col2 FROM tab1 AS cor0 GROUP BY col1;
+  - name: tab1
+
+outputs:
+  - name: q660.out
+    data: |
+      44	1980	-44
+      57	3306	-57
+      6	42	-6

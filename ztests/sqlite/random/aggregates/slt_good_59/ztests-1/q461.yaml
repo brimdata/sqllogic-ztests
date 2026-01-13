@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q461.sql | sort > q461.out
+
+vector: true
+
+inputs:
+  - name: q461.sql
+    data: |
+      SELECT - SUM ( + 7 ) AS col2, + CAST ( NULL AS REAL ) AS col2 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q461.out
+    data: |
+      -21	NULL

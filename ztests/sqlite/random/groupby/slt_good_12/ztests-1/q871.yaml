@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q871.sql | sort > q871.out
 
+vector: true
+
 inputs:
   - name: q871.sql
     data: |
+      pragma pg
       SELECT col0 + + col0 / 70 AS col0 FROM tab0 AS cor0 GROUP BY col0 HAVING col0 NOT BETWEEN + - ( 96 ) AND - 97;
   - name: tab0
 

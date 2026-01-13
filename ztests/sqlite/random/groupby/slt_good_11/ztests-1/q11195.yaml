@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q11195.sql | sort > q11195.out
+
+vector: true
+
+inputs:
+  - name: q11195.sql
+    data: |
+      SELECT ALL - ( - col0 ) AS col2 FROM tab2 GROUP BY col0 HAVING + COALESCE ( col0, + 50 ) > + - col0;
+  - name: tab2
+
+outputs:
+  - name: q11195.out
+    data: |
+      15
+      91
+      92

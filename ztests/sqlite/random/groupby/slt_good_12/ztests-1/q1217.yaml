@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q1217.sql | sort > q1217.out
 
+vector: true
+
 inputs:
   - name: q1217.sql
     data: |
+      pragma pg
       SELECT ALL col1 AS col1 FROM tab2 WHERE ( - 94 ) < col2 GROUP BY col1;
   - name: tab2
 

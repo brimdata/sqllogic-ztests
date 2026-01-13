@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9009.sql | sort > q9009.out
+
+vector: true
+
+inputs:
+  - name: q9009.sql
+    data: |
+      pragma pg
+      SELECT + col2 AS col2 FROM tab0 WHERE NOT col1 * - col1 = ( col2 * 10 ) GROUP BY col1, col2, col2 HAVING NOT ( COUNT ( * ) * col1 ) = ( col1 );
+  - name: tab0
+
+outputs:
+  - name: q9009.out
+    data: |

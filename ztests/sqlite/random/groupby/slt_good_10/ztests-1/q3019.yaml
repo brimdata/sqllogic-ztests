@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q3019.sql | sort > q3019.out
+
+vector: true
+
+inputs:
+  - name: q3019.sql
+    data: |
+      SELECT + col2, col2 FROM tab0 GROUP BY col1, col1, col2;
+  - name: tab0
+
+outputs:
+  - name: q3019.out
+    data: |
+      24	24
+      38	38
+      79	79

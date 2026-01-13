@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q12264.sql | sort > q12264.out
+
+vector: true
+
+inputs:
+  - name: q12264.sql
+    data: |
+      SELECT col2 AS col0, - col2 + col1 * col1 AS col0 FROM tab2 WHERE NOT NULL = ( + col0 );
+  - name: tab2
+
+outputs:
+  - name: q12264.out
+    data: |

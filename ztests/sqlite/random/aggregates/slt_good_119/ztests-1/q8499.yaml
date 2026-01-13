@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8499.sql | sort > q8499.out
+
+vector: true
+
+inputs:
+  - name: q8499.sql
+    data: |
+      SELECT DISTINCT + - COUNT ( * ) AS col2 FROM tab0 AS cor0 WHERE ( col0 * + col1 * col0 ) NOT IN ( + col1, col2 * + col1 );
+  - name: tab0
+
+outputs:
+  - name: q8499.out
+    data: |
+      -3

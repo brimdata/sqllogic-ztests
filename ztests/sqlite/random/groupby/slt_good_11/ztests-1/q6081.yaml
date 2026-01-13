@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q6081.sql | sort > q6081.out
 
+vector: true
+
 inputs:
   - name: q6081.sql
     data: |
+      pragma pg
       SELECT ALL col2 * col1 + + - col2 AS col1, + 71 / - col1 * - COALESCE ( + col2, + col1 + - col1 ) AS col2 FROM tab1 GROUP BY col1, col2 HAVING NULL <= 4;
   - name: tab1
 

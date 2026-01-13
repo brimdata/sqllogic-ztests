@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q930.sql | sort > q930.out
 
+vector: true
+
 inputs:
   - name: q930.sql
     data: |
+      pragma pg
       SELECT 31 AS col1 FROM tab2 GROUP BY col1, col2 HAVING + col1 + - 88 IS NULL;
   - name: tab2
 

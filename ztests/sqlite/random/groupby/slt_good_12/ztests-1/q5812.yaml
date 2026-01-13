@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q5812.sql | sort > q5812.out
 
+vector: true
+
 inputs:
   - name: q5812.sql
     data: |
+      pragma pg
       SELECT - col0 AS col0 FROM tab0 cor0 GROUP BY col0, col2 HAVING col0 BETWEEN - + COUNT ( DISTINCT - ( + CAST ( + 88 AS REAL ) ) ) AND NULL;
   - name: tab0
 

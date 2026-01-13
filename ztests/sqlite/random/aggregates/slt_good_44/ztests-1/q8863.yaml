@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q8863.sql | sort > q8863.out
+
+vector: true
+
+inputs:
+  - name: q8863.sql
+    data: |
+      SELECT ALL ( + col1 ) * - 12 * col2 AS col2, col1 AS col2 FROM tab1 AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q8863.out
+    data: |
+      -16128	14
+      -3540	5
+      -38352	47

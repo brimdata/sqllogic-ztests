@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q970.sql | sort > q970.out
+
+vector: true
+
+inputs:
+  - name: q970.sql
+    data: |
+      SELECT DISTINCT - ( - CAST ( - col1 AS INTEGER ) ) * col2 + 95 AS col1, col1 AS col1 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q970.out
+    data: |
+      -1249	14
+      -200	5
+      -3101	47

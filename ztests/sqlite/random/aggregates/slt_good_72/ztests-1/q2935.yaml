@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q2935.sql | sort > q2935.out
+
+vector: true
+
+inputs:
+  - name: q2935.sql
+    data: |
+      SELECT ALL - - MIN ( ALL + col1 ) AS col1, MAX ( DISTINCT - ( + col1 ) ) AS col1 FROM tab2 AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q2935.out
+    data: |
+      51	-51

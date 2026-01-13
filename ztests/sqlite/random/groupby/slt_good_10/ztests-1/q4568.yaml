@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4568.sql | sort > q4568.out
+
+vector: true
+
+inputs:
+  - name: q4568.sql
+    data: |
+      pragma pg
+      SELECT col1 AS col1, - col0 AS col1 FROM tab1 AS cor0 WHERE NOT NULL < ( NULL ) GROUP BY col1, col0;
+  - name: tab1
+
+outputs:
+  - name: q4568.out
+    data: |

@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q12732.sql | sort > q12732.out
+
+vector: true
+
+inputs:
+  - name: q12732.sql
+    data: |
+      SELECT + 6 AS col1, - 41 * - col1 AS col1 FROM tab2 AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q12732.out
+    data: |
+      6	2091
+      6	2747
+      6	3157

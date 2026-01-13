@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q5898.sql | sort > q5898.out
+
+vector: true
+
+inputs:
+  - name: q5898.sql
+    data: |
+      SELECT - col1 AS col0 FROM tab1 WHERE NOT ( col2 ) BETWEEN NULL AND + col1 * + col0;
+  - name: tab1
+
+outputs:
+  - name: q5898.out
+    data: |

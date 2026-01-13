@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9849.sql | sort > q9849.out
+
+vector: true
+
+inputs:
+  - name: q9849.sql
+    data: |
+      SELECT CAST ( AVG ( 96 ) AS INTEGER ) AS col0 FROM tab2 WHERE NOT col0 * 3 + - col1 IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q9849.out
+    data: |
+      96

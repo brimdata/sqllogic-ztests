@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q9832.sql | sort > q9832.out
+
+vector: true
+
+inputs:
+  - name: q9832.sql
+    data: |
+      SELECT - CAST ( NULL AS INTEGER ) * col1 * col2 AS col2 FROM tab0 WHERE - col2 IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q9832.out
+    data: |
+      NULL
+      NULL
+      NULL

@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q201.sql | sort > q201.out
+
+vector: true
+
+inputs:
+  - name: q201.sql
+    data: |
+      SELECT + col2 AS col0 FROM tab0 WHERE col0 + col1 < col2 * col1;
+  - name: tab0
+
+outputs:
+  - name: q201.out
+    data: |
+      10
+      47
+      99

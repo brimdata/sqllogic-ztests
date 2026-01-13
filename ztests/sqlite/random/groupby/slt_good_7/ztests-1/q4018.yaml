@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4018.sql | sort > q4018.out
+
+vector: true
+
+inputs:
+  - name: q4018.sql
+    data: |
+      SELECT DISTINCT - CAST ( NULL AS REAL ) * - 76 AS col1 FROM tab1 GROUP BY tab1.col2;
+  - name: tab1
+
+outputs:
+  - name: q4018.out
+    data: |
+      NULL

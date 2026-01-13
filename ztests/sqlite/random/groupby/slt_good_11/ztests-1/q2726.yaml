@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q2726.sql | sort > q2726.out
+
+vector: true
+
+inputs:
+  - name: q2726.sql
+    data: |
+      SELECT + col2 * + AVG ( + - col2 ) + - col0 + - col0 FROM tab1 AS cor0 GROUP BY col2, col0 HAVING NOT col2 IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q2726.out
+    data: |

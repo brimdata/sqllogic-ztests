@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q3587.sql | sort > q3587.out
+
+vector: true
+
+inputs:
+  - name: q3587.sql
+    data: |
+      SELECT + col2 FROM tab0 AS cor0 GROUP BY col2 HAVING - col2 IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q3587.out
+    data: |

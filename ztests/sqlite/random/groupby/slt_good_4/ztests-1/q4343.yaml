@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4343.sql | sort > q4343.out
+
+vector: true
+
+inputs:
+  - name: q4343.sql
+    data: |
+      SELECT DISTINCT 33 * 36 AS col1 FROM tab1 AS cor0 CROSS JOIN tab1 AS cor1 GROUP BY cor0.col0;
+  - name: tab1
+
+outputs:
+  - name: q4343.out
+    data: |
+      1188

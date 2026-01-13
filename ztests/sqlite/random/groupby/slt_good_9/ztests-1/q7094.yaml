@@ -1,0 +1,18 @@
+script: |
+  super -f tsv -I q7094.sql | sort > q7094.out
+
+vector: true
+
+inputs:
+  - name: q7094.sql
+    data: |
+      pragma pg
+      SELECT DISTINCT - col0 AS col0, col2 AS col0 FROM tab1 GROUP BY col2, col0;
+  - name: tab1
+
+outputs:
+  - name: q7094.out
+    data: |
+      -22	8
+      -28	45
+      -82	71

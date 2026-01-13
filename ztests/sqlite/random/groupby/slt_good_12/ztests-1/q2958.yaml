@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q2958.sql | sort > q2958.out
 
+vector: true
+
 inputs:
   - name: q2958.sql
     data: |
+      pragma pg
       SELECT - 8 AS col1, + col0 FROM tab1 GROUP BY col1, col0, col0;
   - name: tab1
 

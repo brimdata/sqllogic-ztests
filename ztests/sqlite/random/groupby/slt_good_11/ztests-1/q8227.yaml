@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q8227.sql | sort > q8227.out
+
+vector: true
+
+inputs:
+  - name: q8227.sql
+    data: |
+      SELECT col2 AS col1 FROM tab2 GROUP BY col0, col2 HAVING NULL BETWEEN + 46 + col2 AND + 38;
+  - name: tab2
+
+outputs:
+  - name: q8227.out
+    data: |

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q5410.sql | sort > q5410.out
+
+vector: true
+
+inputs:
+  - name: q5410.sql
+    data: |
+      SELECT DISTINCT - 24 AS col1, + COUNT ( * ) AS col1 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q5410.out
+    data: |
+      -24	3

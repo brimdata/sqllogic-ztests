@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q8915.sql | sort > q8915.out
+
+vector: true
+
+inputs:
+  - name: q8915.sql
+    data: |
+      SELECT DISTINCT - col1 + col2 FROM tab0 AS cor0 WHERE ( col1 ) IS NULL GROUP BY col2, col1 HAVING NULL NOT BETWEEN col2 * col2 AND NULL;
+  - name: tab0
+
+outputs:
+  - name: q8915.out
+    data: |

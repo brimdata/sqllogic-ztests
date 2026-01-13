@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q524.sql | sort > q524.out
+
+vector: true
+
+inputs:
+  - name: q524.sql
+    data: |
+      SELECT DISTINCT col2 + - col2 AS col1 FROM tab1 GROUP BY col2 HAVING NOT NULL IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q524.out
+    data: |
+      0

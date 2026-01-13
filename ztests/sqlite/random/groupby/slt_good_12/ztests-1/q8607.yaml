@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q8607.sql | sort > q8607.out
+
+vector: true
+
+inputs:
+  - name: q8607.sql
+    data: |
+      SELECT DISTINCT + 27 AS col2 FROM tab1 GROUP BY col0 HAVING NOT NULL BETWEEN NULL AND col0;
+  - name: tab1
+
+outputs:
+  - name: q8607.out
+    data: |

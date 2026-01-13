@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q11199.sql | sort > q11199.out
+
+vector: true
+
+inputs:
+  - name: q11199.sql
+    data: |
+      SELECT DISTINCT 9 AS col1, + CAST ( NULL AS INTEGER ) * 45 AS col1, + - CAST ( + - 20 AS INTEGER ) AS col2;
+
+outputs:
+  - name: q11199.out
+    data: |
+      9	NULL	20

@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q5963.sql | sort > q5963.out
+
+vector: true
+
+inputs:
+  - name: q5963.sql
+    data: |
+      SELECT DISTINCT - + col1 * col1 + COUNT ( col1 + col1 ) FROM tab0 AS cor0 GROUP BY col1 HAVING NULL IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q5963.out
+    data: |
+      -6560
+      2

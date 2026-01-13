@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q12063.sql | sort > q12063.out
+
+vector: true
+
+inputs:
+  - name: q12063.sql
+    data: |
+      SELECT + CAST ( NULL AS INTEGER ) AS col2, - 89 * + - col2 AS col2 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q12063.out
+    data: |
+      NULL	2047
+      NULL	3560
+      NULL	5162

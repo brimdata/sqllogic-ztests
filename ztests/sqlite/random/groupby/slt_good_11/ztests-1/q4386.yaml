@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q4386.sql | sort > q4386.out
+
+vector: true
+
+inputs:
+  - name: q4386.sql
+    data: |
+      SELECT ALL - 20 FROM tab1 GROUP BY col2 HAVING - AVG ( ALL - col2 ) IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q4386.out
+    data: |
+      -20
+      -20
+      -20

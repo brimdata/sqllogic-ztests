@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1866.sql | sort > q1866.out
+
+vector: true
+
+inputs:
+  - name: q1866.sql
+    data: |
+      SELECT COUNT ( * ) AS col0 FROM tab1 WHERE NOT col0 IN ( 6 );
+  - name: tab1
+
+outputs:
+  - name: q1866.out
+    data: |
+      3

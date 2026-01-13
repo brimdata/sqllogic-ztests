@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4523.sql | sort > q4523.out
+
+vector: true
+
+inputs:
+  - name: q4523.sql
+    data: |
+      SELECT COUNT ( * ) AS col1 FROM tab0 WHERE NOT ( CAST ( - col1 AS INTEGER ) - - 30 ) >= ( 86 + + col2 );
+  - name: tab0
+
+outputs:
+  - name: q4523.out
+    data: |
+      3

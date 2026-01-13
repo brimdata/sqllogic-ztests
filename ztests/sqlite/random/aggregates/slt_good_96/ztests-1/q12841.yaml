@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q12841.sql | sort > q12841.out
+
+vector: true
+
+inputs:
+  - name: q12841.sql
+    data: |
+      SELECT ALL + col1 * - col1 AS col0, ( - CAST ( NULL AS REAL ) ) AS col0 FROM tab0;
+  - name: tab0
+
+outputs:
+  - name: q12841.out
+    data: |
+      -1	NULL
+      -441	NULL
+      -6561	NULL

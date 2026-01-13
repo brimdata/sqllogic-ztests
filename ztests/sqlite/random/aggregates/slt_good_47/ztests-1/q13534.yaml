@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q13534.sql | sort > q13534.out
+
+vector: true
+
+inputs:
+  - name: q13534.sql
+    data: |
+      SELECT DISTINCT 19 AS col1, - col0 * - col1 AS col1 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q13534.out
+    data: |
+      19	425
+      19	4277
+      19	714

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4322.sql | sort > q4322.out
+
+vector: true
+
+inputs:
+  - name: q4322.sql
+    data: |
+      SELECT 6 * - COUNT ( * ) AS col1 FROM tab0 WHERE NOT ( col1 + - - col2 + - col2 ) IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q4322.out
+    data: |
+      -18

@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q4407.sql | sort > q4407.out
+
+vector: true
+
+inputs:
+  - name: q4407.sql
+    data: |
+      SELECT 23 * - 30 AS col2, col1 * ( - col1 ) AS col2 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q4407.out
+    data: |
+      -690	-2601
+      -690	-4489
+      -690	-5929

@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q5514.sql | sort > q5514.out
+
+vector: true
+
+inputs:
+  - name: q5514.sql
+    data: |
+      SELECT col0, - col0 * + 97 FROM tab2 GROUP BY col0;
+  - name: tab2
+
+outputs:
+  - name: q5514.out
+    data: |
+      15	-1455
+      91	-8827
+      92	-8924

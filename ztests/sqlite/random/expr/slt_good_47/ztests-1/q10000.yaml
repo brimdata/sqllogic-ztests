@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q10000.sql | sort > q10000.out
+
+vector: true
+
+inputs:
+  - name: q10000.sql
+    data: |
+      SELECT ALL 15 col1, - NULLIF ( - + 33, 99 ) + + 98 / - 46 AS col1, + 27 AS col0;
+
+outputs:
+  - name: q10000.out
+    data: |
+      15	31	27

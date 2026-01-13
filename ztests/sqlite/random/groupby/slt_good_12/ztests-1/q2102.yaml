@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q2102.sql | sort > q2102.out
 
+vector: true
+
 inputs:
   - name: q2102.sql
     data: |
+      pragma pg
       SELECT - col2 AS col2 FROM tab1 AS cor0 WHERE NOT - col1 <= ( - ( + - 6 ) ) GROUP BY col2;
   - name: tab1
 

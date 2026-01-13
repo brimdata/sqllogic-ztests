@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q3647.sql | sort > q3647.out
+
+vector: true
+
+inputs:
+  - name: q3647.sql
+    data: |
+      SELECT ALL col0 - col2 FROM tab2 AS cor0 GROUP BY col2, col0 HAVING + col0 >= + col2;
+  - name: tab2
+
+outputs:
+  - name: q3647.out
+    data: |
+      12
+      34

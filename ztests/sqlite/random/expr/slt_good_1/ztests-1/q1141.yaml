@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q1141.sql | sort > q1141.out
+
+vector: true
+
+inputs:
+  - name: q1141.sql
+    data: |
+      SELECT COUNT ( * ) * - CAST ( NULL AS INTEGER ) AS col1, - 16 AS col1;
+
+outputs:
+  - name: q1141.out
+    data: |
+      NULL	-16

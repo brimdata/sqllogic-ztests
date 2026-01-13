@@ -1,0 +1,18 @@
+script: |
+  super -f tsv -I q5112.sql | sort > q5112.out
+
+vector: true
+
+inputs:
+  - name: q5112.sql
+    data: |
+      pragma pg
+      SELECT DISTINCT - col0 AS col0 FROM tab1 GROUP BY col1, col0 HAVING ( - col1 NOT BETWEEN + col1 AND - + 99 * col1 );
+  - name: tab1
+
+outputs:
+  - name: q5112.out
+    data: |
+      -22
+      -28
+      -82

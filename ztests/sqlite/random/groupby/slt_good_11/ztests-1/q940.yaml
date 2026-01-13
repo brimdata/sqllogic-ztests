@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q940.sql | sort > q940.out
+
+vector: true
+
+inputs:
+  - name: q940.sql
+    data: |
+      SELECT ALL col1 * col1 FROM tab1 GROUP BY col1 HAVING NULL BETWEEN col1 AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q940.out
+    data: |

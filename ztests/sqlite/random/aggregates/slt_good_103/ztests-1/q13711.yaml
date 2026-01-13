@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q13711.sql | sort > q13711.out
+
+vector: true
+
+inputs:
+  - name: q13711.sql
+    data: |
+      SELECT + COUNT ( * ) * - MIN ( DISTINCT + 90 ) AS col1, - 2 AS col1 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q13711.out
+    data: |
+      -270	-2

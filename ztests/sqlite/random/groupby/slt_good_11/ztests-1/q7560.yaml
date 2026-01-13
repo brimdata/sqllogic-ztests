@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q7560.sql | sort > q7560.out
+
+vector: true
+
+inputs:
+  - name: q7560.sql
+    data: |
+      pragma pg
+      SELECT ALL - col2 * 24, col2 AS col2 FROM tab2 AS cor0 WHERE col1 > + - 48 + col2 + + ( + col1 ) GROUP BY col2;
+  - name: tab2
+
+outputs:
+  - name: q7560.out
+    data: |

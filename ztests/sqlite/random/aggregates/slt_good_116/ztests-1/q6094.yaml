@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q6094.sql | sort > q6094.out
+
+vector: true
+
+inputs:
+  - name: q6094.sql
+    data: |
+      SELECT + 65 * - col1 AS col2, + col1 / 11 + - col2 / - col0 * CAST ( NULL AS INTEGER ) AS col2 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q6094.out
+    data: |
+      -3055	NULL
+      -325	NULL
+      -910	NULL

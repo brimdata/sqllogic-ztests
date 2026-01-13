@@ -1,0 +1,18 @@
+script: |
+  super -f tsv -I q7214.sql | sort > q7214.out
+
+vector: true
+
+inputs:
+  - name: q7214.sql
+    data: |
+      pragma pg
+      SELECT DISTINCT col1, + col1 AS col1 FROM tab2 GROUP BY col1, col2;
+  - name: tab2
+
+outputs:
+  - name: q7214.out
+    data: |
+      41	41
+      59	59
+      61	61

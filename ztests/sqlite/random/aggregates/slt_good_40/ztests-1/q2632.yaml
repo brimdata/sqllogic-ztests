@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q2632.sql | sort > q2632.out
+
+vector: true
+
+inputs:
+  - name: q2632.sql
+    data: |
+      SELECT DISTINCT + SUM ( - col1 ) AS col0 FROM tab2 WHERE 70 * col0 + - col2 IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q2632.out
+    data: |
+      -195

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q2156.sql | sort > q2156.out
+
+vector: true
+
+inputs:
+  - name: q2156.sql
+    data: |
+      pragma pg
+      SELECT - 94 * 66 AS col1 FROM tab1 GROUP BY col1, col1, col0 HAVING NOT ( NULL ) NOT BETWEEN 47 * + col0 AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q2156.out
+    data: |

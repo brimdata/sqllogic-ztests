@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q7684.sql | sort > q7684.out
+
+vector: true
+
+inputs:
+  - name: q7684.sql
+    data: |
+      SELECT DISTINCT col2 * + col1 AS col1 FROM tab1 WHERE col2 BETWEEN ( + + 7 ) AND + CAST ( col1 AS INTEGER );
+  - name: tab1
+
+outputs:
+  - name: q7684.out
+    data: |

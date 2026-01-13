@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q905.sql | sort > q905.out
+
+vector: true
+
+inputs:
+  - name: q905.sql
+    data: |
+      SELECT DISTINCT - 24 / - col0 AS col1 FROM tab2 GROUP BY tab2.col0;
+  - name: tab2
+
+outputs:
+  - name: q905.out
+    data: |
+      0
+      1

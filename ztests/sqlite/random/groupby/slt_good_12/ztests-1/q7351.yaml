@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q7351.sql | sort > q7351.out
+
+vector: true
+
+inputs:
+  - name: q7351.sql
+    data: |
+      pragma pg
+      SELECT DISTINCT + 25 AS col0 FROM tab2 GROUP BY col1, col0, col0;
+  - name: tab2
+
+outputs:
+  - name: q7351.out
+    data: |
+      25

@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q9401.sql | sort > q9401.out
 
+vector: true
+
 inputs:
   - name: q9401.sql
     data: |
+      pragma pg
       SELECT DISTINCT ( col1 ) * - col1 AS col1 FROM tab1 AS cor0 GROUP BY col1 HAVING NOT - AVG ( ALL col1 ) NOT BETWEEN + COUNT ( * ) + 85 AND ( COUNT ( * ) );
   - name: tab1
 

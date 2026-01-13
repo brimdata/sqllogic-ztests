@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q8308.sql | sort > q8308.out
+
+vector: true
+
+inputs:
+  - name: q8308.sql
+    data: |
+      SELECT + 33 AS col2, - col0 AS col2 FROM tab0 WHERE NULL IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q8308.out
+    data: |
+      33	-15
+      33	-87
+      33	-97

@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q2022.sql | sort > q2022.out
+
+vector: true
+
+inputs:
+  - name: q2022.sql
+    data: |
+      SELECT ALL - + 13 FROM tab1 AS cor0 GROUP BY col1 HAVING col1 IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q2022.out
+    data: |
+      -13
+      -13
+      -13

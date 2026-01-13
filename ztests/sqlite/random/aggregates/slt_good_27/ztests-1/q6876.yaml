@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q6876.sql | sort > q6876.out
+
+vector: true
+
+inputs:
+  - name: q6876.sql
+    data: |
+      SELECT DISTINCT - + SUM ( - + CAST ( NULL AS REAL ) ) - - MIN ( DISTINCT - + col0 ) - - + COUNT ( * ) AS col2 FROM tab2 WHERE col2 IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q6876.out
+    data: |
+      NULL

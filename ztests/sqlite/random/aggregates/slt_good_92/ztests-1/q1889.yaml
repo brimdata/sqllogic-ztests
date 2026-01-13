@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1889.sql | sort > q1889.out
+
+vector: true
+
+inputs:
+  - name: q1889.sql
+    data: |
+      SELECT DISTINCT + MAX ( ALL col2 ) AS col1, ( + MAX ( + col1 ) ) AS col1 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q1889.out
+    data: |
+      58	77

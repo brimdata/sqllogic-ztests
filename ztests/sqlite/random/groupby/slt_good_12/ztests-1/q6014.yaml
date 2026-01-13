@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q6014.sql | sort > q6014.out
+
+vector: true
+
+inputs:
+  - name: q6014.sql
+    data: |
+      SELECT DISTINCT COUNT ( * ) FROM tab2 GROUP BY col1 HAVING NOT ( NULL ) BETWEEN + col1 AND ( 10 );
+  - name: tab2
+
+outputs:
+  - name: q6014.out
+    data: |

@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q4833.sql | sort > q4833.out
+
+vector: true
+
+inputs:
+  - name: q4833.sql
+    data: |
+      SELECT col1 * col2 AS col1 FROM tab1 WHERE NOT ( + col1 ) BETWEEN CAST ( NULL AS INTEGER ) AND 52;
+  - name: tab1
+
+outputs:
+  - name: q4833.out
+    data: |

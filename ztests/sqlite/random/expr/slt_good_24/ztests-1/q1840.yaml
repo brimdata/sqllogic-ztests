@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q1840.sql | sort > q1840.out
+
+vector: true
+
+inputs:
+  - name: q1840.sql
+    data: |
+      SELECT + + COUNT ( * ) AS col2, COALESCE ( - 90, COUNT ( * ) ) col2;
+
+outputs:
+  - name: q1840.out
+    data: |
+      1	-90

@@ -1,0 +1,23 @@
+script: |
+  super -f tsv -I q731.sql | sort > q731.out
+
+vector: true
+
+inputs:
+  - name: q731.sql
+    data: |
+      SELECT DISTINCT * FROM tab1 AS cor0 CROSS JOIN tab1 AS cor1;
+  - name: tab1
+
+outputs:
+  - name: q731.out
+    data: |
+      3	26	54	3	26	54
+      3	26	54	64	10	57
+      3	26	54	80	13	96
+      64	10	57	3	26	54
+      64	10	57	64	10	57
+      64	10	57	80	13	96
+      80	13	96	3	26	54
+      80	13	96	64	10	57
+      80	13	96	80	13	96

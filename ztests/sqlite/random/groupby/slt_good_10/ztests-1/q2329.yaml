@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q2329.sql | sort > q2329.out
+
+vector: true
+
+inputs:
+  - name: q2329.sql
+    data: |
+      SELECT - col1 FROM tab1 cor0 GROUP BY col0, col1, col1 HAVING NOT NULL BETWEEN - col1 AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q2329.out
+    data: |

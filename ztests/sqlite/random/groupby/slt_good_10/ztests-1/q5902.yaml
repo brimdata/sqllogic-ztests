@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q5902.sql | sort > q5902.out
+
+vector: true
+
+inputs:
+  - name: q5902.sql
+    data: |
+      SELECT ALL - col0 FROM tab2 AS cor0 GROUP BY col0, col1 HAVING NOT + + col1 IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q5902.out
+    data: |

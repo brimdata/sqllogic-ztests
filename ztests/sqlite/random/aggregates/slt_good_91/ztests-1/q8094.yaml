@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q8094.sql | sort > q8094.out
+
+vector: true
+
+inputs:
+  - name: q8094.sql
+    data: |
+      SELECT col0 AS col2, + col1 + col0 * - col0 AS col2 FROM tab0;
+  - name: tab0
+
+outputs:
+  - name: q8094.out
+    data: |
+      15	-144
+      87	-7548
+      97	-9408

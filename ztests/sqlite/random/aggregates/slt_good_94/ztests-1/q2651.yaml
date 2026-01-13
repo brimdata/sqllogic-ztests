@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q2651.sql | sort > q2651.out
+
+vector: true
+
+inputs:
+  - name: q2651.sql
+    data: |
+      SELECT DISTINCT + 89 * CAST ( NULL AS INTEGER ) AS col1, COUNT ( * ) AS col1 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q2651.out
+    data: |
+      NULL	3

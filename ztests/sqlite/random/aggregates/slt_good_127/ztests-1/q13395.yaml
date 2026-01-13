@@ -1,0 +1,23 @@
+script: |
+  super -f tsv -I q13395.sql | sort > q13395.out
+
+vector: true
+
+inputs:
+  - name: q13395.sql
+    data: |
+      SELECT ALL * FROM tab0 AS cor0 CROSS JOIN tab0 cor1 WHERE NOT + 60 IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q13395.out
+    data: |
+      15	81	47	15	81	47
+      15	81	47	87	21	10
+      15	81	47	97	1	99
+      87	21	10	15	81	47
+      87	21	10	87	21	10
+      87	21	10	97	1	99
+      97	1	99	15	81	47
+      97	1	99	87	21	10
+      97	1	99	97	1	99

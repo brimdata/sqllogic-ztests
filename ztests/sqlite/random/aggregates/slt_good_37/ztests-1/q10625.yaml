@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q10625.sql | sort > q10625.out
+
+vector: true
+
+inputs:
+  - name: q10625.sql
+    data: |
+      SELECT + - 80 AS col2, col1 - - + 5 - - col0 * col1 - - col0 * - col0 AS col2 FROM tab0 WHERE NULL IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q10625.out
+    data: |

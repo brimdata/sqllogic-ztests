@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q5781.sql | sort > q5781.out
+
+vector: true
+
+inputs:
+  - name: q5781.sql
+    data: |
+      SELECT DISTINCT COUNT ( * ) AS col2, COUNT ( * ) * + - COUNT ( * ) AS col2 FROM tab2 AS cor0 CROSS JOIN tab2 cor1;
+  - name: tab2
+
+outputs:
+  - name: q5781.out
+    data: |
+      9	-81

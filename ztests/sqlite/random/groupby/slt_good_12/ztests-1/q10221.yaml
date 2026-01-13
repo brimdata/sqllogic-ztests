@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q10221.sql | sort > q10221.out
+
+vector: true
+
+inputs:
+  - name: q10221.sql
+    data: |
+      SELECT - 72 FROM tab2 cor0 GROUP BY col1 HAVING - col1 * CAST ( NULL AS INTEGER ) IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q10221.out
+    data: |

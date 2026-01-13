@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q9062.sql | sort > q9062.out
+
+vector: true
+
+inputs:
+  - name: q9062.sql
+    data: |
+      SELECT DISTINCT + 94 FROM tab2 GROUP BY col1 HAVING ( SUM ( ALL + col1 ) ) < + col1;
+  - name: tab2
+
+outputs:
+  - name: q9062.out
+    data: |

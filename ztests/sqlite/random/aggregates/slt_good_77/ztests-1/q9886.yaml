@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q9886.sql | sort > q9886.out
+
+vector: true
+
+inputs:
+  - name: q9886.sql
+    data: |
+      SELECT DISTINCT - col1 AS col0 FROM tab0 WHERE - CAST ( col2 AS INTEGER ) NOT BETWEEN ( col0 ) AND 8;
+  - name: tab0
+
+outputs:
+  - name: q9886.out
+    data: |
+      -1
+      -21
+      -81

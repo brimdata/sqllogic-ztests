@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q1114.sql | sort > q1114.out
+
+vector: true
+
+inputs:
+  - name: q1114.sql
+    data: |
+      SELECT ALL - col0 AS col0 FROM tab1 AS cor0 WHERE col1 NOT BETWEEN ( + col0 + 10 ) AND col2;
+  - name: tab1
+
+outputs:
+  - name: q1114.out
+    data: |
+      -51
+      -85
+      -91

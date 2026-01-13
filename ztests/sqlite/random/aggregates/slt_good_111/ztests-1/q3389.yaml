@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q3389.sql | sort > q3389.out
+
+vector: true
+
+inputs:
+  - name: q3389.sql
+    data: |
+      SELECT DISTINCT ( - col1 ) + - 28 AS col1 FROM tab1 AS cor0 WHERE - col1 NOT BETWEEN + - 9 AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q3389.out
+    data: |
+      -42
+      -75

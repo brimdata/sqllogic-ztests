@@ -1,0 +1,18 @@
+script: |
+  super -f tsv -I q1012.sql | sort > q1012.out
+
+vector: true
+
+inputs:
+  - name: q1012.sql
+    data: |
+      pragma pg
+      SELECT + col0 AS col0, col2 - + col0 AS col0 FROM tab2 AS cor0 GROUP BY col2, col0;
+  - name: tab2
+
+outputs:
+  - name: q1012.out
+    data: |
+      15	72
+      91	-12
+      92	-34

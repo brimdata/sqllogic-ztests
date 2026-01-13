@@ -1,0 +1,18 @@
+script: |
+  super -f tsv -I q2183.sql | sort > q2183.out
+
+vector: true
+
+inputs:
+  - name: q2183.sql
+    data: |
+      pragma pg
+      SELECT DISTINCT + col1 * - 7 AS col1, col1 FROM tab1 AS cor0 GROUP BY col1;
+  - name: tab1
+
+outputs:
+  - name: q2183.out
+    data: |
+      -308	44
+      -399	57
+      -42	6

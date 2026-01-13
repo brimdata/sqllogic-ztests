@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q7825.sql | sort > q7825.out
+
+vector: true
+
+inputs:
+  - name: q7825.sql
+    data: |
+      SELECT DISTINCT - 98 AS col2, + col2 + + - col1 + - CAST ( col0 AS INTEGER ) AS col2 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q7825.out
+    data: |
+      -98	-31
+      -98	-70
+      -98	31

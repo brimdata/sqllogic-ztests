@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q2570.sql | sort > q2570.out
+
+vector: true
+
+inputs:
+  - name: q2570.sql
+    data: |
+      pragma pg
+      SELECT col1 AS col1 FROM tab2 AS cor0 GROUP BY col1, col2 HAVING ( NOT NULL NOT BETWEEN - AVG ( DISTINCT + col1 ) AND col2 );
+  - name: tab2
+
+outputs:
+  - name: q2570.out
+    data: |

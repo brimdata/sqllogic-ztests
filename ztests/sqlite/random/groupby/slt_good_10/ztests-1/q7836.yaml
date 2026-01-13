@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q7836.sql | sort > q7836.out
 
+vector: true
+
 inputs:
   - name: q7836.sql
     data: |
+      pragma pg
       SELECT DISTINCT col2 * + col2 AS col1 FROM tab1 GROUP BY col1, col2;
   - name: tab1
 

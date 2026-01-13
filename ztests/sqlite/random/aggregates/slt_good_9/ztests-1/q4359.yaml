@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q4359.sql | sort > q4359.out
+
+vector: true
+
+inputs:
+  - name: q4359.sql
+    data: |
+      SELECT col1 * 12 + - col2 AS col2, - 51 AS col2 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q4359.out
+    data: |
+      589	-51
+      746	-51
+      884	-51

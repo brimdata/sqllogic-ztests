@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q9329.sql | sort > q9329.out
+
+vector: true
+
+inputs:
+  - name: q9329.sql
+    data: |
+      SELECT ALL col1 * - col0 AS col0 FROM tab2 WHERE col1 + - col0 * col2 + - col0 / - col0 NOT BETWEEN NULL AND ( col2 );
+  - name: tab2
+
+outputs:
+  - name: q9329.out
+    data: |

@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q9577.sql | sort > q9577.out
+
+vector: true
+
+inputs:
+  - name: q9577.sql
+    data: |
+      SELECT ALL + COUNT ( * ) AS col1, COALESCE ( - + 80, - MAX ( - 0 ) ) col1;
+
+outputs:
+  - name: q9577.out
+    data: |
+      1	-80

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q10609.sql | sort > q10609.out
+
+vector: true
+
+inputs:
+  - name: q10609.sql
+    data: |
+      SELECT DISTINCT 32 / + COUNT ( * ) FROM tab2 AS cor0 GROUP BY col1, col1;
+  - name: tab2
+
+outputs:
+  - name: q10609.out
+    data: |
+      32

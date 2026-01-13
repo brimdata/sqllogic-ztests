@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q12521.sql | sort > q12521.out
+
+vector: true
+
+inputs:
+  - name: q12521.sql
+    data: |
+      SELECT + 18 AS col1, COUNT ( * ) / COUNT ( - col0 ) AS col1 FROM tab1 AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q12521.out
+    data: |
+      18	1

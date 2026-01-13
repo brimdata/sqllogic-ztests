@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q10158.sql | sort > q10158.out
+
+vector: true
+
+inputs:
+  - name: q10158.sql
+    data: |
+      SELECT + 80 AS col2, - ( + COUNT ( DISTINCT 2 ) ) AS col2;
+
+outputs:
+  - name: q10158.out
+    data: |
+      80	-1

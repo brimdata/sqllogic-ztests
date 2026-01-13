@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q236.sql | sort > q236.out
+
+vector: true
+
+inputs:
+  - name: q236.sql
+    data: |
+      SELECT + col2 FROM tab1 AS cor0 GROUP BY col1, col2, col0 HAVING + - 14 * col0 * + col2 IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q236.out
+    data: |

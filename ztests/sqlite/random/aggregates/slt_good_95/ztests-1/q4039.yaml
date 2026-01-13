@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q4039.sql | sort > q4039.out
+
+vector: true
+
+inputs:
+  - name: q4039.sql
+    data: |
+      SELECT ALL col2 * + col2 AS col0, CAST ( NULL AS REAL ) + - 49 AS col0 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q4039.out
+    data: |
+      3481	NULL
+      4624	NULL
+      9216	NULL

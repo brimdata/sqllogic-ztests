@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q7423.sql | sort > q7423.out
+
+vector: true
+
+inputs:
+  - name: q7423.sql
+    data: |
+      SELECT DISTINCT ( COUNT ( * ) ) + col2 FROM tab1 GROUP BY col0, col2;
+  - name: tab1
+
+outputs:
+  - name: q7423.out
+    data: |
+      46
+      72
+      9

@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q9912.sql | sort > q9912.out
+
+vector: true
+
+inputs:
+  - name: q9912.sql
+    data: |
+      SELECT ALL - - col1 AS col2 FROM tab2 WHERE + + col1 NOT IN ( + 56, + 3, - CAST ( + 92 AS INTEGER ), + col2, - - col2 );
+  - name: tab2
+
+outputs:
+  - name: q9912.out
+    data: |
+      51
+      67
+      77

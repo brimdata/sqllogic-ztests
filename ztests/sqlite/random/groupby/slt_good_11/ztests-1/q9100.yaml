@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q9100.sql | sort > q9100.out
 
+vector: true
+
 inputs:
   - name: q9100.sql
     data: |
+      pragma pg
       SELECT DISTINCT col1 / + col0 - + - col1 AS col0 FROM tab1 GROUP BY col1, col0 HAVING NOT NULL BETWEEN + 80 AND - 5;
   - name: tab1
 

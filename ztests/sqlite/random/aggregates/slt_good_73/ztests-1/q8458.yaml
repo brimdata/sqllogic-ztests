@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8458.sql | sort > q8458.out
+
+vector: true
+
+inputs:
+  - name: q8458.sql
+    data: |
+      SELECT ALL - COUNT ( * ) AS col2, - MAX ( ALL - CAST ( NULL AS INTEGER ) ) AS col2 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q8458.out
+    data: |
+      -3	NULL

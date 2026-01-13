@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q2038.sql | sort > q2038.out
+
+vector: true
+
+inputs:
+  - name: q2038.sql
+    data: |
+      SELECT ALL - CASE - 93 WHEN 92 THEN - 10 * 33 WHEN - 22 * 19 THEN NULL ELSE NULL END AS col2;
+
+outputs:
+  - name: q2038.out
+    data: |
+      NULL

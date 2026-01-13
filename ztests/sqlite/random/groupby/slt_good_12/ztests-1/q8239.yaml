@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q8239.sql | sort > q8239.out
+
+vector: true
+
+inputs:
+  - name: q8239.sql
+    data: |
+      SELECT ALL COUNT ( * ) - + col2 FROM tab1 WHERE ( col1 ) BETWEEN NULL AND 39 GROUP BY col2, col1 HAVING ( NULL ) > col2 * 17;
+  - name: tab1
+
+outputs:
+  - name: q8239.out
+    data: |

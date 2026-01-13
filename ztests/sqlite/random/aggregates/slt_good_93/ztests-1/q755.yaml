@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q755.sql | sort > q755.out
+
+vector: true
+
+inputs:
+  - name: q755.sql
+    data: |
+      SELECT col0 AS col2, ( - col0 ) AS col2 FROM tab1 AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q755.out
+    data: |
+      51	-51
+      85	-85
+      91	-91

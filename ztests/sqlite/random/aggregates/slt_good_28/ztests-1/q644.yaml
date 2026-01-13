@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q644.sql | sort > q644.out
+
+vector: true
+
+inputs:
+  - name: q644.sql
+    data: |
+      SELECT - SUM ( DISTINCT + col1 ) AS col2, - 8 AS col2 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q644.out
+    data: |
+      -195	-8

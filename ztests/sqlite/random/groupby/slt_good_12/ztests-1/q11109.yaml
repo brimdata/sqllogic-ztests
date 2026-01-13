@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q11109.sql | sort > q11109.out
+
+vector: true
+
+inputs:
+  - name: q11109.sql
+    data: |
+      pragma pg
+      SELECT col0 AS col2 FROM tab2 cor0 GROUP BY col0, col0, col2 HAVING 10 + - + col0 + col0 + - + CAST ( NULL AS REAL ) IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q11109.out
+    data: |

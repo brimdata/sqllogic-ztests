@@ -1,0 +1,18 @@
+script: |
+  super -f tsv -I q5152.sql | sort > q5152.out
+
+vector: true
+
+inputs:
+  - name: q5152.sql
+    data: |
+      pragma pg
+      SELECT + col1 AS col1 FROM tab0 GROUP BY col1, col0 HAVING NOT - col0 IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q5152.out
+    data: |
+      0
+      0
+      81

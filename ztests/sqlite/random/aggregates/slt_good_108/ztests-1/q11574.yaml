@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q11574.sql | sort > q11574.out
+
+vector: true
+
+inputs:
+  - name: q11574.sql
+    data: |
+      SELECT DISTINCT + col0 AS col1 FROM tab1 WHERE NOT col1 >= ( + col0 );
+  - name: tab1
+
+outputs:
+  - name: q11574.out
+    data: |
+      51
+      85
+      91

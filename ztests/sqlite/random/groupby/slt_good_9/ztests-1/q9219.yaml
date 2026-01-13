@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q9219.sql | sort > q9219.out
+
+vector: true
+
+inputs:
+  - name: q9219.sql
+    data: |
+      SELECT + AVG ( - col1 ) / + col1 + col1 FROM tab2 WHERE NULL IS NOT NULL GROUP BY col1;
+  - name: tab2
+
+outputs:
+  - name: q9219.out
+    data: |

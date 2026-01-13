@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q9858.sql | sort > q9858.out
+
+vector: true
+
+inputs:
+  - name: q9858.sql
+    data: |
+      SELECT + 87 + - col1 FROM tab1 GROUP BY col1, col0, col0, col1 HAVING NOT + 67 + COUNT ( * ) <= col1;
+  - name: tab1
+
+outputs:
+  - name: q9858.out
+    data: |
+      30
+      43
+      81

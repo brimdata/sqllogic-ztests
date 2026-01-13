@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8242.sql | sort > q8242.out
+
+vector: true
+
+inputs:
+  - name: q8242.sql
+    data: |
+      SELECT - - MAX ( ALL 94 ) AS col2 FROM tab0 WHERE col2 IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q8242.out
+    data: |
+      94

@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q6813.sql | sort > q6813.out
+
+vector: true
+
+inputs:
+  - name: q6813.sql
+    data: |
+      SELECT ALL + ( + col0 ) / + CASE col0 WHEN col0 - ( + 5 ) THEN NULL ELSE - 20 END / + COUNT ( * ) + - 43 FROM tab2 GROUP BY col0 HAVING ( + col0 ) IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q6813.out
+    data: |
+      -43
+      -47
+      -47

@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q7477.sql | sort > q7477.out
+
+vector: true
+
+inputs:
+  - name: q7477.sql
+    data: |
+      SELECT DISTINCT 12 * 5 AS col1 FROM tab1, tab0 AS cor0 GROUP BY tab1.col2;
+  - name: tab0
+  - name: tab1
+
+outputs:
+  - name: q7477.out
+    data: |
+      60

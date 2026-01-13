@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q8968.sql | sort > q8968.out
+
+vector: true
+
+inputs:
+  - name: q8968.sql
+    data: |
+      SELECT DISTINCT CAST ( - + CAST ( NULL AS INTEGER ) AS REAL ) AS col1, - CAST ( - COUNT ( * ) AS INTEGER ) AS col1;
+
+outputs:
+  - name: q8968.out
+    data: |
+      NULL	1

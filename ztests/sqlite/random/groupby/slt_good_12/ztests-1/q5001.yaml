@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q5001.sql | sort > q5001.out
+
+vector: true
+
+inputs:
+  - name: q5001.sql
+    data: |
+      SELECT - col1 * 62 + 54 AS col2, col1 FROM tab1 AS cor0 GROUP BY col1;
+  - name: tab1
+
+outputs:
+  - name: q5001.out
+    data: |
+      -2674	44
+      -318	6
+      -3480	57

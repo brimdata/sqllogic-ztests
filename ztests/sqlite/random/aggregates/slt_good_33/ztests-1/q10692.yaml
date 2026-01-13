@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q10692.sql | sort > q10692.out
+
+vector: true
+
+inputs:
+  - name: q10692.sql
+    data: |
+      SELECT - col2 * col2 + col0 AS col2 FROM tab0 WHERE ( col1 ) * col2 BETWEEN + col1 AND CAST ( col2 AS INTEGER );
+  - name: tab0
+
+outputs:
+  - name: q10692.out
+    data: |
+      -9704

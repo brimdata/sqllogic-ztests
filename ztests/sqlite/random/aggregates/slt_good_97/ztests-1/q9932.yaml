@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q9932.sql | sort > q9932.out
+
+vector: true
+
+inputs:
+  - name: q9932.sql
+    data: |
+      SELECT + 86 AS col1, CAST ( NULL AS INTEGER ) AS col1 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q9932.out
+    data: |
+      86	NULL
+      86	NULL
+      86	NULL

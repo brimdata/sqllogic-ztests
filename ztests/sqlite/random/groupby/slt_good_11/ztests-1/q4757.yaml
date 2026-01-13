@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q4757.sql | sort > q4757.out
+
+vector: true
+
+inputs:
+  - name: q4757.sql
+    data: |
+      pragma pg
+      SELECT DISTINCT + 15 AS col0 FROM tab1 GROUP BY col0, col1 HAVING ( 54 ) IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q4757.out
+    data: |
+      15

@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q7938.sql | sort > q7938.out
+
+vector: true
+
+inputs:
+  - name: q7938.sql
+    data: |
+      SELECT + NULLIF ( + col2, + - COUNT ( * ) ) AS col1 FROM tab2 GROUP BY col2;
+  - name: tab2
+
+outputs:
+  - name: q7938.out
+    data: |
+      58
+      79
+      87

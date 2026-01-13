@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q10350.sql | sort > q10350.out
+
+vector: true
+
+inputs:
+  - name: q10350.sql
+    data: |
+      SELECT + col1 FROM tab1 GROUP BY col1, col1, col0 HAVING + 28 NOT IN ( + col0 * col1 );
+  - name: tab1
+
+outputs:
+  - name: q10350.out
+    data: |
+      44
+      57
+      6

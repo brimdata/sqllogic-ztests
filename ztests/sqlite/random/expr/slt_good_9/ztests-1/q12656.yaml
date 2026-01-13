@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q12656.sql | sort > q12656.out
+
+vector: true
+
+inputs:
+  - name: q12656.sql
+    data: |
+      SELECT ALL COUNT ( * ) AS col1, - MAX ( DISTINCT 32 ) AS col1;
+
+outputs:
+  - name: q12656.out
+    data: |
+      1	-32

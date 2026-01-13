@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q661.sql | sort > q661.out
+
+vector: true
+
+inputs:
+  - name: q661.sql
+    data: |
+      pragma pg
+      SELECT DISTINCT - 77 AS col0, + col0 FROM tab1 WHERE NOT NULL IS NULL GROUP BY col0, col0;
+  - name: tab1
+
+outputs:
+  - name: q661.out
+    data: |

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q349.sql | sort > q349.out
+
+vector: true
+
+inputs:
+  - name: q349.sql
+    data: |
+      SELECT ALL + COUNT ( * ) AS col1, - 32 AS col1 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q349.out
+    data: |
+      3	-32

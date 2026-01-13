@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q493.sql | sort > q493.out
+
+vector: true
+
+inputs:
+  - name: q493.sql
+    data: |
+      SELECT ALL 52 + - col1 + + 66 + - col0, col1 FROM tab1 GROUP BY col1, col0;
+  - name: tab1
+
+outputs:
+  - name: q493.out
+    data: |
+      -8	44
+      33	57
+      90	6

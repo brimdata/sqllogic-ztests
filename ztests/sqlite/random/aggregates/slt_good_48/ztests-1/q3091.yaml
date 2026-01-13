@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q3091.sql | sort > q3091.out
+
+vector: true
+
+inputs:
+  - name: q3091.sql
+    data: |
+      SELECT ALL SUM ( + 43 ) AS col0, SUM ( DISTINCT - + 20 ) AS col0 FROM tab1, tab2 AS cor0;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q3091.out
+    data: |
+      387	-20

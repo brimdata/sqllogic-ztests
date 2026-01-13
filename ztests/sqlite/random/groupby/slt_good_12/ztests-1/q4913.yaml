@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q4913.sql | sort > q4913.out
+
+vector: true
+
+inputs:
+  - name: q4913.sql
+    data: |
+      SELECT col0 FROM tab2 AS cor0 GROUP BY col2, col0 HAVING + 95 NOT BETWEEN NULL AND col2;
+  - name: tab2
+
+outputs:
+  - name: q4913.out
+    data: |
+      15
+      91
+      92

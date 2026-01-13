@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q8911.sql | sort > q8911.out
+
+vector: true
+
+inputs:
+  - name: q8911.sql
+    data: |
+      SELECT ALL - CAST ( - + col1 AS INTEGER ), col1 FROM tab2 AS cor0 WHERE - col1 IS NOT NULL GROUP BY col2, col1 HAVING NULL IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q8911.out
+    data: |

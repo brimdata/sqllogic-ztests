@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q8940.sql | sort > q8940.out
 
+vector: true
+
 inputs:
   - name: q8940.sql
     data: |
+      pragma pg
       SELECT - + 42 AS col0 FROM tab0 WHERE NOT NULL NOT BETWEEN + col2 * + 41 * + col2 AND NULL GROUP BY col2, col0, col1;
   - name: tab0
 

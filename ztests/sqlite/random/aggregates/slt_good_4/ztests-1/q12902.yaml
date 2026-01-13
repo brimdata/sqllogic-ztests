@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q12902.sql | sort > q12902.out
+
+vector: true
+
+inputs:
+  - name: q12902.sql
+    data: |
+      SELECT col0 AS col1 FROM tab0 WHERE + col2 + col0 / col1 <> col2;
+  - name: tab0
+
+outputs:
+  - name: q12902.out
+    data: |
+      87
+      97

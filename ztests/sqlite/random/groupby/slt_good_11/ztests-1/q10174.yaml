@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q10174.sql | sort > q10174.out
+
+vector: true
+
+inputs:
+  - name: q10174.sql
+    data: |
+      SELECT ALL 13 AS col1 FROM tab0 cor0 WHERE - ( + - col0 ) NOT BETWEEN col1 AND NULL GROUP BY col0;
+  - name: tab0
+
+outputs:
+  - name: q10174.out
+    data: |
+      13

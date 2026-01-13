@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1677.sql | sort > q1677.out
+
+vector: true
+
+inputs:
+  - name: q1677.sql
+    data: |
+      pragma pg
+      SELECT ALL col1 AS col0 FROM tab1 GROUP BY col0, col1, col0 HAVING - col0 + col1 = + col0;
+  - name: tab1
+
+outputs:
+  - name: q1677.out
+    data: |

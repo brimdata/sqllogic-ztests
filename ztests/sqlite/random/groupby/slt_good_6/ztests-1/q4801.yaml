@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q4801.sql | sort > q4801.out
+
+vector: true
+
+inputs:
+  - name: q4801.sql
+    data: |
+      SELECT DISTINCT * FROM tab2 cor0 GROUP BY col1, col2, cor0.col0;
+  - name: tab2
+
+outputs:
+  - name: q4801.out
+    data: |
+      15	61	87
+      91	59	79
+      92	41	58

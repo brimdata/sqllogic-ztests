@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q5084.sql | sort > q5084.out
+
+vector: true
+
+inputs:
+  - name: q5084.sql
+    data: |
+      SELECT CAST ( + COUNT ( + - CAST ( NULL AS INTEGER ) ) AS INTEGER ) AS col1, 8 AS col1 FROM tab2 AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q5084.out
+    data: |
+      0	8

@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q6775.sql | sort > q6775.out
+
+vector: true
+
+inputs:
+  - name: q6775.sql
+    data: |
+      SELECT DISTINCT col0, - ( col1 ) + - col0 AS col1 FROM tab1 WHERE NOT - col1 * col1 BETWEEN 43 - - - col0 AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q6775.out
+    data: |
+      51	-65
+      91	-138

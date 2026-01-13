@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q5396.sql | sort > q5396.out
+
+vector: true
+
+inputs:
+  - name: q5396.sql
+    data: |
+      SELECT ALL + col2 * 70 AS col2 FROM tab2 WHERE - + col2 NOT BETWEEN - 55 AND NULL;
+  - name: tab2
+
+outputs:
+  - name: q5396.out
+    data: |
+      4060

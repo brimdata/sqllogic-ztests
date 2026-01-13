@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q10098.sql | sort > q10098.out
+
+vector: true
+
+inputs:
+  - name: q10098.sql
+    data: |
+      SELECT 66 AS col0 FROM tab1 GROUP BY col1 HAVING NOT col1 <= - col1;
+  - name: tab1
+
+outputs:
+  - name: q10098.out
+    data: |
+      66
+      66
+      66

@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q12037.sql | sort > q12037.out
+
+vector: true
+
+inputs:
+  - name: q12037.sql
+    data: |
+      SELECT - col0 * - + col1 AS col0, 64 AS col0 FROM tab0 WHERE NOT - col0 IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q12037.out
+    data: |
+      1215	64
+      1827	64
+      97	64

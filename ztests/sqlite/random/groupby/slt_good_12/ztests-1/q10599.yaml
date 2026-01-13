@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q10599.sql | sort > q10599.out
 
+vector: true
+
 inputs:
   - name: q10599.sql
     data: |
+      pragma pg
       SELECT DISTINCT COALESCE ( 33, col1 ) AS col0 FROM tab1 WHERE NOT ( NOT ( NOT - + col0 + CAST ( NULL AS INTEGER ) IS NULL ) ) GROUP BY col1, col0;
   - name: tab1
 

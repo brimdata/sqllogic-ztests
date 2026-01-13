@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4400.sql | sort > q4400.out
+
+vector: true
+
+inputs:
+  - name: q4400.sql
+    data: |
+      SELECT DISTINCT - 17 * + 65 AS col1 FROM tab2 GROUP BY tab2.col0;
+  - name: tab2
+
+outputs:
+  - name: q4400.out
+    data: |
+      -1105

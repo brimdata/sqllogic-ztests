@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q10470.sql | sort > q10470.out
+
+vector: true
+
+inputs:
+  - name: q10470.sql
+    data: |
+      SELECT - CASE cor0.col0 WHEN col1 + + cor0.col1 * cor0.col1 THEN NULL WHEN + cor0.col1 THEN cor0.col0 ELSE NULL END FROM tab1 AS cor0 GROUP BY cor0.col2, cor0.col0, cor0.col1;
+  - name: tab1
+
+outputs:
+  - name: q10470.out
+    data: |
+      NULL
+      NULL
+      NULL

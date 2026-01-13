@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q10230.sql | sort > q10230.out
+
+vector: true
+
+inputs:
+  - name: q10230.sql
+    data: |
+      SELECT - 64 + col0 + + ( - - col0 ) + COUNT ( * ) * col1 FROM tab0 WHERE NOT NULL IS NULL GROUP BY col0, col1;
+  - name: tab0
+
+outputs:
+  - name: q10230.out
+    data: |

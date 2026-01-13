@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q5102.sql | sort > q5102.out
+
+vector: true
+
+inputs:
+  - name: q5102.sql
+    data: |
+      SELECT DISTINCT + tab1.col2 / 92 - - 3 AS col0 FROM tab1 GROUP BY tab1.col2;
+  - name: tab1
+
+outputs:
+  - name: q5102.out
+    data: |
+      3

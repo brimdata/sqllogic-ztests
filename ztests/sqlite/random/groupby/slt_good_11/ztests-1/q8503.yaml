@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q8503.sql | sort > q8503.out
 
+vector: true
+
 inputs:
   - name: q8503.sql
     data: |
+      pragma pg
       SELECT COALESCE ( 63, - CAST ( NULL AS REAL ) ) AS col2, - col1 AS col1 FROM tab0 AS cor0 GROUP BY col1, col1 HAVING NOT NULL = 4;
   - name: tab0
 

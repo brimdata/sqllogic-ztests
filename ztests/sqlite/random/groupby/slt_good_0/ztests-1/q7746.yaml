@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q7746.sql | sort > q7746.out
 
+vector: true
+
 inputs:
   - name: q7746.sql
     data: |
+      pragma pg
       SELECT + + NULLIF ( - col2, 86 ) AS col2 FROM tab0 GROUP BY col2;
   - name: tab0
 

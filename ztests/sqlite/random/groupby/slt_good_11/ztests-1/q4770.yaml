@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q4770.sql | sort > q4770.out
+
+vector: true
+
+inputs:
+  - name: q4770.sql
+    data: |
+      SELECT 52 FROM tab0 GROUP BY col1, col0, col1 HAVING col0 <= ( NULL );
+  - name: tab0
+
+outputs:
+  - name: q4770.out
+    data: |

@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q5252.sql | sort > q5252.out
+
+vector: true
+
+inputs:
+  - name: q5252.sql
+    data: |
+      SELECT DISTINCT - col1 + - col2 AS col0 FROM tab0 GROUP BY col1, col2 HAVING + col2 IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q5252.out
+    data: |
+      -105
+      -38
+      -79

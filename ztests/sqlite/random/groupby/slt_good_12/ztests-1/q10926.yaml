@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q10926.sql | sort > q10926.out
 
+vector: true
+
 inputs:
   - name: q10926.sql
     data: |
+      pragma pg
       SELECT 65 AS col2 FROM tab0 GROUP BY col0, col2 HAVING - col2 IN ( 33 );
   - name: tab0
 

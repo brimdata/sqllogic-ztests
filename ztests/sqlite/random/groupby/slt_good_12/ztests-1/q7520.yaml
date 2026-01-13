@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q7520.sql | sort > q7520.out
+
+vector: true
+
+inputs:
+  - name: q7520.sql
+    data: |
+      SELECT ALL 95 FROM tab0 AS cor0 GROUP BY col2, col0 HAVING NOT col2 > - 50;
+  - name: tab0
+
+outputs:
+  - name: q7520.out
+    data: |

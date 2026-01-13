@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q9545.sql | sort > q9545.out
 
+vector: true
+
 inputs:
   - name: q9545.sql
     data: |
+      pragma pg
       SELECT - NULLIF ( + 54, 18 ) AS col1 FROM tab2 AS cor0 GROUP BY cor0.col0, col1;
   - name: tab2
 

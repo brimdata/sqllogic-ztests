@@ -1,0 +1,18 @@
+script: |
+  super -f tsv -I q9904.sql | sort > q9904.out
+
+vector: true
+
+inputs:
+  - name: q9904.sql
+    data: |
+      pragma pg
+      SELECT DISTINCT 40 AS col1, - col1 + + 80 * 73 - + 70 FROM tab1 GROUP BY col0, col1;
+  - name: tab1
+
+outputs:
+  - name: q9904.out
+    data: |
+      40	5713
+      40	5726
+      40	5764

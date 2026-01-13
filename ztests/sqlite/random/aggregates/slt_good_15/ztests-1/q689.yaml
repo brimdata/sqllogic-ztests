@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q689.sql | sort > q689.out
+
+vector: true
+
+inputs:
+  - name: q689.sql
+    data: |
+      SELECT ( 57 ) * col1 AS col1 FROM tab2 WHERE NOT col0 BETWEEN - col0 AND col1 + 85 / - col1;
+  - name: tab2
+
+outputs:
+  - name: q689.out
+    data: |
+      3819

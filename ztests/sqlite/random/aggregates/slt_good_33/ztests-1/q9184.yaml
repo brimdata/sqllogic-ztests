@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q9184.sql | sort > q9184.out
+
+vector: true
+
+inputs:
+  - name: q9184.sql
+    data: |
+      SELECT + - ( - col0 ) AS col2, col2 + 9 + - + col2 AS col2 FROM tab1 AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q9184.out
+    data: |
+      51	9
+      85	9
+      91	9

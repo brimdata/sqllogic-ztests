@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q3008.sql | sort > q3008.out
+
+vector: true
+
+inputs:
+  - name: q3008.sql
+    data: |
+      SELECT + - CAST ( col0 AS INTEGER ) AS col1 FROM tab1 AS cor0 WHERE NOT ( + CAST ( - col0 AS INTEGER ) = + col1 );
+  - name: tab1
+
+outputs:
+  - name: q3008.out
+    data: |
+      -51
+      -85
+      -91

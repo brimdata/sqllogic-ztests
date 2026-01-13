@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q7175.sql | sort > q7175.out
+
+vector: true
+
+inputs:
+  - name: q7175.sql
+    data: |
+      SELECT + 3 / col2 + - 64 AS col1 FROM tab1 WHERE NOT + col1 * + col2 BETWEEN 46 + col0 AND ( NULL );
+  - name: tab1
+
+outputs:
+  - name: q7175.out
+    data: |

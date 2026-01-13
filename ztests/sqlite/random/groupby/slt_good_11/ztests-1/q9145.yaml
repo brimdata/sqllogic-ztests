@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q9145.sql | sort > q9145.out
 
+vector: true
+
 inputs:
   - name: q9145.sql
     data: |
+      pragma pg
       SELECT CAST ( NULL AS INTEGER ) * col0 * 68 AS col0 FROM tab0 GROUP BY col2, col0, col0 HAVING NOT ( NULL ) = col0;
   - name: tab0
 

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q2880.sql | sort > q2880.out
+
+vector: true
+
+inputs:
+  - name: q2880.sql
+    data: |
+      SELECT DISTINCT - SUM ( + col1 ) AS col1, MAX ( + col2 ) AS col1 FROM tab2 AS cor0;
+  - name: tab2
+
+outputs:
+  - name: q2880.out
+    data: |
+      -195	58

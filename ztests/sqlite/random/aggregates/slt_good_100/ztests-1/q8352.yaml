@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8352.sql | sort > q8352.out
+
+vector: true
+
+inputs:
+  - name: q8352.sql
+    data: |
+      SELECT ALL + SUM ( + col2 ) AS col2 FROM tab2 WHERE col2 NOT BETWEEN - col1 AND - + ( + col0 );
+  - name: tab2
+
+outputs:
+  - name: q8352.out
+    data: |
+      121

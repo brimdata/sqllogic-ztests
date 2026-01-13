@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q9259.sql | sort > q9259.out
+
+vector: true
+
+inputs:
+  - name: q9259.sql
+    data: |
+      SELECT ALL + - 46 AS col2, CAST ( + col2 AS INTEGER ) AS col2 FROM tab1 AS cor0;
+  - name: tab1
+
+outputs:
+  - name: q9259.out
+    data: |
+      -46	59
+      -46	68
+      -46	96

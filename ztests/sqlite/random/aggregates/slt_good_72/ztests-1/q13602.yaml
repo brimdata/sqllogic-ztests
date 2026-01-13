@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q13602.sql | sort > q13602.out
+
+vector: true
+
+inputs:
+  - name: q13602.sql
+    data: |
+      SELECT ALL col1 AS col2 FROM tab1 WHERE NOT col2 BETWEEN NULL AND ( col0 );
+  - name: tab1
+
+outputs:
+  - name: q13602.out
+    data: |
+      14

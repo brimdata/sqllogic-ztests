@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q9525.sql | sort > q9525.out
+
+vector: true
+
+inputs:
+  - name: q9525.sql
+    data: |
+      SELECT ALL - 27 AS col1, - col2 AS col1, + ( + col2 ) AS col1 FROM tab0;
+  - name: tab0
+
+outputs:
+  - name: q9525.out
+    data: |
+      -27	-10	10
+      -27	-47	47
+      -27	-99	99

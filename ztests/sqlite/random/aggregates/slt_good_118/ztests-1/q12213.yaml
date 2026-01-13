@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q12213.sql | sort > q12213.out
+
+vector: true
+
+inputs:
+  - name: q12213.sql
+    data: |
+      SELECT ALL - 30 AS col1, + ( - col2 ) AS col1 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q12213.out
+    data: |
+      -30	-23
+      -30	-40
+      -30	-58

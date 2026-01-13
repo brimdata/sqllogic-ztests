@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q11484.sql | sort > q11484.out
+
+vector: true
+
+inputs:
+  - name: q11484.sql
+    data: |
+      SELECT ALL 7 + + COUNT ( * ) AS col0, COUNT ( DISTINCT ( col1 ) ) AS col0 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q11484.out
+    data: |
+      10	3

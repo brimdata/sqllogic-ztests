@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8642.sql | sort > q8642.out
+
+vector: true
+
+inputs:
+  - name: q8642.sql
+    data: |
+      SELECT MIN ( col1 ) AS col0 FROM tab2 AS cor0 WHERE NOT ( col0 * 46 ) IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q8642.out
+    data: |
+      51

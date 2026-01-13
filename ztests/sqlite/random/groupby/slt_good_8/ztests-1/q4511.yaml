@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q4511.sql | sort > q4511.out
+
+vector: true
+
+inputs:
+  - name: q4511.sql
+    data: |
+      SELECT DISTINCT ( CASE 7 WHEN cor0.col1 - + 50 THEN + cor0.col1 / cor0.col2 ELSE + cor0.col1 END ) FROM tab0 AS cor0 GROUP BY cor0.col1, cor0.col2;
+  - name: tab0
+
+outputs:
+  - name: q4511.out
+    data: |
+      0
+      81

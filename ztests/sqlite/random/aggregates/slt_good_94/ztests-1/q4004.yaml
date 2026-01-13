@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q4004.sql | sort > q4004.out
+
+vector: true
+
+inputs:
+  - name: q4004.sql
+    data: |
+      SELECT - 4 AS col1, + col1 / + col0 + - 21 AS col1 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q4004.out
+    data: |
+      -4	-20
+      -4	-20
+      -4	-21

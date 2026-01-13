@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q5905.sql | sort > q5905.out
 
+vector: true
+
 inputs:
   - name: q5905.sql
     data: |
+      pragma pg
       SELECT ALL col2 AS col2 FROM tab0 WHERE NOT NULL BETWEEN col0 AND ( + - 53 ) GROUP BY col2, col1;
   - name: tab0
 

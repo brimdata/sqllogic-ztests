@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8320.sql | sort > q8320.out
+
+vector: true
+
+inputs:
+  - name: q8320.sql
+    data: |
+      pragma pg
+      SELECT ALL + col1 AS col1 FROM tab0 GROUP BY col1 HAVING NOT ( + AVG ( DISTINCT + col2 ) ) IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q8320.out
+    data: |

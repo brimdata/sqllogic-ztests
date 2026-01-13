@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q10047.sql | sort > q10047.out
+
+vector: true
+
+inputs:
+  - name: q10047.sql
+    data: |
+      SELECT DISTINCT + 26 / tab2.col1 FROM tab2 GROUP BY tab2.col1;
+  - name: tab2
+
+outputs:
+  - name: q10047.out
+    data: |
+      0

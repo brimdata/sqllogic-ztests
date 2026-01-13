@@ -1,9 +1,12 @@
 script: |
   super -f tsv -I q2058.sql | sort > q2058.out
 
+vector: true
+
 inputs:
   - name: q2058.sql
     data: |
+      pragma pg
       SELECT - 41 * 86 + 60 AS col1 FROM tab1 AS cor0 WHERE NOT col2 IS NOT NULL GROUP BY col2, col1 HAVING NOT ( NULL ) IS NULL;
   - name: tab1
 

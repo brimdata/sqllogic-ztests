@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q47.sql | sort > q47.out
+
+vector: true
+
+inputs:
+  - name: q47.sql
+    data: |
+      SELECT DISTINCT col0 AS col2 FROM tab1 GROUP BY col0, col0 HAVING NOT AVG ( DISTINCT col1 ) <> ( NULL );
+  - name: tab1
+
+outputs:
+  - name: q47.out
+    data: |

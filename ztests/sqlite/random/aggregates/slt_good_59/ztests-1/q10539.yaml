@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q10539.sql | sort > q10539.out
+
+vector: true
+
+inputs:
+  - name: q10539.sql
+    data: |
+      SELECT + 15 / + COUNT ( * ) AS col1, - 22 AS col1 FROM tab2;
+  - name: tab2
+
+outputs:
+  - name: q10539.out
+    data: |
+      5	-22

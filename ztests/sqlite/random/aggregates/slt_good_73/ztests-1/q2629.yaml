@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q2629.sql | sort > q2629.out
+
+vector: true
+
+inputs:
+  - name: q2629.sql
+    data: |
+      SELECT - + col0 * + col1 - + col1 + - ( - col2 ) + - col2 AS col2, col1 AS col2 FROM tab0 WHERE + col2 IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q2629.out
+    data: |
+      -1296	81
+      -1848	21
+      -98	1

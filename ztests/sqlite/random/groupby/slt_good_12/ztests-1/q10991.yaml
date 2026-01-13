@@ -1,0 +1,18 @@
+script: |
+  super -f tsv -I q10991.sql | sort > q10991.out
+
+vector: true
+
+inputs:
+  - name: q10991.sql
+    data: |
+      pragma pg
+      SELECT - ( - NULLIF ( col1, + 24 ) ) / - - col0, 21 + col1 AS col1 FROM tab1 GROUP BY col1, col1, col0;
+  - name: tab1
+
+outputs:
+  - name: q10991.out
+    data: |
+      0	27
+      0	65
+      2	78

@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q7501.sql | sort > q7501.out
+
+vector: true
+
+inputs:
+  - name: q7501.sql
+    data: |
+      SELECT 57 * COUNT ( * ) + - col2 FROM tab2 WHERE ( col0 + - col1 / 36 ) > NULL GROUP BY col0, col2;
+  - name: tab2
+
+outputs:
+  - name: q7501.out
+    data: |

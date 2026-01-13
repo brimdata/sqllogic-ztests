@@ -1,0 +1,18 @@
+script: |
+  super -f tsv -I q7714.sql | sort > q7714.out
+
+vector: true
+
+inputs:
+  - name: q7714.sql
+    data: |
+      pragma pg
+      SELECT DISTINCT col2 AS col2, col2 FROM tab2 GROUP BY col2 HAVING NOT NULL IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q7714.out
+    data: |
+      58	58
+      79	79
+      87	87

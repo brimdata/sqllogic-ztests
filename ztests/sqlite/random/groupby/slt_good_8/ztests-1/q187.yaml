@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q187.sql | sort > q187.out
+
+vector: true
+
+inputs:
+  - name: q187.sql
+    data: |
+      SELECT DISTINCT - 32 * - 8 FROM tab0 GROUP BY tab0.col1;
+  - name: tab0
+
+outputs:
+  - name: q187.out
+    data: |
+      256

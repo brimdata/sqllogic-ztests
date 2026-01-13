@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q3937.sql | sort > q3937.out
+
+vector: true
+
+inputs:
+  - name: q3937.sql
+    data: |
+      SELECT + col1 FROM tab2 AS cor0 GROUP BY col1 HAVING NOT + 51 >= - col1;
+  - name: tab2
+
+outputs:
+  - name: q3937.out
+    data: |

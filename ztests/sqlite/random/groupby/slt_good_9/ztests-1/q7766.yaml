@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q7766.sql | sort > q7766.out
+
+vector: true
+
+inputs:
+  - name: q7766.sql
+    data: |
+      pragma pg
+      SELECT ALL - col2 + + col0 AS col2 FROM tab1 AS cor0 GROUP BY col0, col2 HAVING NOT ( NOT NULL >= - AVG ( ALL col1 ) );
+  - name: tab1
+
+outputs:
+  - name: q7766.out
+    data: |

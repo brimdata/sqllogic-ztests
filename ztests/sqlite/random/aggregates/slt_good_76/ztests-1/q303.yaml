@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q303.sql | sort > q303.out
+
+vector: true
+
+inputs:
+  - name: q303.sql
+    data: |
+      SELECT + 23 * col1 AS col1 FROM tab2 cor0 WHERE col1 BETWEEN 70 AND + col1 OR col2 NOT BETWEEN NULL AND NULL;
+  - name: tab2
+
+outputs:
+  - name: q303.out
+    data: |
+      1771

@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q2219.sql | sort > q2219.out
+
+vector: true
+
+inputs:
+  - name: q2219.sql
+    data: |
+      SELECT DISTINCT CAST ( + COUNT ( * ) AS INTEGER ) AS col1, - COUNT ( * ) AS col1;
+
+outputs:
+  - name: q2219.out
+    data: |
+      1	-1

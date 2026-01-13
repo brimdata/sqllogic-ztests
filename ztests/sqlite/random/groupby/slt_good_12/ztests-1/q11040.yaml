@@ -1,0 +1,18 @@
+script: |
+  super -f tsv -I q11040.sql | sort > q11040.out
+
+vector: true
+
+inputs:
+  - name: q11040.sql
+    data: |
+      pragma pg
+      SELECT + col0 AS col2, NULLIF ( + COUNT ( * ), - + col2 + - col1 * - CAST ( NULL AS INTEGER ) ) FROM tab2 GROUP BY col0, col2, col1 HAVING NOT ( - col1 + - 65 IS NULL );
+  - name: tab2
+
+outputs:
+  - name: q11040.out
+    data: |
+      15	1
+      91	1
+      92	1

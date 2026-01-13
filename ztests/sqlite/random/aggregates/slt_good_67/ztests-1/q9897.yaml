@@ -1,0 +1,17 @@
+script: |
+  super -f tsv -I q9897.sql | sort > q9897.out
+
+vector: true
+
+inputs:
+  - name: q9897.sql
+    data: |
+      SELECT ALL col1 AS col2, + CAST ( NULL AS INTEGER ) AS col2 FROM tab1;
+  - name: tab1
+
+outputs:
+  - name: q9897.out
+    data: |
+      14	NULL
+      47	NULL
+      5	NULL
