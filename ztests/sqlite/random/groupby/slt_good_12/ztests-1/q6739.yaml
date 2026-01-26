@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q6739.sql | sort > q6739.out
+
+vector: true
+
+inputs:
+  - name: q6739.sql
+    data: |
+      SELECT + col1 AS col0 FROM tab0 AS cor0 GROUP BY col1 HAVING NOT ( - 59 / SUM ( - col0 ) IS NOT NULL );
+  - name: tab0
+
+outputs:
+  - name: q6739.out
+    data: |
