@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q10096.sql | sort > q10096.out
+
+vector: true
+
+inputs:
+  - name: q10096.sql
+    data: |
+      pragma pg
+      SELECT ALL - col0 AS col0 FROM tab0 AS cor0 GROUP BY col1, col2, col0 HAVING ( NOT ( NULL ) BETWEEN + COUNT ( ALL + - col2 ) / + col1 AND + col2 * - col0 + + col1 );
+  - name: tab0
+
+outputs:
+  - name: q10096.out
+    data: |

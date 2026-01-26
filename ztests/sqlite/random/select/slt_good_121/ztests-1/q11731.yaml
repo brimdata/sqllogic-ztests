@@ -1,0 +1,24 @@
+script: |
+  super -f tsv -I q11731.sql | sort > q11731.out
+
+vector: true
+
+inputs:
+  - name: q11731.sql
+    data: |
+      SELECT DISTINCT * FROM tab1, tab2, tab1 AS cor0 WHERE cor0.col2 < cor0.col0;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q11731.out
+    data: |
+      3	26	54	7	31	27	64	10	57
+      3	26	54	78	59	26	64	10	57
+      3	26	54	79	17	38	64	10	57
+      64	10	57	7	31	27	64	10	57
+      64	10	57	78	59	26	64	10	57
+      64	10	57	79	17	38	64	10	57
+      80	13	96	7	31	27	64	10	57
+      80	13	96	78	59	26	64	10	57
+      80	13	96	79	17	38	64	10	57
