@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1806.sql | sort > q1806.out
+
+vector: true
+
+inputs:
+  - name: q1806.sql
+    data: |
+      SELECT MIN ( + col0 ) AS col1 FROM tab0 WHERE NOT ( - col1 * col2 ) IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q1806.out
+    data: |
+      NULL

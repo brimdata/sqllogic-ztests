@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q2748.sql | sort > q2748.out
+
+vector: true
+
+inputs:
+  - name: q2748.sql
+    data: |
+      SELECT ALL - + SUM ( + 20 ) - + COUNT ( * ) AS col2 FROM tab1 WHERE NOT - col2 NOT BETWEEN 14 AND col0;
+  - name: tab1
+
+outputs:
+  - name: q2748.out
+    data: |
+      NULL

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q461.sql | sort > q461.out
+
+vector: true
+
+inputs:
+  - name: q461.sql
+    data: |
+      SELECT DISTINCT - ( MIN ( + 30 ) ) AS col2 FROM tab2 WHERE NULL > col0;
+  - name: tab2
+
+outputs:
+  - name: q461.out
+    data: |
+      NULL

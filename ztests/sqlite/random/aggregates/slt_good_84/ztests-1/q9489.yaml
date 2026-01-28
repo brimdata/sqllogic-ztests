@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9489.sql | sort > q9489.out
+
+vector: true
+
+inputs:
+  - name: q9489.sql
+    data: |
+      SELECT MAX ( - col2 ) * COUNT ( * ) FROM tab2 WHERE NULL BETWEEN - - 27 AND - + 98;
+  - name: tab2
+
+outputs:
+  - name: q9489.out
+    data: |
+      NULL

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q731.sql | sort > q731.out
+
+vector: true
+
+inputs:
+  - name: q731.sql
+    data: |
+      SELECT - CAST ( - ( + AVG ( - col2 ) ) AS INTEGER ) AS col2 FROM tab2 AS cor0 WHERE NOT NULL IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q731.out
+    data: |
+      NULL

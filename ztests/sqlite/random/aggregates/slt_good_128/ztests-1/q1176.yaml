@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1176.sql | sort > q1176.out
+
+vector: true
+
+inputs:
+  - name: q1176.sql
+    data: |
+      SELECT DISTINCT 13 - COUNT ( * ) FROM tab1 WHERE NOT ( col2 ) IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q1176.out
+    data: |
+      13

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q5385.sql | sort > q5385.out
+
+vector: true
+
+inputs:
+  - name: q5385.sql
+    data: |
+      SELECT + MAX ( DISTINCT + col1 ) * - COUNT ( * ) FROM tab1 AS cor0 WHERE CAST ( NULL AS INTEGER ) + ( col1 ) IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q5385.out
+    data: |
+      NULL

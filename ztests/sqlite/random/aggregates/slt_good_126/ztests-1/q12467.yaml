@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q12467.sql | sort > q12467.out
+
+vector: true
+
+inputs:
+  - name: q12467.sql
+    data: |
+      SELECT + 70 * CAST ( NULL AS REAL ) * + AVG ( + - col1 ) AS col1, COUNT ( * ) FROM tab2 AS cor0 WHERE NOT NULL >= NULL;
+  - name: tab2
+
+outputs:
+  - name: q12467.out
+    data: |
+      NULL	0

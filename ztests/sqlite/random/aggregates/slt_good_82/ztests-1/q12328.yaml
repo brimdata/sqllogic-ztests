@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q12328.sql | sort > q12328.out
+
+vector: true
+
+inputs:
+  - name: q12328.sql
+    data: |
+      SELECT - COUNT ( * ) FROM tab2 WHERE 7 IN ( col2 * - 3 );
+  - name: tab2
+
+outputs:
+  - name: q12328.out
+    data: |
+      0

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4428.sql | sort > q4428.out
+
+vector: true
+
+inputs:
+  - name: q4428.sql
+    data: |
+      SELECT DISTINCT CAST ( + COUNT ( * ) AS INTEGER ) FROM tab2 WHERE NULL NOT BETWEEN ( + + 21 * + col2 * - col2 ) AND NULL;
+  - name: tab2
+
+outputs:
+  - name: q4428.out
+    data: |
+      0

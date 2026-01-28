@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q7072.sql | sort > q7072.out
+
+vector: true
+
+inputs:
+  - name: q7072.sql
+    data: |
+      SELECT DISTINCT - AVG ( ALL - 31 ) FROM tab2 WHERE NOT NULL >= col1;
+  - name: tab2
+
+outputs:
+  - name: q7072.out
+    data: |
+      NULL

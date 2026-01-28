@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q443.sql | sort > q443.out
+
+vector: true
+
+inputs:
+  - name: q443.sql
+    data: |
+      SELECT COUNT ( * ) * 41 AS col2 FROM tab2 cor0 WHERE NOT NULL IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q443.out
+    data: |
+      0

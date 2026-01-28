@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9230.sql | sort > q9230.out
+
+vector: true
+
+inputs:
+  - name: q9230.sql
+    data: |
+      SELECT ALL - SUM ( col2 ) + 35 AS col0 FROM tab1 WHERE NOT + col1 * col1 BETWEEN NULL AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q9230.out
+    data: |
+      NULL

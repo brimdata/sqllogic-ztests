@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8933.sql | sort > q8933.out
+
+vector: true
+
+inputs:
+  - name: q8933.sql
+    data: |
+      SELECT + MAX ( DISTINCT + CAST ( NULL AS REAL ) ) AS col1 FROM tab1 WHERE NOT NULL IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q8933.out
+    data: |
+      NULL

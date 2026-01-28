@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q3.sql | sort > q3.out
+
+vector: true
+
+inputs:
+  - name: q3.sql
+    data: |
+      SELECT DISTINCT - COUNT ( ALL - col2 ) AS col0 FROM tab0 AS cor0 WHERE NOT col2 / - col1 NOT IN ( CAST ( - + col1 AS INTEGER ) );
+  - name: tab0
+
+outputs:
+  - name: q3.out
+    data: |
+      0

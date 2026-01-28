@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q3511.sql | sort > q3511.out
+
+vector: true
+
+inputs:
+  - name: q3511.sql
+    data: |
+      SELECT - + COUNT ( * ) AS col2 FROM tab1 WHERE NOT NULL NOT BETWEEN + 21 / - 92 AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q3511.out
+    data: |
+      0

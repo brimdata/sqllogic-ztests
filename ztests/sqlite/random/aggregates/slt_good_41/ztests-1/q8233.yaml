@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8233.sql | sort > q8233.out
+
+vector: true
+
+inputs:
+  - name: q8233.sql
+    data: |
+      SELECT COUNT ( DISTINCT col1 ) FROM tab0 WHERE NULL BETWEEN - 50 AND col2 - + col2;
+  - name: tab0
+
+outputs:
+  - name: q8233.out
+    data: |
+      0

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9482.sql | sort > q9482.out
+
+vector: true
+
+inputs:
+  - name: q9482.sql
+    data: |
+      SELECT COUNT ( * ) + 4 AS col0 FROM tab1 WHERE - col1 > 53 / col2;
+  - name: tab1
+
+outputs:
+  - name: q9482.out
+    data: |
+      4

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1384.sql | sort > q1384.out
+
+vector: true
+
+inputs:
+  - name: q1384.sql
+    data: |
+      SELECT DISTINCT COUNT ( ALL + col2 ) FROM tab2 WHERE NULL BETWEEN ( - 16 ) AND ( NULL );
+  - name: tab2
+
+outputs:
+  - name: q1384.out
+    data: |
+      0

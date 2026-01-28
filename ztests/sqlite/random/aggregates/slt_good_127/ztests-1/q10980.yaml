@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q10980.sql | sort > q10980.out
+
+vector: true
+
+inputs:
+  - name: q10980.sql
+    data: |
+      SELECT - - MAX ( 8 ) AS col2 FROM tab2 WHERE NULL = col1;
+  - name: tab2
+
+outputs:
+  - name: q10980.out
+    data: |
+      NULL

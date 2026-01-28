@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q260.sql | sort > q260.out
+
+vector: true
+
+inputs:
+  - name: q260.sql
+    data: |
+      SELECT COUNT ( * ) + - 28, 22 * COUNT ( * ) AS col2 FROM tab0 cor0 WHERE NOT NULL IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q260.out
+    data: |
+      -28	0

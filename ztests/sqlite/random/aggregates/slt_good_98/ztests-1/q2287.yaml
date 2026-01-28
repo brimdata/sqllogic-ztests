@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q2287.sql | sort > q2287.out
+
+vector: true
+
+inputs:
+  - name: q2287.sql
+    data: |
+      SELECT ALL COUNT ( * ) AS col0 FROM tab1 WHERE NOT ( + 30 ) IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q2287.out
+    data: |
+      0

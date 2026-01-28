@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q770.sql | sort > q770.out
+
+vector: true
+
+inputs:
+  - name: q770.sql
+    data: |
+      SELECT DISTINCT CAST ( + + COUNT ( * ) AS INTEGER ) + - COUNT ( * ) AS col2 FROM tab2 AS cor0 WHERE col0 IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q770.out
+    data: |
+      0

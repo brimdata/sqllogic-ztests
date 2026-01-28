@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8226.sql | sort > q8226.out
+
+vector: true
+
+inputs:
+  - name: q8226.sql
+    data: |
+      SELECT ALL 99 / MIN ( ALL - 21 ) FROM tab2 WHERE NOT col0 IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q8226.out
+    data: |
+      NULL

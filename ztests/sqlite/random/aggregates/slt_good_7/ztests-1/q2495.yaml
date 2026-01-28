@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q2495.sql | sort > q2495.out
+
+vector: true
+
+inputs:
+  - name: q2495.sql
+    data: |
+      SELECT - 72 AS col1, - MAX ( ALL CAST ( NULL AS INTEGER ) ) FROM tab2 AS cor0 WHERE NOT col0 IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q2495.out
+    data: |
+      -72	NULL

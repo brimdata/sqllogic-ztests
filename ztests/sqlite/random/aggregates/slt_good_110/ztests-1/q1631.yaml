@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1631.sql | sort > q1631.out
+
+vector: true
+
+inputs:
+  - name: q1631.sql
+    data: |
+      SELECT ALL MIN ( col1 ) AS col1 FROM tab1 WHERE 47 / + 20 IN ( 83 );
+  - name: tab1
+
+outputs:
+  - name: q1631.out
+    data: |
+      NULL

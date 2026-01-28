@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1628.sql | sort > q1628.out
+
+vector: true
+
+inputs:
+  - name: q1628.sql
+    data: |
+      SELECT + ( + COUNT ( * ) ) / 65 FROM tab2 WHERE NULL NOT IN ( col2 );
+  - name: tab2
+
+outputs:
+  - name: q1628.out
+    data: |
+      0

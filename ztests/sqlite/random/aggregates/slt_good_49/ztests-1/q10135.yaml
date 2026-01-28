@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q10135.sql | sort > q10135.out
+
+vector: true
+
+inputs:
+  - name: q10135.sql
+    data: |
+      SELECT ALL - COUNT ( * ) FROM tab1 WHERE NOT ( NULL BETWEEN col0 * + + 91 AND + col1 * col0 );
+  - name: tab1
+
+outputs:
+  - name: q10135.out
+    data: |
+      0

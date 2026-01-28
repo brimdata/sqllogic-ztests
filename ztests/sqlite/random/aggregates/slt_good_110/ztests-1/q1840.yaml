@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1840.sql | sort > q1840.out
+
+vector: true
+
+inputs:
+  - name: q1840.sql
+    data: |
+      SELECT ALL COUNT ( * ) AS col1 FROM tab0 WHERE NOT NULL NOT BETWEEN NULL AND ( + ( col0 ) + + 14 );
+  - name: tab0
+
+outputs:
+  - name: q1840.out
+    data: |
+      0

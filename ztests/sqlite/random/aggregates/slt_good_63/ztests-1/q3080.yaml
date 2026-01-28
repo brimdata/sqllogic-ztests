@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q3080.sql | sort > q3080.out
+
+vector: true
+
+inputs:
+  - name: q3080.sql
+    data: |
+      SELECT + COUNT ( * ) AS col2 FROM tab0 WHERE NOT NULL IN ( - + col2 * col1 );
+  - name: tab0
+
+outputs:
+  - name: q3080.out
+    data: |
+      0

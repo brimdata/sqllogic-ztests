@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q10328.sql | sort > q10328.out
+
+vector: true
+
+inputs:
+  - name: q10328.sql
+    data: |
+      SELECT DISTINCT - MAX ( ALL col1 ) AS col1 FROM tab2 WHERE NOT col0 NOT IN ( col1 * - 79 );
+  - name: tab2
+
+outputs:
+  - name: q10328.out
+    data: |
+      NULL

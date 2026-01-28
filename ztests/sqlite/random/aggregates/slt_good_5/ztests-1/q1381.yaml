@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1381.sql | sort > q1381.out
+
+vector: true
+
+inputs:
+  - name: q1381.sql
+    data: |
+      SELECT ALL + COUNT ( * ) FROM tab1 WHERE NOT NULL < - col2 * CAST ( NULL AS REAL );
+  - name: tab1
+
+outputs:
+  - name: q1381.out
+    data: |
+      0

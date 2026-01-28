@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q6287.sql | sort > q6287.out
+
+vector: true
+
+inputs:
+  - name: q6287.sql
+    data: |
+      SELECT - - COUNT ( * ) - ( + MIN ( + 60 ) ) AS col2 FROM tab1 WHERE col1 = col2 + + col0;
+  - name: tab1
+
+outputs:
+  - name: q6287.out
+    data: |
+      NULL

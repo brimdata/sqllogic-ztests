@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q3501.sql | sort > q3501.out
+
+vector: true
+
+inputs:
+  - name: q3501.sql
+    data: |
+      SELECT ALL CAST ( NULL AS INTEGER ) * - MIN ( col0 ) AS col0 FROM tab2 AS cor0 WHERE NOT col1 IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q3501.out
+    data: |
+      NULL

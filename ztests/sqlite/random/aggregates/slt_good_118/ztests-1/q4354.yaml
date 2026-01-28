@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4354.sql | sort > q4354.out
+
+vector: true
+
+inputs:
+  - name: q4354.sql
+    data: |
+      SELECT - MAX ( DISTINCT + 31 ) AS col2 FROM tab1 WHERE NOT ( NOT ( NULL ) IS NOT NULL );
+  - name: tab1
+
+outputs:
+  - name: q4354.out
+    data: |
+      NULL

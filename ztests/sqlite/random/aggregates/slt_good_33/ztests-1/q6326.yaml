@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q6326.sql | sort > q6326.out
+
+vector: true
+
+inputs:
+  - name: q6326.sql
+    data: |
+      SELECT DISTINCT COUNT ( DISTINCT col1 ) - COUNT ( * ) * + 54 FROM tab0 WHERE NOT col0 <> NULL;
+  - name: tab0
+
+outputs:
+  - name: q6326.out
+    data: |
+      0

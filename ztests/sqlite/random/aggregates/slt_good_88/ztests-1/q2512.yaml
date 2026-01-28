@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q2512.sql | sort > q2512.out
+
+vector: true
+
+inputs:
+  - name: q2512.sql
+    data: |
+      SELECT DISTINCT + AVG ( DISTINCT col0 ) FROM tab0 WHERE NOT col0 NOT IN ( + col2 * 21 );
+  - name: tab0
+
+outputs:
+  - name: q2512.out
+    data: |
+      NULL

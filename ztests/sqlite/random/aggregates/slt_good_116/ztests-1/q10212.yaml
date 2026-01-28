@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q10212.sql | sort > q10212.out
+
+vector: true
+
+inputs:
+  - name: q10212.sql
+    data: |
+      SELECT ALL ( - MAX ( ALL + col2 ) ) AS col0 FROM tab0 WHERE NULL NOT BETWEEN NULL AND 28 * + col1;
+  - name: tab0
+
+outputs:
+  - name: q10212.out
+    data: |
+      NULL

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9000.sql | sort > q9000.out
+
+vector: true
+
+inputs:
+  - name: q9000.sql
+    data: |
+      SELECT COUNT ( * ) AS col2 FROM tab2 WHERE ( NULL ) BETWEEN NULL AND - col2;
+  - name: tab2
+
+outputs:
+  - name: q9000.out
+    data: |
+      0

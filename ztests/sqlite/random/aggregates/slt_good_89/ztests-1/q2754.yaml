@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q2754.sql | sort > q2754.out
+
+vector: true
+
+inputs:
+  - name: q2754.sql
+    data: |
+      SELECT 28 * - CAST ( + MIN ( DISTINCT col1 ) AS INTEGER ) - 96 AS col1 FROM tab2 WHERE + + CAST ( - col2 AS INTEGER ) IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q2754.out
+    data: |
+      NULL

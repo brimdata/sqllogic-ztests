@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q7599.sql | sort > q7599.out
+
+vector: true
+
+inputs:
+  - name: q7599.sql
+    data: |
+      SELECT ( - SUM ( CAST ( NULL AS INTEGER ) ) ) AS col1 FROM tab2 AS cor0 WHERE col0 > NULL;
+  - name: tab2
+
+outputs:
+  - name: q7599.out
+    data: |
+      NULL

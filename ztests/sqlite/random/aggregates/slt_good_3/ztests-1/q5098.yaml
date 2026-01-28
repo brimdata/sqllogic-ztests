@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q5098.sql | sort > q5098.out
+
+vector: true
+
+inputs:
+  - name: q5098.sql
+    data: |
+      SELECT DISTINCT COUNT ( * ) FROM tab1 WHERE ( - CAST ( NULL AS INTEGER ) * - col1 * 8 + 1 ) IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q5098.out
+    data: |
+      0

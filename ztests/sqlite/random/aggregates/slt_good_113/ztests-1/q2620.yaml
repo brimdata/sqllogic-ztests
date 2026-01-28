@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q2620.sql | sort > q2620.out
+
+vector: true
+
+inputs:
+  - name: q2620.sql
+    data: |
+      SELECT MIN ( ALL 30 ) AS col2 FROM tab2 WHERE NOT NULL > NULL;
+  - name: tab2
+
+outputs:
+  - name: q2620.out
+    data: |
+      NULL

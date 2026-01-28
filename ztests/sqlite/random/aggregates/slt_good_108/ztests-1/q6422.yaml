@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q6422.sql | sort > q6422.out
+
+vector: true
+
+inputs:
+  - name: q6422.sql
+    data: |
+      SELECT COUNT ( * ) AS col1 FROM tab0 WHERE - 98 IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q6422.out
+    data: |
+      0

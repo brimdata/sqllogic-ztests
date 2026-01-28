@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q6048.sql | sort > q6048.out
+
+vector: true
+
+inputs:
+  - name: q6048.sql
+    data: |
+      SELECT ALL COUNT ( * ) FROM ( tab2 cor0 CROSS JOIN tab2 AS cor1 ) WHERE NOT NULL <> NULL;
+  - name: tab2
+
+outputs:
+  - name: q6048.out
+    data: |
+      0

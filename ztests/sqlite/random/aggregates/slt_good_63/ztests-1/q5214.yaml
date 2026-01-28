@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q5214.sql | sort > q5214.out
+
+vector: true
+
+inputs:
+  - name: q5214.sql
+    data: |
+      SELECT + SUM ( 64 ) AS col1 FROM tab1 AS cor0 CROSS JOIN tab1 AS cor1 WHERE NULL NOT BETWEEN 82 AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q5214.out
+    data: |
+      NULL

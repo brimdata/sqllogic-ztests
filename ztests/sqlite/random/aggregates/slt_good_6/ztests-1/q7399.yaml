@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q7399.sql | sort > q7399.out
+
+vector: true
+
+inputs:
+  - name: q7399.sql
+    data: |
+      SELECT ALL + CAST ( + AVG ( ALL col0 ) AS REAL ) AS col1 FROM tab1 WHERE ( col0 ) <= col2 + - 63;
+  - name: tab1
+
+outputs:
+  - name: q7399.out
+    data: |
+      NULL

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q3421.sql | sort > q3421.out
+
+vector: true
+
+inputs:
+  - name: q3421.sql
+    data: |
+      SELECT DISTINCT + ( - ( + COUNT ( * ) ) ) FROM tab0 WHERE NULL IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q3421.out
+    data: |
+      0

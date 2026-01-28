@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8788.sql | sort > q8788.out
+
+vector: true
+
+inputs:
+  - name: q8788.sql
+    data: |
+      SELECT + COUNT ( * ) AS col0 FROM tab1 WHERE NOT ( ( + 26 ) * col1 / 53 + col1 NOT BETWEEN NULL AND NULL );
+  - name: tab1
+
+outputs:
+  - name: q8788.out
+    data: |
+      0

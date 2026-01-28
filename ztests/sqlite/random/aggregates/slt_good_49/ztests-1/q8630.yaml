@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8630.sql | sort > q8630.out
+
+vector: true
+
+inputs:
+  - name: q8630.sql
+    data: |
+      SELECT + COUNT ( * ) FROM tab2 WHERE NOT NULL NOT BETWEEN 64 AND ( NULL );
+  - name: tab2
+
+outputs:
+  - name: q8630.out
+    data: |
+      0

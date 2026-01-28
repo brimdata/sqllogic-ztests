@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q2209.sql | sort > q2209.out
+
+vector: true
+
+inputs:
+  - name: q2209.sql
+    data: |
+      SELECT DISTINCT + SUM ( ALL - CAST ( + col1 AS INTEGER ) ) AS col2 FROM tab0 WHERE - - 50 - CAST ( 40 AS INTEGER ) IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q2209.out
+    data: |
+      NULL

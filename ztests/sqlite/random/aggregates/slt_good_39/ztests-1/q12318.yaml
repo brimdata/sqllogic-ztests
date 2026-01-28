@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q12318.sql | sort > q12318.out
+
+vector: true
+
+inputs:
+  - name: q12318.sql
+    data: |
+      SELECT DISTINCT 6 + MAX ( - col2 ) * - 20 FROM tab2 WHERE NOT 4 IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q12318.out
+    data: |
+      NULL

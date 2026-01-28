@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4219.sql | sort > q4219.out
+
+vector: true
+
+inputs:
+  - name: q4219.sql
+    data: |
+      SELECT + CAST ( MIN ( DISTINCT - col0 ) AS INTEGER ), COUNT ( * ) AS col1 FROM tab2 AS cor0 WHERE NOT - col2 - + 10 BETWEEN NULL AND NULL;
+  - name: tab2
+
+outputs:
+  - name: q4219.out
+    data: |
+      NULL	0

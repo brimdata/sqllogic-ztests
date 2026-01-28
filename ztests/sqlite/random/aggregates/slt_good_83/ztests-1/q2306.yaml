@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q2306.sql | sort > q2306.out
+
+vector: true
+
+inputs:
+  - name: q2306.sql
+    data: |
+      SELECT MAX ( ALL CAST ( + col2 AS INTEGER ) ) FROM tab2 AS cor0 WHERE NOT ( NULL ) BETWEEN ( col2 ) AND + col0 * col0;
+  - name: tab2
+
+outputs:
+  - name: q2306.out
+    data: |
+      NULL

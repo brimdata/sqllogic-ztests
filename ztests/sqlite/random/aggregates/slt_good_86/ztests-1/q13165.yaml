@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q13165.sql | sort > q13165.out
+
+vector: true
+
+inputs:
+  - name: q13165.sql
+    data: |
+      SELECT DISTINCT - COUNT ( * ) * CAST ( NULL AS INTEGER ) AS col0 FROM tab2 WHERE ( - col0 ) / col0 BETWEEN col1 AND NULL;
+  - name: tab2
+
+outputs:
+  - name: q13165.out
+    data: |
+      NULL

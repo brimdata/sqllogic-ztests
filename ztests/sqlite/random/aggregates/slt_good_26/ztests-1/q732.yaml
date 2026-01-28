@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q732.sql | sort > q732.out
+
+vector: true
+
+inputs:
+  - name: q732.sql
+    data: |
+      SELECT ALL - AVG ( ALL + col1 ) AS col2 FROM tab2 AS cor0 WHERE NOT NULL < col2 * col0 - 84;
+  - name: tab2
+
+outputs:
+  - name: q732.out
+    data: |
+      NULL

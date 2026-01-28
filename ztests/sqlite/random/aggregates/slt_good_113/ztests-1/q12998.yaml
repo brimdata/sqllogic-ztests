@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q12998.sql | sort > q12998.out
+
+vector: true
+
+inputs:
+  - name: q12998.sql
+    data: |
+      SELECT - COUNT ( * ) + 29 FROM tab2 AS cor0 WHERE col1 = NULL;
+  - name: tab2
+
+outputs:
+  - name: q12998.out
+    data: |
+      29

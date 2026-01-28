@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q10100.sql | sort > q10100.out
+
+vector: true
+
+inputs:
+  - name: q10100.sql
+    data: |
+      SELECT + SUM ( 48 ) FROM tab1 AS cor0 WHERE col2 + col1 <= - CAST ( col1 AS INTEGER );
+  - name: tab1
+
+outputs:
+  - name: q10100.out
+    data: |
+      NULL

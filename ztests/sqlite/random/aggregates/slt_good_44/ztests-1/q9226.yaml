@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9226.sql | sort > q9226.out
+
+vector: true
+
+inputs:
+  - name: q9226.sql
+    data: |
+      SELECT + MIN ( - col1 ) / + COUNT ( * ) AS col2 FROM tab1 WHERE ( NULL ) IN ( col1 );
+  - name: tab1
+
+outputs:
+  - name: q9226.out
+    data: |
+      NULL

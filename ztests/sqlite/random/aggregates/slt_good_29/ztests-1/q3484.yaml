@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q3484.sql | sort > q3484.out
+
+vector: true
+
+inputs:
+  - name: q3484.sql
+    data: |
+      SELECT ALL ( AVG ( ( col2 ) ) ) FROM tab2 WHERE NOT ( + - 23 ) NOT IN ( + col1 + - 3 );
+  - name: tab2
+
+outputs:
+  - name: q3484.out
+    data: |
+      NULL

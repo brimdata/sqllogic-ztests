@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q5071.sql | sort > q5071.out
+
+vector: true
+
+inputs:
+  - name: q5071.sql
+    data: |
+      SELECT SUM ( ALL 29 ) FROM tab1 AS cor0 WHERE NOT NULL NOT BETWEEN col1 AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q5071.out
+    data: |
+      NULL

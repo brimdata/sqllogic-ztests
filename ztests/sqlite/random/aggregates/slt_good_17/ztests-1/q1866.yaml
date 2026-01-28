@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1866.sql | sort > q1866.out
+
+vector: true
+
+inputs:
+  - name: q1866.sql
+    data: |
+      SELECT ALL - COUNT ( * ), COUNT ( * ) AS col1 FROM tab1 WHERE NOT NULL IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q1866.out
+    data: |
+      0	0

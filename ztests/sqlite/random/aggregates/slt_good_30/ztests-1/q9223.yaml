@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9223.sql | sort > q9223.out
+
+vector: true
+
+inputs:
+  - name: q9223.sql
+    data: |
+      SELECT DISTINCT + MAX ( ALL - 31 ) FROM tab2 WHERE NULL BETWEEN col2 AND col2;
+  - name: tab2
+
+outputs:
+  - name: q9223.out
+    data: |
+      NULL

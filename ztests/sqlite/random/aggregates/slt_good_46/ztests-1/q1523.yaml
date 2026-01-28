@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1523.sql | sort > q1523.out
+
+vector: true
+
+inputs:
+  - name: q1523.sql
+    data: |
+      SELECT - ( MAX ( col1 ) ) FROM tab2 WHERE NOT NULL NOT IN ( ( 49 ) * - col2 );
+  - name: tab2
+
+outputs:
+  - name: q1523.out
+    data: |
+      NULL

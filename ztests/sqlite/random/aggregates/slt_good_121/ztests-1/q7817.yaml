@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q7817.sql | sort > q7817.out
+
+vector: true
+
+inputs:
+  - name: q7817.sql
+    data: |
+      SELECT DISTINCT 7 + 24 - COUNT ( * ), - 24 AS col1 FROM tab2 WHERE NOT NULL <= NULL;
+  - name: tab2
+
+outputs:
+  - name: q7817.out
+    data: |
+      31	-24

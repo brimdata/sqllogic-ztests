@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q10524.sql | sort > q10524.out
+
+vector: true
+
+inputs:
+  - name: q10524.sql
+    data: |
+      SELECT DISTINCT 30 + - SUM ( col0 ) + - - ( MIN ( col1 ) ) FROM tab1 AS cor0 WHERE NOT ( NOT + ( col1 ) NOT BETWEEN col1 AND NULL );
+  - name: tab1
+
+outputs:
+  - name: q10524.out
+    data: |
+      NULL

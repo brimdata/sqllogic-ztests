@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q7356.sql | sort > q7356.out
+
+vector: true
+
+inputs:
+  - name: q7356.sql
+    data: |
+      SELECT DISTINCT CAST ( + - MAX ( - col1 ) AS INTEGER ) AS col0 FROM tab1 AS cor0 WHERE NULL NOT BETWEEN - col1 AND - col1;
+  - name: tab1
+
+outputs:
+  - name: q7356.out
+    data: |
+      NULL

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q5071.sql | sort > q5071.out
+
+vector: true
+
+inputs:
+  - name: q5071.sql
+    data: |
+      SELECT DISTINCT + COUNT ( * ) FROM tab0 WHERE NULL < col2;
+  - name: tab0
+
+outputs:
+  - name: q5071.out
+    data: |
+      0

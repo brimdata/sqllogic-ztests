@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4855.sql | sort > q4855.out
+
+vector: true
+
+inputs:
+  - name: q4855.sql
+    data: |
+      SELECT - SUM ( ALL - col1 ) AS col1 FROM tab0 WHERE NOT ( - 30 * + col1 ) IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q4855.out
+    data: |
+      NULL

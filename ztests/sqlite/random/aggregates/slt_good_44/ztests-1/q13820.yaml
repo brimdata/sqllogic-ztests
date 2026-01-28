@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q13820.sql | sort > q13820.out
+
+vector: true
+
+inputs:
+  - name: q13820.sql
+    data: |
+      SELECT + - COUNT ( * ) * + ( MIN ( ALL col0 ) ) FROM tab2 WHERE NULL NOT BETWEEN NULL AND + 27;
+  - name: tab2
+
+outputs:
+  - name: q13820.out
+    data: |
+      NULL

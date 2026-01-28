@@ -1,0 +1,14 @@
+script: |
+  super -f tsv -I q8399.sql | sort > q8399.out
+
+vector: true
+
+inputs:
+  - name: q8399.sql
+    data: |
+      SELECT - + col2 * - AVG ( - col2 ) AS col0 FROM tab0 cor0 GROUP BY col2, col1, col2 HAVING ( - col2 + AVG ( + col0 ) ) IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q8399.out
+    data: |

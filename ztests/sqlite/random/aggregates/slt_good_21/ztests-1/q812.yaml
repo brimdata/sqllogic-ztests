@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q812.sql | sort > q812.out
+
+vector: true
+
+inputs:
+  - name: q812.sql
+    data: |
+      SELECT + COUNT ( * ) FROM tab0 WHERE 32 IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q812.out
+    data: |
+      0

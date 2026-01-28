@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q12231.sql | sort > q12231.out
+
+vector: true
+
+inputs:
+  - name: q12231.sql
+    data: |
+      SELECT DISTINCT - SUM ( ALL + col2 ) FROM tab0 WHERE NULL NOT BETWEEN col1 * 38 AND NULL;
+  - name: tab0
+
+outputs:
+  - name: q12231.out
+    data: |
+      NULL

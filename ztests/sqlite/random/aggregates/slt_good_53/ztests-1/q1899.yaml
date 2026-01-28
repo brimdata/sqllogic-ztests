@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1899.sql | sort > q1899.out
+
+vector: true
+
+inputs:
+  - name: q1899.sql
+    data: |
+      SELECT ALL - COUNT ( * ) + - 2 + - 35 FROM tab1 WHERE - - CAST ( NULL AS INTEGER ) <> col1;
+  - name: tab1
+
+outputs:
+  - name: q1899.out
+    data: |
+      -37

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q2339.sql | sort > q2339.out
+
+vector: true
+
+inputs:
+  - name: q2339.sql
+    data: |
+      SELECT - ( MIN ( col0 ) ) AS col0 FROM tab1 WHERE NOT 62 NOT BETWEEN + col0 AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q2339.out
+    data: |
+      NULL

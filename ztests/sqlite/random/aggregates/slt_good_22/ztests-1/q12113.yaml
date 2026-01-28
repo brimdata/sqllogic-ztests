@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q12113.sql | sort > q12113.out
+
+vector: true
+
+inputs:
+  - name: q12113.sql
+    data: |
+      SELECT - COUNT ( * ) + - MIN ( ALL - col1 ) AS col2 FROM tab2 AS cor0 WHERE NOT NULL IS NULL AND NOT ( NULL ) IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q12113.out
+    data: |
+      NULL

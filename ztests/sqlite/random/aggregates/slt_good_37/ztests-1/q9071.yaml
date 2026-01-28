@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9071.sql | sort > q9071.out
+
+vector: true
+
+inputs:
+  - name: q9071.sql
+    data: |
+      SELECT ALL AVG ( ALL + col2 ) - COUNT ( * ) FROM tab1 AS cor0 WHERE NOT NULL BETWEEN NULL AND ( 68 );
+  - name: tab1
+
+outputs:
+  - name: q9071.out
+    data: |
+      NULL

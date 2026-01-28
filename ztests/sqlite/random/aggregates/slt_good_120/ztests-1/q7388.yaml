@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q7388.sql | sort > q7388.out
+
+vector: true
+
+inputs:
+  - name: q7388.sql
+    data: |
+      SELECT ALL + MAX ( col1 ) FROM tab2 WHERE col2 BETWEEN 87 AND NULL;
+  - name: tab2
+
+outputs:
+  - name: q7388.out
+    data: |
+      NULL

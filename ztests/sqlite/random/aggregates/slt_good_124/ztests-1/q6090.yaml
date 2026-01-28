@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q6090.sql | sort > q6090.out
+
+vector: true
+
+inputs:
+  - name: q6090.sql
+    data: |
+      SELECT DISTINCT - 40 * - COUNT ( * ) FROM tab1 WHERE NULL NOT BETWEEN NULL AND - - col0;
+  - name: tab1
+
+outputs:
+  - name: q6090.out
+    data: |
+      0

@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q11620.sql | sort > q11620.out
+
+vector: true
+
+inputs:
+  - name: q11620.sql
+    data: |
+      SELECT ALL + COUNT ( * ) AS col0 FROM tab2 AS cor0 CROSS JOIN tab1 AS cor1 WHERE NULL IS NOT NULL;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q11620.out
+    data: |
+      0

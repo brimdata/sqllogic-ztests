@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q13097.sql | sort > q13097.out
+
+vector: true
+
+inputs:
+  - name: q13097.sql
+    data: |
+      SELECT DISTINCT 8 * COUNT ( * ) AS col2 FROM tab2 WHERE ( NOT ( ( NULL ) <> ( 76 ) ) );
+  - name: tab2
+
+outputs:
+  - name: q13097.out
+    data: |
+      0

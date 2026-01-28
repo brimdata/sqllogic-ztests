@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q10058.sql | sort > q10058.out
+
+vector: true
+
+inputs:
+  - name: q10058.sql
+    data: |
+      SELECT ALL COUNT ( * ) FROM tab1 WHERE NULL NOT BETWEEN 7 AND ( + col0 ) + - col0;
+  - name: tab1
+
+outputs:
+  - name: q10058.out
+    data: |
+      0

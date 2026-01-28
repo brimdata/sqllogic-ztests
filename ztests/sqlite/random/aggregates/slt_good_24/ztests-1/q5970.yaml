@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q5970.sql | sort > q5970.out
+
+vector: true
+
+inputs:
+  - name: q5970.sql
+    data: |
+      SELECT ALL MAX ( + col2 ) FROM tab2 WHERE col0 <= + col2 + - col1 * ( col0 );
+  - name: tab2
+
+outputs:
+  - name: q5970.out
+    data: |
+      NULL

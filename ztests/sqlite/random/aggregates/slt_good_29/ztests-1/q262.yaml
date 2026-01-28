@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q262.sql | sort > q262.out
+
+vector: true
+
+inputs:
+  - name: q262.sql
+    data: |
+      SELECT DISTINCT - + COUNT ( * ) FROM tab2 WHERE ( NULL ) BETWEEN NULL AND CAST ( NULL AS INTEGER );
+  - name: tab2
+
+outputs:
+  - name: q262.out
+    data: |
+      0

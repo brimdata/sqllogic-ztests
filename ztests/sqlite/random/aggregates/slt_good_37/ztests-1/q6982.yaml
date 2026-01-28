@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q6982.sql | sort > q6982.out
+
+vector: true
+
+inputs:
+  - name: q6982.sql
+    data: |
+      SELECT + COUNT ( * ) FROM tab1 WHERE + + col1 NOT BETWEEN + CAST ( NULL AS REAL ) AND + col1;
+  - name: tab1
+
+outputs:
+  - name: q6982.out
+    data: |
+      0

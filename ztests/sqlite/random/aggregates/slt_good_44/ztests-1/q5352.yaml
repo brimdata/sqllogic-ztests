@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q5352.sql | sort > q5352.out
+
+vector: true
+
+inputs:
+  - name: q5352.sql
+    data: |
+      SELECT - + COUNT ( * ), COUNT ( col1 ) - COUNT ( * ) * + 30 FROM tab1 cor0 WHERE NOT ( NULL ) >= NULL;
+  - name: tab1
+
+outputs:
+  - name: q5352.out
+    data: |
+      0	0

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4566.sql | sort > q4566.out
+
+vector: true
+
+inputs:
+  - name: q4566.sql
+    data: |
+      SELECT + - SUM ( ALL 20 ) AS col1 FROM tab0 WHERE + col0 IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q4566.out
+    data: |
+      NULL

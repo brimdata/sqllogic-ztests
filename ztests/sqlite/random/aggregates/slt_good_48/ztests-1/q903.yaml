@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q903.sql | sort > q903.out
+
+vector: true
+
+inputs:
+  - name: q903.sql
+    data: |
+      SELECT - COUNT ( * ) AS col1 FROM tab2 WHERE NOT ( col0 ) <> ( 99 ) OR NOT NULL NOT BETWEEN ( NULL ) AND ( NULL );
+  - name: tab2
+
+outputs:
+  - name: q903.out
+    data: |
+      0

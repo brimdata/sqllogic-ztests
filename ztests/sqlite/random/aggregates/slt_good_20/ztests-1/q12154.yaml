@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q12154.sql | sort > q12154.out
+
+vector: true
+
+inputs:
+  - name: q12154.sql
+    data: |
+      SELECT COUNT ( col0 ) + 72 FROM tab0 WHERE NULL <> ( + col1 );
+  - name: tab0
+
+outputs:
+  - name: q12154.out
+    data: |
+      72

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q13503.sql | sort > q13503.out
+
+vector: true
+
+inputs:
+  - name: q13503.sql
+    data: |
+      SELECT DISTINCT + MIN ( ALL - 12 ) FROM tab0 WHERE col0 * 64 IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q13503.out
+    data: |
+      NULL

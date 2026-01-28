@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9141.sql | sort > q9141.out
+
+vector: true
+
+inputs:
+  - name: q9141.sql
+    data: |
+      SELECT DISTINCT AVG ( - col1 ) FROM tab0 WHERE NOT col0 + col0 NOT BETWEEN NULL AND NULL;
+  - name: tab0
+
+outputs:
+  - name: q9141.out
+    data: |
+      NULL

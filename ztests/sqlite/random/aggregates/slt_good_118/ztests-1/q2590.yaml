@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q2590.sql | sort > q2590.out
+
+vector: true
+
+inputs:
+  - name: q2590.sql
+    data: |
+      SELECT + SUM ( ALL + col2 ) FROM tab2 AS cor0 WHERE ( NOT NULL IS NULL );
+  - name: tab2
+
+outputs:
+  - name: q2590.out
+    data: |
+      NULL

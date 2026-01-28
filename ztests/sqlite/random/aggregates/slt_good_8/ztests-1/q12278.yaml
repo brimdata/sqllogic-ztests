@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q12278.sql | sort > q12278.out
+
+vector: true
+
+inputs:
+  - name: q12278.sql
+    data: |
+      SELECT + MIN ( DISTINCT 69 ) * SUM ( DISTINCT - col1 ) FROM tab2 WHERE NOT NULL NOT IN ( + col1 );
+  - name: tab2
+
+outputs:
+  - name: q12278.out
+    data: |
+      NULL

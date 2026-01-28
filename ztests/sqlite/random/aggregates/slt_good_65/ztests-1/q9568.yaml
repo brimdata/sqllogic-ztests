@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9568.sql | sort > q9568.out
+
+vector: true
+
+inputs:
+  - name: q9568.sql
+    data: |
+      SELECT DISTINCT + ( + COUNT ( * ) ) / CAST ( NULL AS INTEGER ) AS col0 FROM tab2 WHERE NOT + col2 NOT IN ( col0 );
+  - name: tab2
+
+outputs:
+  - name: q9568.out
+    data: |
+      NULL

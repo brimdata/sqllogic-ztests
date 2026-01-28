@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q3069.sql | sort > q3069.out
+
+vector: true
+
+inputs:
+  - name: q3069.sql
+    data: |
+      SELECT ALL SUM ( - col2 ) FROM tab1 WHERE - col0 IN ( - col2 / + col1 );
+  - name: tab1
+
+outputs:
+  - name: q3069.out
+    data: |
+      NULL

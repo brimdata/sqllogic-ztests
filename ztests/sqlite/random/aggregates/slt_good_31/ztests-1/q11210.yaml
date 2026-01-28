@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q11210.sql | sort > q11210.out
+
+vector: true
+
+inputs:
+  - name: q11210.sql
+    data: |
+      SELECT - COUNT ( * ) FROM tab0 AS cor0 WHERE 20 * 42 BETWEEN CAST ( + - col0 AS INTEGER ) AND NULL;
+  - name: tab0
+
+outputs:
+  - name: q11210.out
+    data: |
+      0

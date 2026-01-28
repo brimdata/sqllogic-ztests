@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8701.sql | sort > q8701.out
+
+vector: true
+
+inputs:
+  - name: q8701.sql
+    data: |
+      SELECT - + ( + COUNT ( * ) ) - 41 FROM tab1 AS cor0 WHERE NOT NULL BETWEEN NULL AND col1 * col1;
+  - name: tab1
+
+outputs:
+  - name: q8701.out
+    data: |
+      -41

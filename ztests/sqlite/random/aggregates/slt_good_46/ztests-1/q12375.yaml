@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q12375.sql | sort > q12375.out
+
+vector: true
+
+inputs:
+  - name: q12375.sql
+    data: |
+      SELECT ALL + MAX ( col2 ) + 56 FROM tab0 WHERE NULL BETWEEN ( NULL ) AND col1;
+  - name: tab0
+
+outputs:
+  - name: q12375.out
+    data: |
+      NULL

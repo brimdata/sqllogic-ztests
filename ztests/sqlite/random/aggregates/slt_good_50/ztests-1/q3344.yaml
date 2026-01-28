@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q3344.sql | sort > q3344.out
+
+vector: true
+
+inputs:
+  - name: q3344.sql
+    data: |
+      SELECT MAX ( - col0 ) AS col0 FROM tab1 WHERE 50 / col2 BETWEEN NULL AND ( - 17 );
+  - name: tab1
+
+outputs:
+  - name: q3344.out
+    data: |
+      NULL

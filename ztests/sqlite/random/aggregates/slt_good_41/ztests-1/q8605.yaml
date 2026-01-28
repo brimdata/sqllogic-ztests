@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8605.sql | sort > q8605.out
+
+vector: true
+
+inputs:
+  - name: q8605.sql
+    data: |
+      SELECT DISTINCT + SUM ( ALL + col1 ) + - SUM ( col1 ) FROM tab1 WHERE col0 >= NULL;
+  - name: tab1
+
+outputs:
+  - name: q8605.out
+    data: |
+      NULL

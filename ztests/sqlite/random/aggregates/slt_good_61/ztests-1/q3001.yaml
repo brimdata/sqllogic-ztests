@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q3001.sql | sort > q3001.out
+
+vector: true
+
+inputs:
+  - name: q3001.sql
+    data: |
+      SELECT 14 * MAX ( col1 ) - - COUNT ( * ) AS col1 FROM tab1 AS cor0 WHERE col0 * col0 NOT IN ( + - CAST ( NULL AS INTEGER ) );
+  - name: tab1
+
+outputs:
+  - name: q3001.out
+    data: |
+      NULL

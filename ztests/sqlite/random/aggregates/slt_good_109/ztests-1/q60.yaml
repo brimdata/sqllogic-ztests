@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q60.sql | sort > q60.out
+
+vector: true
+
+inputs:
+  - name: q60.sql
+    data: |
+      SELECT ALL - COUNT ( + col2 ) + + 16 FROM tab2 WHERE NOT - CAST ( NULL AS INTEGER ) IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q60.out
+    data: |
+      16

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q283.sql | sort > q283.out
+
+vector: true
+
+inputs:
+  - name: q283.sql
+    data: |
+      SELECT DISTINCT MIN ( 38 ) AS col2 FROM tab1 WHERE NOT - col1 NOT BETWEEN NULL AND ( NULL );
+  - name: tab1
+
+outputs:
+  - name: q283.out
+    data: |
+      NULL

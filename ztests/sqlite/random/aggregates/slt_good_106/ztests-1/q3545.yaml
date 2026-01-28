@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q3545.sql | sort > q3545.out
+
+vector: true
+
+inputs:
+  - name: q3545.sql
+    data: |
+      SELECT + COUNT ( ALL + col0 ) FROM tab0 AS cor0 WHERE col0 IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q3545.out
+    data: |
+      0

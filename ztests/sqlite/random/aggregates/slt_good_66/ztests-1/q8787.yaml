@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8787.sql | sort > q8787.out
+
+vector: true
+
+inputs:
+  - name: q8787.sql
+    data: |
+      SELECT ALL MAX ( ( + col0 ) ) - - COUNT ( * ) / MIN ( ALL + col0 * + col0 + col1 ) AS col1 FROM tab0 WHERE + + col2 IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q8787.out
+    data: |
+      NULL

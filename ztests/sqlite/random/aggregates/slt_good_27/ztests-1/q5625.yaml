@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q5625.sql | sort > q5625.out
+
+vector: true
+
+inputs:
+  - name: q5625.sql
+    data: |
+      SELECT DISTINCT COUNT ( * ) * - COUNT ( * ) FROM tab0 AS cor0 WHERE 51 > ( NULL );
+  - name: tab0
+
+outputs:
+  - name: q5625.out
+    data: |
+      0

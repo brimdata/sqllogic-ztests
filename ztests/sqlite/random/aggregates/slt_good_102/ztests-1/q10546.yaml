@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q10546.sql | sort > q10546.out
+
+vector: true
+
+inputs:
+  - name: q10546.sql
+    data: |
+      SELECT - + COUNT ( * ) FROM tab1 AS cor0 CROSS JOIN tab2 AS cor1 WHERE NULL < - 38;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q10546.out
+    data: |
+      0

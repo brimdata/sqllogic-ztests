@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q2295.sql | sort > q2295.out
+
+vector: true
+
+inputs:
+  - name: q2295.sql
+    data: |
+      SELECT DISTINCT - AVG ( DISTINCT + - col2 ) * COUNT ( * ) FROM tab0 AS cor0 WHERE NOT NULL IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q2295.out
+    data: |
+      NULL

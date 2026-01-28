@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q5492.sql | sort > q5492.out
+
+vector: true
+
+inputs:
+  - name: q5492.sql
+    data: |
+      SELECT - MAX ( DISTINCT + col1 ) * + 92 AS col2 FROM tab1 WHERE col1 < col1;
+  - name: tab1
+
+outputs:
+  - name: q5492.out
+    data: |
+      NULL

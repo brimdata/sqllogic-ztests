@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q13451.sql | sort > q13451.out
+
+vector: true
+
+inputs:
+  - name: q13451.sql
+    data: |
+      SELECT ALL + 79 * COUNT ( * ) + + 57 FROM tab0 WHERE col0 <> NULL;
+  - name: tab0
+
+outputs:
+  - name: q13451.out
+    data: |
+      57

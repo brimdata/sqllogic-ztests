@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q861.sql | sort > q861.out
+
+vector: true
+
+inputs:
+  - name: q861.sql
+    data: |
+      SELECT - COUNT ( * ) + MIN ( DISTINCT - ( col2 ) ) + - 47 FROM tab1 WHERE + CAST ( - col0 AS INTEGER ) IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q861.out
+    data: |
+      NULL

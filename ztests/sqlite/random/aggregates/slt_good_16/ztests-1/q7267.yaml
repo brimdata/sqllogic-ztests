@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q7267.sql | sort > q7267.out
+
+vector: true
+
+inputs:
+  - name: q7267.sql
+    data: |
+      SELECT ALL - SUM ( ALL col1 ) AS col2 FROM tab1 AS cor0 WHERE ( col1 * col2 ) BETWEEN - col1 * - col0 AND col1;
+  - name: tab1
+
+outputs:
+  - name: q7267.out
+    data: |
+      NULL

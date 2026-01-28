@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1311.sql | sort > q1311.out
+
+vector: true
+
+inputs:
+  - name: q1311.sql
+    data: |
+      SELECT DISTINCT COUNT ( * ) + MAX ( DISTINCT col2 ) FROM tab0 WHERE NULL <> NULL;
+  - name: tab0
+
+outputs:
+  - name: q1311.out
+    data: |
+      NULL

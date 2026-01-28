@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q3969.sql | sort > q3969.out
+
+vector: true
+
+inputs:
+  - name: q3969.sql
+    data: |
+      SELECT ALL + 74 * - COUNT ( * ) + MAX ( + col0 ) / COUNT ( * ) FROM tab1 WHERE NULL IN ( + col0 );
+  - name: tab1
+
+outputs:
+  - name: q3969.out
+    data: |
+      NULL

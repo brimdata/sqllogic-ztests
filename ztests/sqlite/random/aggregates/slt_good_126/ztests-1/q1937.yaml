@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1937.sql | sort > q1937.out
+
+vector: true
+
+inputs:
+  - name: q1937.sql
+    data: |
+      SELECT COUNT ( * ) AS col2 FROM tab0 WHERE NOT col0 + - col2 <> + 16 * - 30;
+  - name: tab0
+
+outputs:
+  - name: q1937.out
+    data: |
+      0

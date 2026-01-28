@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q12334.sql | sort > q12334.out
+
+vector: true
+
+inputs:
+  - name: q12334.sql
+    data: |
+      SELECT COUNT ( * ) AS col2 FROM tab1 WHERE NULL IS NOT NULL AND - 71 * col1 IN ( 71 );
+  - name: tab1
+
+outputs:
+  - name: q12334.out
+    data: |
+      0

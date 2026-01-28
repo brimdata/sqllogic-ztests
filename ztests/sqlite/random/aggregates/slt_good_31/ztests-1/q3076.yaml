@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q3076.sql | sort > q3076.out
+
+vector: true
+
+inputs:
+  - name: q3076.sql
+    data: |
+      SELECT - CAST ( NULL AS INTEGER ), - AVG ( ALL - col2 ) FROM tab1 WHERE + col1 IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q3076.out
+    data: |
+      NULL	NULL

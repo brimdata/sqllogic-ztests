@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9914.sql | sort > q9914.out
+
+vector: true
+
+inputs:
+  - name: q9914.sql
+    data: |
+      SELECT - COUNT ( * ) FROM tab2 AS cor0 WHERE NOT col0 BETWEEN + - col0 AND + col0;
+  - name: tab2
+
+outputs:
+  - name: q9914.out
+    data: |
+      0

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q10875.sql | sort > q10875.out
+
+vector: true
+
+inputs:
+  - name: q10875.sql
+    data: |
+      SELECT ALL MIN ( DISTINCT col2 ) FROM tab1 WHERE NOT 90 >= NULL;
+  - name: tab1
+
+outputs:
+  - name: q10875.out
+    data: |
+      NULL

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8111.sql | sort > q8111.out
+
+vector: true
+
+inputs:
+  - name: q8111.sql
+    data: |
+      SELECT + ( - COUNT ( * ) ) AS col2 FROM tab0 WHERE NOT + 26 * - col1 IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q8111.out
+    data: |
+      0

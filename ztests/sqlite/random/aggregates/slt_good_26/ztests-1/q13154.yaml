@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q13154.sql | sort > q13154.out
+
+vector: true
+
+inputs:
+  - name: q13154.sql
+    data: |
+      SELECT COUNT ( + - col0 ) + CAST ( - - 42 AS INTEGER ) FROM tab1 WHERE ( col0 ) IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q13154.out
+    data: |
+      42

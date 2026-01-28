@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q7359.sql | sort > q7359.out
+
+vector: true
+
+inputs:
+  - name: q7359.sql
+    data: |
+      SELECT ALL COUNT ( DISTINCT + col1 ) + 23 FROM tab1 cor0 WHERE NOT NULL IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q7359.out
+    data: |
+      23

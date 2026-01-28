@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q3400.sql | sort > q3400.out
+
+vector: true
+
+inputs:
+  - name: q3400.sql
+    data: |
+      SELECT DISTINCT 9 AS col2, COUNT ( * ) AS col2 FROM tab1 AS cor0 WHERE NOT ( NULL ) <= + col0 * + col0;
+  - name: tab1
+
+outputs:
+  - name: q3400.out
+    data: |
+      9	0

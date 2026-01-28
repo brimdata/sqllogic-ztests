@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8366.sql | sort > q8366.out
+
+vector: true
+
+inputs:
+  - name: q8366.sql
+    data: |
+      SELECT ALL 52 * MAX ( col2 ) FROM tab1 WHERE NOT ( NULL ) >= col1 + 16;
+  - name: tab1
+
+outputs:
+  - name: q8366.out
+    data: |
+      NULL

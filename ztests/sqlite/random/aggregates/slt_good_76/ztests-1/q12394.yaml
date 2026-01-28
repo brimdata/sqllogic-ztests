@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q12394.sql | sort > q12394.out
+
+vector: true
+
+inputs:
+  - name: q12394.sql
+    data: |
+      SELECT DISTINCT + MIN ( + col0 ) FROM tab2 AS cor0 WHERE NOT NULL BETWEEN col1 AND col1 - + col2;
+  - name: tab2
+
+outputs:
+  - name: q12394.out
+    data: |
+      NULL

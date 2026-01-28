@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q3038.sql | sort > q3038.out
+
+vector: true
+
+inputs:
+  - name: q3038.sql
+    data: |
+      SELECT COUNT ( + col2 ) AS col1 FROM tab2 AS cor0 WHERE NOT col1 * 72 NOT BETWEEN NULL AND ( - col1 );
+  - name: tab2
+
+outputs:
+  - name: q3038.out
+    data: |
+      0

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q696.sql | sort > q696.out
+
+vector: true
+
+inputs:
+  - name: q696.sql
+    data: |
+      SELECT DISTINCT CAST ( COUNT ( * ) AS INTEGER ) FROM tab0 WHERE + col2 NOT BETWEEN - 81 AND ( col2 );
+  - name: tab0
+
+outputs:
+  - name: q696.out
+    data: |
+      0

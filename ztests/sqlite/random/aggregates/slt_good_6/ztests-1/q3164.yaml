@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q3164.sql | sort > q3164.out
+
+vector: true
+
+inputs:
+  - name: q3164.sql
+    data: |
+      SELECT + COUNT ( * ) FROM tab0 WHERE NOT ( NULL BETWEEN NULL AND + 53 );
+  - name: tab0
+
+outputs:
+  - name: q3164.out
+    data: |
+      0

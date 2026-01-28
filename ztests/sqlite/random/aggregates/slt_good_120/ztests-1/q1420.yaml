@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1420.sql | sort > q1420.out
+
+vector: true
+
+inputs:
+  - name: q1420.sql
+    data: |
+      SELECT ALL MIN ( + + CAST ( NULL AS INTEGER ) ) AS col2 FROM tab2 WHERE ( 8 ) IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q1420.out
+    data: |
+      NULL

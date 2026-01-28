@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q10675.sql | sort > q10675.out
+
+vector: true
+
+inputs:
+  - name: q10675.sql
+    data: |
+      SELECT - COUNT ( * ) * 58 FROM tab2 AS cor0 WHERE col2 IN ( col1 * col1 );
+  - name: tab2
+
+outputs:
+  - name: q10675.out
+    data: |
+      0

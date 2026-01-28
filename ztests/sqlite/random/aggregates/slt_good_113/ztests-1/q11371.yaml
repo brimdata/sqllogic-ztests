@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q11371.sql | sort > q11371.out
+
+vector: true
+
+inputs:
+  - name: q11371.sql
+    data: |
+      SELECT SUM ( col1 ) FROM tab0 WHERE NOT NULL IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q11371.out
+    data: |
+      NULL

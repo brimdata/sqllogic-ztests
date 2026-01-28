@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8605.sql | sort > q8605.out
+
+vector: true
+
+inputs:
+  - name: q8605.sql
+    data: |
+      SELECT 96 - + COUNT ( * ) FROM tab1 WHERE NOT NULL IN ( + col0 );
+  - name: tab1
+
+outputs:
+  - name: q8605.out
+    data: |
+      96

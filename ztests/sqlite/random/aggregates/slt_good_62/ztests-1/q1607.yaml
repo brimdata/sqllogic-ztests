@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1607.sql | sort > q1607.out
+
+vector: true
+
+inputs:
+  - name: q1607.sql
+    data: |
+      SELECT - COUNT ( * ) * 39 + SUM ( 12 ) FROM tab1 WHERE NOT col2 NOT IN ( col1 );
+  - name: tab1
+
+outputs:
+  - name: q1607.out
+    data: |
+      NULL

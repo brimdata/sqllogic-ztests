@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9024.sql | sort > q9024.out
+
+vector: true
+
+inputs:
+  - name: q9024.sql
+    data: |
+      SELECT + COUNT ( * ) AS col2 FROM tab0 WHERE NOT NULL NOT BETWEEN + col1 AND - col0 * CAST ( NULL AS INTEGER );
+  - name: tab0
+
+outputs:
+  - name: q9024.out
+    data: |
+      0

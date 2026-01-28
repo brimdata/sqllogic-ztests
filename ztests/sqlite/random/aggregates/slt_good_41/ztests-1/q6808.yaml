@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q6808.sql | sort > q6808.out
+
+vector: true
+
+inputs:
+  - name: q6808.sql
+    data: |
+      SELECT DISTINCT - CAST ( - COUNT ( * ) AS INTEGER ) FROM tab1 AS cor0 WHERE NOT col0 NOT BETWEEN ( NULL ) AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q6808.out
+    data: |
+      0

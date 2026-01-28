@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4741.sql | sort > q4741.out
+
+vector: true
+
+inputs:
+  - name: q4741.sql
+    data: |
+      SELECT - CAST ( 42 AS INTEGER ) * COUNT ( * ) FROM tab1 WHERE ( col2 ) IN ( + 17 );
+  - name: tab1
+
+outputs:
+  - name: q4741.out
+    data: |
+      0

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q2772.sql | sort > q2772.out
+
+vector: true
+
+inputs:
+  - name: q2772.sql
+    data: |
+      SELECT - ( MIN ( - col0 ) ) FROM tab1 WHERE NOT ( NULL <> ( - 42 ) );
+  - name: tab1
+
+outputs:
+  - name: q2772.out
+    data: |
+      NULL

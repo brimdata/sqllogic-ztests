@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q13130.sql | sort > q13130.out
+
+vector: true
+
+inputs:
+  - name: q13130.sql
+    data: |
+      SELECT ALL - AVG ( col1 ) - + COUNT ( * ) * - 7 AS col1 FROM tab2 WHERE NOT + col1 IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q13130.out
+    data: |
+      NULL

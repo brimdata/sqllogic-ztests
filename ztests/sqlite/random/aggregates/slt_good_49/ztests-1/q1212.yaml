@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1212.sql | sort > q1212.out
+
+vector: true
+
+inputs:
+  - name: q1212.sql
+    data: |
+      SELECT DISTINCT + - SUM ( + + col0 ) FROM tab1 WHERE NOT ( NOT 21 <= NULL );
+  - name: tab1
+
+outputs:
+  - name: q1212.out
+    data: |
+      NULL

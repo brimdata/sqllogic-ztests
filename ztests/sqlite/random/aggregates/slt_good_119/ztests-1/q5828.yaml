@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q5828.sql | sort > q5828.out
+
+vector: true
+
+inputs:
+  - name: q5828.sql
+    data: |
+      SELECT - MAX ( col1 ) * 69 AS col0 FROM tab1 WHERE NULL IN ( col1 );
+  - name: tab1
+
+outputs:
+  - name: q5828.out
+    data: |
+      NULL

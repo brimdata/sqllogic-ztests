@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q13068.sql | sort > q13068.out
+
+vector: true
+
+inputs:
+  - name: q13068.sql
+    data: |
+      SELECT SUM ( col0 ) FROM tab2 AS cor0 WHERE NOT ( 12 * - col1 ) NOT IN ( col2 / col0 );
+  - name: tab2
+
+outputs:
+  - name: q13068.out
+    data: |
+      NULL

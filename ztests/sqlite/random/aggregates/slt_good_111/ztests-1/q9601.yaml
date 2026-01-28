@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9601.sql | sort > q9601.out
+
+vector: true
+
+inputs:
+  - name: q9601.sql
+    data: |
+      SELECT SUM ( ALL + 87 ) / MAX ( ALL - 46 ) FROM tab1 WHERE NOT - col0 = NULL;
+  - name: tab1
+
+outputs:
+  - name: q9601.out
+    data: |
+      NULL

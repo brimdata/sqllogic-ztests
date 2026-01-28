@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q2221.sql | sort > q2221.out
+
+vector: true
+
+inputs:
+  - name: q2221.sql
+    data: |
+      SELECT ALL MIN ( + 50 ) AS col0 FROM tab2 WHERE col0 + + 25 NOT BETWEEN - col2 AND + col2 * 65;
+  - name: tab2
+
+outputs:
+  - name: q2221.out
+    data: |
+      NULL

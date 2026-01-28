@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q7404.sql | sort > q7404.out
+
+vector: true
+
+inputs:
+  - name: q7404.sql
+    data: |
+      SELECT ALL COUNT ( * ) AS col1 FROM tab2 WHERE - col0 * + col0 * 5 > col2;
+  - name: tab2
+
+outputs:
+  - name: q7404.out
+    data: |
+      0

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9950.sql | sort > q9950.out
+
+vector: true
+
+inputs:
+  - name: q9950.sql
+    data: |
+      SELECT ALL - 6 * - MAX ( ALL + 35 ) AS col0 FROM tab2 WHERE NOT NULL IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q9950.out
+    data: |
+      NULL

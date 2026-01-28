@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4113.sql | sort > q4113.out
+
+vector: true
+
+inputs:
+  - name: q4113.sql
+    data: |
+      SELECT ALL - COUNT ( * ) AS col2 FROM tab2 AS cor0 WHERE - col2 * col1 / col2 < NULL;
+  - name: tab2
+
+outputs:
+  - name: q4113.out
+    data: |
+      0

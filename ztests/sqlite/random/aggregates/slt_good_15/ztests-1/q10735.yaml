@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q10735.sql | sort > q10735.out
+
+vector: true
+
+inputs:
+  - name: q10735.sql
+    data: |
+      SELECT COUNT ( * ) + 13 FROM tab1 AS cor0 WHERE ( - col1 * col2 ) IN ( col0 );
+  - name: tab1
+
+outputs:
+  - name: q10735.out
+    data: |
+      13

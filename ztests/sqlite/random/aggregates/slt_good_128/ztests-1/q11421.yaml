@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q11421.sql | sort > q11421.out
+
+vector: true
+
+inputs:
+  - name: q11421.sql
+    data: |
+      SELECT ALL SUM ( col2 ) FROM tab1 WHERE 3 < + - col2 + - - col2;
+  - name: tab1
+
+outputs:
+  - name: q11421.out
+    data: |
+      NULL

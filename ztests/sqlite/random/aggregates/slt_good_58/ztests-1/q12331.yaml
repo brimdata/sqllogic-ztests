@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q12331.sql | sort > q12331.out
+
+vector: true
+
+inputs:
+  - name: q12331.sql
+    data: |
+      SELECT SUM ( - 80 ) AS col2 FROM tab2 AS cor0 WHERE - col1 BETWEEN NULL AND col2;
+  - name: tab2
+
+outputs:
+  - name: q12331.out
+    data: |
+      NULL

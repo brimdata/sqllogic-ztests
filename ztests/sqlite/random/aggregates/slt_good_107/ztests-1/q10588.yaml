@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q10588.sql | sort > q10588.out
+
+vector: true
+
+inputs:
+  - name: q10588.sql
+    data: |
+      SELECT + COUNT ( * ) FROM tab2 WHERE - col0 NOT BETWEEN - 92 AND + col2;
+  - name: tab2
+
+outputs:
+  - name: q10588.out
+    data: |
+      0

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q2210.sql | sort > q2210.out
+
+vector: true
+
+inputs:
+  - name: q2210.sql
+    data: |
+      SELECT ALL MIN ( col2 ) FROM tab1 WHERE NOT ( - col1 + - 21 NOT BETWEEN NULL AND NULL );
+  - name: tab1
+
+outputs:
+  - name: q2210.out
+    data: |
+      NULL

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q11235.sql | sort > q11235.out
+
+vector: true
+
+inputs:
+  - name: q11235.sql
+    data: |
+      SELECT DISTINCT 17 * - 17 + COUNT ( * ) FROM tab2 WHERE ( NULL ) IN ( + col2 * col2 );
+  - name: tab2
+
+outputs:
+  - name: q11235.out
+    data: |
+      -289

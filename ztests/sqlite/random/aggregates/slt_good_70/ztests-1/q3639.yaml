@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q3639.sql | sort > q3639.out
+
+vector: true
+
+inputs:
+  - name: q3639.sql
+    data: |
+      SELECT - SUM ( ALL CAST ( NULL AS INTEGER ) ) * + COUNT ( * ) FROM tab2 WHERE NOT NULL NOT BETWEEN NULL AND col0;
+  - name: tab2
+
+outputs:
+  - name: q3639.out
+    data: |
+      NULL

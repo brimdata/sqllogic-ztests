@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q2689.sql | sort > q2689.out
+
+vector: true
+
+inputs:
+  - name: q2689.sql
+    data: |
+      SELECT ALL + 88 + COUNT ( * ) FROM tab1 AS cor0 WHERE ( NULL ) NOT BETWEEN col1 AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q2689.out
+    data: |
+      88

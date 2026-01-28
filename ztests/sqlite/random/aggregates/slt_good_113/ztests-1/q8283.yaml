@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8283.sql | sort > q8283.out
+
+vector: true
+
+inputs:
+  - name: q8283.sql
+    data: |
+      SELECT ALL AVG ( DISTINCT col2 ) + 4 * SUM ( DISTINCT CAST ( col1 AS INTEGER ) ) AS col2 FROM tab1 AS cor0 WHERE NOT ( NULL ) IN ( + col2 );
+  - name: tab1
+
+outputs:
+  - name: q8283.out
+    data: |
+      NULL

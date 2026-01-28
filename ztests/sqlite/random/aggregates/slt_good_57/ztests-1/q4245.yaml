@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4245.sql | sort > q4245.out
+
+vector: true
+
+inputs:
+  - name: q4245.sql
+    data: |
+      SELECT ALL AVG ( DISTINCT - col0 ) FROM tab2 AS cor0 WHERE ( col2 = + + 50 );
+  - name: tab2
+
+outputs:
+  - name: q4245.out
+    data: |
+      NULL

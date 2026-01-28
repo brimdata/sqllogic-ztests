@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q13562.sql | sort > q13562.out
+
+vector: true
+
+inputs:
+  - name: q13562.sql
+    data: |
+      SELECT ALL SUM ( DISTINCT - 20 ) + 35 AS col0 FROM tab2 WHERE NOT col2 IN ( col2 );
+  - name: tab2
+
+outputs:
+  - name: q13562.out
+    data: |
+      NULL

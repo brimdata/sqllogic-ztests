@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q909.sql | sort > q909.out
+
+vector: true
+
+inputs:
+  - name: q909.sql
+    data: |
+      SELECT + MAX ( ALL + 52 ) FROM tab0 WHERE NOT col2 + CAST ( NULL AS INTEGER ) IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q909.out
+    data: |
+      NULL

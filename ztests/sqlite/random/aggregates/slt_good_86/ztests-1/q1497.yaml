@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1497.sql | sort > q1497.out
+
+vector: true
+
+inputs:
+  - name: q1497.sql
+    data: |
+      SELECT - AVG ( DISTINCT col2 ) AS col0 FROM tab2 WHERE NOT ( NULL ) <> ( 86 );
+  - name: tab2
+
+outputs:
+  - name: q1497.out
+    data: |
+      NULL

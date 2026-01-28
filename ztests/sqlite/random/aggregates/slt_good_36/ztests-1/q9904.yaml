@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9904.sql | sort > q9904.out
+
+vector: true
+
+inputs:
+  - name: q9904.sql
+    data: |
+      SELECT COUNT ( * ) FROM tab2 WHERE 50 <= - col1;
+  - name: tab2
+
+outputs:
+  - name: q9904.out
+    data: |
+      0

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8609.sql | sort > q8609.out
+
+vector: true
+
+inputs:
+  - name: q8609.sql
+    data: |
+      SELECT - AVG ( ALL col0 ) * COUNT ( * ) AS col2 FROM tab2 WHERE - col1 < ( NULL );
+  - name: tab2
+
+outputs:
+  - name: q8609.out
+    data: |
+      NULL

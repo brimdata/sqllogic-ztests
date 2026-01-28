@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9878.sql | sort > q9878.out
+
+vector: true
+
+inputs:
+  - name: q9878.sql
+    data: |
+      SELECT + 40 + - SUM ( ALL - col2 ) FROM tab1 AS cor0 WHERE NULL NOT BETWEEN + 63 AND ( col0 );
+  - name: tab1
+
+outputs:
+  - name: q9878.out
+    data: |
+      NULL

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8911.sql | sort > q8911.out
+
+vector: true
+
+inputs:
+  - name: q8911.sql
+    data: |
+      SELECT MAX ( DISTINCT - 85 ) + CAST ( COUNT ( * ) AS REAL ) AS col1 FROM tab0 WHERE NOT col2 * 40 + - CAST ( NULL AS INTEGER ) IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q8911.out
+    data: |
+      NULL

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1903.sql | sort > q1903.out
+
+vector: true
+
+inputs:
+  - name: q1903.sql
+    data: |
+      SELECT - MAX ( col2 ) * + 2 FROM tab1 WHERE NOT + + col1 IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q1903.out
+    data: |
+      NULL

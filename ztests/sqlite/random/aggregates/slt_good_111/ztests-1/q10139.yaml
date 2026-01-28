@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q10139.sql | sort > q10139.out
+
+vector: true
+
+inputs:
+  - name: q10139.sql
+    data: |
+      SELECT ALL + MIN ( ALL 15 ) FROM tab1 cor0 WHERE NULL NOT IN ( + col2 + - 13 );
+  - name: tab1
+
+outputs:
+  - name: q10139.out
+    data: |
+      NULL

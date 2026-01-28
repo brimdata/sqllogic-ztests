@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q2489.sql | sort > q2489.out
+
+vector: true
+
+inputs:
+  - name: q2489.sql
+    data: |
+      SELECT ALL + - MIN ( + col1 ) AS col0 FROM tab1 WHERE ( + 35 ) <= ( NULL );
+  - name: tab1
+
+outputs:
+  - name: q2489.out
+    data: |
+      NULL

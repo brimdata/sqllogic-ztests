@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q13431.sql | sort > q13431.out
+
+vector: true
+
+inputs:
+  - name: q13431.sql
+    data: |
+      SELECT ALL + COUNT ( * ) FROM tab0 WHERE ( ( - col0 * + col2 + - col0 BETWEEN ( - col2 ) AND col2 ) );
+  - name: tab0
+
+outputs:
+  - name: q13431.out
+    data: |
+      0

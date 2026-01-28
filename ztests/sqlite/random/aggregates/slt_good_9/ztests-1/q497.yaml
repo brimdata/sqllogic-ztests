@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q497.sql | sort > q497.out
+
+vector: true
+
+inputs:
+  - name: q497.sql
+    data: |
+      SELECT DISTINCT - + SUM ( DISTINCT - col0 ) + 51 + - + CAST ( NULL AS INTEGER ) FROM tab2 AS cor0 WHERE NOT + col0 IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q497.out
+    data: |
+      NULL

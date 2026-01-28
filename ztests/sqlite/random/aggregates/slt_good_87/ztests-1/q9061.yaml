@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9061.sql | sort > q9061.out
+
+vector: true
+
+inputs:
+  - name: q9061.sql
+    data: |
+      SELECT ALL MIN ( + col2 ) FROM tab1 AS cor0 WHERE NULL NOT IN ( + col0 + - col0 * 5 );
+  - name: tab1
+
+outputs:
+  - name: q9061.out
+    data: |
+      NULL

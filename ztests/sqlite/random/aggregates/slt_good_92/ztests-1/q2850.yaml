@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q2850.sql | sort > q2850.out
+
+vector: true
+
+inputs:
+  - name: q2850.sql
+    data: |
+      SELECT COUNT ( * ) * - AVG ( ALL 98 ) AS col1 FROM tab2 WHERE NOT NULL IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q2850.out
+    data: |
+      NULL

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4558.sql | sort > q4558.out
+
+vector: true
+
+inputs:
+  - name: q4558.sql
+    data: |
+      SELECT MIN ( ALL 15 ) FROM tab0 AS cor0 WHERE NOT NULL NOT IN ( - CAST ( NULL AS INTEGER ) );
+  - name: tab0
+
+outputs:
+  - name: q4558.out
+    data: |
+      NULL

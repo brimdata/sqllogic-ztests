@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8034.sql | sort > q8034.out
+
+vector: true
+
+inputs:
+  - name: q8034.sql
+    data: |
+      SELECT + MAX ( ALL col1 ) FROM tab1 AS cor0 WHERE NOT ( NULL ) NOT IN ( col1, + 71, col1, - 45 * - 44 + - col2 );
+  - name: tab1
+
+outputs:
+  - name: q8034.out
+    data: |
+      NULL

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q5037.sql | sort > q5037.out
+
+vector: true
+
+inputs:
+  - name: q5037.sql
+    data: |
+      SELECT ALL + ( + SUM ( col1 ) ) * 61 AS col1 FROM tab0 WHERE ( NULL ) BETWEEN ( - col1 ) AND col1;
+  - name: tab0
+
+outputs:
+  - name: q5037.out
+    data: |
+      NULL

@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q1862.sql | sort > q1862.out
+
+vector: true
+
+inputs:
+  - name: q1862.sql
+    data: |
+      SELECT DISTINCT COUNT ( * ) AS col1 FROM tab1 cor0 CROSS JOIN tab2 AS cor1 WHERE NOT NULL IS NULL;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q1862.out
+    data: |
+      0

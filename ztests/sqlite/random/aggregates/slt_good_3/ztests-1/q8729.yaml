@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8729.sql | sort > q8729.out
+
+vector: true
+
+inputs:
+  - name: q8729.sql
+    data: |
+      SELECT DISTINCT CAST ( MIN ( + col0 ) AS REAL ) FROM tab2 AS cor0 WHERE ( 3 * - CAST ( col1 AS INTEGER ) ) BETWEEN + col1 AND col0;
+  - name: tab2
+
+outputs:
+  - name: q8729.out
+    data: |
+      NULL

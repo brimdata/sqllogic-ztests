@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q12585.sql | sort > q12585.out
+
+vector: true
+
+inputs:
+  - name: q12585.sql
+    data: |
+      SELECT - + CAST ( SUM ( DISTINCT - - col2 ) AS INTEGER ) AS col1 FROM tab0 WHERE + col2 IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q12585.out
+    data: |
+      NULL

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q7739.sql | sort > q7739.out
+
+vector: true
+
+inputs:
+  - name: q7739.sql
+    data: |
+      SELECT DISTINCT COUNT ( * ) / MIN ( + col0 ) FROM tab0 WHERE - col0 = NULL;
+  - name: tab0
+
+outputs:
+  - name: q7739.out
+    data: |
+      NULL

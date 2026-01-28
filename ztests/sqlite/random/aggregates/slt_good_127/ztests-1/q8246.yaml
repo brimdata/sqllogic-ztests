@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8246.sql | sort > q8246.out
+
+vector: true
+
+inputs:
+  - name: q8246.sql
+    data: |
+      SELECT ALL + MAX ( DISTINCT col2 ) FROM tab2 AS cor0 WHERE + col0 IN ( + col1 );
+  - name: tab2
+
+outputs:
+  - name: q8246.out
+    data: |
+      NULL

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q420.sql | sort > q420.out
+
+vector: true
+
+inputs:
+  - name: q420.sql
+    data: |
+      SELECT MIN ( DISTINCT + - 48 ) - CAST ( NULL AS INTEGER ) AS col2 FROM tab1 WHERE NOT NULL IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q420.out
+    data: |
+      NULL

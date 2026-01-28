@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q12583.sql | sort > q12583.out
+
+vector: true
+
+inputs:
+  - name: q12583.sql
+    data: |
+      SELECT - + MIN ( DISTINCT ( - col1 ) ) FROM tab0 WHERE NOT ( ( NULL ) NOT BETWEEN + ( - + col1 ) AND NULL );
+  - name: tab0
+
+outputs:
+  - name: q12583.out
+    data: |
+      NULL

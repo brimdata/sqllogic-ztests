@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q5090.sql | sort > q5090.out
+
+vector: true
+
+inputs:
+  - name: q5090.sql
+    data: |
+      SELECT - ( COUNT ( * ) ) + - 85 FROM tab0 WHERE NULL IN ( + col0 );
+  - name: tab0
+
+outputs:
+  - name: q5090.out
+    data: |
+      -85

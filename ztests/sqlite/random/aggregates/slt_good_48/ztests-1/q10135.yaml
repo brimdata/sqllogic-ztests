@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q10135.sql | sort > q10135.out
+
+vector: true
+
+inputs:
+  - name: q10135.sql
+    data: |
+      SELECT ALL + CAST ( COUNT ( * ) AS INTEGER ) FROM tab0 AS cor0 CROSS JOIN tab0 AS cor1 WHERE NOT ( 3 ) NOT IN ( 21 );
+  - name: tab0
+
+outputs:
+  - name: q10135.out
+    data: |
+      0

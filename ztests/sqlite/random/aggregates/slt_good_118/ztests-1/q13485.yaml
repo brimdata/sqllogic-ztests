@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q13485.sql | sort > q13485.out
+
+vector: true
+
+inputs:
+  - name: q13485.sql
+    data: |
+      SELECT - 76 / - SUM ( ALL + col1 ) AS col1 FROM tab0 AS cor0 WHERE NOT NULL IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q13485.out
+    data: |
+      NULL

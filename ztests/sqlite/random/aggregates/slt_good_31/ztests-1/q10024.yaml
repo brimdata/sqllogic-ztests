@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q10024.sql | sort > q10024.out
+
+vector: true
+
+inputs:
+  - name: q10024.sql
+    data: |
+      SELECT + CAST ( - COUNT ( col1 ) AS INTEGER ) / - AVG ( + col0 ) AS col1 FROM tab0 AS cor0 WHERE NOT NULL NOT BETWEEN col1 AND ( 46 ) * + col1;
+  - name: tab0
+
+outputs:
+  - name: q10024.out
+    data: |
+      NULL

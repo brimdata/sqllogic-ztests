@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q7799.sql | sort > q7799.out
+
+vector: true
+
+inputs:
+  - name: q7799.sql
+    data: |
+      SELECT - CAST ( COUNT ( DISTINCT col2 ) AS INTEGER ) FROM tab1 WHERE NOT NULL NOT BETWEEN NULL AND 52;
+  - name: tab1
+
+outputs:
+  - name: q7799.out
+    data: |
+      0

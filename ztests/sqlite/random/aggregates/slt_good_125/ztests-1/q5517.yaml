@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q5517.sql | sort > q5517.out
+
+vector: true
+
+inputs:
+  - name: q5517.sql
+    data: |
+      SELECT - MIN ( + col1 ) AS col2 FROM tab2 WHERE col0 = CAST ( - + col2 AS INTEGER ) * + col2;
+  - name: tab2
+
+outputs:
+  - name: q5517.out
+    data: |
+      NULL

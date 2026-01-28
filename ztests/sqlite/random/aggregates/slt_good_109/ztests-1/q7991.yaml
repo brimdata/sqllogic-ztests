@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q7991.sql | sort > q7991.out
+
+vector: true
+
+inputs:
+  - name: q7991.sql
+    data: |
+      SELECT ALL SUM ( col1 ) * 11 AS col0 FROM tab0 WHERE col0 IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q7991.out
+    data: |
+      NULL

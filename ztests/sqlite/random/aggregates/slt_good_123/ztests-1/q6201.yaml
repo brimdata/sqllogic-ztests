@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q6201.sql | sort > q6201.out
+
+vector: true
+
+inputs:
+  - name: q6201.sql
+    data: |
+      SELECT COUNT ( * ) * 60 + 62 FROM tab1 WHERE - + 10 BETWEEN ( + col2 * + col1 + col2 ) AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q6201.out
+    data: |
+      62

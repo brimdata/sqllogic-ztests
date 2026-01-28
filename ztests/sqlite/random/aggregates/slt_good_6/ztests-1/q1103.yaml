@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1103.sql | sort > q1103.out
+
+vector: true
+
+inputs:
+  - name: q1103.sql
+    data: |
+      SELECT ALL + COUNT ( * ) + + 7 + + COUNT ( ALL + - CAST ( NULL AS INTEGER ) ) AS col0 FROM tab0 AS cor0 WHERE NULL IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q1103.out
+    data: |
+      7

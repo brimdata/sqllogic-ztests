@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q977.sql | sort > q977.out
+
+vector: true
+
+inputs:
+  - name: q977.sql
+    data: |
+      SELECT - COUNT ( * ) FROM tab1 WHERE 35 + 56 IN ( col0 * - col0 );
+  - name: tab1
+
+outputs:
+  - name: q977.out
+    data: |
+      0

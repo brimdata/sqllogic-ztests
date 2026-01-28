@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q2298.sql | sort > q2298.out
+
+vector: true
+
+inputs:
+  - name: q2298.sql
+    data: |
+      SELECT ALL - COUNT ( * ) FROM tab1 WHERE ( + col1 * 26 + col2 ) BETWEEN NULL AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q2298.out
+    data: |
+      0

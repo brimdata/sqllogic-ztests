@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q3273.sql | sort > q3273.out
+
+vector: true
+
+inputs:
+  - name: q3273.sql
+    data: |
+      SELECT - COUNT ( ALL - 5 ) FROM tab1 WHERE NOT CAST ( NULL AS REAL ) IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q3273.out
+    data: |
+      0

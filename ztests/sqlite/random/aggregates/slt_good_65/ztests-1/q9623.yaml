@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9623.sql | sort > q9623.out
+
+vector: true
+
+inputs:
+  - name: q9623.sql
+    data: |
+      SELECT - COUNT ( * ) AS col1 FROM tab0 WHERE - col2 IN ( col2 );
+  - name: tab0
+
+outputs:
+  - name: q9623.out
+    data: |
+      0

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q6441.sql | sort > q6441.out
+
+vector: true
+
+inputs:
+  - name: q6441.sql
+    data: |
+      SELECT - COUNT ( * ) * 34 * + 64 FROM tab2 WHERE NOT NULL BETWEEN - col1 AND ( col1 - + + col2 );
+  - name: tab2
+
+outputs:
+  - name: q6441.out
+    data: |
+      0

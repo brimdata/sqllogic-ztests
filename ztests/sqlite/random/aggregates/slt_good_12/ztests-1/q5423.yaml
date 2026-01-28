@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q5423.sql | sort > q5423.out
+
+vector: true
+
+inputs:
+  - name: q5423.sql
+    data: |
+      SELECT COUNT ( * ) * - COUNT ( * ) AS col2 FROM tab2 AS cor0 WHERE NOT ( col2 ) >= 21;
+  - name: tab2
+
+outputs:
+  - name: q5423.out
+    data: |
+      0

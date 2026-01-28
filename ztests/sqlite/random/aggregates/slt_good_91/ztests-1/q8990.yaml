@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8990.sql | sort > q8990.out
+
+vector: true
+
+inputs:
+  - name: q8990.sql
+    data: |
+      SELECT COUNT ( * ) / - ( 25 ) FROM tab0 WHERE NOT NULL IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q8990.out
+    data: |
+      0

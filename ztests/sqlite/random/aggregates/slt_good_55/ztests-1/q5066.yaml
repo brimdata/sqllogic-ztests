@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q5066.sql | sort > q5066.out
+
+vector: true
+
+inputs:
+  - name: q5066.sql
+    data: |
+      SELECT ALL COUNT ( * ) * - 50 AS col1 FROM tab2 WHERE NOT NULL IN ( col0 * ( 89 * col0 ) );
+  - name: tab2
+
+outputs:
+  - name: q5066.out
+    data: |
+      0

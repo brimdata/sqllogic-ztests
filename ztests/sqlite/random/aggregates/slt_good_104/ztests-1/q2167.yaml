@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q2167.sql | sort > q2167.out
+
+vector: true
+
+inputs:
+  - name: q2167.sql
+    data: |
+      SELECT ALL 12 * COUNT ( * ) AS col2 FROM tab2 WHERE ( NULL ) NOT BETWEEN NULL AND + 49 * col2;
+  - name: tab2
+
+outputs:
+  - name: q2167.out
+    data: |
+      0

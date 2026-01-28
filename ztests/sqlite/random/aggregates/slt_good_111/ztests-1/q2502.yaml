@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q2502.sql | sort > q2502.out
+
+vector: true
+
+inputs:
+  - name: q2502.sql
+    data: |
+      SELECT DISTINCT - CAST ( NULL AS INTEGER ) + COUNT ( * ) AS col1 FROM tab2 WHERE NOT ( + col1 * col2 + col1 ) BETWEEN 1 AND ( NULL );
+  - name: tab2
+
+outputs:
+  - name: q2502.out
+    data: |
+      NULL

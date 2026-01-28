@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q634.sql | sort > q634.out
+
+vector: true
+
+inputs:
+  - name: q634.sql
+    data: |
+      SELECT - + MAX ( 2 ) * + COUNT ( DISTINCT - 48 ) AS col2 FROM tab2 WHERE NOT NULL IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q634.out
+    data: |
+      NULL

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q3074.sql | sort > q3074.out
+
+vector: true
+
+inputs:
+  - name: q3074.sql
+    data: |
+      SELECT ALL COUNT ( * ) FROM tab0 cor0 WHERE NOT ( ( - - col1 ) NOT BETWEEN 80 - CAST ( NULL AS INTEGER ) AND NULL );
+  - name: tab0
+
+outputs:
+  - name: q3074.out
+    data: |
+      0

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q7735.sql | sort > q7735.out
+
+vector: true
+
+inputs:
+  - name: q7735.sql
+    data: |
+      SELECT ALL SUM ( DISTINCT + ( + 31 ) ) FROM tab2 WHERE NULL <= - CAST ( col1 AS INTEGER ) * 28;
+  - name: tab2
+
+outputs:
+  - name: q7735.out
+    data: |
+      NULL

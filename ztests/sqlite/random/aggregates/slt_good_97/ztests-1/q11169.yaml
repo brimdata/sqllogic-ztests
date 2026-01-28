@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q11169.sql | sort > q11169.out
+
+vector: true
+
+inputs:
+  - name: q11169.sql
+    data: |
+      SELECT COUNT ( * ) AS col1 FROM tab2 WHERE NULL NOT BETWEEN - 36 AND NULL;
+  - name: tab2
+
+outputs:
+  - name: q11169.out
+    data: |
+      0

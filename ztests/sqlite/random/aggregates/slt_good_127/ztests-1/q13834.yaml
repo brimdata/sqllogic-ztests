@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q13834.sql | sort > q13834.out
+
+vector: true
+
+inputs:
+  - name: q13834.sql
+    data: |
+      SELECT ALL MAX ( col1 ) FROM tab0 WHERE NOT ( NULL ) NOT BETWEEN ( NULL ) AND + col1 * - col2 + col2;
+  - name: tab0
+
+outputs:
+  - name: q13834.out
+    data: |
+      NULL

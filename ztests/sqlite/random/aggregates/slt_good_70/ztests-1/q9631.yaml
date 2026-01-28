@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9631.sql | sort > q9631.out
+
+vector: true
+
+inputs:
+  - name: q9631.sql
+    data: |
+      SELECT DISTINCT + SUM ( ALL col1 ) FROM tab1 AS cor0 WHERE 1 + - col0 * - 5 IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q9631.out
+    data: |
+      NULL

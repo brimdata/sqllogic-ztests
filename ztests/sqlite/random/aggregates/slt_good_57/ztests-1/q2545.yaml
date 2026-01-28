@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q2545.sql | sort > q2545.out
+
+vector: true
+
+inputs:
+  - name: q2545.sql
+    data: |
+      SELECT DISTINCT + COUNT ( * ) * + 12 FROM tab1 WHERE NOT ( NULL ) BETWEEN ( + col0 * - col2 ) AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q2545.out
+    data: |
+      0

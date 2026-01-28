@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q13698.sql | sort > q13698.out
+
+vector: true
+
+inputs:
+  - name: q13698.sql
+    data: |
+      SELECT DISTINCT - COUNT ( + 68 ) FROM tab2 WHERE ( col1 ) NOT IN ( CAST ( col1 AS INTEGER ) );
+  - name: tab2
+
+outputs:
+  - name: q13698.out
+    data: |
+      0

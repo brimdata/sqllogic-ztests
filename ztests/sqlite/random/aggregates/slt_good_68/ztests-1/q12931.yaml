@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q12931.sql | sort > q12931.out
+
+vector: true
+
+inputs:
+  - name: q12931.sql
+    data: |
+      SELECT DISTINCT 9 AS col1, + COUNT ( * ) / ( - 41 ) * SUM ( ALL - + 3 ) FROM tab1 WHERE NULL IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q12931.out
+    data: |
+      9	NULL

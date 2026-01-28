@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q12661.sql | sort > q12661.out
+
+vector: true
+
+inputs:
+  - name: q12661.sql
+    data: |
+      SELECT ALL - SUM ( + - 15 ) FROM tab1 WHERE NOT NULL IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q12661.out
+    data: |
+      NULL

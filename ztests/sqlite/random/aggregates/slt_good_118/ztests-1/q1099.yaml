@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1099.sql | sort > q1099.out
+
+vector: true
+
+inputs:
+  - name: q1099.sql
+    data: |
+      SELECT MAX ( ALL + col1 ) FROM tab1 AS cor0 WHERE NOT NULL NOT BETWEEN + 40 AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q1099.out
+    data: |
+      NULL

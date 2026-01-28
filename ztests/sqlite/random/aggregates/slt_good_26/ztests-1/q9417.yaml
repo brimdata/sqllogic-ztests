@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9417.sql | sort > q9417.out
+
+vector: true
+
+inputs:
+  - name: q9417.sql
+    data: |
+      SELECT - COUNT ( * ) FROM tab1 WHERE NULL BETWEEN ( + col0 - 47 ) AND ( ( col2 ) );
+  - name: tab1
+
+outputs:
+  - name: q9417.out
+    data: |
+      0

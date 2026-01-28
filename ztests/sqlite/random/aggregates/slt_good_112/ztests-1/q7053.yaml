@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q7053.sql | sort > q7053.out
+
+vector: true
+
+inputs:
+  - name: q7053.sql
+    data: |
+      SELECT SUM ( ALL CAST ( col0 AS INTEGER ) ) FROM tab2 WHERE NOT ( NULL ) NOT IN ( 45 );
+  - name: tab2
+
+outputs:
+  - name: q7053.out
+    data: |
+      NULL

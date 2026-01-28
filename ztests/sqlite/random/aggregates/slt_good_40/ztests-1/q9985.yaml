@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9985.sql | sort > q9985.out
+
+vector: true
+
+inputs:
+  - name: q9985.sql
+    data: |
+      SELECT ALL MIN ( col0 ) AS col2 FROM tab1 WHERE NOT 1 * - col2 <= + 59;
+  - name: tab1
+
+outputs:
+  - name: q9985.out
+    data: |
+      NULL

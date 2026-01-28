@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q7443.sql | sort > q7443.out
+
+vector: true
+
+inputs:
+  - name: q7443.sql
+    data: |
+      SELECT MAX ( DISTINCT col1 ) FROM tab1 AS cor0 WHERE col1 < ( - col1 );
+  - name: tab1
+
+outputs:
+  - name: q7443.out
+    data: |
+      NULL

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q13834.sql | sort > q13834.out
+
+vector: true
+
+inputs:
+  - name: q13834.sql
+    data: |
+      SELECT DISTINCT ( COUNT ( DISTINCT 66 ) ) AS col2 FROM tab2 WHERE - - col1 < - 75 * col1 + 19;
+  - name: tab2
+
+outputs:
+  - name: q13834.out
+    data: |
+      0

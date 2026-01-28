@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q3001.sql | sort > q3001.out
+
+vector: true
+
+inputs:
+  - name: q3001.sql
+    data: |
+      SELECT 4 + + 44 - + + MIN ( + col0 ) AS col1 FROM tab0 WHERE NULL IN ( col1, col2, - col1 );
+  - name: tab0
+
+outputs:
+  - name: q3001.out
+    data: |
+      NULL

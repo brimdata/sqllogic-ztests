@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q3804.sql | sort > q3804.out
+
+vector: true
+
+inputs:
+  - name: q3804.sql
+    data: |
+      SELECT + COUNT ( * ) / 19 FROM tab0 WHERE NOT NULL NOT BETWEEN 32 * + + col2 AND NULL;
+  - name: tab0
+
+outputs:
+  - name: q3804.out
+    data: |
+      0

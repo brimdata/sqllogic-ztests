@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q11068.sql | sort > q11068.out
+
+vector: true
+
+inputs:
+  - name: q11068.sql
+    data: |
+      SELECT ALL - + AVG ( + col1 ) AS col1 FROM tab0 WHERE NOT + col2 IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q11068.out
+    data: |
+      NULL

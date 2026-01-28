@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9197.sql | sort > q9197.out
+
+vector: true
+
+inputs:
+  - name: q9197.sql
+    data: |
+      SELECT ALL MAX ( col0 ) FROM tab1 WHERE NOT ( col2 * - 7 + - col0 ) NOT BETWEEN NULL AND - 46;
+  - name: tab1
+
+outputs:
+  - name: q9197.out
+    data: |
+      NULL

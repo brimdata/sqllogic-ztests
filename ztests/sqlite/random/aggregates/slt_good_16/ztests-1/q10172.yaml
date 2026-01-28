@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q10172.sql | sort > q10172.out
+
+vector: true
+
+inputs:
+  - name: q10172.sql
+    data: |
+      SELECT + MAX ( ALL col2 ) - + - MIN ( - + col2 ) AS col2 FROM tab0 AS cor0 WHERE col0 IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q10172.out
+    data: |
+      NULL

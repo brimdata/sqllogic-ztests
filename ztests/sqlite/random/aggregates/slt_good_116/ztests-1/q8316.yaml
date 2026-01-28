@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8316.sql | sort > q8316.out
+
+vector: true
+
+inputs:
+  - name: q8316.sql
+    data: |
+      SELECT MIN ( + CAST ( - col0 AS INTEGER ) ) * MAX ( col1 ) FROM tab1 WHERE - ( col0 ) / + col0 = NULL;
+  - name: tab1
+
+outputs:
+  - name: q8316.out
+    data: |
+      NULL

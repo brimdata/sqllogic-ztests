@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q11416.sql | sort > q11416.out
+
+vector: true
+
+inputs:
+  - name: q11416.sql
+    data: |
+      SELECT - CAST ( + 80 AS INTEGER ) AS col2, + COUNT ( * ) AS col1 FROM tab0 WHERE NOT ( NOT ( ( + col1 ) + - 0 ) IS NULL );
+  - name: tab0
+
+outputs:
+  - name: q11416.out
+    data: |
+      -80	0

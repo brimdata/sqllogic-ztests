@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q3329.sql | sort > q3329.out
+
+vector: true
+
+inputs:
+  - name: q3329.sql
+    data: |
+      SELECT COUNT ( * ) / + 21 FROM tab2 WHERE ( NULL ) NOT IN ( col2 );
+  - name: tab2
+
+outputs:
+  - name: q3329.out
+    data: |
+      0

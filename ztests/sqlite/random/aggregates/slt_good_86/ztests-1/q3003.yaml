@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q3003.sql | sort > q3003.out
+
+vector: true
+
+inputs:
+  - name: q3003.sql
+    data: |
+      SELECT ALL - COUNT ( * ) FROM tab1 WHERE NOT NULL <= - col1 * + 48;
+  - name: tab1
+
+outputs:
+  - name: q3003.out
+    data: |
+      0

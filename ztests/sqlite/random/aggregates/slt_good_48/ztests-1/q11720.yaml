@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q11720.sql | sort > q11720.out
+
+vector: true
+
+inputs:
+  - name: q11720.sql
+    data: |
+      SELECT DISTINCT + 22 AS col2, + MIN ( DISTINCT + - col2 ) AS col1 FROM tab0 AS cor0 WHERE NULL NOT IN ( col0, 57, + 67 );
+  - name: tab0
+
+outputs:
+  - name: q11720.out
+    data: |
+      22	NULL

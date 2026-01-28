@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q13004.sql | sort > q13004.out
+
+vector: true
+
+inputs:
+  - name: q13004.sql
+    data: |
+      SELECT DISTINCT COUNT ( * ) AS col2 FROM tab1 WHERE NOT NULL BETWEEN ( + col2 ) AND 78 / 91;
+  - name: tab1
+
+outputs:
+  - name: q13004.out
+    data: |
+      0

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q7160.sql | sort > q7160.out
+
+vector: true
+
+inputs:
+  - name: q7160.sql
+    data: |
+      SELECT COUNT ( * ) + - 90 FROM tab1 WHERE ( NOT NULL IS NULL );
+  - name: tab1
+
+outputs:
+  - name: q7160.out
+    data: |
+      -90

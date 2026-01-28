@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q6118.sql | sort > q6118.out
+
+vector: true
+
+inputs:
+  - name: q6118.sql
+    data: |
+      SELECT - COUNT ( * ) AS col0 FROM tab2 WHERE NULL IN ( + col0 + 42 / col2 );
+  - name: tab2
+
+outputs:
+  - name: q6118.out
+    data: |
+      0

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q12814.sql | sort > q12814.out
+
+vector: true
+
+inputs:
+  - name: q12814.sql
+    data: |
+      SELECT DISTINCT - ( + ( + COUNT ( ALL 60 ) ) ) - COUNT ( * ) FROM tab2 WHERE NULL NOT IN ( 15 );
+  - name: tab2
+
+outputs:
+  - name: q12814.out
+    data: |
+      0

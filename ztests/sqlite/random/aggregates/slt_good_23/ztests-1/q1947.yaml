@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1947.sql | sort > q1947.out
+
+vector: true
+
+inputs:
+  - name: q1947.sql
+    data: |
+      SELECT DISTINCT - COUNT ( - col2 ) * 60 FROM tab0 WHERE NULL NOT BETWEEN - + CAST ( col2 AS INTEGER ) AND col2;
+  - name: tab0
+
+outputs:
+  - name: q1947.out
+    data: |
+      0

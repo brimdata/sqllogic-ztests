@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q306.sql | sort > q306.out
+
+vector: true
+
+inputs:
+  - name: q306.sql
+    data: |
+      SELECT - MIN ( ALL col2 ) FROM tab2 WHERE NOT NULL <> + 57;
+  - name: tab2
+
+outputs:
+  - name: q306.out
+    data: |
+      NULL

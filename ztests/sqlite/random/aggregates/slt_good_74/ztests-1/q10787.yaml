@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q10787.sql | sort > q10787.out
+
+vector: true
+
+inputs:
+  - name: q10787.sql
+    data: |
+      SELECT COUNT ( * ) FROM tab0 AS cor0 WHERE NOT ( col1 * + 56 ) BETWEEN + CAST ( NULL AS INTEGER ) AND NULL;
+  - name: tab0
+
+outputs:
+  - name: q10787.out
+    data: |
+      0

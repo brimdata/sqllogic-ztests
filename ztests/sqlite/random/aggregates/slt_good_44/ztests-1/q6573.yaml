@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q6573.sql | sort > q6573.out
+
+vector: true
+
+inputs:
+  - name: q6573.sql
+    data: |
+      SELECT COUNT ( * ) * - COUNT ( * ) AS col0 FROM tab2 WHERE NOT NULL BETWEEN ( NULL ) AND NULL;
+  - name: tab2
+
+outputs:
+  - name: q6573.out
+    data: |
+      0

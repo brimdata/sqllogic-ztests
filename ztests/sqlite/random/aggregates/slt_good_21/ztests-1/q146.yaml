@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q146.sql | sort > q146.out
+
+vector: true
+
+inputs:
+  - name: q146.sql
+    data: |
+      SELECT + ( 80 ) * - SUM ( DISTINCT - col1 ) + SUM ( DISTINCT + col1 ) FROM tab0 WHERE ( ( col1 + + col2 ) IS NULL );
+  - name: tab0
+
+outputs:
+  - name: q146.out
+    data: |
+      NULL

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q11980.sql | sort > q11980.out
+
+vector: true
+
+inputs:
+  - name: q11980.sql
+    data: |
+      SELECT ALL + COUNT ( * ) * - COUNT ( * ) AS col0 FROM tab0 AS cor0 WHERE NULL NOT BETWEEN NULL AND ( + CAST ( col0 AS INTEGER ) );
+  - name: tab0
+
+outputs:
+  - name: q11980.out
+    data: |
+      0

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9882.sql | sort > q9882.out
+
+vector: true
+
+inputs:
+  - name: q9882.sql
+    data: |
+      SELECT DISTINCT - COUNT ( * ) * + COUNT ( * ) AS col2 FROM tab1 WHERE NOT NULL NOT BETWEEN - 50 AND col0;
+  - name: tab1
+
+outputs:
+  - name: q9882.out
+    data: |
+      0

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q6059.sql | sort > q6059.out
+
+vector: true
+
+inputs:
+  - name: q6059.sql
+    data: |
+      SELECT DISTINCT MAX ( ALL 57 ) AS col2 FROM tab2 WHERE NOT ( NULL >= NULL );
+  - name: tab2
+
+outputs:
+  - name: q6059.out
+    data: |
+      NULL

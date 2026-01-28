@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q11445.sql | sort > q11445.out
+
+vector: true
+
+inputs:
+  - name: q11445.sql
+    data: |
+      SELECT ALL - COUNT ( col0 ) + - - AVG ( DISTINCT col1 ) FROM tab2 WHERE NULL IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q11445.out
+    data: |
+      NULL

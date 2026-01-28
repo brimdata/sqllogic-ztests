@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8004.sql | sort > q8004.out
+
+vector: true
+
+inputs:
+  - name: q8004.sql
+    data: |
+      SELECT ALL - COUNT ( * ) FROM tab1 AS cor0 WHERE NULL NOT BETWEEN ( + col1 * + 33 ) AND col1;
+  - name: tab1
+
+outputs:
+  - name: q8004.out
+    data: |
+      0

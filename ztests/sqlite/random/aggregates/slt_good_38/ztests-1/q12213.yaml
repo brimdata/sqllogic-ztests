@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q12213.sql | sort > q12213.out
+
+vector: true
+
+inputs:
+  - name: q12213.sql
+    data: |
+      SELECT ALL + COUNT ( * ) FROM tab1 WHERE NOT - 33 / - col1 IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q12213.out
+    data: |
+      0

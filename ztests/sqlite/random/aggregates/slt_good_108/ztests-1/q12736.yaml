@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q12736.sql | sort > q12736.out
+
+vector: true
+
+inputs:
+  - name: q12736.sql
+    data: |
+      SELECT + + MIN ( DISTINCT - col1 ) AS col0 FROM tab0 WHERE col1 * 9 <= col0 + + ( + - col0 );
+  - name: tab0
+
+outputs:
+  - name: q12736.out
+    data: |
+      NULL

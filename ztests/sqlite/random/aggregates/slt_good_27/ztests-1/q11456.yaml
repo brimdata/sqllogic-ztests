@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q11456.sql | sort > q11456.out
+
+vector: true
+
+inputs:
+  - name: q11456.sql
+    data: |
+      SELECT DISTINCT SUM ( ALL - col2 ) AS col0 FROM tab2 AS cor0 WHERE col2 >= ( 66 );
+  - name: tab2
+
+outputs:
+  - name: q11456.out
+    data: |
+      NULL

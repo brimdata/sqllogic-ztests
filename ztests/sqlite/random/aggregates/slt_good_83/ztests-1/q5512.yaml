@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q5512.sql | sort > q5512.out
+
+vector: true
+
+inputs:
+  - name: q5512.sql
+    data: |
+      SELECT - COUNT ( * ) / + 4 FROM tab2 WHERE NOT ( NULL ) >= ( col1 + - 16 );
+  - name: tab2
+
+outputs:
+  - name: q5512.out
+    data: |
+      0

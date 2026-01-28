@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q3871.sql | sort > q3871.out
+
+vector: true
+
+inputs:
+  - name: q3871.sql
+    data: |
+      SELECT ALL - COUNT ( * ) - + SUM ( + - col0 ) AS col0 FROM tab2 WHERE NULL IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q3871.out
+    data: |
+      NULL

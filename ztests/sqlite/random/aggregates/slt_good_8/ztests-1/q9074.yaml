@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9074.sql | sort > q9074.out
+
+vector: true
+
+inputs:
+  - name: q9074.sql
+    data: |
+      SELECT - MIN ( - col2 ) FROM tab0 WHERE NOT ( NULL <= ( NULL ) );
+  - name: tab0
+
+outputs:
+  - name: q9074.out
+    data: |
+      NULL

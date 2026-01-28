@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q6717.sql | sort > q6717.out
+
+vector: true
+
+inputs:
+  - name: q6717.sql
+    data: |
+      SELECT ALL + COUNT ( * ) FROM tab0 WHERE NOT ( col2 * - col0 ) NOT BETWEEN ( col0 * + col1 ) AND - col1 * + 18;
+  - name: tab0
+
+outputs:
+  - name: q6717.out
+    data: |
+      0

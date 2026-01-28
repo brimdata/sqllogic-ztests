@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q2035.sql | sort > q2035.out
+
+vector: true
+
+inputs:
+  - name: q2035.sql
+    data: |
+      SELECT ALL - SUM ( ALL - 72 ) AS col1 FROM tab2 AS cor0 WHERE col0 / col1 IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q2035.out
+    data: |
+      NULL

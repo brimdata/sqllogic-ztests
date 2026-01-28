@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q10651.sql | sort > q10651.out
+
+vector: true
+
+inputs:
+  - name: q10651.sql
+    data: |
+      SELECT ALL - SUM ( ALL 11 ) / AVG ( ALL - 14 + col1 ) AS col0 FROM tab2 WHERE NULL NOT IN ( col2 );
+  - name: tab2
+
+outputs:
+  - name: q10651.out
+    data: |
+      NULL
