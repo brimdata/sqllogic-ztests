@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4025.sql | sort > q4025.out
+
+vector: true
+
+inputs:
+  - name: q4025.sql
+    data: |
+      SELECT - + COUNT ( * ) - + ( AVG ( DISTINCT - col1 ) ) AS col0 FROM tab0 WHERE NULL <> col1 + + + 5;
+  - name: tab0
+
+outputs:
+  - name: q4025.out
+    data: |
+      NULL

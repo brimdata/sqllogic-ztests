@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q12759.sql | sort > q12759.out
+
+vector: true
+
+inputs:
+  - name: q12759.sql
+    data: |
+      SELECT ALL COUNT ( DISTINCT CAST ( - CAST ( + col0 AS REAL ) AS INTEGER ) ) * 75 AS col1 FROM tab1 WHERE NOT CAST ( NULL AS INTEGER ) + - col2 < ( - col2 );
+  - name: tab1
+
+outputs:
+  - name: q12759.out
+    data: |
+      0

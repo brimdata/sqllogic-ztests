@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q9042.sql | sort > q9042.out
+
+vector: true
+
+inputs:
+  - name: q9042.sql
+    data: |
+      SELECT COUNT ( * ) AS col0 FROM tab1, tab0 AS cor0 WHERE NOT ( NULL ) IS NULL;
+  - name: tab0
+  - name: tab1
+
+outputs:
+  - name: q9042.out
+    data: |
+      0

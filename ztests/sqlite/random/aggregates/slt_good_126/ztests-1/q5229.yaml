@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q5229.sql | sort > q5229.out
+
+vector: true
+
+inputs:
+  - name: q5229.sql
+    data: |
+      SELECT DISTINCT + - 30 * + - MAX ( + - col2 ) AS col1 FROM tab1 WHERE NULL IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q5229.out
+    data: |
+      NULL

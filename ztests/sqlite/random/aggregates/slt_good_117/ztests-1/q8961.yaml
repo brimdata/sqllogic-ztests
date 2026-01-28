@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8961.sql | sort > q8961.out
+
+vector: true
+
+inputs:
+  - name: q8961.sql
+    data: |
+      SELECT COUNT ( * ) AS col1 FROM tab2 WHERE NOT NULL BETWEEN col1 AND - CAST ( NULL AS REAL ) * 23;
+  - name: tab2
+
+outputs:
+  - name: q8961.out
+    data: |
+      0

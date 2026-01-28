@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9594.sql | sort > q9594.out
+
+vector: true
+
+inputs:
+  - name: q9594.sql
+    data: |
+      SELECT DISTINCT MAX ( - 42 ) / CAST ( + MIN ( ALL col1 ) AS INTEGER ) AS col1 FROM tab1 WHERE NULL NOT BETWEEN + col1 * - col2 AND 50;
+  - name: tab1
+
+outputs:
+  - name: q9594.out
+    data: |
+      NULL

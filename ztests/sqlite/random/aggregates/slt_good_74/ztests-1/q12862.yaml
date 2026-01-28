@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q12862.sql | sort > q12862.out
+
+vector: true
+
+inputs:
+  - name: q12862.sql
+    data: |
+      SELECT AVG ( CAST ( NULL AS REAL ) ) AS col2 FROM tab1 WHERE ( + col1 * - + col1 + - col0 + col0 / + 3 ) IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q12862.out
+    data: |
+      NULL

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q10196.sql | sort > q10196.out
+
+vector: true
+
+inputs:
+  - name: q10196.sql
+    data: |
+      SELECT MAX ( 29 ) + COUNT ( * ) FROM tab0 WHERE NOT col2 IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q10196.out
+    data: |
+      NULL

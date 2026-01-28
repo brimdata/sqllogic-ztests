@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9643.sql | sort > q9643.out
+
+vector: true
+
+inputs:
+  - name: q9643.sql
+    data: |
+      SELECT DISTINCT MAX ( col0 ) * 44 AS col0 FROM tab1 AS cor0 WHERE NOT NULL NOT IN ( col1 + col0 );
+  - name: tab1
+
+outputs:
+  - name: q9643.out
+    data: |
+      NULL

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q12399.sql | sort > q12399.out
+
+vector: true
+
+inputs:
+  - name: q12399.sql
+    data: |
+      SELECT ALL + COUNT ( DISTINCT + col2 ) * 4 AS col2 FROM tab2 WHERE ( ( NULL ) = NULL );
+  - name: tab2
+
+outputs:
+  - name: q12399.out
+    data: |
+      0

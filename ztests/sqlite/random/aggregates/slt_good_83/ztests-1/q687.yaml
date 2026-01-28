@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q687.sql | sort > q687.out
+
+vector: true
+
+inputs:
+  - name: q687.sql
+    data: |
+      SELECT + COUNT ( * ) AS col2 FROM tab1 WHERE NOT col1 < NULL;
+  - name: tab1
+
+outputs:
+  - name: q687.out
+    data: |
+      0

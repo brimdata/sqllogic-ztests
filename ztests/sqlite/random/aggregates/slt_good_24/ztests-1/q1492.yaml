@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1492.sql | sort > q1492.out
+
+vector: true
+
+inputs:
+  - name: q1492.sql
+    data: |
+      SELECT ALL - - AVG ( ALL col1 ) FROM tab2 WHERE NOT NULL NOT BETWEEN + col1 - - - 33 AND NULL;
+  - name: tab2
+
+outputs:
+  - name: q1492.out
+    data: |
+      NULL

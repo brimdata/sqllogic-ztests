@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8608.sql | sort > q8608.out
+
+vector: true
+
+inputs:
+  - name: q8608.sql
+    data: |
+      SELECT DISTINCT - MIN ( ALL col0 ) FROM tab2 WHERE NOT col1 <> col2 / + 26;
+  - name: tab2
+
+outputs:
+  - name: q8608.out
+    data: |
+      NULL

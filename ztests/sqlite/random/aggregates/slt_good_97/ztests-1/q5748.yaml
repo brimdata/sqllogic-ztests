@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q5748.sql | sort > q5748.out
+
+vector: true
+
+inputs:
+  - name: q5748.sql
+    data: |
+      SELECT DISTINCT AVG ( col1 ) FROM tab1 AS cor0 WHERE ( col0 ) BETWEEN col1 * - CAST ( ( + 91 ) AS INTEGER ) + 15 AND - col0 + - ( 9 + col0 );
+  - name: tab1
+
+outputs:
+  - name: q5748.out
+    data: |
+      NULL

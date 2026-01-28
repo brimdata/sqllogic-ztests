@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q13940.sql | sort > q13940.out
+
+vector: true
+
+inputs:
+  - name: q13940.sql
+    data: |
+      SELECT + MAX ( col2 ) FROM tab2 AS cor0 WHERE col1 IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q13940.out
+    data: |
+      NULL

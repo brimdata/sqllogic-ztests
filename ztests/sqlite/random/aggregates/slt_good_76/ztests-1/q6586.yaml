@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q6586.sql | sort > q6586.out
+
+vector: true
+
+inputs:
+  - name: q6586.sql
+    data: |
+      SELECT ALL + COUNT ( * ) * + - 40 AS col1 FROM tab2 WHERE NOT NULL BETWEEN 96 AND NULL;
+  - name: tab2
+
+outputs:
+  - name: q6586.out
+    data: |
+      0

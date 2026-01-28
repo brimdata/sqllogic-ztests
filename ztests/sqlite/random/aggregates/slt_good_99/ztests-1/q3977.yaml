@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q3977.sql | sort > q3977.out
+
+vector: true
+
+inputs:
+  - name: q3977.sql
+    data: |
+      SELECT COUNT ( ALL - col1 ) / + AVG ( + col0 ) FROM tab0 WHERE ( NOT - col2 IS NOT NULL );
+  - name: tab0
+
+outputs:
+  - name: q3977.out
+    data: |
+      NULL

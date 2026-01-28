@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q5802.sql | sort > q5802.out
+
+vector: true
+
+inputs:
+  - name: q5802.sql
+    data: |
+      SELECT ALL + MAX ( 11 ) AS col2 FROM tab1 WHERE NOT ( NOT 99 IN ( - col2 ) );
+  - name: tab1
+
+outputs:
+  - name: q5802.out
+    data: |
+      NULL

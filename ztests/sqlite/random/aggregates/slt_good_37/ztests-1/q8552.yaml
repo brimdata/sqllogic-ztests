@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8552.sql | sort > q8552.out
+
+vector: true
+
+inputs:
+  - name: q8552.sql
+    data: |
+      SELECT DISTINCT COUNT ( * ) * ( CAST ( 61 AS INTEGER ) ) FROM tab1 AS cor0 WHERE NULL NOT IN ( col1 * + 3 );
+  - name: tab1
+
+outputs:
+  - name: q8552.out
+    data: |
+      0

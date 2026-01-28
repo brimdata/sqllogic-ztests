@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q842.sql | sort > q842.out
+
+vector: true
+
+inputs:
+  - name: q842.sql
+    data: |
+      SELECT + MAX ( ALL + 19 ) AS col1 FROM tab2 WHERE ( col0 ) IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q842.out
+    data: |
+      NULL

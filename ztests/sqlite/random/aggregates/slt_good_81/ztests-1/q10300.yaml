@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q10300.sql | sort > q10300.out
+
+vector: true
+
+inputs:
+  - name: q10300.sql
+    data: |
+      SELECT DISTINCT + COUNT ( - col1 ) AS col0 FROM tab0 WHERE NOT + 50 <> + - col0;
+  - name: tab0
+
+outputs:
+  - name: q10300.out
+    data: |
+      0

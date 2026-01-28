@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q5803.sql | sort > q5803.out
+
+vector: true
+
+inputs:
+  - name: q5803.sql
+    data: |
+      SELECT ALL - + COUNT ( * ) FROM tab2 WHERE NOT + col2 NOT BETWEEN + col2 + 36 AND 47;
+  - name: tab2
+
+outputs:
+  - name: q5803.out
+    data: |
+      0

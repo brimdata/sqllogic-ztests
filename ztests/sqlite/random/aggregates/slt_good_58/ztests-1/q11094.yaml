@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q11094.sql | sort > q11094.out
+
+vector: true
+
+inputs:
+  - name: q11094.sql
+    data: |
+      SELECT DISTINCT + CAST ( + CAST ( + COUNT ( * ) AS REAL ) AS INTEGER ) * 3 FROM tab1 WHERE NULL NOT BETWEEN ( NULL ) AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q11094.out
+    data: |
+      0

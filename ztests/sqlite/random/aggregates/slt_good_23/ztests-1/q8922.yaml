@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8922.sql | sort > q8922.out
+
+vector: true
+
+inputs:
+  - name: q8922.sql
+    data: |
+      SELECT DISTINCT + MAX ( ALL - col0 ) FROM tab2 WHERE ( + - col1 ) IN ( 15 );
+  - name: tab2
+
+outputs:
+  - name: q8922.out
+    data: |
+      NULL

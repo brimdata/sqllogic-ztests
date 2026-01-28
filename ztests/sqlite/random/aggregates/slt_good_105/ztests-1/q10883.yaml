@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q10883.sql | sort > q10883.out
+
+vector: true
+
+inputs:
+  - name: q10883.sql
+    data: |
+      SELECT DISTINCT + COUNT ( * ) AS col1 FROM tab0 WHERE CAST ( + col1 AS REAL ) * 42 NOT IN ( + + CAST ( NULL AS INTEGER ) );
+  - name: tab0
+
+outputs:
+  - name: q10883.out
+    data: |
+      0

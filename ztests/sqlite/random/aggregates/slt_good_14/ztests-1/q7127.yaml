@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q7127.sql | sort > q7127.out
+
+vector: true
+
+inputs:
+  - name: q7127.sql
+    data: |
+      SELECT DISTINCT + AVG ( ALL col1 ) / - 24 FROM tab0 WHERE ( NULL ) NOT BETWEEN NULL AND - col2;
+  - name: tab0
+
+outputs:
+  - name: q7127.out
+    data: |
+      NULL

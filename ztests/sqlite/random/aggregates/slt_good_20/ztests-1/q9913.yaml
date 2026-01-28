@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9913.sql | sort > q9913.out
+
+vector: true
+
+inputs:
+  - name: q9913.sql
+    data: |
+      SELECT + CAST ( NULL AS INTEGER ) + SUM ( ALL col2 ) AS col1 FROM tab1 WHERE NOT ( - 2 ) IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q9913.out
+    data: |
+      NULL

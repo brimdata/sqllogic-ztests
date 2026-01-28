@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4884.sql | sort > q4884.out
+
+vector: true
+
+inputs:
+  - name: q4884.sql
+    data: |
+      SELECT DISTINCT COUNT ( * ) AS col1 FROM tab1 WHERE NULL NOT BETWEEN - 98 AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q4884.out
+    data: |
+      0

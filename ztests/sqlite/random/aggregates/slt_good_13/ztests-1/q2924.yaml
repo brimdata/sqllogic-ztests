@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q2924.sql | sort > q2924.out
+
+vector: true
+
+inputs:
+  - name: q2924.sql
+    data: |
+      SELECT ALL SUM ( DISTINCT + ( - col1 ) ) AS col2 FROM tab2 AS cor0 WHERE NOT ( NULL ) IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q2924.out
+    data: |
+      NULL

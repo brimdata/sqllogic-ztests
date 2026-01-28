@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q3325.sql | sort > q3325.out
+
+vector: true
+
+inputs:
+  - name: q3325.sql
+    data: |
+      SELECT + MIN ( col0 ) FROM tab2 WHERE NOT - col1 > ( NULL );
+  - name: tab2
+
+outputs:
+  - name: q3325.out
+    data: |
+      NULL

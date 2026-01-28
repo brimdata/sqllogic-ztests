@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q12285.sql | sort > q12285.out
+
+vector: true
+
+inputs:
+  - name: q12285.sql
+    data: |
+      SELECT COUNT ( * ) FROM tab2 WHERE NOT 35 * - col1 < NULL;
+  - name: tab2
+
+outputs:
+  - name: q12285.out
+    data: |
+      0

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1803.sql | sort > q1803.out
+
+vector: true
+
+inputs:
+  - name: q1803.sql
+    data: |
+      SELECT - SUM ( DISTINCT - 59 ) FROM tab2 WHERE NOT NULL IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q1803.out
+    data: |
+      NULL

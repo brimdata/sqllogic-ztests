@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1583.sql | sort > q1583.out
+
+vector: true
+
+inputs:
+  - name: q1583.sql
+    data: |
+      SELECT ALL MIN ( col0 ) AS col0 FROM tab1 WHERE NOT NULL IN ( + col1 + - col2 * + CAST ( - 62 + - col1 AS INTEGER ) );
+  - name: tab1
+
+outputs:
+  - name: q1583.out
+    data: |
+      NULL

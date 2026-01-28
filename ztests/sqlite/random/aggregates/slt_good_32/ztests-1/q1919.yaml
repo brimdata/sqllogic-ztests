@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1919.sql | sort > q1919.out
+
+vector: true
+
+inputs:
+  - name: q1919.sql
+    data: |
+      SELECT DISTINCT - - SUM ( ALL col2 ) FROM tab2 WHERE NOT NULL NOT BETWEEN NULL AND col0 - col1;
+  - name: tab2
+
+outputs:
+  - name: q1919.out
+    data: |
+      NULL

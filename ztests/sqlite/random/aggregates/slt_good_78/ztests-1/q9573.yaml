@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9573.sql | sort > q9573.out
+
+vector: true
+
+inputs:
+  - name: q9573.sql
+    data: |
+      SELECT DISTINCT SUM ( - col0 ) + + + ( - MAX ( - col2 ) ) AS col0 FROM tab1 WHERE NOT NULL NOT IN ( col2 * col1, col1 );
+  - name: tab1
+
+outputs:
+  - name: q9573.out
+    data: |
+      NULL

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1883.sql | sort > q1883.out
+
+vector: true
+
+inputs:
+  - name: q1883.sql
+    data: |
+      SELECT + ( ( + COUNT ( * ) ) ) AS col1 FROM tab2 WHERE + CAST ( NULL AS INTEGER ) NOT BETWEEN NULL AND ( NULL );
+  - name: tab2
+
+outputs:
+  - name: q1883.out
+    data: |
+      0

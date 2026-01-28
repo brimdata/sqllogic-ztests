@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8452.sql | sort > q8452.out
+
+vector: true
+
+inputs:
+  - name: q8452.sql
+    data: |
+      SELECT ALL + - SUM ( - col2 ) AS col0 FROM tab2 AS cor0 WHERE ( NOT ( + CAST ( NULL AS INTEGER ) IS NULL ) );
+  - name: tab2
+
+outputs:
+  - name: q8452.out
+    data: |
+      NULL

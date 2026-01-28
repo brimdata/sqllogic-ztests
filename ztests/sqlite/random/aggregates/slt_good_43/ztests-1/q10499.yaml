@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q10499.sql | sort > q10499.out
+
+vector: true
+
+inputs:
+  - name: q10499.sql
+    data: |
+      SELECT - COUNT ( * ) / 95 + - SUM ( - col0 ) FROM tab0 WHERE NOT NULL IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q10499.out
+    data: |
+      NULL

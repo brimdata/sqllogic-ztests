@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9409.sql | sort > q9409.out
+
+vector: true
+
+inputs:
+  - name: q9409.sql
+    data: |
+      SELECT COUNT ( * ) + + ( MAX ( - col0 ) ) AS col1 FROM tab1 WHERE + col2 BETWEEN ( CAST ( + col0 AS INTEGER ) + col2 * 98 ) AND col0;
+  - name: tab1
+
+outputs:
+  - name: q9409.out
+    data: |
+      NULL

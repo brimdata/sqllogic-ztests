@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4512.sql | sort > q4512.out
+
+vector: true
+
+inputs:
+  - name: q4512.sql
+    data: |
+      SELECT ALL - COUNT ( * ) FROM tab2 WHERE + col1 + + - 65 IN ( col1 );
+  - name: tab2
+
+outputs:
+  - name: q4512.out
+    data: |
+      0

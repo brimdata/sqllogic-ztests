@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8711.sql | sort > q8711.out
+
+vector: true
+
+inputs:
+  - name: q8711.sql
+    data: |
+      SELECT ALL - 67 * - AVG ( col1 ) FROM tab2 WHERE NOT ( col1 IS NOT NULL );
+  - name: tab2
+
+outputs:
+  - name: q8711.out
+    data: |
+      NULL

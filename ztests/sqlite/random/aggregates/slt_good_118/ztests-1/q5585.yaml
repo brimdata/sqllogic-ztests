@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q5585.sql | sort > q5585.out
+
+vector: true
+
+inputs:
+  - name: q5585.sql
+    data: |
+      SELECT + COUNT ( * ) - + 36 FROM tab2 WHERE - CAST ( NULL AS INTEGER ) IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q5585.out
+    data: |
+      -36

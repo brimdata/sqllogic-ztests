@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1061.sql | sort > q1061.out
+
+vector: true
+
+inputs:
+  - name: q1061.sql
+    data: |
+      SELECT ALL + + COUNT ( * ) * + 5 + MIN ( DISTINCT + col2 ) FROM tab0 WHERE NOT col2 NOT IN ( + ( + 84 ), + col1 );
+  - name: tab0
+
+outputs:
+  - name: q1061.out
+    data: |
+      NULL

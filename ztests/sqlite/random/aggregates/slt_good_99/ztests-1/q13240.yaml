@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q13240.sql | sort > q13240.out
+
+vector: true
+
+inputs:
+  - name: q13240.sql
+    data: |
+      SELECT + - CAST ( - COUNT ( * ) AS INTEGER ) AS col2, + MAX ( col0 ) AS col2 FROM tab2 WHERE NOT NULL < + - col0 * - 42;
+  - name: tab2
+
+outputs:
+  - name: q13240.out
+    data: |
+      0	NULL

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4845.sql | sort > q4845.out
+
+vector: true
+
+inputs:
+  - name: q4845.sql
+    data: |
+      SELECT MIN ( + col0 ) AS col1 FROM tab2 WHERE col2 / 1 <> col2;
+  - name: tab2
+
+outputs:
+  - name: q4845.out
+    data: |
+      NULL

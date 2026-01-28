@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q6367.sql | sort > q6367.out
+
+vector: true
+
+inputs:
+  - name: q6367.sql
+    data: |
+      SELECT ALL - 28 * MIN ( DISTINCT col1 ) FROM tab1 WHERE NOT col1 * - 2 > ( NULL );
+  - name: tab1
+
+outputs:
+  - name: q6367.out
+    data: |
+      NULL

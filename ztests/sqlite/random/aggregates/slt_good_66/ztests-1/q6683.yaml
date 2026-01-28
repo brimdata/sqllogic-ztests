@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q6683.sql | sort > q6683.out
+
+vector: true
+
+inputs:
+  - name: q6683.sql
+    data: |
+      SELECT ALL COUNT ( * ) AS col2 FROM tab2 WHERE NOT 4 NOT IN ( - col1 );
+  - name: tab2
+
+outputs:
+  - name: q6683.out
+    data: |
+      0

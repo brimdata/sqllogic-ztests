@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q6309.sql | sort > q6309.out
+
+vector: true
+
+inputs:
+  - name: q6309.sql
+    data: |
+      SELECT - SUM ( ALL col1 ) FROM tab2 WHERE NOT ( - 3 ) NOT BETWEEN NULL AND NULL;
+  - name: tab2
+
+outputs:
+  - name: q6309.out
+    data: |
+      NULL

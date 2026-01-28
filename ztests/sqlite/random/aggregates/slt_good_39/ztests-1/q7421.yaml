@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q7421.sql | sort > q7421.out
+
+vector: true
+
+inputs:
+  - name: q7421.sql
+    data: |
+      SELECT + COUNT ( * ) + - COUNT ( * ) FROM tab1 WHERE NULL > ( NULL );
+  - name: tab1
+
+outputs:
+  - name: q7421.out
+    data: |
+      0

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4678.sql | sort > q4678.out
+
+vector: true
+
+inputs:
+  - name: q4678.sql
+    data: |
+      SELECT + ( MIN ( 19 ) ) AS col2 FROM tab0 WHERE ( NULL <= NULL );
+  - name: tab0
+
+outputs:
+  - name: q4678.out
+    data: |
+      NULL

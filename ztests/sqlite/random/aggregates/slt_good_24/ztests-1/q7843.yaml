@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q7843.sql | sort > q7843.out
+
+vector: true
+
+inputs:
+  - name: q7843.sql
+    data: |
+      SELECT DISTINCT + COUNT ( * ) / + 96 AS col2 FROM tab1 WHERE NULL >= 48;
+  - name: tab1
+
+outputs:
+  - name: q7843.out
+    data: |
+      0

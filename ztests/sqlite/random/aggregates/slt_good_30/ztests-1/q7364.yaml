@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q7364.sql | sort > q7364.out
+
+vector: true
+
+inputs:
+  - name: q7364.sql
+    data: |
+      SELECT DISTINCT COUNT ( * ) + 91 FROM tab2 WHERE col1 IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q7364.out
+    data: |
+      91

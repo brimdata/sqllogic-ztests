@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q12327.sql | sort > q12327.out
+
+vector: true
+
+inputs:
+  - name: q12327.sql
+    data: |
+      SELECT 30 + + AVG ( DISTINCT col2 ) FROM tab0 AS cor0 WHERE NOT col0 IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q12327.out
+    data: |
+      NULL

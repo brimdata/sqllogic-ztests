@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q3216.sql | sort > q3216.out
+
+vector: true
+
+inputs:
+  - name: q3216.sql
+    data: |
+      SELECT COUNT ( ALL - col0 ) AS col2 FROM tab2 WHERE NOT NULL BETWEEN - col1 AND 60;
+  - name: tab2
+
+outputs:
+  - name: q3216.out
+    data: |
+      0

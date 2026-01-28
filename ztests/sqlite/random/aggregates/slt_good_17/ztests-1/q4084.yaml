@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4084.sql | sort > q4084.out
+
+vector: true
+
+inputs:
+  - name: q4084.sql
+    data: |
+      SELECT - + 31 * - COUNT ( * ), + 8 * - COUNT ( * ) FROM tab1 WHERE NOT NULL = NULL;
+  - name: tab1
+
+outputs:
+  - name: q4084.out
+    data: |
+      0	0

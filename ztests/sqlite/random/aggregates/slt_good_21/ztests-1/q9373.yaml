@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9373.sql | sort > q9373.out
+
+vector: true
+
+inputs:
+  - name: q9373.sql
+    data: |
+      SELECT MIN ( DISTINCT col1 ) AS col0 FROM tab2 WHERE NOT NULL NOT IN ( - 99 * col1 );
+  - name: tab2
+
+outputs:
+  - name: q9373.out
+    data: |
+      NULL

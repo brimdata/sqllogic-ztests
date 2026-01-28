@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q13345.sql | sort > q13345.out
+
+vector: true
+
+inputs:
+  - name: q13345.sql
+    data: |
+      SELECT 23 / - AVG ( DISTINCT col2 ) + - 21 FROM tab0 WHERE NOT NULL IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q13345.out
+    data: |
+      NULL

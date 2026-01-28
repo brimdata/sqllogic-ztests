@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4987.sql | sort > q4987.out
+
+vector: true
+
+inputs:
+  - name: q4987.sql
+    data: |
+      SELECT + 82 * SUM ( + col2 * + col1 ) FROM tab1 WHERE NULL IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q4987.out
+    data: |
+      NULL

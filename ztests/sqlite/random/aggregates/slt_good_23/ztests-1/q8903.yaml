@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8903.sql | sort > q8903.out
+
+vector: true
+
+inputs:
+  - name: q8903.sql
+    data: |
+      SELECT SUM ( ALL col1 ) AS col0 FROM tab2 AS cor0 WHERE col0 >= + + col0 + + ( col1 );
+  - name: tab2
+
+outputs:
+  - name: q8903.out
+    data: |
+      NULL

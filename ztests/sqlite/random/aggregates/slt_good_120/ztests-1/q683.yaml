@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q683.sql | sort > q683.out
+
+vector: true
+
+inputs:
+  - name: q683.sql
+    data: |
+      SELECT ALL SUM ( + col0 ) FROM tab2 WHERE NOT 87 NOT BETWEEN ( NULL ) AND ( - col1 );
+  - name: tab2
+
+outputs:
+  - name: q683.out
+    data: |
+      NULL

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q10062.sql | sort > q10062.out
+
+vector: true
+
+inputs:
+  - name: q10062.sql
+    data: |
+      SELECT ALL + COUNT ( * ) FROM tab1 AS cor0 WHERE ( - col1 + 85 * col0 ) IN ( - 21 * + 42 );
+  - name: tab1
+
+outputs:
+  - name: q10062.out
+    data: |
+      0

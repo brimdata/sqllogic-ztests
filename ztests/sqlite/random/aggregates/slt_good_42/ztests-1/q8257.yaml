@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8257.sql | sort > q8257.out
+
+vector: true
+
+inputs:
+  - name: q8257.sql
+    data: |
+      SELECT - 80 + COUNT ( * ) AS col1 FROM tab0 WHERE NULL > ( + 53 );
+  - name: tab0
+
+outputs:
+  - name: q8257.out
+    data: |
+      -80

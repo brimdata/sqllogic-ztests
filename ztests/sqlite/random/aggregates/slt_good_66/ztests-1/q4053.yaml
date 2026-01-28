@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4053.sql | sort > q4053.out
+
+vector: true
+
+inputs:
+  - name: q4053.sql
+    data: |
+      SELECT DISTINCT 96 - COUNT ( * ) AS col0 FROM tab2 WHERE col1 <= NULL;
+  - name: tab2
+
+outputs:
+  - name: q4053.out
+    data: |
+      96

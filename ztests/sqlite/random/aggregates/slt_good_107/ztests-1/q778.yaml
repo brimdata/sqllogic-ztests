@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q778.sql | sort > q778.out
+
+vector: true
+
+inputs:
+  - name: q778.sql
+    data: |
+      SELECT DISTINCT - SUM ( DISTINCT + - col2 ) FROM tab0 WHERE NOT + CAST ( 2 AS REAL ) > NULL;
+  - name: tab0
+
+outputs:
+  - name: q778.out
+    data: |
+      NULL

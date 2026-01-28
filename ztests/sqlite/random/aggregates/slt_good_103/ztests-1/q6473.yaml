@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q6473.sql | sort > q6473.out
+
+vector: true
+
+inputs:
+  - name: q6473.sql
+    data: |
+      SELECT - ( COUNT ( * ) ) * 63 AS col1 FROM tab2 WHERE NULL = col0;
+  - name: tab2
+
+outputs:
+  - name: q6473.out
+    data: |
+      0

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4127.sql | sort > q4127.out
+
+vector: true
+
+inputs:
+  - name: q4127.sql
+    data: |
+      SELECT MAX ( col1 ) FROM tab2 WHERE ( - + CAST ( NULL AS INTEGER ) ) BETWEEN ( col2 + 47 / 19 ) AND ( col0 );
+  - name: tab2
+
+outputs:
+  - name: q4127.out
+    data: |
+      NULL

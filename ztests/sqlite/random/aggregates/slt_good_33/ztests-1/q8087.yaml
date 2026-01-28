@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8087.sql | sort > q8087.out
+
+vector: true
+
+inputs:
+  - name: q8087.sql
+    data: |
+      SELECT + COUNT ( * ) FROM tab1 WHERE - - CAST ( NULL AS INTEGER ) IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q8087.out
+    data: |
+      0

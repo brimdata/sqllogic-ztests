@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q11035.sql | sort > q11035.out
+
+vector: true
+
+inputs:
+  - name: q11035.sql
+    data: |
+      SELECT + COUNT ( * ) + - COUNT ( * ) FROM tab0 WHERE NOT ( - - col0 ) <> 91;
+  - name: tab0
+
+outputs:
+  - name: q11035.out
+    data: |
+      0

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q5062.sql | sort > q5062.out
+
+vector: true
+
+inputs:
+  - name: q5062.sql
+    data: |
+      SELECT MIN ( DISTINCT 10 ) AS col0 FROM tab2 WHERE NOT ( NULL ) BETWEEN 22 AND NULL;
+  - name: tab2
+
+outputs:
+  - name: q5062.out
+    data: |
+      NULL

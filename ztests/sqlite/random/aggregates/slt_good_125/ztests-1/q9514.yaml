@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9514.sql | sort > q9514.out
+
+vector: true
+
+inputs:
+  - name: q9514.sql
+    data: |
+      SELECT COUNT ( * ) AS col1 FROM tab0 WHERE NOT ( NULL ) NOT IN ( - 77 );
+  - name: tab0
+
+outputs:
+  - name: q9514.out
+    data: |
+      0

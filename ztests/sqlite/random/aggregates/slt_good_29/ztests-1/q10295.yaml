@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q10295.sql | sort > q10295.out
+
+vector: true
+
+inputs:
+  - name: q10295.sql
+    data: |
+      SELECT COUNT ( * ) AS col0 FROM tab1 WHERE NOT CAST ( - 92 AS INTEGER ) * - col0 IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q10295.out
+    data: |
+      0

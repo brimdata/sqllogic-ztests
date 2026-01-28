@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8184.sql | sort > q8184.out
+
+vector: true
+
+inputs:
+  - name: q8184.sql
+    data: |
+      SELECT COUNT ( * ) - + 1 AS col0 FROM tab0 WHERE NOT ( col1 ) <> NULL;
+  - name: tab0
+
+outputs:
+  - name: q8184.out
+    data: |
+      -1

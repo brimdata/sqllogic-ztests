@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q5465.sql | sort > q5465.out
+
+vector: true
+
+inputs:
+  - name: q5465.sql
+    data: |
+      SELECT DISTINCT CAST ( MIN ( col2 ) AS REAL ) FROM tab1 AS cor0 WHERE col0 NOT BETWEEN NULL AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q5465.out
+    data: |
+      NULL

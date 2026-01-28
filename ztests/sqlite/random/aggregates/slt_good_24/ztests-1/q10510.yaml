@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q10510.sql | sort > q10510.out
+
+vector: true
+
+inputs:
+  - name: q10510.sql
+    data: |
+      SELECT + COUNT ( * ) FROM tab1 WHERE NULL IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q10510.out
+    data: |
+      0

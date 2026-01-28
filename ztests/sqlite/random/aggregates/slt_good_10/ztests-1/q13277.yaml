@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q13277.sql | sort > q13277.out
+
+vector: true
+
+inputs:
+  - name: q13277.sql
+    data: |
+      SELECT - COUNT ( * ) AS col1, + MAX ( + - col1 ) FROM tab1 WHERE NULL IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q13277.out
+    data: |
+      0	NULL

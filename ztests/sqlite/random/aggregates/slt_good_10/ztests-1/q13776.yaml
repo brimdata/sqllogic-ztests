@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q13776.sql | sort > q13776.out
+
+vector: true
+
+inputs:
+  - name: q13776.sql
+    data: |
+      SELECT MIN ( ALL ( - col2 ) ) FROM tab0 WHERE - col0 IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q13776.out
+    data: |
+      NULL

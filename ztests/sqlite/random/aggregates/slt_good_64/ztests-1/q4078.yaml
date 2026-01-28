@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4078.sql | sort > q4078.out
+
+vector: true
+
+inputs:
+  - name: q4078.sql
+    data: |
+      SELECT ALL - COUNT ( * ) + 50 FROM tab2 AS cor0 WHERE NOT ( NULL ) > col1;
+  - name: tab2
+
+outputs:
+  - name: q4078.out
+    data: |
+      50

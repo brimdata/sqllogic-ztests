@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q2913.sql | sort > q2913.out
+
+vector: true
+
+inputs:
+  - name: q2913.sql
+    data: |
+      SELECT ALL - COUNT ( * ) FROM tab1 WHERE + col2 * CAST ( + col0 AS INTEGER ) IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q2913.out
+    data: |
+      0

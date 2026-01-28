@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q5402.sql | sort > q5402.out
+
+vector: true
+
+inputs:
+  - name: q5402.sql
+    data: |
+      SELECT ALL + ( - COUNT ( ALL - col2 ) ) FROM tab2 WHERE NULL >= - ( - 74 );
+  - name: tab2
+
+outputs:
+  - name: q5402.out
+    data: |
+      0

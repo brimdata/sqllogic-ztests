@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q3362.sql | sort > q3362.out
+
+vector: true
+
+inputs:
+  - name: q3362.sql
+    data: |
+      SELECT ALL + SUM ( DISTINCT col0 ) - - 8 AS col2 FROM tab0 WHERE NOT col0 IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q3362.out
+    data: |
+      NULL

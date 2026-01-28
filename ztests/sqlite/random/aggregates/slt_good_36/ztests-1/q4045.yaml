@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4045.sql | sort > q4045.out
+
+vector: true
+
+inputs:
+  - name: q4045.sql
+    data: |
+      SELECT + COUNT ( * ) * + - 15 AS col0 FROM tab2 WHERE NOT NULL > col1;
+  - name: tab2
+
+outputs:
+  - name: q4045.out
+    data: |
+      0

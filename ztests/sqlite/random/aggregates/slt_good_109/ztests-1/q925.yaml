@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q925.sql | sort > q925.out
+
+vector: true
+
+inputs:
+  - name: q925.sql
+    data: |
+      SELECT DISTINCT COUNT ( - col2 ) * COUNT ( * ) AS col1 FROM tab0 cor0 WHERE NOT col1 BETWEEN ( NULL ) AND ( 94 * col0 );
+  - name: tab0
+
+outputs:
+  - name: q925.out
+    data: |
+      0

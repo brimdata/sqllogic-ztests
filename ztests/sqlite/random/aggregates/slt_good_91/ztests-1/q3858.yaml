@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q3858.sql | sort > q3858.out
+
+vector: true
+
+inputs:
+  - name: q3858.sql
+    data: |
+      SELECT DISTINCT + COUNT ( * ) / CAST ( NULL AS INTEGER ) FROM tab2 WHERE NULL IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q3858.out
+    data: |
+      NULL

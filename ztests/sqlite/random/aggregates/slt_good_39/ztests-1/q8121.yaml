@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8121.sql | sort > q8121.out
+
+vector: true
+
+inputs:
+  - name: q8121.sql
+    data: |
+      SELECT ALL COUNT ( + col2 ) FROM tab1 WHERE NULL NOT IN ( + 84 );
+  - name: tab1
+
+outputs:
+  - name: q8121.out
+    data: |
+      0

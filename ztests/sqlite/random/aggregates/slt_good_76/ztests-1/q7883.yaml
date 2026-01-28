@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q7883.sql | sort > q7883.out
+
+vector: true
+
+inputs:
+  - name: q7883.sql
+    data: |
+      SELECT MAX ( ALL - ( - col1 ) ) FROM tab1 AS cor0 WHERE ( NULL ) IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q7883.out
+    data: |
+      NULL

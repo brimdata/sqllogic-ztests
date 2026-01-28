@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q7007.sql | sort > q7007.out
+
+vector: true
+
+inputs:
+  - name: q7007.sql
+    data: |
+      SELECT ALL ( COUNT ( - col1 ) ) + 9 AS col2 FROM tab0 WHERE NOT NULL NOT BETWEEN ( 70 ) AND NULL;
+  - name: tab0
+
+outputs:
+  - name: q7007.out
+    data: |
+      9

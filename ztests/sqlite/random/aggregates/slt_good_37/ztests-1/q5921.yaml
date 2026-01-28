@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q5921.sql | sort > q5921.out
+
+vector: true
+
+inputs:
+  - name: q5921.sql
+    data: |
+      SELECT + COUNT ( * ) * SUM ( - col1 ) AS col1 FROM tab2 AS cor0 WHERE NULL >= col1;
+  - name: tab2
+
+outputs:
+  - name: q5921.out
+    data: |
+      NULL

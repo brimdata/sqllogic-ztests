@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q13222.sql | sort > q13222.out
+
+vector: true
+
+inputs:
+  - name: q13222.sql
+    data: |
+      SELECT - AVG ( - col1 ) AS col0 FROM tab0 WHERE ( col2 ) NOT BETWEEN ( NULL ) AND ( NULL );
+  - name: tab0
+
+outputs:
+  - name: q13222.out
+    data: |
+      NULL

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q11801.sql | sort > q11801.out
+
+vector: true
+
+inputs:
+  - name: q11801.sql
+    data: |
+      SELECT - COUNT ( * ) AS col0 FROM tab0 WHERE NOT - col1 BETWEEN ( NULL ) AND 77;
+  - name: tab0
+
+outputs:
+  - name: q11801.out
+    data: |
+      0

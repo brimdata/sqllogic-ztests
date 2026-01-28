@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q6633.sql | sort > q6633.out
+
+vector: true
+
+inputs:
+  - name: q6633.sql
+    data: |
+      SELECT DISTINCT SUM ( col0 ) + - COUNT ( * ) FROM tab1 WHERE ( NULL ) BETWEEN - ( + col0 ) * - col0 AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q6633.out
+    data: |
+      NULL

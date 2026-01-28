@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q370.sql | sort > q370.out
+
+vector: true
+
+inputs:
+  - name: q370.sql
+    data: |
+      SELECT COUNT ( * ) FROM tab1 WHERE NULL IN ( + col2 );
+  - name: tab1
+
+outputs:
+  - name: q370.out
+    data: |
+      0

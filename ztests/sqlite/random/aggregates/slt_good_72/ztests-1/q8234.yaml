@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8234.sql | sort > q8234.out
+
+vector: true
+
+inputs:
+  - name: q8234.sql
+    data: |
+      SELECT DISTINCT - COUNT ( * ) AS col2 FROM tab2 WHERE NULL <= ( NULL );
+  - name: tab2
+
+outputs:
+  - name: q8234.out
+    data: |
+      0

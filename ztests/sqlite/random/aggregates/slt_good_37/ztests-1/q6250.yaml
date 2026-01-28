@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q6250.sql | sort > q6250.out
+
+vector: true
+
+inputs:
+  - name: q6250.sql
+    data: |
+      SELECT DISTINCT CAST ( NULL AS INTEGER ) - COUNT ( * ) FROM tab1 WHERE ( NULL ) <> - col2;
+  - name: tab1
+
+outputs:
+  - name: q6250.out
+    data: |
+      NULL

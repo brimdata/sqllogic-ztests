@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8731.sql | sort > q8731.out
+
+vector: true
+
+inputs:
+  - name: q8731.sql
+    data: |
+      SELECT SUM ( DISTINCT col2 ) * + 19 FROM tab1 WHERE NOT - col1 IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q8731.out
+    data: |
+      NULL

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q5682.sql | sort > q5682.out
+
+vector: true
+
+inputs:
+  - name: q5682.sql
+    data: |
+      SELECT ALL 22 + + - COUNT ( * ) AS col2 FROM tab2 WHERE NULL IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q5682.out
+    data: |
+      22

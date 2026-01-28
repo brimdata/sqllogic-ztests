@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q11118.sql | sort > q11118.out
+
+vector: true
+
+inputs:
+  - name: q11118.sql
+    data: |
+      SELECT - COUNT ( * ) FROM tab1 WHERE ( 25 * col1 - - col1 ) < ( col1 );
+  - name: tab1
+
+outputs:
+  - name: q11118.out
+    data: |
+      0

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q10472.sql | sort > q10472.out
+
+vector: true
+
+inputs:
+  - name: q10472.sql
+    data: |
+      SELECT COUNT ( * ) - MAX ( ALL - 39 ) AS col1 FROM tab1 AS cor0 WHERE NOT ( ( NOT NULL IS NOT NULL ) );
+  - name: tab1
+
+outputs:
+  - name: q10472.out
+    data: |
+      NULL

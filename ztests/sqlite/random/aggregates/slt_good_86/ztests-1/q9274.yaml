@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9274.sql | sort > q9274.out
+
+vector: true
+
+inputs:
+  - name: q9274.sql
+    data: |
+      SELECT ALL + COUNT ( * ) + - COUNT ( * ) * MAX ( col0 + 70 ) FROM tab2 AS cor0 WHERE NOT 36 <> NULL;
+  - name: tab2
+
+outputs:
+  - name: q9274.out
+    data: |
+      NULL

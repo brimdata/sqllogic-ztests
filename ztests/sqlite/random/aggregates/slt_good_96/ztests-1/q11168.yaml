@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q11168.sql | sort > q11168.out
+
+vector: true
+
+inputs:
+  - name: q11168.sql
+    data: |
+      SELECT ALL + MAX ( 6 ) FROM tab1 WHERE NOT - CAST ( NULL AS REAL ) = ( NULL );
+  - name: tab1
+
+outputs:
+  - name: q11168.out
+    data: |
+      NULL

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8978.sql | sort > q8978.out
+
+vector: true
+
+inputs:
+  - name: q8978.sql
+    data: |
+      SELECT ALL MIN ( DISTINCT + col2 ) FROM tab2 WHERE NULL IN ( + col1, 10 );
+  - name: tab2
+
+outputs:
+  - name: q8978.out
+    data: |
+      NULL

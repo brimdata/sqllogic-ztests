@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q2878.sql | sort > q2878.out
+
+vector: true
+
+inputs:
+  - name: q2878.sql
+    data: |
+      SELECT ALL COUNT ( + col2 ) AS col2 FROM tab1 WHERE 21 IN ( + ( col2 ) );
+  - name: tab1
+
+outputs:
+  - name: q2878.out
+    data: |
+      0

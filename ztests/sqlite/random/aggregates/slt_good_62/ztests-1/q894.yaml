@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q894.sql | sort > q894.out
+
+vector: true
+
+inputs:
+  - name: q894.sql
+    data: |
+      SELECT COUNT ( * ) AS col1 FROM tab1 WHERE ( 64 ) IN ( - col2 * 48 );
+  - name: tab1
+
+outputs:
+  - name: q894.out
+    data: |
+      0

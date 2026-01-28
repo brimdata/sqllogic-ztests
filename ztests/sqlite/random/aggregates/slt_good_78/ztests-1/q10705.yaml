@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q10705.sql | sort > q10705.out
+
+vector: true
+
+inputs:
+  - name: q10705.sql
+    data: |
+      SELECT + ( CAST ( + COUNT ( * ) AS INTEGER ) ) FROM tab1 WHERE ( + col1 ) BETWEEN NULL AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q10705.out
+    data: |
+      0

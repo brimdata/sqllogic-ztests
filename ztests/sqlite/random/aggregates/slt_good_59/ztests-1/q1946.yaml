@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1946.sql | sort > q1946.out
+
+vector: true
+
+inputs:
+  - name: q1946.sql
+    data: |
+      SELECT DISTINCT COUNT ( * ) FROM tab0 WHERE NOT NULL <> 98;
+  - name: tab0
+
+outputs:
+  - name: q1946.out
+    data: |
+      0

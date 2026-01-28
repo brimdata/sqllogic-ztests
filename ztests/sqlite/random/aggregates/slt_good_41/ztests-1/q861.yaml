@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q861.sql | sort > q861.out
+
+vector: true
+
+inputs:
+  - name: q861.sql
+    data: |
+      SELECT DISTINCT + CAST ( + CAST ( SUM ( ALL col1 ) AS REAL ) AS INTEGER ) AS col0 FROM tab1 WHERE NOT NULL = NULL;
+  - name: tab1
+
+outputs:
+  - name: q861.out
+    data: |
+      NULL

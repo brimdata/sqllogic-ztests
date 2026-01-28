@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9351.sql | sort > q9351.out
+
+vector: true
+
+inputs:
+  - name: q9351.sql
+    data: |
+      SELECT DISTINCT AVG ( ALL 97 ) * CAST ( NULL AS INTEGER ) FROM tab1 WHERE col0 * col1 IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q9351.out
+    data: |
+      NULL

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q225.sql | sort > q225.out
+
+vector: true
+
+inputs:
+  - name: q225.sql
+    data: |
+      SELECT ALL + AVG ( + col1 ) FROM tab1 WHERE NOT 19 IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q225.out
+    data: |
+      NULL

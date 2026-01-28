@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8688.sql | sort > q8688.out
+
+vector: true
+
+inputs:
+  - name: q8688.sql
+    data: |
+      SELECT - + 59 - COUNT ( ( - col2 ) ) AS col1 FROM tab0 WHERE NULL NOT IN ( col2, col2 + col1 );
+  - name: tab0
+
+outputs:
+  - name: q8688.out
+    data: |
+      -59

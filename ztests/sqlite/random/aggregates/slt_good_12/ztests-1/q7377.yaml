@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q7377.sql | sort > q7377.out
+
+vector: true
+
+inputs:
+  - name: q7377.sql
+    data: |
+      SELECT - 60 * MIN ( DISTINCT col0 ) FROM tab2 WHERE NOT NULL >= + col0 - + 20;
+  - name: tab2
+
+outputs:
+  - name: q7377.out
+    data: |
+      NULL

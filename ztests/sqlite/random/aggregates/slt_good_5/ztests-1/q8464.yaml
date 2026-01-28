@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8464.sql | sort > q8464.out
+
+vector: true
+
+inputs:
+  - name: q8464.sql
+    data: |
+      SELECT + + MAX ( col2 ) FROM tab2 WHERE NULL BETWEEN - col0 AND - col1 * col2;
+  - name: tab2
+
+outputs:
+  - name: q8464.out
+    data: |
+      NULL

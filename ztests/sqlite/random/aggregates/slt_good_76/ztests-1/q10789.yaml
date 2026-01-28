@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q10789.sql | sort > q10789.out
+
+vector: true
+
+inputs:
+  - name: q10789.sql
+    data: |
+      SELECT - MAX ( - col1 ) FROM tab2 WHERE NULL IN ( - ( - col1 ) );
+  - name: tab2
+
+outputs:
+  - name: q10789.out
+    data: |
+      NULL

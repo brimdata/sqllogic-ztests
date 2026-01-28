@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q13069.sql | sort > q13069.out
+
+vector: true
+
+inputs:
+  - name: q13069.sql
+    data: |
+      SELECT - MIN ( - col1 ) * 8 AS col1 FROM tab2 WHERE NOT + 3 NOT IN ( - ( col2 ) * ( col0 ) );
+  - name: tab2
+
+outputs:
+  - name: q13069.out
+    data: |
+      NULL

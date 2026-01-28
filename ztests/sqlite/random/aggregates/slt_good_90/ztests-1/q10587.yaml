@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q10587.sql | sort > q10587.out
+
+vector: true
+
+inputs:
+  - name: q10587.sql
+    data: |
+      SELECT - 27 + 59 * ( + COUNT ( * ) ) AS col2 FROM tab2 WHERE NULL = - CAST ( NULL AS INTEGER );
+  - name: tab2
+
+outputs:
+  - name: q10587.out
+    data: |
+      -27

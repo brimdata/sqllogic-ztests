@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q77.sql | sort > q77.out
+
+vector: true
+
+inputs:
+  - name: q77.sql
+    data: |
+      SELECT ALL MAX ( ALL 37 ) FROM tab2 WHERE NOT NULL IN ( - col0 );
+  - name: tab2
+
+outputs:
+  - name: q77.out
+    data: |
+      NULL

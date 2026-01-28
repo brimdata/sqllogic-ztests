@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q3874.sql | sort > q3874.out
+
+vector: true
+
+inputs:
+  - name: q3874.sql
+    data: |
+      SELECT DISTINCT 55 * MIN ( DISTINCT col1 * + 94 ) FROM tab0 WHERE col0 - + col2 BETWEEN NULL AND ( col2 );
+  - name: tab0
+
+outputs:
+  - name: q3874.out
+    data: |
+      NULL

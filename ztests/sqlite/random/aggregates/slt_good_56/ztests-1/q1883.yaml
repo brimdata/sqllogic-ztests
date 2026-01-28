@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1883.sql | sort > q1883.out
+
+vector: true
+
+inputs:
+  - name: q1883.sql
+    data: |
+      SELECT MIN ( ALL + col0 ) FROM tab1 WHERE - 11 IS NULL OR NOT ( + CAST ( NULL AS INTEGER ) ) NOT BETWEEN col1 AND ( col2 / - col0 );
+  - name: tab1
+
+outputs:
+  - name: q1883.out
+    data: |
+      NULL

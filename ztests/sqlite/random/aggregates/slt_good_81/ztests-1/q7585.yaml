@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q7585.sql | sort > q7585.out
+
+vector: true
+
+inputs:
+  - name: q7585.sql
+    data: |
+      SELECT ALL + MIN ( - col1 ) FROM tab1 WHERE NULL <> ( col2 );
+  - name: tab1
+
+outputs:
+  - name: q7585.out
+    data: |
+      NULL

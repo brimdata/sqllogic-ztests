@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q11442.sql | sort > q11442.out
+
+vector: true
+
+inputs:
+  - name: q11442.sql
+    data: |
+      SELECT + MAX ( + col0 ) AS col1 FROM tab0 WHERE NULL NOT BETWEEN ( + 96 + 42 ) AND NULL;
+  - name: tab0
+
+outputs:
+  - name: q11442.out
+    data: |
+      NULL

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8243.sql | sort > q8243.out
+
+vector: true
+
+inputs:
+  - name: q8243.sql
+    data: |
+      SELECT COUNT ( * ) FROM tab2 WHERE NOT 70 * col2 NOT IN ( + 3 );
+  - name: tab2
+
+outputs:
+  - name: q8243.out
+    data: |
+      0

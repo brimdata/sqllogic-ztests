@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1765.sql | sort > q1765.out
+
+vector: true
+
+inputs:
+  - name: q1765.sql
+    data: |
+      SELECT AVG ( DISTINCT col1 ) FROM tab2 AS cor0 WHERE NOT NULL BETWEEN NULL AND ( 44 * col2 );
+  - name: tab2
+
+outputs:
+  - name: q1765.out
+    data: |
+      NULL

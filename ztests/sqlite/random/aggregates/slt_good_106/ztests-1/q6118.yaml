@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q6118.sql | sort > q6118.out
+
+vector: true
+
+inputs:
+  - name: q6118.sql
+    data: |
+      SELECT DISTINCT 5 / MAX ( DISTINCT ( - col2 ) * - col2 ) AS col0 FROM tab1 WHERE NOT ( NULL ) NOT BETWEEN ( col2 * + ( - col1 ) ) AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q6118.out
+    data: |
+      NULL

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q11225.sql | sort > q11225.out
+
+vector: true
+
+inputs:
+  - name: q11225.sql
+    data: |
+      SELECT ALL - COUNT ( DISTINCT col1 ) * + MAX ( ALL col1 * + col2 ) FROM tab1 WHERE NOT NULL NOT BETWEEN ( col0 + col2 ) AND col2;
+  - name: tab1
+
+outputs:
+  - name: q11225.out
+    data: |
+      NULL

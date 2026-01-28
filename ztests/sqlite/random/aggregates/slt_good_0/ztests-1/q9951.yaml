@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9951.sql | sort > q9951.out
+
+vector: true
+
+inputs:
+  - name: q9951.sql
+    data: |
+      SELECT - AVG ( col1 ) * CAST ( NULL AS INTEGER ) AS col2 FROM tab1 WHERE NOT col0 NOT IN ( - col2 );
+  - name: tab1
+
+outputs:
+  - name: q9951.out
+    data: |
+      NULL

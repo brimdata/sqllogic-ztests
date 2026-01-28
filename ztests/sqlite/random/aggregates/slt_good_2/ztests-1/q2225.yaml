@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q2225.sql | sort > q2225.out
+
+vector: true
+
+inputs:
+  - name: q2225.sql
+    data: |
+      SELECT ALL - CAST ( + 20 AS INTEGER ) + COUNT ( * ) AS col2 FROM tab1 cor0 WHERE NULL NOT BETWEEN + col0 AND col1;
+  - name: tab1
+
+outputs:
+  - name: q2225.out
+    data: |
+      -20

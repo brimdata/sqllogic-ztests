@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q447.sql | sort > q447.out
+
+vector: true
+
+inputs:
+  - name: q447.sql
+    data: |
+      SELECT DISTINCT MAX ( + col1 ) * - 49 AS col0 FROM tab0 WHERE NOT NULL IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q447.out
+    data: |
+      NULL

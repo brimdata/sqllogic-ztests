@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8284.sql | sort > q8284.out
+
+vector: true
+
+inputs:
+  - name: q8284.sql
+    data: |
+      SELECT ALL ( 24 ) - - COUNT ( * ) FROM tab0 WHERE NOT ( - col2 ) IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q8284.out
+    data: |
+      24

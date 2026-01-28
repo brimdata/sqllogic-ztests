@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q13656.sql | sort > q13656.out
+
+vector: true
+
+inputs:
+  - name: q13656.sql
+    data: |
+      SELECT ALL - SUM ( DISTINCT col1 ) * - SUM ( ( + ( col1 ) ) ) AS col2 FROM tab0 WHERE + col0 = + ( + col1 );
+  - name: tab0
+
+outputs:
+  - name: q13656.out
+    data: |
+      NULL

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q12210.sql | sort > q12210.out
+
+vector: true
+
+inputs:
+  - name: q12210.sql
+    data: |
+      SELECT ALL AVG ( + 37 ) FROM tab0 WHERE NULL >= col1 + ( col1 );
+  - name: tab0
+
+outputs:
+  - name: q12210.out
+    data: |
+      NULL

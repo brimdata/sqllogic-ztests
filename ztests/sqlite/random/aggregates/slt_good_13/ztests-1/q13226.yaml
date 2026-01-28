@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q13226.sql | sort > q13226.out
+
+vector: true
+
+inputs:
+  - name: q13226.sql
+    data: |
+      SELECT ALL + AVG ( + + col0 ) AS col0 FROM tab1 AS cor0 WHERE col0 NOT BETWEEN + - col2 AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q13226.out
+    data: |
+      NULL

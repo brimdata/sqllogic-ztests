@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q13381.sql | sort > q13381.out
+
+vector: true
+
+inputs:
+  - name: q13381.sql
+    data: |
+      SELECT + CAST ( + AVG ( col1 ) AS INTEGER ) AS col2 FROM tab1 AS cor0 WHERE col0 BETWEEN col0 AND - + 65;
+  - name: tab1
+
+outputs:
+  - name: q13381.out
+    data: |
+      NULL

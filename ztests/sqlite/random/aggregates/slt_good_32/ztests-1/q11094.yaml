@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q11094.sql | sort > q11094.out
+
+vector: true
+
+inputs:
+  - name: q11094.sql
+    data: |
+      SELECT DISTINCT + SUM ( DISTINCT - col2 ) / MIN ( DISTINCT 30 ) AS col0 FROM tab0 WHERE NOT col2 + - + col1 IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q11094.out
+    data: |
+      NULL

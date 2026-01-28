@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q6051.sql | sort > q6051.out
+
+vector: true
+
+inputs:
+  - name: q6051.sql
+    data: |
+      SELECT DISTINCT - COUNT ( * ) AS col2 FROM tab1 WHERE NOT NULL BETWEEN NULL AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q6051.out
+    data: |
+      0

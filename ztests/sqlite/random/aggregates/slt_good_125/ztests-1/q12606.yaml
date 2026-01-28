@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q12606.sql | sort > q12606.out
+
+vector: true
+
+inputs:
+  - name: q12606.sql
+    data: |
+      SELECT DISTINCT + + MIN ( DISTINCT + + 50 ) AS col0, + COUNT ( * ) + - COUNT ( * ) AS col1 FROM tab2 AS cor0 WHERE NOT col0 < CAST ( NULL AS REAL );
+  - name: tab2
+
+outputs:
+  - name: q12606.out
+    data: |
+      NULL	0

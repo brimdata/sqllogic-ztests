@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q213.sql | sort > q213.out
+
+vector: true
+
+inputs:
+  - name: q213.sql
+    data: |
+      SELECT + ( - COUNT ( * ) ) AS col2 FROM tab1 AS cor0 WHERE NOT col2 / + col1 NOT BETWEEN 34 * + col0 AND + 12;
+  - name: tab1
+
+outputs:
+  - name: q213.out
+    data: |
+      0

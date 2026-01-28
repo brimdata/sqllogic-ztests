@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q6819.sql | sort > q6819.out
+
+vector: true
+
+inputs:
+  - name: q6819.sql
+    data: |
+      SELECT MAX ( - + 25 ) AS col2 FROM tab1 WHERE NOT NULL NOT IN ( + - col0 * + col2, col0 / - 6 + col0 );
+  - name: tab1
+
+outputs:
+  - name: q6819.out
+    data: |
+      NULL

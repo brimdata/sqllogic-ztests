@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q7431.sql | sort > q7431.out
+
+vector: true
+
+inputs:
+  - name: q7431.sql
+    data: |
+      SELECT DISTINCT CAST ( 21 AS INTEGER ) - COUNT ( * ) AS col1 FROM tab1 WHERE NOT 91 <> col1 + col1;
+  - name: tab1
+
+outputs:
+  - name: q7431.out
+    data: |
+      21

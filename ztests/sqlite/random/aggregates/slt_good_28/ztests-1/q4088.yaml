@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4088.sql | sort > q4088.out
+
+vector: true
+
+inputs:
+  - name: q4088.sql
+    data: |
+      SELECT ALL AVG ( DISTINCT col1 ) FROM tab2 WHERE NOT + col0 IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q4088.out
+    data: |
+      NULL

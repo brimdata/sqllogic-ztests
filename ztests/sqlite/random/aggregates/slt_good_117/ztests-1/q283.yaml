@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q283.sql | sort > q283.out
+
+vector: true
+
+inputs:
+  - name: q283.sql
+    data: |
+      SELECT + COUNT ( DISTINCT 25 ) FROM tab1 WHERE NOT ( ( - 4 ) IS NOT NULL );
+  - name: tab1
+
+outputs:
+  - name: q283.out
+    data: |
+      0

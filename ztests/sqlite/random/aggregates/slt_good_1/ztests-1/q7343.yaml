@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q7343.sql | sort > q7343.out
+
+vector: true
+
+inputs:
+  - name: q7343.sql
+    data: |
+      SELECT + - 71 AS col0, SUM ( DISTINCT - col0 ) FROM tab2 WHERE NOT NULL = NULL;
+  - name: tab2
+
+outputs:
+  - name: q7343.out
+    data: |
+      -71	NULL

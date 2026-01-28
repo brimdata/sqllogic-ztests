@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1370.sql | sort > q1370.out
+
+vector: true
+
+inputs:
+  - name: q1370.sql
+    data: |
+      SELECT ALL + COUNT ( * ) AS col0 FROM tab0 WHERE - col0 * col1 - col0 BETWEEN ( col0 * 75 + col0 ) AND ( NULL );
+  - name: tab0
+
+outputs:
+  - name: q1370.out
+    data: |
+      0

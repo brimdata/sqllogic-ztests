@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1280.sql | sort > q1280.out
+
+vector: true
+
+inputs:
+  - name: q1280.sql
+    data: |
+      SELECT COUNT ( * ) / - 79 FROM tab2 WHERE ( NULL IN ( col1 + - - col1 / - col1 ) );
+  - name: tab2
+
+outputs:
+  - name: q1280.out
+    data: |
+      0

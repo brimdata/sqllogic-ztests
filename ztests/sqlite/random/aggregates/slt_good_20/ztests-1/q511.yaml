@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q511.sql | sort > q511.out
+
+vector: true
+
+inputs:
+  - name: q511.sql
+    data: |
+      SELECT COUNT ( * ) FROM tab2 WHERE 42 * - + col2 * - col0 BETWEEN - col1 * 16 AND NULL;
+  - name: tab2
+
+outputs:
+  - name: q511.out
+    data: |
+      0

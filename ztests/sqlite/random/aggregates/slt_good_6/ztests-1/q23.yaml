@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q23.sql | sort > q23.out
+
+vector: true
+
+inputs:
+  - name: q23.sql
+    data: |
+      SELECT MAX ( + 48 ) FROM tab2 AS cor0 WHERE NOT col1 IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q23.out
+    data: |
+      NULL

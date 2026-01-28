@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q3727.sql | sort > q3727.out
+
+vector: true
+
+inputs:
+  - name: q3727.sql
+    data: |
+      SELECT DISTINCT + ( SUM ( DISTINCT col2 ) ) AS col1 FROM tab2 WHERE ( ( - col1 > col2 ) );
+  - name: tab2
+
+outputs:
+  - name: q3727.out
+    data: |
+      NULL

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1746.sql | sort > q1746.out
+
+vector: true
+
+inputs:
+  - name: q1746.sql
+    data: |
+      SELECT DISTINCT 43 * COUNT ( * ) FROM tab1 WHERE NOT NULL NOT IN ( - ( col0 ) - col0 );
+  - name: tab1
+
+outputs:
+  - name: q1746.out
+    data: |
+      0

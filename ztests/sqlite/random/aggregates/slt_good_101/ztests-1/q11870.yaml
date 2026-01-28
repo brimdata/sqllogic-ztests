@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q11870.sql | sort > q11870.out
+
+vector: true
+
+inputs:
+  - name: q11870.sql
+    data: |
+      SELECT + MAX ( - CAST ( NULL AS REAL ) ) FROM tab2 WHERE NOT + col1 IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q11870.out
+    data: |
+      NULL

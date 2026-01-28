@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q617.sql | sort > q617.out
+
+vector: true
+
+inputs:
+  - name: q617.sql
+    data: |
+      SELECT COUNT ( * ) AS col0 FROM tab2 WHERE NULL NOT IN ( - - col2, - 64 - + col2, - + col1, + col1 + + CAST ( - col2 AS INTEGER ) + col2, - col2, + + col0 + col1 );
+  - name: tab2
+
+outputs:
+  - name: q617.out
+    data: |
+      0

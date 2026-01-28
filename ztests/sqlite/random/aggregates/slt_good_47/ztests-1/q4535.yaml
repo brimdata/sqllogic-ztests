@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4535.sql | sort > q4535.out
+
+vector: true
+
+inputs:
+  - name: q4535.sql
+    data: |
+      SELECT SUM ( ALL col1 ) + COUNT ( * ) AS col0 FROM tab1 AS cor0 WHERE - col2 / 24 > NULL;
+  - name: tab1
+
+outputs:
+  - name: q4535.out
+    data: |
+      NULL

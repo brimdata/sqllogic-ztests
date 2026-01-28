@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9514.sql | sort > q9514.out
+
+vector: true
+
+inputs:
+  - name: q9514.sql
+    data: |
+      SELECT DISTINCT + - MAX ( + CAST ( NULL AS INTEGER ) ) FROM tab2 WHERE 30 IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q9514.out
+    data: |
+      NULL

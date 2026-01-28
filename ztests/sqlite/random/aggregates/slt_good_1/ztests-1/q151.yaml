@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q151.sql | sort > q151.out
+
+vector: true
+
+inputs:
+  - name: q151.sql
+    data: |
+      SELECT DISTINCT - AVG ( col2 ) AS col0 FROM tab1 WHERE NOT 12 IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q151.out
+    data: |
+      NULL

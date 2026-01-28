@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q6164.sql | sort > q6164.out
+
+vector: true
+
+inputs:
+  - name: q6164.sql
+    data: |
+      SELECT ALL 10 * + COUNT ( * ) FROM tab2 WHERE NOT ( + + col1 ) NOT IN ( 63 * + col2 );
+  - name: tab2
+
+outputs:
+  - name: q6164.out
+    data: |
+      0

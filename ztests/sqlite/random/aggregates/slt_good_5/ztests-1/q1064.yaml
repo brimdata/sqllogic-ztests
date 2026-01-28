@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1064.sql | sort > q1064.out
+
+vector: true
+
+inputs:
+  - name: q1064.sql
+    data: |
+      SELECT + COUNT ( * ), + COUNT ( * ) FROM tab2 WHERE NOT 25 NOT IN ( + col0 );
+  - name: tab2
+
+outputs:
+  - name: q1064.out
+    data: |
+      0	0

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1950.sql | sort > q1950.out
+
+vector: true
+
+inputs:
+  - name: q1950.sql
+    data: |
+      SELECT ALL ( + SUM ( ALL col1 ) ) / + COUNT ( * ) FROM tab2 AS cor0 WHERE NULL < NULL;
+  - name: tab2
+
+outputs:
+  - name: q1950.out
+    data: |
+      NULL

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q5550.sql | sort > q5550.out
+
+vector: true
+
+inputs:
+  - name: q5550.sql
+    data: |
+      SELECT AVG ( col2 ) * - COUNT ( * ) AS col0 FROM tab0 WHERE NOT ( NULL ) NOT IN ( col1 );
+  - name: tab0
+
+outputs:
+  - name: q5550.out
+    data: |
+      NULL

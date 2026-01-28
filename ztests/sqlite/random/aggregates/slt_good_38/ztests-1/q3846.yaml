@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q3846.sql | sort > q3846.out
+
+vector: true
+
+inputs:
+  - name: q3846.sql
+    data: |
+      SELECT DISTINCT - SUM ( - col2 ) FROM tab1 WHERE NOT ( col1 ) BETWEEN ( NULL ) AND - CAST ( NULL AS REAL );
+  - name: tab1
+
+outputs:
+  - name: q3846.out
+    data: |
+      NULL

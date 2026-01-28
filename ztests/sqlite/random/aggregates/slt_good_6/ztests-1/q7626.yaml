@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q7626.sql | sort > q7626.out
+
+vector: true
+
+inputs:
+  - name: q7626.sql
+    data: |
+      SELECT ALL ( + + COUNT ( * ) ) AS col1, MAX ( 72 ) FROM tab0 WHERE col0 * col0 IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q7626.out
+    data: |
+      0	NULL

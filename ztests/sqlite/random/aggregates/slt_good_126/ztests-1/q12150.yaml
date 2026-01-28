@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q12150.sql | sort > q12150.out
+
+vector: true
+
+inputs:
+  - name: q12150.sql
+    data: |
+      SELECT - SUM ( DISTINCT - col0 ) FROM tab1 WHERE - col2 BETWEEN NULL AND col2 - + col1 * - 24;
+  - name: tab1
+
+outputs:
+  - name: q12150.out
+    data: |
+      NULL

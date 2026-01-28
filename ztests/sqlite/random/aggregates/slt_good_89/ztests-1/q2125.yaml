@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q2125.sql | sort > q2125.out
+
+vector: true
+
+inputs:
+  - name: q2125.sql
+    data: |
+      SELECT MAX ( ALL 70 ) FROM tab0 WHERE NOT col0 > NULL;
+  - name: tab0
+
+outputs:
+  - name: q2125.out
+    data: |
+      NULL

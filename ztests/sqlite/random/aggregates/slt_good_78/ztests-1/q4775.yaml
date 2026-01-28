@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4775.sql | sort > q4775.out
+
+vector: true
+
+inputs:
+  - name: q4775.sql
+    data: |
+      SELECT - 30 - + COUNT ( * ) FROM tab2 WHERE NOT ( NULL ) BETWEEN + col2 AND - CAST ( NULL AS REAL );
+  - name: tab2
+
+outputs:
+  - name: q4775.out
+    data: |
+      -30

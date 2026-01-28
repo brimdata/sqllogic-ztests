@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1132.sql | sort > q1132.out
+
+vector: true
+
+inputs:
+  - name: q1132.sql
+    data: |
+      SELECT ( + MAX ( col2 ) ) FROM tab2 AS cor0 WHERE NOT NULL BETWEEN NULL AND 16;
+  - name: tab2
+
+outputs:
+  - name: q1132.out
+    data: |
+      NULL

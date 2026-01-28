@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q10640.sql | sort > q10640.out
+
+vector: true
+
+inputs:
+  - name: q10640.sql
+    data: |
+      SELECT ALL + COUNT ( - - CAST ( NULL AS INTEGER ) ) FROM tab0 WHERE NULL IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q10640.out
+    data: |
+      0

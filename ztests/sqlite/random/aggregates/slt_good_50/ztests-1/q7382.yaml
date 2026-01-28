@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q7382.sql | sort > q7382.out
+
+vector: true
+
+inputs:
+  - name: q7382.sql
+    data: |
+      SELECT - SUM ( ALL col1 ) AS col2 FROM tab1 WHERE NULL > + 32 + col2;
+  - name: tab1
+
+outputs:
+  - name: q7382.out
+    data: |
+      NULL

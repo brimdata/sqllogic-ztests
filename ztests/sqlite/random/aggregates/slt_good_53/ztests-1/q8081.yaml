@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8081.sql | sort > q8081.out
+
+vector: true
+
+inputs:
+  - name: q8081.sql
+    data: |
+      SELECT ALL - + ( + COUNT ( * ) ) FROM tab1 cor0 WHERE NOT ( NOT NULL >= NULL );
+  - name: tab1
+
+outputs:
+  - name: q8081.out
+    data: |
+      0

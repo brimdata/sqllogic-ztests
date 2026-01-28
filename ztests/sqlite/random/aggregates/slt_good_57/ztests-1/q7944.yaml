@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q7944.sql | sort > q7944.out
+
+vector: true
+
+inputs:
+  - name: q7944.sql
+    data: |
+      SELECT DISTINCT + MIN ( DISTINCT - ( + col1 ) ) FROM tab1 WHERE ( NULL ) NOT IN ( 47 );
+  - name: tab1
+
+outputs:
+  - name: q7944.out
+    data: |
+      NULL

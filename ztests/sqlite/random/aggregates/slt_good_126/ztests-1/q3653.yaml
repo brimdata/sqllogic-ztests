@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q3653.sql | sort > q3653.out
+
+vector: true
+
+inputs:
+  - name: q3653.sql
+    data: |
+      SELECT COUNT ( * ) - COUNT ( + 42 ) FROM tab0 AS cor0 WHERE NULL IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q3653.out
+    data: |
+      0

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1207.sql | sort > q1207.out
+
+vector: true
+
+inputs:
+  - name: q1207.sql
+    data: |
+      SELECT SUM ( DISTINCT - + ( + col1 ) ) AS col0 FROM tab1 AS cor0 WHERE col2 * col1 * + ( + 20 ) IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q1207.out
+    data: |
+      NULL

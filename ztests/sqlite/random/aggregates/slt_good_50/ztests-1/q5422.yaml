@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q5422.sql | sort > q5422.out
+
+vector: true
+
+inputs:
+  - name: q5422.sql
+    data: |
+      SELECT ALL + CAST ( COUNT ( * ) AS INTEGER ) FROM tab0 WHERE NOT NULL BETWEEN NULL AND col1;
+  - name: tab0
+
+outputs:
+  - name: q5422.out
+    data: |
+      0

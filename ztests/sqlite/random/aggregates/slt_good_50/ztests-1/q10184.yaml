@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q10184.sql | sort > q10184.out
+
+vector: true
+
+inputs:
+  - name: q10184.sql
+    data: |
+      SELECT ALL MAX ( ALL col2 ) * MAX ( ALL col1 ) FROM tab1 WHERE NOT col2 NOT BETWEEN ( - 21 ) AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q10184.out
+    data: |
+      NULL

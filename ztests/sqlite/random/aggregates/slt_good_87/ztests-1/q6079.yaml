@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q6079.sql | sort > q6079.out
+
+vector: true
+
+inputs:
+  - name: q6079.sql
+    data: |
+      SELECT + + 80 + + MIN ( DISTINCT - CAST ( col1 AS INTEGER ) ) FROM tab1 WHERE NULL IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q6079.out
+    data: |
+      NULL

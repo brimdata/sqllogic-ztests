@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8569.sql | sort > q8569.out
+
+vector: true
+
+inputs:
+  - name: q8569.sql
+    data: |
+      SELECT ALL COUNT ( * ) FROM tab1 WHERE NULL = ( col1 + 61 );
+  - name: tab1
+
+outputs:
+  - name: q8569.out
+    data: |
+      0

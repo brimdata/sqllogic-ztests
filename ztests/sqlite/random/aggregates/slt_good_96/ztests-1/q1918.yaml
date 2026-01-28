@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1918.sql | sort > q1918.out
+
+vector: true
+
+inputs:
+  - name: q1918.sql
+    data: |
+      SELECT + SUM ( DISTINCT CAST ( + - col1 AS INTEGER ) ) FROM tab1 AS cor0 WHERE NOT NULL NOT BETWEEN - col1 AND - col1 * - ( - - col1 );
+  - name: tab1
+
+outputs:
+  - name: q1918.out
+    data: |
+      NULL

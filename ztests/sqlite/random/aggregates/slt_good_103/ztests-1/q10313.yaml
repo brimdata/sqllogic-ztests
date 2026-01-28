@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q10313.sql | sort > q10313.out
+
+vector: true
+
+inputs:
+  - name: q10313.sql
+    data: |
+      SELECT ALL SUM ( + - col2 ) FROM tab0 WHERE 34 < NULL AND NOT ( col1 + - 99 ) IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q10313.out
+    data: |
+      NULL

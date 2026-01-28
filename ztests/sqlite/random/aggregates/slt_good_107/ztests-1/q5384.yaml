@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q5384.sql | sort > q5384.out
+
+vector: true
+
+inputs:
+  - name: q5384.sql
+    data: |
+      SELECT DISTINCT + ( + SUM ( + 1 ) ) FROM tab2 AS cor0 WHERE NOT ( + + 70 <> col1 );
+  - name: tab2
+
+outputs:
+  - name: q5384.out
+    data: |
+      NULL

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q6123.sql | sort > q6123.out
+
+vector: true
+
+inputs:
+  - name: q6123.sql
+    data: |
+      SELECT MIN ( 70 ) + + COUNT ( * ) AS col2 FROM tab0 WHERE NOT + col0 IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q6123.out
+    data: |
+      NULL

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q11184.sql | sort > q11184.out
+
+vector: true
+
+inputs:
+  - name: q11184.sql
+    data: |
+      SELECT MAX ( ALL 76 ) AS col2 FROM tab0 WHERE NOT col1 + 36 * - col1 IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q11184.out
+    data: |
+      NULL

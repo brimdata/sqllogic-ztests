@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q179.sql | sort > q179.out
+
+vector: true
+
+inputs:
+  - name: q179.sql
+    data: |
+      SELECT AVG ( ALL - col1 ) FROM tab2 WHERE col2 + 8 * + col0 < NULL;
+  - name: tab2
+
+outputs:
+  - name: q179.out
+    data: |
+      NULL

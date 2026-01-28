@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9999.sql | sort > q9999.out
+
+vector: true
+
+inputs:
+  - name: q9999.sql
+    data: |
+      SELECT - SUM ( ALL 37 ) FROM tab1 WHERE NOT col0 / col0 NOT IN ( col1 );
+  - name: tab1
+
+outputs:
+  - name: q9999.out
+    data: |
+      NULL

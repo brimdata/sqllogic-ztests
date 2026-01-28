@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8539.sql | sort > q8539.out
+
+vector: true
+
+inputs:
+  - name: q8539.sql
+    data: |
+      SELECT + COUNT ( * ) FROM tab1 WHERE NULL < ( - col1 + 91 );
+  - name: tab1
+
+outputs:
+  - name: q8539.out
+    data: |
+      0

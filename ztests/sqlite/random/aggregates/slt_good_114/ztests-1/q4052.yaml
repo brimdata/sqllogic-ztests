@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4052.sql | sort > q4052.out
+
+vector: true
+
+inputs:
+  - name: q4052.sql
+    data: |
+      SELECT ALL COUNT ( * ) + 11 FROM tab1 AS cor0 WHERE NOT ( col1 ) IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q4052.out
+    data: |
+      11

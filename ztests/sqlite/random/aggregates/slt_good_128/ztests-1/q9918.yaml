@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9918.sql | sort > q9918.out
+
+vector: true
+
+inputs:
+  - name: q9918.sql
+    data: |
+      SELECT - COUNT ( * ) * MIN ( DISTINCT col1 ) AS col1 FROM tab2 WHERE NULL NOT BETWEEN 10 AND NULL;
+  - name: tab2
+
+outputs:
+  - name: q9918.out
+    data: |
+      NULL

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q7413.sql | sort > q7413.out
+
+vector: true
+
+inputs:
+  - name: q7413.sql
+    data: |
+      SELECT - MAX ( ALL 77 ) AS col2 FROM tab2 WHERE ( - col1 ) IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q7413.out
+    data: |
+      NULL

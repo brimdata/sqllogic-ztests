@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q12563.sql | sort > q12563.out
+
+vector: true
+
+inputs:
+  - name: q12563.sql
+    data: |
+      SELECT MIN ( DISTINCT CAST ( - col2 AS INTEGER ) ) + - COUNT ( - - ( col0 ) ) FROM tab2 AS cor0 WHERE col2 * 68 IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q12563.out
+    data: |
+      NULL

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q12165.sql | sort > q12165.out
+
+vector: true
+
+inputs:
+  - name: q12165.sql
+    data: |
+      SELECT - COUNT ( * ) FROM tab1 AS cor0 WHERE ( NOT NULL NOT BETWEEN 15 AND NULL );
+  - name: tab1
+
+outputs:
+  - name: q12165.out
+    data: |
+      0

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q594.sql | sort > q594.out
+
+vector: true
+
+inputs:
+  - name: q594.sql
+    data: |
+      SELECT - 49, + MIN ( - col1 ) - - CAST ( NULL AS INTEGER ) AS col0 FROM tab1 WHERE col0 > NULL;
+  - name: tab1
+
+outputs:
+  - name: q594.out
+    data: |
+      -49	NULL

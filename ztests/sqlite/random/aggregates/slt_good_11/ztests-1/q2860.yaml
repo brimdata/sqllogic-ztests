@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q2860.sql | sort > q2860.out
+
+vector: true
+
+inputs:
+  - name: q2860.sql
+    data: |
+      SELECT MIN ( ALL col2 ) FROM tab2 AS cor0 WHERE NULL NOT IN ( col2 );
+  - name: tab2
+
+outputs:
+  - name: q2860.out
+    data: |
+      NULL

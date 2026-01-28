@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q6201.sql | sort > q6201.out
+
+vector: true
+
+inputs:
+  - name: q6201.sql
+    data: |
+      SELECT AVG ( ALL + col1 ) FROM tab1 AS cor0 WHERE NOT col1 IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q6201.out
+    data: |
+      NULL

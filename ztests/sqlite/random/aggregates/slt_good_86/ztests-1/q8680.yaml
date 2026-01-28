@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8680.sql | sort > q8680.out
+
+vector: true
+
+inputs:
+  - name: q8680.sql
+    data: |
+      SELECT DISTINCT - - AVG ( ALL col0 ) AS col0 FROM tab1 WHERE NULL <> - - 6;
+  - name: tab1
+
+outputs:
+  - name: q8680.out
+    data: |
+      NULL

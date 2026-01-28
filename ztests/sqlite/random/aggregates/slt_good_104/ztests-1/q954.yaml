@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q954.sql | sort > q954.out
+
+vector: true
+
+inputs:
+  - name: q954.sql
+    data: |
+      SELECT COUNT ( 10 ) + - COUNT ( * ) AS col1 FROM tab1 WHERE NULL NOT BETWEEN + - CAST ( NULL AS INTEGER ) AND - - col2 * ( + col1 + col0 );
+  - name: tab1
+
+outputs:
+  - name: q954.out
+    data: |
+      0

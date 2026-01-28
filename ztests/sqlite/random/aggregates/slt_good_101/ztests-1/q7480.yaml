@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q7480.sql | sort > q7480.out
+
+vector: true
+
+inputs:
+  - name: q7480.sql
+    data: |
+      SELECT COUNT ( * ) AS col2 FROM tab1 AS cor0 WHERE NOT NULL BETWEEN ( - - col1 ) AND col1;
+  - name: tab1
+
+outputs:
+  - name: q7480.out
+    data: |
+      0

@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q5836.sql | sort > q5836.out
+
+vector: true
+
+inputs:
+  - name: q5836.sql
+    data: |
+      SELECT COUNT ( * ) AS col2 FROM ( tab2 AS cor0 CROSS JOIN tab1 AS cor1 ) WHERE NULL IS NOT NULL;
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q5836.out
+    data: |
+      0

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q12994.sql | sort > q12994.out
+
+vector: true
+
+inputs:
+  - name: q12994.sql
+    data: |
+      SELECT ALL + 17 * - CAST ( COUNT ( * ) AS INTEGER ) + SUM ( DISTINCT col0 ) FROM tab0 WHERE NOT NULL <= 87;
+  - name: tab0
+
+outputs:
+  - name: q12994.out
+    data: |
+      NULL

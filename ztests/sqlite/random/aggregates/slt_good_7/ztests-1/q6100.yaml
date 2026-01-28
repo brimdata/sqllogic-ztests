@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q6100.sql | sort > q6100.out
+
+vector: true
+
+inputs:
+  - name: q6100.sql
+    data: |
+      SELECT DISTINCT + SUM ( ALL + col2 ) * 46 FROM tab1 AS cor0 WHERE NULL IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q6100.out
+    data: |
+      NULL

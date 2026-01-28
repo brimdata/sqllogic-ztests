@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q6333.sql | sort > q6333.out
+
+vector: true
+
+inputs:
+  - name: q6333.sql
+    data: |
+      SELECT DISTINCT + CAST ( COUNT ( * ) AS INTEGER ) FROM tab2 AS cor0 WHERE NOT NULL BETWEEN - col2 AND NULL;
+  - name: tab2
+
+outputs:
+  - name: q6333.out
+    data: |
+      0

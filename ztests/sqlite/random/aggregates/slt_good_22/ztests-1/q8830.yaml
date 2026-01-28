@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8830.sql | sort > q8830.out
+
+vector: true
+
+inputs:
+  - name: q8830.sql
+    data: |
+      SELECT - COUNT ( * ) AS col2 FROM tab0 WHERE NOT NULL BETWEEN col1 AND - + col2 * 87;
+  - name: tab0
+
+outputs:
+  - name: q8830.out
+    data: |
+      0

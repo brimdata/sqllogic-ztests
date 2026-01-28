@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8571.sql | sort > q8571.out
+
+vector: true
+
+inputs:
+  - name: q8571.sql
+    data: |
+      SELECT ALL + MAX ( DISTINCT - 98 ) FROM tab1 WHERE col0 = NULL;
+  - name: tab1
+
+outputs:
+  - name: q8571.out
+    data: |
+      NULL

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q12153.sql | sort > q12153.out
+
+vector: true
+
+inputs:
+  - name: q12153.sql
+    data: |
+      SELECT ALL 99 * COUNT ( * ) AS col2 FROM tab1 WHERE ( - col0 * ( - col0 ) + - 25 ) IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q12153.out
+    data: |
+      0

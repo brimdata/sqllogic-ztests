@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8902.sql | sort > q8902.out
+
+vector: true
+
+inputs:
+  - name: q8902.sql
+    data: |
+      SELECT - COUNT ( * ) * 16 FROM tab2 cor0 WHERE NOT + col1 IN ( + col1 );
+  - name: tab2
+
+outputs:
+  - name: q8902.out
+    data: |
+      0

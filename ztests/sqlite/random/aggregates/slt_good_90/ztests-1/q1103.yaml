@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1103.sql | sort > q1103.out
+
+vector: true
+
+inputs:
+  - name: q1103.sql
+    data: |
+      SELECT DISTINCT CAST ( COUNT ( * ) AS INTEGER ) FROM tab1 WHERE col0 + col1 >= NULL;
+  - name: tab1
+
+outputs:
+  - name: q1103.out
+    data: |
+      0

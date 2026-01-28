@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9116.sql | sort > q9116.out
+
+vector: true
+
+inputs:
+  - name: q9116.sql
+    data: |
+      SELECT ALL + ( AVG ( DISTINCT - col2 ) ) FROM tab0 WHERE NOT - col0 > NULL;
+  - name: tab0
+
+outputs:
+  - name: q9116.out
+    data: |
+      NULL

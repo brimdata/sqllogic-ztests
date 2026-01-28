@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q6602.sql | sort > q6602.out
+
+vector: true
+
+inputs:
+  - name: q6602.sql
+    data: |
+      SELECT ALL + ( - COUNT ( 33 ) ) FROM tab1 WHERE NOT - col1 + ( + col2 ) NOT BETWEEN ( NULL ) AND ( NULL );
+  - name: tab1
+
+outputs:
+  - name: q6602.out
+    data: |
+      0

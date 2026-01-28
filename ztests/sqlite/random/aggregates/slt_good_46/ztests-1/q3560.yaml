@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q3560.sql | sort > q3560.out
+
+vector: true
+
+inputs:
+  - name: q3560.sql
+    data: |
+      SELECT ALL + COUNT ( * ) AS col0 FROM tab1 WHERE NOT + col1 * 68 IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q3560.out
+    data: |
+      0

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q12123.sql | sort > q12123.out
+
+vector: true
+
+inputs:
+  - name: q12123.sql
+    data: |
+      SELECT ( + 12 ) + COUNT ( * ) FROM tab2 AS cor0 WHERE NOT NULL BETWEEN - col2 - + col0 AND - col0;
+  - name: tab2
+
+outputs:
+  - name: q12123.out
+    data: |
+      12

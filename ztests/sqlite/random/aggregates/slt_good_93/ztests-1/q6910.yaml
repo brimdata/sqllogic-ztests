@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q6910.sql | sort > q6910.out
+
+vector: true
+
+inputs:
+  - name: q6910.sql
+    data: |
+      SELECT DISTINCT COUNT ( col2 ) * - COUNT ( * ) AS col0 FROM tab2 WHERE NOT ( - col1 * - col0 ) NOT BETWEEN NULL AND + col1 * col2 - - col2 / - col0;
+  - name: tab2
+
+outputs:
+  - name: q6910.out
+    data: |
+      0

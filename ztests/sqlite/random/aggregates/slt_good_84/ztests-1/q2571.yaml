@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q2571.sql | sort > q2571.out
+
+vector: true
+
+inputs:
+  - name: q2571.sql
+    data: |
+      SELECT MIN ( - col2 ) / MIN ( DISTINCT + col1 / 95 ) AS col2 FROM tab2 WHERE col0 IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q2571.out
+    data: |
+      NULL

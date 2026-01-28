@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q11478.sql | sort > q11478.out
+
+vector: true
+
+inputs:
+  - name: q11478.sql
+    data: |
+      SELECT DISTINCT - + MIN ( - col1 ) AS col1 FROM tab1 WHERE NULL IN ( col2, col2 * + 50 * - - 83 );
+  - name: tab1
+
+outputs:
+  - name: q11478.out
+    data: |
+      NULL

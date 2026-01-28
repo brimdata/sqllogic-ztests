@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q10481.sql | sort > q10481.out
+
+vector: true
+
+inputs:
+  - name: q10481.sql
+    data: |
+      SELECT COUNT ( * ) / 76 + - COUNT ( * ) FROM tab1 WHERE NOT NULL <> + - 37;
+  - name: tab1
+
+outputs:
+  - name: q10481.out
+    data: |
+      0

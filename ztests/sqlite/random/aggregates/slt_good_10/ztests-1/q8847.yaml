@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8847.sql | sort > q8847.out
+
+vector: true
+
+inputs:
+  - name: q8847.sql
+    data: |
+      SELECT DISTINCT ( - ( SUM ( col2 ) ) ) + 18 FROM tab0 WHERE NOT NULL <= + - col1;
+  - name: tab0
+
+outputs:
+  - name: q8847.out
+    data: |
+      NULL

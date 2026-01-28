@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q10753.sql | sort > q10753.out
+
+vector: true
+
+inputs:
+  - name: q10753.sql
+    data: |
+      SELECT ALL COUNT ( * ) + - 3 FROM tab1 WHERE NOT NULL BETWEEN + CAST ( NULL AS REAL ) AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q10753.out
+    data: |
+      -3

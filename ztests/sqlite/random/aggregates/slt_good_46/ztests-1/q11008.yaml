@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q11008.sql | sort > q11008.out
+
+vector: true
+
+inputs:
+  - name: q11008.sql
+    data: |
+      SELECT ALL - SUM ( DISTINCT - CAST ( NULL AS INTEGER ) ) AS col2 FROM tab2 AS cor0 WHERE - col0 NOT BETWEEN NULL AND - 5;
+  - name: tab2
+
+outputs:
+  - name: q11008.out
+    data: |
+      NULL

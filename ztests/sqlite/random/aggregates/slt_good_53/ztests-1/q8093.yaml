@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8093.sql | sort > q8093.out
+
+vector: true
+
+inputs:
+  - name: q8093.sql
+    data: |
+      SELECT ALL COUNT ( - col0 ) FROM tab2 AS cor0 WHERE NOT NULL IN ( - 64, col0 * + col1 );
+  - name: tab2
+
+outputs:
+  - name: q8093.out
+    data: |
+      0

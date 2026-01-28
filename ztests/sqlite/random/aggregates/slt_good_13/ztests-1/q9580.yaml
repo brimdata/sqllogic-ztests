@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9580.sql | sort > q9580.out
+
+vector: true
+
+inputs:
+  - name: q9580.sql
+    data: |
+      SELECT + COUNT ( * ) FROM tab2 WHERE CAST ( 6 AS INTEGER ) = + col2 + col0;
+  - name: tab2
+
+outputs:
+  - name: q9580.out
+    data: |
+      0

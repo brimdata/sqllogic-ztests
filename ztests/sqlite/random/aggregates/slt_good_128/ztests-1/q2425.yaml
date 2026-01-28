@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q2425.sql | sort > q2425.out
+
+vector: true
+
+inputs:
+  - name: q2425.sql
+    data: |
+      SELECT DISTINCT + 48 * - COUNT ( * ) AS col1 FROM tab0 WHERE NULL NOT BETWEEN NULL AND NULL;
+  - name: tab0
+
+outputs:
+  - name: q2425.out
+    data: |
+      0

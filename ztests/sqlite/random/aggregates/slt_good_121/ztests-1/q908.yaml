@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q908.sql | sort > q908.out
+
+vector: true
+
+inputs:
+  - name: q908.sql
+    data: |
+      SELECT - SUM ( col2 ) AS col1 FROM tab2 AS cor0 WHERE col2 NOT BETWEEN NULL AND NULL;
+  - name: tab2
+
+outputs:
+  - name: q908.out
+    data: |
+      NULL

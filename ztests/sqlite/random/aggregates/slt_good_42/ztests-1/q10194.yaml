@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q10194.sql | sort > q10194.out
+
+vector: true
+
+inputs:
+  - name: q10194.sql
+    data: |
+      SELECT - - COUNT ( * ), + COUNT ( * ) / + 54 FROM tab1 WHERE NOT + ( - CAST ( NULL AS INTEGER ) ) IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q10194.out
+    data: |
+      0	0

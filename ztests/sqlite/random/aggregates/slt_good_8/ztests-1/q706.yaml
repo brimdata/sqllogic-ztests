@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q706.sql | sort > q706.out
+
+vector: true
+
+inputs:
+  - name: q706.sql
+    data: |
+      SELECT - 50 * + + COUNT ( * ) FROM tab0 WHERE NOT col1 + col0 IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q706.out
+    data: |
+      0

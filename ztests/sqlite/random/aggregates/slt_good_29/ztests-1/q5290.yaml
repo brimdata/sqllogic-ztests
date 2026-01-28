@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q5290.sql | sort > q5290.out
+
+vector: true
+
+inputs:
+  - name: q5290.sql
+    data: |
+      SELECT ALL SUM ( - ( col2 ) ) AS col1 FROM tab1 WHERE NOT - col2 >= ( - col2 );
+  - name: tab1
+
+outputs:
+  - name: q5290.out
+    data: |
+      NULL

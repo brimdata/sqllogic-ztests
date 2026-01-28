@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q12030.sql | sort > q12030.out
+
+vector: true
+
+inputs:
+  - name: q12030.sql
+    data: |
+      SELECT DISTINCT + COUNT ( + col2 ) * - SUM ( DISTINCT col0 ) AS col0 FROM tab0 AS cor0 WHERE NOT ( NULL ) NOT IN ( 40 );
+  - name: tab0
+
+outputs:
+  - name: q12030.out
+    data: |
+      NULL

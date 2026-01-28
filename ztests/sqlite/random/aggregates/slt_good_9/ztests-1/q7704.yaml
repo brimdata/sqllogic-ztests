@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q7704.sql | sort > q7704.out
+
+vector: true
+
+inputs:
+  - name: q7704.sql
+    data: |
+      SELECT COUNT ( * ) FROM tab2 AS cor0 WHERE NOT ( 40 - col0 ) IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q7704.out
+    data: |
+      0

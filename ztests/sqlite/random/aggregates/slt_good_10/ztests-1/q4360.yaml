@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4360.sql | sort > q4360.out
+
+vector: true
+
+inputs:
+  - name: q4360.sql
+    data: |
+      SELECT MAX ( + 45 ) * COUNT ( * ) FROM tab1 WHERE NOT ( + col2 ) <= NULL;
+  - name: tab1
+
+outputs:
+  - name: q4360.out
+    data: |
+      NULL

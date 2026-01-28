@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q11951.sql | sort > q11951.out
+
+vector: true
+
+inputs:
+  - name: q11951.sql
+    data: |
+      SELECT - CAST ( - - AVG ( ALL - col2 ) AS INTEGER ) AS col1 FROM tab1 WHERE NULL < 65;
+  - name: tab1
+
+outputs:
+  - name: q11951.out
+    data: |
+      NULL

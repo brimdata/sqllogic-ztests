@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q409.sql | sort > q409.out
+
+vector: true
+
+inputs:
+  - name: q409.sql
+    data: |
+      SELECT - CAST ( SUM ( ALL + CAST ( NULL AS INTEGER ) ) AS INTEGER ) AS col1 FROM tab1 AS cor0 WHERE - col0 * - - col1 IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q409.out
+    data: |
+      NULL

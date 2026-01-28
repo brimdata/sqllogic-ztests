@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9641.sql | sort > q9641.out
+
+vector: true
+
+inputs:
+  - name: q9641.sql
+    data: |
+      SELECT ALL + ( COUNT ( * ) ) FROM tab2 WHERE NOT ( NULL ) NOT BETWEEN ( 73 ) AND NULL;
+  - name: tab2
+
+outputs:
+  - name: q9641.out
+    data: |
+      0

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4744.sql | sort > q4744.out
+
+vector: true
+
+inputs:
+  - name: q4744.sql
+    data: |
+      SELECT ALL - MIN ( DISTINCT + col1 ) AS col2 FROM tab2 WHERE NOT ( col0 ) < NULL;
+  - name: tab2
+
+outputs:
+  - name: q4744.out
+    data: |
+      NULL

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q3850.sql | sort > q3850.out
+
+vector: true
+
+inputs:
+  - name: q3850.sql
+    data: |
+      SELECT ALL COUNT ( 18 ) FROM tab1 WHERE ( - col2 NOT IN ( + + ( - col2 ) ) );
+  - name: tab1
+
+outputs:
+  - name: q3850.out
+    data: |
+      0

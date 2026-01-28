@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q6226.sql | sort > q6226.out
+
+vector: true
+
+inputs:
+  - name: q6226.sql
+    data: |
+      SELECT - COUNT ( * ) FROM tab0 WHERE ( + 8 + CAST ( NULL AS REAL ) ) = 62;
+  - name: tab0
+
+outputs:
+  - name: q6226.out
+    data: |
+      0

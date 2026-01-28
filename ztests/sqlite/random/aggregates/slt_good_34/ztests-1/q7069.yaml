@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q7069.sql | sort > q7069.out
+
+vector: true
+
+inputs:
+  - name: q7069.sql
+    data: |
+      SELECT ALL SUM ( + col2 ) AS col0 FROM tab1 WHERE NULL <> - col2;
+  - name: tab1
+
+outputs:
+  - name: q7069.out
+    data: |
+      NULL

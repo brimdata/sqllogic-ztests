@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4432.sql | sort > q4432.out
+
+vector: true
+
+inputs:
+  - name: q4432.sql
+    data: |
+      SELECT ( COUNT ( * ) ) FROM tab1 WHERE NOT ( - 20 ) IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q4432.out
+    data: |
+      0

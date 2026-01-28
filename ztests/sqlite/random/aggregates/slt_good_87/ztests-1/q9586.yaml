@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9586.sql | sort > q9586.out
+
+vector: true
+
+inputs:
+  - name: q9586.sql
+    data: |
+      SELECT DISTINCT COUNT ( - col2 ) FROM tab2 WHERE NULL >= ( 60 - col1 );
+  - name: tab2
+
+outputs:
+  - name: q9586.out
+    data: |
+      0

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q10005.sql | sort > q10005.out
+
+vector: true
+
+inputs:
+  - name: q10005.sql
+    data: |
+      SELECT + COUNT ( DISTINCT - col2 ) FROM tab1 WHERE NOT col2 >= 47 / - col2 - 45;
+  - name: tab1
+
+outputs:
+  - name: q10005.out
+    data: |
+      0

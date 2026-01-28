@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q6164.sql | sort > q6164.out
+
+vector: true
+
+inputs:
+  - name: q6164.sql
+    data: |
+      SELECT ALL ( + COUNT ( * ) ) * 60 FROM tab2 AS cor0 WHERE NOT col2 * col1 + - col2 > ( NULL );
+  - name: tab2
+
+outputs:
+  - name: q6164.out
+    data: |
+      0

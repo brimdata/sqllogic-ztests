@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q6575.sql | sort > q6575.out
+
+vector: true
+
+inputs:
+  - name: q6575.sql
+    data: |
+      SELECT ALL - COUNT ( * ) AS col2 FROM tab1 WHERE NULL IN ( - + 0 + - - 43 + + - CAST ( + + CAST ( NULL AS INTEGER ) AS INTEGER ) );
+  - name: tab1
+
+outputs:
+  - name: q6575.out
+    data: |
+      0

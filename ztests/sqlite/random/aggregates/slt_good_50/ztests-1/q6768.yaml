@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q6768.sql | sort > q6768.out
+
+vector: true
+
+inputs:
+  - name: q6768.sql
+    data: |
+      SELECT ( MAX ( - CAST ( NULL AS INTEGER ) ) ) + 80 FROM tab1 WHERE NOT NULL IS NULL;
+  - name: tab1
+
+outputs:
+  - name: q6768.out
+    data: |
+      NULL

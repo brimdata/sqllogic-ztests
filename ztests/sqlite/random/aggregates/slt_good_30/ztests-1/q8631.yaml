@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8631.sql | sort > q8631.out
+
+vector: true
+
+inputs:
+  - name: q8631.sql
+    data: |
+      SELECT COUNT ( * ) FROM tab0 WHERE NULL BETWEEN + col1 * 59 AND NULL;
+  - name: tab0
+
+outputs:
+  - name: q8631.out
+    data: |
+      0

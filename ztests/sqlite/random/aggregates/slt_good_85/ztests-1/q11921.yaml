@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q11921.sql | sort > q11921.out
+
+vector: true
+
+inputs:
+  - name: q11921.sql
+    data: |
+      SELECT + COUNT ( * ) AS col2 FROM tab1 WHERE NOT + 34 * col0 + 22 * col2 NOT IN ( col1 );
+  - name: tab1
+
+outputs:
+  - name: q11921.out
+    data: |
+      0

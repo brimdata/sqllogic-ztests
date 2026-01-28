@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q10178.sql | sort > q10178.out
+
+vector: true
+
+inputs:
+  - name: q10178.sql
+    data: |
+      SELECT DISTINCT COUNT ( * ) AS col0 FROM tab1 WHERE NOT col0 BETWEEN col0 AND NULL;
+  - name: tab1
+
+outputs:
+  - name: q10178.out
+    data: |
+      0

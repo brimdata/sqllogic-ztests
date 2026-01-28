@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q2797.sql | sort > q2797.out
+
+vector: true
+
+inputs:
+  - name: q2797.sql
+    data: |
+      SELECT - MIN ( + col2 ) AS col2 FROM tab0 WHERE col2 + - CAST ( + 61 AS REAL ) NOT BETWEEN NULL AND ( col2 );
+  - name: tab0
+
+outputs:
+  - name: q2797.out
+    data: |
+      NULL

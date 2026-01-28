@@ -1,0 +1,16 @@
+script: |
+  super -f tsv -I q2623.sql | sort > q2623.out
+
+vector: true
+
+inputs:
+  - name: q2623.sql
+    data: |
+      SELECT + COUNT ( * ) FROM tab1 AS cor0 CROSS JOIN tab2 AS cor1 WHERE ( NULL ) NOT BETWEEN + 48 - + 34 AND ( NULL );
+  - name: tab1
+  - name: tab2
+
+outputs:
+  - name: q2623.out
+    data: |
+      0

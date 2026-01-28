@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4814.sql | sort > q4814.out
+
+vector: true
+
+inputs:
+  - name: q4814.sql
+    data: |
+      SELECT + MAX ( DISTINCT col1 ) FROM tab2 AS cor0 WHERE col2 IS NULL;
+  - name: tab2
+
+outputs:
+  - name: q4814.out
+    data: |
+      NULL

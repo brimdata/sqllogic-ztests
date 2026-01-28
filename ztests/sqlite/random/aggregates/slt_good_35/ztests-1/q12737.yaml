@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q12737.sql | sort > q12737.out
+
+vector: true
+
+inputs:
+  - name: q12737.sql
+    data: |
+      SELECT + MIN ( DISTINCT CAST ( NULL AS INTEGER ) ) FROM tab1 WHERE NOT ( - col0 / 3 IS NOT NULL );
+  - name: tab1
+
+outputs:
+  - name: q12737.out
+    data: |
+      NULL

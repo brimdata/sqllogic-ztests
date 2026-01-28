@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q11787.sql | sort > q11787.out
+
+vector: true
+
+inputs:
+  - name: q11787.sql
+    data: |
+      SELECT ALL 10 * SUM ( col0 * - col2 ) AS col0 FROM tab1 WHERE NOT NULL BETWEEN - ( + 13 ) AND - CAST ( + col0 AS INTEGER );
+  - name: tab1
+
+outputs:
+  - name: q11787.out
+    data: |
+      NULL

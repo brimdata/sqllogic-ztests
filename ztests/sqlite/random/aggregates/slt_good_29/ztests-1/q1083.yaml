@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q1083.sql | sort > q1083.out
+
+vector: true
+
+inputs:
+  - name: q1083.sql
+    data: |
+      SELECT MAX ( - 5 ) AS col1 FROM tab2 WHERE NOT NULL >= NULL;
+  - name: tab2
+
+outputs:
+  - name: q1083.out
+    data: |
+      NULL

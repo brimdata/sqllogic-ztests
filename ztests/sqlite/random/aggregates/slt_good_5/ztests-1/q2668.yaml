@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q2668.sql | sort > q2668.out
+
+vector: true
+
+inputs:
+  - name: q2668.sql
+    data: |
+      SELECT - 3 * - COUNT ( ALL col0 * ( + 7 ) ) + - MIN ( ALL col1 ) * ( CAST ( NULL AS INTEGER ) ) AS col1 FROM tab0 WHERE NOT NULL IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q2668.out
+    data: |
+      NULL

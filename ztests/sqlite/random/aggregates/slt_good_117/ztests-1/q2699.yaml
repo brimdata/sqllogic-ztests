@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q2699.sql | sort > q2699.out
+
+vector: true
+
+inputs:
+  - name: q2699.sql
+    data: |
+      SELECT DISTINCT COUNT ( * ) * + 6 AS col2 FROM tab2 AS cor0 WHERE NULL IN ( 20 );
+  - name: tab2
+
+outputs:
+  - name: q2699.out
+    data: |
+      0

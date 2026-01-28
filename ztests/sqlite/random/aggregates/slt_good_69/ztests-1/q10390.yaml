@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q10390.sql | sort > q10390.out
+
+vector: true
+
+inputs:
+  - name: q10390.sql
+    data: |
+      SELECT ALL COUNT ( * ) AS col1 FROM tab1 WHERE NOT ( NULL ) NOT BETWEEN 60 * col2 + - col0 AND + 6 + col0;
+  - name: tab1
+
+outputs:
+  - name: q10390.out
+    data: |
+      0

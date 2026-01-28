@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q2192.sql | sort > q2192.out
+
+vector: true
+
+inputs:
+  - name: q2192.sql
+    data: |
+      SELECT DISTINCT - SUM ( ALL col2 ) * 41 AS col2 FROM tab1 WHERE NULL IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q2192.out
+    data: |
+      NULL

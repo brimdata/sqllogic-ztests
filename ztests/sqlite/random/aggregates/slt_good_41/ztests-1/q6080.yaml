@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q6080.sql | sort > q6080.out
+
+vector: true
+
+inputs:
+  - name: q6080.sql
+    data: |
+      SELECT - COUNT ( * ) FROM tab0 WHERE NOT col2 >= col2;
+  - name: tab0
+
+outputs:
+  - name: q6080.out
+    data: |
+      0

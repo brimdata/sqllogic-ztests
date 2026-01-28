@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8900.sql | sort > q8900.out
+
+vector: true
+
+inputs:
+  - name: q8900.sql
+    data: |
+      SELECT - COUNT ( CAST ( NULL AS INTEGER ) ) AS col1 FROM tab0 WHERE - col1 / - col1 IN ( - 42 );
+  - name: tab0
+
+outputs:
+  - name: q8900.out
+    data: |
+      0

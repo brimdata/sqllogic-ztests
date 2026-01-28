@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q2290.sql | sort > q2290.out
+
+vector: true
+
+inputs:
+  - name: q2290.sql
+    data: |
+      SELECT - MIN ( col0 ) / + 41 + - ( COUNT ( * ) ) AS col1 FROM tab2 WHERE NOT NULL <> NULL;
+  - name: tab2
+
+outputs:
+  - name: q2290.out
+    data: |
+      NULL

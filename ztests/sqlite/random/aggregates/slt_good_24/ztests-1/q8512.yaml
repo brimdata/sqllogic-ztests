@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8512.sql | sort > q8512.out
+
+vector: true
+
+inputs:
+  - name: q8512.sql
+    data: |
+      SELECT + SUM ( ALL col1 ) FROM tab0 AS cor0 WHERE NOT ( + col2 ) / + 50 + ( CAST ( NULL AS INTEGER ) ) IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q8512.out
+    data: |
+      NULL

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8148.sql | sort > q8148.out
+
+vector: true
+
+inputs:
+  - name: q8148.sql
+    data: |
+      SELECT 31 + CAST ( ( COUNT ( * ) ) AS INTEGER ) FROM tab1 AS cor0 WHERE + col1 IN ( + 26 );
+  - name: tab1
+
+outputs:
+  - name: q8148.out
+    data: |
+      31

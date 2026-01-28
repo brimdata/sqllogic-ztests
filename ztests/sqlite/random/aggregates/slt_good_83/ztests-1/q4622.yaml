@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4622.sql | sort > q4622.out
+
+vector: true
+
+inputs:
+  - name: q4622.sql
+    data: |
+      SELECT ALL COUNT ( * ) AS col2 FROM tab1 AS cor0 WHERE 34 <= CAST ( NULL AS REAL );
+  - name: tab1
+
+outputs:
+  - name: q4622.out
+    data: |
+      0

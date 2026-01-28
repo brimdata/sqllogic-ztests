@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q2755.sql | sort > q2755.out
+
+vector: true
+
+inputs:
+  - name: q2755.sql
+    data: |
+      SELECT ALL + SUM ( ALL - - ( col0 ) ) AS col1, - CAST ( NULL AS INTEGER ) FROM tab2 WHERE NOT ( + col0 NOT BETWEEN + col1 AND NULL );
+  - name: tab2
+
+outputs:
+  - name: q2755.out
+    data: |
+      NULL	NULL

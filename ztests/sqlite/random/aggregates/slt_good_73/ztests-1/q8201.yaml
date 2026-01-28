@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8201.sql | sort > q8201.out
+
+vector: true
+
+inputs:
+  - name: q8201.sql
+    data: |
+      SELECT AVG ( ALL col1 ) FROM tab1 WHERE NOT ( - + 32 * - col2 - + 10 ) IS NOT NULL;
+  - name: tab1
+
+outputs:
+  - name: q8201.out
+    data: |
+      NULL

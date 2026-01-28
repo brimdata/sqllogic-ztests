@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q12671.sql | sort > q12671.out
+
+vector: true
+
+inputs:
+  - name: q12671.sql
+    data: |
+      SELECT ALL + COUNT ( * ) AS col0 FROM tab1 WHERE NOT NULL BETWEEN - - col1 + + - 4 AND ( NULL );
+  - name: tab1
+
+outputs:
+  - name: q12671.out
+    data: |
+      0

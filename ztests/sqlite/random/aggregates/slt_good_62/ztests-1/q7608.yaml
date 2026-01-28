@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q7608.sql | sort > q7608.out
+
+vector: true
+
+inputs:
+  - name: q7608.sql
+    data: |
+      SELECT - COUNT ( * ) AS col2 FROM tab0 WHERE NULL BETWEEN NULL AND ( + 87 * col2 );
+  - name: tab0
+
+outputs:
+  - name: q7608.out
+    data: |
+      0

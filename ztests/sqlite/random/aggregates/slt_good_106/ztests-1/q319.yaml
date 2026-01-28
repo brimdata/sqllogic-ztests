@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q319.sql | sort > q319.out
+
+vector: true
+
+inputs:
+  - name: q319.sql
+    data: |
+      SELECT - + SUM ( - + col2 ) * COUNT ( * ) / + + MAX ( DISTINCT col1 ) * - AVG ( DISTINCT col2 ) AS col2 FROM tab2 AS cor0 WHERE NOT NULL >= col0;
+  - name: tab2
+
+outputs:
+  - name: q319.out
+    data: |
+      NULL

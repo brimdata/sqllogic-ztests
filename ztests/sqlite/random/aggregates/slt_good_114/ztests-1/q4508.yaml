@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q4508.sql | sort > q4508.out
+
+vector: true
+
+inputs:
+  - name: q4508.sql
+    data: |
+      SELECT COUNT ( * ) FROM tab1 AS cor0 WHERE col1 + - col1 BETWEEN NULL AND - 26;
+  - name: tab1
+
+outputs:
+  - name: q4508.out
+    data: |
+      0

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q3643.sql | sort > q3643.out
+
+vector: true
+
+inputs:
+  - name: q3643.sql
+    data: |
+      SELECT ALL - + COUNT ( * ) FROM tab1 AS cor0 WHERE col1 BETWEEN col2 + ( - col2 ) + - - 66 AND 65;
+  - name: tab1
+
+outputs:
+  - name: q3643.out
+    data: |
+      0

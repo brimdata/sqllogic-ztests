@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8359.sql | sort > q8359.out
+
+vector: true
+
+inputs:
+  - name: q8359.sql
+    data: |
+      SELECT + + ( COUNT ( * ) ) + + + COUNT ( * ) - + SUM ( ALL - col1 ) FROM tab0 WHERE NOT NULL IS NULL;
+  - name: tab0
+
+outputs:
+  - name: q8359.out
+    data: |
+      NULL

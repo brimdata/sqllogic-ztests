@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q8313.sql | sort > q8313.out
+
+vector: true
+
+inputs:
+  - name: q8313.sql
+    data: |
+      SELECT DISTINCT SUM ( ALL - col2 ) AS col2, COUNT ( * ) FROM tab0 WHERE NOT - col1 * + col0 * 77 * + 31 IS NOT NULL;
+  - name: tab0
+
+outputs:
+  - name: q8313.out
+    data: |
+      NULL	0

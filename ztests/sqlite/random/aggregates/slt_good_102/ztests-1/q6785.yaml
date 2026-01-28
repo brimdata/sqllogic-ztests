@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q6785.sql | sort > q6785.out
+
+vector: true
+
+inputs:
+  - name: q6785.sql
+    data: |
+      SELECT DISTINCT COUNT ( * ) / MIN ( + col1 ) + - COUNT ( * ) - - ( - COUNT ( * ) ) FROM tab2 AS cor0 WHERE NOT 67 IS NOT NULL;
+  - name: tab2
+
+outputs:
+  - name: q6785.out
+    data: |
+      NULL

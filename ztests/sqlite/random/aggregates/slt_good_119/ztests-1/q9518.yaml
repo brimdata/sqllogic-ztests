@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9518.sql | sort > q9518.out
+
+vector: true
+
+inputs:
+  - name: q9518.sql
+    data: |
+      SELECT + ( COUNT ( * ) ) + 81 FROM tab1 WHERE NOT NULL NOT BETWEEN NULL AND + ( col1 ) * + 9 + 14;
+  - name: tab1
+
+outputs:
+  - name: q9518.out
+    data: |
+      81

@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q12688.sql | sort > q12688.out
+
+vector: true
+
+inputs:
+  - name: q12688.sql
+    data: |
+      SELECT COUNT ( ALL - 66 ) AS col2 FROM tab2 WHERE NOT ( CAST ( 24 AS INTEGER ) ) NOT IN ( col1 );
+  - name: tab2
+
+outputs:
+  - name: q12688.out
+    data: |
+      0

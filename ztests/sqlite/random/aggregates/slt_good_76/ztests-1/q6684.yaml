@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q6684.sql | sort > q6684.out
+
+vector: true
+
+inputs:
+  - name: q6684.sql
+    data: |
+      SELECT DISTINCT + COUNT ( * ) AS col1 FROM tab2 WHERE NOT ( 15 * col2 ) NOT IN ( col1 + - ( - col2 - col1 ) );
+  - name: tab2
+
+outputs:
+  - name: q6684.out
+    data: |
+      0

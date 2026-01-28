@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q7268.sql | sort > q7268.out
+
+vector: true
+
+inputs:
+  - name: q7268.sql
+    data: |
+      SELECT + COUNT ( * ) FROM tab0 WHERE ( - col0 ) BETWEEN ( + col2 * - ( col1 ) ) AND NULL;
+  - name: tab0
+
+outputs:
+  - name: q7268.out
+    data: |
+      0

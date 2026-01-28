@@ -1,0 +1,15 @@
+script: |
+  super -f tsv -I q9962.sql | sort > q9962.out
+
+vector: true
+
+inputs:
+  - name: q9962.sql
+    data: |
+      SELECT ALL - SUM ( ALL - ( - col1 ) ) FROM tab2 WHERE NOT ( NULL ) NOT IN ( col1 / - ( + - col2 ) );
+  - name: tab2
+
+outputs:
+  - name: q9962.out
+    data: |
+      NULL
