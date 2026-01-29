@@ -5,7 +5,11 @@ This repository is a collection of
 that contain queries derived from
 [sqllogictest](https://sqlite.org/sqllogictest/doc/trunk/about.wiki)
 scripts. They're intended primarily for use as
-[SuperDB](https://github.com/brimdata/super) regression tests.
+[SuperDB](https://superdb.org/) regression tests.
+
+Currently all tests in this repo are based on the sqllogictests from
+[SQLite](https://sqlite.org/). More details on these tests can be found
+[here](ztests/sqlite/README.md).
 
 ## Usage
 
@@ -41,24 +45,30 @@ make TEST=TestSPQ/ztests/sqlite/select[1-5]
 In fact, that last one may prove handy if you want a quick "smoke test" on a
 super branch, since those ~5000 tests run in just a few minutes and provide a
 decent regression suite. Meanwhile, if you run 100% of the available tests
-you'll also get the 3+ million fuzz-style ztests below `sqlite/random/select/`,
+you'll also get the 3+ million fuzz-style ztests below `sqlite/random/`,
 which do provide wider coverage but also take hours to complete.
 
 ## Details
 
-READMEs inside each `ztests/` subdirectory describe the origin of each set of
-tests, with subdirectories below those holding the ztest YAML definitions.
+Test files ending in `.yaml` contain queries known to succeed in recent
+SuperDB versions and are executed nightly via a
+[GitHub Actions workflow](.github/workflows/test-sqllogic.yaml) to catch
+regressions. Queries known to fail in recent SuperDB versions are held in
+files ending in `.fail` and are skipped in the nightly CI run. Each `.fail`
+file contains a comment describing the root cause of the failure, which is
+typically a link to one of the open [issues in the super repo](https://github.com/brimdata/super/issues).
 
-As SuperDB does not yet support SQL [DDL](https://en.wikipedia.org/wiki/Data_definition_language),
+As SuperDB does not yet support SQL [DDL](https://en.wikipedia.org/wiki/Data_definition_language)
+or [DML](https://en.wikipedia.org/wiki/Data_manipulation_language),
 each test subdirectory includes a set of input files in
 [Parquet](https://parquet.apache.org/) format that the queries treat as
 tables. The numeric ztest YAML filenames in each test subdirectory follow the
-order of the test queries (i.e., not DDL statements) as they appeared in the
-corresponding sqllogictest scripts, e.g., `q0.yaml` is the first query,
+order of the eligible test queries (i.e., not DDL/DML statements) as they appeared in the
+corresponding sqllogictest scripts, e.g., `q0.yaml` is the first `SELECT` query,
 `q1.yaml` is the next, etc.
 
 The modifications in [`super.patch`](super.patch) must currently be applied
-to your checkout of the super repo before doing `make build`.
+to your checkout of the super repo before running `make build`.
 
 ```
 patch -d super -p1 < sqllogic-ztests/super.patch
