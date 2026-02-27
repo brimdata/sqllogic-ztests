@@ -1,5 +1,5 @@
 diff --git a/sio/csvio/writer.go b/sio/csvio/writer.go
-index 5ca20d85b..639e9ba35 100644
+index 1e5626e6e..5c5ebf954 100644
 --- a/sio/csvio/writer.go
 +++ b/sio/csvio/writer.go
 @@ -40,7 +40,7 @@ func NewWriter(w io.WriteCloser, opts WriterOpts) *Writer {
@@ -11,12 +11,12 @@ index 5ca20d85b..639e9ba35 100644
  		types:     make(map[int]struct{}),
  	}
  }
-@@ -91,6 +91,8 @@ func (w *Writer) Write(rec super.Value) error {
- 		case id == super.IDString:
- 			s = string(val.Bytes())
- 		case id == super.IDNull:
-+			// NULL value - render as "NULL"
-+			s = "NULL"
- 		default:
- 			s = formatValue(val.Type(), val.Bytes())
- 			if super.IsFloat(id) && strings.HasSuffix(s, ".") {
+@@ -94,6 +94,8 @@ func (w *Writer) Write(rec super.Value) error {
+ 			case id == super.IDString:
+ 				s = string(val.Bytes())
+ 			case id == super.IDNull:
++				// NULL value - render as "NULL"
++				s = "NULL"
+ 			default:
+ 				s = formatValue(val.Type(), val.Bytes())
+ 				if super.IsFloat(id) && strings.HasSuffix(s, ".") {
