@@ -154,9 +154,20 @@ jobs:
         id: run-tests
         run: |
           cd sqllogic-ztests
-          ZTEST_PATH="$(pwd)/../super/dist" go test . -timeout 6h -count=1 -run "${{ matrix.test.pattern }}" 2>&1 | tee test-output.log || true
+          set +e
+          ZTEST_PATH="$(pwd)/../super/dist" go test . -timeout 6h -count=1 -run "${{ matrix.test.pattern }}" 2>&1 | tee test-output.log
+          go_test_status=${PIPESTATUS[0]}
+          set -e
+          echo "go_test_status=$go_test_status" | tee -a test-output.log
           tests_ran=$(find $(echo "${{ matrix.test.pattern }}" | sed 's/^TestSPQ\///') -name \*.yaml 2>/dev/null | wc -l)
           failure_count=$(grep "        --- FAIL" test-output.log | sed 's/.*FAIL: //' | sed 's/ (.*$//' | sort | uniq | wc -l)
+          # A non-zero exit from "go test" with no individual test failures
+          # means the tests didn't run to completion (e.g., a compile error or
+          # panic), so the success count calculated below would be bogus.
+          if [ $go_test_status -ne 0 ] && { [ $failure_count -eq 0 ] || grep -q "^panic: " test-output.log; }; then
+            echo "::error::go test exited with status $go_test_status before tests could run to completion (see test output above)"
+            exit 1
+          fi
           echo "tests_ran=$tests_ran" | tee -a test-output.log
           echo "success_count=$((tests_ran - failure_count))" | tee -a test-output.log
           echo "failure_count=$failure_count" | tee -a test-output.log
@@ -206,7 +217,10 @@ jobs:
           for log_dir in logs/test-logs-*; do
             test_name=$(basename "$log_dir" | sed 's/test-logs-//')
             log_file="$log_dir/test-output.log"
-            if [ -f "$log_file" ]; then
+            if [ -f "$log_file" ] && ! grep -q "^failure_count=" "$log_file"; then
+              go_test_status=$(grep "^go_test_status=" "$log_file" | cut -f2 -d=)
+              echo "$test_name: DID NOT COMPLETE (go test exit status ${go_test_status:-unknown})"
+            elif [ -f "$log_file" ]; then
               tests_ran=$(grep "^tests_ran=" "$log_file" | cut -f2 -d= || echo "0")
               failure_count=$(grep "^failure_count=" "$log_file" | cut -f2 -d= || echo "0")
               success_count=$(grep "^success_count=" "$log_file" | cut -f2 -d= || echo "0")
@@ -248,6 +262,9 @@ jobs:
           # Final result
           if [ $total_failures -gt 0 ]; then
             echo "❌ Tests had failures"
+            exit 1
+          elif [ "${{ needs.test-sqllogic.result }}" != "success" ]; then
+            echo "❌ One or more test sets did not complete (result: ${{ needs.test-sqllogic.result }})"
             exit 1
           else
             echo "✅ All test sets passed!"
